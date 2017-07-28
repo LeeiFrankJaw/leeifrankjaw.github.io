@@ -1,1 +1,64 @@
-Hello World
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Abeunt studia in mores</title>
+        <style>
+         body {
+             width: 55em;
+             line-height: 1.3;
+             text-align: justify;
+         }
+         /* .code-box {
+            margin: 0 auto;
+            width: 80ch;
+            } */
+         pre.prettyprint {
+             display: block;
+             margin: 0 auto;
+             padding: 1ex 1em !important;
+             border: none !important;
+             width: 80ch;
+             color: #393318;
+             background-color: #eff0f1;
+         }
+         pre .str { color: #7D2727 } /* string  - pink */
+         pre .kwd { color: #101094 }
+         pre .com { color: #858C93 } /* comment - skyblue */
+         pre .typ { color: #2B91AF } /* type    - lightgreen */
+         pre .lit { color: #7D2727 } /* literal - darkred */
+         pre .pun { color: #303336 }    /* punctuation */
+         pre .pln { color: #303336 }    /* plaintext */
+         pre .tag { color: #7D2727 } /* html/xml tag    - lightyellow */
+         pre .atn { color: #E64320 } /* attribute name  - khaki */
+         pre .atv { color: #0F74BD } /* attribute value - pink */
+         pre .dec { color: #101094 } /* decimal         - lightgreen */
+         }
+        </style>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js" async></script>
+    </head>
+    <body>
+        <h1><code>for...of</code> vs. <code>for...in</code></h1>
+        <p> Today, I was just curious how many words <a href="http://testyourvocab.com/">test your vocab</a> would
+            give me if I select all the checkboxes.  But I was too lazy to
+            check them all manually, especially on the 2/3 step.  Thus I
+            tried to execute some simple JavaScript code in my Firefox web
+            console, in order to select them in a batch and ended up in
+            the following code. </p>
+        <pre class="prettyprint"><code class="language-js">for (let elem in document.querySelectorAll('input[type="checkbox"]') {
+    if (!elem.checked) {
+        elem.checked = true
+    }
+}</code></pre>
+        <p> But nothing happened and I googled to find out why.
+            According to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#Difference_between_for...of_and_for...in">
+            MDN</a>, <code>for...in</code> iterates over properties of
+            an object whereas <code>for...of</code> iterates over each
+            element of a collection.  Therefore, the correct version
+            should be the following. </p>
+        <pre class="prettyprint"><code class="language-js">for (let elem of document.querySelectorAll('input[type="checkbox"]') {
+    if (!elem.checked) {
+        elem.checked = true
+    }
+}</code></pre>
+    </body>
+</html>
