@@ -9,10 +9,10 @@
              line-height: 1.3;
              text-align: justify;
          }
-         /* .code-box {
-            margin: 0 auto;
-            width: 80ch;
-            } */
+         .date-line {
+             color: #696969;
+             font-size: .875rem;
+         }
          pre.prettyprint {
              display: block;
              margin: 0 auto;
@@ -61,5 +61,11 @@
         elem.checked = true
     }
 }</code></pre>
+        <p class="date-line">Last updated: <span id="last-modified"></span></p>
+        <script>
+         today = new Date(document.lastModified);
+         format = {'month': 'short', 'day': 'numeric', 'year': 'numeric'}
+         document.getElementById("last-modified").innerHTML = today.toLocaleDateString('en-US', format);
+        </script>
     </body>
 </html>
