@@ -1,0 +1,3889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-08-08 Tue 21:48 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Lei Zhao" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p { white-space: pre-wrap; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge40b4fd">1. <span class="done DONE">DONE</span> SQL mini-course</a>
+<ul>
+<li><a href="#org13e0dd5">1.1. <span class="done DONE">DONE</span> Lecture videos</a>
+<ul>
+<li><a href="#org6998a87">1.1.1. <span class="done DONE">DONE</span> The Join family of Operators</a></li>
+<li><a href="#org1b1169f">1.1.2. <span class="done DONE">DONE</span> Aggregation</a></li>
+<li><a href="#org60d1387">1.1.3. <span class="done DONE">DONE</span> NULL values</a></li>
+<li><a href="#org6a47b6c">1.1.4. <span class="done DONE">DONE</span> Data Modification Statements</a></li>
+</ul>
+</li>
+<li><a href="#orgcc55b22">1.2. <span class="done DONE">DONE</span> Exercises</a>
+<ul>
+<li><a href="#org7030f01">1.2.1. <span class="done DONE">DONE</span> Movie-Rating Query Core</a></li>
+<li><a href="#org770cf74">1.2.2. <span class="done DONE">DONE</span> Movie-Rating Query Extras</a></li>
+<li><a href="#orgacada39">1.2.3. <span class="done DONE">DONE</span> Social-Network Query Core</a></li>
+<li><a href="#orgb6c9b10">1.2.4. <span class="done DONE">DONE</span> Social-Network Query Extras</a></li>
+<li><a href="#org7d1a938">1.2.5. <span class="done DONE">DONE</span> Movie-Rating Modification</a></li>
+<li><a href="#org7390dc2">1.2.6. <span class="done DONE">DONE</span> Social-Network Modification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd1cb3c9">2. <span class="done DONE">DONE</span> XPath and XQuery mini-course</a>
+<ul>
+<li><a href="#orgd5cf930">2.1. <span class="done DONE">DONE</span> Lecture videos</a>
+<ul>
+<li><a href="#org0666764">2.1.1. <span class="done DONE">DONE</span> XPath Introduction</a></li>
+<li><a href="#org0f7a3db">2.1.2. <span class="done DONE">DONE</span> XPath Demo</a></li>
+<li><a href="#orgdb4f345">2.1.3. <span class="done DONE">DONE</span> XQuery Introduction</a></li>
+<li><a href="#org8943414">2.1.4. <span class="done DONE">DONE</span> XQuery Demo</a></li>
+</ul>
+</li>
+<li><a href="#org4528a86">2.2. <span class="done DONE">DONE</span> Exercises</a>
+<ul>
+<li><a href="#orgb0fa110">2.2.1. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</a></li>
+<li><a href="#org95651a2">2.2.2. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</a></li>
+<li><a href="#org5aa01e9">2.2.3. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</a></li>
+<li><a href="#org7569546">2.2.4. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4c81f14">3. <span class="done DONE">DONE</span> XSLT mini-course</a>
+<ul>
+<li><a href="#orged30b66">3.1. <span class="done DONE">DONE</span> Lecture videos</a></li>
+<li><a href="#org5da78b8">3.2. <span class="done DONE">DONE</span> Exercises</a>
+<ul>
+<li><a href="#orgebb9b31">3.2.1. <span class="done DONE">DONE</span> Course-Catalog XSLT</a></li>
+<li><a href="#org4f96ecf">3.2.2. <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</a></li>
+<li><a href="#org5efa3d0">3.2.3. <span class="done DONE">DONE</span> World-Countries XSLT</a></li>
+<li><a href="#orgda9ae7a">3.2.4. <span class="done DONE">DONE</span> World-Countries XSLT Extras</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf987fcd">4. <span class="done DONE">DONE</span> Relational Design Theory mini-course</a>
+<ul>
+<li><a href="#orgee6c373">4.1. <span class="done DONE">DONE</span> Lecture videos</a>
+<ul>
+<li><a href="#org4ebe094">4.1.1. <span class="done DONE">DONE</span> Overview</a></li>
+<li><a href="#org270a363">4.1.2. <span class="done DONE">DONE</span> Functional Dependencies</a></li>
+<li><a href="#org9dda68d">4.1.3. <span class="done DONE">DONE</span> Boyce-Codd Normal Form</a></li>
+<li><a href="#orgcf58b9a">4.1.4. <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</a></li>
+<li><a href="#org3cf64ba">4.1.5. <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</a></li>
+</ul>
+</li>
+<li><a href="#orgc127fb9">4.2. <span class="done DONE">DONE</span> Exercises</a></li>
+</ul>
+</li>
+<li><a href="#org0d89d18">5. <span class="done DONE">DONE</span> Unified Modeling Language mini-course</a>
+<ul>
+<li><a href="#org151d532">5.1. <span class="done DONE">DONE</span> Lecture Videos</a>
+<ul>
+<li><a href="#org4b6b5a4">5.1.1. <span class="done DONE">DONE</span> UML Data Modeling</a></li>
+<li><a href="#orgf69adf5">5.1.2. <span class="done DONE">DONE</span> UML to Relations</a></li>
+</ul>
+</li>
+<li><a href="#org5e0df64">5.2. <span class="done DONE">DONE</span> Exercises</a></li>
+</ul>
+</li>
+<li><a href="#org448a547">6. <span class="todo TODO">TODO</span> Indexes and Transactions mini-course</a>
+<ul>
+<li><a href="#orgacc48ca">6.1. <span class="todo TODO">TODO</span> Lecture Videos</a>
+<ul>
+<li><a href="#orgd056b5a">6.1.1. <span class="todo TODO">TODO</span> Indexes</a></li>
+<li><a href="#org9649ebe">6.1.2. <span class="todo TODO">TODO</span> Introduction to Transactions</a></li>
+<li><a href="#orgd0f334e">6.1.3. <span class="todo TODO">TODO</span> Transaction Properties</a></li>
+<li><a href="#orgd190bfb">6.1.4. <span class="todo TODO">TODO</span> Isolation Levels</a></li>
+</ul>
+</li>
+<li><a href="#org2c1694c">6.2. <span class="todo TODO">TODO</span> Exercises</a>
+<ul>
+<li><a href="#org07d3975">6.2.1. <span class="todo TODO">TODO</span> Index Quiz</a></li>
+<li><a href="#org07e2b4e">6.2.2. <span class="todo TODO">TODO</span> Transaction Quiz</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about">Database</a> on Lagunita<br />
+</p>
+
+<div id="outline-container-orge40b4fd" class="outline-2">
+<h2 id="orge40b4fd"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/">SQL</a> mini-course</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+:VISIBILITY: FOLDED<br />
+</p>
+</div>
+<div id="outline-container-org13e0dd5" class="outline-3">
+<h3 id="org13e0dd5"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org6998a87" class="outline-4">
+<h4 id="org6998a87"><span class="section-number-4">1.1.1</span> <span class="done DONE">DONE</span> The Join family of Operators</h4>
+<div class="outline-text-4" id="text-1-1-1">
+</div>
+</div>
+<div id="outline-container-org1b1169f" class="outline-4">
+<h4 id="org1b1169f"><span class="section-number-4">1.1.2</span> <span class="done DONE">DONE</span> Aggregation</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA)
+<span style="color: #0000FF;">from</span> Student;
+
+<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">min</span>(GPA)
+<span style="color: #0000FF;">from</span> Student, Apply
+<span style="color: #0000FF;">where</span> Student.sID = Apply.sID <span style="color: #0000FF;">and</span> major = <span style="color: #008000;">'CS'</span>;
+
+<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA)
+<span style="color: #0000FF;">from</span> Student
+<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'CS'</span>);
+
+<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
+<span style="color: #0000FF;">from</span> College
+<span style="color: #0000FF;">where</span> enrollment &gt; 15000;
+
+<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> sID <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> cName = <span style="color: #008000;">'Cornell'</span>);
+
+<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> sID)
+<span style="color: #0000FF;">from</span> Apply
+<span style="color: #0000FF;">where</span> cName = <span style="color: #008000;">'Cornell'</span>;
+
+<span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA) <span style="color: #0000FF;">from</span> Student
+        <span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'CS'</span>)) -
+       (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA) <span style="color: #0000FF;">from</span> Student
+        <span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'CS'</span>));
+
+<span style="color: #0000FF;">select</span> cName, <span style="color: #006FE0;">count</span>(*)
+<span style="color: #0000FF;">from</span> Apply
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> cName;
+
+<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">state</span>, <span style="color: #006FE0;">sum</span>(enrollment)
+<span style="color: #0000FF;">from</span> College
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> <span style="color: #0000FF;">state</span>;
+
+<span style="color: #0000FF;">select</span> cName, major, <span style="color: #006FE0;">max</span>(mx - mn)
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> cName, major, <span style="color: #006FE0;">min</span>(GPA) <span style="color: #0000FF;">as</span> mn, <span style="color: #006FE0;">max</span>(GPA) <span style="color: #0000FF;">as</span> mx
+      <span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
+      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> cName, major) <span style="color: #0000FF;">M</span>;
+
+<span style="color: #0000FF;">select</span> sID, sName, <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> cName)
+<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID;
+
+<span style="color: #0000FF;">select</span> sID, sName, <span style="color: #006FE0;">count</span>(cName)
+<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span>
+     (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> sID, cName
+      <span style="color: #0000FF;">from</span> Apply) <span style="color: #0000FF;">using</span>(sID)
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID;
+
+<span style="color: #0000FF;">select</span> sID, sName, <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> cName)
+<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">left</span> <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID;
+
+<span style="color: #0000FF;">select</span> sID, sName, <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> cName)
+<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID
+<span style="color: #0000FF;">union</span>
+<span style="color: #0000FF;">select</span> sID, sName, 0
+<span style="color: #0000FF;">from</span> Student
+<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply);
+
+<span style="color: #0000FF;">select</span> cName
+<span style="color: #0000FF;">from</span> Apply
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> cName
+<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &lt; 5;
+
+<span style="color: #0000FF;">select</span> cName
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> cName <span style="color: #0000FF;">from</span> Apply) S
+<span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> cName = S.cName) &lt; 5;
+
+
+<span style="color: #0000FF;">select</span> cName
+<span style="color: #0000FF;">from</span> Apply
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> cName
+<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> sID) &lt; 5;
+
+<span style="color: #0000FF;">select</span> major
+<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> major
+<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">max</span>(GPA) &lt; (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA) <span style="color: #0000FF;">from</span> Student);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org60d1387" class="outline-4">
+<h4 id="org60d1387"><span class="section-number-4">1.1.3</span> <span class="done DONE">DONE</span> NULL values</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> sID, sName, GPA
+<span style="color: #0000FF;">from</span> Student
+<span style="color: #0000FF;">where</span> GPA &lt;= 3.5 <span style="color: #0000FF;">or</span> GPA &gt; 3.5 <span style="color: #0000FF;">or</span> GPA <span style="color: #0000FF;">is</span> <span style="color: #0000FF;">null</span>;
+
+<span style="color: #0000FF;">select</span> sID, sName, GPA, sizeHS
+<span style="color: #0000FF;">from</span> Student
+<span style="color: #0000FF;">where</span> GPA &lt;= 3.5 <span style="color: #0000FF;">or</span> sizeHS &lt; 1600 <span style="color: #0000FF;">or</span> sizeHS &gt;= 1600;
+
+<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
+<span style="color: #0000FF;">from</span> Student
+<span style="color: #0000FF;">where</span> GPA <span style="color: #0000FF;">is</span> <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">null</span>;
+</pre>
+</div>
+<p>
+SQL uses three-valued logic (<a href="https://en.wikipedia.org/wiki/Three-valued_logic">3VL</a>).<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6a47b6c" class="outline-4">
+<h4 id="org6a47b6c"><span class="section-number-4">1.1.4</span> <span class="done DONE">DONE</span> Data Modification Statements</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> College
+<span style="color: #0000FF;">values</span> (<span style="color: #008000;">'Carnegie Mellon'</span>, <span style="color: #008000;">'PA'</span>, 11500);
+
+<span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Apply
+<span style="color: #0000FF;">select</span> sID, <span style="color: #008000;">'Carnegie Mellon'</span>, <span style="color: #008000;">'CS'</span>, <span style="color: #0000FF;">null</span>
+<span style="color: #0000FF;">from</span> Student
+<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply);
+
+<span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Apply
+<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> sID, <span style="color: #008000;">'Carnegie Mellon'</span>, <span style="color: #008000;">'EE'</span>, <span style="color: #008000;">'Y'</span>
+<span style="color: #0000FF;">from</span> Apply
+<span style="color: #0000FF;">where</span> cName &lt;&gt; <span style="color: #008000;">'Carnegie Mellon'</span> <span style="color: #0000FF;">and</span>
+      major = <span style="color: #008000;">'EE'</span> <span style="color: #0000FF;">and</span>
+      decision = <span style="color: #008000;">'N'</span>;
+
+<span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Student
+<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID
+              <span style="color: #0000FF;">from</span> Apply
+              <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID
+              <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> major) &gt; 2);
+
+<span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Apply
+<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID
+              <span style="color: #0000FF;">from</span> Apply
+              <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID
+              <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> major) &gt; 2);
+
+<span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> College
+<span style="color: #0000FF;">where</span> cName <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> cName
+                    <span style="color: #0000FF;">from</span> Apply
+                    <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'CS'</span>);
+
+<span style="color: #0000FF;">update</span> Apply
+<span style="color: #0000FF;">set</span> major = <span style="color: #008000;">'economics'</span>,
+    decision = <span style="color: #008000;">'Y'</span>
+<span style="color: #0000FF;">where</span> cName = <span style="color: #008000;">'Carnegie Mellon'</span> <span style="color: #0000FF;">and</span>
+      sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">where</span> GPA &lt; 3.6);
+
+<span style="color: #0000FF;">update</span> Apply
+<span style="color: #0000FF;">set</span> major = <span style="color: #008000;">'CSE'</span>
+<span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'EE'</span> <span style="color: #0000FF;">and</span>
+      sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID
+              <span style="color: #0000FF;">from</span> Student
+              <span style="color: #0000FF;">where</span> GPA = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>(GPA)
+                           <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">join</span> Student <span style="color: #0000FF;">using</span>(sID)
+                           <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'EE'</span>));
+
+<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Apply
+<span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'EE'</span> <span style="color: #0000FF;">and</span>
+      sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID
+              <span style="color: #0000FF;">from</span> Student
+              <span style="color: #0000FF;">where</span> GPA &gt;= <span style="color: #0000FF;">all</span> (<span style="color: #0000FF;">select</span> GPA
+                                <span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
+                                <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'EE'</span>));
+
+<span style="color: #0000FF;">update</span> Student
+<span style="color: #0000FF;">set</span> GPA = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>(GPA) <span style="color: #0000FF;">from</span> Student),
+    sizeHS = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">min</span>(sizeHS) <span style="color: #0000FF;">from</span> Student);
+
+<span style="color: #0000FF;">update</span> Apply
+<span style="color: #0000FF;">set</span> decision = <span style="color: #008000;">'Y'</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcc55b22" class="outline-3">
+<h3 id="orgcc55b22"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org7030f01" class="outline-4">
+<h4 id="org7030f01"><span class="section-number-4">1.2.1</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/">Core</a></h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Find the titles of all movies directed by Steven Spielberg.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> title
+<span style="color: #0000FF;">from</span> Movie
+<span style="color: #0000FF;">where</span> director = <span style="color: #008000;">'Steven Spielberg'</span>;
+</pre>
+</div>
+
+<p>
+Find all years that have a movie that received a rating of 4 or 5, and<br />
+sort them in increasing order.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">year</span>
+<span style="color: #0000FF;">from</span> Movie
+<span style="color: #0000FF;">where</span> mID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> mID
+              <span style="color: #0000FF;">from</span> Rating
+              <span style="color: #0000FF;">where</span> stars &gt;= 4)
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> <span style="color: #0000FF;">year</span>;
+</pre>
+</div>
+
+<p>
+Find the titles of all movies that have no ratings.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> title
+<span style="color: #0000FF;">from</span> Movie
+<span style="color: #0000FF;">where</span> mID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> mID <span style="color: #0000FF;">from</span> Rating);
+</pre>
+</div>
+
+<p>
+Some reviewers didn't provide a date with their rating.  Find the<br />
+names of all reviewers who have ratings with a NULL value for the<br />
+date.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
+<span style="color: #0000FF;">from</span> Reviewer
+<span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID <span style="color: #0000FF;">from</span> Rating
+              <span style="color: #0000FF;">where</span> ratingDate <span style="color: #0000FF;">is</span> <span style="color: #0000FF;">null</span>);
+</pre>
+</div>
+
+<p>
+Write a query to return the ratings data in a more readable format:<br />
+reviewer name, movie title, stars, and ratingDate.  Also, sort the<br />
+data, first by reviewer name, then by movie title, and lastly by<br />
+number of stars.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, title, stars, ratingDate
+<span style="color: #0000FF;">from</span> Reviewer <span style="color: #0000FF;">join</span> Rating <span style="color: #0000FF;">using</span>(rID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> <span style="color: #0000FF;">name</span>, title, stars;
+</pre>
+</div>
+
+<p>
+For all cases where the same reviewer rated the same movie twice and<br />
+gave it a higher rating the second time, return the reviewer's name<br />
+and the title of the movie.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, title
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> rID, mID
+      <span style="color: #0000FF;">from</span> Rating R1 <span style="color: #0000FF;">join</span> Rating R2 <span style="color: #0000FF;">using</span>(rID, mID)
+      <span style="color: #0000FF;">where</span> R1.stars &gt; R2.stars <span style="color: #0000FF;">and</span>
+            R1.ratingDate &gt; R2.ratingDate <span style="color: #0000FF;">and</span>
+            (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">from</span> Rating
+             <span style="color: #0000FF;">where</span> rID = R1.rID <span style="color: #0000FF;">and</span> mID = R1.mID) = 2)
+      <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID)
+      <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID);
+</pre>
+</div>
+
+<p>
+For each movie that has at least one rating, find the highest number<br />
+of stars that movie received.  Return the movie title and number of<br />
+stars.  Sort by movie title.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, <span style="color: #006FE0;">max</span>(stars)
+<span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> title;
+</pre>
+</div>
+
+<p>
+For each movie, return the title and the 'rating spread', that is, the<br />
+difference between highest and lowest ratings given to that movie.<br />
+Sort by rating spread from highest to lowest, then by movie title.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, spread
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> mID, <span style="color: #006FE0;">max</span>(stars) - <span style="color: #006FE0;">min</span>(stars) <span style="color: #0000FF;">as</span> spread
+      <span style="color: #0000FF;">from</span> Rating
+      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID)
+      <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> spread <span style="color: #0000FF;">desc</span>, title;
+</pre>
+</div>
+
+<p>
+Find the difference between the average rating of movies released<br />
+before 1980 and the average rating of movies released after 1980.<br />
+(Make sure to calculate the average rating for each movie, then the<br />
+average of those averages for movies before 1980 and movies after.<br />
+Don't just calculate the overall average rating before and after<br />
+1980.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span>
+(<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(avgStars)
+ <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> mID, <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">as</span> avgStars
+       <span style="color: #0000FF;">from</span> Rating
+       <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
+ <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">year</span> &lt; 1980) -
+(<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(avgStars)
+ <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> mID, <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">as</span> avgStars
+       <span style="color: #0000FF;">from</span> Rating
+       <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
+ <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">year</span> &gt;= 1980);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org770cf74" class="outline-4">
+<h4 id="org770cf74"><span class="section-number-4">1.2.2</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_extra/">Extras</a></h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Find the names of all reviewers who rated Gone with the Wind.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
+<span style="color: #0000FF;">from</span> Reviewer
+<span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID <span style="color: #0000FF;">from</span> Rating
+              <span style="color: #0000FF;">where</span> mID = (<span style="color: #0000FF;">select</span> mID <span style="color: #0000FF;">from</span> Movie
+                           <span style="color: #0000FF;">where</span> title = <span style="color: #008000;">'Gone with the Wind'</span>));
+</pre>
+</div>
+
+<p>
+For any rating where the reviewer is the same as the director of the<br />
+movie, return the reviewer name, movie title, and number of stars.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> <span style="color: #0000FF;">name</span>, title, stars
+<span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
+<span style="color: #0000FF;">where</span> director = <span style="color: #0000FF;">name</span>;
+</pre>
+</div>
+
+<p>
+Return all reviewer names and movie names together in a single list,<br />
+alphabetized.  (Sorting by the first name of the reviewer and first<br />
+word in the title is fine; no need for special processing on last<br />
+names or removing "The".)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
+      <span style="color: #0000FF;">from</span> Reviewer
+      <span style="color: #0000FF;">union</span>
+      <span style="color: #0000FF;">select</span> title <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">name</span>
+      <span style="color: #0000FF;">from</span> Movie)
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> <span style="color: #0000FF;">name</span>;
+</pre>
+</div>
+
+<p>
+Find the titles of all movies not reviewed by Chris Jackson.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> title
+<span style="color: #0000FF;">from</span> Movie
+<span style="color: #0000FF;">where</span> mID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> mID <span style="color: #0000FF;">from</span> Rating
+                  <span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID <span style="color: #0000FF;">from</span> Reviewer
+                                <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Chris Jackson'</span>));
+</pre>
+</div>
+
+<p>
+For all pairs of reviewers such that both reviewers gave a rating to<br />
+the same movie, return the names of both reviewers.  Eliminate<br />
+duplicates, don't pair reviewers with themselves, and include each<br />
+pair only once.  For each pair, return the names in the pair in<br />
+alphabetical order.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> R1.<span style="color: #0000FF;">name</span>, R2.<span style="color: #0000FF;">name</span>
+<span style="color: #0000FF;">from</span> (Rating <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID)) R1 <span style="color: #0000FF;">join</span>
+     (Rating <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID)) R2
+<span style="color: #0000FF;">on</span> R1.mID = R2.mID <span style="color: #0000FF;">and</span>
+   R1.rID &lt;&gt; R2.rID <span style="color: #0000FF;">and</span>
+   R1.<span style="color: #0000FF;">name</span> &lt;= R2.<span style="color: #0000FF;">name</span>;
+</pre>
+</div>
+
+<p>
+For each rating that is the lowest (fewest stars) currently in the<br />
+database, return the reviewer name, movie title, and number of stars.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, title, stars
+<span style="color: #0000FF;">from</span> Rating R1 <span style="color: #0000FF;">join</span> Reviewer R2 <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">M</span>
+<span style="color: #0000FF;">on</span> R1.rID = R2.rID <span style="color: #0000FF;">and</span>
+   R1.mID = <span style="color: #0000FF;">m</span>.mID <span style="color: #0000FF;">and</span>
+   stars = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">min</span>(stars) <span style="color: #0000FF;">from</span> Rating);
+</pre>
+</div>
+
+<p>
+List movie titles and average ratings, from highest-rated to<br />
+lowest-rated.  If two or more movies have the same average rating,<br />
+list them in alphabetical order.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, avgStars
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> mID, <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">as</span> avgStars
+      <span style="color: #0000FF;">from</span> Rating
+      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> avgStars <span style="color: #0000FF;">desc</span>, title;
+</pre>
+</div>
+
+<p>
+Find the names of all reviewers who have contributed three or more<br />
+ratings.  (As an extra challenge, try writing the query without HAVING<br />
+or without COUNT.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
+<span style="color: #0000FF;">from</span> Reviewer
+<span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID
+              <span style="color: #0000FF;">from</span> Rating
+              <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> rID
+              <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt;= 3);
+
+<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> rID
+      <span style="color: #0000FF;">from</span> Rating
+      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> rID
+      <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt;= 3)
+     <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID);
+
+<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
+<span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID)
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> rID
+<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt;= 3;
+
+<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
+<span style="color: #0000FF;">from</span> Reviewer
+<span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID
+              <span style="color: #0000FF;">from</span> Rating R
+              <span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID
+                            <span style="color: #0000FF;">from</span> Rating S
+                            <span style="color: #0000FF;">where</span> rID = R.rID <span style="color: #0000FF;">and</span>
+                                  (mID &lt;&gt; R.mID <span style="color: #0000FF;">or</span>
+                                   stars &lt;&gt; R.stars) <span style="color: #0000FF;">and</span>
+                                  rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID
+                                          <span style="color: #0000FF;">from</span> Rating
+                                          <span style="color: #0000FF;">where</span> rID = R.rID <span style="color: #0000FF;">and</span>
+                                                (mID &lt;&gt; R.mID <span style="color: #0000FF;">or</span>
+                                                 stars &lt;&gt; R.stars) <span style="color: #0000FF;">and</span>
+                                                (mID &lt;&gt; S.mID <span style="color: #0000FF;">or</span>
+                                                 stars &lt;&gt; S.stars))));
+</pre>
+</div>
+
+<p>
+Some directors directed more than one movie.  For all such directors,<br />
+return the titles of all movies directed by them, along with the<br />
+director name.  Sort by director name, then movie title.  (As an extra<br />
+challenge, try writing the query both with and without COUNT.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, director
+<span style="color: #0000FF;">from</span> Movie
+<span style="color: #0000FF;">where</span> director <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> director
+                   <span style="color: #0000FF;">from</span> Movie
+                   <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> director
+                   <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt; 1)
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> director, title;
+
+<span style="color: #0000FF;">select</span> title, director
+<span style="color: #0000FF;">from</span> Movie R
+<span style="color: #0000FF;">where</span> director <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> director
+                   <span style="color: #0000FF;">from</span> Movie
+                   <span style="color: #0000FF;">where</span> director = R.director <span style="color: #0000FF;">and</span>
+                         mID &lt;&gt; R.mID)
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> director, title;
+</pre>
+</div>
+
+<p>
+Find the movie(s) with the highest average rating. Return the movie<br />
+title(s) and average rating.  (Hint: This query is more difficult to<br />
+write in SQLite than other systems; you might think of it as finding<br />
+the highest average rating and then choosing the movie(s) with that<br />
+average rating.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = R.mID) <span style="color: #0000FF;">as</span> avgStars
+<span style="color: #0000FF;">from</span> Movie R
+<span style="color: #0000FF;">where</span> avgStars = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>((<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = S.mID))
+                  <span style="color: #0000FF;">from</span> Movie S);
+</pre>
+</div>
+
+<p>
+Find the movie(s) with the lowest average rating.  Return the movie<br />
+title(s) and average rating.  (Hint: This query may be more difficult<br />
+to write in SQLite than other systems; you might think of it as<br />
+finding the lowest average rating and then choosing the movie(s) with<br />
+that average rating.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = R.mID) <span style="color: #0000FF;">as</span> avgStars
+<span style="color: #0000FF;">from</span> Movie R
+<span style="color: #0000FF;">where</span> avgStars = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">min</span>((<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = S.mID))
+                  <span style="color: #0000FF;">from</span> Movie S);
+</pre>
+</div>
+
+<p>
+For each director, return the director's name together with the<br />
+title(s) of the movie(s) they directed that received the highest<br />
+rating among all of their movies, and the value of that rating.<br />
+Ignore movies whose director is NULL.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> director, title, maxStars
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> director,
+             (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>(stars)
+              <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
+              <span style="color: #0000FF;">where</span> director = D.director) <span style="color: #0000FF;">as</span> maxStars
+      <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> director <span style="color: #0000FF;">from</span> Movie
+            <span style="color: #0000FF;">where</span> director <span style="color: #0000FF;">is</span> <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">null</span>) D)
+      <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(director) <span style="color: #0000FF;">join</span> Rating <span style="color: #0000FF;">using</span>(mID)
+<span style="color: #0000FF;">where</span> stars = maxStars;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgacada39" class="outline-4">
+<h4 id="orgacada39"><span class="section-number-4">1.2.3</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_core/">Core</a></h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Find the names of all students who are friends with someone named<br />
+Gabriel.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
+<span style="color: #0000FF;">from</span> Highschooler
+<span style="color: #0000FF;">where</span> ID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1
+             <span style="color: #0000FF;">from</span> Friend
+             <span style="color: #0000FF;">where</span> ID1 = ID <span style="color: #0000FF;">and</span>
+                   ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID
+                           <span style="color: #0000FF;">from</span> Highschooler
+                           <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Gabriel'</span>));
+</pre>
+</div>
+
+<p>
+For every student who likes someone 2 or more grades younger than<br />
+themselves, return that student's name and grade, and the name and<br />
+grade of the student they like.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
+       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2),
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2)
+<span style="color: #0000FF;">from</span> Likes
+<span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1) -
+      (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2) &gt;= 2;
+</pre>
+</div>
+
+<p>
+For every pair of students who both like each other, return the name<br />
+and grade of both students.  Include each pair only once, with the two<br />
+names in alphabetical order.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> *
+<span style="color: #0000FF;">from</span> Likes
+<span style="color: #0000FF;">where</span> ID1 &lt; ID2
+<span style="color: #0000FF;">intersect</span>
+<span style="color: #0000FF;">select</span> ID2, ID1
+<span style="color: #0000FF;">from</span> Likes;
+
+<span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID1),
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID1),
+       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID2),
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID2)
+<span style="color: #0000FF;">from</span> Likes R
+<span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID1) &lt;
+      (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID2) <span style="color: #0000FF;">and</span>
+      ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1 <span style="color: #0000FF;">from</span> Likes
+              <span style="color: #0000FF;">where</span> ID1 = R.ID2 <span style="color: #0000FF;">and</span> ID2 = R.ID1);
+</pre>
+</div>
+
+<p>
+Find all students who do not appear in the Likes table (as a student<br />
+who likes or is liked) and return their names and grades.  Sort by<br />
+grade, then by name within each grade.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, grade
+<span style="color: #0000FF;">from</span> Highschooler
+<span style="color: #0000FF;">where</span> ID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1 <span style="color: #0000FF;">from</span> Likes) <span style="color: #0000FF;">and</span>
+      ID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID2 <span style="color: #0000FF;">from</span> Likes)
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> grade, <span style="color: #0000FF;">name</span>;
+</pre>
+</div>
+
+<p>
+For every situation where student A likes student B, but we have no<br />
+information about whom B likes (that is, B does not appear as an ID1<br />
+in the Likes table), return A and B's names and grades.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
+       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2),
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2)
+<span style="color: #0000FF;">from</span> Likes
+<span style="color: #0000FF;">where</span> ID2 <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1 <span style="color: #0000FF;">from</span> Likes);
+</pre>
+</div>
+
+<p>
+Find names and grades of students who only have friends in the same<br />
+grade. Return the result sorted by grade, then by name within each<br />
+grade.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, grade
+<span style="color: #0000FF;">from</span> Highschooler
+<span style="color: #0000FF;">where</span> ID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1
+                 <span style="color: #0000FF;">from</span> Friend
+                 <span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1) &lt;&gt;
+                       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2))
+<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> grade, <span style="color: #0000FF;">name</span>;
+</pre>
+</div>
+
+<p>
+For each student A who likes a student B where the two are not<br />
+friends, find if they have a friend C in common (who can introduce<br />
+them!).  For all such trios, return the name and grade of A, B, and C.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = T.ID1),
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = T.ID1),
+       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = T.ID2),
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = T.ID2),
+       <span style="color: #0000FF;">name</span>, grade
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Likes
+      <span style="color: #0000FF;">except</span>
+      <span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend) T
+     <span style="color: #0000FF;">join</span> Highschooler
+<span style="color: #0000FF;">on</span> ID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID2 <span style="color: #0000FF;">from</span> Friend <span style="color: #0000FF;">where</span> ID1 = T.ID1) <span style="color: #0000FF;">and</span>
+   ID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID2 <span style="color: #0000FF;">from</span> Friend <span style="color: #0000FF;">where</span> ID1 = T.ID2);
+</pre>
+</div>
+
+<p>
+Find the difference between the number of students in the school and<br />
+the number of different first names.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(ID) - <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> <span style="color: #0000FF;">name</span>)
+<span style="color: #0000FF;">from</span> Highschooler;
+</pre>
+</div>
+
+<p>
+Find the name and grade of all students who are liked by more than one<br />
+other student.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> name2, grade2
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> ID1, name1, grade1, ID2, <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">as</span> name2, grade <span style="color: #0000FF;">as</span> grade2
+      <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> ID1, <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">as</span> name1, grade <span style="color: #0000FF;">as</span> grade1, ID2
+            <span style="color: #0000FF;">from</span> Likes <span style="color: #0000FF;">join</span> Highschooler H <span style="color: #0000FF;">on</span> ID1 = H.ID)
+                 <span style="color: #0000FF;">join</span> Highschooler H <span style="color: #0000FF;">on</span> ID2 = H.ID)
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> ID2
+<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt; 1;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb6c9b10" class="outline-4">
+<h4 id="orgb6c9b10"><span class="section-number-4">1.2.4</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_extra/">Extras</a></h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+For every situation where student A likes student B, but student B<br />
+likes a different student C, return the names and grades of A, B, and<br />
+C.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> H1.<span style="color: #0000FF;">name</span>, H1.grade,
+       H2.<span style="color: #0000FF;">name</span>, H2.grade,
+       H3.<span style="color: #0000FF;">name</span>, H3.grade
+<span style="color: #0000FF;">from</span> Likes R <span style="color: #0000FF;">join</span> Likes S
+     <span style="color: #0000FF;">on</span> R.ID2 = S.ID1 <span style="color: #0000FF;">and</span>
+        S.ID2 &lt;&gt; R.ID1
+     <span style="color: #0000FF;">join</span> Highschooler H1
+     <span style="color: #0000FF;">on</span> R.ID1 = H1.ID
+     <span style="color: #0000FF;">join</span> Highschooler H2
+     <span style="color: #0000FF;">on</span> R.ID2 = H2.ID
+     <span style="color: #0000FF;">join</span> Highschooler H3
+     <span style="color: #0000FF;">on</span> S.ID2 = H3.ID;
+</pre>
+</div>
+
+<p>
+Find those students for whom all of their friends are in different<br />
+grades from themselves.  Return the students' names and grades.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, grade
+<span style="color: #0000FF;">from</span> Highschooler R
+<span style="color: #0000FF;">where</span> <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">exists</span>
+      (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend
+       <span style="color: #0000FF;">where</span> ID1 = R.ID <span style="color: #0000FF;">and</span>
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler
+        <span style="color: #0000FF;">where</span> ID = ID2 <span style="color: #0000FF;">and</span>
+              grade = R.grade));
+</pre>
+</div>
+
+<p>
+What is the average number of friends per student? (Your result should<br />
+be just one number.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(num)
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">as</span> num
+      <span style="color: #0000FF;">from</span> Friend
+      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> ID1);
+</pre>
+</div>
+
+<p>
+The above code doesn't consider the situation where there exists a<br />
+student who has no friend.  The following code handle that situation<br />
+correctly.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(num)
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">from</span> Friend
+              <span style="color: #0000FF;">where</span> ID1 = ID) <span style="color: #0000FF;">as</span> num
+      <span style="color: #0000FF;">from</span> Highschooler);
+</pre>
+</div>
+
+<p>
+Find the number of students who are either friends with Cassandra or<br />
+are friends of friends of Cassandra.  Do not count Cassandra, even<br />
+though technically she is a friend of a friend.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
+<span style="color: #0000FF;">from</span> Highschooler
+<span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> &lt;&gt; <span style="color: #008000;">'Cassandra'</span> <span style="color: #0000FF;">and</span>
+      <span style="color: #0000FF;">exists</span> (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend R
+              <span style="color: #0000FF;">where</span> R.ID1 = ID <span style="color: #0000FF;">and</span>
+                    (R.ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID <span style="color: #0000FF;">from</span> Highschooler
+                               <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Cassandra'</span>) <span style="color: #0000FF;">or</span>
+                     R.ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1 <span style="color: #0000FF;">from</span> Friend
+                               <span style="color: #0000FF;">where</span> ID1 = R.ID2 <span style="color: #0000FF;">and</span>
+                                     ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID <span style="color: #0000FF;">from</span> Highschooler
+                                             <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Cassandra'</span>))));
+
+<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
+<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> ID1, ID2, ID3
+      <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> L1.ID1, L1.ID2, L2.ID2 <span style="color: #0000FF;">as</span> ID3
+            <span style="color: #0000FF;">from</span> Friend L1 <span style="color: #0000FF;">join</span> Friend L2
+            <span style="color: #0000FF;">on</span> L1.ID2 = L2.ID1 <span style="color: #0000FF;">and</span>
+               L2.ID2 &lt;&gt; L1.ID1))
+     <span style="color: #0000FF;">join</span> Highschooler R <span style="color: #0000FF;">on</span> ID1 = R.ID
+     <span style="color: #0000FF;">join</span> Highschooler S <span style="color: #0000FF;">on</span> ID2 = S.ID
+     <span style="color: #0000FF;">join</span> Highschooler T <span style="color: #0000FF;">on</span> ID3 = T.ID
+<span style="color: #0000FF;">where</span> S.<span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Cassandra'</span> <span style="color: #0000FF;">or</span> T.<span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Cassandra'</span>;
+</pre>
+</div>
+
+<p>
+Find the name and grade of the student(s) with the greatest number of<br />
+friends.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
+       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1)
+<span style="color: #0000FF;">from</span> Friend
+<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> ID1
+<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>(num)
+                   <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">as</span> num
+                         <span style="color: #0000FF;">from</span> Friend
+                         <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> ID1));
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7d1a938" class="outline-4">
+<h4 id="org7d1a938"><span class="section-number-4">1.2.5</span> <span class="done DONE">DONE</span> Movie-Rating <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_mod/">Modification</a></h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+Add the reviewer Roger Ebert to your database, with an rID of 209.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Reviewer <span style="color: #0000FF;">values</span> (209, <span style="color: #008000;">'Roger Ebert'</span>);
+</pre>
+</div>
+
+<p>
+Insert 5-star ratings by James Cameron for all movies in the database.<br />
+Leave the review date as NULL.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Rating
+<span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> rID <span style="color: #0000FF;">from</span> Reviewer <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'James Cameron'</span>),
+       mID, 5, <span style="color: #0000FF;">null</span>
+<span style="color: #0000FF;">from</span> Movie;
+</pre>
+</div>
+
+<p>
+For all movies that have an average rating of 4 stars or higher, add<br />
+25 to the release year.  (Update the existing tuples; don't insert new<br />
+tuples.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">update</span> Movie
+<span style="color: #0000FF;">set</span> <span style="color: #0000FF;">year</span> = <span style="color: #0000FF;">year</span> + 25
+<span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = Movie.mID) &gt;= 4;
+</pre>
+</div>
+
+<p>
+Remove all ratings where the movie's year is before 1970 or after<br />
+2000, and the rating is fewer than 4 stars.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Rating
+<span style="color: #0000FF;">where</span> stars &lt; 4 <span style="color: #0000FF;">and</span>
+      ((<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">year</span> <span style="color: #0000FF;">from</span> Movie <span style="color: #0000FF;">where</span> mID = Rating.mID) &lt; 1970 <span style="color: #0000FF;">or</span>
+       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">year</span> <span style="color: #0000FF;">from</span> Movie <span style="color: #0000FF;">where</span> mID = Rating.mID) &gt; 2000)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7390dc2" class="outline-4">
+<h4 id="org7390dc2"><span class="section-number-4">1.2.6</span> <span class="done DONE">DONE</span> Social-Network <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_mod/">Modification</a></h4>
+<div class="outline-text-4" id="text-1-2-6">
+<p>
+It's time for the seniors to graduate.  Remove all 12th graders from<br />
+Highschooler.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Highschooler
+<span style="color: #0000FF;">where</span> grade = 12;
+</pre>
+</div>
+
+<p>
+If two students A and B are friends, and A likes B but not vice-versa,<br />
+remove the Likes tuple.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Likes
+<span style="color: #0000FF;">where</span> <span style="color: #0000FF;">exists</span> (<span style="color: #0000FF;">select</span> *
+              <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend
+                    <span style="color: #0000FF;">except</span>
+                    <span style="color: #0000FF;">select</span> ID2, ID1 <span style="color: #0000FF;">from</span> Likes
+                    <span style="color: #0000FF;">intersect</span>
+                    <span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Likes)
+              <span style="color: #0000FF;">where</span> ID1 = Likes.ID1 <span style="color: #0000FF;">and</span> ID2 = Likes.ID2);
+</pre>
+</div>
+
+<p>
+For all cases where A is friends with B, and B is friends with C, add<br />
+a new friendship for the pair A and C.  Do not add duplicate<br />
+friendships, friendships that already exist, or friendships with<br />
+oneself.  (This one is a bit challenging; congratulations if you get<br />
+it right.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Friend
+<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> R.ID1, S.ID2
+<span style="color: #0000FF;">from</span> Friend R <span style="color: #0000FF;">join</span> Friend S
+<span style="color: #0000FF;">on</span> R.ID2 = S.ID1 <span style="color: #0000FF;">and</span> S.ID2 &lt;&gt; R.ID1 <span style="color: #0000FF;">and</span>
+   <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">exists</span> (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend
+             <span style="color: #0000FF;">where</span> ID1 = R.ID1 <span style="color: #0000FF;">and</span>
+                   ID2 = S.ID2);
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd1cb3c9" class="outline-2">
+<h2 id="orgd1cb3c9"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/">XPath and XQuery</a> mini-course</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+:VISIBILITY: FOLDED<br />
+</p>
+</div>
+<div id="outline-container-orgd5cf930" class="outline-3">
+<h3 id="orgd5cf930"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-org0666764" class="outline-4">
+<h4 id="org0666764"><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> XPath Introduction</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+Not nearly as mature as Querying Relational<br />
+XPath - path expressions + conditions<br />
+XSLT - XPath + transformations, output<br />
+XQuery - XPath + full-featured Q.L.<br />
+</p>
+
+<p>
+Think of XML as a tree<br />
+</p>
+
+<p>
+Basic Constructs<br />
+/ root element and separator<br />
+{element name} or *<br />
+@{attribute name}<br />
+// any descendants including self<br />
+[condition] e.g. [@price &lt; 50]<br />
+[number] nth sub-element<br />
+</p>
+
+<p>
+Built-in functions (lots of them)<br />
+contains(s1, s2)<br />
+name()<br />
+</p>
+
+<p>
+Navigation "axes" (13 of them)<br />
+parent::<br />
+following-sibling::<br />
+descendants:: (does not match self, cf. //)<br />
+self::<br />
+</p>
+
+<p>
+XPath queries operate on and return <i>sequence</i> of elements<br />
+Sometimes result can be expressed as XML, but not always<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0f7a3db" class="outline-4">
+<h4 id="org0f7a3db"><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> XPath Demo</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+Get the titles of books in the bookstore where the price is lower<br />
+than 90 and Jeffrey Widom is an author.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xpath">doc("BookstoreQ.xml")/Bookstore/Book[@Price &lt; 90 and
+        Authors/Author[Last_name = "Widom" and
+        First_Name="Jeffrey"]]/Title
+</pre>
+</div>
+
+<p>
+Get the titles of books where "Ullman" is an author and "Widom" is not<br />
+an author.  <b>The below code doesn't work since there is no way using<br />
+XPath language alone to achieve the query.</b><br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xpath">doc("BookstoreQ.xml")/Bookstore/Book[
+        Authors/Author/Last_Name = "Ullman" and
+        Authors/Author/Last_Name != "Widom"]/Title
+</pre>
+</div>
+
+<p>
+Get all magazines where there's a book with the same title.  (An<br />
+example of <i>self-join</i> in XPath)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xpath">doc("BookstoreQ.xml")//Magazine[
+        Title = doc("BookstoreQ.xml")//Book/Title]
+</pre>
+</div>
+
+<p>
+The equal sign in the above code is implicitly existentially<br />
+quantified.  There is a lot of implicit existential quantification in<br />
+XPath and XQuery.<br />
+</p>
+
+<p>
+All Elements whose parent is not "Bookstore" or "Book".<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xpath">doc("BookstoreQ.xml")/Bookstore//*[
+        name(parent::*) != "Bookstore"
+        and name(parent::*) != "Book"]
+</pre>
+</div>
+
+<p>
+The above code use the navigation access <code>parent::</code>.<br />
+</p>
+
+<p>
+All books and magazines with non-unique titles.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xpath">doc("BookstoreQ.xml")/Bookstore/(Book|Magazine)[
+        Title = following-sibling::*/Title
+        or Title = preceding-sibling::*/Title]
+</pre>
+</div>
+
+<p>
+Books where every author's first name includes "J".  This query will<br />
+need universal quantification.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xpath">doc("BookstoreQ.xml")//Book[
+        count(Authors/Author[contains(First_Name, "J")]) =
+        count(Authors/Author/First_Name)]
+</pre>
+</div>
+
+<p>
+The built-in function <code>count</code> is used to simulate universal<br />
+quantification.  This technique can solve previously undoable query.<br />
+</p>
+
+<p>
+Titles of books where "Ullman" is an author and "Widom" is not<br />
+an author.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xpath">doc("BookstoreQ.xml")/Bookstore/Book[
+        Authors/Author/Last_Name = "Ullman"
+        and count(Authors/Author[Last_Name = "Widom"]) = 0]/Title
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb4f345" class="outline-4">
+<h4 id="orgdb4f345"><span class="section-number-4">2.1.3</span> <span class="done DONE">DONE</span> XQuery Introduction</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<ol class="org-ol">
+<li>XQuery is a expression language (compositional)<br /></li>
+<li>Each expression operates on and returns sequence of elements<br /></li>
+<li>XPath is one type of expression<br /></li>
+</ol>
+
+<p>
+XQuery: FLWOR expression<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">For $var in expr
+Let $var := expr
+Where condition
+Order By expr
+Return expr
+</pre>
+</div>
+
+<p>
+Mixing queries and XMl<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;Result&gt; { ...query goes here... } &lt;/Result&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8943414" class="outline-4">
+<h4 id="org8943414"><span class="section-number-4">2.1.4</span> <span class="done DONE">DONE</span> XQuery Demo</h4>
+<div class="outline-text-4" id="text-2-1-4">
+<div class="org-src-container">
+<pre class="src src-xquery">for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where $b/@Price &lt; 90
+  and $b/Authors/Author/Last_Name = "Ullman"
+return $b/Title
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where some $fn in $b/Authors/Author/First_Name
+        satisfies contains($b/Title, $fn)
+return &lt;Book&gt;
+         { $b/Title }
+         { $b/Authors/Author/First_Name }
+       &lt;/Book&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where some $fn in $b/Authors/Author/First_Name
+        satisfies contains($b/Title, $fn)
+return &lt;Book&gt;
+         { $b/Title }
+         { for $fn in $b/Authors/Authors/Author/First_Name
+           where contains($b/Title, $fn) return $fn }
+       &lt;/Book&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;Average&gt;
+  { let $plist := doc("BookstoreQ.xml")/Bookstore/Book/@Price
+    return avg($plist) }
+&lt;/Average&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">let $a := avg(doc("BookstoreQ.xml")/Bookstore/Book/@Price)
+for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where $b/@Price &lt; $a
+return &lt;Book&gt;
+          { $b/Title }
+          &lt;Price&gt; { $b/data(@Price) } &lt;/Price&gt;
+       &lt;/Book&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $b in doc("BookstoreQ.xml")/Bookstore/Book
+order by xs:int($b/@Price)
+return &lt;Book&gt;
+          { $b/Title }
+          &lt;Price&gt; { $b/data(@Price) } &lt;/Price&gt;
+       &lt;/Book&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $n in distinct-values(doc("BookstoreQ.xml")//Last_Name)
+return &lt;Last_Name&gt; { $n } &lt;/Last_Name&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where every $fn in $b/Authors/Author/First_Name
+        satisfies contains($fn, "J")
+return $b
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $b1 in doc("BookstoreQ.xml")/Bookstore/Book
+for $b2 in doc("BookstoreQ.xml")/Bookstore/Book
+where $b1/Authors/Author/Last_Name = $b2/Authors/Author/Last_Name
+      and $b1/Title &lt; $b2/Title
+return
+    &lt;BookPair&gt;
+        &lt;Title1&gt; { data($b1/Title) } &lt;/Title1&gt;
+        &lt;Title2&gt; { data($b2/Title) } &lt;/Title2&gt;
+    &lt;/BookPair&gt;
+</pre>
+</div>
+
+<p>
+Again, implicitly existential quantification.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;InvertedBookstore&gt;
+    { for $ln in distinct-values(doc("BookstoreQ.xml")//Author/Last_Name)
+      for $fn in distinct-values(doc("BookstoreQ.xml")//Author[
+                                      Last_name=$ln]/First_Name)
+      return
+          &lt;Author&gt;
+              &lt;First_Name&gt; { $fn } &lt;/First_name&gt;
+              &lt;Last_Name { $ln } &lt;/Last_Name&gt;
+              { for $b in doc("BookstoreQ.xml")/Bookstore/Book[
+                               Authors/Atuhor/Last_Name=$ln]
+                return &lt;Book&gt;
+                          { $b/@ISBN } { $b/@Price } { $/@Edition }
+                          { $b/Title } { $b/Remark }
+                       &lt;/Book&gt;
+          &lt;/Author&gt; }
+&lt;/InvertedBookstore&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4528a86" class="outline-3">
+<h3 id="org4528a86"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-orgb0fa110" class="outline-4">
+<h4 id="orgb0fa110"><span class="section-number-4">2.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+Return all Title elements (of both departments and courses).<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">doc("courses.xml")//Title
+</pre>
+</div>
+
+<p>
+Return last names of all department chairs.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">doc("courses.xml")//Department/Chair//Last_Name
+</pre>
+</div>
+
+<p>
+Return titles of courses with enrollment greater than 500.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">doc("courses.xml")//Course[@Enrollment &gt; 500]/Title
+</pre>
+</div>
+
+<p>
+Return titles of departments that have some course that takes "CS106B"<br />
+as a prerequisite.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">doc("courses.xml")//Department[Course/Prerequisites[Prereq = "CS106B"]]/Title
+</pre>
+</div>
+
+<p>
+Return last names of all professors or lecturers who use a middle<br />
+initial.  Don't worry about eliminating duplicates.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">doc("courses.xml")//(Lecturer|Professor)[Middle_Initial]/Last_Name
+</pre>
+</div>
+
+<p>
+Return the count of courses that have a cross-listed course (i.e.,<br />
+that have "Cross-listed" in their description).<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">count(doc("courses.xml")//Course[contains(Description, "Cross-listed")])
+</pre>
+</div>
+
+<p>
+Return the average enrollment of all courses in the CS department.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">avg(doc("courses.xml")//Department[@Code="CS"]/Course/@Enrollment)
+</pre>
+</div>
+
+<p>
+Return last names of instructors teaching at least one course that has<br />
+"system" in its description and enrollment greater than 100.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">doc("courses.xml")//Course[@Enrollment &gt; 100 and contains(Description, "system")]/Instructors//Last_Name
+</pre>
+</div>
+
+<p>
+Return the title of the course with the largest enrollment.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("courses.xml")//Course
+where every $e in doc("courses.xml")//Course/@Enrollment
+        satisfies xs:int($e) &lt;= xs:int($c/@Enrollment)
+return $c/Title
+</pre>
+</div>
+
+<p>
+Only one of the function call <code>xs:int</code> shown above is necessary since<br />
+the other operand will go through type promotion.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org95651a2" class="outline-4">
+<h4 id="org95651a2"><span class="section-number-4">2.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Return the course number of the course that is cross-listed as "LING180".<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("courses.xml")//Course[contains(Description, "Cross-listed as LING180")]/@Number)
+</pre>
+</div>
+
+<p>
+Return course numbers of courses that have the same title as some<br />
+other course.  (Hint: You might want to use the "preceding" and<br />
+"following" navigation axes for this query, which were not covered in<br />
+the video or our demo script; they match any preceding or following<br />
+node, not just siblings.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c1 in doc("courses.xml")//Course
+where some $c2 in doc("courses.xml")//Course
+      satisfies $c1 != $c2
+                and $c1/Title = $c2/Title
+return data($c1/@Number)
+</pre>
+</div>
+
+<p>
+Return course numbers of courses taught by an instructor with first<br />
+name "Daphne" or "Julie".<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("courses.xml")//Course[Instructors//First_Name = ("Daphne", "Julie")]/@Number)
+</pre>
+</div>
+
+<p>
+Return the number (count) of courses that have no lecturers as<br />
+instructors.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">count(doc("courses.xml")//Course[not(Instructors[Lecturer])])
+</pre>
+</div>
+
+<p>
+Return titles of courses taught by the chair of a department.  For<br />
+this question, you may assume that all professors have distinct last<br />
+names.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">doc("courses.xml")//Course[
+    Instructors/Professor/Last_Name =
+        doc("courses.xml")//Department/Chair/Professor/Last_Name
+]/Title
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("courses.xml")//Course
+where $c/Instructors/(Professor|Lecturer)/Last_Name
+          = doc("courses.xml")//Department/Chair/(Professor|Lecturer)/Last_Name
+return $c/Title
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("courses.xml")//Course
+where some $t1 in $c/Instructors/(Professor|Lecturer)
+      satisfies some $t2 in
+                doc("courses.xml")//Department/Chair/(Professor|Lecturer)
+                satisfies deep-equal($t1/*, $t2/*)
+return $c/Title
+</pre>
+</div>
+
+<p>
+Return titles of courses that have both a lecturer and a professor as<br />
+instructors.  Return each title only once.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">doc("courses.xml")//Course[Instructors/Lecturer and Instructors/Professor]/Title
+</pre>
+</div>
+
+<p>
+Return titles of courses taught by a professor with the last name "Ng"<br />
+but not by a professor with the last name "Thrun".<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("courses.xml")//Course[Instructors/Professor/Last_Name = "Ng"]
+where every $ln in $c/Instructors/Professor/Last_Name
+      satisfies $ln != "Thrun"
+return $c/Title
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">doc("courses.xml")//Course[Instructors[
+        Professor/Last_Name = "Ng" and
+        count(Professor[Last_Name = "Thrun"]) = 0]]/Title
+</pre>
+</div>
+
+<p>
+Return course numbers of courses that have a course taught by Eric<br />
+Roberts as a prerequisite.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("courses.xml")//Course
+where some $p in $c/Prerequisites/Prereq
+      satisfies $p = data(
+          doc("courses.xml")//Course[
+              Instructors/(Professor|Lecturer)[
+                  First_Name = "Eric" and
+                  Last_Name = "Roberts"]]/@Number)
+return data($c/@Number)
+</pre>
+</div>
+
+<p>
+Create a summary of CS classes: List all CS department courses in<br />
+order of enrollment.  For each course include only its Enrollment (as<br />
+an attribute) and its Title (as a subelement).<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;Summary&gt;
+    { for $c in doc("courses.xml")//Department[@Code="CS"]/Course
+      order by xs:int($c/@Enrollment)
+      return &lt;Course&gt;
+                 { $c/@Enrollment }
+                 { $c/Title }
+             &lt;/Course&gt; }
+&lt;/Summary&gt;
+</pre>
+</div>
+
+<p>
+Return a "Professors" element that contains as subelements a listing<br />
+of all professors in all departments, sorted by last name with each<br />
+professor appearing once.  The "Professor" subelements should have the<br />
+same structure as in the original data.  For this question, you may<br />
+assume that all professors have distinct last names.  Watch out &#x2013; the<br />
+presence/absence of middle initials may require some special handling.<br />
+(This problem is quite challenging; congratulations if you get it<br />
+right.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;Professors&gt;
+    { for $ln in distinct-values(doc("courses.xml")//Professor/Last_Name)
+      order by $ln
+      return (doc("courses.xml")//Professor[Last_Name=$ln])[1] }
+&lt;/Professors&gt;
+</pre>
+</div>
+
+<p>
+Expanding on the previous question, create an inverted course listing:<br />
+Return an "Inverted_Course_Catalog" element that contains as<br />
+subelements professors together with the courses they teach, sorted by<br />
+last name.  You may still assume that all professors have distinct last<br />
+names.  The "Professor" subelements should have the same structure as<br />
+in the original data, with an additional single "Courses" subelement<br />
+under Professor, containing a further "Course" subelement for each<br />
+course number taught by that professor.  Professors who do not teach<br />
+any courses should have no Courses subelement at all.  (This problem is<br />
+very challenging; extra congratulations if you get it right.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;Inverted_Course_Catalog&gt;
+    { for $ln in distinct-values(doc("courses.xml")//Professor/Last_Name)
+      let $prof := (doc("courses.xml")//Professor[Last_Name=$ln])[1]
+      order by $ln
+      return &lt;Professor&gt;
+                 { $prof/First_Name } { $prof/Middle_Initial }
+                 { $prof/Last_Name }
+                 { let $cs :=
+                       &lt;Courses&gt;
+                           { for $c in doc("courses.xml")//Course[
+                                 Instructors/Professor/Last_Name = $ln]
+                             return &lt;Course&gt;
+                                        { data($c/@Number) }
+                                    &lt;/Course&gt; }
+                       &lt;/Courses&gt;
+                   return $cs[Course] }
+             &lt;/Professor&gt;}
+&lt;/Inverted_Course_Catalog&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5aa01e9" class="outline-4">
+<h4 id="org5aa01e9"><span class="section-number-4">2.2.3</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+Return the area of Mongolia.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("countries.xml")//country[@name="Mongolia"]/@area)
+</pre>
+</div>
+
+<p>
+Return the names of all cities that have the same name as the country<br />
+in which they are located.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("countries.xml")//country[@name = city/name]
+return $c/city[name = $c/@name]/name
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("countries.xml")//country[@name = city/name]
+return &lt;name&gt; { data($c/@name) } &lt;/name&gt;
+</pre>
+</div>
+
+<p>
+Return the average population of Russian-speaking countries.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">avg(data(doc("countries.xml")//country[language = "Russian"]/@population))
+</pre>
+</div>
+
+<p>
+Return the names of all countries that have at least three cities with<br />
+population greater than 3 million.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("countries.xml")//country[count(city[xs:int(population) &gt; 3000000]) &gt;= 3]/@name)
+</pre>
+</div>
+
+<p>
+The function call <code>xs:int</code> in the above code is actually unnecessary<br />
+since type promotion would occur due to right-hand operand.<br />
+</p>
+
+<p>
+Create a list of French-speaking and German-speaking countries.  The<br />
+result should take the form:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">result</span>&gt;
+  &lt;<span style="color: #000088; background-color: #DEDEDE;">French</span>&gt;
+    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
+    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
+    ...
+  &lt;/<span style="color: #000088; background-color: #DEDEDE;">French</span>&gt;
+  &lt;<span style="color: #000088; background-color: #DEDEDE;">German</span>&gt;
+    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
+    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
+    ...
+  &lt;/<span style="color: #000088; background-color: #DEDEDE;">German</span>&gt;
+&lt;/<span style="color: #000088; background-color: #DEDEDE;">result</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;result&gt;
+  &lt;French&gt;
+    { for $cn in data(doc("countries.xml")//country[language = "French"]/@name)
+      return &lt;country&gt; { $cn } &lt;/country&gt; }
+  &lt;/French&gt;
+  &lt;German&gt;
+    { for $cn in data(doc("countries.xml")//country[language = "German"]/@name)
+      return &lt;country&gt; { $cn } &lt;/country&gt; }
+  &lt;/German&gt;
+&lt;/result&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;result&gt;
+  { let $langs := ("French", "German")
+    for $lang in $langs
+    return element {$lang}
+    { for $cn in data(doc("countries.xml")//country[language=$lang]/@name)
+          return &lt;country&gt; { $cn } &lt;/country&gt; } }
+&lt;/result&gt;
+</pre>
+</div>
+
+<p>
+Return the countries with the highest and lowest population densities.<br />
+Note that because the "/" operator has its own meaning in XPath and<br />
+XQuery, the division operator is infix "div".  To compute population<br />
+density use "(@population div @area)".  You can assume density values<br />
+are unique.  The result should take the form:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">result</span>&gt;
+  &lt;<span style="color: #000088; background-color: #DEDEDE;">highest</span> <span style="color: #BA36A5;">density</span>=<span style="color: #008000;">"</span><span style="color: #008000;">value</span><span style="color: #008000;">"</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">highest</span>&gt;
+  &lt;<span style="color: #000088; background-color: #DEDEDE;">lowest</span> <span style="color: #BA36A5;">density</span>=<span style="color: #008000;">"</span><span style="color: #008000;">value</span><span style="color: #008000;">"</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">lowest</span>&gt;
+&lt;/<span style="color: #000088; background-color: #DEDEDE;">result</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;result&gt;
+  { for $c1 in doc("countries.xml")//country
+    let $density := $c1/@population div $c1/@area
+    where every $c2 in doc("countries.xml")//country
+          satisfies $density &gt;= $c2/@population div $c2/@area
+    return &lt;highest density="{$density}"&gt; { data($c1/@name) } &lt;/highest&gt; }
+  { for $c1 in doc("countries.xml")//country
+    let $density := $c1/@population div $c1/@area
+    where every $c2 in doc("countries.xml")//country
+          satisfies $density &lt;= $c2/@population div $c2/@area
+    return &lt;lowest density="{$density}"&gt; { data($c1/@name) } &lt;/lowest&gt; }
+&lt;/result&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7569546" class="outline-4">
+<h4 id="org7569546"><span class="section-number-4">2.2.4</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+Return the names of all countries with population greater than 100<br />
+million.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("countries.xml")//country[@population &gt; 100000000]/@name)
+</pre>
+</div>
+
+<p>
+Return the names of all countries where over 50% of the population<br />
+speaks German.  (Hint: Depending on your solution, you may want to use<br />
+".", which refers to the "current element" within an XPath<br />
+expression.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("countries.xml")//country[language[@percentage &gt; 50.0] = "German"]/@name)
+</pre>
+</div>
+
+<p>
+Return the names of all countries where a city in that country<br />
+contains more than one-third of the country's population.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("countries.xml")//country
+where some $cp in $c/city/population
+      satisfies $cp div $c/@population &gt; 1 div 3
+return data($c/@name)
+</pre>
+</div>
+
+<p>
+Return the population density of Qatar.  Note: Since the "/" operator<br />
+has its own meaning in XPath and XQuery, the division operator is<br />
+"div".  To compute population density use "(@population div @area)".<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">let $c := doc("countries.xml")//country[@name="Qatar"]
+return $c/@population div $c/@area
+</pre>
+</div>
+
+<p>
+Return the names of all countries whose population is less than one<br />
+thousandth that of some city (in any country).<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">let $countries := doc("countries.xml")//country
+for $c in $countries
+where some $city in $countries/city
+      satisfies $city/population * 0.001 &gt; $c/@population
+return data($c/@name)
+</pre>
+</div>
+
+<p>
+Return all city names that appear more than once, i.e., there is more<br />
+than one city with that name in the data.  Return only one instance of<br />
+each such city name.  (Hint: You might want to use the "preceding"<br />
+and/or "following" navigation axes for this query, which were not<br />
+covered in the video or our demo script; they match any preceding or<br />
+following node, not just siblings.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">let $cities := doc("countries.xml")//city
+for $city in distinct-values($cities/name)
+where count($cities[name = $city]) &gt; 1
+return &lt;name&gt;{$city}&lt;/name&gt;
+</pre>
+</div>
+
+<p>
+Return the names of all countries containing a city such that some<br />
+other country has a city of the same name.  (Hint: You might want to<br />
+use the "preceding" and/or "following" navigation axes for this query,<br />
+which were not covered in the video or our demo script; they match any<br />
+preceding or following node, not just siblings.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">let $countries := doc("countries.xml")//country
+for $c in $countries
+where some $c2 in $countries
+      satisfies not($c2 is $c)
+                and $c/city/name = $c2/city/name
+return data($c/@name)
+</pre>
+</div>
+
+<p>
+Return the names of all countries whose name textually contains a<br />
+language spoken in that country.  For instance, Uzbek is spoken in<br />
+Uzbekistan, so return Uzbekistan.  (Hint: You may want to use ".",<br />
+which refers to the "current element" within an XPath expression.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("countries.xml")//country
+where some $lang in $c/language
+      satisfies contains($c/@name, $lang)
+return data($c/@name)
+</pre>
+</div>
+
+<p>
+Return the names of all countries in which people speak a language<br />
+whose name textually contains the name of the country.  For instance,<br />
+Japanese is spoken in Japan, so return Japan.  (Hint: You may want to<br />
+use ".", which refers to the "current element" within an XPath<br />
+expression.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("countries.xml")//country[language[contains(., ../@name)]]/@name)
+</pre>
+</div>
+
+<p>
+Return all languages spoken in a country whose name textually contains<br />
+the language name.  For instance, German is spoken in Germany, so<br />
+return German.  (Hint: Depending on your solution, may want to use<br />
+data(.), which returns the text value of the "current element" within<br />
+an XPath expression.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("countries.xml")//country/language[contains(../@name, .)])
+</pre>
+</div>
+
+<p>
+Return all languages whose name textually contains the name of a<br />
+country in which the language is spoken.  For instance, Icelandic is<br />
+spoken in Iceland, so return Icelandic.  (Hint: Depending on your<br />
+solution, may want to use data(.), which returns the text value of the<br />
+"current element" within an XPath expression.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("countries.xml")//country/language[contains(., ../@name)])
+</pre>
+</div>
+
+<p>
+Return the number of countries where Russian is spoken.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">count(doc("countries.xml")//country[language = "Russian"])
+</pre>
+</div>
+
+<p>
+Return the names of all countries for which the data does not include<br />
+any languages or cities, but the country has more than 10 million<br />
+people.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("countries.xml")//country[not(language or city) and @population &gt; 10000000]/@name)
+</pre>
+</div>
+
+<p>
+Return the name of the country with the highest population.  (Hint: You<br />
+may need to explicitly cast population numbers as integers with<br />
+xs:int() to get the correct answer.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">data(doc("countries.xml")//country[
+    @population = max(doc("countries.xml")//country/@population)
+]/@name)
+#+END_SRC)
+
+Return the name of the country that has the city with the highest
+population.  (Hint: You may need to explicitly cast population numbers
+as integers with xs:int() to get the correct answer.)
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country[
+    city/population = max(doc("countries.xml")//city/population)
+]/@name)
+</pre>
+</div>
+
+<p>
+Return the average number of languages spoken in countries where<br />
+Russian is spoken.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">avg(for $c in doc("countries.xml")//country[language = "Russian"]
+return count($c/language))
+</pre>
+</div>
+
+<p>
+Return all country-language pairs where the language is spoken in the<br />
+country and the name of the country textually contains the language<br />
+name.  Return each pair as a country element with language attribute,<br />
+e.g.,<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">language</span>=<span style="color: #008000;">"</span><span style="color: #008000;">French</span><span style="color: #008000;">"</span>&gt;French Guiana&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $c in doc("countries.xml")//country
+for $lang in $c/language
+where contains($c/@name, $lang)
+return &lt;country language="{$lang}"&gt; { data($c/@name) } &lt;/country&gt;
+</pre>
+</div>
+
+<p>
+Return all countries that have at least one city with population<br />
+greater than 7 million.  For each one, return the country name along<br />
+with the cities greater than 7 million, in the format:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">country-name</span><span style="color: #008000;">"</span>&gt;
+  &lt;<span style="color: #000088; background-color: #DEDEDE;">big</span>&gt;city-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">big</span>&gt;
+  &lt;<span style="color: #000088; background-color: #DEDEDE;">big</span>&gt;city-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">big</span>&gt;
+  ...
+&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $country in doc("countries.xml")//country
+let $c := &lt;country&gt;
+              { $country/@name }
+              { for $city in $country/city
+                where $city/population &gt; 7000000
+                return &lt;big&gt;{data($city/name)}&lt;/big&gt; }
+          &lt;/country&gt;
+return $c[big]
+</pre>
+</div>
+
+<p>
+Return all countries where at least one language is listed, but the<br />
+total percentage for all listed languages is less than 90%.  Return the<br />
+country element with its name attribute and its language subelements,<br />
+but no other attributes or subelements.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $country in doc("countries.xml")//country[language]
+where sum($country/language/@percentage) &lt; 90
+return &lt;country&gt;
+           { $country/@name }
+           { $country/language }
+       &lt;/country&gt;
+</pre>
+</div>
+
+<p>
+Return all countries where at least one language is listed, and every<br />
+listed language is spoken by less than 20% of the population.  Return<br />
+the country element with its name attribute and its language<br />
+subelements, but no other attributes or subelements.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xquery">for $country in doc("countries.xml")//country[language]
+where every $lang in $country/language
+      satisfies $lang/@percentage &lt; 20
+return &lt;country&gt;
+           { $country/@name }
+           { $country/language }
+       &lt;/country&gt;
+</pre>
+</div>
+
+<p>
+Find all situations where one country's most popular language is<br />
+another country's least popular, and both countries list more than one<br />
+language.  (Hint: You may need to explicitly cast percentages as<br />
+floating-point numbers with xs:float() to get the correct answer.)<br />
+Return the name of the language and the two countries, each in the<br />
+format:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">LangPair</span> <span style="color: #BA36A5;">language</span>=<span style="color: #008000;">"</span><span style="color: #008000;">lang-name</span><span style="color: #008000;">"</span>&gt;
+  &lt;<span style="color: #000088; background-color: #DEDEDE;">MostPopular</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">MostPopular</span>&gt;
+  &lt;<span style="color: #000088; background-color: #DEDEDE;">LeastPopular</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">LeastPopular</span>&gt;
+&lt;/<span style="color: #000088; background-color: #DEDEDE;">LangPair</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">let $countries := doc("countries.xml")//country[count(language) &gt; 1]
+for $c in $countries
+for $lang in $c/language
+where every $lang2 in $c/language
+      satisfies xs:float($lang/@percentage) &gt;= $lang2/@percentage
+return (&lt;LangPair language="{$lang}"&gt;
+            &lt;MostPopular&gt;{data($c/@name)}&lt;/MostPopular&gt;
+            { for $c2 in $countries[language = $lang]
+              let $lang3 := $c2/language[. = $lang]
+              where every $lang2 in $c2/language
+                    satisfies xs:float($lang3/@percentage) &lt;= $lang2/@percentage
+              return &lt;LeastPopular&gt; {data($c2/@name)}&lt;/LeastPopular&gt; }
+        &lt;/LangPair&gt;)[LeastPopular]
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">let $countries :=
+    for $c in doc("countries.xml")//country[count(language) &gt; 1]
+    let $most_lang :=
+        for $lang in $c/language
+        where every $lang2 in $c/language
+              satisfies xs:float($lang/@percentage) &gt;= $lang2/@percentage
+        return &lt;MostPopular&gt;{data($lang)}&lt;/MostPopular&gt;
+    let $least_lang :=
+        for $lang in $c/language
+        where every $lang2 in $c/language
+              satisfies xs:float($lang/@percentage) &lt;= $lang2/@percentage
+        return &lt;LeastPopular&gt;{data($lang)}&lt;/LeastPopular&gt;
+    return &lt;country&gt;
+               {$c/@name}
+               {$most_lang}
+               {$least_lang}
+           &lt;/country&gt;
+for $c1 in $countries
+for $c2 in $countries
+where $c1/MostPopular = $c2/LeastPopular
+return &lt;LangPair language="{$c1/MostPopular}"&gt;
+           &lt;MostPopular&gt;{data($c1/@name)}&lt;/MostPopular&gt;
+           &lt;LeastPopular&gt;{data($c2/@name)}&lt;/LeastPopular&gt;
+       &lt;/LangPair&gt;
+</pre>
+</div>
+
+<p>
+For each language spoken in one or more countries, create a "language"<br />
+element with a "name" attribute and one "country" subelement for each<br />
+country in which the language is spoken.  The "country" subelements<br />
+should have two attributes: the country "name", and "speakers"<br />
+containing the number of speakers of that language (based on language<br />
+percentage and the country's population).  Order the result by<br />
+language name, and enclose the entire list in a single "languages"<br />
+element.  For example, your result might look like:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">languages</span>&gt;
+  ...
+  &lt;<span style="color: #000088; background-color: #DEDEDE;">language</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">Arabic</span><span style="color: #008000;">"</span>&gt;
+    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">Iran</span><span style="color: #008000;">"</span> <span style="color: #BA36A5;">speakers</span>=<span style="color: #008000;">"</span><span style="color: #008000;">660942</span><span style="color: #008000;">"</span>/&gt;
+    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">Saudi Arabia</span><span style="color: #008000;">"</span> <span style="color: #BA36A5;">speakers</span>=<span style="color: #008000;">"</span><span style="color: #008000;">19409058</span><span style="color: #008000;">"</span>/&gt;
+    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">Yemen</span><span style="color: #008000;">"</span> <span style="color: #BA36A5;">speakers</span>=<span style="color: #008000;">"</span><span style="color: #008000;">13483178</span><span style="color: #008000;">"</span>/&gt;
+  &lt;/<span style="color: #000088; background-color: #DEDEDE;">language</span>&gt;
+  ...
+&lt;/<span style="color: #000088; background-color: #DEDEDE;">languages</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xquery">&lt;languages&gt;
+    { for $lang in distinct-values(doc("countries.xml")//language)
+      order by $lang
+      return &lt;language name="{$lang}"&gt;
+                 { for $c in doc("countries.xml")//country[language = $lang]
+                   return &lt;country name="{$c/@name}"
+                                   speakers="{xs:int(
+                                       $c/language[. = $lang]/@percentage
+                                           div 100 * $c/@population)}"&gt;
+                          &lt;/country&gt; }
+             &lt;/language&gt; }
+&lt;/languages&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4c81f14" class="outline-2">
+<h2 id="org4c81f14"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/">XSLT</a> mini-course</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+:VISIBILITY: FOLDED<br />
+</p>
+</div>
+<div id="outline-container-orged30b66" class="outline-3">
+<h3 id="orged30b66"><span class="section-number-3">3.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+XSL = Extensible Stylesheet Language<br />
+XSLT = XSL (with) transformations<br />
+</p>
+
+<p>
+XSLT is more widely used than XSL.<br />
+</p>
+
+<p>
+XSLT: Rule-Based Transformations<br />
+</p>
+
+<p>
+Match template and replace<br />
+Recursively match template<br />
+Extract values<br />
+Iteration (for-each)<br />
+Conditionals (if)<br />
+</p>
+
+<p>
+Strange default/whitespace behavior<br />
+Implicit template priority scheme<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5da78b8" class="outline-3">
+<h3 id="org5da78b8"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-orgebb9b31" class="outline-4">
+<h4 id="orgebb9b31"><span class="section-number-4">3.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XSLT</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+Return a list of department titles.<br />
+</p>
+
+<p>
+Your solution should fill in the following stylesheet:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+    &lt;xsl:template match=...&gt;
+        ... template body ...
+    &lt;/xsl:template&gt;
+    ... more templates as needed ...
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+    &lt;xsl:template match="Department/Title"&gt;
+        &lt;xsl:copy-of select="."/&gt;
+    &lt;/xsl:template&gt;
+    &lt;xsl:template match="text()"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+
+<p>
+Return a list of department elements with no attributes and two<br />
+subelements each: the department title and the entire Chair subelement<br />
+structure.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+    &lt;xsl:template match="Department"&gt;
+      &lt;Department&gt;
+        &lt;xsl:copy-of select="Title"/&gt;
+        &lt;xsl:copy-of select="Chair"/&gt;
+      &lt;/Department&gt;
+    &lt;/xsl:template&gt;
+    &lt;xsl:template match="text()"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f96ecf" class="outline-4">
+<h4 id="org4f96ecf"><span class="section-number-4">3.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+Return all courses with enrollment greater than 500.  Retain the<br />
+structure of Course elements from the original data.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="Course[@Enrollment &amp;gt; 500]"&gt;
+    &lt;xsl:copy-of select="."/&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match="text()"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+
+<p>
+Remove from the data all courses with enrollment greater than 60, or<br />
+with no enrollment listed.  Otherwise the structure of the data should<br />
+be the same.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:strip-space elements="*"/&gt;
+  &lt;xsl:template match="*|@*|text()"&gt;
+    &lt;xsl:copy&gt;
+      &lt;xsl:apply-templates select="*|@*|text()"/&gt;
+    &lt;/xsl:copy&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match="Course[not(@Enrollment) or @Enrollment &amp;gt; 60]"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+
+<p>
+Create a summarized version of the EE part of the course catalog.  For<br />
+each course in EE, return a Course element, with its Number and Title<br />
+as attributes, its Description as a subelement, and the last name of<br />
+each instructor as an Instructor subelement.  Discard all information<br />
+about department titles, chairs, enrollment, and prerequisites, as<br />
+well as all courses in departments other than EE.  (Note: To specify<br />
+quotes within an already-quoted XPath expression, use quot;.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="Department[@Code='EE']"&gt;
+    &lt;xsl:for-each select="Course"&gt;
+      &lt;Course Number="{@Number}"
+              Title="{Title}"&gt;
+        &lt;xsl:copy-of select="Description"/&gt;
+        &lt;xsl:for-each select="Instructors//Last_Name"&gt;
+          &lt;Instructor&gt;&lt;xsl:value-of select="."/&gt;&lt;/Instructor&gt;
+        &lt;/xsl:for-each&gt;
+      &lt;/Course&gt;
+    &lt;/xsl:for-each&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match="text()"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+
+<p>
+Create an HTML table with one-pixel border that lists all CS<br />
+department courses with enrollment greater than 200.  Each row should<br />
+contain three cells: the course number in italics, course title in<br />
+bold, and enrollment.  Sort the rows alphabetically by course title.<br />
+No header is needed.  (Note: For formatting, just use "table<br />
+border=1", and "&lt;b&gt;" and "&lt;i&gt;" tags for bold and italics respectively.<br />
+To specify quotes within an already-quoted XPath expression, use<br />
+quot;.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="Department[@Code='CS']"&gt;
+    &lt;table border="1"&gt;
+      &lt;xsl:for-each select="Course[@Enrollment &amp;gt; 200]"&gt;
+        &lt;xsl:sort select="Title"/&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;i&gt;&lt;xsl:value-of select="@Number"/&gt;&lt;/i&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;b&gt;&lt;xsl:value-of select="Title"/&gt;&lt;/b&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;xsl:value-of select="@Enrollment"/&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/xsl:for-each&gt;
+    &lt;/table&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match="text()"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5efa3d0" class="outline-4">
+<h4 id="org5efa3d0"><span class="section-number-4">3.2.3</span> <span class="done DONE">DONE</span> World-Countries XSLT</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+Return all countries with population between 9 and 10 million.  Retain<br />
+the structure of country elements from the original data.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="country[9000000 &amp;lt;= @population and @population &amp;lt;= 10000000]"&gt;
+    &lt;xsl:copy-of select="."/&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match="text()"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+
+<p>
+Create a table using HTML constructs that lists all countries that<br />
+have more than 3 languages.  Each row should contain the country name<br />
+in bold, population, area, and number of languages.  Sort the rows in<br />
+descending order of number of languages.  No header is needed for the<br />
+table, but use &lt;table border="1"&gt; to make it format nicely, should you<br />
+choose to check your result in a browser.  (Hint: You may find the<br />
+data-type and order attributes of &lt;xsl:sort&gt; to be useful.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xlst">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="countries"&gt;
+    &lt;html&gt;
+      &lt;table border="1"&gt;
+        &lt;xsl:for-each select="country[count(language) &amp;gt; 3]"&gt;
+          &lt;xsl:sort select="count(language)"
+                    order="descending"/&gt;
+          &lt;tr&gt;
+            &lt;td&gt;&lt;b&gt;&lt;xsl:value-of select="@name"/&gt;&lt;/b&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;xsl:value-of select="@population"/&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;xsl:value-of select="@area"/&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;xsl:value-of select="count(language)"/&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/xsl:for-each&gt;
+      &lt;/table&gt;
+    &lt;/html&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match="text()"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+
+<p>
+Create an alternate version of the countries database: for each<br />
+country, include its name and population as sublements, and the number<br />
+of languages and number of cities as attributes (called "languages"<br />
+and "cities" respectively).<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="*|@*|text()"&gt;
+    &lt;xsl:copy&gt;
+      &lt;xsl:apply-templates select="*|@*|text()"/&gt;
+    &lt;/xsl:copy&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match="country"&gt;
+    &lt;country languages="{count(language)}"
+             cities="{count(city)}"&gt;
+      &lt;name&gt;&lt;xsl:value-of select="@name"/&gt;&lt;/name&gt;
+      &lt;population&gt;&lt;xsl:value-of select="@population"/&gt;&lt;/population&gt;
+    &lt;/country&gt;
+  &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgda9ae7a" class="outline-4">
+<h4 id="orgda9ae7a"><span class="section-number-4">3.2.4</span> <span class="done DONE">DONE</span> World-Countries XSLT Extras</h4>
+<div class="outline-text-4" id="text-3-2-4">
+<p>
+Find all country names containing the string "stan"; return each one<br />
+within a "Stan" element.  (Note: To specify quotes within an<br />
+already-quoted XPath expression, use quot;.)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="country[contains(@name, 'stan')]"&gt;
+    &lt;Stan&gt;&lt;xsl:value-of select="@name"/&gt;&lt;/Stan&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match="text()"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+
+<p>
+Remove from the data all countries with area greater than 40,000 and<br />
+all countries with no cities listed.  Otherwise the structure of the<br />
+data should be the same.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-xslt">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:strip-space elements="*"/&gt;
+  &lt;xsl:template match="*|@*|text()"&gt;
+    &lt;xsl:copy&gt;
+      &lt;xsl:apply-templates select="*|@*|text()"/&gt;
+    &lt;/xsl:copy&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match="country[@area &amp;gt; 40000 or not(city)]"/&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf987fcd" class="outline-2">
+<h2 id="orgf987fcd"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/">Relational Design Theory</a> mini-course</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+:VISIBILITY: FOLDED<br />
+</p>
+</div>
+<div id="outline-container-orgee6c373" class="outline-3">
+<h3 id="orgee6c373"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-org4ebe094" class="outline-4">
+<h4 id="org4ebe094"><span class="section-number-4">4.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+Design "anomalies"<br />
+  Redundancy<br />
+  Update anomaly<br />
+  Deletion anomaly<br />
+</p>
+
+<p>
+Design by decomposition<br />
+  Start with "mega" relations containing everything<br />
+  Decompose into smaller, better relations with same info<br />
+  Can do decomposition automatically<br />
+</p>
+
+<p>
+Automatic decomposition<br />
+  "Mega" relations + <i>properties of the data</i><br />
+  System decomposes based on properties<br />
+  Final set of relations satisfies <i>normal form</i><br />
+</p>
+<ul class="org-ul">
+<li>No anomalies, no lost information<br /></li>
+</ul>
+
+<p>
+Properites and Normal Forms<br />
+  Functional dependencies =&gt; Boyce-Codd Normal Form<br />
+</p>
+<ul class="org-ul">
+<li>Multivalued dependencies =&gt; Fourth Normal Form<br /></li>
+</ul>
+
+<p>
+4NF subsets BCNF<br />
+</p>
+
+<p>
+Functional Dependencies and BCNF<br />
+  Apply(SSN, sName, cName)<br />
+    Redundancy; Update &amp; Deletion Anomalies<br />
+    Storing <span class="underline">SSN-sName</span> pair once for each college<br />
+</p>
+
+<p>
+<i>Functional Dependency</i> <span class="underline">SSN -&gt; sName</span><br />
+  Same <span class="underline">SSN</span> always has same <span class="underline">sName</span><br />
+  Should store each <span class="underline">SSN</span>'s <span class="underline">sName</span> only once<br />
+</p>
+
+<p>
+<i>Boyce-Codd Normal Form</i> If <span class="underline">A -&gt; B</span> then <span class="underline">A</span> is a key<br />
+</p>
+
+<p>
+<span class="underline">SSN</span> should be a key but not.<br />
+</p>
+
+<p>
+Decompose: <span class="underline">Student(SSN, sName) Apply(SSN, cName)</span><br />
+Pull out SSN and sName into its own relation<br />
+</p>
+
+<p>
+Multivalued Dependencies and 4NF<br />
+  Apply(SSN, cName, HS)<br />
+    Redundancy; Update &amp; Deletion Anomalies<br />
+    Multiplicative effect<br />
+      C colleges, H high school<br />
+      C * H tuples<br />
+      Should be C + H<br />
+    Not addressed by BCNF: No functional dependencies<br />
+</p>
+
+<p>
+<i>Multivalued Dependency</i> <span class="underline">SSN -&gt;&gt; cName  SSN -&gt;&gt; HS</span><br />
+  Given <span class="underline">SSN</span> has every combination of <span class="underline">cName</span> with <span class="underline">HS</span><br />
+  Should store each <span class="underline">cName</span> and each <span class="underline">HS</span> for an <span class="underline">SSN</span> once<br />
+</p>
+
+<p>
+<i>Fourth Normal Form</i> If <span class="underline">A -&gt;&gt; B</span> then <span class="underline">A</span> is a key<br />
+</p>
+
+<p>
+Decompose: <span class="underline">Apply(SSN, cName) HighSchool(SSN, HS)</span><br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org270a363" class="outline-4">
+<h4 id="org270a363"><span class="section-number-4">4.1.2</span> <span class="done DONE">DONE</span> Functional Dependencies</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<p>
+Functional dependencies =&gt; Boyce-Codd Normal Form<br />
+Multivalued dependencies =&gt; Fourth Normal Form<br />
+</p>
+
+<p>
+Functional dependencies are generally useful concepts<br />
+  Data storage - compression<br />
+  Reasoning about queries - optimization<br />
+</p>
+
+<p>
+Functional dependencies generalizes keys.<br />
+</p>
+
+<p>
+Student(SS, sName, address,<br />
+        HScode, HSname, HScity, GPA, priority)<br />
+</p>
+
+<p>
+Suppose priority is determined by GPA<br />
+</p>
+
+<p>
+Two tuples with same GPA have same priority<br />
+</p>
+
+<p>
+for t, u in student:<br />
+    t.GPA = u.GPA =&gt; t.priorty = u.priority<br />
+</p>
+
+<p>
+GPA -&gt; priority<br />
+</p>
+
+<p>
+for t, u in R:<br />
+    t[A1, &#x2026;, An] = u[A1, &#x2026;, An] =&gt; t[B1, &#x2026;, Bn] = u[B1, &#x2026;, Bn]<br />
+</p>
+
+<p>
+A1, &#x2026;, An -&gt; B1, &#x2026;, Bn<br />
+</p>
+
+<p>
+\bar{A} -&gt; \bar{B}<br />
+</p>
+
+<p>
+SSN -&gt; sName<br />
+SSN -&gt; address (assume students don't work)<br />
+HScode -&gt; HSname, HScity<br />
+HSname, HScity -&gt; HScode (assume no schools with same name in the same city)<br />
+</p>
+
+<p>
+SSN -&gt; GPA<br />
+GPA -&gt; priority<br />
+SSN -&gt; priority<br />
+</p>
+
+<p>
+transitivity<br />
+</p>
+
+<p>
+Apply(SSN, cName, state, date, major)<br />
+</p>
+
+<p>
+cName -&gt; date<br />
+SSN, cName -&gt; major<br />
+</p>
+
+<p>
+SSN -&gt; state<br />
+</p>
+
+<p>
+Functional Dependencies and Keys<br />
+</p>
+
+<p>
+R(\bar{A}, \bar{B})<br />
+</p>
+
+<p>
+Trivial Functional Dependency<br />
+</p>
+
+<p>
+\bar{A} -&gt; \bar{B},  \bar{B} subset \bar{A}<br />
+</p>
+
+<p>
+Nontrivial FD<br />
+\bar{A} -&gt; \bar{B},  \bar{B} not subset \bar{A}<br />
+</p>
+
+<p>
+Completely nontrivial FD (most interested)<br />
+A -&gt; B, A intersect B = empty set<br />
+</p>
+
+<p>
+Splitting rule<br />
+</p>
+
+<p>
+\bar{A} -&gt; B1, B2, &#x2026;, Bm<br />
+=&gt; \bar{A} -&gt; B1, \bar{A} -&gt; B2, &#x2026;<br />
+</p>
+
+<p>
+Combining rule<br />
+</p>
+
+<p>
+\bar{A} -&gt; B1<br />
+\bar{A} -&gt; B2<br />
+&#x2026;<br />
+=&gt; \bar{A} -&gt; B1, B2, &#x2026;, Bn<br />
+</p>
+
+<p>
+Trivial-dependency rules<br />
+</p>
+
+<p>
+A -&gt; B, then A -&gt; A union B<br />
+</p>
+
+<p>
+A -&gt; B, then A -&gt; A intersect B<br />
+</p>
+
+<p>
+Transitive rule<br />
+</p>
+
+<p>
+A -&gt; B, B -&gt; C, then A -&gt; C<br />
+</p>
+
+<p>
+Closure of Attributes<br />
+  Given relations, FDs, set of attributes \bar{A}<br />
+  Find all B such that \bar{A} -&gt; B<br />
+</p>
+
+<p>
+\bar{A}^+<br />
+</p>
+
+<p>
+apply transitive rule repeatedly to get the closure<br />
+</p>
+
+<p>
+if \bar{A}^+ = all attrs, then \bar{A} is a key.<br />
+</p>
+
+<p>
+Grow algorithms can be used to find all keys given a set of FDs.<br />
+</p>
+
+<p>
+If \bar{A} is a key, then all its supersets are keys.  Hence, we are<br />
+often only interested the smallest key.<br />
+</p>
+
+<p>
+Specifying FDs for a relation<br />
+  S1 and S2 sets of FDs<br />
+  S2 "follows from" S1 if every relation instance<br />
+  satisfying S1 also satisfies S2<br />
+</p>
+
+<p>
+S2: {SSN -&gt; priority}<br />
+S1: {SSN -&gt; GPA, GPA -&gt; priority}<br />
+</p>
+
+<p>
+Does A -&gt; B follow from S?<br />
+</p>
+
+<p>
+(1) A+ based S check if B in set.<br />
+(2) Armstrong's Axioms<br />
+</p>
+
+<p>
+Want: <span class="underline">Minimal</span> set of <span class="underline">completely nontrivial</span> FDs such that <span class="underline">all FDs</span> that<br />
+hold on the relation follow from the dependencies in this set<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9dda68d" class="outline-4">
+<h4 id="org9dda68d"><span class="section-number-4">4.1.3</span> <span class="done DONE">DONE</span> Boyce-Codd Normal Form</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<p>
+Decomposition of a relational schema<br />
+R(A1, &#x2026;, An)<br />
+R1(B1, &#x2026;, Bk)<br />
+R2(C1, &#x2026;, Cm)<br />
+</p>
+
+<p>
+B union C = A<br />
+</p>
+
+<p>
+R1 natural join R2 = R<br />
+</p>
+
+<p>
+Student(SSN, sName, address, HScode, HSname, HScity, GPA, priority)<br />
+</p>
+
+<p>
+This is a decomposition.<br />
+S1(SSN, sName, address, HScode, GPA, priority)<br />
+S2(HScode, HSname, HScity)<br />
+</p>
+
+<p>
+This is not a decomposition.<br />
+S1(SSN, sName, address, HScode, HSname, HScity)<br />
+S2(sName, HSname, GPA, priority)<br />
+</p>
+
+<p>
+Good decomposition exhibits lossless join property.<br />
+</p>
+
+<p>
+BCNF<br />
+Relation R with FDs is in BCNR if:<br />
+    For each \bar{A} -&gt; B, \bar{A} is a key.<br />
+    BCNF violation (redundancy, update/delete anomalies)<br />
+</p>
+
+<p>
+note: a key can contain another key and thus is a super key.<br />
+</p>
+
+<p>
+BCNF decomposition algorithm<br />
+</p>
+
+<p>
+Input: relation R + FDs for R<br />
+Output: decomposition of R into BCNF relations with "lossless join"<br />
+</p>
+
+<p>
+Compute keys for R<br />
+Repeat until all relations are in BCNF<br />
+    Pick any R' with A -&gt; B that violates BCNF<br />
+    Decompose R' into R1(A, B) and R2(A, rest)<br />
+    Compute FDs for R1 and R2<br />
+    Compute keys for R1 and R2<br />
+</p>
+
+<p>
+Randomness can result in different answer.<br />
+We can extend A -&gt; BA+<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcf58b9a" class="outline-4">
+<h4 id="orgcf58b9a"><span class="section-number-4">4.1.4</span> <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</h4>
+<div class="outline-text-4" id="text-4-1-4">
+<p>
+Fourth Normal Form subsets Boyce-Codd Normal Form<br />
+R  \bar{A} -&gt;&gt; \bar{B}  A1, &#x2026;, An, B1, &#x2026;, Bn<br />
+</p>
+
+<p>
+for all t, u in R: t[\bar{A}] = u[\bar{A}] then<br />
+    there exists v in R: v[\bar{A}] = t[\bar{A}] and<br />
+                         v[\bar{B}] = t[\bar{B}] and<br />
+                         v[rest] = u[rest]<br />
+</p>
+
+<p>
+Tuple-generating dependencies<br />
+</p>
+
+<p>
+\bar{A} -&gt;&gt; \bar{B} implies \bar{A} -&gt;&gt; rest<br />
+</p>
+
+<p>
+Trivial Multivalued Dependency<br />
+</p>
+
+<p>
+A -&gt;&gt; B   B subset A or  A union B = all attrs<br />
+</p>
+
+<p>
+A -&gt; B implies A -&gt;&gt; B<br />
+</p>
+
+<p>
+FD-is-an-MVD rule<br />
+</p>
+
+<p>
+4NF implies BCNF<br />
+</p>
+
+<p>
+Intersection rule<br />
+A -&gt;&gt; B, A -&gt;&gt; C then A -&gt;&gt; B intersect C<br />
+</p>
+
+<p>
+Transitive rule<br />
+A -&gt;&gt; B, B -&gt;&gt; C then A -&gt;&gt; C - B<br />
+</p>
+
+<p>
+Fourth Normal Form<br />
+</p>
+
+<p>
+Relation R with MVDs is in 4NF if:<br />
+    For each nontrivial A -&gt;&gt; B, A is a key<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3cf64ba" class="outline-4">
+<h4 id="org3cf64ba"><span class="section-number-4">4.1.5</span> <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</h4>
+</div>
+</div>
+
+<div id="outline-container-orgc127fb9" class="outline-3">
+<h3 id="orgc127fb9"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+R(A,B)<br />
+<del>R(A,C,D)</del><br />
+R(A,C)<br />
+R(C,D)<br />
+</p>
+
+<p>
+R(C,D)<br />
+<del>R(A,B,C)</del><br />
+R(A,B)<br />
+R(A,C)<br />
+</p>
+
+<p>
+R(B,C)<br />
+<del>R(A,B,D)</del><br />
+R(A,B)<br />
+R(A,D)<br />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0d89d18" class="outline-2">
+<h2 id="org0d89d18"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/">Unified Modeling Language</a> mini-course</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+:VISIBILITY: FOLDED<br />
+</p>
+</div>
+<div id="outline-container-org151d532" class="outline-3">
+<h3 id="org151d532"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> Lecture Videos</h3>
+<div class="outline-text-3" id="text-5-1">
+</div>
+<div id="outline-container-org4b6b5a4" class="outline-4">
+<h4 id="org4b6b5a4"><span class="section-number-4">5.1.1</span> <span class="done DONE">DONE</span> UML Data Modeling</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+Entity-Relationship Model (E/R)<br />
+Unified Modeling Language<br />
+  Data modeling subset<br />
+</p>
+
+<p>
+Both are graphical<br />
+Both can be translated to relations automatically<br />
+  Or semi-automatically<br />
+</p>
+
+<p>
+UML Data Modeling: 5 concepts<br />
+</p>
+
+<ol class="org-ol">
+<li>Classes<br /></li>
+<li>Associations<br /></li>
+<li>Association Classes<br /></li>
+<li>Subclasses<br /></li>
+<li>Composition &amp; Aggregation<br /></li>
+</ol>
+
+
+<p>
+Classes<br />
+</p>
+
+<p>
+Name, attributes, methods<br />
+  For data modeling: add "pk", drop methods<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|-----------|
+|  Student  |
+|-----------|
+| sID    pk |
+| sName     |
+| GPA       |
+|-----------|
+| &lt;methods&gt; |
+|-----------|
+
+|-----------|
+| College   |
+|-----------|
+| cName  pk |
+| state     |
+|-----------|
+| &lt;methods&gt; |
+|-----------|
+</pre>
+</div>
+
+<p>
+Relationships between objects of two classes<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|-----------|           |-----------|
+|  Student  |           | College   |
+|-----------|  Applied  |-----------|
+| sID    pk |-----------| cName  pk |
+| sName     |         ‣ | state     |
+| GPA       |           |-----------|
+|-----------|           | &lt;methods&gt; |
+| &lt;methods&gt; |           |-----------|
+|-----------|
+</pre>
+</div>
+
+<p>
+Multiplicity of Associations<br />
+</p>
+
+<p>
+Each object of class C1 is related to at least m and at most n objects<br />
+of class C2<br />
+</p>
+
+<pre class="example">
+|----|                |----|
+| C1 |                | C2 |
+|----|        m..n    |----|
+|    |----------------|    |
+|----|      A         |----|
+</pre>
+
+<p>
+m..* at least m<br />
+0..n at most n<br />
+0..* no restrictions<br />
+</p>
+
+<p>
+the default is 1..1<br />
+</p>
+
+<p>
+1..1 abbreviated as 1<br />
+0..* abbreviated as *<br />
+</p>
+
+<p>
+Students must apply somewhere and may not apply to more than 5<br />
+colleges.  No college takes more than 20,000 applications.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|-----------|                   |-----------|
+|  Student  |                   | College   |
+|-----------| 0..20000     1..5 |-----------|
+| sID    pk |-------------------| cName  pk |
+| sName     |      Applied      | state     |
+| GPA       |                   |-----------|
+|-----------|                   | &lt;methods&gt; |
+| &lt;methods&gt; |                   |-----------|
+|-----------|
+</pre>
+</div>
+
+<p>
+Types of relationships<br />
+</p>
+
+<p>
+One-to-One           0..1  0..1<br />
+Many-to-One          *     0..1<br />
+Many-to-Many         *     *<br />
+Complete             1..   1..<br />
+</p>
+
+<p>
+Default is complete one-to-one<br />
+</p>
+
+
+<p>
+Association Classses<br />
+</p>
+
+<p>
+Relationships between objects of two classes,<br />
+with attributes on relationshps<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|-----------|                          |-----------|
+|  Student  |                          | College   |
+|-----------|        Applied           |-----------|
+| sID    pk |--------------------------| cName  pk |
+| sName     |           |              | state     |
+| GPA       |      |----------|        |-----------|
+|-----------|      | AppInfo  |        | &lt;methods&gt; |
+| &lt;methods&gt; |      |----------|        |-----------|
+|-----------|      | date     |
+                   | decision |
+                   |----------|
+</pre>
+</div>
+
+<p>
+It's hard to have more than one relationship association between the<br />
+same student and college.<br />
+</p>
+
+<p>
+Eliminating Association Classes<br />
+Unnecessary if 0..1 or 1..1 multiplicity<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|----|                |----|
+| C1 |                | C2 |
+|----| *         1..1 |----|
+| A3 |----------------| A4 |
+|----|       |        |----|
+           |----|
+           | AC |
+           |----|
+           | A1 |
+           | A2 |
+           |----|
+</pre>
+</div>
+
+<p>
+Self-Associations<br />
+</p>
+
+<p>
+Associations between a class and itself<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|---------|
+| Student |*
+|---------|-----|
+|         |*    | Sibling
+|---------|-----|
+
+
+|---------|
+| College |home
+|---------|------|
+|         |1..1  | Branch
+|         |0..10 |
+|---------|------|
+           Satellite
+</pre>
+</div>
+
+<p>
+Subclasses<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">                    |---------|
+                    | Student |  Superclass
+                    |---------|  {complete, overlapping}
+                    | sID  pk |
+                    | sName   |
+                    | GPA     |
+                    |---------|
+                         ↑ inherit
+     |--------------------------------------|
+     |                   |                  |
+|----------|     |-----------|    |------------|                |------------|
+| ForeignS |     | DomesticS |    | APStudents |                | APCourse   |
+|----------|     |-----------|    |------------|     Took       |------------|
+| Country  |     | State     |    |            |----------------| Course# pk |
+|          |     | SSN       |    |            |1..*   |   1..10| title      |
+|----------|     |-----------|    |------------|       |        | units      |
+                                                       |        |------------|
+                                                   |--------|
+                                                   | APInfo |
+                                                   |--------|
+                                                   | year   |
+                                                   | grade  |
+                                                   |--------|
+</pre>
+</div>
+
+<p>
+Superclass = Generalization<br />
+Subclass = Specialization<br />
+</p>
+
+<p>
+Incomplete (Partial) vs. Complete<br />
+</p>
+
+<p>
+Complete: every obj in the superclass is in at least one subclass<br />
+</p>
+
+<p>
+Disjoint (Exclusive) vs. Overlapping<br />
+</p>
+
+<p>
+Disjoint: every obj in the superclass is in at most one subclass<br />
+</p>
+
+
+<p>
+Composition &amp; Aggregation<br />
+</p>
+
+<p>
+Objects of one class belong to objects of another class<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|----------|               |------------|
+| College  |               | Department |
+|----------| 1..1          |------------|
+| cName pk |◆--------------| dName      |
+| state    |◇-------|      | building   |
+|----------| 0..1   |      |------------|
+                    |
+               |-----------|
+               | Apartment |
+               |-----------|
+               | addr pk   |
+               | #units    |
+               |-----------|
+</pre>
+</div>
+
+<p>
+The symbol ◆ indicates composition, implicitly specifying 1..1.<br />
+Department belongs to College.<br />
+</p>
+
+<p>
+The symbol ◇ indicates aggregation, implicitly specifying 0..1.<br />
+Some apartments are owned by or associated with colleges, but not all<br />
+of them are.<br />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf69adf5" class="outline-4">
+<h4 id="orgf69adf5"><span class="section-number-4">5.1.2</span> <span class="done DONE">DONE</span> UML to Relations</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+High-Level Database Design Model<br />
+  User-friendly (graphical) specification language<br />
+  Translated into model of DBMS<br />
+</p>
+
+<p>
+Designs can be translated to relations automatically<br />
+  Provided every "regular" class has a key<br />
+</p>
+
+<p>
+Every class becomes a relation: pk -&gt; primary key<br />
+</p>
+
+<p>
+Associations<br />
+</p>
+
+<p>
+Relation with key from each side<br />
+</p>
+
+<p>
+Applied(sID, cName)<br />
+</p>
+
+<p>
+Keys for association relations depends on multiplicity<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|-------|                      |-------|
+|  C1   |                      |  C2   |
+|-------| 0..1               * |-------|
+| K1 pk |----------------------| K2 pk |
+| O1    |          A           | O2    |
+|-------|                      |-------|
+</pre>
+</div>
+
+<p>
+C1(<span class="underline">K1</span>, O1)<br />
+C2(<span class="underline">K2</span>, O2)<br />
+</p>
+
+<p>
+A(K1, <span class="underline">K2</span>)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|-----------|                          |-----------|
+|  Student  |                          | College   |
+|-----------| *      Applied     1..1  |-----------|
+| sID    pk |--------------------------| cName  pk |
+| sName     |           |              | state     |
+| GPA       |      |----------|        |-----------|
+|-----------|      | AppInfo  |        | &lt;methods&gt; |
+| &lt;methods&gt; |      |----------|        |-----------|
+|-----------|      | date     |
+                   | decision |
+                   |----------|
+</pre>
+</div>
+
+<p>
+Applied(<span class="underline">sID</span>, cName)<br />
+</p>
+
+<p>
+C1(<span class="underline">K1</span>, O1)<br />
+C2(<span class="underline">K2</span>, O2)  &lt;&#x2013; C2(<span class="underline">K2</span>, O2, K1)<br />
+<del>A(K1, <span class="underline">K2</span>)</del><br />
+</p>
+
+<p>
+Student(<span class="underline">sID</span>, sName, GPA)  &lt;&#x2013; Student(<span class="underline">sID</span>, sName, GPA, cName)<br />
+College(<span class="underline">cName</span>, state)<br />
+<del>Applied(<span class="underline">sID</span>, cName)</del><br />
+</p>
+
+<p>
+Association Classes<br />
+</p>
+
+<p>
+Student(<span class="underline">sID</span>, sName, GPA)<br />
+College(<span class="underline">cName</span>, state)<br />
+Applied(<span class="underline">sID</span>, cName, date, decision)<br />
+</p>
+
+<p>
+Require a key for every "regular" class.<br />
+</p>
+
+<p>
+Self-Associations<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|---------|
+| Student |*
+|---------|-----|
+|         |*    | Sibling
+|---------|-----|
+</pre>
+</div>
+
+
+<p>
+Student(<span class="underline">sID</span>, sName, GPA)<br />
+Sibling(<span class="underline">sID1, sID2</span>)<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|----------|
+| College  | home
+|----------|-------|
+| cName pk | 1..1  | Branch
+| state    |       |
+| enr      | 0..10 |
+|----------|-------|
+             Satellite
+</pre>
+</div>
+
+<p>
+College(<span class="underline">cName</span>, state, enr)<br />
+Branch(home, <span class="underline">satellite</span>)<br />
+</p>
+
+<p>
+College(<span class="underline">cName</span>, state, enr, home) ???<br />
+</p>
+
+
+<p>
+Subclasses<br />
+</p>
+<ol class="org-ol">
+<li>Subclass relations contain superclass key + specialized attrs.<br /></li>
+<li>Subclass relations contain all attributes.<br /></li>
+<li>One relation containing all superclass + subclass attrs.<br /></li>
+</ol>
+
+<p>
+subclasses are not regular classes.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">                     |-------|
+                     |   S   |  superclass
+                     |-------|
+                     | K  pk |
+                     | A     |
+                     |-------|
+                         ↑                   Subclasses
+   |---------------------+-------------------|
+   |                                         |
+|----|                                     |----|
+| S1 |                                     | S2 |
+|----|                                     |----|
+| B  |                                     | C  |
+|----|                                     |----|
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>S(<span class="underline">K</span>, A), S1(<span class="underline">K</span>, B), S2(<span class="underline">K</span>, C)<br /></li>
+<li>S(<span class="underline">K</span>, A), S1(<span class="underline">K</span>, A, B), S2(<span class="underline">K</span>, A, C)<br /></li>
+<li>S(<span class="underline">K</span>, A, B, C)<br /></li>
+</ol>
+
+<p>
+Heavily overlapping =&gt; design 3<br />
+</p>
+
+<p>
+Disjoint, Complete =&gt; design 2 with S(<span class="underline">K</span>, A) discarded<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">                    |---------|
+                    | Student |  Superclass
+                    |---------|  {complete, overlapping}
+                    | sID  pk |
+                    | sName   |
+                    | GPA     |
+                    |---------|
+                         ↑ inherit
+     |--------------------------------------|
+     |                   |                  |
+|----------|     |-----------|    |------------|                |------------|
+| ForeignS |     | DomesticS |    | APStudents |                | APCourse   |
+|----------|     |-----------|    |------------|     Took       |------------|
+| Country  |     | State     |    |            |----------------| Course# pk |
+|          |     | SSN    pk |    |            |1..*   |   1..10| title      |
+|----------|     |-----------|    |------------|       |        | units      |
+                                                       |        |------------|
+                                                   |--------|
+                                                   | APInfo |
+                                                   |--------|
+                                                   | year   |
+                                                   | grade  |
+                                                   |--------|
+</pre>
+</div>
+
+<p>
+Student(<span class="underline">sID</span>, sName)<br />
+ForeignS(<span class="underline">sID</span>, Country)<br />
+DomesticS(<span class="underline">sID</span>, State, <span class="underline">SSN</span>)<br />
+<del>APStudent(sID)</del> &lt;&#x2013; eliminated, implicated in Took<br />
+APCourse(<span class="underline">Course#</span>, title, units)<br />
+Took(<span class="underline">sID, Course#</span>, year, grade)<br />
+</p>
+
+<p>
+Composition &amp; Aggregation<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-uml">|----------|               |------------|
+| College  |               | Department |
+|----------| 1..1          |------------|
+| cName pk |◆--------------| dName      | Not "regular"
+| state    |◇-------|      | building   |
+|----------| 0..1   |      |------------|
+                    |
+               |-----------|
+               | Apartment |
+               |-----------|
+               | addr pk   |
+               | #units    |
+               |-----------|
+</pre>
+</div>
+
+<p>
+College(<span class="underline">cName</span>, state)<br />
+Department(dName, building, <span class="underline">cName</span>)<br />
+Apartment(<span class="underline">addr</span>, #units, cName)<br />
+                                         ↑<br />
+                                     nullable<br />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e0df64" class="outline-3">
+<h3 id="org5e0df64"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+</div>
+</div>
+
+
+<div id="outline-container-org448a547" class="outline-2">
+<h2 id="org448a547"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> <a href="https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/">Indexes and Transactions</a> mini-course</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-orgacc48ca" class="outline-3">
+<h3 id="orgacc48ca"><span class="section-number-3">6.1</span> <span class="todo TODO">TODO</span> Lecture Videos</h3>
+<div class="outline-text-3" id="text-6-1">
+</div><div id="outline-container-orgd056b5a" class="outline-4">
+<h4 id="orgd056b5a"><span class="section-number-4">6.1.1</span> <span class="todo TODO">TODO</span> Indexes</h4>
+</div>
+<div id="outline-container-org9649ebe" class="outline-4">
+<h4 id="org9649ebe"><span class="section-number-4">6.1.2</span> <span class="todo TODO">TODO</span> Introduction to Transactions</h4>
+</div>
+<div id="outline-container-orgd0f334e" class="outline-4">
+<h4 id="orgd0f334e"><span class="section-number-4">6.1.3</span> <span class="todo TODO">TODO</span> Transaction Properties</h4>
+</div>
+<div id="outline-container-orgd190bfb" class="outline-4">
+<h4 id="orgd190bfb"><span class="section-number-4">6.1.4</span> <span class="todo TODO">TODO</span> Isolation Levels</h4>
+</div>
+</div>
+<div id="outline-container-org2c1694c" class="outline-3">
+<h3 id="org2c1694c"><span class="section-number-3">6.2</span> <span class="todo TODO">TODO</span> Exercises</h3>
+<div class="outline-text-3" id="text-6-2">
+</div><div id="outline-container-org07d3975" class="outline-4">
+<h4 id="org07d3975"><span class="section-number-4">6.2.1</span> <span class="todo TODO">TODO</span> Index Quiz</h4>
+</div>
+<div id="outline-container-org07e2b4e" class="outline-4">
+<h4 id="org07e2b4e"><span class="section-number-4">6.2.2</span> <span class="todo TODO">TODO</span> Transaction Quiz</h4>
+<div class="outline-text-4" id="text-6-2-2">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Lei Zhao</p>
+<p class="date">Created: 2017-08-08 Tue 21:48</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
