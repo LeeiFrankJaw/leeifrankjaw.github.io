@@ -1,0 +1,27 @@
+pre.src /* -sql, pre.src-xml */ {
+    color: #303336;
+    background-color: #eff0f1;
+}
+pre .org-string { color: #7D2727 } /* string  - pink */
+pre .org-keyword { color: #101094 }
+pre .org-builtin {
+    color: #166A05; /* #3C8504; */ /* #006FE0; */
+}
+pre .org-nxml-element-local-name,
+pre .org-nxml-tag-delimiter,
+pre .org-nxml-tag-slash {
+    color: #7D2727;
+} /* html/xml tag    - lightyellow */
+pre .org-nxml-attribute-local-name {
+    color: #E64320;
+} /* attribute name  - khaki */
+pre .org-nxml-attribute-value,
+pre .org-nxml-attribute-value-delimiter {
+    color: #0F74BD;
+} /* attribute value - pink */
+pre .com { color: #858C93 } /* comment - skyblue */
+pre .typ { color: #2B91AF } /* type    - lightgreen */
+pre .lit { color: #7D2727 } /* literal - darkred */
+pre .pun { color: #303336 }    /* punctuation */
+pre .pln { color: #303336 }    /* plaintext */
+pre .dec { color: #101094 } /* decimal         - lightgreen */
