@@ -16,9 +16,11 @@
                  res = "intro_db.html";
                  break;
              default:
-                 res = "";
+                 break;
          }
-         l.replace(["", route, res].join("/"));
+         if (res) {
+             l.replace(["", route, res].join("/"));
+         }
         </script>
         <style type="text/css" media="screen">
          body {
