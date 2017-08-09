@@ -7,10 +7,18 @@
         <script type="text/javascript">
          const l = window.location;
          const route = l.pathname.split('/')[1];
-         const flag = ["notes", "articles"].includes(route);
-         if (flag) {
-             l.replace("/" + route);
+         const res;
+         switch (route) {
+             case "articles":
+                 res = "for-in_vs_for-of.html";
+                 break;
+             case "notes":
+                 res = "intro_db.html";
+                 break;
+             default:
+                 res = "";
          }
+         l.replace(["", route, res].join("/"));
         </script>
         <style type="text/css" media="screen">
          body {
