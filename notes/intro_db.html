@@ -29,7 +29,7 @@
   .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p { white-space: pre-wrap; }
+  p.pre { white-space: pre-wrap; font-family: monospace; }
   p.normal { white-space: normal; }
   p.verse { margin-left: 3%; }
   pre {
@@ -3831,12 +3831,12 @@ Composition &amp; Aggregation<br />
 </pre>
 </div>
 
-<p>
+<p class="pre">
 College(<span class="underline">cName</span>, state)<br />
 Department(dName, building, <span class="underline">cName</span>)<br />
 Apartment(<span class="underline">addr</span>, #units, cName)<br />
-<span style="margin-left: 13.5em">↑</span><br />
-<span style="margin-left: 12em">nullable</span><br />
+                          ↑<br />
+                       nullable<br />
 </p>
 </div>
 </div>
