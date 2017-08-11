@@ -25,3 +25,8 @@ pre .lit { color: #7D2727 } /* literal - darkred */
 pre .pun { color: #303336 }    /* punctuation */
 pre .pln { color: #303336 }    /* plaintext */
 pre .dec { color: #101094 } /* decimal         - lightgreen */
+
+p.pre {
+    white-space: pre-wrap;
+    font-family: monospace;
+}

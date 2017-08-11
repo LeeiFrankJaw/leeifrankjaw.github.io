@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-08 Tue 21:48 -->
+<!-- 2017-08-11 Fri 11:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Intro to DB</title>
@@ -29,8 +29,6 @@
   .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.pre { white-space: pre-wrap; font-family: monospace; }
-  p.normal { white-space: normal; }
   p.verse { margin-left: 3%; }
   pre {
     border: 1px solid #ccc;
@@ -181,6 +179,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -252,104 +251,105 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
+<h1 class="title">Intro to DB</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge40b4fd">1. <span class="done DONE">DONE</span> SQL mini-course</a>
+<li><a href="#orgf9acb8d">1. <span class="done DONE">DONE</span> SQL mini-course</a>
 <ul>
-<li><a href="#org13e0dd5">1.1. <span class="done DONE">DONE</span> Lecture videos</a>
+<li><a href="#org3ed3714">1.1. <span class="done DONE">DONE</span> Lecture videos</a>
 <ul>
-<li><a href="#org6998a87">1.1.1. <span class="done DONE">DONE</span> The Join family of Operators</a></li>
-<li><a href="#org1b1169f">1.1.2. <span class="done DONE">DONE</span> Aggregation</a></li>
-<li><a href="#org60d1387">1.1.3. <span class="done DONE">DONE</span> NULL values</a></li>
-<li><a href="#org6a47b6c">1.1.4. <span class="done DONE">DONE</span> Data Modification Statements</a></li>
+<li><a href="#org9b35415">1.1.1. <span class="done DONE">DONE</span> The Join family of Operators</a></li>
+<li><a href="#orge0b6803">1.1.2. <span class="done DONE">DONE</span> Aggregation</a></li>
+<li><a href="#org00a66e8">1.1.3. <span class="done DONE">DONE</span> NULL values</a></li>
+<li><a href="#org41749d1">1.1.4. <span class="done DONE">DONE</span> Data Modification Statements</a></li>
 </ul>
 </li>
-<li><a href="#orgcc55b22">1.2. <span class="done DONE">DONE</span> Exercises</a>
+<li><a href="#org6f3dc3e">1.2. <span class="done DONE">DONE</span> Exercises</a>
 <ul>
-<li><a href="#org7030f01">1.2.1. <span class="done DONE">DONE</span> Movie-Rating Query Core</a></li>
-<li><a href="#org770cf74">1.2.2. <span class="done DONE">DONE</span> Movie-Rating Query Extras</a></li>
-<li><a href="#orgacada39">1.2.3. <span class="done DONE">DONE</span> Social-Network Query Core</a></li>
-<li><a href="#orgb6c9b10">1.2.4. <span class="done DONE">DONE</span> Social-Network Query Extras</a></li>
-<li><a href="#org7d1a938">1.2.5. <span class="done DONE">DONE</span> Movie-Rating Modification</a></li>
-<li><a href="#org7390dc2">1.2.6. <span class="done DONE">DONE</span> Social-Network Modification</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgd1cb3c9">2. <span class="done DONE">DONE</span> XPath and XQuery mini-course</a>
-<ul>
-<li><a href="#orgd5cf930">2.1. <span class="done DONE">DONE</span> Lecture videos</a>
-<ul>
-<li><a href="#org0666764">2.1.1. <span class="done DONE">DONE</span> XPath Introduction</a></li>
-<li><a href="#org0f7a3db">2.1.2. <span class="done DONE">DONE</span> XPath Demo</a></li>
-<li><a href="#orgdb4f345">2.1.3. <span class="done DONE">DONE</span> XQuery Introduction</a></li>
-<li><a href="#org8943414">2.1.4. <span class="done DONE">DONE</span> XQuery Demo</a></li>
-</ul>
-</li>
-<li><a href="#org4528a86">2.2. <span class="done DONE">DONE</span> Exercises</a>
-<ul>
-<li><a href="#orgb0fa110">2.2.1. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</a></li>
-<li><a href="#org95651a2">2.2.2. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</a></li>
-<li><a href="#org5aa01e9">2.2.3. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</a></li>
-<li><a href="#org7569546">2.2.4. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</a></li>
+<li><a href="#org2ccf700">1.2.1. <span class="done DONE">DONE</span> Movie-Rating Query Core</a></li>
+<li><a href="#orgf89d060">1.2.2. <span class="done DONE">DONE</span> Movie-Rating Query Extras</a></li>
+<li><a href="#org61c3886">1.2.3. <span class="done DONE">DONE</span> Social-Network Query Core</a></li>
+<li><a href="#org92aba35">1.2.4. <span class="done DONE">DONE</span> Social-Network Query Extras</a></li>
+<li><a href="#org22b3c54">1.2.5. <span class="done DONE">DONE</span> Movie-Rating Modification</a></li>
+<li><a href="#orgcdf5a71">1.2.6. <span class="done DONE">DONE</span> Social-Network Modification</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org4c81f14">3. <span class="done DONE">DONE</span> XSLT mini-course</a>
+<li><a href="#orgb31c934">2. <span class="done DONE">DONE</span> XPath and XQuery mini-course</a>
 <ul>
-<li><a href="#orged30b66">3.1. <span class="done DONE">DONE</span> Lecture videos</a></li>
-<li><a href="#org5da78b8">3.2. <span class="done DONE">DONE</span> Exercises</a>
+<li><a href="#org69204b4">2.1. <span class="done DONE">DONE</span> Lecture videos</a>
 <ul>
-<li><a href="#orgebb9b31">3.2.1. <span class="done DONE">DONE</span> Course-Catalog XSLT</a></li>
-<li><a href="#org4f96ecf">3.2.2. <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</a></li>
-<li><a href="#org5efa3d0">3.2.3. <span class="done DONE">DONE</span> World-Countries XSLT</a></li>
-<li><a href="#orgda9ae7a">3.2.4. <span class="done DONE">DONE</span> World-Countries XSLT Extras</a></li>
+<li><a href="#org67fcd66">2.1.1. <span class="done DONE">DONE</span> XPath Introduction</a></li>
+<li><a href="#org5ff874d">2.1.2. <span class="done DONE">DONE</span> XPath Demo</a></li>
+<li><a href="#org62b9caa">2.1.3. <span class="done DONE">DONE</span> XQuery Introduction</a></li>
+<li><a href="#orgae22440">2.1.4. <span class="done DONE">DONE</span> XQuery Demo</a></li>
+</ul>
+</li>
+<li><a href="#org4182e81">2.2. <span class="done DONE">DONE</span> Exercises</a>
+<ul>
+<li><a href="#org69be5d5">2.2.1. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</a></li>
+<li><a href="#orgc29124b">2.2.2. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</a></li>
+<li><a href="#orga94552f">2.2.3. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</a></li>
+<li><a href="#org3e87744">2.2.4. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgf987fcd">4. <span class="done DONE">DONE</span> Relational Design Theory mini-course</a>
+<li><a href="#orgb503fd4">3. <span class="done DONE">DONE</span> XSLT mini-course</a>
 <ul>
-<li><a href="#orgee6c373">4.1. <span class="done DONE">DONE</span> Lecture videos</a>
+<li><a href="#org9fc0fb2">3.1. <span class="done DONE">DONE</span> Lecture videos</a></li>
+<li><a href="#org80181c1">3.2. <span class="done DONE">DONE</span> Exercises</a>
 <ul>
-<li><a href="#org4ebe094">4.1.1. <span class="done DONE">DONE</span> Overview</a></li>
-<li><a href="#org270a363">4.1.2. <span class="done DONE">DONE</span> Functional Dependencies</a></li>
-<li><a href="#org9dda68d">4.1.3. <span class="done DONE">DONE</span> Boyce-Codd Normal Form</a></li>
-<li><a href="#orgcf58b9a">4.1.4. <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</a></li>
-<li><a href="#org3cf64ba">4.1.5. <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</a></li>
+<li><a href="#orgfd16b0b">3.2.1. <span class="done DONE">DONE</span> Course-Catalog XSLT</a></li>
+<li><a href="#org164355f">3.2.2. <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</a></li>
+<li><a href="#orgbcaf854">3.2.3. <span class="done DONE">DONE</span> World-Countries XSLT</a></li>
+<li><a href="#org6a55e23">3.2.4. <span class="done DONE">DONE</span> World-Countries XSLT Extras</a></li>
 </ul>
 </li>
-<li><a href="#orgc127fb9">4.2. <span class="done DONE">DONE</span> Exercises</a></li>
 </ul>
 </li>
-<li><a href="#org0d89d18">5. <span class="done DONE">DONE</span> Unified Modeling Language mini-course</a>
+<li><a href="#org0a71a95">4. <span class="done DONE">DONE</span> Relational Design Theory mini-course</a>
 <ul>
-<li><a href="#org151d532">5.1. <span class="done DONE">DONE</span> Lecture Videos</a>
+<li><a href="#orgab163aa">4.1. <span class="done DONE">DONE</span> Lecture videos</a>
 <ul>
-<li><a href="#org4b6b5a4">5.1.1. <span class="done DONE">DONE</span> UML Data Modeling</a></li>
-<li><a href="#orgf69adf5">5.1.2. <span class="done DONE">DONE</span> UML to Relations</a></li>
+<li><a href="#org70138fe">4.1.1. <span class="done DONE">DONE</span> Overview</a></li>
+<li><a href="#org630a211">4.1.2. <span class="done DONE">DONE</span> Functional Dependencies</a></li>
+<li><a href="#org5121215">4.1.3. <span class="done DONE">DONE</span> Boyce-Codd Normal Form</a></li>
+<li><a href="#org01adf62">4.1.4. <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</a></li>
+<li><a href="#orgf2a34a8">4.1.5. <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</a></li>
 </ul>
 </li>
-<li><a href="#org5e0df64">5.2. <span class="done DONE">DONE</span> Exercises</a></li>
+<li><a href="#orga790cb4">4.2. <span class="done DONE">DONE</span> Exercises</a></li>
 </ul>
 </li>
-<li><a href="#org448a547">6. <span class="todo TODO">TODO</span> Indexes and Transactions mini-course</a>
+<li><a href="#org8ae7b01">5. <span class="done DONE">DONE</span> Unified Modeling Language mini-course</a>
 <ul>
-<li><a href="#orgacc48ca">6.1. <span class="todo TODO">TODO</span> Lecture Videos</a>
+<li><a href="#org3345586">5.1. <span class="done DONE">DONE</span> Lecture Videos</a>
 <ul>
-<li><a href="#orgd056b5a">6.1.1. <span class="todo TODO">TODO</span> Indexes</a></li>
-<li><a href="#org9649ebe">6.1.2. <span class="todo TODO">TODO</span> Introduction to Transactions</a></li>
-<li><a href="#orgd0f334e">6.1.3. <span class="todo TODO">TODO</span> Transaction Properties</a></li>
-<li><a href="#orgd190bfb">6.1.4. <span class="todo TODO">TODO</span> Isolation Levels</a></li>
+<li><a href="#org8d9746c">5.1.1. <span class="done DONE">DONE</span> UML Data Modeling</a></li>
+<li><a href="#orge0df60b">5.1.2. <span class="done DONE">DONE</span> UML to Relations</a></li>
 </ul>
 </li>
-<li><a href="#org2c1694c">6.2. <span class="todo TODO">TODO</span> Exercises</a>
+<li><a href="#org447a691">5.2. <span class="done DONE">DONE</span> Exercises</a></li>
+</ul>
+</li>
+<li><a href="#orgebf87db">6. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Indexes and Transactions mini-course</a>
 <ul>
-<li><a href="#org07d3975">6.2.1. <span class="todo TODO">TODO</span> Index Quiz</a></li>
-<li><a href="#org07e2b4e">6.2.2. <span class="todo TODO">TODO</span> Transaction Quiz</a></li>
+<li><a href="#org4e3b033">6.1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Lecture Videos</a>
+<ul>
+<li><a href="#orgab5b8f0">6.1.1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Indexes</a></li>
+<li><a href="#orgdb28571">6.1.2. <span class="todo TODO">TODO</span> Introduction to Transactions</a></li>
+<li><a href="#org6805c28">6.1.3. <span class="todo TODO">TODO</span> Transaction Properties</a></li>
+<li><a href="#orge2d8cf8">6.1.4. <span class="todo TODO">TODO</span> Isolation Levels</a></li>
+</ul>
+</li>
+<li><a href="#orgde7b02e">6.2. <span class="todo TODO">TODO</span> Exercises</a>
+<ul>
+<li><a href="#org2f86cdb">6.2.1. <span class="todo TODO">TODO</span> Index Quiz</a></li>
+<li><a href="#org479ff9b">6.2.2. <span class="todo TODO">TODO</span> Transaction Quiz</a></li>
 </ul>
 </li>
 </ul>
@@ -361,127 +361,127 @@ for the JavaScript code in this tag.
 <a href="https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about">Database</a> on Lagunita<br />
 </p>
 
-<div id="outline-container-orge40b4fd" class="outline-2">
-<h2 id="orge40b4fd"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/">SQL</a> mini-course</h2>
+<div id="outline-container-orgf9acb8d" class="outline-2">
+<h2 id="orgf9acb8d"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/">SQL</a> mini-course</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-org13e0dd5" class="outline-3">
-<h3 id="org13e0dd5"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-org3ed3714" class="outline-3">
+<h3 id="org3ed3714"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org6998a87" class="outline-4">
-<h4 id="org6998a87"><span class="section-number-4">1.1.1</span> <span class="done DONE">DONE</span> The Join family of Operators</h4>
+<div id="outline-container-org9b35415" class="outline-4">
+<h4 id="org9b35415"><span class="section-number-4">1.1.1</span> <span class="done DONE">DONE</span> The Join family of Operators</h4>
 <div class="outline-text-4" id="text-1-1-1">
 </div>
 </div>
-<div id="outline-container-org1b1169f" class="outline-4">
-<h4 id="org1b1169f"><span class="section-number-4">1.1.2</span> <span class="done DONE">DONE</span> Aggregation</h4>
+<div id="outline-container-orge0b6803" class="outline-4">
+<h4 id="orge0b6803"><span class="section-number-4">1.1.2</span> <span class="done DONE">DONE</span> Aggregation</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA)
-<span style="color: #0000FF;">from</span> Student;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-builtin">avg</span>(GPA)
+<span class="org-keyword">from</span> Student;
 
-<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">min</span>(GPA)
-<span style="color: #0000FF;">from</span> Student, Apply
-<span style="color: #0000FF;">where</span> Student.sID = Apply.sID <span style="color: #0000FF;">and</span> major = <span style="color: #008000;">'CS'</span>;
+<span class="org-keyword">select</span> <span class="org-builtin">min</span>(GPA)
+<span class="org-keyword">from</span> Student, Apply
+<span class="org-keyword">where</span> Student.sID = Apply.sID <span class="org-keyword">and</span> major = <span class="org-string">'CS'</span>;
 
-<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA)
-<span style="color: #0000FF;">from</span> Student
-<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'CS'</span>);
+<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(GPA)
+<span class="org-keyword">from</span> Student
+<span class="org-keyword">where</span> sID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID <span class="org-keyword">from</span> Apply <span class="org-keyword">where</span> major = <span class="org-string">'CS'</span>);
 
-<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
-<span style="color: #0000FF;">from</span> College
-<span style="color: #0000FF;">where</span> enrollment &gt; 15000;
+<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*)
+<span class="org-keyword">from</span> College
+<span class="org-keyword">where</span> enrollment &gt; 15000;
 
-<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> sID <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> cName = <span style="color: #008000;">'Cornell'</span>);
+<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*)
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> <span class="org-keyword">distinct</span> sID <span class="org-keyword">from</span> Apply <span class="org-keyword">where</span> cName = <span class="org-string">'Cornell'</span>);
 
-<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> sID)
-<span style="color: #0000FF;">from</span> Apply
-<span style="color: #0000FF;">where</span> cName = <span style="color: #008000;">'Cornell'</span>;
+<span class="org-keyword">select</span> <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> sID)
+<span class="org-keyword">from</span> Apply
+<span class="org-keyword">where</span> cName = <span class="org-string">'Cornell'</span>;
 
-<span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA) <span style="color: #0000FF;">from</span> Student
-        <span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'CS'</span>)) -
-       (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA) <span style="color: #0000FF;">from</span> Student
-        <span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'CS'</span>));
+<span class="org-keyword">select</span> (<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(GPA) <span class="org-keyword">from</span> Student
+        <span class="org-keyword">where</span> sID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID <span class="org-keyword">from</span> Apply <span class="org-keyword">where</span> major = <span class="org-string">'CS'</span>)) -
+       (<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(GPA) <span class="org-keyword">from</span> Student
+        <span class="org-keyword">where</span> sID <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID <span class="org-keyword">from</span> Apply <span class="org-keyword">where</span> major = <span class="org-string">'CS'</span>));
 
-<span style="color: #0000FF;">select</span> cName, <span style="color: #006FE0;">count</span>(*)
-<span style="color: #0000FF;">from</span> Apply
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> cName;
+<span class="org-keyword">select</span> cName, <span class="org-builtin">count</span>(*)
+<span class="org-keyword">from</span> Apply
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> cName;
 
-<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">state</span>, <span style="color: #006FE0;">sum</span>(enrollment)
-<span style="color: #0000FF;">from</span> College
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> <span style="color: #0000FF;">state</span>;
+<span class="org-keyword">select</span> <span class="org-keyword">state</span>, <span class="org-builtin">sum</span>(enrollment)
+<span class="org-keyword">from</span> College
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> <span class="org-keyword">state</span>;
 
-<span style="color: #0000FF;">select</span> cName, major, <span style="color: #006FE0;">max</span>(mx - mn)
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> cName, major, <span style="color: #006FE0;">min</span>(GPA) <span style="color: #0000FF;">as</span> mn, <span style="color: #006FE0;">max</span>(GPA) <span style="color: #0000FF;">as</span> mx
-      <span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
-      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> cName, major) <span style="color: #0000FF;">M</span>;
+<span class="org-keyword">select</span> cName, major, <span class="org-builtin">max</span>(mx - mn)
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> cName, major, <span class="org-builtin">min</span>(GPA) <span class="org-keyword">as</span> mn, <span class="org-builtin">max</span>(GPA) <span class="org-keyword">as</span> mx
+      <span class="org-keyword">from</span> Student <span class="org-keyword">join</span> Apply <span class="org-keyword">using</span>(sID)
+      <span class="org-keyword">group</span> <span class="org-keyword">by</span> cName, major) <span class="org-keyword">M</span>;
 
-<span style="color: #0000FF;">select</span> sID, sName, <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> cName)
-<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID;
+<span class="org-keyword">select</span> sID, sName, <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> cName)
+<span class="org-keyword">from</span> Student <span class="org-keyword">join</span> Apply <span class="org-keyword">using</span>(sID)
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> sID;
 
-<span style="color: #0000FF;">select</span> sID, sName, <span style="color: #006FE0;">count</span>(cName)
-<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span>
-     (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> sID, cName
-      <span style="color: #0000FF;">from</span> Apply) <span style="color: #0000FF;">using</span>(sID)
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID;
+<span class="org-keyword">select</span> sID, sName, <span class="org-builtin">count</span>(cName)
+<span class="org-keyword">from</span> Student <span class="org-keyword">join</span>
+     (<span class="org-keyword">select</span> <span class="org-keyword">distinct</span> sID, cName
+      <span class="org-keyword">from</span> Apply) <span class="org-keyword">using</span>(sID)
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> sID;
 
-<span style="color: #0000FF;">select</span> sID, sName, <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> cName)
-<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">left</span> <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID;
+<span class="org-keyword">select</span> sID, sName, <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> cName)
+<span class="org-keyword">from</span> Student <span class="org-keyword">left</span> <span class="org-keyword">join</span> Apply <span class="org-keyword">using</span>(sID)
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> sID;
 
-<span style="color: #0000FF;">select</span> sID, sName, <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> cName)
-<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID
-<span style="color: #0000FF;">union</span>
-<span style="color: #0000FF;">select</span> sID, sName, 0
-<span style="color: #0000FF;">from</span> Student
-<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply);
+<span class="org-keyword">select</span> sID, sName, <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> cName)
+<span class="org-keyword">from</span> Student <span class="org-keyword">join</span> Apply <span class="org-keyword">using</span>(sID)
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> sID
+<span class="org-keyword">union</span>
+<span class="org-keyword">select</span> sID, sName, 0
+<span class="org-keyword">from</span> Student
+<span class="org-keyword">where</span> sID <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID <span class="org-keyword">from</span> Apply);
 
-<span style="color: #0000FF;">select</span> cName
-<span style="color: #0000FF;">from</span> Apply
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> cName
-<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &lt; 5;
+<span class="org-keyword">select</span> cName
+<span class="org-keyword">from</span> Apply
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> cName
+<span class="org-keyword">having</span> <span class="org-builtin">count</span>(*) &lt; 5;
 
-<span style="color: #0000FF;">select</span> cName
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> cName <span style="color: #0000FF;">from</span> Apply) S
-<span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">where</span> cName = S.cName) &lt; 5;
+<span class="org-keyword">select</span> cName
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> <span class="org-keyword">distinct</span> cName <span class="org-keyword">from</span> Apply) S
+<span class="org-keyword">where</span> (<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*) <span class="org-keyword">from</span> Apply <span class="org-keyword">where</span> cName = S.cName) &lt; 5;
 
 
-<span style="color: #0000FF;">select</span> cName
-<span style="color: #0000FF;">from</span> Apply
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> cName
-<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> sID) &lt; 5;
+<span class="org-keyword">select</span> cName
+<span class="org-keyword">from</span> Apply
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> cName
+<span class="org-keyword">having</span> <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> sID) &lt; 5;
 
-<span style="color: #0000FF;">select</span> major
-<span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> major
-<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">max</span>(GPA) &lt; (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(GPA) <span style="color: #0000FF;">from</span> Student);
+<span class="org-keyword">select</span> major
+<span class="org-keyword">from</span> Student <span class="org-keyword">join</span> Apply <span class="org-keyword">using</span>(sID)
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> major
+<span class="org-keyword">having</span> <span class="org-builtin">max</span>(GPA) &lt; (<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(GPA) <span class="org-keyword">from</span> Student);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org60d1387" class="outline-4">
-<h4 id="org60d1387"><span class="section-number-4">1.1.3</span> <span class="done DONE">DONE</span> NULL values</h4>
+<div id="outline-container-org00a66e8" class="outline-4">
+<h4 id="org00a66e8"><span class="section-number-4">1.1.3</span> <span class="done DONE">DONE</span> NULL values</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> sID, sName, GPA
-<span style="color: #0000FF;">from</span> Student
-<span style="color: #0000FF;">where</span> GPA &lt;= 3.5 <span style="color: #0000FF;">or</span> GPA &gt; 3.5 <span style="color: #0000FF;">or</span> GPA <span style="color: #0000FF;">is</span> <span style="color: #0000FF;">null</span>;
+<pre class="src src-sql"><span class="org-keyword">select</span> sID, sName, GPA
+<span class="org-keyword">from</span> Student
+<span class="org-keyword">where</span> GPA &lt;= 3.5 <span class="org-keyword">or</span> GPA &gt; 3.5 <span class="org-keyword">or</span> GPA <span class="org-keyword">is</span> <span class="org-keyword">null</span>;
 
-<span style="color: #0000FF;">select</span> sID, sName, GPA, sizeHS
-<span style="color: #0000FF;">from</span> Student
-<span style="color: #0000FF;">where</span> GPA &lt;= 3.5 <span style="color: #0000FF;">or</span> sizeHS &lt; 1600 <span style="color: #0000FF;">or</span> sizeHS &gt;= 1600;
+<span class="org-keyword">select</span> sID, sName, GPA, sizeHS
+<span class="org-keyword">from</span> Student
+<span class="org-keyword">where</span> GPA &lt;= 3.5 <span class="org-keyword">or</span> sizeHS &lt; 1600 <span class="org-keyword">or</span> sizeHS &gt;= 1600;
 
-<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
-<span style="color: #0000FF;">from</span> Student
-<span style="color: #0000FF;">where</span> GPA <span style="color: #0000FF;">is</span> <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">null</span>;
+<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*)
+<span class="org-keyword">from</span> Student
+<span class="org-keyword">where</span> GPA <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-keyword">null</span>;
 </pre>
 </div>
 <p>
@@ -490,92 +490,92 @@ SQL uses three-valued logic (<a href="https://en.wikipedia.org/wiki/Three-valued
 </div>
 </div>
 
-<div id="outline-container-org6a47b6c" class="outline-4">
-<h4 id="org6a47b6c"><span class="section-number-4">1.1.4</span> <span class="done DONE">DONE</span> Data Modification Statements</h4>
+<div id="outline-container-org41749d1" class="outline-4">
+<h4 id="org41749d1"><span class="section-number-4">1.1.4</span> <span class="done DONE">DONE</span> Data Modification Statements</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> College
-<span style="color: #0000FF;">values</span> (<span style="color: #008000;">'Carnegie Mellon'</span>, <span style="color: #008000;">'PA'</span>, 11500);
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> College
+<span class="org-keyword">values</span> (<span class="org-string">'Carnegie Mellon'</span>, <span class="org-string">'PA'</span>, 11500);
 
-<span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Apply
-<span style="color: #0000FF;">select</span> sID, <span style="color: #008000;">'Carnegie Mellon'</span>, <span style="color: #008000;">'CS'</span>, <span style="color: #0000FF;">null</span>
-<span style="color: #0000FF;">from</span> Student
-<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Apply);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply
+<span class="org-keyword">select</span> sID, <span class="org-string">'Carnegie Mellon'</span>, <span class="org-string">'CS'</span>, <span class="org-keyword">null</span>
+<span class="org-keyword">from</span> Student
+<span class="org-keyword">where</span> sID <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID <span class="org-keyword">from</span> Apply);
 
-<span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Apply
-<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> sID, <span style="color: #008000;">'Carnegie Mellon'</span>, <span style="color: #008000;">'EE'</span>, <span style="color: #008000;">'Y'</span>
-<span style="color: #0000FF;">from</span> Apply
-<span style="color: #0000FF;">where</span> cName &lt;&gt; <span style="color: #008000;">'Carnegie Mellon'</span> <span style="color: #0000FF;">and</span>
-      major = <span style="color: #008000;">'EE'</span> <span style="color: #0000FF;">and</span>
-      decision = <span style="color: #008000;">'N'</span>;
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply
+<span class="org-keyword">select</span> <span class="org-keyword">distinct</span> sID, <span class="org-string">'Carnegie Mellon'</span>, <span class="org-string">'EE'</span>, <span class="org-string">'Y'</span>
+<span class="org-keyword">from</span> Apply
+<span class="org-keyword">where</span> cName &lt;&gt; <span class="org-string">'Carnegie Mellon'</span> <span class="org-keyword">and</span>
+      major = <span class="org-string">'EE'</span> <span class="org-keyword">and</span>
+      decision = <span class="org-string">'N'</span>;
 
-<span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Student
-<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID
-              <span style="color: #0000FF;">from</span> Apply
-              <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID
-              <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> major) &gt; 2);
+<span class="org-keyword">delete</span> <span class="org-keyword">from</span> Student
+<span class="org-keyword">where</span> sID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID
+              <span class="org-keyword">from</span> Apply
+              <span class="org-keyword">group</span> <span class="org-keyword">by</span> sID
+              <span class="org-keyword">having</span> <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> major) &gt; 2);
 
-<span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Apply
-<span style="color: #0000FF;">where</span> sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID
-              <span style="color: #0000FF;">from</span> Apply
-              <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> sID
-              <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> major) &gt; 2);
+<span class="org-keyword">delete</span> <span class="org-keyword">from</span> Apply
+<span class="org-keyword">where</span> sID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID
+              <span class="org-keyword">from</span> Apply
+              <span class="org-keyword">group</span> <span class="org-keyword">by</span> sID
+              <span class="org-keyword">having</span> <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> major) &gt; 2);
 
-<span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> College
-<span style="color: #0000FF;">where</span> cName <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> cName
-                    <span style="color: #0000FF;">from</span> Apply
-                    <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'CS'</span>);
+<span class="org-keyword">delete</span> <span class="org-keyword">from</span> College
+<span class="org-keyword">where</span> cName <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> cName
+                    <span class="org-keyword">from</span> Apply
+                    <span class="org-keyword">where</span> major = <span class="org-string">'CS'</span>);
 
-<span style="color: #0000FF;">update</span> Apply
-<span style="color: #0000FF;">set</span> major = <span style="color: #008000;">'economics'</span>,
-    decision = <span style="color: #008000;">'Y'</span>
-<span style="color: #0000FF;">where</span> cName = <span style="color: #008000;">'Carnegie Mellon'</span> <span style="color: #0000FF;">and</span>
-      sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID <span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">where</span> GPA &lt; 3.6);
+<span class="org-keyword">update</span> Apply
+<span class="org-keyword">set</span> major = <span class="org-string">'economics'</span>,
+    decision = <span class="org-string">'Y'</span>
+<span class="org-keyword">where</span> cName = <span class="org-string">'Carnegie Mellon'</span> <span class="org-keyword">and</span>
+      sID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID <span class="org-keyword">from</span> Student <span class="org-keyword">where</span> GPA &lt; 3.6);
 
-<span style="color: #0000FF;">update</span> Apply
-<span style="color: #0000FF;">set</span> major = <span style="color: #008000;">'CSE'</span>
-<span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'EE'</span> <span style="color: #0000FF;">and</span>
-      sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID
-              <span style="color: #0000FF;">from</span> Student
-              <span style="color: #0000FF;">where</span> GPA = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>(GPA)
-                           <span style="color: #0000FF;">from</span> Apply <span style="color: #0000FF;">join</span> Student <span style="color: #0000FF;">using</span>(sID)
-                           <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'EE'</span>));
+<span class="org-keyword">update</span> Apply
+<span class="org-keyword">set</span> major = <span class="org-string">'CSE'</span>
+<span class="org-keyword">where</span> major = <span class="org-string">'EE'</span> <span class="org-keyword">and</span>
+      sID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID
+              <span class="org-keyword">from</span> Student
+              <span class="org-keyword">where</span> GPA = (<span class="org-keyword">select</span> <span class="org-builtin">max</span>(GPA)
+                           <span class="org-keyword">from</span> Apply <span class="org-keyword">join</span> Student <span class="org-keyword">using</span>(sID)
+                           <span class="org-keyword">where</span> major = <span class="org-string">'EE'</span>));
 
-<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Apply
-<span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'EE'</span> <span style="color: #0000FF;">and</span>
-      sID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> sID
-              <span style="color: #0000FF;">from</span> Student
-              <span style="color: #0000FF;">where</span> GPA &gt;= <span style="color: #0000FF;">all</span> (<span style="color: #0000FF;">select</span> GPA
-                                <span style="color: #0000FF;">from</span> Student <span style="color: #0000FF;">join</span> Apply <span style="color: #0000FF;">using</span>(sID)
-                                <span style="color: #0000FF;">where</span> major = <span style="color: #008000;">'EE'</span>));
+<span class="org-keyword">select</span> * <span class="org-keyword">from</span> Apply
+<span class="org-keyword">where</span> major = <span class="org-string">'EE'</span> <span class="org-keyword">and</span>
+      sID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID
+              <span class="org-keyword">from</span> Student
+              <span class="org-keyword">where</span> GPA &gt;= <span class="org-keyword">all</span> (<span class="org-keyword">select</span> GPA
+                                <span class="org-keyword">from</span> Student <span class="org-keyword">join</span> Apply <span class="org-keyword">using</span>(sID)
+                                <span class="org-keyword">where</span> major = <span class="org-string">'EE'</span>));
 
-<span style="color: #0000FF;">update</span> Student
-<span style="color: #0000FF;">set</span> GPA = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>(GPA) <span style="color: #0000FF;">from</span> Student),
-    sizeHS = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">min</span>(sizeHS) <span style="color: #0000FF;">from</span> Student);
+<span class="org-keyword">update</span> Student
+<span class="org-keyword">set</span> GPA = (<span class="org-keyword">select</span> <span class="org-builtin">max</span>(GPA) <span class="org-keyword">from</span> Student),
+    sizeHS = (<span class="org-keyword">select</span> <span class="org-builtin">min</span>(sizeHS) <span class="org-keyword">from</span> Student);
 
-<span style="color: #0000FF;">update</span> Apply
-<span style="color: #0000FF;">set</span> decision = <span style="color: #008000;">'Y'</span>;
+<span class="org-keyword">update</span> Apply
+<span class="org-keyword">set</span> decision = <span class="org-string">'Y'</span>;
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgcc55b22" class="outline-3">
-<h3 id="orgcc55b22"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org6f3dc3e" class="outline-3">
+<h3 id="org6f3dc3e"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org7030f01" class="outline-4">
-<h4 id="org7030f01"><span class="section-number-4">1.2.1</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/">Core</a></h4>
+<div id="outline-container-org2ccf700" class="outline-4">
+<h4 id="org2ccf700"><span class="section-number-4">1.2.1</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/">Core</a></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Find the titles of all movies directed by Steven Spielberg.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> title
-<span style="color: #0000FF;">from</span> Movie
-<span style="color: #0000FF;">where</span> director = <span style="color: #008000;">'Steven Spielberg'</span>;
+<pre class="src src-sql"><span class="org-keyword">select</span> title
+<span class="org-keyword">from</span> Movie
+<span class="org-keyword">where</span> director = <span class="org-string">'Steven Spielberg'</span>;
 </pre>
 </div>
 
@@ -585,12 +585,12 @@ sort them in increasing order.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">year</span>
-<span style="color: #0000FF;">from</span> Movie
-<span style="color: #0000FF;">where</span> mID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> mID
-              <span style="color: #0000FF;">from</span> Rating
-              <span style="color: #0000FF;">where</span> stars &gt;= 4)
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> <span style="color: #0000FF;">year</span>;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">year</span>
+<span class="org-keyword">from</span> Movie
+<span class="org-keyword">where</span> mID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> mID
+              <span class="org-keyword">from</span> Rating
+              <span class="org-keyword">where</span> stars &gt;= 4)
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> <span class="org-keyword">year</span>;
 </pre>
 </div>
 
@@ -599,9 +599,9 @@ Find the titles of all movies that have no ratings.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> title
-<span style="color: #0000FF;">from</span> Movie
-<span style="color: #0000FF;">where</span> mID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> mID <span style="color: #0000FF;">from</span> Rating);
+<pre class="src src-sql"><span class="org-keyword">select</span> title
+<span class="org-keyword">from</span> Movie
+<span class="org-keyword">where</span> mID <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> mID <span class="org-keyword">from</span> Rating);
 </pre>
 </div>
 
@@ -612,10 +612,10 @@ date.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
-<span style="color: #0000FF;">from</span> Reviewer
-<span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID <span style="color: #0000FF;">from</span> Rating
-              <span style="color: #0000FF;">where</span> ratingDate <span style="color: #0000FF;">is</span> <span style="color: #0000FF;">null</span>);
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>
+<span class="org-keyword">from</span> Reviewer
+<span class="org-keyword">where</span> rID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> rID <span class="org-keyword">from</span> Rating
+              <span class="org-keyword">where</span> ratingDate <span class="org-keyword">is</span> <span class="org-keyword">null</span>);
 </pre>
 </div>
 
@@ -627,9 +627,9 @@ number of stars.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, title, stars, ratingDate
-<span style="color: #0000FF;">from</span> Reviewer <span style="color: #0000FF;">join</span> Rating <span style="color: #0000FF;">using</span>(rID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> <span style="color: #0000FF;">name</span>, title, stars;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>, title, stars, ratingDate
+<span class="org-keyword">from</span> Reviewer <span class="org-keyword">join</span> Rating <span class="org-keyword">using</span>(rID) <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(mID)
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> <span class="org-keyword">name</span>, title, stars;
 </pre>
 </div>
 
@@ -640,15 +640,15 @@ and the title of the movie.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, title
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> rID, mID
-      <span style="color: #0000FF;">from</span> Rating R1 <span style="color: #0000FF;">join</span> Rating R2 <span style="color: #0000FF;">using</span>(rID, mID)
-      <span style="color: #0000FF;">where</span> R1.stars &gt; R2.stars <span style="color: #0000FF;">and</span>
-            R1.ratingDate &gt; R2.ratingDate <span style="color: #0000FF;">and</span>
-            (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">from</span> Rating
-             <span style="color: #0000FF;">where</span> rID = R1.rID <span style="color: #0000FF;">and</span> mID = R1.mID) = 2)
-      <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID)
-      <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID);
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>, title
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> rID, mID
+      <span class="org-keyword">from</span> Rating R1 <span class="org-keyword">join</span> Rating R2 <span class="org-keyword">using</span>(rID, mID)
+      <span class="org-keyword">where</span> R1.stars &gt; R2.stars <span class="org-keyword">and</span>
+            R1.ratingDate &gt; R2.ratingDate <span class="org-keyword">and</span>
+            (<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*) <span class="org-keyword">from</span> Rating
+             <span class="org-keyword">where</span> rID = R1.rID <span class="org-keyword">and</span> mID = R1.mID) = 2)
+      <span class="org-keyword">join</span> Reviewer <span class="org-keyword">using</span>(rID)
+      <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(mID);
 </pre>
 </div>
 
@@ -659,10 +659,10 @@ stars.  Sort by movie title.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, <span style="color: #006FE0;">max</span>(stars)
-<span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> title;
+<pre class="src src-sql"><span class="org-keyword">select</span> title, <span class="org-builtin">max</span>(stars)
+<span class="org-keyword">from</span> Rating <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(mID)
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> mID
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> title;
 </pre>
 </div>
 
@@ -673,12 +673,12 @@ Sort by rating spread from highest to lowest, then by movie title.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, spread
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> mID, <span style="color: #006FE0;">max</span>(stars) - <span style="color: #006FE0;">min</span>(stars) <span style="color: #0000FF;">as</span> spread
-      <span style="color: #0000FF;">from</span> Rating
-      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID)
-      <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> spread <span style="color: #0000FF;">desc</span>, title;
+<pre class="src src-sql"><span class="org-keyword">select</span> title, spread
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> mID, <span class="org-builtin">max</span>(stars) - <span class="org-builtin">min</span>(stars) <span class="org-keyword">as</span> spread
+      <span class="org-keyword">from</span> Rating
+      <span class="org-keyword">group</span> <span class="org-keyword">by</span> mID)
+      <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(mID)
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> spread <span class="org-keyword">desc</span>, title;
 </pre>
 </div>
 
@@ -692,34 +692,34 @@ Don't just calculate the overall average rating before and after<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span>
-(<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(avgStars)
- <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> mID, <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">as</span> avgStars
-       <span style="color: #0000FF;">from</span> Rating
-       <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
- <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">year</span> &lt; 1980) -
-(<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(avgStars)
- <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> mID, <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">as</span> avgStars
-       <span style="color: #0000FF;">from</span> Rating
-       <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
- <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">year</span> &gt;= 1980);
+<pre class="src src-sql"><span class="org-keyword">select</span>
+(<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(avgStars)
+ <span class="org-keyword">from</span> (<span class="org-keyword">select</span> mID, <span class="org-builtin">avg</span>(stars) <span class="org-keyword">as</span> avgStars
+       <span class="org-keyword">from</span> Rating
+       <span class="org-keyword">group</span> <span class="org-keyword">by</span> mID) <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(mID)
+ <span class="org-keyword">where</span> <span class="org-keyword">year</span> &lt; 1980) -
+(<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(avgStars)
+ <span class="org-keyword">from</span> (<span class="org-keyword">select</span> mID, <span class="org-builtin">avg</span>(stars) <span class="org-keyword">as</span> avgStars
+       <span class="org-keyword">from</span> Rating
+       <span class="org-keyword">group</span> <span class="org-keyword">by</span> mID) <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(mID)
+ <span class="org-keyword">where</span> <span class="org-keyword">year</span> &gt;= 1980);
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org770cf74" class="outline-4">
-<h4 id="org770cf74"><span class="section-number-4">1.2.2</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_extra/">Extras</a></h4>
+<div id="outline-container-orgf89d060" class="outline-4">
+<h4 id="orgf89d060"><span class="section-number-4">1.2.2</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_extra/">Extras</a></h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Find the names of all reviewers who rated Gone with the Wind.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
-<span style="color: #0000FF;">from</span> Reviewer
-<span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID <span style="color: #0000FF;">from</span> Rating
-              <span style="color: #0000FF;">where</span> mID = (<span style="color: #0000FF;">select</span> mID <span style="color: #0000FF;">from</span> Movie
-                           <span style="color: #0000FF;">where</span> title = <span style="color: #008000;">'Gone with the Wind'</span>));
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>
+<span class="org-keyword">from</span> Reviewer
+<span class="org-keyword">where</span> rID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> rID <span class="org-keyword">from</span> Rating
+              <span class="org-keyword">where</span> mID = (<span class="org-keyword">select</span> mID <span class="org-keyword">from</span> Movie
+                           <span class="org-keyword">where</span> title = <span class="org-string">'Gone with the Wind'</span>));
 </pre>
 </div>
 
@@ -729,9 +729,9 @@ movie, return the reviewer name, movie title, and number of stars.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> <span style="color: #0000FF;">name</span>, title, stars
-<span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
-<span style="color: #0000FF;">where</span> director = <span style="color: #0000FF;">name</span>;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">distinct</span> <span class="org-keyword">name</span>, title, stars
+<span class="org-keyword">from</span> Rating <span class="org-keyword">join</span> Reviewer <span class="org-keyword">using</span>(rID) <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(mID)
+<span class="org-keyword">where</span> director = <span class="org-keyword">name</span>;
 </pre>
 </div>
 
@@ -743,13 +743,13 @@ names or removing "The".)<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
-      <span style="color: #0000FF;">from</span> Reviewer
-      <span style="color: #0000FF;">union</span>
-      <span style="color: #0000FF;">select</span> title <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">name</span>
-      <span style="color: #0000FF;">from</span> Movie)
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> <span style="color: #0000FF;">name</span>;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> <span class="org-keyword">name</span>
+      <span class="org-keyword">from</span> Reviewer
+      <span class="org-keyword">union</span>
+      <span class="org-keyword">select</span> title <span class="org-keyword">as</span> <span class="org-keyword">name</span>
+      <span class="org-keyword">from</span> Movie)
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> <span class="org-keyword">name</span>;
 </pre>
 </div>
 
@@ -758,11 +758,11 @@ Find the titles of all movies not reviewed by Chris Jackson.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> title
-<span style="color: #0000FF;">from</span> Movie
-<span style="color: #0000FF;">where</span> mID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> mID <span style="color: #0000FF;">from</span> Rating
-                  <span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID <span style="color: #0000FF;">from</span> Reviewer
-                                <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Chris Jackson'</span>));
+<pre class="src src-sql"><span class="org-keyword">select</span> title
+<span class="org-keyword">from</span> Movie
+<span class="org-keyword">where</span> mID <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> mID <span class="org-keyword">from</span> Rating
+                  <span class="org-keyword">where</span> rID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> rID <span class="org-keyword">from</span> Reviewer
+                                <span class="org-keyword">where</span> <span class="org-keyword">name</span> = <span class="org-string">'Chris Jackson'</span>));
 </pre>
 </div>
 
@@ -775,12 +775,12 @@ alphabetical order.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> R1.<span style="color: #0000FF;">name</span>, R2.<span style="color: #0000FF;">name</span>
-<span style="color: #0000FF;">from</span> (Rating <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID)) R1 <span style="color: #0000FF;">join</span>
-     (Rating <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID)) R2
-<span style="color: #0000FF;">on</span> R1.mID = R2.mID <span style="color: #0000FF;">and</span>
-   R1.rID &lt;&gt; R2.rID <span style="color: #0000FF;">and</span>
-   R1.<span style="color: #0000FF;">name</span> &lt;= R2.<span style="color: #0000FF;">name</span>;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">distinct</span> R1.<span class="org-keyword">name</span>, R2.<span class="org-keyword">name</span>
+<span class="org-keyword">from</span> (Rating <span class="org-keyword">join</span> Reviewer <span class="org-keyword">using</span>(rID)) R1 <span class="org-keyword">join</span>
+     (Rating <span class="org-keyword">join</span> Reviewer <span class="org-keyword">using</span>(rID)) R2
+<span class="org-keyword">on</span> R1.mID = R2.mID <span class="org-keyword">and</span>
+   R1.rID &lt;&gt; R2.rID <span class="org-keyword">and</span>
+   R1.<span class="org-keyword">name</span> &lt;= R2.<span class="org-keyword">name</span>;
 </pre>
 </div>
 
@@ -790,11 +790,11 @@ database, return the reviewer name, movie title, and number of stars.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, title, stars
-<span style="color: #0000FF;">from</span> Rating R1 <span style="color: #0000FF;">join</span> Reviewer R2 <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">M</span>
-<span style="color: #0000FF;">on</span> R1.rID = R2.rID <span style="color: #0000FF;">and</span>
-   R1.mID = <span style="color: #0000FF;">m</span>.mID <span style="color: #0000FF;">and</span>
-   stars = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">min</span>(stars) <span style="color: #0000FF;">from</span> Rating);
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>, title, stars
+<span class="org-keyword">from</span> Rating R1 <span class="org-keyword">join</span> Reviewer R2 <span class="org-keyword">join</span> Movie <span class="org-keyword">M</span>
+<span class="org-keyword">on</span> R1.rID = R2.rID <span class="org-keyword">and</span>
+   R1.mID = <span class="org-keyword">m</span>.mID <span class="org-keyword">and</span>
+   stars = (<span class="org-keyword">select</span> <span class="org-builtin">min</span>(stars) <span class="org-keyword">from</span> Rating);
 </pre>
 </div>
 
@@ -805,11 +805,11 @@ list them in alphabetical order.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, avgStars
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> mID, <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">as</span> avgStars
-      <span style="color: #0000FF;">from</span> Rating
-      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> mID) <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> avgStars <span style="color: #0000FF;">desc</span>, title;
+<pre class="src src-sql"><span class="org-keyword">select</span> title, avgStars
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> mID, <span class="org-builtin">avg</span>(stars) <span class="org-keyword">as</span> avgStars
+      <span class="org-keyword">from</span> Rating
+      <span class="org-keyword">group</span> <span class="org-keyword">by</span> mID) <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(mID)
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> avgStars <span class="org-keyword">desc</span>, title;
 </pre>
 </div>
 
@@ -820,40 +820,40 @@ or without COUNT.)<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
-<span style="color: #0000FF;">from</span> Reviewer
-<span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID
-              <span style="color: #0000FF;">from</span> Rating
-              <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> rID
-              <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt;= 3);
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>
+<span class="org-keyword">from</span> Reviewer
+<span class="org-keyword">where</span> rID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> rID
+              <span class="org-keyword">from</span> Rating
+              <span class="org-keyword">group</span> <span class="org-keyword">by</span> rID
+              <span class="org-keyword">having</span> <span class="org-builtin">count</span>(*) &gt;= 3);
 
-<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> rID
-      <span style="color: #0000FF;">from</span> Rating
-      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> rID
-      <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt;= 3)
-     <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID);
+<span class="org-keyword">select</span> <span class="org-keyword">name</span>
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> rID
+      <span class="org-keyword">from</span> Rating
+      <span class="org-keyword">group</span> <span class="org-keyword">by</span> rID
+      <span class="org-keyword">having</span> <span class="org-builtin">count</span>(*) &gt;= 3)
+     <span class="org-keyword">join</span> Reviewer <span class="org-keyword">using</span>(rID);
 
-<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
-<span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">join</span> Reviewer <span style="color: #0000FF;">using</span>(rID)
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> rID
-<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt;= 3;
+<span class="org-keyword">select</span> <span class="org-keyword">name</span>
+<span class="org-keyword">from</span> Rating <span class="org-keyword">join</span> Reviewer <span class="org-keyword">using</span>(rID)
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> rID
+<span class="org-keyword">having</span> <span class="org-builtin">count</span>(*) &gt;= 3;
 
-<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
-<span style="color: #0000FF;">from</span> Reviewer
-<span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID
-              <span style="color: #0000FF;">from</span> Rating R
-              <span style="color: #0000FF;">where</span> rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID
-                            <span style="color: #0000FF;">from</span> Rating S
-                            <span style="color: #0000FF;">where</span> rID = R.rID <span style="color: #0000FF;">and</span>
-                                  (mID &lt;&gt; R.mID <span style="color: #0000FF;">or</span>
-                                   stars &lt;&gt; R.stars) <span style="color: #0000FF;">and</span>
-                                  rID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> rID
-                                          <span style="color: #0000FF;">from</span> Rating
-                                          <span style="color: #0000FF;">where</span> rID = R.rID <span style="color: #0000FF;">and</span>
-                                                (mID &lt;&gt; R.mID <span style="color: #0000FF;">or</span>
-                                                 stars &lt;&gt; R.stars) <span style="color: #0000FF;">and</span>
-                                                (mID &lt;&gt; S.mID <span style="color: #0000FF;">or</span>
+<span class="org-keyword">select</span> <span class="org-keyword">name</span>
+<span class="org-keyword">from</span> Reviewer
+<span class="org-keyword">where</span> rID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> rID
+              <span class="org-keyword">from</span> Rating R
+              <span class="org-keyword">where</span> rID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> rID
+                            <span class="org-keyword">from</span> Rating S
+                            <span class="org-keyword">where</span> rID = R.rID <span class="org-keyword">and</span>
+                                  (mID &lt;&gt; R.mID <span class="org-keyword">or</span>
+                                   stars &lt;&gt; R.stars) <span class="org-keyword">and</span>
+                                  rID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> rID
+                                          <span class="org-keyword">from</span> Rating
+                                          <span class="org-keyword">where</span> rID = R.rID <span class="org-keyword">and</span>
+                                                (mID &lt;&gt; R.mID <span class="org-keyword">or</span>
+                                                 stars &lt;&gt; R.stars) <span class="org-keyword">and</span>
+                                                (mID &lt;&gt; S.mID <span class="org-keyword">or</span>
                                                  stars &lt;&gt; S.stars))));
 </pre>
 </div>
@@ -866,21 +866,21 @@ challenge, try writing the query both with and without COUNT.)<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, director
-<span style="color: #0000FF;">from</span> Movie
-<span style="color: #0000FF;">where</span> director <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> director
-                   <span style="color: #0000FF;">from</span> Movie
-                   <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> director
-                   <span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt; 1)
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> director, title;
+<pre class="src src-sql"><span class="org-keyword">select</span> title, director
+<span class="org-keyword">from</span> Movie
+<span class="org-keyword">where</span> director <span class="org-keyword">in</span> (<span class="org-keyword">select</span> director
+                   <span class="org-keyword">from</span> Movie
+                   <span class="org-keyword">group</span> <span class="org-keyword">by</span> director
+                   <span class="org-keyword">having</span> <span class="org-builtin">count</span>(*) &gt; 1)
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> director, title;
 
-<span style="color: #0000FF;">select</span> title, director
-<span style="color: #0000FF;">from</span> Movie R
-<span style="color: #0000FF;">where</span> director <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> director
-                   <span style="color: #0000FF;">from</span> Movie
-                   <span style="color: #0000FF;">where</span> director = R.director <span style="color: #0000FF;">and</span>
+<span class="org-keyword">select</span> title, director
+<span class="org-keyword">from</span> Movie R
+<span class="org-keyword">where</span> director <span class="org-keyword">in</span> (<span class="org-keyword">select</span> director
+                   <span class="org-keyword">from</span> Movie
+                   <span class="org-keyword">where</span> director = R.director <span class="org-keyword">and</span>
                          mID &lt;&gt; R.mID)
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> director, title;
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> director, title;
 </pre>
 </div>
 
@@ -893,10 +893,10 @@ average rating.)<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = R.mID) <span style="color: #0000FF;">as</span> avgStars
-<span style="color: #0000FF;">from</span> Movie R
-<span style="color: #0000FF;">where</span> avgStars = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>((<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = S.mID))
-                  <span style="color: #0000FF;">from</span> Movie S);
+<pre class="src src-sql"><span class="org-keyword">select</span> title, (<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(stars) <span class="org-keyword">from</span> Rating <span class="org-keyword">where</span> mID = R.mID) <span class="org-keyword">as</span> avgStars
+<span class="org-keyword">from</span> Movie R
+<span class="org-keyword">where</span> avgStars = (<span class="org-keyword">select</span> <span class="org-builtin">max</span>((<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(stars) <span class="org-keyword">from</span> Rating <span class="org-keyword">where</span> mID = S.mID))
+                  <span class="org-keyword">from</span> Movie S);
 </pre>
 </div>
 
@@ -909,10 +909,10 @@ that average rating.)<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> title, (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = R.mID) <span style="color: #0000FF;">as</span> avgStars
-<span style="color: #0000FF;">from</span> Movie R
-<span style="color: #0000FF;">where</span> avgStars = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">min</span>((<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = S.mID))
-                  <span style="color: #0000FF;">from</span> Movie S);
+<pre class="src src-sql"><span class="org-keyword">select</span> title, (<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(stars) <span class="org-keyword">from</span> Rating <span class="org-keyword">where</span> mID = R.mID) <span class="org-keyword">as</span> avgStars
+<span class="org-keyword">from</span> Movie R
+<span class="org-keyword">where</span> avgStars = (<span class="org-keyword">select</span> <span class="org-builtin">min</span>((<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(stars) <span class="org-keyword">from</span> Rating <span class="org-keyword">where</span> mID = S.mID))
+                  <span class="org-keyword">from</span> Movie S);
 </pre>
 </div>
 
@@ -924,22 +924,22 @@ Ignore movies whose director is NULL.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> director, title, maxStars
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> director,
-             (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>(stars)
-              <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(mID)
-              <span style="color: #0000FF;">where</span> director = D.director) <span style="color: #0000FF;">as</span> maxStars
-      <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> director <span style="color: #0000FF;">from</span> Movie
-            <span style="color: #0000FF;">where</span> director <span style="color: #0000FF;">is</span> <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">null</span>) D)
-      <span style="color: #0000FF;">join</span> Movie <span style="color: #0000FF;">using</span>(director) <span style="color: #0000FF;">join</span> Rating <span style="color: #0000FF;">using</span>(mID)
-<span style="color: #0000FF;">where</span> stars = maxStars;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">distinct</span> director, title, maxStars
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> director,
+             (<span class="org-keyword">select</span> <span class="org-builtin">max</span>(stars)
+              <span class="org-keyword">from</span> Rating <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(mID)
+              <span class="org-keyword">where</span> director = D.director) <span class="org-keyword">as</span> maxStars
+      <span class="org-keyword">from</span> (<span class="org-keyword">select</span> <span class="org-keyword">distinct</span> director <span class="org-keyword">from</span> Movie
+            <span class="org-keyword">where</span> director <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-keyword">null</span>) D)
+      <span class="org-keyword">join</span> Movie <span class="org-keyword">using</span>(director) <span class="org-keyword">join</span> Rating <span class="org-keyword">using</span>(mID)
+<span class="org-keyword">where</span> stars = maxStars;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgacada39" class="outline-4">
-<h4 id="orgacada39"><span class="section-number-4">1.2.3</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_core/">Core</a></h4>
+<div id="outline-container-org61c3886" class="outline-4">
+<h4 id="org61c3886"><span class="section-number-4">1.2.3</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_core/">Core</a></h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Find the names of all students who are friends with someone named<br />
@@ -947,14 +947,14 @@ Gabriel.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>
-<span style="color: #0000FF;">from</span> Highschooler
-<span style="color: #0000FF;">where</span> ID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1
-             <span style="color: #0000FF;">from</span> Friend
-             <span style="color: #0000FF;">where</span> ID1 = ID <span style="color: #0000FF;">and</span>
-                   ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID
-                           <span style="color: #0000FF;">from</span> Highschooler
-                           <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Gabriel'</span>));
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>
+<span class="org-keyword">from</span> Highschooler
+<span class="org-keyword">where</span> ID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID1
+             <span class="org-keyword">from</span> Friend
+             <span class="org-keyword">where</span> ID1 = ID <span class="org-keyword">and</span>
+                   ID2 <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID
+                           <span class="org-keyword">from</span> Highschooler
+                           <span class="org-keyword">where</span> <span class="org-keyword">name</span> = <span class="org-string">'Gabriel'</span>));
 </pre>
 </div>
 
@@ -965,13 +965,13 @@ grade of the student they like.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
-       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2),
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2)
-<span style="color: #0000FF;">from</span> Likes
-<span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1) -
-      (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2) &gt;= 2;
+<pre class="src src-sql"><span class="org-keyword">select</span> (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID1),
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID1),
+       (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID2),
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID2)
+<span class="org-keyword">from</span> Likes
+<span class="org-keyword">where</span> (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID1) -
+      (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID2) &gt;= 2;
 </pre>
 </div>
 
@@ -982,22 +982,22 @@ names in alphabetical order.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> *
-<span style="color: #0000FF;">from</span> Likes
-<span style="color: #0000FF;">where</span> ID1 &lt; ID2
-<span style="color: #0000FF;">intersect</span>
-<span style="color: #0000FF;">select</span> ID2, ID1
-<span style="color: #0000FF;">from</span> Likes;
+<pre class="src src-sql"><span class="org-keyword">select</span> *
+<span class="org-keyword">from</span> Likes
+<span class="org-keyword">where</span> ID1 &lt; ID2
+<span class="org-keyword">intersect</span>
+<span class="org-keyword">select</span> ID2, ID1
+<span class="org-keyword">from</span> Likes;
 
-<span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID1),
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID1),
-       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID2),
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID2)
-<span style="color: #0000FF;">from</span> Likes R
-<span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID1) &lt;
-      (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = R.ID2) <span style="color: #0000FF;">and</span>
-      ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1 <span style="color: #0000FF;">from</span> Likes
-              <span style="color: #0000FF;">where</span> ID1 = R.ID2 <span style="color: #0000FF;">and</span> ID2 = R.ID1);
+<span class="org-keyword">select</span> (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = R.ID1),
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = R.ID1),
+       (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = R.ID2),
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = R.ID2)
+<span class="org-keyword">from</span> Likes R
+<span class="org-keyword">where</span> (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = R.ID1) &lt;
+      (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = R.ID2) <span class="org-keyword">and</span>
+      ID2 <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID1 <span class="org-keyword">from</span> Likes
+              <span class="org-keyword">where</span> ID1 = R.ID2 <span class="org-keyword">and</span> ID2 = R.ID1);
 </pre>
 </div>
 
@@ -1008,11 +1008,11 @@ grade, then by name within each grade.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, grade
-<span style="color: #0000FF;">from</span> Highschooler
-<span style="color: #0000FF;">where</span> ID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1 <span style="color: #0000FF;">from</span> Likes) <span style="color: #0000FF;">and</span>
-      ID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID2 <span style="color: #0000FF;">from</span> Likes)
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> grade, <span style="color: #0000FF;">name</span>;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>, grade
+<span class="org-keyword">from</span> Highschooler
+<span class="org-keyword">where</span> ID <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID1 <span class="org-keyword">from</span> Likes) <span class="org-keyword">and</span>
+      ID <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID2 <span class="org-keyword">from</span> Likes)
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> grade, <span class="org-keyword">name</span>;
 </pre>
 </div>
 
@@ -1023,12 +1023,12 @@ in the Likes table), return A and B's names and grades.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
-       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2),
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2)
-<span style="color: #0000FF;">from</span> Likes
-<span style="color: #0000FF;">where</span> ID2 <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1 <span style="color: #0000FF;">from</span> Likes);
+<pre class="src src-sql"><span class="org-keyword">select</span> (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID1),
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID1),
+       (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID2),
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID2)
+<span class="org-keyword">from</span> Likes
+<span class="org-keyword">where</span> ID2 <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID1 <span class="org-keyword">from</span> Likes);
 </pre>
 </div>
 
@@ -1039,13 +1039,13 @@ grade.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, grade
-<span style="color: #0000FF;">from</span> Highschooler
-<span style="color: #0000FF;">where</span> ID <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1
-                 <span style="color: #0000FF;">from</span> Friend
-                 <span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1) &lt;&gt;
-                       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID2))
-<span style="color: #0000FF;">order</span> <span style="color: #0000FF;">by</span> grade, <span style="color: #0000FF;">name</span>;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>, grade
+<span class="org-keyword">from</span> Highschooler
+<span class="org-keyword">where</span> ID <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID1
+                 <span class="org-keyword">from</span> Friend
+                 <span class="org-keyword">where</span> (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID1) &lt;&gt;
+                       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID2))
+<span class="org-keyword">order</span> <span class="org-keyword">by</span> grade, <span class="org-keyword">name</span>;
 </pre>
 </div>
 
@@ -1056,17 +1056,17 @@ them!).  For all such trios, return the name and grade of A, B, and C.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = T.ID1),
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = T.ID1),
-       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = T.ID2),
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = T.ID2),
-       <span style="color: #0000FF;">name</span>, grade
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Likes
-      <span style="color: #0000FF;">except</span>
-      <span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend) T
-     <span style="color: #0000FF;">join</span> Highschooler
-<span style="color: #0000FF;">on</span> ID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID2 <span style="color: #0000FF;">from</span> Friend <span style="color: #0000FF;">where</span> ID1 = T.ID1) <span style="color: #0000FF;">and</span>
-   ID <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID2 <span style="color: #0000FF;">from</span> Friend <span style="color: #0000FF;">where</span> ID1 = T.ID2);
+<pre class="src src-sql"><span class="org-keyword">select</span> (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = T.ID1),
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = T.ID1),
+       (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = T.ID2),
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = T.ID2),
+       <span class="org-keyword">name</span>, grade
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> * <span class="org-keyword">from</span> Likes
+      <span class="org-keyword">except</span>
+      <span class="org-keyword">select</span> * <span class="org-keyword">from</span> Friend) T
+     <span class="org-keyword">join</span> Highschooler
+<span class="org-keyword">on</span> ID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID2 <span class="org-keyword">from</span> Friend <span class="org-keyword">where</span> ID1 = T.ID1) <span class="org-keyword">and</span>
+   ID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID2 <span class="org-keyword">from</span> Friend <span class="org-keyword">where</span> ID1 = T.ID2);
 </pre>
 </div>
 
@@ -1076,8 +1076,8 @@ the number of different first names.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(ID) - <span style="color: #006FE0;">count</span>(<span style="color: #0000FF;">distinct</span> <span style="color: #0000FF;">name</span>)
-<span style="color: #0000FF;">from</span> Highschooler;
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-builtin">count</span>(ID) - <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> <span class="org-keyword">name</span>)
+<span class="org-keyword">from</span> Highschooler;
 </pre>
 </div>
 
@@ -1087,20 +1087,20 @@ other student.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> name2, grade2
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> ID1, name1, grade1, ID2, <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">as</span> name2, grade <span style="color: #0000FF;">as</span> grade2
-      <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> ID1, <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">as</span> name1, grade <span style="color: #0000FF;">as</span> grade1, ID2
-            <span style="color: #0000FF;">from</span> Likes <span style="color: #0000FF;">join</span> Highschooler H <span style="color: #0000FF;">on</span> ID1 = H.ID)
-                 <span style="color: #0000FF;">join</span> Highschooler H <span style="color: #0000FF;">on</span> ID2 = H.ID)
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> ID2
-<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) &gt; 1;
+<pre class="src src-sql"><span class="org-keyword">select</span> name2, grade2
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> ID1, name1, grade1, ID2, <span class="org-keyword">name</span> <span class="org-keyword">as</span> name2, grade <span class="org-keyword">as</span> grade2
+      <span class="org-keyword">from</span> (<span class="org-keyword">select</span> ID1, <span class="org-keyword">name</span> <span class="org-keyword">as</span> name1, grade <span class="org-keyword">as</span> grade1, ID2
+            <span class="org-keyword">from</span> Likes <span class="org-keyword">join</span> Highschooler H <span class="org-keyword">on</span> ID1 = H.ID)
+                 <span class="org-keyword">join</span> Highschooler H <span class="org-keyword">on</span> ID2 = H.ID)
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> ID2
+<span class="org-keyword">having</span> <span class="org-builtin">count</span>(*) &gt; 1;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb6c9b10" class="outline-4">
-<h4 id="orgb6c9b10"><span class="section-number-4">1.2.4</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_extra/">Extras</a></h4>
+<div id="outline-container-org92aba35" class="outline-4">
+<h4 id="org92aba35"><span class="section-number-4">1.2.4</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_extra/">Extras</a></h4>
 <div class="outline-text-4" id="text-1-2-4">
 <p>
 For every situation where student A likes student B, but student B<br />
@@ -1109,18 +1109,18 @@ C.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> H1.<span style="color: #0000FF;">name</span>, H1.grade,
-       H2.<span style="color: #0000FF;">name</span>, H2.grade,
-       H3.<span style="color: #0000FF;">name</span>, H3.grade
-<span style="color: #0000FF;">from</span> Likes R <span style="color: #0000FF;">join</span> Likes S
-     <span style="color: #0000FF;">on</span> R.ID2 = S.ID1 <span style="color: #0000FF;">and</span>
+<pre class="src src-sql"><span class="org-keyword">select</span> H1.<span class="org-keyword">name</span>, H1.grade,
+       H2.<span class="org-keyword">name</span>, H2.grade,
+       H3.<span class="org-keyword">name</span>, H3.grade
+<span class="org-keyword">from</span> Likes R <span class="org-keyword">join</span> Likes S
+     <span class="org-keyword">on</span> R.ID2 = S.ID1 <span class="org-keyword">and</span>
         S.ID2 &lt;&gt; R.ID1
-     <span style="color: #0000FF;">join</span> Highschooler H1
-     <span style="color: #0000FF;">on</span> R.ID1 = H1.ID
-     <span style="color: #0000FF;">join</span> Highschooler H2
-     <span style="color: #0000FF;">on</span> R.ID2 = H2.ID
-     <span style="color: #0000FF;">join</span> Highschooler H3
-     <span style="color: #0000FF;">on</span> S.ID2 = H3.ID;
+     <span class="org-keyword">join</span> Highschooler H1
+     <span class="org-keyword">on</span> R.ID1 = H1.ID
+     <span class="org-keyword">join</span> Highschooler H2
+     <span class="org-keyword">on</span> R.ID2 = H2.ID
+     <span class="org-keyword">join</span> Highschooler H3
+     <span class="org-keyword">on</span> S.ID2 = H3.ID;
 </pre>
 </div>
 
@@ -1130,13 +1130,13 @@ grades from themselves.  Return the students' names and grades.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span>, grade
-<span style="color: #0000FF;">from</span> Highschooler R
-<span style="color: #0000FF;">where</span> <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">exists</span>
-      (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend
-       <span style="color: #0000FF;">where</span> ID1 = R.ID <span style="color: #0000FF;">and</span>
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler
-        <span style="color: #0000FF;">where</span> ID = ID2 <span style="color: #0000FF;">and</span>
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-keyword">name</span>, grade
+<span class="org-keyword">from</span> Highschooler R
+<span class="org-keyword">where</span> <span class="org-keyword">not</span> <span class="org-keyword">exists</span>
+      (<span class="org-keyword">select</span> * <span class="org-keyword">from</span> Friend
+       <span class="org-keyword">where</span> ID1 = R.ID <span class="org-keyword">and</span>
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler
+        <span class="org-keyword">where</span> ID = ID2 <span class="org-keyword">and</span>
               grade = R.grade));
 </pre>
 </div>
@@ -1147,10 +1147,10 @@ be just one number.)<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(num)
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">as</span> num
-      <span style="color: #0000FF;">from</span> Friend
-      <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> ID1);
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-builtin">avg</span>(num)
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*) <span class="org-keyword">as</span> num
+      <span class="org-keyword">from</span> Friend
+      <span class="org-keyword">group</span> <span class="org-keyword">by</span> ID1);
 </pre>
 </div>
 
@@ -1161,10 +1161,10 @@ correctly.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(num)
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">from</span> Friend
-              <span style="color: #0000FF;">where</span> ID1 = ID) <span style="color: #0000FF;">as</span> num
-      <span style="color: #0000FF;">from</span> Highschooler);
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-builtin">avg</span>(num)
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> (<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*) <span class="org-keyword">from</span> Friend
+              <span class="org-keyword">where</span> ID1 = ID) <span class="org-keyword">as</span> num
+      <span class="org-keyword">from</span> Highschooler);
 </pre>
 </div>
 
@@ -1175,28 +1175,28 @@ though technically she is a friend of a friend.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
-<span style="color: #0000FF;">from</span> Highschooler
-<span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> &lt;&gt; <span style="color: #008000;">'Cassandra'</span> <span style="color: #0000FF;">and</span>
-      <span style="color: #0000FF;">exists</span> (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend R
-              <span style="color: #0000FF;">where</span> R.ID1 = ID <span style="color: #0000FF;">and</span>
-                    (R.ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID <span style="color: #0000FF;">from</span> Highschooler
-                               <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Cassandra'</span>) <span style="color: #0000FF;">or</span>
-                     R.ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID1 <span style="color: #0000FF;">from</span> Friend
-                               <span style="color: #0000FF;">where</span> ID1 = R.ID2 <span style="color: #0000FF;">and</span>
-                                     ID2 <span style="color: #0000FF;">in</span> (<span style="color: #0000FF;">select</span> ID <span style="color: #0000FF;">from</span> Highschooler
-                                             <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Cassandra'</span>))));
+<pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-builtin">count</span>(*)
+<span class="org-keyword">from</span> Highschooler
+<span class="org-keyword">where</span> <span class="org-keyword">name</span> &lt;&gt; <span class="org-string">'Cassandra'</span> <span class="org-keyword">and</span>
+      <span class="org-keyword">exists</span> (<span class="org-keyword">select</span> * <span class="org-keyword">from</span> Friend R
+              <span class="org-keyword">where</span> R.ID1 = ID <span class="org-keyword">and</span>
+                    (R.ID2 <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID <span class="org-keyword">from</span> Highschooler
+                               <span class="org-keyword">where</span> <span class="org-keyword">name</span> = <span class="org-string">'Cassandra'</span>) <span class="org-keyword">or</span>
+                     R.ID2 <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID1 <span class="org-keyword">from</span> Friend
+                               <span class="org-keyword">where</span> ID1 = R.ID2 <span class="org-keyword">and</span>
+                                     ID2 <span class="org-keyword">in</span> (<span class="org-keyword">select</span> ID <span class="org-keyword">from</span> Highschooler
+                                             <span class="org-keyword">where</span> <span class="org-keyword">name</span> = <span class="org-string">'Cassandra'</span>))));
 
-<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*)
-<span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> ID1, ID2, ID3
-      <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> L1.ID1, L1.ID2, L2.ID2 <span style="color: #0000FF;">as</span> ID3
-            <span style="color: #0000FF;">from</span> Friend L1 <span style="color: #0000FF;">join</span> Friend L2
-            <span style="color: #0000FF;">on</span> L1.ID2 = L2.ID1 <span style="color: #0000FF;">and</span>
+<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*)
+<span class="org-keyword">from</span> (<span class="org-keyword">select</span> ID1, ID2, ID3
+      <span class="org-keyword">from</span> (<span class="org-keyword">select</span> L1.ID1, L1.ID2, L2.ID2 <span class="org-keyword">as</span> ID3
+            <span class="org-keyword">from</span> Friend L1 <span class="org-keyword">join</span> Friend L2
+            <span class="org-keyword">on</span> L1.ID2 = L2.ID1 <span class="org-keyword">and</span>
                L2.ID2 &lt;&gt; L1.ID1))
-     <span style="color: #0000FF;">join</span> Highschooler R <span style="color: #0000FF;">on</span> ID1 = R.ID
-     <span style="color: #0000FF;">join</span> Highschooler S <span style="color: #0000FF;">on</span> ID2 = S.ID
-     <span style="color: #0000FF;">join</span> Highschooler T <span style="color: #0000FF;">on</span> ID3 = T.ID
-<span style="color: #0000FF;">where</span> S.<span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Cassandra'</span> <span style="color: #0000FF;">or</span> T.<span style="color: #0000FF;">name</span> = <span style="color: #008000;">'Cassandra'</span>;
+     <span class="org-keyword">join</span> Highschooler R <span class="org-keyword">on</span> ID1 = R.ID
+     <span class="org-keyword">join</span> Highschooler S <span class="org-keyword">on</span> ID2 = S.ID
+     <span class="org-keyword">join</span> Highschooler T <span class="org-keyword">on</span> ID3 = T.ID
+<span class="org-keyword">where</span> S.<span class="org-keyword">name</span> = <span class="org-string">'Cassandra'</span> <span class="org-keyword">or</span> T.<span class="org-keyword">name</span> = <span class="org-string">'Cassandra'</span>;
 </pre>
 </div>
 
@@ -1206,28 +1206,28 @@ friends.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">name</span> <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1),
-       (<span style="color: #0000FF;">select</span> grade <span style="color: #0000FF;">from</span> Highschooler <span style="color: #0000FF;">where</span> ID = ID1)
-<span style="color: #0000FF;">from</span> Friend
-<span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> ID1
-<span style="color: #0000FF;">having</span> <span style="color: #006FE0;">count</span>(*) = (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">max</span>(num)
-                   <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">count</span>(*) <span style="color: #0000FF;">as</span> num
-                         <span style="color: #0000FF;">from</span> Friend
-                         <span style="color: #0000FF;">group</span> <span style="color: #0000FF;">by</span> ID1));
+<pre class="src src-sql"><span class="org-keyword">select</span> (<span class="org-keyword">select</span> <span class="org-keyword">name</span> <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID1),
+       (<span class="org-keyword">select</span> grade <span class="org-keyword">from</span> Highschooler <span class="org-keyword">where</span> ID = ID1)
+<span class="org-keyword">from</span> Friend
+<span class="org-keyword">group</span> <span class="org-keyword">by</span> ID1
+<span class="org-keyword">having</span> <span class="org-builtin">count</span>(*) = (<span class="org-keyword">select</span> <span class="org-builtin">max</span>(num)
+                   <span class="org-keyword">from</span> (<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*) <span class="org-keyword">as</span> num
+                         <span class="org-keyword">from</span> Friend
+                         <span class="org-keyword">group</span> <span class="org-keyword">by</span> ID1));
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7d1a938" class="outline-4">
-<h4 id="org7d1a938"><span class="section-number-4">1.2.5</span> <span class="done DONE">DONE</span> Movie-Rating <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_mod/">Modification</a></h4>
+<div id="outline-container-org22b3c54" class="outline-4">
+<h4 id="org22b3c54"><span class="section-number-4">1.2.5</span> <span class="done DONE">DONE</span> Movie-Rating <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_mod/">Modification</a></h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 Add the reviewer Roger Ebert to your database, with an rID of 209.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Reviewer <span style="color: #0000FF;">values</span> (209, <span style="color: #008000;">'Roger Ebert'</span>);
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Reviewer <span class="org-keyword">values</span> (209, <span class="org-string">'Roger Ebert'</span>);
 </pre>
 </div>
 
@@ -1237,10 +1237,10 @@ Leave the review date as NULL.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Rating
-<span style="color: #0000FF;">select</span> (<span style="color: #0000FF;">select</span> rID <span style="color: #0000FF;">from</span> Reviewer <span style="color: #0000FF;">where</span> <span style="color: #0000FF;">name</span> = <span style="color: #008000;">'James Cameron'</span>),
-       mID, 5, <span style="color: #0000FF;">null</span>
-<span style="color: #0000FF;">from</span> Movie;
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Rating
+<span class="org-keyword">select</span> (<span class="org-keyword">select</span> rID <span class="org-keyword">from</span> Reviewer <span class="org-keyword">where</span> <span class="org-keyword">name</span> = <span class="org-string">'James Cameron'</span>),
+       mID, 5, <span class="org-keyword">null</span>
+<span class="org-keyword">from</span> Movie;
 </pre>
 </div>
 
@@ -1251,9 +1251,9 @@ tuples.)<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">update</span> Movie
-<span style="color: #0000FF;">set</span> <span style="color: #0000FF;">year</span> = <span style="color: #0000FF;">year</span> + 25
-<span style="color: #0000FF;">where</span> (<span style="color: #0000FF;">select</span> <span style="color: #006FE0;">avg</span>(stars) <span style="color: #0000FF;">from</span> Rating <span style="color: #0000FF;">where</span> mID = Movie.mID) &gt;= 4;
+<pre class="src src-sql"><span class="org-keyword">update</span> Movie
+<span class="org-keyword">set</span> <span class="org-keyword">year</span> = <span class="org-keyword">year</span> + 25
+<span class="org-keyword">where</span> (<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(stars) <span class="org-keyword">from</span> Rating <span class="org-keyword">where</span> mID = Movie.mID) &gt;= 4;
 </pre>
 </div>
 
@@ -1263,17 +1263,17 @@ Remove all ratings where the movie's year is before 1970 or after<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Rating
-<span style="color: #0000FF;">where</span> stars &lt; 4 <span style="color: #0000FF;">and</span>
-      ((<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">year</span> <span style="color: #0000FF;">from</span> Movie <span style="color: #0000FF;">where</span> mID = Rating.mID) &lt; 1970 <span style="color: #0000FF;">or</span>
-       (<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">year</span> <span style="color: #0000FF;">from</span> Movie <span style="color: #0000FF;">where</span> mID = Rating.mID) &gt; 2000)
+<pre class="src src-sql"><span class="org-keyword">delete</span> <span class="org-keyword">from</span> Rating
+<span class="org-keyword">where</span> stars &lt; 4 <span class="org-keyword">and</span>
+      ((<span class="org-keyword">select</span> <span class="org-keyword">year</span> <span class="org-keyword">from</span> Movie <span class="org-keyword">where</span> mID = Rating.mID) &lt; 1970 <span class="org-keyword">or</span>
+       (<span class="org-keyword">select</span> <span class="org-keyword">year</span> <span class="org-keyword">from</span> Movie <span class="org-keyword">where</span> mID = Rating.mID) &gt; 2000)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7390dc2" class="outline-4">
-<h4 id="org7390dc2"><span class="section-number-4">1.2.6</span> <span class="done DONE">DONE</span> Social-Network <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_mod/">Modification</a></h4>
+<div id="outline-container-orgcdf5a71" class="outline-4">
+<h4 id="orgcdf5a71"><span class="section-number-4">1.2.6</span> <span class="done DONE">DONE</span> Social-Network <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_mod/">Modification</a></h4>
 <div class="outline-text-4" id="text-1-2-6">
 <p>
 It's time for the seniors to graduate.  Remove all 12th graders from<br />
@@ -1281,8 +1281,8 @@ Highschooler.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Highschooler
-<span style="color: #0000FF;">where</span> grade = 12;
+<pre class="src src-sql"><span class="org-keyword">delete</span> <span class="org-keyword">from</span> Highschooler
+<span class="org-keyword">where</span> grade = 12;
 </pre>
 </div>
 
@@ -1292,14 +1292,14 @@ remove the Likes tuple.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">delete</span> <span style="color: #0000FF;">from</span> Likes
-<span style="color: #0000FF;">where</span> <span style="color: #0000FF;">exists</span> (<span style="color: #0000FF;">select</span> *
-              <span style="color: #0000FF;">from</span> (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend
-                    <span style="color: #0000FF;">except</span>
-                    <span style="color: #0000FF;">select</span> ID2, ID1 <span style="color: #0000FF;">from</span> Likes
-                    <span style="color: #0000FF;">intersect</span>
-                    <span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Likes)
-              <span style="color: #0000FF;">where</span> ID1 = Likes.ID1 <span style="color: #0000FF;">and</span> ID2 = Likes.ID2);
+<pre class="src src-sql"><span class="org-keyword">delete</span> <span class="org-keyword">from</span> Likes
+<span class="org-keyword">where</span> <span class="org-keyword">exists</span> (<span class="org-keyword">select</span> *
+              <span class="org-keyword">from</span> (<span class="org-keyword">select</span> * <span class="org-keyword">from</span> Friend
+                    <span class="org-keyword">except</span>
+                    <span class="org-keyword">select</span> ID2, ID1 <span class="org-keyword">from</span> Likes
+                    <span class="org-keyword">intersect</span>
+                    <span class="org-keyword">select</span> * <span class="org-keyword">from</span> Likes)
+              <span class="org-keyword">where</span> ID1 = Likes.ID1 <span class="org-keyword">and</span> ID2 = Likes.ID2);
 </pre>
 </div>
 
@@ -1312,12 +1312,12 @@ it right.)<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sql"><span style="color: #0000FF;">insert</span> <span style="color: #0000FF;">into</span> Friend
-<span style="color: #0000FF;">select</span> <span style="color: #0000FF;">distinct</span> R.ID1, S.ID2
-<span style="color: #0000FF;">from</span> Friend R <span style="color: #0000FF;">join</span> Friend S
-<span style="color: #0000FF;">on</span> R.ID2 = S.ID1 <span style="color: #0000FF;">and</span> S.ID2 &lt;&gt; R.ID1 <span style="color: #0000FF;">and</span>
-   <span style="color: #0000FF;">not</span> <span style="color: #0000FF;">exists</span> (<span style="color: #0000FF;">select</span> * <span style="color: #0000FF;">from</span> Friend
-             <span style="color: #0000FF;">where</span> ID1 = R.ID1 <span style="color: #0000FF;">and</span>
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Friend
+<span class="org-keyword">select</span> <span class="org-keyword">distinct</span> R.ID1, S.ID2
+<span class="org-keyword">from</span> Friend R <span class="org-keyword">join</span> Friend S
+<span class="org-keyword">on</span> R.ID2 = S.ID1 <span class="org-keyword">and</span> S.ID2 &lt;&gt; R.ID1 <span class="org-keyword">and</span>
+   <span class="org-keyword">not</span> <span class="org-keyword">exists</span> (<span class="org-keyword">select</span> * <span class="org-keyword">from</span> Friend
+             <span class="org-keyword">where</span> ID1 = R.ID1 <span class="org-keyword">and</span>
                    ID2 = S.ID2);
 </pre>
 </div>
@@ -1327,19 +1327,19 @@ it right.)<br />
 </div>
 
 
-<div id="outline-container-orgd1cb3c9" class="outline-2">
-<h2 id="orgd1cb3c9"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/">XPath and XQuery</a> mini-course</h2>
+<div id="outline-container-orgb31c934" class="outline-2">
+<h2 id="orgb31c934"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/">XPath and XQuery</a> mini-course</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-orgd5cf930" class="outline-3">
-<h3 id="orgd5cf930"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-org69204b4" class="outline-3">
+<h3 id="org69204b4"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-org0666764" class="outline-4">
-<h4 id="org0666764"><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> XPath Introduction</h4>
+<div id="outline-container-org67fcd66" class="outline-4">
+<h4 id="org67fcd66"><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> XPath Introduction</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 Not nearly as mature as Querying Relational<br />
@@ -1383,8 +1383,8 @@ Sometimes result can be expressed as XML, but not always<br />
 </div>
 </div>
 
-<div id="outline-container-org0f7a3db" class="outline-4">
-<h4 id="org0f7a3db"><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> XPath Demo</h4>
+<div id="outline-container-org5ff874d" class="outline-4">
+<h4 id="org5ff874d"><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> XPath Demo</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Get the titles of books in the bookstore where the price is lower<br />
@@ -1485,8 +1485,8 @@ an author.<br />
 </div>
 </div>
 
-<div id="outline-container-orgdb4f345" class="outline-4">
-<h4 id="orgdb4f345"><span class="section-number-4">2.1.3</span> <span class="done DONE">DONE</span> XQuery Introduction</h4>
+<div id="outline-container-org62b9caa" class="outline-4">
+<h4 id="org62b9caa"><span class="section-number-4">2.1.3</span> <span class="done DONE">DONE</span> XQuery Introduction</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <ol class="org-ol">
 <li>XQuery is a expression language (compositional)<br /></li>
@@ -1518,8 +1518,8 @@ Mixing queries and XMl<br />
 </div>
 </div>
 
-<div id="outline-container-org8943414" class="outline-4">
-<h4 id="org8943414"><span class="section-number-4">2.1.4</span> <span class="done DONE">DONE</span> XQuery Demo</h4>
+<div id="outline-container-orgae22440" class="outline-4">
+<h4 id="orgae22440"><span class="section-number-4">2.1.4</span> <span class="done DONE">DONE</span> XQuery Demo</h4>
 <div class="outline-text-4" id="text-2-1-4">
 <div class="org-src-container">
 <pre class="src src-xquery">for $b in doc("BookstoreQ.xml")/Bookstore/Book
@@ -1635,12 +1635,12 @@ Again, implicitly existential quantification.<br />
 </div>
 </div>
 
-<div id="outline-container-org4528a86" class="outline-3">
-<h3 id="org4528a86"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org4182e81" class="outline-3">
+<h3 id="org4182e81"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orgb0fa110" class="outline-4">
-<h4 id="orgb0fa110"><span class="section-number-4">2.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</h4>
+<div id="outline-container-org69be5d5" class="outline-4">
+<h4 id="org69be5d5"><span class="section-number-4">2.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 Return all Title elements (of both departments and courses).<br />
@@ -1737,8 +1737,8 @@ the other operand will go through type promotion.<br />
 </div>
 </div>
 
-<div id="outline-container-org95651a2" class="outline-4">
-<h4 id="org95651a2"><span class="section-number-4">2.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</h4>
+<div id="outline-container-orgc29124b" class="outline-4">
+<h4 id="orgc29124b"><span class="section-number-4">2.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 Return the course number of the course that is cross-listed as "LING180".<br />
@@ -1940,8 +1940,8 @@ very challenging; extra congratulations if you get it right.)<br />
 </div>
 </div>
 
-<div id="outline-container-org5aa01e9" class="outline-4">
-<h4 id="org5aa01e9"><span class="section-number-4">2.2.3</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</h4>
+<div id="outline-container-orga94552f" class="outline-4">
+<h4 id="orga94552f"><span class="section-number-4">2.2.3</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <p>
 Return the area of Mongolia.<br />
@@ -1999,18 +1999,18 @@ result should take the form:<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">result</span>&gt;
-  &lt;<span style="color: #000088; background-color: #DEDEDE;">French</span>&gt;
-    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
-    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
-    ...
-  &lt;/<span style="color: #000088; background-color: #DEDEDE;">French</span>&gt;
-  &lt;<span style="color: #000088; background-color: #DEDEDE;">German</span>&gt;
-    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
-    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
-    ...
-  &lt;/<span style="color: #000088; background-color: #DEDEDE;">German</span>&gt;
-&lt;/<span style="color: #000088; background-color: #DEDEDE;">result</span>&gt;
+<pre class="src src-xml"><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">result</span><span class="org-nxml-tag-delimiter">&gt;</span>
+  <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">French</span><span class="org-nxml-tag-delimiter">&gt;</span>
+    <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">country-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span>
+    <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">country-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span>
+<span class="org-nxml-text">    ...</span>
+<span class="org-nxml-text">  </span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">French</span><span class="org-nxml-tag-delimiter">&gt;</span>
+  <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">German</span><span class="org-nxml-tag-delimiter">&gt;</span>
+    <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">country-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span>
+    <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">country-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span>
+<span class="org-nxml-text">    ...</span>
+<span class="org-nxml-text">  </span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">German</span><span class="org-nxml-tag-delimiter">&gt;</span>
+<span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">result</span><span class="org-nxml-tag-delimiter">&gt;</span>
 </pre>
 </div>
 
@@ -2048,10 +2048,10 @@ are unique.  The result should take the form:<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">result</span>&gt;
-  &lt;<span style="color: #000088; background-color: #DEDEDE;">highest</span> <span style="color: #BA36A5;">density</span>=<span style="color: #008000;">"</span><span style="color: #008000;">value</span><span style="color: #008000;">"</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">highest</span>&gt;
-  &lt;<span style="color: #000088; background-color: #DEDEDE;">lowest</span> <span style="color: #BA36A5;">density</span>=<span style="color: #008000;">"</span><span style="color: #008000;">value</span><span style="color: #008000;">"</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">lowest</span>&gt;
-&lt;/<span style="color: #000088; background-color: #DEDEDE;">result</span>&gt;
+<pre class="src src-xml"><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">result</span><span class="org-nxml-tag-delimiter">&gt;</span>
+  <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">highest</span> <span class="org-nxml-attribute-local-name">density</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">value</span><span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">country-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">highest</span><span class="org-nxml-tag-delimiter">&gt;</span>
+  <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">lowest</span> <span class="org-nxml-attribute-local-name">density</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">value</span><span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">country-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">lowest</span><span class="org-nxml-tag-delimiter">&gt;</span>
+<span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">result</span><span class="org-nxml-tag-delimiter">&gt;</span>
 </pre>
 </div>
 
@@ -2073,8 +2073,8 @@ are unique.  The result should take the form:<br />
 </div>
 </div>
 
-<div id="outline-container-org7569546" class="outline-4">
-<h4 id="org7569546"><span class="section-number-4">2.2.4</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</h4>
+<div id="outline-container-org3e87744" class="outline-4">
+<h4 id="org3e87744"><span class="section-number-4">2.2.4</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <p>
 Return the names of all countries with population greater than 100<br />
@@ -2288,7 +2288,7 @@ e.g.,<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">language</span>=<span style="color: #008000;">"</span><span style="color: #008000;">French</span><span style="color: #008000;">"</span>&gt;French Guiana&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
+<pre class="src src-xml"><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">country</span> <span class="org-nxml-attribute-local-name">language</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">French</span><span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">French Guiana</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span>
 </pre>
 </div>
 
@@ -2307,11 +2307,11 @@ with the cities greater than 7 million, in the format:<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">country-name</span><span style="color: #008000;">"</span>&gt;
-  &lt;<span style="color: #000088; background-color: #DEDEDE;">big</span>&gt;city-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">big</span>&gt;
-  &lt;<span style="color: #000088; background-color: #DEDEDE;">big</span>&gt;city-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">big</span>&gt;
-  ...
-&lt;/<span style="color: #000088; background-color: #DEDEDE;">country</span>&gt;
+<pre class="src src-xml"><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">country</span> <span class="org-nxml-attribute-local-name">name</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">country-name</span><span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-tag-delimiter">&gt;</span>
+  <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">big</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">city-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">big</span><span class="org-nxml-tag-delimiter">&gt;</span>
+  <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">big</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">city-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">big</span><span class="org-nxml-tag-delimiter">&gt;</span>
+<span class="org-nxml-text">  ...</span>
+<span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">country</span><span class="org-nxml-tag-delimiter">&gt;</span>
 </pre>
 </div>
 
@@ -2372,10 +2372,10 @@ format:<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">LangPair</span> <span style="color: #BA36A5;">language</span>=<span style="color: #008000;">"</span><span style="color: #008000;">lang-name</span><span style="color: #008000;">"</span>&gt;
-  &lt;<span style="color: #000088; background-color: #DEDEDE;">MostPopular</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">MostPopular</span>&gt;
-  &lt;<span style="color: #000088; background-color: #DEDEDE;">LeastPopular</span>&gt;country-name&lt;/<span style="color: #000088; background-color: #DEDEDE;">LeastPopular</span>&gt;
-&lt;/<span style="color: #000088; background-color: #DEDEDE;">LangPair</span>&gt;
+<pre class="src src-xml"><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">LangPair</span> <span class="org-nxml-attribute-local-name">language</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">lang-name</span><span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-tag-delimiter">&gt;</span>
+  <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">MostPopular</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">country-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">MostPopular</span><span class="org-nxml-tag-delimiter">&gt;</span>
+  <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">LeastPopular</span><span class="org-nxml-tag-delimiter">&gt;</span><span class="org-nxml-text">country-name</span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">LeastPopular</span><span class="org-nxml-tag-delimiter">&gt;</span>
+<span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">LangPair</span><span class="org-nxml-tag-delimiter">&gt;</span>
 </pre>
 </div>
 
@@ -2436,15 +2436,15 @@ element.  For example, your result might look like:<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-xml">&lt;<span style="color: #000088; background-color: #DEDEDE;">languages</span>&gt;
-  ...
-  &lt;<span style="color: #000088; background-color: #DEDEDE;">language</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">Arabic</span><span style="color: #008000;">"</span>&gt;
-    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">Iran</span><span style="color: #008000;">"</span> <span style="color: #BA36A5;">speakers</span>=<span style="color: #008000;">"</span><span style="color: #008000;">660942</span><span style="color: #008000;">"</span>/&gt;
-    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">Saudi Arabia</span><span style="color: #008000;">"</span> <span style="color: #BA36A5;">speakers</span>=<span style="color: #008000;">"</span><span style="color: #008000;">19409058</span><span style="color: #008000;">"</span>/&gt;
-    &lt;<span style="color: #000088; background-color: #DEDEDE;">country</span> <span style="color: #BA36A5;">name</span>=<span style="color: #008000;">"</span><span style="color: #008000;">Yemen</span><span style="color: #008000;">"</span> <span style="color: #BA36A5;">speakers</span>=<span style="color: #008000;">"</span><span style="color: #008000;">13483178</span><span style="color: #008000;">"</span>/&gt;
-  &lt;/<span style="color: #000088; background-color: #DEDEDE;">language</span>&gt;
-  ...
-&lt;/<span style="color: #000088; background-color: #DEDEDE;">languages</span>&gt;
+<pre class="src src-xml"><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">languages</span><span class="org-nxml-tag-delimiter">&gt;</span>
+<span class="org-nxml-text">  ...</span>
+<span class="org-nxml-text">  </span><span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">language</span> <span class="org-nxml-attribute-local-name">name</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">Arabic</span><span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-tag-delimiter">&gt;</span>
+    <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">country</span> <span class="org-nxml-attribute-local-name">name</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">Iran</span><span class="org-nxml-attribute-value-delimiter">"</span> <span class="org-nxml-attribute-local-name">speakers</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">660942</span><span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-tag-delimiter">&gt;</span>
+    <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">country</span> <span class="org-nxml-attribute-local-name">name</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">Saudi Arabia</span><span class="org-nxml-attribute-value-delimiter">"</span> <span class="org-nxml-attribute-local-name">speakers</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">19409058</span><span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-tag-delimiter">&gt;</span>
+    <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-element-local-name">country</span> <span class="org-nxml-attribute-local-name">name</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">Yemen</span><span class="org-nxml-attribute-value-delimiter">"</span> <span class="org-nxml-attribute-local-name">speakers</span>=<span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-attribute-value">13483178</span><span class="org-nxml-attribute-value-delimiter">"</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-tag-delimiter">&gt;</span>
+  <span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">language</span><span class="org-nxml-tag-delimiter">&gt;</span>
+<span class="org-nxml-text">  ...</span>
+<span class="org-nxml-tag-delimiter">&lt;</span><span class="org-nxml-tag-slash">/</span><span class="org-nxml-element-local-name">languages</span><span class="org-nxml-tag-delimiter">&gt;</span>
 </pre>
 </div>
 
@@ -2469,15 +2469,15 @@ element.  For example, your result might look like:<br />
 </div>
 
 
-<div id="outline-container-org4c81f14" class="outline-2">
-<h2 id="org4c81f14"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/">XSLT</a> mini-course</h2>
+<div id="outline-container-orgb503fd4" class="outline-2">
+<h2 id="orgb503fd4"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/">XSLT</a> mini-course</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-orged30b66" class="outline-3">
-<h3 id="orged30b66"><span class="section-number-3">3.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-org9fc0fb2" class="outline-3">
+<h3 id="org9fc0fb2"><span class="section-number-3">3.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 XSL = Extensible Stylesheet Language<br />
@@ -2507,12 +2507,12 @@ Implicit template priority scheme<br />
 </div>
 </div>
 
-<div id="outline-container-org5da78b8" class="outline-3">
-<h3 id="org5da78b8"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org80181c1" class="outline-3">
+<h3 id="org80181c1"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-3-2">
 </div>
-<div id="outline-container-orgebb9b31" class="outline-4">
-<h4 id="orgebb9b31"><span class="section-number-4">3.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XSLT</h4>
+<div id="outline-container-orgfd16b0b" class="outline-4">
+<h4 id="orgfd16b0b"><span class="section-number-4">3.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XSLT</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 Return a list of department titles.<br />
@@ -2566,8 +2566,8 @@ structure.<br />
 </div>
 </div>
 
-<div id="outline-container-org4f96ecf" class="outline-4">
-<h4 id="org4f96ecf"><span class="section-number-4">3.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</h4>
+<div id="outline-container-org164355f" class="outline-4">
+<h4 id="org164355f"><span class="section-number-4">3.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 Return all courses with enrollment greater than 500.  Retain the<br />
@@ -2667,8 +2667,8 @@ quot;.)<br />
 </div>
 </div>
 
-<div id="outline-container-org5efa3d0" class="outline-4">
-<h4 id="org5efa3d0"><span class="section-number-4">3.2.3</span> <span class="done DONE">DONE</span> World-Countries XSLT</h4>
+<div id="outline-container-orgbcaf854" class="outline-4">
+<h4 id="orgbcaf854"><span class="section-number-4">3.2.3</span> <span class="done DONE">DONE</span> World-Countries XSLT</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 Return all countries with population between 9 and 10 million.  Retain<br />
@@ -2748,8 +2748,8 @@ and "cities" respectively).<br />
 </div>
 </div>
 
-<div id="outline-container-orgda9ae7a" class="outline-4">
-<h4 id="orgda9ae7a"><span class="section-number-4">3.2.4</span> <span class="done DONE">DONE</span> World-Countries XSLT Extras</h4>
+<div id="outline-container-org6a55e23" class="outline-4">
+<h4 id="org6a55e23"><span class="section-number-4">3.2.4</span> <span class="done DONE">DONE</span> World-Countries XSLT Extras</h4>
 <div class="outline-text-4" id="text-3-2-4">
 <p>
 Find all country names containing the string "stan"; return each one<br />
@@ -2793,19 +2793,19 @@ data should be the same.<br />
 </div>
 
 
-<div id="outline-container-orgf987fcd" class="outline-2">
-<h2 id="orgf987fcd"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/">Relational Design Theory</a> mini-course</h2>
+<div id="outline-container-org0a71a95" class="outline-2">
+<h2 id="org0a71a95"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/">Relational Design Theory</a> mini-course</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-orgee6c373" class="outline-3">
-<h3 id="orgee6c373"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-orgab163aa" class="outline-3">
+<h3 id="orgab163aa"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-org4ebe094" class="outline-4">
-<h4 id="org4ebe094"><span class="section-number-4">4.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
+<div id="outline-container-org70138fe" class="outline-4">
+<h4 id="org70138fe"><span class="section-number-4">4.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
 Design "anomalies"<br />
@@ -2896,8 +2896,8 @@ Decompose: <span class="underline">Apply(SSN, cName) HighSchool(SSN, HS)</span><
 </div>
 </div>
 
-<div id="outline-container-org270a363" class="outline-4">
-<h4 id="org270a363"><span class="section-number-4">4.1.2</span> <span class="done DONE">DONE</span> Functional Dependencies</h4>
+<div id="outline-container-org630a211" class="outline-4">
+<h4 id="org630a211"><span class="section-number-4">4.1.2</span> <span class="done DONE">DONE</span> Functional Dependencies</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 Functional dependencies =&gt; Boyce-Codd Normal Form<br />
@@ -3100,8 +3100,8 @@ hold on the relation follow from the dependencies in this set<br />
 </div>
 </div>
 
-<div id="outline-container-org9dda68d" class="outline-4">
-<h4 id="org9dda68d"><span class="section-number-4">4.1.3</span> <span class="done DONE">DONE</span> Boyce-Codd Normal Form</h4>
+<div id="outline-container-org5121215" class="outline-4">
+<h4 id="org5121215"><span class="section-number-4">4.1.3</span> <span class="done DONE">DONE</span> Boyce-Codd Normal Form</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <p>
 Decomposition of a relational schema<br />
@@ -3174,8 +3174,8 @@ We can extend A -&gt; BA+<br />
 </div>
 </div>
 
-<div id="outline-container-orgcf58b9a" class="outline-4">
-<h4 id="orgcf58b9a"><span class="section-number-4">4.1.4</span> <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</h4>
+<div id="outline-container-org01adf62" class="outline-4">
+<h4 id="org01adf62"><span class="section-number-4">4.1.4</span> <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</h4>
 <div class="outline-text-4" id="text-4-1-4">
 <p>
 Fourth Normal Form subsets Boyce-Codd Normal Form<br />
@@ -3238,13 +3238,13 @@ Relation R with MVDs is in 4NF if:<br />
 </div>
 </div>
 
-<div id="outline-container-org3cf64ba" class="outline-4">
-<h4 id="org3cf64ba"><span class="section-number-4">4.1.5</span> <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</h4>
+<div id="outline-container-orgf2a34a8" class="outline-4">
+<h4 id="orgf2a34a8"><span class="section-number-4">4.1.5</span> <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</h4>
 </div>
 </div>
 
-<div id="outline-container-orgc127fb9" class="outline-3">
-<h3 id="orgc127fb9"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-orga790cb4" class="outline-3">
+<h3 id="orga790cb4"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 R(A,B)<br />
@@ -3271,19 +3271,19 @@ R(A,D)<br />
 </div>
 
 
-<div id="outline-container-org0d89d18" class="outline-2">
-<h2 id="org0d89d18"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/">Unified Modeling Language</a> mini-course</h2>
+<div id="outline-container-org8ae7b01" class="outline-2">
+<h2 id="org8ae7b01"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/">Unified Modeling Language</a> mini-course</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-org151d532" class="outline-3">
-<h3 id="org151d532"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> Lecture Videos</h3>
+<div id="outline-container-org3345586" class="outline-3">
+<h3 id="org3345586"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> Lecture Videos</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-org4b6b5a4" class="outline-4">
-<h4 id="org4b6b5a4"><span class="section-number-4">5.1.1</span> <span class="done DONE">DONE</span> UML Data Modeling</h4>
+<div id="outline-container-org8d9746c" class="outline-4">
+<h4 id="org8d9746c"><span class="section-number-4">5.1.1</span> <span class="done DONE">DONE</span> UML Data Modeling</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 Entity-Relationship Model (E/R)<br />
@@ -3590,8 +3590,8 @@ of them are.<br />
 </div>
 </div>
 
-<div id="outline-container-orgf69adf5" class="outline-4">
-<h4 id="orgf69adf5"><span class="section-number-4">5.1.2</span> <span class="done DONE">DONE</span> UML to Relations</h4>
+<div id="outline-container-orge0df60b" class="outline-4">
+<h4 id="orge0df60b"><span class="section-number-4">5.1.2</span> <span class="done DONE">DONE</span> UML to Relations</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
 High-Level Database Design Model<br />
@@ -3635,8 +3635,8 @@ Keys for association relations depends on multiplicity<br />
 </div>
 
 <p>
-C1(<span class="underline">K1</span>, O1)<br />
-C2(<span class="underline">K2</span>, O2)<br />
+C1(_K1_, O1)<br />
+C2(_K2_, O2)<br />
 </p>
 
 <p>
@@ -3659,19 +3659,19 @@ A(K1, <span class="underline">K2</span>)<br />
 </div>
 
 <p>
-Applied(<span class="underline">sID</span>, cName)<br />
+Applied(_sID_, cName)<br />
 </p>
 
 <p>
-C1(<span class="underline">K1</span>, O1)<br />
-C2(<span class="underline">K2</span>, O2)  &lt;&#x2013; C2(<span class="underline">K2</span>, O2, K1)<br />
+C1(_K1_, O1)<br />
+C2(_K2_, O2)  &lt;&#x2013; C2(_K2_, O2, K1)<br />
 <del>A(K1, <span class="underline">K2</span>)</del><br />
 </p>
 
 <p>
-Student(<span class="underline">sID</span>, sName, GPA)  &lt;&#x2013; Student(<span class="underline">sID</span>, sName, GPA, cName)<br />
-College(<span class="underline">cName</span>, state)<br />
-<del>Applied(<span class="underline">sID</span>, cName)</del><br />
+Student(_sID_, sName, GPA)  &lt;&#x2013; Student(_sID_, sName, GPA, cName)<br />
+College(_cName_, state)<br />
+<del>Applied(_sID_, cName)</del><br />
 </p>
 
 <p>
@@ -3679,9 +3679,9 @@ Association Classes<br />
 </p>
 
 <p>
-Student(<span class="underline">sID</span>, sName, GPA)<br />
-College(<span class="underline">cName</span>, state)<br />
-Applied(<span class="underline">sID</span>, cName, date, decision)<br />
+Student(_sID_, sName, GPA)<br />
+College(_cName_, state)<br />
+Applied(_sID_, cName, date, decision)<br />
 </p>
 
 <p>
@@ -3703,8 +3703,8 @@ Self-Associations<br />
 
 
 <p>
-Student(<span class="underline">sID</span>, sName, GPA)<br />
-Sibling(<span class="underline">sID1, sID2</span>)<br />
+Student(_sID_, sName, GPA)<br />
+Sibling(_sID1, sID2_)<br />
 </p>
 
 <div class="org-src-container">
@@ -3720,12 +3720,12 @@ Sibling(<span class="underline">sID1, sID2</span>)<br />
 </div>
 
 <p>
-College(<span class="underline">cName</span>, state, enr)<br />
+College(_cName_, state, enr)<br />
 Branch(home, <span class="underline">satellite</span>)<br />
 </p>
 
 <p>
-College(<span class="underline">cName</span>, state, enr, home) ???<br />
+College(_cName_, state, enr, home) ???<br />
 </p>
 
 
@@ -3761,9 +3761,9 @@ subclasses are not regular classes.<br />
 </div>
 
 <ol class="org-ol">
-<li>S(<span class="underline">K</span>, A), S1(<span class="underline">K</span>, B), S2(<span class="underline">K</span>, C)<br /></li>
-<li>S(<span class="underline">K</span>, A), S1(<span class="underline">K</span>, A, B), S2(<span class="underline">K</span>, A, C)<br /></li>
-<li>S(<span class="underline">K</span>, A, B, C)<br /></li>
+<li>S(_K_, A), S1(_K_, B), S2(_K_, C)<br /></li>
+<li>S(_K_, A), S1(_K_, A, B), S2(_K_, A, C)<br /></li>
+<li>S(_K_, A, B, C)<br /></li>
 </ol>
 
 <p>
@@ -3771,7 +3771,7 @@ Heavily overlapping =&gt; design 3<br />
 </p>
 
 <p>
-Disjoint, Complete =&gt; design 2 with S(<span class="underline">K</span>, A) discarded<br />
+Disjoint, Complete =&gt; design 2 with S(_K_, A) discarded<br />
 </p>
 
 <div class="org-src-container">
@@ -3802,12 +3802,12 @@ Disjoint, Complete =&gt; design 2 with S(<span class="underline">K</span>, A) di
 </div>
 
 <p>
-Student(<span class="underline">sID</span>, sName)<br />
-ForeignS(<span class="underline">sID</span>, Country)<br />
-DomesticS(<span class="underline">sID</span>, State, <span class="underline">SSN</span>)<br />
+Student(_sID_, sName)<br />
+ForeignS(_sID_, Country)<br />
+DomesticS(_sID_, State, <span class="underline">SSN</span>)<br />
 <del>APStudent(sID)</del> &lt;&#x2013; eliminated, implicated in Took<br />
-APCourse(<span class="underline">Course#</span>, title, units)<br />
-Took(<span class="underline">sID, Course#</span>, year, grade)<br />
+APCourse(_Course#_, title, units)<br />
+Took(_sID, Course#_, year, grade)<br />
 </p>
 
 <p>
@@ -3832,49 +3832,197 @@ Composition &amp; Aggregation<br />
 </div>
 
 <p class="pre">
-College(<span class="underline">cName</span>, state)<br />
+College(_cName_, state)<br />
 Department(dName, building, <span class="underline">cName</span>)<br />
-Apartment(<span class="underline">addr</span>, #units, cName)<br />
-                          ↑<br />
-                       nullable<br />
+Apartment(_addr_, #units, cName)<br />
+                            ↑<br />
+                          nullable<br />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5e0df64" class="outline-3">
-<h3 id="org5e0df64"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org447a691" class="outline-3">
+<h3 id="org447a691"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org448a547" class="outline-2">
-<h2 id="org448a547"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> <a href="https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/">Indexes and Transactions</a> mini-course</h2>
+<div id="outline-container-orgebf87db" class="outline-2">
+<h2 id="orgebf87db"><span class="section-number-2">6</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> <a href="https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/">Indexes and Transactions</a> mini-course</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgacc48ca" class="outline-3">
-<h3 id="orgacc48ca"><span class="section-number-3">6.1</span> <span class="todo TODO">TODO</span> Lecture Videos</h3>
+</div><div id="outline-container-org4e3b033" class="outline-3">
+<h3 id="org4e3b033"><span class="section-number-3">6.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Lecture Videos</h3>
 <div class="outline-text-3" id="text-6-1">
-</div><div id="outline-container-orgd056b5a" class="outline-4">
-<h4 id="orgd056b5a"><span class="section-number-4">6.1.1</span> <span class="todo TODO">TODO</span> Indexes</h4>
+</div><div id="outline-container-orgab5b8f0" class="outline-4">
+<h4 id="orgab5b8f0"><span class="section-number-4">6.1.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Indexes</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<p>
+Indexes<br />
+</p>
+<ul class="org-ul">
+<li>Primary mechanism to get improved performance<br /></li>
+<li>Persistent data structure, stored in database<br /></li>
+<li>Many interesting implementation issues<br /></li>
+</ul>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">&#xa0;</th>
+<th scope="col" class="org-left">A</th>
+<th scope="col" class="org-right">B</th>
+<th scope="col" class="org-left">C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">cat</td>
+<td class="org-right">2</td>
+<td class="org-left">&#x2026;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">dog</td>
+<td class="org-right">5</td>
+<td class="org-left">&#x2026;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">cow</td>
+<td class="org-right">1</td>
+<td class="org-left">&#x2026;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">dog</td>
+<td class="org-right">9</td>
+<td class="org-left">&#x2026;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">cat</td>
+<td class="org-right">2</td>
+<td class="org-left">&#x2026;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">cat</td>
+<td class="org-right">8</td>
+<td class="org-left">&#x2026;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">cow</td>
+<td class="org-right">6</td>
+<td class="org-left">&#x2026;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+<td class="org-left">&#x2026;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Index on T.A<br />
+</p>
+
+<p>
+T.A = 'cow'<br />
+T.A = 'cat'<br />
+</p>
+
+<p>
+Index on T.B<br />
+</p>
+
+<p>
+T.B = 2<br />
+T.B &lt; 6<br />
+4 &lt; T.B &lt;= 8<br />
+</p>
+
+<p>
+Index on T.(A, B)<br />
+</p>
+
+<p>
+T.A = 'cat' and T.B &gt; 5<br />
+T.A &lt; 'd' and T.B = 1<br />
+</p>
+
+<p>
+Utility<br />
+</p>
+<ul class="org-ul">
+<li>Index = difference between full table scans and immediate location<br />
+of tuples<br />
+<ul class="org-ul">
+<li>Orders of magnitude performance difference<br /></li>
+</ul></li>
+
+<li>Underlying data structures<br />
+<ul class="org-ul">
+<li>Balanced trees (B trees, B+ trees)<br />
+<ul class="org-ul">
+<li></li>
+</ul></li>
+<li>Hash tables<br /></li>
+</ul></li>
+</ul>
 </div>
-<div id="outline-container-org9649ebe" class="outline-4">
-<h4 id="org9649ebe"><span class="section-number-4">6.1.2</span> <span class="todo TODO">TODO</span> Introduction to Transactions</h4>
 </div>
-<div id="outline-container-orgd0f334e" class="outline-4">
-<h4 id="orgd0f334e"><span class="section-number-4">6.1.3</span> <span class="todo TODO">TODO</span> Transaction Properties</h4>
+
+
+
+<div id="outline-container-orgdb28571" class="outline-4">
+<h4 id="orgdb28571"><span class="section-number-4">6.1.2</span> <span class="todo TODO">TODO</span> Introduction to Transactions</h4>
 </div>
-<div id="outline-container-orgd190bfb" class="outline-4">
-<h4 id="orgd190bfb"><span class="section-number-4">6.1.4</span> <span class="todo TODO">TODO</span> Isolation Levels</h4>
+<div id="outline-container-org6805c28" class="outline-4">
+<h4 id="org6805c28"><span class="section-number-4">6.1.3</span> <span class="todo TODO">TODO</span> Transaction Properties</h4>
+</div>
+<div id="outline-container-orge2d8cf8" class="outline-4">
+<h4 id="orge2d8cf8"><span class="section-number-4">6.1.4</span> <span class="todo TODO">TODO</span> Isolation Levels</h4>
 </div>
 </div>
-<div id="outline-container-org2c1694c" class="outline-3">
-<h3 id="org2c1694c"><span class="section-number-3">6.2</span> <span class="todo TODO">TODO</span> Exercises</h3>
+<div id="outline-container-orgde7b02e" class="outline-3">
+<h3 id="orgde7b02e"><span class="section-number-3">6.2</span> <span class="todo TODO">TODO</span> Exercises</h3>
 <div class="outline-text-3" id="text-6-2">
-</div><div id="outline-container-org07d3975" class="outline-4">
-<h4 id="org07d3975"><span class="section-number-4">6.2.1</span> <span class="todo TODO">TODO</span> Index Quiz</h4>
+</div><div id="outline-container-org2f86cdb" class="outline-4">
+<h4 id="org2f86cdb"><span class="section-number-4">6.2.1</span> <span class="todo TODO">TODO</span> Index Quiz</h4>
 </div>
-<div id="outline-container-org07e2b4e" class="outline-4">
-<h4 id="org07e2b4e"><span class="section-number-4">6.2.2</span> <span class="todo TODO">TODO</span> Transaction Quiz</h4>
+<div id="outline-container-org479ff9b" class="outline-4">
+<h4 id="org479ff9b"><span class="section-number-4">6.2.2</span> <span class="todo TODO">TODO</span> Transaction Quiz</h4>
 <div class="outline-text-4" id="text-6-2-2">
 </div>
 </div>
@@ -3883,8 +4031,8 @@ Apartment(<span class="underline">addr</span>, #units, cName)<br />
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2017-08-08 Tue 21:48</p>
-  <p class="normal">
+<p class="date">Created: 2017-08-11 Fri 11:15</p>
+  <p>
     <a href="https://validator.w3.org/check?uri=referer"><img
       src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
   </p>

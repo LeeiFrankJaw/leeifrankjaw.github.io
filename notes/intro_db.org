@@ -1,0 +1,2723 @@
+#+STARTUP: content
+#+TODO: TODO IN-PROGRESS DONE
+
+[[https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about][Database]] on Lagunita
+
+* DONE [[https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/][SQL]] mini-course
+  CLOSED: [2017-06-02 Fri 13:07] DEADLINE: <2017-06-03 Sat 20:00>
+  :VISIBILITY: FOLDED
+** DONE Lecture videos
+   CLOSED: [2017-05-31 Wed 09:53]
+*** DONE The Join family of Operators
+    CLOSED: [2017-05-30 Tue 16:19]
+*** DONE Aggregation
+     CLOSED: [2017-05-30 Tue 20:37]
+#+BEGIN_SRC sql
+select avg(GPA)
+from Student;
+
+select min(GPA)
+from Student, Apply
+where Student.sID = Apply.sID and major = 'CS';
+
+select avg(GPA)
+from Student
+where sID in (select sID from Apply where major = 'CS');
+
+select count(*)
+from College
+where enrollment > 15000;
+
+select count(*)
+from (select distinct sID from Apply where cName = 'Cornell');
+
+select count(distinct sID)
+from Apply
+where cName = 'Cornell';
+
+select (select avg(GPA) from Student
+        where sID in (select sID from Apply where major = 'CS')) -
+       (select avg(GPA) from Student
+        where sID not in (select sID from Apply where major = 'CS'));
+
+select cName, count(*)
+from Apply
+group by cName;
+
+select state, sum(enrollment)
+from College
+group by state;
+
+select cName, major, max(mx - mn)
+from (select cName, major, min(GPA) as mn, max(GPA) as mx
+      from Student join Apply using(sID)
+      group by cName, major) M;
+
+select sID, sName, count(distinct cName)
+from Student join Apply using(sID)
+group by sID;
+
+select sID, sName, count(cName)
+from Student join
+     (select distinct sID, cName
+      from Apply) using(sID)
+group by sID;
+
+select sID, sName, count(distinct cName)
+from Student left join Apply using(sID)
+group by sID;
+
+select sID, sName, count(distinct cName)
+from Student join Apply using(sID)
+group by sID
+union
+select sID, sName, 0
+from Student
+where sID not in (select sID from Apply);
+
+select cName
+from Apply
+group by cName
+having count(*) < 5;
+
+select cName
+from (select distinct cName from Apply) S
+where (select count(*) from Apply where cName = S.cName) < 5;
+
+
+select cName
+from Apply
+group by cName
+having count(distinct sID) < 5;
+
+select major
+from Student join Apply using(sID)
+group by major
+having max(GPA) < (select avg(GPA) from Student);
+#+END_SRC
+
+*** DONE NULL values
+     CLOSED: [2017-05-30 Tue 21:23]
+#+BEGIN_SRC sql
+select sID, sName, GPA
+from Student
+where GPA <= 3.5 or GPA > 3.5 or GPA is null;
+
+select sID, sName, GPA, sizeHS
+from Student
+where GPA <= 3.5 or sizeHS < 1600 or sizeHS >= 1600;
+
+select count(*)
+from Student
+where GPA is not null;
+#+END_SRC
+SQL uses three-valued logic ([[https://en.wikipedia.org/wiki/Three-valued_logic][3VL]]).
+
+*** DONE Data Modification Statements
+     CLOSED: [2017-05-30 Tue 23:36]
+#+BEGIN_SRC sql
+insert into College
+values ('Carnegie Mellon', 'PA', 11500);
+
+insert into Apply
+select sID, 'Carnegie Mellon', 'CS', null
+from Student
+where sID not in (select sID from Apply);
+
+insert into Apply
+select distinct sID, 'Carnegie Mellon', 'EE', 'Y'
+from Apply
+where cName <> 'Carnegie Mellon' and
+      major = 'EE' and
+      decision = 'N';
+
+delete from Student
+where sID in (select sID
+              from Apply
+              group by sID
+              having count(distinct major) > 2);
+
+delete from Apply
+where sID in (select sID
+              from Apply
+              group by sID
+              having count(distinct major) > 2);
+
+delete from College
+where cName not in (select cName
+                    from Apply
+                    where major = 'CS');
+
+update Apply
+set major = 'economics',
+    decision = 'Y'
+where cName = 'Carnegie Mellon' and
+      sID in (select sID from Student where GPA < 3.6);
+
+update Apply
+set major = 'CSE'
+where major = 'EE' and
+      sID in (select sID
+              from Student
+              where GPA = (select max(GPA)
+                           from Apply join Student using(sID)
+                           where major = 'EE'));
+
+select * from Apply
+where major = 'EE' and
+      sID in (select sID
+              from Student
+              where GPA >= all (select GPA
+                                from Student join Apply using(sID)
+                                where major = 'EE'));
+
+update Student
+set GPA = (select max(GPA) from Student),
+    sizeHS = (select min(sizeHS) from Student);
+
+update Apply
+set decision = 'Y';
+#+END_SRC
+
+** DONE Exercises
+   CLOSED: [2017-06-02 Fri 13:06]
+*** DONE Movie-Rating Query [[https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/][Core]]
+     CLOSED: [2017-05-31 Wed 14:45]
+Find the titles of all movies directed by Steven Spielberg.
+
+#+BEGIN_SRC sql
+select title
+from Movie
+where director = 'Steven Spielberg';
+#+END_SRC
+
+Find all years that have a movie that received a rating of 4 or 5, and
+sort them in increasing order.
+
+#+BEGIN_SRC sql
+select year
+from Movie
+where mID in (select mID
+              from Rating
+              where stars >= 4)
+order by year;
+#+END_SRC
+
+Find the titles of all movies that have no ratings.
+
+#+BEGIN_SRC sql
+select title
+from Movie
+where mID not in (select mID from Rating);
+#+END_SRC
+
+Some reviewers didn't provide a date with their rating.  Find the
+names of all reviewers who have ratings with a NULL value for the
+date.
+
+#+BEGIN_SRC sql
+select name
+from Reviewer
+where rID in (select rID from Rating
+              where ratingDate is null);
+#+END_SRC
+
+Write a query to return the ratings data in a more readable format:
+reviewer name, movie title, stars, and ratingDate.  Also, sort the
+data, first by reviewer name, then by movie title, and lastly by
+number of stars.
+
+#+BEGIN_SRC sql
+select name, title, stars, ratingDate
+from Reviewer join Rating using(rID) join Movie using(mID)
+order by name, title, stars;
+#+END_SRC
+
+For all cases where the same reviewer rated the same movie twice and
+gave it a higher rating the second time, return the reviewer's name
+and the title of the movie.
+
+#+BEGIN_SRC sql
+select name, title
+from (select rID, mID
+      from Rating R1 join Rating R2 using(rID, mID)
+      where R1.stars > R2.stars and
+            R1.ratingDate > R2.ratingDate and
+            (select count(*) from Rating
+             where rID = R1.rID and mID = R1.mID) = 2)
+      join Reviewer using(rID)
+      join Movie using(mID);
+#+END_SRC
+
+For each movie that has at least one rating, find the highest number
+of stars that movie received.  Return the movie title and number of
+stars.  Sort by movie title.
+
+#+BEGIN_SRC sql
+select title, max(stars)
+from Rating join Movie using(mID)
+group by mID
+order by title;
+#+END_SRC
+
+For each movie, return the title and the 'rating spread', that is, the
+difference between highest and lowest ratings given to that movie.
+Sort by rating spread from highest to lowest, then by movie title.
+
+#+BEGIN_SRC sql
+select title, spread
+from (select mID, max(stars) - min(stars) as spread
+      from Rating
+      group by mID)
+      join Movie using(mID)
+order by spread desc, title;
+#+END_SRC
+
+Find the difference between the average rating of movies released
+before 1980 and the average rating of movies released after 1980.
+(Make sure to calculate the average rating for each movie, then the
+average of those averages for movies before 1980 and movies after.
+Don't just calculate the overall average rating before and after
+1980.)
+
+#+BEGIN_SRC sql
+select
+(select avg(avgStars)
+ from (select mID, avg(stars) as avgStars
+       from Rating
+       group by mID) join Movie using(mID)
+ where year < 1980) -
+(select avg(avgStars)
+ from (select mID, avg(stars) as avgStars
+       from Rating
+       group by mID) join Movie using(mID)
+ where year >= 1980);
+#+END_SRC
+*** DONE Movie-Rating Query [[https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_extra/][Extras]]
+     CLOSED: [2017-06-01 Thu 11:38]
+Find the names of all reviewers who rated Gone with the Wind.
+
+#+BEGIN_SRC sql
+select name
+from Reviewer
+where rID in (select rID from Rating
+              where mID = (select mID from Movie
+                           where title = 'Gone with the Wind'));
+#+END_SRC
+
+For any rating where the reviewer is the same as the director of the
+movie, return the reviewer name, movie title, and number of stars.
+
+#+BEGIN_SRC sql
+select distinct name, title, stars
+from Rating join Reviewer using(rID) join Movie using(mID)
+where director = name;
+#+END_SRC
+
+Return all reviewer names and movie names together in a single list,
+alphabetized.  (Sorting by the first name of the reviewer and first
+word in the title is fine; no need for special processing on last
+names or removing "The".)
+
+#+BEGIN_SRC sql
+select name
+from (select name
+      from Reviewer
+      union
+      select title as name
+      from Movie)
+order by name;
+#+END_SRC
+
+Find the titles of all movies not reviewed by Chris Jackson.
+
+#+BEGIN_SRC sql
+select title
+from Movie
+where mID not in (select mID from Rating
+                  where rID in (select rID from Reviewer
+                                where name = 'Chris Jackson'));
+#+END_SRC
+
+For all pairs of reviewers such that both reviewers gave a rating to
+the same movie, return the names of both reviewers.  Eliminate
+duplicates, don't pair reviewers with themselves, and include each
+pair only once.  For each pair, return the names in the pair in
+alphabetical order.
+
+#+BEGIN_SRC sql
+select distinct R1.name, R2.name
+from (Rating join Reviewer using(rID)) R1 join
+     (Rating join Reviewer using(rID)) R2
+on R1.mID = R2.mID and
+   R1.rID <> R2.rID and
+   R1.name <= R2.name;
+#+END_SRC
+
+For each rating that is the lowest (fewest stars) currently in the
+database, return the reviewer name, movie title, and number of stars.
+
+#+BEGIN_SRC sql
+select name, title, stars
+from Rating R1 join Reviewer R2 join Movie M
+on R1.rID = R2.rID and
+   R1.mID = m.mID and
+   stars = (select min(stars) from Rating);
+#+END_SRC
+
+List movie titles and average ratings, from highest-rated to
+lowest-rated.  If two or more movies have the same average rating,
+list them in alphabetical order.
+
+#+BEGIN_SRC sql
+select title, avgStars
+from (select mID, avg(stars) as avgStars
+      from Rating
+      group by mID) join Movie using(mID)
+order by avgStars desc, title;
+#+END_SRC
+
+Find the names of all reviewers who have contributed three or more
+ratings.  (As an extra challenge, try writing the query without HAVING
+or without COUNT.)
+
+#+BEGIN_SRC sql
+select name
+from Reviewer
+where rID in (select rID
+              from Rating
+              group by rID
+              having count(*) >= 3);
+
+select name
+from (select rID
+      from Rating
+      group by rID
+      having count(*) >= 3)
+     join Reviewer using(rID);
+
+select name
+from Rating join Reviewer using(rID)
+group by rID
+having count(*) >= 3;
+
+select name
+from Reviewer
+where rID in (select rID
+              from Rating R
+              where rID in (select rID
+                            from Rating S
+                            where rID = R.rID and
+                                  (mID <> R.mID or
+                                   stars <> R.stars) and
+                                  rID in (select rID
+                                          from Rating
+                                          where rID = R.rID and
+                                                (mID <> R.mID or
+                                                 stars <> R.stars) and
+                                                (mID <> S.mID or
+                                                 stars <> S.stars))));
+#+END_SRC
+
+Some directors directed more than one movie.  For all such directors,
+return the titles of all movies directed by them, along with the
+director name.  Sort by director name, then movie title.  (As an extra
+challenge, try writing the query both with and without COUNT.)
+
+#+BEGIN_SRC sql
+select title, director
+from Movie
+where director in (select director
+                   from Movie
+                   group by director
+                   having count(*) > 1)
+order by director, title;
+
+select title, director
+from Movie R
+where director in (select director
+                   from Movie
+                   where director = R.director and
+                         mID <> R.mID)
+order by director, title;
+#+END_SRC
+
+Find the movie(s) with the highest average rating. Return the movie
+title(s) and average rating.  (Hint: This query is more difficult to
+write in SQLite than other systems; you might think of it as finding
+the highest average rating and then choosing the movie(s) with that
+average rating.)
+
+#+BEGIN_SRC sql
+select title, (select avg(stars) from Rating where mID = R.mID) as avgStars
+from Movie R
+where avgStars = (select max((select avg(stars) from Rating where mID = S.mID))
+                  from Movie S);
+#+END_SRC
+
+Find the movie(s) with the lowest average rating.  Return the movie
+title(s) and average rating.  (Hint: This query may be more difficult
+to write in SQLite than other systems; you might think of it as
+finding the lowest average rating and then choosing the movie(s) with
+that average rating.)
+
+#+BEGIN_SRC sql
+select title, (select avg(stars) from Rating where mID = R.mID) as avgStars
+from Movie R
+where avgStars = (select min((select avg(stars) from Rating where mID = S.mID))
+                  from Movie S);
+#+END_SRC
+
+For each director, return the director's name together with the
+title(s) of the movie(s) they directed that received the highest
+rating among all of their movies, and the value of that rating.
+Ignore movies whose director is NULL.
+
+#+BEGIN_SRC sql
+select distinct director, title, maxStars
+from (select director,
+             (select max(stars)
+              from Rating join Movie using(mID)
+              where director = D.director) as maxStars
+      from (select distinct director from Movie
+            where director is not null) D)
+      join Movie using(director) join Rating using(mID)
+where stars = maxStars;
+#+END_SRC
+
+*** DONE Social-Network Query [[https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_core/][Core]]
+     CLOSED: [2017-06-02 Fri 00:51]
+Find the names of all students who are friends with someone named
+Gabriel.
+
+#+BEGIN_SRC sql
+select name
+from Highschooler
+where ID in (select ID1
+             from Friend
+             where ID1 = ID and
+                   ID2 in (select ID
+                           from Highschooler
+                           where name = 'Gabriel'));
+#+END_SRC
+
+For every student who likes someone 2 or more grades younger than
+themselves, return that student's name and grade, and the name and
+grade of the student they like.
+
+#+BEGIN_SRC sql
+select (select name from Highschooler where ID = ID1),
+       (select grade from Highschooler where ID = ID1),
+       (select name from Highschooler where ID = ID2),
+       (select grade from Highschooler where ID = ID2)
+from Likes
+where (select grade from Highschooler where ID = ID1) -
+      (select grade from Highschooler where ID = ID2) >= 2;
+#+END_SRC
+
+For every pair of students who both like each other, return the name
+and grade of both students.  Include each pair only once, with the two
+names in alphabetical order.
+
+#+BEGIN_SRC sql
+select *
+from Likes
+where ID1 < ID2
+intersect
+select ID2, ID1
+from Likes;
+
+select (select name from Highschooler where ID = R.ID1),
+       (select grade from Highschooler where ID = R.ID1),
+       (select name from Highschooler where ID = R.ID2),
+       (select grade from Highschooler where ID = R.ID2)
+from Likes R
+where (select name from Highschooler where ID = R.ID1) <
+      (select name from Highschooler where ID = R.ID2) and
+      ID2 in (select ID1 from Likes
+              where ID1 = R.ID2 and ID2 = R.ID1);
+#+END_SRC
+
+Find all students who do not appear in the Likes table (as a student
+who likes or is liked) and return their names and grades.  Sort by
+grade, then by name within each grade.
+
+#+BEGIN_SRC sql
+select name, grade
+from Highschooler
+where ID not in (select ID1 from Likes) and
+      ID not in (select ID2 from Likes)
+order by grade, name;
+#+END_SRC
+
+For every situation where student A likes student B, but we have no
+information about whom B likes (that is, B does not appear as an ID1
+in the Likes table), return A and B's names and grades.
+
+#+BEGIN_SRC sql
+select (select name from Highschooler where ID = ID1),
+       (select grade from Highschooler where ID = ID1),
+       (select name from Highschooler where ID = ID2),
+       (select grade from Highschooler where ID = ID2)
+from Likes
+where ID2 not in (select ID1 from Likes);
+#+END_SRC
+
+Find names and grades of students who only have friends in the same
+grade. Return the result sorted by grade, then by name within each
+grade.
+
+#+BEGIN_SRC sql
+select name, grade
+from Highschooler
+where ID not in (select ID1
+                 from Friend
+                 where (select grade from Highschooler where ID = ID1) <>
+                       (select grade from Highschooler where ID = ID2))
+order by grade, name;
+#+END_SRC
+
+For each student A who likes a student B where the two are not
+friends, find if they have a friend C in common (who can introduce
+them!).  For all such trios, return the name and grade of A, B, and C.
+
+#+BEGIN_SRC sql
+select (select name from Highschooler where ID = T.ID1),
+       (select grade from Highschooler where ID = T.ID1),
+       (select name from Highschooler where ID = T.ID2),
+       (select grade from Highschooler where ID = T.ID2),
+       name, grade
+from (select * from Likes
+      except
+      select * from Friend) T
+     join Highschooler
+on ID in (select ID2 from Friend where ID1 = T.ID1) and
+   ID in (select ID2 from Friend where ID1 = T.ID2);
+#+END_SRC
+
+Find the difference between the number of students in the school and
+the number of different first names.
+
+#+BEGIN_SRC sql
+select count(ID) - count(distinct name)
+from Highschooler;
+#+END_SRC
+
+Find the name and grade of all students who are liked by more than one
+other student.
+
+#+BEGIN_SRC sql
+select name2, grade2
+from (select ID1, name1, grade1, ID2, name as name2, grade as grade2
+      from (select ID1, name as name1, grade as grade1, ID2
+            from Likes join Highschooler H on ID1 = H.ID)
+                 join Highschooler H on ID2 = H.ID)
+group by ID2
+having count(*) > 1;
+#+END_SRC
+
+*** DONE Social-Network Query [[https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_extra/][Extras]]
+     CLOSED: [2017-06-02 Fri 13:05]
+For every situation where student A likes student B, but student B
+likes a different student C, return the names and grades of A, B, and
+C.
+
+#+BEGIN_SRC sql
+select H1.name, H1.grade,
+       H2.name, H2.grade,
+       H3.name, H3.grade
+from Likes R join Likes S
+     on R.ID2 = S.ID1 and
+        S.ID2 <> R.ID1
+     join Highschooler H1
+     on R.ID1 = H1.ID
+     join Highschooler H2
+     on R.ID2 = H2.ID
+     join Highschooler H3
+     on S.ID2 = H3.ID;
+#+END_SRC
+
+Find those students for whom all of their friends are in different
+grades from themselves.  Return the students' names and grades.
+
+#+BEGIN_SRC sql
+select name, grade
+from Highschooler R
+where not exists
+      (select * from Friend
+       where ID1 = R.ID and
+       (select grade from Highschooler
+        where ID = ID2 and
+              grade = R.grade));
+#+END_SRC
+
+What is the average number of friends per student? (Your result should
+be just one number.)
+
+#+BEGIN_SRC sql
+select avg(num)
+from (select count(*) as num
+      from Friend
+      group by ID1);
+#+END_SRC
+
+The above code doesn't consider the situation where there exists a
+student who has no friend.  The following code handle that situation
+correctly.
+
+#+BEGIN_SRC sql
+select avg(num)
+from (select (select count(*) from Friend
+              where ID1 = ID) as num
+      from Highschooler);
+#+END_SRC
+
+Find the number of students who are either friends with Cassandra or
+are friends of friends of Cassandra.  Do not count Cassandra, even
+though technically she is a friend of a friend.
+
+#+BEGIN_SRC sql
+select count(*)
+from Highschooler
+where name <> 'Cassandra' and
+      exists (select * from Friend R
+              where R.ID1 = ID and
+                    (R.ID2 in (select ID from Highschooler
+                               where name = 'Cassandra') or
+                     R.ID2 in (select ID1 from Friend
+                               where ID1 = R.ID2 and
+                                     ID2 in (select ID from Highschooler
+                                             where name = 'Cassandra'))));
+
+select count(*)
+from (select ID1, ID2, ID3
+      from (select L1.ID1, L1.ID2, L2.ID2 as ID3
+            from Friend L1 join Friend L2
+            on L1.ID2 = L2.ID1 and
+               L2.ID2 <> L1.ID1))
+     join Highschooler R on ID1 = R.ID
+     join Highschooler S on ID2 = S.ID
+     join Highschooler T on ID3 = T.ID
+where S.name = 'Cassandra' or T.name = 'Cassandra';
+#+END_SRC
+
+Find the name and grade of the student(s) with the greatest number of
+friends.
+
+#+BEGIN_SRC sql
+select (select name from Highschooler where ID = ID1),
+       (select grade from Highschooler where ID = ID1)
+from Friend
+group by ID1
+having count(*) = (select max(num)
+                   from (select count(*) as num
+                         from Friend
+                         group by ID1));
+#+END_SRC
+
+*** DONE Movie-Rating [[https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_mod/][Modification]]
+     CLOSED: [2017-06-02 Fri 01:20]
+Add the reviewer Roger Ebert to your database, with an rID of 209.
+
+#+BEGIN_SRC sql
+insert into Reviewer values (209, 'Roger Ebert');
+#+END_SRC
+
+Insert 5-star ratings by James Cameron for all movies in the database.
+Leave the review date as NULL.
+
+#+BEGIN_SRC sql
+insert into Rating
+select (select rID from Reviewer where name = 'James Cameron'),
+       mID, 5, null
+from Movie;
+#+END_SRC
+
+For all movies that have an average rating of 4 stars or higher, add
+25 to the release year.  (Update the existing tuples; don't insert new
+tuples.)
+
+#+BEGIN_SRC sql
+update Movie
+set year = year + 25
+where (select avg(stars) from Rating where mID = Movie.mID) >= 4;
+#+END_SRC
+
+Remove all ratings where the movie's year is before 1970 or after
+2000, and the rating is fewer than 4 stars.
+
+#+BEGIN_SRC sql
+delete from Rating
+where stars < 4 and
+      ((select year from Movie where mID = Rating.mID) < 1970 or
+       (select year from Movie where mID = Rating.mID) > 2000)
+#+END_SRC
+
+*** DONE Social-Network [[https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_mod/][Modification]]
+     CLOSED: [2017-06-02 Fri 02:22]
+It's time for the seniors to graduate.  Remove all 12th graders from
+Highschooler.
+
+#+BEGIN_SRC sql
+delete from Highschooler
+where grade = 12;
+#+END_SRC
+
+If two students A and B are friends, and A likes B but not vice-versa,
+remove the Likes tuple.
+
+#+BEGIN_SRC sql
+delete from Likes
+where exists (select *
+              from (select * from Friend
+                    except
+                    select ID2, ID1 from Likes
+                    intersect
+                    select * from Likes)
+              where ID1 = Likes.ID1 and ID2 = Likes.ID2);
+#+END_SRC
+
+For all cases where A is friends with B, and B is friends with C, add
+a new friendship for the pair A and C.  Do not add duplicate
+friendships, friendships that already exist, or friendships with
+oneself.  (This one is a bit challenging; congratulations if you get
+it right.)
+
+#+BEGIN_SRC sql
+insert into Friend
+select distinct R.ID1, S.ID2
+from Friend R join Friend S
+on R.ID2 = S.ID1 and S.ID2 <> R.ID1 and
+   not exists (select * from Friend
+             where ID1 = R.ID1 and
+                   ID2 = S.ID2);
+#+END_SRC
+
+
+* DONE [[https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/][XPath and XQuery]] mini-course
+  CLOSED: [2017-06-26 Mon 07:48]
+  :VISIBILITY: FOLDED
+** DONE Lecture videos
+   CLOSED: <2017-06-24 Sat>
+*** DONE XPath Introduction
+    CLOSED: [2017-06-03 Sat 00:50]
+Not nearly as mature as Querying Relational
+XPath - path expressions + conditions
+XSLT - XPath + transformations, output
+XQuery - XPath + full-featured Q.L.
+
+Think of XML as a tree
+
+Basic Constructs
+/ root element and separator
+{element name} or *
+@{attribute name}
+// any descendants including self
+[condition] e.g. [@price < 50]
+[number] nth sub-element
+
+Built-in functions (lots of them)
+contains(s1, s2)
+name()
+
+Navigation "axes" (13 of them)
+parent::
+following-sibling::
+descendants:: (does not match self, cf. //)
+self::
+
+XPath queries operate on and return /sequence/ of elements
+Sometimes result can be expressed as XML, but not always
+
+*** DONE XPath Demo
+    CLOSED: [2017-06-05 Mon 00:16]
+Get the titles of books in the bookstore where the price is lower
+than 90 and Jeffrey Widom is an author.
+
+#+BEGIN_SRC xpath
+doc("BookstoreQ.xml")/Bookstore/Book[@Price < 90 and
+        Authors/Author[Last_name = "Widom" and
+        First_Name="Jeffrey"]]/Title
+#+END_SRC
+
+Get the titles of books where "Ullman" is an author and "Widom" is not
+an author.  *The below code doesn't work since there is no way using
+XPath language alone to achieve the query.*
+
+#+BEGIN_SRC xpath
+doc("BookstoreQ.xml")/Bookstore/Book[
+        Authors/Author/Last_Name = "Ullman" and
+        Authors/Author/Last_Name != "Widom"]/Title
+#+END_SRC
+
+Get all magazines where there's a book with the same title.  (An
+example of /self-join/ in XPath)
+
+#+BEGIN_SRC xpath
+doc("BookstoreQ.xml")//Magazine[
+        Title = doc("BookstoreQ.xml")//Book/Title]
+#+END_SRC
+
+The equal sign in the above code is implicitly existentially
+quantified.  There is a lot of implicit existential quantification in
+XPath and XQuery.
+
+All Elements whose parent is not "Bookstore" or "Book".
+
+#+BEGIN_SRC xpath
+doc("BookstoreQ.xml")/Bookstore//*[
+        name(parent::*) != "Bookstore"
+        and name(parent::*) != "Book"]
+#+END_SRC
+
+The above code use the navigation access =parent::=.
+
+All books and magazines with non-unique titles.
+
+#+BEGIN_SRC xpath
+doc("BookstoreQ.xml")/Bookstore/(Book|Magazine)[
+        Title = following-sibling::*/Title
+        or Title = preceding-sibling::*/Title]
+#+END_SRC
+
+Books where every author's first name includes "J".  This query will
+need universal quantification.
+
+#+BEGIN_SRC xpath
+doc("BookstoreQ.xml")//Book[
+        count(Authors/Author[contains(First_Name, "J")]) =
+        count(Authors/Author/First_Name)]
+#+END_SRC
+
+The built-in function =count= is used to simulate universal
+quantification.  This technique can solve previously undoable query.
+
+Titles of books where "Ullman" is an author and "Widom" is not
+an author.
+
+#+BEGIN_SRC xpath
+doc("BookstoreQ.xml")/Bookstore/Book[
+        Authors/Author/Last_Name = "Ullman"
+        and count(Authors/Author[Last_Name = "Widom"]) = 0]/Title
+#+END_SRC
+
+*** DONE XQuery Introduction
+    CLOSED: [2017-06-16 Fri 23:16]
+
+1. XQuery is a expression language (compositional)
+2. Each expression operates on and returns sequence of elements
+3. XPath is one type of expression
+
+XQuery: FLWOR expression
+
+#+BEGIN_SRC xquery
+For $var in expr
+Let $var := expr
+Where condition
+Order By expr
+Return expr
+#+END_SRC
+
+Mixing queries and XMl
+
+#+BEGIN_SRC xquery
+<Result> { ...query goes here... } </Result>
+#+END_SRC
+
+*** DONE XQuery Demo
+    CLOSED: [2017-06-24 Sat 16:03]
+
+#+BEGIN_SRC xquery
+for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where $b/@Price < 90
+  and $b/Authors/Author/Last_Name = "Ullman"
+return $b/Title
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where some $fn in $b/Authors/Author/First_Name
+        satisfies contains($b/Title, $fn)
+return <Book>
+         { $b/Title }
+         { $b/Authors/Author/First_Name }
+       </Book>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where some $fn in $b/Authors/Author/First_Name
+        satisfies contains($b/Title, $fn)
+return <Book>
+         { $b/Title }
+         { for $fn in $b/Authors/Authors/Author/First_Name
+           where contains($b/Title, $fn) return $fn }
+       </Book>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+<Average>
+  { let $plist := doc("BookstoreQ.xml")/Bookstore/Book/@Price
+    return avg($plist) }
+</Average>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+let $a := avg(doc("BookstoreQ.xml")/Bookstore/Book/@Price)
+for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where $b/@Price < $a
+return <Book>
+          { $b/Title }
+          <Price> { $b/data(@Price) } </Price>
+       </Book>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $b in doc("BookstoreQ.xml")/Bookstore/Book
+order by xs:int($b/@Price)
+return <Book>
+          { $b/Title }
+          <Price> { $b/data(@Price) } </Price>
+       </Book>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $n in distinct-values(doc("BookstoreQ.xml")//Last_Name)
+return <Last_Name> { $n } </Last_Name>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $b in doc("BookstoreQ.xml")/Bookstore/Book
+where every $fn in $b/Authors/Author/First_Name
+        satisfies contains($fn, "J")
+return $b
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $b1 in doc("BookstoreQ.xml")/Bookstore/Book
+for $b2 in doc("BookstoreQ.xml")/Bookstore/Book
+where $b1/Authors/Author/Last_Name = $b2/Authors/Author/Last_Name
+      and $b1/Title < $b2/Title
+return
+    <BookPair>
+        <Title1> { data($b1/Title) } </Title1>
+        <Title2> { data($b2/Title) } </Title2>
+    </BookPair>
+#+END_SRC
+
+Again, implicitly existential quantification.
+
+#+BEGIN_SRC xquery
+<InvertedBookstore>
+    { for $ln in distinct-values(doc("BookstoreQ.xml")//Author/Last_Name)
+      for $fn in distinct-values(doc("BookstoreQ.xml")//Author[
+                                      Last_name=$ln]/First_Name)
+      return
+          <Author>
+              <First_Name> { $fn } </First_name>
+              <Last_Name { $ln } </Last_Name>
+              { for $b in doc("BookstoreQ.xml")/Bookstore/Book[
+                               Authors/Atuhor/Last_Name=$ln]
+                return <Book>
+                          { $b/@ISBN } { $b/@Price } { $/@Edition }
+                          { $b/Title } { $b/Remark }
+                       </Book>
+          </Author> }
+</InvertedBookstore>
+#+END_SRC
+
+** DONE Exercises
+   CLOSED: [2017-06-26 Mon 07:48]
+*** DONE Course-Catalog XPath and XQuery Exercises
+    CLOSED: [2017-06-24 Sat 19:03]
+
+Return all Title elements (of both departments and courses).
+
+#+BEGIN_SRC xquery
+doc("courses.xml")//Title
+#+END_SRC
+
+Return last names of all department chairs.
+
+#+BEGIN_SRC xquery
+doc("courses.xml")//Department/Chair//Last_Name
+#+END_SRC
+
+Return titles of courses with enrollment greater than 500.
+
+#+BEGIN_SRC xquery
+doc("courses.xml")//Course[@Enrollment > 500]/Title
+#+END_SRC
+
+Return titles of departments that have some course that takes "CS106B"
+as a prerequisite.
+
+#+BEGIN_SRC xquery
+doc("courses.xml")//Department[Course/Prerequisites[Prereq = "CS106B"]]/Title
+#+END_SRC
+
+Return last names of all professors or lecturers who use a middle
+initial.  Don't worry about eliminating duplicates.
+
+#+BEGIN_SRC xquery
+doc("courses.xml")//(Lecturer|Professor)[Middle_Initial]/Last_Name
+#+END_SRC
+
+Return the count of courses that have a cross-listed course (i.e.,
+that have "Cross-listed" in their description).
+
+#+BEGIN_SRC xquery
+count(doc("courses.xml")//Course[contains(Description, "Cross-listed")])
+#+END_SRC
+
+Return the average enrollment of all courses in the CS department.
+
+#+BEGIN_SRC xquery
+avg(doc("courses.xml")//Department[@Code="CS"]/Course/@Enrollment)
+#+END_SRC
+
+Return last names of instructors teaching at least one course that has
+"system" in its description and enrollment greater than 100.
+
+#+BEGIN_SRC xquery
+doc("courses.xml")//Course[@Enrollment > 100 and contains(Description, "system")]/Instructors//Last_Name
+#+END_SRC
+
+Return the title of the course with the largest enrollment.
+
+#+BEGIN_SRC xquery
+for $c in doc("courses.xml")//Course
+where every $e in doc("courses.xml")//Course/@Enrollment
+        satisfies xs:int($e) <= xs:int($c/@Enrollment)
+return $c/Title
+#+END_SRC
+
+Only one of the function call =xs:int= shown above is necessary since
+the other operand will go through type promotion.
+
+*** DONE Course-Catalog XPath and XQuery Exercises Extras
+    CLOSED: [2017-06-25 Sun 19:19]
+
+Return the course number of the course that is cross-listed as "LING180".
+
+#+BEGIN_SRC xquery
+data(doc("courses.xml")//Course[contains(Description, "Cross-listed as LING180")]/@Number)
+#+END_SRC
+
+Return course numbers of courses that have the same title as some
+other course.  (Hint: You might want to use the "preceding" and
+"following" navigation axes for this query, which were not covered in
+the video or our demo script; they match any preceding or following
+node, not just siblings.)
+
+#+BEGIN_SRC xquery
+for $c1 in doc("courses.xml")//Course
+where some $c2 in doc("courses.xml")//Course
+      satisfies $c1 != $c2
+                and $c1/Title = $c2/Title
+return data($c1/@Number)
+#+END_SRC
+
+Return course numbers of courses taught by an instructor with first
+name "Daphne" or "Julie".
+
+#+BEGIN_SRC xquery
+data(doc("courses.xml")//Course[Instructors//First_Name = ("Daphne", "Julie")]/@Number)
+#+END_SRC
+
+Return the number (count) of courses that have no lecturers as
+instructors.
+
+#+BEGIN_SRC xquery
+count(doc("courses.xml")//Course[not(Instructors[Lecturer])])
+#+END_SRC
+
+Return titles of courses taught by the chair of a department.  For
+this question, you may assume that all professors have distinct last
+names.
+
+#+BEGIN_SRC xquery
+doc("courses.xml")//Course[
+    Instructors/Professor/Last_Name =
+        doc("courses.xml")//Department/Chair/Professor/Last_Name
+]/Title
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $c in doc("courses.xml")//Course
+where $c/Instructors/(Professor|Lecturer)/Last_Name
+          = doc("courses.xml")//Department/Chair/(Professor|Lecturer)/Last_Name
+return $c/Title
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $c in doc("courses.xml")//Course
+where some $t1 in $c/Instructors/(Professor|Lecturer)
+      satisfies some $t2 in
+                doc("courses.xml")//Department/Chair/(Professor|Lecturer)
+                satisfies deep-equal($t1/*, $t2/*)
+return $c/Title
+#+END_SRC
+
+Return titles of courses that have both a lecturer and a professor as
+instructors.  Return each title only once.
+
+#+BEGIN_SRC xquery
+doc("courses.xml")//Course[Instructors/Lecturer and Instructors/Professor]/Title
+#+END_SRC
+
+Return titles of courses taught by a professor with the last name "Ng"
+but not by a professor with the last name "Thrun".
+
+#+BEGIN_SRC xquery
+for $c in doc("courses.xml")//Course[Instructors/Professor/Last_Name = "Ng"]
+where every $ln in $c/Instructors/Professor/Last_Name
+      satisfies $ln != "Thrun"
+return $c/Title
+#+END_SRC
+
+#+BEGIN_SRC xquery
+doc("courses.xml")//Course[Instructors[
+        Professor/Last_Name = "Ng" and
+        count(Professor[Last_Name = "Thrun"]) = 0]]/Title
+#+END_SRC
+
+Return course numbers of courses that have a course taught by Eric
+Roberts as a prerequisite.
+
+#+BEGIN_SRC xquery
+for $c in doc("courses.xml")//Course
+where some $p in $c/Prerequisites/Prereq
+      satisfies $p = data(
+          doc("courses.xml")//Course[
+              Instructors/(Professor|Lecturer)[
+                  First_Name = "Eric" and
+                  Last_Name = "Roberts"]]/@Number)
+return data($c/@Number)
+#+END_SRC
+
+Create a summary of CS classes: List all CS department courses in
+order of enrollment.  For each course include only its Enrollment (as
+an attribute) and its Title (as a subelement).
+
+#+BEGIN_SRC xquery
+<Summary>
+    { for $c in doc("courses.xml")//Department[@Code="CS"]/Course
+      order by xs:int($c/@Enrollment)
+      return <Course>
+                 { $c/@Enrollment }
+                 { $c/Title }
+             </Course> }
+</Summary>
+#+END_SRC
+
+Return a "Professors" element that contains as subelements a listing
+of all professors in all departments, sorted by last name with each
+professor appearing once.  The "Professor" subelements should have the
+same structure as in the original data.  For this question, you may
+assume that all professors have distinct last names.  Watch out -- the
+presence/absence of middle initials may require some special handling.
+(This problem is quite challenging; congratulations if you get it
+right.)
+
+#+BEGIN_SRC xquery
+<Professors>
+    { for $ln in distinct-values(doc("courses.xml")//Professor/Last_Name)
+      order by $ln
+      return (doc("courses.xml")//Professor[Last_Name=$ln])[1] }
+</Professors>
+#+END_SRC
+
+Expanding on the previous question, create an inverted course listing:
+Return an "Inverted_Course_Catalog" element that contains as
+subelements professors together with the courses they teach, sorted by
+last name.  You may still assume that all professors have distinct last
+names.  The "Professor" subelements should have the same structure as
+in the original data, with an additional single "Courses" subelement
+under Professor, containing a further "Course" subelement for each
+course number taught by that professor.  Professors who do not teach
+any courses should have no Courses subelement at all.  (This problem is
+very challenging; extra congratulations if you get it right.)
+
+#+BEGIN_SRC xquery
+<Inverted_Course_Catalog>
+    { for $ln in distinct-values(doc("courses.xml")//Professor/Last_Name)
+      let $prof := (doc("courses.xml")//Professor[Last_Name=$ln])[1]
+      order by $ln
+      return <Professor>
+                 { $prof/First_Name } { $prof/Middle_Initial }
+                 { $prof/Last_Name }
+                 { let $cs :=
+                       <Courses>
+                           { for $c in doc("courses.xml")//Course[
+                                 Instructors/Professor/Last_Name = $ln]
+                             return <Course>
+                                        { data($c/@Number) }
+                                    </Course> }
+                       </Courses>
+                   return $cs[Course] }
+             </Professor>}
+</Inverted_Course_Catalog>
+#+END_SRC
+
+*** DONE World-Countries XPath and XQuery Exercises
+    CLOSED: [2017-06-25 Sun 10:58]
+
+Return the area of Mongolia.
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country[@name="Mongolia"]/@area)
+#+END_SRC
+
+Return the names of all cities that have the same name as the country
+in which they are located.
+
+#+BEGIN_SRC xquery
+for $c in doc("countries.xml")//country[@name = city/name]
+return $c/city[name = $c/@name]/name
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $c in doc("countries.xml")//country[@name = city/name]
+return <name> { data($c/@name) } </name>
+#+END_SRC
+
+Return the average population of Russian-speaking countries.
+
+#+BEGIN_SRC xquery
+avg(data(doc("countries.xml")//country[language = "Russian"]/@population))
+#+END_SRC
+
+Return the names of all countries that have at least three cities with
+population greater than 3 million.
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country[count(city[xs:int(population) > 3000000]) >= 3]/@name)
+#+END_SRC
+
+The function call =xs:int= in the above code is actually unnecessary
+since type promotion would occur due to right-hand operand.
+
+Create a list of French-speaking and German-speaking countries.  The
+result should take the form:
+
+#+BEGIN_SRC xml
+<result>
+  <French>
+    <country>country-name</country>
+    <country>country-name</country>
+    ...
+  </French>
+  <German>
+    <country>country-name</country>
+    <country>country-name</country>
+    ...
+  </German>
+</result>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+<result>
+  <French>
+    { for $cn in data(doc("countries.xml")//country[language = "French"]/@name)
+      return <country> { $cn } </country> }
+  </French>
+  <German>
+    { for $cn in data(doc("countries.xml")//country[language = "German"]/@name)
+      return <country> { $cn } </country> }
+  </German>
+</result>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+<result>
+  { let $langs := ("French", "German")
+    for $lang in $langs
+    return element {$lang}
+    { for $cn in data(doc("countries.xml")//country[language=$lang]/@name)
+          return <country> { $cn } </country> } }
+</result>
+#+END_SRC
+
+Return the countries with the highest and lowest population densities.
+Note that because the "/" operator has its own meaning in XPath and
+XQuery, the division operator is infix "div".  To compute population
+density use "(@population div @area)".  You can assume density values
+are unique.  The result should take the form:
+
+#+BEGIN_SRC xml
+<result>
+  <highest density="value">country-name</highest>
+  <lowest density="value">country-name</lowest>
+</result>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+<result>
+  { for $c1 in doc("countries.xml")//country
+    let $density := $c1/@population div $c1/@area
+    where every $c2 in doc("countries.xml")//country
+          satisfies $density >= $c2/@population div $c2/@area
+    return <highest density="{$density}"> { data($c1/@name) } </highest> }
+  { for $c1 in doc("countries.xml")//country
+    let $density := $c1/@population div $c1/@area
+    where every $c2 in doc("countries.xml")//country
+          satisfies $density <= $c2/@population div $c2/@area
+    return <lowest density="{$density}"> { data($c1/@name) } </lowest> }
+</result>
+#+END_SRC
+
+*** DONE World-Countries XPath and XQuery Exercises Extras
+    CLOSED: [2017-06-26 Mon 07:48]
+
+Return the names of all countries with population greater than 100
+million.
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country[@population > 100000000]/@name)
+#+END_SRC
+
+Return the names of all countries where over 50% of the population
+speaks German.  (Hint: Depending on your solution, you may want to use
+".", which refers to the "current element" within an XPath
+expression.)
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country[language[@percentage > 50.0] = "German"]/@name)
+#+END_SRC
+
+Return the names of all countries where a city in that country
+contains more than one-third of the country's population.
+
+#+BEGIN_SRC xquery
+for $c in doc("countries.xml")//country
+where some $cp in $c/city/population
+      satisfies $cp div $c/@population > 1 div 3
+return data($c/@name)
+#+END_SRC
+
+Return the population density of Qatar.  Note: Since the "/" operator
+has its own meaning in XPath and XQuery, the division operator is
+"div".  To compute population density use "(@population div @area)".
+
+#+BEGIN_SRC xquery
+let $c := doc("countries.xml")//country[@name="Qatar"]
+return $c/@population div $c/@area
+#+END_SRC
+
+Return the names of all countries whose population is less than one
+thousandth that of some city (in any country).
+
+#+BEGIN_SRC xquery
+let $countries := doc("countries.xml")//country
+for $c in $countries
+where some $city in $countries/city
+      satisfies $city/population * 0.001 > $c/@population
+return data($c/@name)
+#+END_SRC
+
+Return all city names that appear more than once, i.e., there is more
+than one city with that name in the data.  Return only one instance of
+each such city name.  (Hint: You might want to use the "preceding"
+and/or "following" navigation axes for this query, which were not
+covered in the video or our demo script; they match any preceding or
+following node, not just siblings.)
+
+#+BEGIN_SRC xquery
+let $cities := doc("countries.xml")//city
+for $city in distinct-values($cities/name)
+where count($cities[name = $city]) > 1
+return <name>{$city}</name>
+#+END_SRC
+
+Return the names of all countries containing a city such that some
+other country has a city of the same name.  (Hint: You might want to
+use the "preceding" and/or "following" navigation axes for this query,
+which were not covered in the video or our demo script; they match any
+preceding or following node, not just siblings.)
+
+#+BEGIN_SRC xquery
+let $countries := doc("countries.xml")//country
+for $c in $countries
+where some $c2 in $countries
+      satisfies not($c2 is $c)
+                and $c/city/name = $c2/city/name
+return data($c/@name)
+#+END_SRC
+
+Return the names of all countries whose name textually contains a
+language spoken in that country.  For instance, Uzbek is spoken in
+Uzbekistan, so return Uzbekistan.  (Hint: You may want to use ".",
+which refers to the "current element" within an XPath expression.)
+
+#+BEGIN_SRC xquery
+for $c in doc("countries.xml")//country
+where some $lang in $c/language
+      satisfies contains($c/@name, $lang)
+return data($c/@name)
+#+END_SRC
+
+Return the names of all countries in which people speak a language
+whose name textually contains the name of the country.  For instance,
+Japanese is spoken in Japan, so return Japan.  (Hint: You may want to
+use ".", which refers to the "current element" within an XPath
+expression.)
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country[language[contains(., ../@name)]]/@name)
+#+END_SRC
+
+Return all languages spoken in a country whose name textually contains
+the language name.  For instance, German is spoken in Germany, so
+return German.  (Hint: Depending on your solution, may want to use
+data(.), which returns the text value of the "current element" within
+an XPath expression.)
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country/language[contains(../@name, .)])
+#+END_SRC
+
+Return all languages whose name textually contains the name of a
+country in which the language is spoken.  For instance, Icelandic is
+spoken in Iceland, so return Icelandic.  (Hint: Depending on your
+solution, may want to use data(.), which returns the text value of the
+"current element" within an XPath expression.)
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country/language[contains(., ../@name)])
+#+END_SRC
+
+Return the number of countries where Russian is spoken.
+
+#+BEGIN_SRC xquery
+count(doc("countries.xml")//country[language = "Russian"])
+#+END_SRC
+
+Return the names of all countries for which the data does not include
+any languages or cities, but the country has more than 10 million
+people.
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country[not(language or city) and @population > 10000000]/@name)
+#+END_SRC
+
+Return the name of the country with the highest population.  (Hint: You
+may need to explicitly cast population numbers as integers with
+xs:int() to get the correct answer.)
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country[
+    @population = max(doc("countries.xml")//country/@population)
+]/@name)
+#+END_SRC)
+
+Return the name of the country that has the city with the highest
+population.  (Hint: You may need to explicitly cast population numbers
+as integers with xs:int() to get the correct answer.)
+
+#+BEGIN_SRC xquery
+data(doc("countries.xml")//country[
+    city/population = max(doc("countries.xml")//city/population)
+]/@name)
+#+END_SRC
+
+Return the average number of languages spoken in countries where
+Russian is spoken.
+
+#+BEGIN_SRC xquery
+avg(for $c in doc("countries.xml")//country[language = "Russian"]
+return count($c/language))
+#+END_SRC
+
+Return all country-language pairs where the language is spoken in the
+country and the name of the country textually contains the language
+name.  Return each pair as a country element with language attribute,
+e.g.,
+
+#+BEGIN_SRC xml
+<country language="French">French Guiana</country>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $c in doc("countries.xml")//country
+for $lang in $c/language
+where contains($c/@name, $lang)
+return <country language="{$lang}"> { data($c/@name) } </country>
+#+END_SRC
+
+Return all countries that have at least one city with population
+greater than 7 million.  For each one, return the country name along
+with the cities greater than 7 million, in the format:
+
+#+BEGIN_SRC xml
+<country name="country-name">
+  <big>city-name</big>
+  <big>city-name</big>
+  ...
+</country>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+for $country in doc("countries.xml")//country
+let $c := <country>
+              { $country/@name }
+              { for $city in $country/city
+                where $city/population > 7000000
+                return <big>{data($city/name)}</big> }
+          </country>
+return $c[big]
+#+END_SRC
+
+Return all countries where at least one language is listed, but the
+total percentage for all listed languages is less than 90%.  Return the
+country element with its name attribute and its language subelements,
+but no other attributes or subelements.
+
+#+BEGIN_SRC xquery
+for $country in doc("countries.xml")//country[language]
+where sum($country/language/@percentage) < 90
+return <country>
+           { $country/@name }
+           { $country/language }
+       </country>
+#+END_SRC
+
+Return all countries where at least one language is listed, and every
+listed language is spoken by less than 20% of the population.  Return
+the country element with its name attribute and its language
+subelements, but no other attributes or subelements.
+
+#+BEGIN_SRC xquery
+for $country in doc("countries.xml")//country[language]
+where every $lang in $country/language
+      satisfies $lang/@percentage < 20
+return <country>
+           { $country/@name }
+           { $country/language }
+       </country>
+#+END_SRC
+
+Find all situations where one country's most popular language is
+another country's least popular, and both countries list more than one
+language.  (Hint: You may need to explicitly cast percentages as
+floating-point numbers with xs:float() to get the correct answer.)
+Return the name of the language and the two countries, each in the
+format:
+
+#+BEGIN_SRC xml
+<LangPair language="lang-name">
+  <MostPopular>country-name</MostPopular>
+  <LeastPopular>country-name</LeastPopular>
+</LangPair>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+let $countries := doc("countries.xml")//country[count(language) > 1]
+for $c in $countries
+for $lang in $c/language
+where every $lang2 in $c/language
+      satisfies xs:float($lang/@percentage) >= $lang2/@percentage
+return (<LangPair language="{$lang}">
+            <MostPopular>{data($c/@name)}</MostPopular>
+            { for $c2 in $countries[language = $lang]
+              let $lang3 := $c2/language[. = $lang]
+              where every $lang2 in $c2/language
+                    satisfies xs:float($lang3/@percentage) <= $lang2/@percentage
+              return <LeastPopular> {data($c2/@name)}</LeastPopular> }
+        </LangPair>)[LeastPopular]
+#+END_SRC
+
+#+BEGIN_SRC xquery
+let $countries :=
+    for $c in doc("countries.xml")//country[count(language) > 1]
+    let $most_lang :=
+        for $lang in $c/language
+        where every $lang2 in $c/language
+              satisfies xs:float($lang/@percentage) >= $lang2/@percentage
+        return <MostPopular>{data($lang)}</MostPopular>
+    let $least_lang :=
+        for $lang in $c/language
+        where every $lang2 in $c/language
+              satisfies xs:float($lang/@percentage) <= $lang2/@percentage
+        return <LeastPopular>{data($lang)}</LeastPopular>
+    return <country>
+               {$c/@name}
+               {$most_lang}
+               {$least_lang}
+           </country>
+for $c1 in $countries
+for $c2 in $countries
+where $c1/MostPopular = $c2/LeastPopular
+return <LangPair language="{$c1/MostPopular}">
+           <MostPopular>{data($c1/@name)}</MostPopular>
+           <LeastPopular>{data($c2/@name)}</LeastPopular>
+       </LangPair>
+#+END_SRC
+
+For each language spoken in one or more countries, create a "language"
+element with a "name" attribute and one "country" subelement for each
+country in which the language is spoken.  The "country" subelements
+should have two attributes: the country "name", and "speakers"
+containing the number of speakers of that language (based on language
+percentage and the country's population).  Order the result by
+language name, and enclose the entire list in a single "languages"
+element.  For example, your result might look like:
+
+#+BEGIN_SRC xml
+<languages>
+  ...
+  <language name="Arabic">
+    <country name="Iran" speakers="660942"/>
+    <country name="Saudi Arabia" speakers="19409058"/>
+    <country name="Yemen" speakers="13483178"/>
+  </language>
+  ...
+</languages>
+#+END_SRC
+
+#+BEGIN_SRC xquery
+<languages>
+    { for $lang in distinct-values(doc("countries.xml")//language)
+      order by $lang
+      return <language name="{$lang}">
+                 { for $c in doc("countries.xml")//country[language = $lang]
+                   return <country name="{$c/@name}"
+                                   speakers="{xs:int(
+                                       $c/language[. = $lang]/@percentage
+                                           div 100 * $c/@population)}">
+                          </country> }
+             </language> }
+</languages>
+#+END_SRC
+
+
+* DONE [[https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/][XSLT]] mini-course
+  CLOSED: [2017-07-02 Sun 20:06]
+  :VISIBILITY: FOLDED
+** DONE Lecture videos
+   CLOSED: [2017-07-02 Sun 15:13]
+XSL = Extensible Stylesheet Language
+XSLT = XSL (with) transformations
+
+XSLT is more widely used than XSL.
+
+XSLT: Rule-Based Transformations
+
+Match template and replace
+Recursively match template
+Extract values
+Iteration (for-each)
+Conditionals (if)
+
+Strange default/whitespace behavior
+Implicit template priority scheme
+
+** DONE Exercises
+   CLOSED: [2017-07-02 Sun 20:06]
+*** DONE Course-Catalog XSLT
+    CLOSED: [2017-07-02 Sun 16:21]
+
+Return a list of department titles.
+
+Your solution should fill in the following stylesheet:
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match=...>
+        ... template body ...
+    </xsl:template>
+    ... more templates as needed ...
+</xsl:stylesheet>
+#+END_SRC
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="Department/Title">
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    <xsl:template match="text()"/>
+</xsl:stylesheet>
+#+END_SRC
+
+Return a list of department elements with no attributes and two
+subelements each: the department title and the entire Chair subelement
+structure.
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="Department">
+      <Department>
+        <xsl:copy-of select="Title"/>
+        <xsl:copy-of select="Chair"/>
+      </Department>
+    </xsl:template>
+    <xsl:template match="text()"/>
+</xsl:stylesheet>
+#+END_SRC
+
+*** DONE Course-Catalog XSLT Extras
+    CLOSED: [2017-07-02 Sun 20:06]
+
+Return all courses with enrollment greater than 500.  Retain the
+structure of Course elements from the original data.
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="Course[@Enrollment &gt; 500]">
+    <xsl:copy-of select="."/>
+  </xsl:template>
+  <xsl:template match="text()"/>
+</xsl:stylesheet>
+#+END_SRC
+
+Remove from the data all courses with enrollment greater than 60, or
+with no enrollment listed.  Otherwise the structure of the data should
+be the same.
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:strip-space elements="*"/>
+  <xsl:template match="*|@*|text()">
+    <xsl:copy>
+      <xsl:apply-templates select="*|@*|text()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="Course[not(@Enrollment) or @Enrollment &gt; 60]"/>
+</xsl:stylesheet>
+#+END_SRC
+
+Create a summarized version of the EE part of the course catalog.  For
+each course in EE, return a Course element, with its Number and Title
+as attributes, its Description as a subelement, and the last name of
+each instructor as an Instructor subelement.  Discard all information
+about department titles, chairs, enrollment, and prerequisites, as
+well as all courses in departments other than EE.  (Note: To specify
+quotes within an already-quoted XPath expression, use quot;.)
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="Department[@Code='EE']">
+    <xsl:for-each select="Course">
+      <Course Number="{@Number}"
+              Title="{Title}">
+        <xsl:copy-of select="Description"/>
+        <xsl:for-each select="Instructors//Last_Name">
+          <Instructor><xsl:value-of select="."/></Instructor>
+        </xsl:for-each>
+      </Course>
+    </xsl:for-each>
+  </xsl:template>
+  <xsl:template match="text()"/>
+</xsl:stylesheet>
+#+END_SRC
+
+Create an HTML table with one-pixel border that lists all CS
+department courses with enrollment greater than 200.  Each row should
+contain three cells: the course number in italics, course title in
+bold, and enrollment.  Sort the rows alphabetically by course title.
+No header is needed.  (Note: For formatting, just use "table
+border=1", and "<b>" and "<i>" tags for bold and italics respectively.
+To specify quotes within an already-quoted XPath expression, use
+quot;.)
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="Department[@Code='CS']">
+    <table border="1">
+      <xsl:for-each select="Course[@Enrollment &gt; 200]">
+        <xsl:sort select="Title"/>
+        <tr>
+          <td><i><xsl:value-of select="@Number"/></i></td>
+          <td><b><xsl:value-of select="Title"/></b></td>
+          <td><xsl:value-of select="@Enrollment"/></td>
+        </tr>
+      </xsl:for-each>
+    </table>
+  </xsl:template>
+  <xsl:template match="text()"/>
+</xsl:stylesheet>
+#+END_SRC
+
+*** DONE World-Countries XSLT
+    CLOSED: [2017-07-02 Sun 18:52]
+
+Return all countries with population between 9 and 10 million.  Retain
+the structure of country elements from the original data.
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="country[9000000 &lt;= @population and @population &lt;= 10000000]">
+    <xsl:copy-of select="."/>
+  </xsl:template>
+  <xsl:template match="text()"/>
+</xsl:stylesheet>
+#+END_SRC
+
+Create a table using HTML constructs that lists all countries that
+have more than 3 languages.  Each row should contain the country name
+in bold, population, area, and number of languages.  Sort the rows in
+descending order of number of languages.  No header is needed for the
+table, but use <table border="1"> to make it format nicely, should you
+choose to check your result in a browser.  (Hint: You may find the
+data-type and order attributes of <xsl:sort> to be useful.)
+
+#+BEGIN_SRC xlst
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="countries">
+    <html>
+      <table border="1">
+        <xsl:for-each select="country[count(language) &gt; 3]">
+          <xsl:sort select="count(language)"
+                    order="descending"/>
+          <tr>
+            <td><b><xsl:value-of select="@name"/></b></td>
+            <td><xsl:value-of select="@population"/></td>
+            <td><xsl:value-of select="@area"/></td>
+            <td><xsl:value-of select="count(language)"/></td>
+          </tr>
+        </xsl:for-each>
+      </table>
+    </html>
+  </xsl:template>
+  <xsl:template match="text()"/>
+</xsl:stylesheet>
+#+END_SRC
+
+Create an alternate version of the countries database: for each
+country, include its name and population as sublements, and the number
+of languages and number of cities as attributes (called "languages"
+and "cities" respectively).
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="*|@*|text()">
+    <xsl:copy>
+      <xsl:apply-templates select="*|@*|text()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="country">
+    <country languages="{count(language)}"
+             cities="{count(city)}">
+      <name><xsl:value-of select="@name"/></name>
+      <population><xsl:value-of select="@population"/></population>
+    </country>
+  </xsl:template>
+</xsl:stylesheet>
+#+END_SRC
+
+*** DONE World-Countries XSLT Extras
+    CLOSED: [2017-07-02 Sun 19:21]
+
+Find all country names containing the string "stan"; return each one
+within a "Stan" element.  (Note: To specify quotes within an
+already-quoted XPath expression, use quot;.)
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="country[contains(@name, 'stan')]">
+    <Stan><xsl:value-of select="@name"/></Stan>
+  </xsl:template>
+  <xsl:template match="text()"/>
+</xsl:stylesheet>
+#+END_SRC
+
+Remove from the data all countries with area greater than 40,000 and
+all countries with no cities listed.  Otherwise the structure of the
+data should be the same.
+
+#+BEGIN_SRC xslt
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:strip-space elements="*"/>
+  <xsl:template match="*|@*|text()">
+    <xsl:copy>
+      <xsl:apply-templates select="*|@*|text()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="country[@area &gt; 40000 or not(city)]"/>
+</xsl:stylesheet>
+#+END_SRC
+
+
+* DONE [[https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/][Relational Design Theory]] mini-course
+  CLOSED: [2017-07-24 Mon 02:23]
+  :VISIBILITY: FOLDED
+** DONE Lecture videos
+   CLOSED: [2017-07-24 Mon 02:23]
+*** DONE Overview
+    CLOSED: [2017-07-02 Sun 21:16]
+
+Design "anomalies"
+  Redundancy
+  Update anomaly
+  Deletion anomaly
+
+Design by decomposition
+  Start with "mega" relations containing everything
+  Decompose into smaller, better relations with same info
+  Can do decomposition automatically
+
+Automatic decomposition
+  "Mega" relations + /properties of the data/
+  System decomposes based on properties
+  Final set of relations satisfies /normal form/
+  - No anomalies, no lost information
+
+Properites and Normal Forms
+  Functional dependencies => Boyce-Codd Normal Form
+  + Multivalued dependencies => Fourth Normal Form
+
+4NF subsets BCNF
+
+Functional Dependencies and BCNF
+  Apply(SSN, sName, cName)
+    Redundancy; Update & Deletion Anomalies
+    Storing _SSN-sName_ pair once for each college
+
+  /Functional Dependency/ _SSN -> sName_
+    Same _SSN_ always has same _sName_
+    Should store each _SSN_'s _sName_ only once
+
+  /Boyce-Codd Normal Form/ If _A -> B_ then _A_ is a key
+
+  _SSN_ should be a key but not.
+
+  Decompose: _Student(SSN, sName) Apply(SSN, cName)_
+  Pull out SSN and sName into its own relation
+
+Multivalued Dependencies and 4NF
+  Apply(SSN, cName, HS)
+    Redundancy; Update & Deletion Anomalies
+    Multiplicative effect
+      C colleges, H high school
+      C * H tuples
+      Should be C + H
+    Not addressed by BCNF: No functional dependencies
+
+  /Multivalued Dependency/ _SSN ->> cName  SSN ->> HS_
+    Given _SSN_ has every combination of _cName_ with _HS_
+    Should store each _cName_ and each _HS_ for an _SSN_ once
+
+  /Fourth Normal Form/ If _A ->> B_ then _A_ is a key
+
+  Decompose: _Apply(SSN, cName) HighSchool(SSN, HS)_
+
+*** DONE Functional Dependencies
+    CLOSED: [2017-07-16 Sun 19:51]
+Functional dependencies => Boyce-Codd Normal Form
+Multivalued dependencies => Fourth Normal Form
+
+Functional dependencies are generally useful concepts
+  Data storage - compression
+  Reasoning about queries - optimization
+
+Functional dependencies generalizes keys.
+
+Student(SS, sName, address,
+        HScode, HSname, HScity, GPA, priority)
+
+Suppose priority is determined by GPA
+
+Two tuples with same GPA have same priority
+
+for t, u in student:
+    t.GPA = u.GPA => t.priorty = u.priority
+
+GPA -> priority
+
+for t, u in R:
+    t[A1, ..., An] = u[A1, ..., An] => t[B1, ..., Bn] = u[B1, ..., Bn]
+
+A1, ..., An -> B1, ..., Bn
+
+\bar{A} -> \bar{B}
+
+SSN -> sName
+SSN -> address (assume students don't work)
+HScode -> HSname, HScity
+HSname, HScity -> HScode (assume no schools with same name in the same city)
+
+SSN -> GPA
+GPA -> priority
+SSN -> priority
+
+transitivity
+
+Apply(SSN, cName, state, date, major)
+
+cName -> date
+SSN, cName -> major
+
+SSN -> state
+
+Functional Dependencies and Keys
+
+R(\bar{A}, \bar{B})
+
+Trivial Functional Dependency
+
+\bar{A} -> \bar{B},  \bar{B} subset \bar{A}
+
+Nontrivial FD
+\bar{A} -> \bar{B},  \bar{B} not subset \bar{A}
+
+Completely nontrivial FD (most interested)
+A -> B, A intersect B = empty set
+
+Splitting rule
+
+\bar{A} -> B1, B2, ..., Bm
+=> \bar{A} -> B1, \bar{A} -> B2, ...
+
+Combining rule
+
+\bar{A} -> B1
+\bar{A} -> B2
+...
+=> \bar{A} -> B1, B2, ..., Bn
+
+Trivial-dependency rules
+
+A -> B, then A -> A union B
+
+A -> B, then A -> A intersect B
+
+Transitive rule
+
+A -> B, B -> C, then A -> C
+
+Closure of Attributes
+  Given relations, FDs, set of attributes \bar{A}
+  Find all B such that \bar{A} -> B
+
+\bar{A}^+
+
+apply transitive rule repeatedly to get the closure
+
+if \bar{A}^+ = all attrs, then \bar{A} is a key.
+
+Grow algorithms can be used to find all keys given a set of FDs.
+
+If \bar{A} is a key, then all its supersets are keys.  Hence, we are
+often only interested the smallest key.
+
+Specifying FDs for a relation
+  S1 and S2 sets of FDs
+  S2 "follows from" S1 if every relation instance
+  satisfying S1 also satisfies S2
+
+S2: {SSN -> priority}
+S1: {SSN -> GPA, GPA -> priority}
+
+Does A -> B follow from S?
+
+(1) A+ based S check if B in set.
+(2) Armstrong's Axioms
+
+Want: _Minimal_ set of _completely nontrivial_ FDs such that _all FDs_ that
+hold on the relation follow from the dependencies in this set
+
+*** DONE Boyce-Codd Normal Form
+    CLOSED: [2017-07-16 Sun 21:16]
+Decomposition of a relational schema
+R(A1, ..., An)
+R1(B1, ..., Bk)
+R2(C1, ..., Cm)
+
+B union C = A
+
+R1 natural join R2 = R
+
+Student(SSN, sName, address, HScode, HSname, HScity, GPA, priority)
+
+This is a decomposition.
+S1(SSN, sName, address, HScode, GPA, priority)
+S2(HScode, HSname, HScity)
+
+This is not a decomposition.
+S1(SSN, sName, address, HScode, HSname, HScity)
+S2(sName, HSname, GPA, priority)
+
+Good decomposition exhibits lossless join property.
+
+BCNF
+Relation R with FDs is in BCNR if:
+    For each \bar{A} -> B, \bar{A} is a key.
+    BCNF violation (redundancy, update/delete anomalies)
+
+note: a key can contain another key and thus is a super key.
+
+BCNF decomposition algorithm
+
+Input: relation R + FDs for R
+Output: decomposition of R into BCNF relations with "lossless join"
+
+Compute keys for R
+Repeat until all relations are in BCNF
+    Pick any R' with A -> B that violates BCNF
+    Decompose R' into R1(A, B) and R2(A, rest)
+    Compute FDs for R1 and R2
+    Compute keys for R1 and R2
+
+Randomness can result in different answer.
+We can extend A -> BA+
+
+*** DONE Multivalued Dependencies and 4th Normal Form
+    CLOSED: [2017-07-24 Mon 00:47]
+Fourth Normal Form subsets Boyce-Codd Normal Form
+R  \bar{A} ->> \bar{B}  A1, ..., An, B1, ..., Bn
+
+for all t, u in R: t[\bar{A}] = u[\bar{A}] then
+    there exists v in R: v[\bar{A}] = t[\bar{A}] and
+                         v[\bar{B}] = t[\bar{B}] and
+                         v[rest] = u[rest]
+
+Tuple-generating dependencies
+
+\bar{A} ->> \bar{B} implies \bar{A} ->> rest
+
+Trivial Multivalued Dependency
+
+A ->> B   B subset A or  A union B = all attrs
+
+A -> B implies A ->> B
+
+FD-is-an-MVD rule
+
+4NF implies BCNF
+
+Intersection rule
+A ->> B, A ->> C then A ->> B intersect C
+
+Transitive rule
+A ->> B, B ->> C then A ->> C - B
+
+Fourth Normal Form
+
+Relation R with MVDs is in 4NF if:
+    For each nontrivial A ->> B, A is a key
+
+*** DONE Shortcomings of BCNF/4NF
+
+** DONE Exercises
+   CLOSED: [2017-07-24 Mon 02:23]
+R(A,B)
++R(A,C,D)+
+R(A,C)
+R(C,D)
+
+R(C,D)
++R(A,B,C)+
+R(A,B)
+R(A,C)
+
+R(B,C)
++R(A,B,D)+
+R(A,B)
+R(A,D)
+
+
+* DONE [[https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/][Unified Modeling Language]] mini-course
+  CLOSED: [2017-08-07 Mon 01:11]
+  :VISIBILITY: FOLDED
+** DONE Lecture Videos
+   CLOSED: [2017-08-06 Sun 18:04]
+*** DONE UML Data Modeling
+   CLOSED: [2017-08-02 Wed 01:46]
+Entity-Relationship Model (E/R)
+Unified Modeling Language
+  Data modeling subset
+
+Both are graphical
+Both can be translated to relations automatically
+  Or semi-automatically
+
+UML Data Modeling: 5 concepts
+
+1) Classes
+2) Associations
+3) Association Classes
+4) Subclasses
+5) Composition & Aggregation
+
+
+Classes
+
+Name, attributes, methods
+  For data modeling: add "pk", drop methods
+
+#+BEGIN_SRC uml
+|-----------|
+|  Student  |
+|-----------|
+| sID    pk |
+| sName     |
+| GPA       |
+|-----------|
+| <methods> |
+|-----------|
+
+|-----------|
+| College   |
+|-----------|
+| cName  pk |
+| state     |
+|-----------|
+| <methods> |
+|-----------|
+#+END_SRC
+
+Relationships between objects of two classes
+
+#+BEGIN_SRC uml
+|-----------|           |-----------|
+|  Student  |           | College   |
+|-----------|  Applied  |-----------|
+| sID    pk |-----------| cName  pk |
+| sName     |         ‣ | state     |
+| GPA       |           |-----------|
+|-----------|           | <methods> |
+| <methods> |           |-----------|
+|-----------|
+#+END_SRC
+
+Multiplicity of Associations
+
+Each object of class C1 is related to at least m and at most n objects
+of class C2
+
+#+BEGIN_SRC
+|----|                |----|
+| C1 |                | C2 |
+|----|        m..n    |----|
+|    |----------------|    |
+|----|      A         |----|
+#+END_SRC
+
+m..* at least m
+0..n at most n
+0..* no restrictions
+
+the default is 1..1
+
+1..1 abbreviated as 1
+0..* abbreviated as *
+
+Students must apply somewhere and may not apply to more than 5
+colleges.  No college takes more than 20,000 applications.
+
+#+BEGIN_SRC uml
+|-----------|                   |-----------|
+|  Student  |                   | College   |
+|-----------| 0..20000     1..5 |-----------|
+| sID    pk |-------------------| cName  pk |
+| sName     |      Applied      | state     |
+| GPA       |                   |-----------|
+|-----------|                   | <methods> |
+| <methods> |                   |-----------|
+|-----------|
+#+END_SRC
+
+Types of relationships
+
+One-to-One           0..1  0..1
+Many-to-One          *     0..1
+Many-to-Many         *     *
+Complete             1..   1..
+
+Default is complete one-to-one
+
+
+Association Classses
+
+Relationships between objects of two classes,
+with attributes on relationshps
+
+#+BEGIN_SRC uml
+|-----------|                          |-----------|
+|  Student  |                          | College   |
+|-----------|        Applied           |-----------|
+| sID    pk |--------------------------| cName  pk |
+| sName     |           |              | state     |
+| GPA       |      |----------|        |-----------|
+|-----------|      | AppInfo  |        | <methods> |
+| <methods> |      |----------|        |-----------|
+|-----------|      | date     |
+                   | decision |
+                   |----------|
+#+END_SRC
+
+It's hard to have more than one relationship association between the
+same student and college.
+
+Eliminating Association Classes
+Unnecessary if 0..1 or 1..1 multiplicity
+
+#+BEGIN_SRC uml
+|----|                |----|
+| C1 |                | C2 |
+|----| *         1..1 |----|
+| A3 |----------------| A4 |
+|----|       |        |----|
+           |----|
+           | AC |
+           |----|
+           | A1 |
+           | A2 |
+           |----|
+#+END_SRC
+
+Self-Associations
+
+Associations between a class and itself
+
+#+BEGIN_SRC uml
+|---------|
+| Student |*
+|---------|-----|
+|         |*    | Sibling
+|---------|-----|
+
+
+|---------|
+| College |home
+|---------|------|
+|         |1..1  | Branch
+|         |0..10 |
+|---------|------|
+           Satellite
+#+END_SRC
+
+Subclasses
+
+#+BEGIN_SRC uml
+                    |---------|
+                    | Student |  Superclass
+                    |---------|  {complete, overlapping}
+                    | sID  pk |
+                    | sName   |
+                    | GPA     |
+                    |---------|
+                         ↑ inherit
+     |--------------------------------------|
+     |                   |                  |
+|----------|     |-----------|    |------------|                |------------|
+| ForeignS |     | DomesticS |    | APStudents |                | APCourse   |
+|----------|     |-----------|    |------------|     Took       |------------|
+| Country  |     | State     |    |            |----------------| Course# pk |
+|          |     | SSN       |    |            |1..*   |   1..10| title      |
+|----------|     |-----------|    |------------|       |        | units      |
+                                                       |        |------------|
+                                                   |--------|
+                                                   | APInfo |
+                                                   |--------|
+                                                   | year   |
+                                                   | grade  |
+                                                   |--------|
+#+END_SRC
+
+Superclass = Generalization
+Subclass = Specialization
+
+Incomplete (Partial) vs. Complete
+
+Complete: every obj in the superclass is in at least one subclass
+
+Disjoint (Exclusive) vs. Overlapping
+
+Disjoint: every obj in the superclass is in at most one subclass
+
+
+Composition & Aggregation
+
+Objects of one class belong to objects of another class
+
+#+BEGIN_SRC uml
+|----------|               |------------|
+| College  |               | Department |
+|----------| 1..1          |------------|
+| cName pk |◆--------------| dName      |
+| state    |◇-------|      | building   |
+|----------| 0..1   |      |------------|
+                    |
+               |-----------|
+               | Apartment |
+               |-----------|
+               | addr pk   |
+               | #units    |
+               |-----------|
+#+END_SRC
+
+The symbol ◆ indicates composition, implicitly specifying 1..1.
+Department belongs to College.
+
+The symbol ◇ indicates aggregation, implicitly specifying 0..1.
+Some apartments are owned by or associated with colleges, but not all
+of them are.
+
+*** DONE UML to Relations
+    CLOSED: [2017-08-06 Sun 18:04]
+High-Level Database Design Model
+  User-friendly (graphical) specification language
+  Translated into model of DBMS
+
+Designs can be translated to relations automatically
+  Provided every "regular" class has a key
+
+Every class becomes a relation: pk -> primary key
+
+Associations
+
+Relation with key from each side
+
+Applied(sID, cName)
+
+Keys for association relations depends on multiplicity
+
+#+BEGIN_SRC uml
+|-------|                      |-------|
+|  C1   |                      |  C2   |
+|-------| 0..1               * |-------|
+| K1 pk |----------------------| K2 pk |
+| O1    |          A           | O2    |
+|-------|                      |-------|
+#+END_SRC
+
+C1(_K1_, O1)
+C2(_K2_, O2)
+
+A(K1, _K2_)
+
+#+BEGIN_SRC uml
+|-----------|                          |-----------|
+|  Student  |                          | College   |
+|-----------| *      Applied     1..1  |-----------|
+| sID    pk |--------------------------| cName  pk |
+| sName     |           |              | state     |
+| GPA       |      |----------|        |-----------|
+|-----------|      | AppInfo  |        | <methods> |
+| <methods> |      |----------|        |-----------|
+|-----------|      | date     |
+                   | decision |
+                   |----------|
+#+END_SRC
+
+Applied(_sID_, cName)
+
+C1(_K1_, O1)
+C2(_K2_, O2)  <-- C2(_K2_, O2, K1)
++A(K1, _K2_)+
+
+Student(_sID_, sName, GPA)  <-- Student(_sID_, sName, GPA, cName)
+College(_cName_, state)
++Applied(_sID_, cName)+
+
+Association Classes
+
+Student(_sID_, sName, GPA)
+College(_cName_, state)
+Applied(_sID_, cName, date, decision)
+
+Require a key for every "regular" class.
+
+Self-Associations
+
+#+BEGIN_SRC uml
+|---------|
+| Student |*
+|---------|-----|
+|         |*    | Sibling
+|---------|-----|
+#+END_SRC
+
+
+Student(_sID_, sName, GPA)
+Sibling(_sID1, sID2_)
+
+#+BEGIN_SRC uml
+|----------|
+| College  | home
+|----------|-------|
+| cName pk | 1..1  | Branch
+| state    |       |
+| enr      | 0..10 |
+|----------|-------|
+             Satellite
+#+END_SRC
+
+College(_cName_, state, enr)
+Branch(home, _satellite_)
+
+College(_cName_, state, enr, home) ???
+
+
+Subclasses
+1) Subclass relations contain superclass key + specialized attrs.
+2) Subclass relations contain all attributes.
+3) One relation containing all superclass + subclass attrs.
+
+subclasses are not regular classes.
+
+#+BEGIN_SRC uml
+                        |-------|
+                        |   S   |  superclass
+                        |-------|
+                        | K  pk |
+                        | A     |
+                        |-------|
+                            ↑                   Subclasses
+      |---------------------+-------------------|
+      |                                         |
+   |----|                                     |----|
+   | S1 |                                     | S2 |
+   |----|                                     |----|
+   | B  |                                     | C  |
+   |----|                                     |----|
+#+END_SRC
+
+1) S(_K_, A), S1(_K_, B), S2(_K_, C)
+2) S(_K_, A), S1(_K_, A, B), S2(_K_, A, C)
+3) S(_K_, A, B, C)
+
+Heavily overlapping => design 3
+
+Disjoint, Complete => design 2 with S(_K_, A) discarded
+
+#+BEGIN_SRC uml
+                    |---------|
+                    | Student |  Superclass
+                    |---------|  {complete, overlapping}
+                    | sID  pk |
+                    | sName   |
+                    | GPA     |
+                    |---------|
+                         ↑ inherit
+     |--------------------------------------|
+     |                   |                  |
+|----------|     |-----------|    |------------|                |------------|
+| ForeignS |     | DomesticS |    | APStudents |                | APCourse   |
+|----------|     |-----------|    |------------|     Took       |------------|
+| Country  |     | State     |    |            |----------------| Course# pk |
+|          |     | SSN    pk |    |            |1..*   |   1..10| title      |
+|----------|     |-----------|    |------------|       |        | units      |
+                                                       |        |------------|
+                                                   |--------|
+                                                   | APInfo |
+                                                   |--------|
+                                                   | year   |
+                                                   | grade  |
+                                                   |--------|
+#+END_SRC
+
+Student(_sID_, sName)
+ForeignS(_sID_, Country)
+DomesticS(_sID_, State, _SSN_)
++APStudent(sID)+ <-- eliminated, implicated in Took
+APCourse(_Course#_, title, units)
+Took(_sID, Course#_, year, grade)
+
+Composition & Aggregation
+
+#+BEGIN_SRC uml
+|----------|               |------------|
+| College  |               | Department |
+|----------| 1..1          |------------|
+| cName pk |◆--------------| dName      | Not "regular"
+| state    |◇-------|      | building   |
+|----------| 0..1   |      |------------|
+                    |
+               |-----------|
+               | Apartment |
+               |-----------|
+               | addr pk   |
+               | #units    |
+               |-----------|
+#+END_SRC
+
+College(_cName_, state)
+Department(dName, building, _cName_)
+Apartment(_addr_, #units, cName)
+                            ↑
+                          nullable
+
+** DONE Exercises
+
+
+* IN-PROGRESS [[https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/][Indexes and Transactions]] mini-course
+** IN-PROGRESS Lecture Videos
+*** IN-PROGRESS Indexes
+
+Indexes
+  * Primary mechanism to get improved performance
+  * Persistent data structure, stored in database
+  * Many interesting implementation issues
+
+
+             |   | A   |   B | C   |
+             |---+-----+-----+-----|
+             | 1 | cat |   2 | ... |
+             |---+-----+-----+-----|
+             | 2 | dog |   5 | ... |
+             |---+-----+-----+-----|
+             | 3 | cow |   1 | ... |
+             |---+-----+-----+-----|
+             | 4 | dog |   9 | ... |
+             |---+-----+-----+-----|
+             | 5 | cat |   2 | ... |
+             |---+-----+-----+-----|
+             | 6 | cat |   8 | ... |
+             |---+-----+-----+-----|
+             | 7 | cow |   6 | ... |
+             |---+-----+-----+-----|
+             |   | ... | ... | ... |
+
+Index on T.A
+
+T.A = 'cow'
+T.A = 'cat'
+
+Index on T.B
+
+T.B = 2
+T.B < 6
+4 < T.B <= 8
+
+Index on T.(A, B)
+
+T.A = 'cat' and T.B > 5
+T.A < 'd' and T.B = 1
+
+Utility
+  * Index = difference between full table scans and immediate location
+    of tuples
+    - Orders of magnitude performance difference
+
+  * Underlying data structures
+    - Balanced trees (B trees, B+ trees)
+      +
+    - Hash tables
+
+
+
+*** TODO Introduction to Transactions
+*** TODO Transaction Properties
+*** TODO Isolation Levels
+** TODO Exercises
+*** TODO Index Quiz
+*** TODO Transaction Quiz
+
+#+TITLE: Intro to DB
+#+AUTHOR: Lei Zhao
+#+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
+#+OPTIONS: ^:nil \n:t
