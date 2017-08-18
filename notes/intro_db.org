@@ -2774,5 +2774,5 @@ Output: recommended indexes
 #+AUTHOR: Lei Zhao
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
-#+INFOJS_OPT: view:info
+#+INFOJS_OPT: view:info path:../lib/org-info.js
 #+OPTIONS: ^:nil \n:t

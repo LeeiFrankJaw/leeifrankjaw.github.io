@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-18 Fri 23:49 -->
+<!-- 2017-08-19 Sat 00:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Intro to DB</title>
@@ -182,13 +182,13 @@
 <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 <script type="text/javascript" src="../src/post.js"></script>
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
+<script type="text/javascript" src="../lib/org-info.js">
 /**
  *
- * @source: http://orgmode.org/org-info.js
+ * @source: ../lib/org-info.js
  *
  * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
+ *  JavaScript code in ../lib/org-info.js.
  *
  * Copyright (C) 2012-2017 Free Software Foundation, Inc.
  *
@@ -208,7 +208,7 @@
  * through which recipients can access the Corresponding Source.
  *
  * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
+ * for the JavaScript code in ../lib/org-info.js.
  *
  */
 </script>
@@ -329,100 +329,100 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org88b341f">1. <span class="done DONE">DONE</span> SQL mini-course</a>
+<li><a href="#org3e59341">1. <span class="done DONE">DONE</span> SQL mini-course</a>
 <ul>
-<li><a href="#org3d34904">1.1. <span class="done DONE">DONE</span> Lecture videos</a>
+<li><a href="#org5a5f0b5">1.1. <span class="done DONE">DONE</span> Lecture videos</a>
 <ul>
-<li><a href="#org367a301">1.1.1. <span class="done DONE">DONE</span> The Join family of Operators</a></li>
-<li><a href="#orge13e353">1.1.2. <span class="done DONE">DONE</span> Aggregation</a></li>
-<li><a href="#org002eeeb">1.1.3. <span class="done DONE">DONE</span> NULL values</a></li>
-<li><a href="#org298db15">1.1.4. <span class="done DONE">DONE</span> Data Modification Statements</a></li>
+<li><a href="#orgd4cb74f">1.1.1. <span class="done DONE">DONE</span> The Join family of Operators</a></li>
+<li><a href="#org5423c0b">1.1.2. <span class="done DONE">DONE</span> Aggregation</a></li>
+<li><a href="#orgdfa354f">1.1.3. <span class="done DONE">DONE</span> NULL values</a></li>
+<li><a href="#orgc425278">1.1.4. <span class="done DONE">DONE</span> Data Modification Statements</a></li>
 </ul>
 </li>
-<li><a href="#orgeb5c1e8">1.2. <span class="done DONE">DONE</span> Exercises</a>
+<li><a href="#org336bcb6">1.2. <span class="done DONE">DONE</span> Exercises</a>
 <ul>
-<li><a href="#org78527c3">1.2.1. <span class="done DONE">DONE</span> Movie-Rating Query Core</a></li>
-<li><a href="#org95f72d2">1.2.2. <span class="done DONE">DONE</span> Movie-Rating Query Extras</a></li>
-<li><a href="#orgd3a08e1">1.2.3. <span class="done DONE">DONE</span> Social-Network Query Core</a></li>
-<li><a href="#org753bb42">1.2.4. <span class="done DONE">DONE</span> Social-Network Query Extras</a></li>
-<li><a href="#org21a3a2f">1.2.5. <span class="done DONE">DONE</span> Movie-Rating Modification</a></li>
-<li><a href="#org3a515e8">1.2.6. <span class="done DONE">DONE</span> Social-Network Modification</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org2e36378">2. <span class="done DONE">DONE</span> XPath and XQuery mini-course</a>
-<ul>
-<li><a href="#org8834b16">2.1. <span class="done DONE">DONE</span> Lecture videos</a>
-<ul>
-<li><a href="#org6468949">2.1.1. <span class="done DONE">DONE</span> XPath Introduction</a></li>
-<li><a href="#org8df2b86">2.1.2. <span class="done DONE">DONE</span> XPath Demo</a></li>
-<li><a href="#orgefe065d">2.1.3. <span class="done DONE">DONE</span> XQuery Introduction</a></li>
-<li><a href="#org668a7a6">2.1.4. <span class="done DONE">DONE</span> XQuery Demo</a></li>
-</ul>
-</li>
-<li><a href="#org04ec882">2.2. <span class="done DONE">DONE</span> Exercises</a>
-<ul>
-<li><a href="#org56e491c">2.2.1. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</a></li>
-<li><a href="#orgd9af830">2.2.2. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</a></li>
-<li><a href="#org2e2da18">2.2.3. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</a></li>
-<li><a href="#orgcff10b2">2.2.4. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</a></li>
+<li><a href="#org54ddb2f">1.2.1. <span class="done DONE">DONE</span> Movie-Rating Query Core</a></li>
+<li><a href="#org12df561">1.2.2. <span class="done DONE">DONE</span> Movie-Rating Query Extras</a></li>
+<li><a href="#orga45b4bd">1.2.3. <span class="done DONE">DONE</span> Social-Network Query Core</a></li>
+<li><a href="#org86d5ea1">1.2.4. <span class="done DONE">DONE</span> Social-Network Query Extras</a></li>
+<li><a href="#orga440ca2">1.2.5. <span class="done DONE">DONE</span> Movie-Rating Modification</a></li>
+<li><a href="#orgbad9f19">1.2.6. <span class="done DONE">DONE</span> Social-Network Modification</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgdc765bc">3. <span class="done DONE">DONE</span> XSLT mini-course</a>
+<li><a href="#org102ffaf">2. <span class="done DONE">DONE</span> XPath and XQuery mini-course</a>
 <ul>
-<li><a href="#org93a1983">3.1. <span class="done DONE">DONE</span> Lecture videos</a></li>
-<li><a href="#org986c720">3.2. <span class="done DONE">DONE</span> Exercises</a>
+<li><a href="#org2d028f8">2.1. <span class="done DONE">DONE</span> Lecture videos</a>
 <ul>
-<li><a href="#org1d7f23e">3.2.1. <span class="done DONE">DONE</span> Course-Catalog XSLT</a></li>
-<li><a href="#orgf6ddc34">3.2.2. <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</a></li>
-<li><a href="#org6cdefb6">3.2.3. <span class="done DONE">DONE</span> World-Countries XSLT</a></li>
-<li><a href="#orga78530f">3.2.4. <span class="done DONE">DONE</span> World-Countries XSLT Extras</a></li>
+<li><a href="#org2865761">2.1.1. <span class="done DONE">DONE</span> XPath Introduction</a></li>
+<li><a href="#orgce25fd8">2.1.2. <span class="done DONE">DONE</span> XPath Demo</a></li>
+<li><a href="#orgf8597e3">2.1.3. <span class="done DONE">DONE</span> XQuery Introduction</a></li>
+<li><a href="#orgb8aa2de">2.1.4. <span class="done DONE">DONE</span> XQuery Demo</a></li>
+</ul>
+</li>
+<li><a href="#org2967011">2.2. <span class="done DONE">DONE</span> Exercises</a>
+<ul>
+<li><a href="#org8909b1a">2.2.1. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</a></li>
+<li><a href="#orgd98151e">2.2.2. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</a></li>
+<li><a href="#org134e285">2.2.3. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</a></li>
+<li><a href="#orgb5e5bc9">2.2.4. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orga09766d">4. <span class="done DONE">DONE</span> Relational Design Theory mini-course</a>
+<li><a href="#org37096ad">3. <span class="done DONE">DONE</span> XSLT mini-course</a>
 <ul>
-<li><a href="#org1434919">4.1. <span class="done DONE">DONE</span> Lecture videos</a>
+<li><a href="#orgb10e58e">3.1. <span class="done DONE">DONE</span> Lecture videos</a></li>
+<li><a href="#org6566046">3.2. <span class="done DONE">DONE</span> Exercises</a>
 <ul>
-<li><a href="#orgf8fad1a">4.1.1. <span class="done DONE">DONE</span> Overview</a></li>
-<li><a href="#org443a4aa">4.1.2. <span class="done DONE">DONE</span> Functional Dependencies</a></li>
-<li><a href="#orgb33f8bb">4.1.3. <span class="done DONE">DONE</span> Boyce-Codd Normal Form</a></li>
-<li><a href="#org901b642">4.1.4. <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</a></li>
-<li><a href="#org54f07f3">4.1.5. <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</a></li>
+<li><a href="#org13096bf">3.2.1. <span class="done DONE">DONE</span> Course-Catalog XSLT</a></li>
+<li><a href="#org66755a0">3.2.2. <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</a></li>
+<li><a href="#org304b890">3.2.3. <span class="done DONE">DONE</span> World-Countries XSLT</a></li>
+<li><a href="#org1582782">3.2.4. <span class="done DONE">DONE</span> World-Countries XSLT Extras</a></li>
 </ul>
 </li>
-<li><a href="#org30e7104">4.2. <span class="done DONE">DONE</span> Exercises</a></li>
 </ul>
 </li>
-<li><a href="#orge96fdb2">5. <span class="done DONE">DONE</span> Unified Modeling Language mini-course</a>
+<li><a href="#orgfe9197a">4. <span class="done DONE">DONE</span> Relational Design Theory mini-course</a>
 <ul>
-<li><a href="#org2c63a55">5.1. <span class="done DONE">DONE</span> Lecture Videos</a>
+<li><a href="#org408d713">4.1. <span class="done DONE">DONE</span> Lecture videos</a>
 <ul>
-<li><a href="#orgf95f0e8">5.1.1. <span class="done DONE">DONE</span> UML Data Modeling</a></li>
-<li><a href="#org8fdc263">5.1.2. <span class="done DONE">DONE</span> UML to Relations</a></li>
+<li><a href="#orgb402f1a">4.1.1. <span class="done DONE">DONE</span> Overview</a></li>
+<li><a href="#org292e1bb">4.1.2. <span class="done DONE">DONE</span> Functional Dependencies</a></li>
+<li><a href="#org2d58aff">4.1.3. <span class="done DONE">DONE</span> Boyce-Codd Normal Form</a></li>
+<li><a href="#org5662e01">4.1.4. <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</a></li>
+<li><a href="#org3172e51">4.1.5. <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</a></li>
 </ul>
 </li>
-<li><a href="#org563d54c">5.2. <span class="done DONE">DONE</span> Exercises</a></li>
+<li><a href="#orgaef1cb9">4.2. <span class="done DONE">DONE</span> Exercises</a></li>
 </ul>
 </li>
-<li><a href="#orgae2061f">6. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Indexes and Transactions mini-course</a>
+<li><a href="#org37badd1">5. <span class="done DONE">DONE</span> Unified Modeling Language mini-course</a>
 <ul>
-<li><a href="#orgf6d8ba3">6.1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Lecture Videos</a>
+<li><a href="#org5364bbd">5.1. <span class="done DONE">DONE</span> Lecture Videos</a>
 <ul>
-<li><a href="#org481e82e">6.1.1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Indexes</a></li>
-<li><a href="#orgbad00e4">6.1.2. <span class="todo TODO">TODO</span> Introduction to Transactions</a></li>
-<li><a href="#orga207afe">6.1.3. <span class="todo TODO">TODO</span> Transaction Properties</a></li>
-<li><a href="#org8e5c664">6.1.4. <span class="todo TODO">TODO</span> Isolation Levels</a></li>
+<li><a href="#org740a8d7">5.1.1. <span class="done DONE">DONE</span> UML Data Modeling</a></li>
+<li><a href="#org67af1f0">5.1.2. <span class="done DONE">DONE</span> UML to Relations</a></li>
 </ul>
 </li>
-<li><a href="#orge4b0727">6.2. <span class="todo TODO">TODO</span> Exercises</a>
+<li><a href="#org614585f">5.2. <span class="done DONE">DONE</span> Exercises</a></li>
+</ul>
+</li>
+<li><a href="#org3d51022">6. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Indexes and Transactions mini-course</a>
 <ul>
-<li><a href="#org10d0a84">6.2.1. <span class="todo TODO">TODO</span> Index Quiz</a></li>
-<li><a href="#org3e8a2c3">6.2.2. <span class="todo TODO">TODO</span> Transaction Quiz</a></li>
+<li><a href="#orgc6e7c8a">6.1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Lecture Videos</a>
+<ul>
+<li><a href="#orgba059d6">6.1.1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Indexes</a></li>
+<li><a href="#org8e6377d">6.1.2. <span class="todo TODO">TODO</span> Introduction to Transactions</a></li>
+<li><a href="#org0ec59a6">6.1.3. <span class="todo TODO">TODO</span> Transaction Properties</a></li>
+<li><a href="#org949426a">6.1.4. <span class="todo TODO">TODO</span> Isolation Levels</a></li>
+</ul>
+</li>
+<li><a href="#org5092f04">6.2. <span class="todo TODO">TODO</span> Exercises</a>
+<ul>
+<li><a href="#orgea88eca">6.2.1. <span class="todo TODO">TODO</span> Index Quiz</a></li>
+<li><a href="#orgafae787">6.2.2. <span class="todo TODO">TODO</span> Transaction Quiz</a></li>
 </ul>
 </li>
 </ul>
@@ -434,24 +434,24 @@ for the JavaScript code in this tag.
 <a href="https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about">Database</a> on Lagunita<br />
 </p>
 
-<div id="outline-container-org88b341f" class="outline-2">
-<h2 id="org88b341f"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/">SQL</a> mini-course</h2>
+<div id="outline-container-org3e59341" class="outline-2">
+<h2 id="org3e59341"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/">SQL</a> mini-course</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-org3d34904" class="outline-3">
-<h3 id="org3d34904"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-org5a5f0b5" class="outline-3">
+<h3 id="org5a5f0b5"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org367a301" class="outline-4">
-<h4 id="org367a301"><span class="section-number-4">1.1.1</span> <span class="done DONE">DONE</span> The Join family of Operators</h4>
+<div id="outline-container-orgd4cb74f" class="outline-4">
+<h4 id="orgd4cb74f"><span class="section-number-4">1.1.1</span> <span class="done DONE">DONE</span> The Join family of Operators</h4>
 <div class="outline-text-4" id="text-1-1-1">
 </div>
 </div>
-<div id="outline-container-orge13e353" class="outline-4">
-<h4 id="orge13e353"><span class="section-number-4">1.1.2</span> <span class="done DONE">DONE</span> Aggregation</h4>
+<div id="outline-container-org5423c0b" class="outline-4">
+<h4 id="org5423c0b"><span class="section-number-4">1.1.2</span> <span class="done DONE">DONE</span> Aggregation</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
 <pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-builtin">avg</span>(GPA)
@@ -540,8 +540,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org002eeeb" class="outline-4">
-<h4 id="org002eeeb"><span class="section-number-4">1.1.3</span> <span class="done DONE">DONE</span> NULL values</h4>
+<div id="outline-container-orgdfa354f" class="outline-4">
+<h4 id="orgdfa354f"><span class="section-number-4">1.1.3</span> <span class="done DONE">DONE</span> NULL values</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <div class="org-src-container">
 <pre class="src src-sql"><span class="org-keyword">select</span> sID, sName, GPA
@@ -563,8 +563,8 @@ SQL uses three-valued logic (<a href="https://en.wikipedia.org/wiki/Three-valued
 </div>
 </div>
 
-<div id="outline-container-org298db15" class="outline-4">
-<h4 id="org298db15"><span class="section-number-4">1.1.4</span> <span class="done DONE">DONE</span> Data Modification Statements</h4>
+<div id="outline-container-orgc425278" class="outline-4">
+<h4 id="orgc425278"><span class="section-number-4">1.1.4</span> <span class="done DONE">DONE</span> Data Modification Statements</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <div class="org-src-container">
 <pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> College
@@ -634,12 +634,12 @@ SQL uses three-valued logic (<a href="https://en.wikipedia.org/wiki/Three-valued
 </div>
 </div>
 
-<div id="outline-container-orgeb5c1e8" class="outline-3">
-<h3 id="orgeb5c1e8"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org336bcb6" class="outline-3">
+<h3 id="org336bcb6"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org78527c3" class="outline-4">
-<h4 id="org78527c3"><span class="section-number-4">1.2.1</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/">Core</a></h4>
+<div id="outline-container-org54ddb2f" class="outline-4">
+<h4 id="org54ddb2f"><span class="section-number-4">1.2.1</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/">Core</a></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Find the titles of all movies directed by Steven Spielberg.<br />
@@ -780,8 +780,8 @@ Don't just calculate the overall average rating before and after<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org95f72d2" class="outline-4">
-<h4 id="org95f72d2"><span class="section-number-4">1.2.2</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_extra/">Extras</a></h4>
+<div id="outline-container-org12df561" class="outline-4">
+<h4 id="org12df561"><span class="section-number-4">1.2.2</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_extra/">Extras</a></h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Find the names of all reviewers who rated Gone with the Wind.<br />
@@ -1011,8 +1011,8 @@ Ignore movies whose director is NULL.<br />
 </div>
 </div>
 
-<div id="outline-container-orgd3a08e1" class="outline-4">
-<h4 id="orgd3a08e1"><span class="section-number-4">1.2.3</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_core/">Core</a></h4>
+<div id="outline-container-orga45b4bd" class="outline-4">
+<h4 id="orga45b4bd"><span class="section-number-4">1.2.3</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_core/">Core</a></h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Find the names of all students who are friends with someone named<br />
@@ -1172,8 +1172,8 @@ other student.<br />
 </div>
 </div>
 
-<div id="outline-container-org753bb42" class="outline-4">
-<h4 id="org753bb42"><span class="section-number-4">1.2.4</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_extra/">Extras</a></h4>
+<div id="outline-container-org86d5ea1" class="outline-4">
+<h4 id="org86d5ea1"><span class="section-number-4">1.2.4</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_extra/">Extras</a></h4>
 <div class="outline-text-4" id="text-1-2-4">
 <p>
 For every situation where student A likes student B, but student B<br />
@@ -1292,8 +1292,8 @@ friends.<br />
 </div>
 </div>
 
-<div id="outline-container-org21a3a2f" class="outline-4">
-<h4 id="org21a3a2f"><span class="section-number-4">1.2.5</span> <span class="done DONE">DONE</span> Movie-Rating <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_mod/">Modification</a></h4>
+<div id="outline-container-orga440ca2" class="outline-4">
+<h4 id="orga440ca2"><span class="section-number-4">1.2.5</span> <span class="done DONE">DONE</span> Movie-Rating <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_mod/">Modification</a></h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 Add the reviewer Roger Ebert to your database, with an rID of 209.<br />
@@ -1345,8 +1345,8 @@ Remove all ratings where the movie's year is before 1970 or after<br />
 </div>
 </div>
 
-<div id="outline-container-org3a515e8" class="outline-4">
-<h4 id="org3a515e8"><span class="section-number-4">1.2.6</span> <span class="done DONE">DONE</span> Social-Network <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_mod/">Modification</a></h4>
+<div id="outline-container-orgbad9f19" class="outline-4">
+<h4 id="orgbad9f19"><span class="section-number-4">1.2.6</span> <span class="done DONE">DONE</span> Social-Network <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_mod/">Modification</a></h4>
 <div class="outline-text-4" id="text-1-2-6">
 <p>
 It's time for the seniors to graduate.  Remove all 12th graders from<br />
@@ -1400,19 +1400,19 @@ it right.)<br />
 </div>
 
 
-<div id="outline-container-org2e36378" class="outline-2">
-<h2 id="org2e36378"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/">XPath and XQuery</a> mini-course</h2>
+<div id="outline-container-org102ffaf" class="outline-2">
+<h2 id="org102ffaf"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/">XPath and XQuery</a> mini-course</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-org8834b16" class="outline-3">
-<h3 id="org8834b16"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-org2d028f8" class="outline-3">
+<h3 id="org2d028f8"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-org6468949" class="outline-4">
-<h4 id="org6468949"><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> XPath Introduction</h4>
+<div id="outline-container-org2865761" class="outline-4">
+<h4 id="org2865761"><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> XPath Introduction</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 Not nearly as mature as Querying Relational<br />
@@ -1456,8 +1456,8 @@ Sometimes result can be expressed as XML, but not always<br />
 </div>
 </div>
 
-<div id="outline-container-org8df2b86" class="outline-4">
-<h4 id="org8df2b86"><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> XPath Demo</h4>
+<div id="outline-container-orgce25fd8" class="outline-4">
+<h4 id="orgce25fd8"><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> XPath Demo</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Get the titles of books in the bookstore where the price is lower<br />
@@ -1558,8 +1558,8 @@ an author.<br />
 </div>
 </div>
 
-<div id="outline-container-orgefe065d" class="outline-4">
-<h4 id="orgefe065d"><span class="section-number-4">2.1.3</span> <span class="done DONE">DONE</span> XQuery Introduction</h4>
+<div id="outline-container-orgf8597e3" class="outline-4">
+<h4 id="orgf8597e3"><span class="section-number-4">2.1.3</span> <span class="done DONE">DONE</span> XQuery Introduction</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <ol class="org-ol">
 <li>XQuery is a expression language (compositional)<br /></li>
@@ -1591,8 +1591,8 @@ Mixing queries and XMl<br />
 </div>
 </div>
 
-<div id="outline-container-org668a7a6" class="outline-4">
-<h4 id="org668a7a6"><span class="section-number-4">2.1.4</span> <span class="done DONE">DONE</span> XQuery Demo</h4>
+<div id="outline-container-orgb8aa2de" class="outline-4">
+<h4 id="orgb8aa2de"><span class="section-number-4">2.1.4</span> <span class="done DONE">DONE</span> XQuery Demo</h4>
 <div class="outline-text-4" id="text-2-1-4">
 <div class="org-src-container">
 <pre class="src src-xquery">for $b in doc("BookstoreQ.xml")/Bookstore/Book
@@ -1708,12 +1708,12 @@ Again, implicitly existential quantification.<br />
 </div>
 </div>
 
-<div id="outline-container-org04ec882" class="outline-3">
-<h3 id="org04ec882"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org2967011" class="outline-3">
+<h3 id="org2967011"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-org56e491c" class="outline-4">
-<h4 id="org56e491c"><span class="section-number-4">2.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</h4>
+<div id="outline-container-org8909b1a" class="outline-4">
+<h4 id="org8909b1a"><span class="section-number-4">2.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 Return all Title elements (of both departments and courses).<br />
@@ -1810,8 +1810,8 @@ the other operand will go through type promotion.<br />
 </div>
 </div>
 
-<div id="outline-container-orgd9af830" class="outline-4">
-<h4 id="orgd9af830"><span class="section-number-4">2.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</h4>
+<div id="outline-container-orgd98151e" class="outline-4">
+<h4 id="orgd98151e"><span class="section-number-4">2.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 Return the course number of the course that is cross-listed as "LING180".<br />
@@ -2013,8 +2013,8 @@ very challenging; extra congratulations if you get it right.)<br />
 </div>
 </div>
 
-<div id="outline-container-org2e2da18" class="outline-4">
-<h4 id="org2e2da18"><span class="section-number-4">2.2.3</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</h4>
+<div id="outline-container-org134e285" class="outline-4">
+<h4 id="org134e285"><span class="section-number-4">2.2.3</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <p>
 Return the area of Mongolia.<br />
@@ -2146,8 +2146,8 @@ are unique.  The result should take the form:<br />
 </div>
 </div>
 
-<div id="outline-container-orgcff10b2" class="outline-4">
-<h4 id="orgcff10b2"><span class="section-number-4">2.2.4</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</h4>
+<div id="outline-container-orgb5e5bc9" class="outline-4">
+<h4 id="orgb5e5bc9"><span class="section-number-4">2.2.4</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <p>
 Return the names of all countries with population greater than 100<br />
@@ -2542,15 +2542,15 @@ element.  For example, your result might look like:<br />
 </div>
 
 
-<div id="outline-container-orgdc765bc" class="outline-2">
-<h2 id="orgdc765bc"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/">XSLT</a> mini-course</h2>
+<div id="outline-container-org37096ad" class="outline-2">
+<h2 id="org37096ad"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/">XSLT</a> mini-course</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-org93a1983" class="outline-3">
-<h3 id="org93a1983"><span class="section-number-3">3.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-orgb10e58e" class="outline-3">
+<h3 id="orgb10e58e"><span class="section-number-3">3.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 XSL = Extensible Stylesheet Language<br />
@@ -2580,12 +2580,12 @@ Implicit template priority scheme<br />
 </div>
 </div>
 
-<div id="outline-container-org986c720" class="outline-3">
-<h3 id="org986c720"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org6566046" class="outline-3">
+<h3 id="org6566046"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-3-2">
 </div>
-<div id="outline-container-org1d7f23e" class="outline-4">
-<h4 id="org1d7f23e"><span class="section-number-4">3.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XSLT</h4>
+<div id="outline-container-org13096bf" class="outline-4">
+<h4 id="org13096bf"><span class="section-number-4">3.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XSLT</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 Return a list of department titles.<br />
@@ -2639,8 +2639,8 @@ structure.<br />
 </div>
 </div>
 
-<div id="outline-container-orgf6ddc34" class="outline-4">
-<h4 id="orgf6ddc34"><span class="section-number-4">3.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</h4>
+<div id="outline-container-org66755a0" class="outline-4">
+<h4 id="org66755a0"><span class="section-number-4">3.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 Return all courses with enrollment greater than 500.  Retain the<br />
@@ -2740,8 +2740,8 @@ quot;.)<br />
 </div>
 </div>
 
-<div id="outline-container-org6cdefb6" class="outline-4">
-<h4 id="org6cdefb6"><span class="section-number-4">3.2.3</span> <span class="done DONE">DONE</span> World-Countries XSLT</h4>
+<div id="outline-container-org304b890" class="outline-4">
+<h4 id="org304b890"><span class="section-number-4">3.2.3</span> <span class="done DONE">DONE</span> World-Countries XSLT</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 Return all countries with population between 9 and 10 million.  Retain<br />
@@ -2821,8 +2821,8 @@ and "cities" respectively).<br />
 </div>
 </div>
 
-<div id="outline-container-orga78530f" class="outline-4">
-<h4 id="orga78530f"><span class="section-number-4">3.2.4</span> <span class="done DONE">DONE</span> World-Countries XSLT Extras</h4>
+<div id="outline-container-org1582782" class="outline-4">
+<h4 id="org1582782"><span class="section-number-4">3.2.4</span> <span class="done DONE">DONE</span> World-Countries XSLT Extras</h4>
 <div class="outline-text-4" id="text-3-2-4">
 <p>
 Find all country names containing the string "stan"; return each one<br />
@@ -2866,19 +2866,19 @@ data should be the same.<br />
 </div>
 
 
-<div id="outline-container-orga09766d" class="outline-2">
-<h2 id="orga09766d"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/">Relational Design Theory</a> mini-course</h2>
+<div id="outline-container-orgfe9197a" class="outline-2">
+<h2 id="orgfe9197a"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/">Relational Design Theory</a> mini-course</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-org1434919" class="outline-3">
-<h3 id="org1434919"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-org408d713" class="outline-3">
+<h3 id="org408d713"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-orgf8fad1a" class="outline-4">
-<h4 id="orgf8fad1a"><span class="section-number-4">4.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
+<div id="outline-container-orgb402f1a" class="outline-4">
+<h4 id="orgb402f1a"><span class="section-number-4">4.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
 Design "anomalies"<br />
@@ -2969,8 +2969,8 @@ Decompose: <span class="underline">Apply(SSN, cName) HighSchool(SSN, HS)</span><
 </div>
 </div>
 
-<div id="outline-container-org443a4aa" class="outline-4">
-<h4 id="org443a4aa"><span class="section-number-4">4.1.2</span> <span class="done DONE">DONE</span> Functional Dependencies</h4>
+<div id="outline-container-org292e1bb" class="outline-4">
+<h4 id="org292e1bb"><span class="section-number-4">4.1.2</span> <span class="done DONE">DONE</span> Functional Dependencies</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 Functional dependencies =&gt; Boyce-Codd Normal Form<br />
@@ -3173,8 +3173,8 @@ hold on the relation follow from the dependencies in this set<br />
 </div>
 </div>
 
-<div id="outline-container-orgb33f8bb" class="outline-4">
-<h4 id="orgb33f8bb"><span class="section-number-4">4.1.3</span> <span class="done DONE">DONE</span> Boyce-Codd Normal Form</h4>
+<div id="outline-container-org2d58aff" class="outline-4">
+<h4 id="org2d58aff"><span class="section-number-4">4.1.3</span> <span class="done DONE">DONE</span> Boyce-Codd Normal Form</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <p>
 Decomposition of a relational schema<br />
@@ -3247,8 +3247,8 @@ We can extend A -&gt; BA+<br />
 </div>
 </div>
 
-<div id="outline-container-org901b642" class="outline-4">
-<h4 id="org901b642"><span class="section-number-4">4.1.4</span> <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</h4>
+<div id="outline-container-org5662e01" class="outline-4">
+<h4 id="org5662e01"><span class="section-number-4">4.1.4</span> <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</h4>
 <div class="outline-text-4" id="text-4-1-4">
 <p>
 Fourth Normal Form subsets Boyce-Codd Normal Form<br />
@@ -3311,13 +3311,13 @@ Relation R with MVDs is in 4NF if:<br />
 </div>
 </div>
 
-<div id="outline-container-org54f07f3" class="outline-4">
-<h4 id="org54f07f3"><span class="section-number-4">4.1.5</span> <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</h4>
+<div id="outline-container-org3172e51" class="outline-4">
+<h4 id="org3172e51"><span class="section-number-4">4.1.5</span> <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</h4>
 </div>
 </div>
 
-<div id="outline-container-org30e7104" class="outline-3">
-<h3 id="org30e7104"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-orgaef1cb9" class="outline-3">
+<h3 id="orgaef1cb9"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 R(A,B)<br />
@@ -3344,19 +3344,19 @@ R(A,D)<br />
 </div>
 
 
-<div id="outline-container-orge96fdb2" class="outline-2">
-<h2 id="orge96fdb2"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/">Unified Modeling Language</a> mini-course</h2>
+<div id="outline-container-org37badd1" class="outline-2">
+<h2 id="org37badd1"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/">Unified Modeling Language</a> mini-course</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 :VISIBILITY: FOLDED<br />
 </p>
 </div>
-<div id="outline-container-org2c63a55" class="outline-3">
-<h3 id="org2c63a55"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> Lecture Videos</h3>
+<div id="outline-container-org5364bbd" class="outline-3">
+<h3 id="org5364bbd"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> Lecture Videos</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-orgf95f0e8" class="outline-4">
-<h4 id="orgf95f0e8"><span class="section-number-4">5.1.1</span> <span class="done DONE">DONE</span> UML Data Modeling</h4>
+<div id="outline-container-org740a8d7" class="outline-4">
+<h4 id="org740a8d7"><span class="section-number-4">5.1.1</span> <span class="done DONE">DONE</span> UML Data Modeling</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 Entity-Relationship Model (E/R)<br />
@@ -3663,8 +3663,8 @@ of them are.<br />
 </div>
 </div>
 
-<div id="outline-container-org8fdc263" class="outline-4">
-<h4 id="org8fdc263"><span class="section-number-4">5.1.2</span> <span class="done DONE">DONE</span> UML to Relations</h4>
+<div id="outline-container-org67af1f0" class="outline-4">
+<h4 id="org67af1f0"><span class="section-number-4">5.1.2</span> <span class="done DONE">DONE</span> UML to Relations</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
 High-Level Database Design Model<br />
@@ -3915,20 +3915,20 @@ Apartment(_addr_, #units, cName)<br />
 </div>
 </div>
 
-<div id="outline-container-org563d54c" class="outline-3">
-<h3 id="org563d54c"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org614585f" class="outline-3">
+<h3 id="org614585f"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 </div>
 </div>
 
 
-<div id="outline-container-orgae2061f" class="outline-2">
-<h2 id="orgae2061f"><span class="section-number-2">6</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> <a href="https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/">Indexes and Transactions</a> mini-course</h2>
+<div id="outline-container-org3d51022" class="outline-2">
+<h2 id="org3d51022"><span class="section-number-2">6</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> <a href="https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/">Indexes and Transactions</a> mini-course</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgf6d8ba3" class="outline-3">
-<h3 id="orgf6d8ba3"><span class="section-number-3">6.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Lecture Videos</h3>
+</div><div id="outline-container-orgc6e7c8a" class="outline-3">
+<h3 id="orgc6e7c8a"><span class="section-number-3">6.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Lecture Videos</h3>
 <div class="outline-text-3" id="text-6-1">
-</div><div id="outline-container-org481e82e" class="outline-4">
-<h4 id="org481e82e"><span class="section-number-4">6.1.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Indexes</h4>
+</div><div id="outline-container-orgba059d6" class="outline-4">
+<h4 id="orgba059d6"><span class="section-number-4">6.1.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Indexes</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <p>
 Indexes<br />
@@ -4160,24 +4160,24 @@ Output: recommended indexes<br />
 
 
 
-<div id="outline-container-orgbad00e4" class="outline-4">
-<h4 id="orgbad00e4"><span class="section-number-4">6.1.2</span> <span class="todo TODO">TODO</span> Introduction to Transactions</h4>
+<div id="outline-container-org8e6377d" class="outline-4">
+<h4 id="org8e6377d"><span class="section-number-4">6.1.2</span> <span class="todo TODO">TODO</span> Introduction to Transactions</h4>
 </div>
-<div id="outline-container-orga207afe" class="outline-4">
-<h4 id="orga207afe"><span class="section-number-4">6.1.3</span> <span class="todo TODO">TODO</span> Transaction Properties</h4>
+<div id="outline-container-org0ec59a6" class="outline-4">
+<h4 id="org0ec59a6"><span class="section-number-4">6.1.3</span> <span class="todo TODO">TODO</span> Transaction Properties</h4>
 </div>
-<div id="outline-container-org8e5c664" class="outline-4">
-<h4 id="org8e5c664"><span class="section-number-4">6.1.4</span> <span class="todo TODO">TODO</span> Isolation Levels</h4>
+<div id="outline-container-org949426a" class="outline-4">
+<h4 id="org949426a"><span class="section-number-4">6.1.4</span> <span class="todo TODO">TODO</span> Isolation Levels</h4>
 </div>
 </div>
-<div id="outline-container-orge4b0727" class="outline-3">
-<h3 id="orge4b0727"><span class="section-number-3">6.2</span> <span class="todo TODO">TODO</span> Exercises</h3>
+<div id="outline-container-org5092f04" class="outline-3">
+<h3 id="org5092f04"><span class="section-number-3">6.2</span> <span class="todo TODO">TODO</span> Exercises</h3>
 <div class="outline-text-3" id="text-6-2">
-</div><div id="outline-container-org10d0a84" class="outline-4">
-<h4 id="org10d0a84"><span class="section-number-4">6.2.1</span> <span class="todo TODO">TODO</span> Index Quiz</h4>
+</div><div id="outline-container-orgea88eca" class="outline-4">
+<h4 id="orgea88eca"><span class="section-number-4">6.2.1</span> <span class="todo TODO">TODO</span> Index Quiz</h4>
 </div>
-<div id="outline-container-org3e8a2c3" class="outline-4">
-<h4 id="org3e8a2c3"><span class="section-number-4">6.2.2</span> <span class="todo TODO">TODO</span> Transaction Quiz</h4>
+<div id="outline-container-orgafae787" class="outline-4">
+<h4 id="orgafae787"><span class="section-number-4">6.2.2</span> <span class="todo TODO">TODO</span> Transaction Quiz</h4>
 <div class="outline-text-4" id="text-6-2-2">
 </div>
 </div>
@@ -4186,7 +4186,7 @@ Output: recommended indexes<br />
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2017-08-18 Fri 23:49</p>
+<p class="date">Created: 2017-08-19 Sat 00:17</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
