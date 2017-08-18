@@ -2705,8 +2705,61 @@ Utility
 
   * Underlying data structures
     - Balanced trees (B trees, B+ trees)
-      +
+      + A = V, A < V, V1 <= A <= V2
+      + logarithmic time
     - Hash tables
+      + constant time
+
+#+BEGIN_SRC sql
+Select sName
+From student
+Where sID = 18942
+#+END_SRC
+
+Index on sID
+
+Many DBMS's build indexes automatically on PRIMARY KEY (and sometimes
+UNIQUE) attributes
+
+#+BEGIN_SRC sql
+Select sID
+From Student
+Where sName = 'Mary' And GPA > 3.9
+#+END_SRC
+
+Index on sName ← hash or tree
+Index on GPA ← tree-based
+Index on (sName, GPA)
+
+#+BEGIN_SRC sql
+Select sName, cName
+From Student, Apply
+Where Student.sID = Apply.sID
+#+END_SRC
+
+Index on student.sid or apply.sid or both
+
+Query planning & optimization
+
+
+Downsides of Indexes
+
+1) Extra space - marginal
+2) Index creation - medium
+3) Index maintenance - can offset benefits
+
+Picking which indexes to create
+
+Benefits of an index depends on:
+  * Size of table (and possibly layout)
+  * Data distributions
+  * Query vs. update load
+
+
+"Physical design advisors"
+
+Input: database (statistics) and workload
+Output: recommended indexes
 
 
 
