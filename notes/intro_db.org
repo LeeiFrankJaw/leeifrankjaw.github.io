@@ -2773,4 +2773,6 @@ Output: recommended indexes
 #+TITLE: Intro to DB
 #+AUTHOR: Lei Zhao
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
+#+INFOJS_OPT: view:info
 #+OPTIONS: ^:nil \n:t
