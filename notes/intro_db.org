@@ -2656,7 +2656,8 @@ Apartment(_addr_, #units, cName)
 
 * IN-PROGRESS [[https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/][Indexes and Transactions]] mini-course
 ** IN-PROGRESS Lecture Videos
-*** IN-PROGRESS Indexes
+*** DONE Indexes
+    CLOSED: [2017-08-20 Sun 16:12]
 
 Indexes
   * Primary mechanism to get improved performance
@@ -2761,11 +2762,287 @@ Benefits of an index depends on:
 Input: database (statistics) and workload
 Output: recommended indexes
 
+_Query Optimizer_ takes _Database statistics_, _Query or update_, and
+_indexes_ as input and gives _best execution plan with estimated cost_
+as output.
+
+Pysical design advisor experiments different indexes through query
+optimizer and gives recommended indexes, of which benefits outweigh
+drawbacks.
+
+#+BEGIN_SRC sql
+Create Index IndexName on T(A)
+Create Index IndexName on T(A1, A2, ..., An)
+Create Unique Index IndexNae on T(A)
+Drop Index IndexName
+#+END_SRC
+
+*** DONE Introduction to Transactions
+    CLOSED: [2017-08-20 Sun 17:58]
+
+Motivated by two independent requirements
+  * Concurrent database access
+  * Resilience to system failures
+
+*Concurrent Access*: Attribute-level Inconsistency <<ca:ali>>
+
+#+BEGIN_SRC sql
+Update College Set enrollment = enrollment + 1000
+Where cName = 'Stanford'
+#+END_SRC
+concurrent with ...
+#+BEGIN_SRC sql
+Update College Set enrollment = enrollment + 1500
+Whre cName = 'Stanford'
+#+END_SRC
+
+get; modify; put
+
+Possible outcomes
+\begin{align*}
+  15,000 + 2500 &= 17,500 \\
+         + 1000 &= 16,000 \\
+         + 1500 &= 16,500
+\end{align*}
+
+*Concurrent Access*: Tuple-level Inconsistency <<ca:tli>>
+
+#+BEGIN_SRC sql
+Update Apply Set major = 'CS' Where sID = 123
+#+END_SRC
+concurrent with ...
+#+BEGIN_SRC sql
+Update Apply Set decision = 'Y' Where sID = 123
+#+END_SRC
+
+get; modify; put
+
+both changes
+one of the two changes
+
+*Concurrent Access*: Table-level Inconsistency <<ca:tbi>>
+
+#+BEGIN_SRC sql
+Update Apply Set decision = 'Y'
+Where sID In (Select sID From Student Where GPA > 3.9)
+#+END_SRC
+concurrent with ...
+#+BEGIN_SRC sql
+Updaate Student Set GPA = 1.1 * GPA Where sizeHS > 2500
+#+END_SRC
+
+*Concurrent Access*: Multi-statement inconsistency <<ca:msi>>
+
+#+BEGIN_SRC sql
+Insert Into Archive
+  Select * From Apply Where decision = 'N';
+Delete From Apply Where decision = 'N';
+#+END_SRC
+concurrent with ...
+#+BEGIN_SRC sql
+Select Count(*) From Apply;
+Select Count(*) From Archive;
+#+END_SRC
+
+Concurrency Goal
+
+Execute /sequence of SQL statements/ so they appear to be running in
+isolation
+
+  * Simple solution: execute them in isolation
+
+But want to enable concurrency whenever safe to do so
+
+  * Multiprocessor
+  * Multithreaded
+  * Asynchronous I/O
+
+Resilience to System Failures
+
+Rather unpleasant inconsistent state can occur due to crashes when
+there bulk loading to DBMS
+
+Or 
+
+#+BEGIN_SRC sql
+Insert Into Archive
+  Select * From Apply Where decision = 'N';
+Delete From Apply Where decision = 'N';
+#+END_SRC
+
+Crash failure
+
+Lots of updates buffered in memory
+
+System-Failure Goal
+
+Guarantee all-or-nothing execution, regardless of failures
+
+Solution for both concurrency and failures
+
+*Transactions*
+
+A transaction is a sequence of one or more SQL operations treated as a
+unit
+  * Transactions appear to run in isolation
+  * If the system fails, each transaction's changes are reflected
+    either entirely or not at all
+
+SQL standard:
+  * Transaction begins automatically on first SQL statement
+  * On "commit" transaction ends and new one begins
+  * Current transaction ends on session termination
+  * "Autocommit" turns each statement into transaction
+
+*** DONE Transaction Properties
+    CLOSED: [2017-08-20 Sun 21:55]
+ACID Properties
+Atomicity, Consistency, Isolation, Durability
+
+Isolation
+
+_Serializability_  <<def:serial>>
+Operations may be interleaved, but execution must be equivalent to
+/some/ sequential (serial) order of all transactions
+
+locking portion of the database
+
+[[ca:ali][Attribute-level Inconsistency]]
+
+T1; T2
+T2; T1
+
+15,000 → 17,500
+
+[[ca:tli][Tuple-level Inconsistency]]
+
+T1; T2
+T2; T1
+
+both changes
+
+[[ca:tbi][Table-level Inconsistency]]
+
+T1; T2
+T2; T1
+
+Order matters here.
+
+[[ca:msi][Multi-statement inconsistency]]
+
+Order also matters here.
+
+Durability
+
+If system crashes after transaction commits, all effects of
+transaction remain in database.
+
+T2 {S1; S2; S3; commit} crashes
+
+implemented by logging
+
+Atomicity
+
+Each transaction is "all-or-nothing," never left half done
+
+T2 { S1; S2; ... crashes ...; commit }
+
+Logging
+
+Transaction Rollback (= Abort) ☆
+  * Undoes _partial effects_ of transaction
+  * Can be _system_ or _client initiated_
+
+#+BEGIN_SRC
+Begin Transaction;
+<get input from user>
+SQL commands based on input
+<confirm results with user>
+If ans = 'ok' Then Commit; Else Rollback;
+#+END_SRC
+
+Rollback only undoes data itself on database, but doesn't affect
+variable, and cash delivery etc.
+
+Never hold a transaction for long time.  Locking
+
+Consistency
+
+Each client, each transaction:
+  * Can assume all constraints hold when transaction begins
+  * Must guarantee all constraints hold when transaction ends
+
+Serializability ⇒ constraints always hold
+
+*** IN-PROGRESS Isolation Levels
+
+[[def:serial][Serializability]] ⇒ Overhead, Reduction in concurrency
+
+Weaker "Isolation Levels" (from weak to strong)
+  * Read Uncommitted
+  * Read Committed
+  * Repeatable Read
+  * Serializable
+
+↓ Overhead ↑ Concurrency
+↓ Consistency Guarantees
+
+Isolation Levels
+  * Per transaction
+  * "In the eye of the beholder"
+
+Dirty Reads
+"Dirty" data item: written by an uncommitted transaction
+
+Example 1
+#+BEGIN_SRC sql
+Update College Set enrollment = enrollment + 1000
+Where cName = 'Stanford'
+#+END_SRC
+concurrent with ...
+#+BEGIN_SRC sql
+Select Avg(enrollment) From College
+#+END_SRC
+
+Example 2
+#+NAME: q_up_gpa
+#+BEGIN_SRC sql
+Update Student Set GPA = 1.1 * GPA Where sizeHS > 2500
+#+END_SRC
+concurrent with ...
+#+BEGIN_SRC sql
+Select GPA From Student Where sID = 123
+#+END_SRC
+concurrent with ...
+#+BEGIN_SRC sql
+Update Student Set sizeHS = 2600 Where sID = 234
+#+END_SRC
+
+There is no such thing as dirty read within the same transaction.
+
+Isolation Level: Read Uncommitted
+  * A transaction may perform dirty reads
+
+[[q_up_gpa][Query]] concurrent with ...
+#+BEGIN_SRC sql
+Set Transaction Isolation Level Read Uncommitted;
+Select Avg(GPA) From Student;
+#+END_SRC
+
+Isolation Level: Read Committed
+ * A transaction may /not/ perform dirty reads
+
+Still does not guarantee global serializability
+
+[[q_up_gpa][Query]] concurrent with ...
+#+BEGIN_SRC sql
+Set Transaction Isolation Level Read Committed;
+Select Avg(GPA) From Student;
+Select Max(GPA) From Student;
+#+END_SRC
 
 
-*** TODO Introduction to Transactions
-*** TODO Transaction Properties
-*** TODO Isolation Levels
+
 ** TODO Exercises
 *** TODO Index Quiz
 *** TODO Transaction Quiz
@@ -2774,5 +3051,5 @@ Output: recommended indexes
 #+AUTHOR: Lei Zhao
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
-#+INFOJS_OPT: view:info path:../lib/org-info.js
+# #+INFOJS_OPT: view:info path:../lib/org-info.js
 #+OPTIONS: ^:nil \n:t
