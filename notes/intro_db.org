@@ -2654,8 +2654,11 @@ Apartment(_addr_, #units, cName)
 ** DONE Exercises
 
 
-* IN-PROGRESS [[https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/][Indexes and Transactions]] mini-course
-** IN-PROGRESS Lecture Videos
+* DONE [[https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/][Indexes and Transactions]] mini-course
+  CLOSED: [2017-08-24 Thu 01:56]
+  :VISIBILITY: FOLDED
+** DONE Lecture Videos
+   CLOSED: [2017-08-24 Thu 01:54]
 *** DONE Indexes
     CLOSED: [2017-08-20 Sun 16:12]
 
@@ -3122,9 +3125,24 @@ Isolation Levels: Summary
 Note: An entire workload is globally serializable only if every
 transaction's isolation level is serializable.
 
+** DONE Exercises
+   CLOSED: [2017-08-24 Thu 01:55]
+*** DONE Index Quiz
+    CLOSED: [2017-08-24 Thu 01:55]
+*** DONE Transaction Quiz
+    CLOSED: [2017-08-24 Thu 01:55]
+
+
+* TODO [[https://lagunita.stanford.edu/courses/DB/Constraints/SelfPaced/courseware/ch-constraints_and_triggers/][Constraints and Triggers]] mini-course
+** TODO Lecture Videos
+*** TODO Motivation and Overview
+*** TODO Constraints of Several Types
+*** TODO Referential Integrity
+*** TODO Triggers Introduction
+*** TODO Triggers Demo
 ** TODO Exercises
-*** TODO Index Quiz
-*** TODO Transaction Quiz
+*** TODO Constraints and Triggers
+*** TODO SQL Social-Network Triggers
 
 #+TITLE: Intro to DB
 #+AUTHOR: Lei Zhao
