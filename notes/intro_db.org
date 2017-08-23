@@ -2862,7 +2862,7 @@ Resilience to System Failures
 Rather unpleasant inconsistent state can occur due to crashes when
 there bulk loading to DBMS
 
-Or 
+Or
 
 #+BEGIN_SRC sql
 Insert Into Archive
@@ -2974,7 +2974,8 @@ Each client, each transaction:
 
 Serializability ⇒ constraints always hold
 
-*** IN-PROGRESS Isolation Levels
+*** DONE Isolation Levels
+    CLOSED: [2017-08-23 Wed 23:47]
 
 [[def:serial][Serializability]] ⇒ Overhead, Reduction in concurrency
 
@@ -3041,7 +3042,85 @@ Select Avg(GPA) From Student;
 Select Max(GPA) From Student;
 #+END_SRC
 
+Isolation Level: Repeatable Read
+  * A transaction may not perform dirty reads
+  * An item read multiple times cannot change value
 
+Still does not guarantee global serializability
+
+#+BEGIN_SRC sql
+Update Student Set GPA = 1.1 * GPA;
+Update Student Set sizeHS = 1500 where sID = 123;
+#+END_SRC
+concurrent with ...
+#+BEGIN_SRC sql
+Set Transaction Isolation Level Repeatable Read;
+Select Avg(GPA) From Student;
+Select Avg(sizeHS) From Student;
+#+END_SRC
+
+Neither T1; T2 Nor T2; T1
+
+But a relation /can/ change: "phantom" tuples
+
+#+BEGIN_SRC sql
+Insert Into Student -- [100 new tuples]
+#+END_SRC
+concurrent with ...
+#+NAME: q_avg_max
+#+BEGIN_SRC sql
+Set Transaction Isolation Level Repeatable Read;
+Select Avg(GPA) From Student;
+Select Max(GPA) From Student;
+#+END_SRC
+
+The inserted tuples are called phantom tuples
+
+#+BEGIN_SRC sql
+Delete From Student -- [100 tuples]
+#+END_SRC
+concurrent with [[q_avg_max][Query]]
+
+T1 must occur either before or after T2
+
+Read Only transactions
+  * Helps system optimize performance
+  * Independent of isolation level
+
+Orthogonal to isolation level
+
+#+BEGIN_SRC sql
+Set Transaction Read Only;
+Set Transaction Isolation Level Repeatable Read;
+Select Avg(GPA) From Student;
+Select Max(GPA) From Student;
+#+END_SRC
+
+Isolation Levels: Summary
+
+|------------------+-------------+---------------------+----------|
+|                  | dirty Reads | nonrepeatable reads | phantoms |
+|------------------+-------------+---------------------+----------|
+| Read Uncommitted | Y           | Y                   | Y        |
+|------------------+-------------+---------------------+----------|
+| Read Committed   | N           | Y                   | Y        |
+|------------------+-------------+---------------------+----------|
+| Repeatable Read  | N           | N                   | Y        |
+|------------------+-------------+---------------------+----------|
+| Serializable     | N           | N                   | N        |
+|------------------+-------------+---------------------+----------|
+
+  * Standard default: Serializable
+  * Weaker isolation levels
+    - Increased concurrency + decreased overhead =
+      increased performance
+    - Weaker consistency guarantees
+    - Some systems have default Repeatable Read
+  * Isolation level per transaction and "eye of the beholder"
+    - Each transaction's reads must conform to its isolation level
+
+Note: An entire workload is globally serializable only if every
+transaction's isolation level is serializable.
 
 ** TODO Exercises
 *** TODO Index Quiz
