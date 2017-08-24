@@ -2803,9 +2803,9 @@ get; modify; put
 
 Possible outcomes
 \begin{align*}
-  15,000 + 2500 &= 17,500 \\
-         + 1000 &= 16,000 \\
-         + 1500 &= 16,500
+  15,000 + 2500 &amp;= 17,500 \\
+         + 1000 &amp;= 16,000 \\
+         + 1500 &amp;= 16,500
 \end{align*}
 
 *Concurrent Access*: Tuple-level Inconsistency <<ca:tli>>
