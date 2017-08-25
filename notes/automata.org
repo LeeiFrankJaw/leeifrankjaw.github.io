@@ -4,6 +4,52 @@
 [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/][Automata Theory]] on Lagunita
 
 * Week 1: [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/][Finite Automata]]
+** Why Study Automata?
+Automata is ranked second after database for optional courses in a
+Stanford survey of grads 5 years out.  3X the score for AI.
+
+  * Regular expressions are used in many systems.
+    - UNIX a.*b.
+    - DTD describe XML tags with a RE format like
+      ~person(name, addr, child*)~.
+  * Finite automata model protocols, electronic circuits.
+  * Context-free grammars are used to describe the syntax of
+    essentially every programming language.
+    - Not to forget their important role in describing natural
+      languages.
+  * And DTD taken as a whole, are really CFGs.
+  * When developing solutions to real problems, we often confront the
+    limitations of what software can do.
+    - /Undecidable/ things - no program whatever can do it.
+    - /Intractable/ things - there are programs, but no fast programs.
+  * Automata theory gives you the tools.
+
+Other Good Stuff
+
+  * We'll learn how to deal formally with discrete systems.
+    - Proofs: You never really prove a program correct, but you need
+      to be thinking of why a tricky technique really works.
+  * We'll gain experience with abstract models and constructions.
+    - Models layered software architectures.
+
+Course Outline
+
+  * Regular Languages and their descriptors:
+    - Finite automata, nondeterministic finite automata, regular
+      expressions.
+    - Algorithms to decide questions about regular languages, e.g., is
+      it empty?
+    - Closure properties of regular languages.
+  * Context-free languages and their descriptors:
+    - Context-free grammars, pushdown automata.
+    - Decision and closure properties.
+  * Recursive and recursively enumerable languages.
+    - Turing machines, decidability of problems.
+    - The limit of what can be computed.
+  * Intractable problems.
+    - Problems that (appear to) require exponential time.
+    - NP-completeness and beyound.
+
 
 #+TITLE: Automata Theory
 #+AUTHOR: Lei Zhao
