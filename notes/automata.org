@@ -1,10 +1,12 @@
 #+STARTUP: content
+#+STARTUP: inlineimages
 #+TODO: TODO IN-PROGRESS DONE
 
 [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/][Automata Theory]] on Lagunita
 
-* Week 1: [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/][Finite Automata]]
-** Why Study Automata?
+* IN-PROGRESS Week 1: [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/][Finite Automata]]
+** DONE Course outline and motivation
+   CLOSED: [2017-08-26 Sat 11:00]
 Automata is ranked second after database for optional courses in a
 Stanford survey of grads 5 years out.  3X the score for AI.
 
@@ -49,6 +51,41 @@ Course Outline
   * Intractable problems.
     - Problems that (appear to) require exponential time.
     - NP-completeness and beyound.
+
+** Informal introduction to finite automata
+
+What is a Finite Automaton?
+
+  * A formal system.
+  * Remembers only a finite amount of information.
+  * Information represented by its /state/.
+  * State changes in response to /inputs/.
+  * Rules that tell how the state changes in response to inputs are
+    called /transitions/.
+
+
+Tennis
+
+  * /Match/ = 3-5 sets.
+  * /Set/ = 6 or more games.
+
+Scoring a Game
+
+  * One person serves throughout.
+  * To win, you must score at least 4 points.
+  * You also must win by at least 2 points.
+  * Inputs are s = "server wins point" and o = "opponent wins point."
+
+#+BEGIN_SRC dot :file tennis.png :fold folded
+  digraph {
+    a -> b;
+    b -> c:
+    d -> a;
+  }
+#+END_SRC
+
+#+RESULTS:
+[[file:tennis.png]]
 
 
 #+TITLE: Automata Theory

@@ -5,7 +5,9 @@
 
 * DONE [[https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/][SQL]] mini-course
   CLOSED: [2017-06-02 Fri 13:07] DEADLINE: <2017-06-03 Sat 20:00>
+  :PROPERTIES:
   :VISIBILITY: FOLDED
+  :END:
 ** DONE Lecture videos
    CLOSED: [2017-05-31 Wed 09:53]
 *** DONE The Join family of Operators
@@ -796,7 +798,9 @@ on R.ID2 = S.ID1 and S.ID2 <> R.ID1 and
 
 * DONE [[https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/][XPath and XQuery]] mini-course
   CLOSED: [2017-06-26 Mon 07:48]
+  :PROPERTIES:
   :VISIBILITY: FOLDED
+  :END:
 ** DONE Lecture videos
    CLOSED: <2017-06-24 Sat>
 *** DONE XPath Introduction
@@ -1693,7 +1697,9 @@ element.  For example, your result might look like:
 
 * DONE [[https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/][XSLT]] mini-course
   CLOSED: [2017-07-02 Sun 20:06]
+  :PROPERTIES:
   :VISIBILITY: FOLDED
+  :END:
 ** DONE Lecture videos
    CLOSED: [2017-07-02 Sun 15:13]
 XSL = Extensible Stylesheet Language
@@ -1952,7 +1958,9 @@ data should be the same.
 
 * DONE [[https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/][Relational Design Theory]] mini-course
   CLOSED: [2017-07-24 Mon 02:23]
+  :PROPERTIES:
   :VISIBILITY: FOLDED
+  :END:
 ** DONE Lecture videos
    CLOSED: [2017-07-24 Mon 02:23]
 *** DONE Overview
@@ -2230,7 +2238,9 @@ R(A,D)
 
 * DONE [[https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/][Unified Modeling Language]] mini-course
   CLOSED: [2017-08-07 Mon 01:11]
+  :PROPERTIES:
   :VISIBILITY: FOLDED
+  :END:
 ** DONE Lecture Videos
    CLOSED: [2017-08-06 Sun 18:04]
 *** DONE UML Data Modeling
@@ -2656,7 +2666,9 @@ Apartment(_addr_, #units, cName)
 
 * DONE [[https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/][Indexes and Transactions]] mini-course
   CLOSED: [2017-08-24 Thu 01:56]
+  :PROPERTIES:
   :VISIBILITY: FOLDED
+  :END:
 ** DONE Lecture Videos
    CLOSED: [2017-08-24 Thu 01:54]
 *** DONE Indexes

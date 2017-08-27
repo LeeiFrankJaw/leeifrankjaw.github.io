@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-26 Sat 01:35 -->
+<!-- 2017-08-27 Sun 15:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Automata Theory</title>
@@ -235,9 +235,10 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbe59e1a">1. Week 1: Finite Automata</a>
+<li><a href="#orgf485e76">1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: Finite Automata</a>
 <ul>
-<li><a href="#orgf5b4bea">1.1. Why Study Automata?</a></li>
+<li><a href="#org1de0f67">1.1. <span class="done DONE">DONE</span> Course outline and motivation</a></li>
+<li><a href="#orgafc8bf7">1.2. Informal introduction to finite automata</a></li>
 </ul>
 </li>
 </ul>
@@ -247,11 +248,11 @@ for the JavaScript code in this tag.
 <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/">Automata Theory</a> on Lagunita<br />
 </p>
 
-<div id="outline-container-orgbe59e1a" class="outline-2">
-<h2 id="orgbe59e1a"><span class="section-number-2">1</span> Week 1: <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
+<div id="outline-container-orgf485e76" class="outline-2">
+<h2 id="orgf485e76"><span class="section-number-2">1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgf5b4bea" class="outline-3">
-<h3 id="orgf5b4bea"><span class="section-number-3">1.1</span> Why Study Automata?</h3>
+</div><div id="outline-container-org1de0f67" class="outline-3">
+<h3 id="org1de0f67"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Course outline and motivation</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Automata is ranked second after database for optional courses in a<br />
@@ -329,11 +330,57 @@ it empty?<br /></li>
 </ul>
 </div>
 </div>
+
+<div id="outline-container-orgafc8bf7" class="outline-3">
+<h3 id="orgafc8bf7"><span class="section-number-3">1.2</span> Informal introduction to finite automata</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+What is a Finite Automaton?<br />
+</p>
+
+<ul class="org-ul">
+<li>A formal system.<br /></li>
+<li>Remembers only a finite amount of information.<br /></li>
+<li>Information represented by its <i>state</i>.<br /></li>
+<li>State changes in response to <i>inputs</i>.<br /></li>
+<li>Rules that tell how the state changes in response to inputs are<br />
+called <i>transitions</i>.<br /></li>
+</ul>
+
+
+<p>
+Tennis<br />
+</p>
+
+<ul class="org-ul">
+<li><i>Match</i> = 3-5 sets.<br /></li>
+<li><i>Set</i> = 6 or more games.<br /></li>
+</ul>
+
+<p>
+Scoring a Game<br />
+</p>
+
+<ul class="org-ul">
+<li>One person serves throughout.<br /></li>
+<li>To win, you must score at least 4 points.<br /></li>
+<li>You also must win by at least 2 points.<br /></li>
+<li>Inputs are s = "server wins point" and o = "opponent wins point."<br /></li>
+</ul>
+
+
+<div class="figure">
+<p><object type="image/svg+xml" data="tennis.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object><br />
+</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2017-08-26 Sat 01:35</p>
+<p class="date">Created: 2017-08-27 Sun 15:28</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
