@@ -1,5 +1,6 @@
 #+STARTUP: content
 #+STARTUP: inlineimages
+#+STARTUP: hideblocks
 #+TODO: TODO IN-PROGRESS DONE
 
 [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/][Automata Theory]] on Lagunita
@@ -76,16 +77,49 @@ Scoring a Game
   * You also must win by at least 2 points.
   * Inputs are s = "server wins point" and o = "opponent wins point."
 
-#+BEGIN_SRC dot :file tennis.png :fold folded
-  digraph {
-    a -> b;
-    b -> c:
-    d -> a;
+#+BEGIN_SRC dot :file tennis.png
+digraph {
+  rankdir=LR;
+  splines=false;
+  nodesep=0.3;
+  Love[xlabel=Start];
+  Love -> "15-Love" [label=s];
+  Love -> "Love-15" [label=o];
+  "15-Love" -> "30-Love" [label=s];
+  "15-Love" -> "15-all" [label=o];
+  "Love-15" -> "15-all" [label=s];
+  "Love-15" -> "Love-30" [label=o];
+  "30-Love" -> "40-Love" [label=s];
+  "30-Love" -> "30-15" [label=o];
+  "15-all" -> "30-15" [label=s];
+  "15-all" -> "15-30" [label=o];
+  "Love-30" -> "15-30" [label=s];
+  "Love-30" -> "Love-40" [label=o];
+  "40-Love" -> "Server Wins" [label=s];
+  "40-Love" -> "40-15" [label=o];
+  "30-15" -> "40-15" [label=s];
+  "30-15" -> "30-all" [label=o];
+  "15-30" -> "30-all" [label=s];
+  "15-30" -> "15-40" [label=o];
+  "Love-40" -> "15-40" [label=s];
+  "Love-40" -> "Opp'nt Wins" [label=o];
+  
+  "40-15" -> "40-30" [label=o];
+  "30-all" -> "40-30" [label=s];
+  "30-all" -> "30-40" [label=o];
+  "15-40" -> "30-40" [label=s];
+  
+  { 
+    rank = same; 
+    "Server Wins" -> "40-15" [label=s, dir=back];
+    "15-40" -> "Opp'nt Wins" [label=o];
   }
+}
 #+END_SRC
 
 #+RESULTS:
 [[file:tennis.png]]
+
 
 
 #+TITLE: Automata Theory
