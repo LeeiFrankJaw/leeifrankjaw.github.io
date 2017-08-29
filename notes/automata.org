@@ -2,6 +2,7 @@
 #+STARTUP: inlineimages
 #+STARTUP: hideblocks
 #+TODO: TODO IN-PROGRESS DONE
+#+PROPERTY: header-args:latex :results raw :headers '("\\usepackage{tikz}") :fit yes :imagemagick yes :imoutoptions -flatten
 
 [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/][Automata Theory]] on Lagunita
 
@@ -53,7 +54,10 @@ Course Outline
     - Problems that (appear to) require exponential time.
     - NP-completeness and beyound.
 
-** Informal introduction to finite automata
+** IN-PROGRESS Informal introduction to finite automata
+   :PROPERTIES:
+   :VISIBILITY: children
+   :END:
 
 What is a Finite Automaton?
 
@@ -81,13 +85,14 @@ Scoring a Game
 digraph {
   rankdir=LR;
   splines=false;
-  nodesep=0.3;
+  nodesep=0.4;
+  ranksep=0.4;
   Love[xlabel=Start];
   Love -> "15-Love" [label=s];
   Love -> "Love-15" [label=o];
   "15-Love" -> "30-Love" [label=s];
   "15-Love" -> "15-all" [label=o];
-  "Love-15" -> "15-all" [label=s];
+  "Love-15" -> "15-all" [xlabel=s];
   "Love-15" -> "Love-30" [label=o];
   "30-Love" -> "40-Love" [label=s];
   "30-Love" -> "30-15" [label=o];
@@ -103,23 +108,41 @@ digraph {
   "15-30" -> "15-40" [label=o];
   "Love-40" -> "15-40" [label=s];
   "Love-40" -> "Opp'nt Wins" [label=o];
-  
+
   "40-15" -> "40-30" [label=o];
   "30-all" -> "40-30" [label=s];
   "30-all" -> "30-40" [label=o];
-  "15-40" -> "30-40" [label=s];
-  
-  { 
-    rank = same; 
+  "15-40" -> "30-40" [xlabel=s];
+
+  {
+    rank = same;
     "Server Wins" -> "40-15" [label=s, dir=back];
     "15-40" -> "Opp'nt Wins" [label=o];
   }
+
+  "40-30" -> "Server Wins" [label=s];
+  "40-30" -> deuce [label=o];
+  "30-40" -> deuce [label=s];
+  "30-40" -> "Opp'nt Wins" [label=o];
+  {
+    rank = same;
+//    "Add-in" -> "40-30" [style=invis, dir=back];
+//    "30-40" -> "Add-out" [style=invis];
+    "Add-in" -> deuce [label=s, dir=back];
+    deuce -> "Add-out" [label=o];
+//    "Add-in" -> "Server Wins" [label=s, constraint=false];
+    "Add-in" -> deuce [label=o];
+    "Add-out" -> deuce [label=s];
+//    "Add-out" -> "Opp'nt Wins" [label=o];
+  }
+//  {
+//    splines=true;
+//  }
 }
 #+END_SRC
 
 #+RESULTS:
 [[file:tennis.png]]
-
 
 
 #+TITLE: Automata Theory
