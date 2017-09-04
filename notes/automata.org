@@ -81,90 +81,76 @@ Scoring a Game
   * You also must win by at least 2 points.
   * Inputs are s = "server wins point" and o = "opponent wins point."
 
-#+BEGIN_SRC dot :file tennis.png
-digraph {
-  rankdir=LR;
-  splines=false;
-  nodesep=0.4;
-  ranksep=0.4;
-  Love[xlabel=Start];
-  Love -> "15-Love" [label=s];
-  Love -> "Love-15" [label=o];
-  "15-Love" -> "30-Love" [label=s];
-  "15-Love" -> "15-all" [label=o];
-  "Love-15" -> "15-all" [xlabel=s];
-  "Love-15" -> "Love-30" [label=o];
-  "30-Love" -> "40-Love" [label=s];
-  "30-Love" -> "30-15" [label=o];
-  "15-all" -> "30-15" [label=s];
-  "15-all" -> "15-30" [label=o];
-  "Love-30" -> "15-30" [label=s];
-  "Love-30" -> "Love-40" [label=o];
-  "40-Love" -> "Server Wins" [label=s];
-  "40-Love" -> "40-15" [label=o];
-  "30-15" -> "40-15" [label=s];
-  "30-15" -> "30-all" [label=o];
-  "15-30" -> "30-all" [label=s];
-  "15-30" -> "15-40" [label=o];
-  "Love-40" -> "15-40" [label=s];
-  "Love-40" -> "Opp'nt Wins" [label=o];
 
-  "40-15" -> "40-30" [label=o];
-  "30-all" -> "40-30" [label=s];
-  "30-all" -> "30-40" [label=o];
-  "15-40" -> "30-40" [xlabel=s];
+#+BEGIN_SRC latex :file tennis.png :iminoptions -density 300 :imoutoptions -flatten -scale 800
+\usetikzlibrary{positioning,shapes,automata}
+\begin{tikzpicture}
+  [shorten >=1pt,node distance=1cm and 2.5cm,on grid,auto,
+   every state/.style={ellipse,align=center}]
+%% \draw[help lines] (0,0) grid (3,2);
+\node[state,initial] (Love)                                                 {Love};
+\node[state]         (15-Love)     [above right=of Love]                    {15-Love};
+\node[state]         (Love-15)     [below right=of Love]                    {Love-15};
+\node[state]         (30-Love)     [above right=of 15-Love]                 {30-Love};
+\node[state]         (15-all)      [below right=of 15-Love]                 {15-all};
+\node[state]         (Love-30)     [below right=of Love-15]                 {Love-30};
+\node[state]         (40-Love)     [above right=of 30-Love]                 {40-Love};
+\node[state]         (30-15)       [below right=of 30-Love]                 {30-15};
+\node[state]         (15-30)       [below right=of 15-all]                  {15-30};
+\node[state]         (Love-40)     [below right=of Love-30]                 {Love-40};
+\node[state]         (Server Wins) [above right=of 40-Love,text width=3em]  {Server Wins};
+\node[state]         (40-15)       [below right=of 40-Love]                 {40-15};
+\node[state]         (30-all)      [below right=of 30-15]                   {30-all};
+\node[state]         (15-40)       [below right=of 15-30]                   {15-40};
+\node[state]         (Opp'nt Wins) [below right=of Love-40,text width=3em]  {Opp'nt Wins};
+\node[state]         (40-30)       [below right=of 40-15]                   {40-30};
+\node[state]         (30-40)       [below right=of 30-all]                  {30-40};
+\node[state]         (deuce)       [below right=of 40-30]                   {deuce};
+\node[state]         (Add-in)      [above right=of 40-30]                   {Add-in};
+\node[state]         (Add-out)     [below right=of 30-40]                   {Add-out};
 
-  {
-    rank = same;
-    "Server Wins" -> "40-15" [label=s, dir=back];
-    "15-40" -> "Opp'nt Wins" [label=o];
-  }
-
-  "40-30" -> "Server Wins" [label=s];
-  "40-30" -> deuce [label=o];
-  "30-40" -> deuce [label=s];
-  "30-40" -> "Opp'nt Wins" [label=o];
-  {
-    rank = same;
-//    "Add-in" -> "40-30" [style=invis, dir=back];
-//    "30-40" -> "Add-out" [style=invis];
-    "Add-in" -> deuce [label=s, dir=back];
-    deuce -> "Add-out" [label=o];
-//    "Add-in" -> "Server Wins" [label=s, constraint=false];
-    "Add-in" -> deuce [label=o];
-    "Add-out" -> deuce [label=s];
-//    "Add-out" -> "Opp'nt Wins" [label=o];
-  }
-//  {
-//    splines=true;
-//  }
-}
+\path[->] (Love)       edge    node {s}    (15-Love)
+                       edge    node {o}    (Love-15)
+          (15-Love)    edge    node {s}    (30-Love)
+                       edge    node {o}    (15-all)
+          (Love-15)    edge    node {s}    (15-all)
+                       edge    node {o}    (Love-30)
+          (30-Love)    edge    node {s}    (40-Love)
+                       edge    node {o}    (30-15)
+          (15-all)     edge    node {s}    (30-15)
+                       edge    node {o}    (15-30)
+          (Love-30)    edge    node {s}    (15-30)
+                       edge    node {o}    (Love-40)
+          (40-Love)    edge    node {s}    (Server Wins)
+                       edge    node {o}    (40-15)
+          (30-15)      edge    node {s}    (40-15)
+                       edge    node {o}    (30-all)
+          (15-30)      edge    node {s}    (30-all)
+                       edge    node {o}    (15-40)
+          (Love-40)    edge    node {s}    (15-40)
+                       edge    node {o}    (Opp'nt Wins)
+          (40-15)      edge    node {s}    (Server Wins)
+                       edge    node {o}    (40-30)
+          (30-all)     edge    node {s}    (40-30)
+                       edge    node {o}    (30-40)
+          (15-40)      edge    node {s}    (30-40)
+                       edge    node {o}    (Opp'nt Wins)
+          (40-30)      edge    node {s}    (Server Wins)
+                       edge    node {o}    (deuce)
+          (30-40)      edge    node {s}    (deuce)
+                       edge    node {o}    (Opp'nt Wins)
+          (deuce)      edge [bend left]   node {s}    (Add-in)
+                       edge [bend left]   node {o}    (Add-out)
+          (Add-in)     edge    node {s}    (Server Wins)
+                       edge [bend left]   node {o}    (deuce)
+          (Add-out)    edge [bend left]   node {s}    (deuce)
+                       edge    node {o}    (Opp'nt Wins);
+\end{tikzpicture}
 #+END_SRC
 
 #+RESULTS:
 [[file:tennis.png]]
 
-
-#+BEGIN_SRC latex :file tmp.png :iminoptions -density 200
-\usetikzlibrary{positioning,automata}
-\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-\draw[help lines] (0,0) grid (3,2);
-\node[state,initial] (q_0)                        {$q_0$};
-\node[state] (q_1) [above right=of q_0]           {$q_1$};
-\node[state] (q_2) [below right=of q_0]           {$q_2$};
-\node[state,accepting](q_3) [below right=of q_1]  {$q_3$};
-
-\path[->] (q_0) edge               node {0} (q_1)
-                edge               node [swap] {1} (q_2)
-          (q_1) edge               node {1} (q_3)
-                edge [loop above]  node {0} ()
-          (q_2) edge               node [swap] {0} (q_3)
-                edge [loop below]  node {1} ();
-\end{tikzpicture}
-#+END_SRC
-
-#+RESULTS:
-[[file:tmp.png]]
 
 
 #+TITLE: Automata Theory
