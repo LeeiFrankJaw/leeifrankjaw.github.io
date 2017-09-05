@@ -54,10 +54,8 @@ Course Outline
     - Problems that (appear to) require exponential time.
     - NP-completeness and beyound.
 
-** IN-PROGRESS Informal introduction to finite automata
-   :PROPERTIES:
-   :VISIBILITY: children
-   :END:
+** DONE Informal introduction to finite automata
+   CLOSED: [2017-09-05 Tue 20:43]
 
 What is a Finite Automaton?
 
@@ -88,26 +86,26 @@ Scoring a Game
   [shorten >=1pt,node distance=1cm and 2.5cm,on grid,auto,
    every state/.style={ellipse,align=center}]
 %% \draw[help lines] (0,0) grid (3,2);
-\node[state,initial] (Love)                                                 {Love};
-\node[state]         (15-Love)     [above right=of Love]                    {15-Love};
-\node[state]         (Love-15)     [below right=of Love]                    {Love-15};
-\node[state]         (30-Love)     [above right=of 15-Love]                 {30-Love};
-\node[state]         (15-all)      [below right=of 15-Love]                 {15-all};
-\node[state]         (Love-30)     [below right=of Love-15]                 {Love-30};
-\node[state]         (40-Love)     [above right=of 30-Love]                 {40-Love};
-\node[state]         (30-15)       [below right=of 30-Love]                 {30-15};
-\node[state]         (15-30)       [below right=of 15-all]                  {15-30};
-\node[state]         (Love-40)     [below right=of Love-30]                 {Love-40};
-\node[state]         (Server Wins) [above right=of 40-Love,text width=3em]  {Server Wins};
-\node[state]         (40-15)       [below right=of 40-Love]                 {40-15};
-\node[state]         (30-all)      [below right=of 30-15]                   {30-all};
-\node[state]         (15-40)       [below right=of 15-30]                   {15-40};
-\node[state]         (Opp'nt Wins) [below right=of Love-40,text width=3em]  {Opp'nt Wins};
-\node[state]         (40-30)       [below right=of 40-15]                   {40-30};
-\node[state]         (30-40)       [below right=of 30-all]                  {30-40};
-\node[state]         (deuce)       [below right=of 40-30]                   {deuce};
-\node[state]         (Add-in)      [above right=of 40-30]                   {Add-in};
-\node[state]         (Add-out)     [below right=of 30-40]                   {Add-out};
+\node[state,initial]     (Love)                                                 {Love};
+\node[state]             (15-Love)     [above right=of Love]                    {15-Love};
+\node[state]             (Love-15)     [below right=of Love]                    {Love-15};
+\node[state]             (30-Love)     [above right=of 15-Love]                 {30-Love};
+\node[state]             (15-all)      [below right=of 15-Love]                 {15-all};
+\node[state]             (Love-30)     [below right=of Love-15]                 {Love-30};
+\node[state]             (40-Love)     [above right=of 30-Love]                 {40-Love};
+\node[state]             (30-15)       [below right=of 30-Love]                 {30-15};
+\node[state]             (15-30)       [below right=of 15-all]                  {15-30};
+\node[state]             (Love-40)     [below right=of Love-30]                 {Love-40};
+\node[state,accepting]   (Server Wins) [above right=of 40-Love,text width=3em]  {Server Wins};
+\node[state]             (40-15)       [below right=of 40-Love]                 {40-15};
+\node[state]             (30-all)      [below right=of 30-15]                   {30-all};
+\node[state]             (15-40)       [below right=of 15-30]                   {15-40};
+\node[state,accepting]   (Opp'nt Wins) [below right=of Love-40,text width=3em]  {Opp'nt Wins};
+\node[state]             (40-30)       [below right=of 40-15]                   {40-30};
+\node[state]             (30-40)       [below right=of 30-all]                  {30-40};
+\node[state]             (deuce)       [below right=of 40-30]                   {deuce};
+\node[state]             (Add-in)      [above right=of 40-30]                   {Add-in};
+\node[state]             (Add-out)     [below right=of 30-40]                   {Add-out};
 
 \path[->] (Love)       edge    node {s}    (15-Love)
                        edge    node {o}    (Love-15)
@@ -151,6 +149,90 @@ Scoring a Game
 #+RESULTS:
 [[file:tennis.png]]
 
+Acceptance of Inputs
+
+  * Given a sequence of inputs (/input string/), start in the start
+    state and follow the transition from each symbol in turn.
+  * Input is /accepted/ if you wind up in a final (accepting) state
+    after all inputs have been read.
+
+Language of an Automaton
+
+  * The set of strings accepted by an automaton A is the /language/ of A.
+  * Denoted L(A).
+  * Different sets of final states -> different languages.
+  * Example: As designed, L(Tennis) = strings that determins the winner.
+
+** IN-PROGRESS Deterministic Finite Automata
+   :PROPERTIES:
+   :VISIBILITY: children
+   :END:
+
+Alphabets
+
+  * An /alphabet/ is any finite set of symbols.
+  * Examples:
+    ASCII, Unicode,
+    {0, 1} (/binary alphabet/),
+    {a, b, c}, {s, o},
+    set of signals used by a protocol.
+
+
+Strings
+
+  * A /string/ over an alphabet \Sigma is a list, each element of
+    which is a member of \Sigma.
+    - Strings shown with no commas or quotes, e.g., abc or 01101.
+  * \Sigma^{*} = set of all strings over alphabet \Sigma.
+  * The /length/ of a string is its number of positions.
+  * \epsilon stands for the /empty string/ (string of length 0).
+
+Example: Strings
+
+  * {0, 1}^{*} = {\epsilon, 0, 1, 00, 01, 10, 11, 000, 001, ...}
+  * Subtlety: 0 as a string, 0 as a symbol look the same.
+    - Context determines the type.
+
+
+Languages
+
+  * A /language/ is a subset of \Sigma^{*} for some alphabet \Sigma.
+  * Example: The set of string of 0s and 1s with no two consecutive 1s.
+  * L = {\epsilon, 0, 1, 00, 01, 10, 000, 001, 010, 100, 101, 0000,
+    0001, 0010, 0100, 0101, 1000, 1001, 1010, ...}
+    Fibonacci sequence hides here.
+
+
+Deterministic Finite Automata
+
+  * A formalism for defining languages,
+    consisting of:
+    1. A finite set of /states/ (Q, typically).
+    2. An /input alphabet/ (\Sigma, typically).
+    3. A /transition function/ (\delta, typically).
+    4. A /start state/ (q_{0}, in Q, typically).
+    5. A set of /final states/ (F \subset Q, typically).
+       + "Final" and "accepting" are synonyms.
+
+
+The Transition Function
+
+  * Takes two arguments: a state and an input symbol.
+  * \delta(q, a) = the state that the DFA goes to when it is in state
+    q and input a is received.
+  * Note: always a next state - add a /dead state/ if no transition
+
+
+Graph Representation of DFAs
+
+  * Nodes = states.
+  * Arcs represent transition function.
+    - Arc from state p to state q labeled by all those input symbols
+      that have transitions from p to q.
+  * Arrow labeled "Start" to the start state.
+  * Final states indicated by double circles.
+
+
 
 
 #+TITLE: Automata Theory
@@ -158,4 +240,4 @@ Scoring a Game
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
 # #+INFOJS_OPT: view:info path:../lib/org-info.js
-#+OPTIONS: ^:nil \n:t
+#+OPTIONS: ^:{} \n:t

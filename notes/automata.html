@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-04 Mon 13:43 -->
+<!-- 2017-09-05 Tue 23:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Automata Theory</title>
@@ -235,10 +235,11 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org03db2c8">1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: Finite Automata</a>
+<li><a href="#orgdfb634f">1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: Finite Automata</a>
 <ul>
-<li><a href="#orga4b2617">1.1. <span class="done DONE">DONE</span> Course outline and motivation</a></li>
-<li><a href="#org038da28">1.2. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Informal introduction to finite automata</a></li>
+<li><a href="#org1c6fe80">1.1. <span class="done DONE">DONE</span> Course outline and motivation</a></li>
+<li><a href="#org554bd15">1.2. <span class="done DONE">DONE</span> Informal introduction to finite automata</a></li>
+<li><a href="#org446991b">1.3. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Deterministic Finite Automata</a></li>
 </ul>
 </li>
 </ul>
@@ -248,11 +249,11 @@ for the JavaScript code in this tag.
 <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/">Automata Theory</a> on Lagunita<br />
 </p>
 
-<div id="outline-container-org03db2c8" class="outline-2">
-<h2 id="org03db2c8"><span class="section-number-2">1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
+<div id="outline-container-orgdfb634f" class="outline-2">
+<h2 id="orgdfb634f"><span class="section-number-2">1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orga4b2617" class="outline-3">
-<h3 id="orga4b2617"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Course outline and motivation</h3>
+</div><div id="outline-container-org1c6fe80" class="outline-3">
+<h3 id="org1c6fe80"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Course outline and motivation</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Automata is ranked second after database for optional courses in a<br />
@@ -331,8 +332,8 @@ it empty?<br /></li>
 </div>
 </div>
 
-<div id="outline-container-org038da28" class="outline-3">
-<h3 id="org038da28"><span class="section-number-3">1.2</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Informal introduction to finite automata</h3>
+<div id="outline-container-org554bd15" class="outline-3">
+<h3 id="org554bd15"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Informal introduction to finite automata</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 What is a Finite Automaton?<br />
@@ -374,13 +375,142 @@ Scoring a Game<br />
 <p><img src="tennis.png" alt="tennis.png" /><br />
 </p>
 </div>
+
+<p>
+Acceptance of Inputs<br />
+</p>
+
+<ul class="org-ul">
+<li>Given a sequence of inputs (<i>input string</i>), start in the start<br />
+state and follow the transition from each symbol in turn.<br /></li>
+<li>Input is <i>accepted</i> if you wind up in a final (accepting) state<br />
+after all inputs have been read.<br /></li>
+</ul>
+
+<p>
+Language of an Automaton<br />
+</p>
+
+<ul class="org-ul">
+<li>The set of strings accepted by an automaton A is the <i>language</i> of A.<br /></li>
+<li>Denoted L(A).<br /></li>
+<li>Different sets of final states -&gt; different languages.<br /></li>
+<li>Example: As designed, L(Tennis) = strings that determins the winner.<br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org446991b" class="outline-3">
+<h3 id="org446991b"><span class="section-number-3">1.3</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Deterministic Finite Automata</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Alphabets<br />
+</p>
+
+<ul class="org-ul">
+<li>An <i>alphabet</i> is any finite set of symbols.<br /></li>
+<li>Examples:<br />
+ASCII, Unicode,<br />
+{0, 1} (<i>binary alphabet</i>),<br />
+{a, b, c}, {s, o},<br />
+set of signals used by a protocol.<br /></li>
+</ul>
+
+
+<p>
+Strings<br />
+</p>
+
+<ul class="org-ul">
+<li>A <i>string</i> over an alphabet &Sigma; is a list, each element of<br />
+which is a member of &Sigma;.<br />
+<ul class="org-ul">
+<li>Strings shown with no commas or quotes, e.g., abc or 01101.<br /></li>
+</ul></li>
+<li>&Sigma;<sup>*</sup> = set of all strings over alphabet &Sigma;.<br /></li>
+<li>The <i>length</i> of a string is its number of positions.<br /></li>
+<li>&epsilon; stands for the <i>empty string</i> (string of length 0).<br /></li>
+</ul>
+
+<p>
+Example: Strings<br />
+</p>
+
+<ul class="org-ul">
+<li>{0, 1}<sup>*</sup> = {&epsilon;, 0, 1, 00, 01, 10, 11, 000, 001, &#x2026;}<br /></li>
+<li>Subtlety: 0 as a string, 0 as a symbol look the same.<br />
+<ul class="org-ul">
+<li>Context determines the type.<br /></li>
+</ul></li>
+</ul>
+
+
+<p>
+Languages<br />
+</p>
+
+<ul class="org-ul">
+<li>A <i>language</i> is a subset of &Sigma;<sup>*</sup> for some alphabet &Sigma;.<br /></li>
+<li>Example: The set of string of 0s and 1s with no two consecutive 1s.<br /></li>
+<li>L = {&epsilon;, 0, 1, 00, 01, 10, 000, 001, 010, 100, 101, 0000,<br />
+0001, 0010, 0100, 0101, 1000, 1001, 1010, &#x2026;}<br />
+Fibonacci sequence hides here.<br /></li>
+</ul>
+
+
+<p>
+Deterministic Finite Automata<br />
+</p>
+
+<ul class="org-ul">
+<li>A formalism for defining languages,<br />
+consisting of:<br />
+<ol class="org-ol">
+<li>A finite set of <i>states</i> (Q, typically).<br /></li>
+<li>An <i>input alphabet</i> (&Sigma;, typically).<br /></li>
+<li>A <i>transition function</i> (&delta;, typically).<br /></li>
+<li>A <i>start state</i> (q<sub>0</sub>, in Q, typically).<br /></li>
+<li>A set of <i>final states</i> (F &sub; Q, typically).<br />
+<ul class="org-ul">
+<li>"Final" and "accepting" are synonyms.<br /></li>
+</ul></li>
+</ol></li>
+</ul>
+
+
+<p>
+The Transition Function<br />
+</p>
+
+<ul class="org-ul">
+<li>Takes two arguments: a state and an input symbol.<br /></li>
+<li>&delta;(q, a) = the state that the DFA goes to when it is in state<br />
+q and input a is received.<br /></li>
+<li>Note: always a next state - add a <i>dead state</i> if no transition<br /></li>
+</ul>
+
+
+<p>
+Graph Representation of DFAs<br />
+</p>
+
+<ul class="org-ul">
+<li>Nodes = states.<br /></li>
+<li>Arcs represent transition function.<br />
+<ul class="org-ul">
+<li>Arc from state p to state q labeled by all those input symbols<br />
+that have transitions from p to q.<br /></li>
+</ul></li>
+<li>Arrow labeled "Start" to the start state.<br /></li>
+<li>Final states indicated by double circles.<br /></li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2017-09-04 Mon 13:43</p>
+<p class="date">Created: 2017-09-05 Tue 23:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
