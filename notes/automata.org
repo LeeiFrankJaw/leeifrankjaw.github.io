@@ -2,7 +2,7 @@
 #+STARTUP: inlineimages
 #+STARTUP: hideblocks
 #+TODO: TODO IN-PROGRESS DONE
-#+PROPERTY: header-args:latex :results raw :headers '("\\usepackage{tikz}") :fit yes :imagemagick yes :imoutoptions -flatten
+#+PROPERTY: header-args:latex :results raw :headers '("\\usepackage{tikz}") :fit yes :imagemagick yes :iminoptions -density 300 :imoutoptions -flatten
 
 [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/][Automata Theory]] on Lagunita
 
@@ -80,7 +80,7 @@ Scoring a Game
   * Inputs are s = "server wins point" and o = "opponent wins point."
 
 
-#+BEGIN_SRC latex :file tennis.png :iminoptions -density 300 :imoutoptions -flatten -scale 800
+#+BEGIN_SRC latex :file tennis.png
 \usetikzlibrary{positioning,shapes,automata}
 \begin{tikzpicture}
   [shorten >=1pt,node distance=1cm and 2.5cm,on grid,auto,
@@ -107,47 +107,49 @@ Scoring a Game
 \node[state]             (Add-in)      [above right=of 40-30]                   {Add-in};
 \node[state]             (Add-out)     [below right=of 30-40]                   {Add-out};
 
-\path[->] (Love)       edge    node {s}    (15-Love)
-                       edge    node {o}    (Love-15)
-          (15-Love)    edge    node {s}    (30-Love)
-                       edge    node {o}    (15-all)
-          (Love-15)    edge    node {s}    (15-all)
-                       edge    node {o}    (Love-30)
-          (30-Love)    edge    node {s}    (40-Love)
-                       edge    node {o}    (30-15)
-          (15-all)     edge    node {s}    (30-15)
-                       edge    node {o}    (15-30)
-          (Love-30)    edge    node {s}    (15-30)
-                       edge    node {o}    (Love-40)
-          (40-Love)    edge    node {s}    (Server Wins)
-                       edge    node {o}    (40-15)
-          (30-15)      edge    node {s}    (40-15)
-                       edge    node {o}    (30-all)
-          (15-30)      edge    node {s}    (30-all)
-                       edge    node {o}    (15-40)
-          (Love-40)    edge    node {s}    (15-40)
-                       edge    node {o}    (Opp'nt Wins)
-          (40-15)      edge    node {s}    (Server Wins)
-                       edge    node {o}    (40-30)
-          (30-all)     edge    node {s}    (40-30)
-                       edge    node {o}    (30-40)
-          (15-40)      edge    node {s}    (30-40)
-                       edge    node {o}    (Opp'nt Wins)
-          (40-30)      edge    node {s}    (Server Wins)
-                       edge    node {o}    (deuce)
-          (30-40)      edge    node {s}    (deuce)
-                       edge    node {o}    (Opp'nt Wins)
+\path[->] (Love)       edge               node {s}    (15-Love)
+                       edge               node {o}    (Love-15)
+          (15-Love)    edge               node {s}    (30-Love)
+                       edge               node {o}    (15-all)
+          (Love-15)    edge               node {s}    (15-all)
+                       edge               node {o}    (Love-30)
+          (30-Love)    edge               node {s}    (40-Love)
+                       edge               node {o}    (30-15)
+          (15-all)     edge               node {s}    (30-15)
+                       edge               node {o}    (15-30)
+          (Love-30)    edge               node {s}    (15-30)
+                       edge               node {o}    (Love-40)
+          (40-Love)    edge               node {s}    (Server Wins)
+                       edge               node {o}    (40-15)
+          (30-15)      edge               node {s}    (40-15)
+                       edge               node {o}    (30-all)
+          (15-30)      edge               node {s}    (30-all)
+                       edge               node {o}    (15-40)
+          (Love-40)    edge               node {s}    (15-40)
+                       edge               node {o}    (Opp'nt Wins)
+          (40-15)      edge               node {s}    (Server Wins)
+                       edge               node {o}    (40-30)
+          (30-all)     edge               node {s}    (40-30)
+                       edge               node {o}    (30-40)
+          (15-40)      edge               node {s}    (30-40)
+                       edge               node {o}    (Opp'nt Wins)
+          (40-30)      edge               node {s}    (Server Wins)
+                       edge               node {o}    (deuce)
+          (30-40)      edge               node {s}    (deuce)
+                       edge               node {o}    (Opp'nt Wins)
           (deuce)      edge [bend left]   node {s}    (Add-in)
                        edge [bend left]   node {o}    (Add-out)
-          (Add-in)     edge    node {s}    (Server Wins)
+          (Add-in)     edge               node {s}    (Server Wins)
                        edge [bend left]   node {o}    (deuce)
           (Add-out)    edge [bend left]   node {s}    (deuce)
-                       edge    node {o}    (Opp'nt Wins);
+                       edge               node {o}    (Opp'nt Wins);
 \end{tikzpicture}
 #+END_SRC
 
+#+ATTR_HTML: :width 800px
 #+RESULTS:
 [[file:tennis.png]]
+
 
 Acceptance of Inputs
 
@@ -160,7 +162,7 @@ Language of an Automaton
 
   * The set of strings accepted by an automaton A is the /language/ of A.
   * Denoted L(A).
-  * Different sets of final states -> different languages.
+  * Different sets of final states → different languages.
   * Example: As designed, L(Tennis) = strings that determins the winner.
 
 ** IN-PROGRESS Deterministic Finite Automata
@@ -180,25 +182,25 @@ Alphabets
 
 Strings
 
-  * A /string/ over an alphabet \Sigma is a list, each element of
-    which is a member of \Sigma.
+  * A /string/ over an alphabet Σ is a list, each element of
+    which is a member of Σ.
     - Strings shown with no commas or quotes, e.g., abc or 01101.
-  * \Sigma^{*} = set of all strings over alphabet \Sigma.
+  * Σ^{*} = set of all strings over alphabet Σ.
   * The /length/ of a string is its number of positions.
-  * \epsilon stands for the /empty string/ (string of length 0).
+  * ε stands for the /empty string/ (string of length 0).
 
 Example: Strings
 
-  * {0, 1}^{*} = {\epsilon, 0, 1, 00, 01, 10, 11, 000, 001, ...}
+  * {0, 1}^{*} = {ε, 0, 1, 00, 01, 10, 11, 000, 001, ...}
   * Subtlety: 0 as a string, 0 as a symbol look the same.
     - Context determines the type.
 
 
 Languages
 
-  * A /language/ is a subset of \Sigma^{*} for some alphabet \Sigma.
+  * A /language/ is a subset of Σ^{*} for some alphabet Σ.
   * Example: The set of string of 0s and 1s with no two consecutive 1s.
-  * L = {\epsilon, 0, 1, 00, 01, 10, 000, 001, 010, 100, 101, 0000,
+  * L = {ε, 0, 1, 00, 01, 10, 000, 001, 010, 100, 101, 0000,
     0001, 0010, 0100, 0101, 1000, 1001, 1010, ...}
     Fibonacci sequence hides here.
 
@@ -208,7 +210,7 @@ Deterministic Finite Automata
   * A formalism for defining languages,
     consisting of:
     1. A finite set of /states/ (Q, typically).
-    2. An /input alphabet/ (\Sigma, typically).
+    2. An /input alphabet/ (Σ, typically).
     3. A /transition function/ (\delta, typically).
     4. A /start state/ (q_{0}, in Q, typically).
     5. A set of /final states/ (F \subset Q, typically).
@@ -232,12 +234,41 @@ Graph Representation of DFAs
   * Arrow labeled "Start" to the start state.
   * Final states indicated by double circles.
 
+#+BEGIN_SRC latex :file ing.png
+\usetikzlibrary{positioning,shapes,automata}
+\begin{tikzpicture}
+  [shorten >=1pt,node distance=3cm,on grid,auto,inner xsep=0pt,
+   every state/.style={ellipse,align=center}]
+% \draw[help lines] (0,0) grid (3,2);
+\node[state,initial]                    (nothing) {nothing};
+\node[state,right=of nothing]           (i)       {saw \textit{i}};
+\node[state,right=of i]                 (in)      {saw \textit{in}};
+\node[state,accepting,right=of in]      (ing)     {saw \textit{ing}};
+
+\path[->] (nothing) edge                       node         {\textit{i}}                    (i)
+                    edge [in=150,out=120,loop] node [above] {not \textit{i}}                (nothing)
+          (i)       edge                       node         {\textit{n}}                    (in)
+                    edge [loop below]          node         {\textit{i}}                    (i)
+                    edge [bend right]          node [above] {not \textit{i} or \textit{n}}  (nothing)
+          (in)      edge                       node         {\textit{g}}                    (ing)
+                    edge [bend right]          node [above] {\textit{i}}                    (i)
+                    edge [bend right=90]       node [above] {not \texitit{i} or \textit{g}} (nothing)
+          (ing)     edge [bend left]           node         {\textit{i}}                    (i)
+                    edge [bend left=90]        node         {not \textit{i}}                (nothing);
+\end{tikzpicture}
+#+END_SRC
+
+#+ATTR_HTML: :width 600px
+#+RESULTS:
+[[file:ing.png]]
+
 
 
 
 #+TITLE: Automata Theory
 #+AUTHOR: Lei Zhao
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
 # #+INFOJS_OPT: view:info path:../lib/org-info.js
 #+OPTIONS: ^:{} \n:t
