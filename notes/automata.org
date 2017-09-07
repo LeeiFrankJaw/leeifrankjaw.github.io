@@ -4,6 +4,14 @@
 #+TODO: TODO IN-PROGRESS DONE
 #+PROPERTY: header-args:latex :results raw :headers '("\\usepackage{tikz}") :fit yes :imagemagick yes :iminoptions -density 300 :imoutoptions -flatten
 
+#+TITLE: Automata Theory
+#+AUTHOR: Lei Zhao
+#+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
+# #+INFOJS_OPT: view:info path:../lib/org-info.js
+#+OPTIONS: ^:{} \n:t
+
 [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/][Automata Theory]] on Lagunita
 
 * IN-PROGRESS Week 1: [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/][Finite Automata]]
@@ -263,12 +271,57 @@ Graph Representation of DFAs
 [[file:ing.png]]
 
 
+#+BEGIN_SRC latex :file send.png
+\usetikzlibrary{positioning,shapes,automata}
+\begin{tikzpicture}
+  [shorten >=1pt,node distance=3cm,on grid,auto,inner xsep=0pt,
+   every state/.style={ellipse,align=center}]
+\node[state,initial]          (ready)   {Ready};
+\node[state,right=of ready]   (sending) {sending};
+
+\path[->] (ready)   edge              node {data in} (sending)
+          (sending) edge [loop above] node {timeout} (sending)
+                    edge [bend left]  node {ack} (ready);
+\end{tikzpicture}
+#+END_SRC
+
+#+ATTR_HTML: :width 500px
+#+RESULTS:
+[[file:send.png]]
 
 
-#+TITLE: Automata Theory
-#+AUTHOR: Lei Zhao
-#+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
-#+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
-#+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
-# #+INFOJS_OPT: view:info path:../lib/org-info.js
-#+OPTIONS: ^:{} \n:t
+A: String so far has no 11, does not end in 1.
+B: String so far has no 11, but ends in a single 1.
+C: Consecutive 1s have been seen.
+
+#+BEGIN_SRC latex :file strings.png
+\usetikzlibrary{positioning,shapes,automata}
+\begin{tikzpicture}
+  [shorten >=1pt,node distance=3cm,on grid,auto,inner xsep=0pt,
+   every state/.style={ellipse,align=center}]
+\node[state,initial,accepting] (A) {A};
+\node[state,accepting,right=of A] (B) {B};
+\node[state,right=of B] (C) {C};
+
+\path[->] (A) edge              node {1}   (B)
+              edge [loop above] node {0}   (A)
+          (B) edge node {1} (C)            
+              edge [bend left]  node {0}   (A)
+          (C) edge [loop above] node {0,1} (C);
+\end{tikzpicture}
+#+END_SRC
+
+#+ATTR_HTML: :width 500px
+#+RESULTS:
+[[file:strings.png]]
+
+
+ALternative Representation: Transition Table
+
+|       |   | 0 | 1 |
+|-------+---+---+---|
+| \star | A | A | B |
+| \star | B | A | C |
+|       | C | C | C |
+|-------+---+---+---|
+

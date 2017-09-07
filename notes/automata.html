@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-07 Thu 03:53 -->
+<!-- 2017-09-07 Thu 23:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Automata Theory</title>
@@ -237,11 +237,11 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge4d11c7">1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: Finite Automata</a>
+<li><a href="#org6cf4fd6">1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: Finite Automata</a>
 <ul>
-<li><a href="#orgca264f8">1.1. <span class="done DONE">DONE</span> Course outline and motivation</a></li>
-<li><a href="#org98457a1">1.2. <span class="done DONE">DONE</span> Informal introduction to finite automata</a></li>
-<li><a href="#org89a5027">1.3. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Deterministic Finite Automata</a></li>
+<li><a href="#org6d9c74c">1.1. <span class="done DONE">DONE</span> Course outline and motivation</a></li>
+<li><a href="#org004f2be">1.2. <span class="done DONE">DONE</span> Informal introduction to finite automata</a></li>
+<li><a href="#org48dd0ad">1.3. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Deterministic Finite Automata</a></li>
 </ul>
 </li>
 </ul>
@@ -251,12 +251,12 @@ for the JavaScript code in this tag.
 <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/">Automata Theory</a> on Lagunita<br />
 </p>
 
-<div id="outline-container-orge4d11c7" class="outline-2">
-<h2 id="orge4d11c7"><span class="section-number-2">1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
+<div id="outline-container-org6cf4fd6" class="outline-2">
+<h2 id="org6cf4fd6"><span class="section-number-2">1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgca264f8" class="outline-3">
-<h3 id="orgca264f8"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Course outline and motivation</h3>
+<div id="outline-container-org6d9c74c" class="outline-3">
+<h3 id="org6d9c74c"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Course outline and motivation</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Automata is ranked second after database for optional courses in a<br />
@@ -335,8 +335,8 @@ it empty?<br /></li>
 </div>
 </div>
 
-<div id="outline-container-org98457a1" class="outline-3">
-<h3 id="org98457a1"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Informal introduction to finite automata</h3>
+<div id="outline-container-org004f2be" class="outline-3">
+<h3 id="org004f2be"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Informal introduction to finite automata</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 What is a Finite Automaton?<br />
@@ -404,8 +404,8 @@ Language of an Automaton<br />
 </div>
 </div>
 
-<div id="outline-container-org89a5027" class="outline-3">
-<h3 id="org89a5027"><span class="section-number-3">1.3</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Deterministic Finite Automata</h3>
+<div id="outline-container-org48dd0ad" class="outline-3">
+<h3 id="org48dd0ad"><span class="section-number-3">1.3</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Deterministic Finite Automata</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Alphabets<br />
@@ -514,13 +514,82 @@ that have transitions from p to q.<br /></li>
 <p><img src="ing.png" alt="ing.png" width="600px" /><br />
 </p>
 </div>
+
+
+
+<div class="figure">
+<p><img src="send.png" alt="send.png" width="500px" /><br />
+</p>
+</div>
+
+
+<p>
+A: String so far has no 11, does not end in 1.<br />
+B: String so far has no 11, but ends in a single 1.<br />
+C: Consecutive 1s have been seen.<br />
+</p>
+
+
+<div class="figure">
+<p><img src="strings.png" alt="strings.png" width="500px" /><br />
+</p>
+</div>
+
+
+<p>
+ALternative Representation: Transition Table<br />
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">0</th>
+<th scope="col" class="org-left">1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">*</td>
+<td class="org-left">A</td>
+<td class="org-left">A</td>
+<td class="org-left">B</td>
+</tr>
+
+<tr>
+<td class="org-left">*</td>
+<td class="org-left">B</td>
+<td class="org-left">A</td>
+<td class="org-left">C</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">C</td>
+<td class="org-left">C</td>
+<td class="org-left">C</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2017-09-07 Thu 03:53</p>
+<p class="date">Created: 2017-09-07 Thu 23:39</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
