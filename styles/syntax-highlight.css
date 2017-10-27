@@ -7,6 +7,10 @@ pre .org-keyword { color: #101094 }
 pre .org-builtin {
     color: #166A05; /* #3C8504; */ /* #006FE0; */
 }
+pre .org-comment-delimiter,
+pre .org-comment {
+    color: #858C93;
+}
 pre .org-nxml-element-local-name,
 pre .org-nxml-tag-delimiter,
 pre .org-nxml-tag-slash {
