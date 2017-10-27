@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-10-27 Fri 09:15 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fix filename encoding for zip archive with Python</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Lei Zhao" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
+<link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
+<script type="text/javascript" src="../src/post.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Fix filename encoding for zip archive with Python</h1>
+<p>
+Sometimes after unzipping some ZIP archives you get from the Internet,
+you get directories and files with <a href="https://en.wikipedia.org/wiki/Mojibake">mojibake</a> names.  The names in a ZIP
+file are bytes without any encoding information, and it is up to the
+unzipping tool to decide which encoding the names use.
+</p>
+
+<p>
+According to the python <a href="https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile.write">zipfile</a> module, typical ZIP tools interprets
+file names as encoded in <a href="https://en.wikipedia.org/wiki/Code_page_437">CP437</a>, if they cannot decide the original
+encoding.
+</p>
+
+<p>
+The following demostrates the mojibake result with a ZIP archive
+encoded in <a href="https://en.wikipedia.org/wiki/GBK">GBK</a> for file names.  The archive is generated by <a href="https://en.wikipedia.org/wiki/Baidu_Wangpan">Baidu
+Wangpan</a>, which enforces GBK.  They might do it for compatibilities
+with legacy Chinese system, but I think they should really enforce
+UTF-8 instead of GBK.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> zipfile <span class="org-keyword">import</span> ZipFile
+<span class="org-variable-name">zname</span> = <span class="org-string">'&#12304;&#25209;&#37327;&#19979;&#36733;&#12305;&#31532;&#19968;&#33410; &#27010;&#24565;&#19982;&#24615;&#36136;&#31561;.zip'</span>
+<span class="org-variable-name">zf</span> = ZipFile(zname)
+zf.namelist()
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>╬ó╗²╖╓B(1)/╡┌11╓▄╜▓┐╬╠ß╕┘/╡┌╥╗╜┌ ╕┼─ε╙δ╨╘╓╩.pdf</li>
+<li>╬ó╗²╖╓B(1)/╡┌11╓▄╜▓┐╬╠ß╕┘/userCommands.tex</li>
+<li>╬ó╗²╖╓B(1)/╡┌11╓▄╜▓┐╬╠ß╕┘/╡┌╢■╜┌ ╗╗╘¬╗²╖╓╖¿.pdf</li>
+<li>╬ó╗²╖╓B(1)/╡┌11╓▄╜▓┐╬╠ß╕┘/╡┌╚²╜┌ ╖╓▓┐╗²╖╓╖¿.pdf</li>
+<li>╬ó╗²╖╓B(1)/╡┌11╓▄╜▓┐╬╠ß╕┘/╡┌╢■╜┌ ╗╗╘¬╗²╖╓╖¿.tex</li>
+<li>╬ó╗²╖╓B(1)/╡┌11╓▄╜▓┐╬╠ß╕┘/╡┌╚²╜┌ ╖╓▓┐╗²╖╓╖¿.tex</li>
+<li>╬ó╗²╖╓B(1)/╡┌11╓▄╜▓┐╬╠ß╕┘/╡┌╥╗╜┌ ╕┼─ε╙δ╨╘╓╩.tex</li>
+<li>╬ó╗²╖╓B(1)/╡┌11╓▄╜▓┐╬╠ß╕┘/config.tex</li>
+</ul>
+
+
+<p>
+The tool cannot decode the file name correctly so it interprets them
+as in CP437.  To get the original bytes in Python 3, just re-encode
+them in CP437.  With those bytes, you can get correctly decoded file
+name by decoding them in GBK.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">[s.encode(<span class="org-string">'cp437'</span>).decode(<span class="org-string">'gbk'</span>) <span class="org-keyword">for</span> s <span class="org-keyword">in</span> zf.namelist()]
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>微积分B(1)/第11周讲课提纲/第一节 概念与性质.pdf</li>
+<li>微积分B(1)/第11周讲课提纲/userCommands.tex</li>
+<li>微积分B(1)/第11周讲课提纲/第二节 换元积分法.pdf</li>
+<li>微积分B(1)/第11周讲课提纲/第三节 分部积分法.pdf</li>
+<li>微积分B(1)/第11周讲课提纲/第二节 换元积分法.tex</li>
+<li>微积分B(1)/第11周讲课提纲/第三节 分部积分法.tex</li>
+<li>微积分B(1)/第11周讲课提纲/第一节 概念与性质.tex</li>
+<li>微积分B(1)/第11周讲课提纲/config.tex</li>
+</ul>
+
+<p>
+The first bad news is that you cannot decide the original encoding
+beforehand without any guesswork.  I guess by the language of the
+content and it works reasonably.
+</p>
+
+<p>
+Another bad news is that you cannot update the ZIP archive in-place,
+even the famous <a href="http://www.info-zip.org/FAQ.html#rename">Info-Zip</a> makes a temporary copy while renaming files.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> copy <span class="org-keyword">import</span> copy
+<span class="org-keyword">from</span> os <span class="org-keyword">import</span> remove, rename
+<span class="org-keyword">from</span> os.path <span class="org-keyword">import</span> dirname
+<span class="org-keyword">from</span> tempfile <span class="org-keyword">import</span> NamedTemporaryFile
+
+<span class="org-variable-name">LANG_FLAG</span> = 0x800
+<span class="org-variable-name">OS_FLAG</span> = 3
+
+<span class="org-keyword">with</span> NamedTemporaryFile(<span class="org-builtin">dir</span>=dirname(zname), delete=<span class="org-constant">False</span>) <span class="org-keyword">as</span> tf:
+    <span class="org-keyword">with</span> ZipFile(tf, mode=<span class="org-string">'w'</span>) <span class="org-keyword">as</span> ztf:
+        <span class="org-variable-name">ztf.comment</span> = zf.comment
+        <span class="org-keyword">for</span> zinfo <span class="org-keyword">in</span> zf.infolist():
+            <span class="org-variable-name">zinfo.CRC</span> = <span class="org-constant">None</span>
+            <span class="org-variable-name">ztinfo</span> = copy(zinfo)
+            <span class="org-variable-name">ztinfo.filename</span> = zinfo.filename.encode(<span class="org-string">'cp437'</span>).decode(<span class="org-string">'gbk'</span>)
+            <span class="org-variable-name">ztinfo.flag_bits</span> |= LANG_FLAG
+            <span class="org-variable-name">ztinfo.create_system</span> = OS_FLAG
+            ztf.writestr(ztinfo, zf.read(zinfo))
+
+zf.close()
+remove(zname)
+rename(tf.name, zname)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh">unzip -l &#12304;&#25209;&#37327;&#19979;&#36733;&#12305;&#31532;&#19968;&#33410;<span class="org-string">\ </span>&#27010;&#24565;&#19982;&#24615;&#36136;&#31561;.zip
+</pre>
+</div>
+
+<pre class="example">
+Archive:  【批量下载】第一节 概念与性质等.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+   347005  2015-06-20 01:40   微积分B(1)/第11周讲课提纲/第一节 概念与性质.pdf
+      387  2015-06-20 01:40   微积分B(1)/第11周讲课提纲/userCommands.tex
+   241502  2015-06-20 01:40   微积分B(1)/第11周讲课提纲/第二节 换元积分法.pdf
+   203684  2015-06-20 01:40   微积分B(1)/第11周讲课提纲/第三节 分部积分法.pdf
+     6041  2015-06-20 01:40   微积分B(1)/第11周讲课提纲/第二节 换元积分法.tex
+     3123  2015-06-20 01:40   微积分B(1)/第11周讲课提纲/第三节 分部积分法.tex
+     8972  2015-06-20 01:40   微积分B(1)/第11周讲课提纲/第一节 概念与性质.tex
+      176  2015-06-20 01:40   微积分B(1)/第11周讲课提纲/config.tex
+---------                     -------
+   810890                     8 files
+</pre>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Lei Zhao</p>
+<p class="date">Created: 2017-10-27 Fri 09:15</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

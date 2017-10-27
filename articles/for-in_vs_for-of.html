@@ -46,7 +46,7 @@
             tried to execute some simple JavaScript code in my Firefox web
             console, in order to select them in a batch and ended up in
             the following code. </p>
-        <pre class="prettyprint"><code class="language-js">for (let elem in document.querySelectorAll('input[type="checkbox"]') {
+        <pre class="prettyprint"><code class="language-js">for (let elem in document.querySelectorAll('input[type="checkbox"]')) {
     if (!elem.checked) {
         elem.checked = true
     }
@@ -57,7 +57,7 @@
             an object whereas <code>for...of</code> iterates over each
             element of a collection.  Therefore, the correct version
             should be the following. </p>
-        <pre class="prettyprint"><code class="language-js">for (let elem of document.querySelectorAll('input[type="checkbox"]') {
+        <pre class="prettyprint"><code class="language-js">for (let elem of document.querySelectorAll('input[type="checkbox"]')) {
     if (!elem.checked) {
         elem.checked = true
     }
