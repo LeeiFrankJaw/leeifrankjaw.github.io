@@ -102,13 +102,13 @@ var LISTING = [
                 "type": "file",
                 "name": "clang_vs_gcc_for_emacs.html",
                 "title": "Clang vs. GCC for building Emacs",
-                "author_date": "2017-12-18T17:10:32+08:00"
+                "author_date": "2018-01-01T21:05:26.712174+08:00"
             },
             {
                 "type": "file",
                 "name": "fix_filename_encoding_for_zip_archive_with_python.html",
                 "title": "Fix filename encoding for zip archive with Python",
-                "author_date": "2017-11-27T10:16:44+08:00"
+                "author_date": "2018-01-01T21:00:36.673623+08:00"
             },
             {
                 "type": "file",
@@ -124,15 +124,15 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
-                "name": "intro_db.html",
-                "title": "Intro to DB",
-                "author_date": "2017-12-30T23:39:50.460330+08:00"
+                "name": "automata/",
+                "title": "Automata Theory",
+                "author_date": "2017-12-31T23:37:46.097674+08:00"
             },
             {
                 "type": "file",
-                "name": "automata",
-                "title": "Automata Theory",
-                "author_date": "2017-12-29T14:16:30+08:00"
+                "name": "intro_db.html",
+                "title": "Intro to DB",
+                "author_date": "2017-12-30T22:45:02+08:00"
             }
         ]
     }
