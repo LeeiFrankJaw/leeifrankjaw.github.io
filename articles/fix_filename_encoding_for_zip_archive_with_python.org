@@ -72,6 +72,7 @@ even the famous [[info-zip:rename][Info-Zip]] makes a temporary copy while renam
 
   LANG_FLAG = 0x800               # bit 11 indicates UTF-8 for filenames
   OS_FLAG = 3                     # 3 represents UNIX
+  FILEMODE = 0o100664             # filemode byte for -rw-rw-r--
 
   with ZipFile('fixed.zip', mode='w') as ztf:
       ztf.comment = zf.comment
@@ -81,10 +82,13 @@ even the famous [[info-zip:rename][Info-Zip]] makes a temporary copy while renam
           ztinfo.filename = zinfo.filename.encode('cp437').decode('gbk')
           ztinfo.flag_bits |= LANG_FLAG
           ztinfo.create_system = OS_FLAG
+          ztinfo.external_attr = FILEMODE << 16
           ztf.writestr(ztinfo, zf.read(zinfo))
 
   zf.close()
 #+END_SRC
+
+#+RESULTS:
 
 #+BEGIN_SRC sh :results verbatim
   unzip -l fixed.zip
@@ -118,4 +122,4 @@ specification]].
 #+LINK: gbk           https://en.wikipedia.org/wiki/GBK
 #+LINK: baidu-wangpan https://en.wikipedia.org/wiki/Baidu_Wangpan
 #+LINK: info-zip      http://www.info-zip.org/FAQ.html#%s
-#+LINK: zip-spec      https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
+#+LINK: zip-spec      https://www.pkware.com/documents/casestudies/APPNOTE.TXT

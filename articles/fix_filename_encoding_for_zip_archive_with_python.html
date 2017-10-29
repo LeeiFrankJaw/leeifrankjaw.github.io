@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-10-27 Fri 16:29 -->
+<!-- 2017-10-28 Sat 23:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fix filename encoding for zip archive with Python</title>
@@ -313,6 +313,7 @@ even the famous <a href="http://www.info-zip.org/FAQ.html#rename">Info-Zip</a> m
 
 <span class="org-variable-name">LANG_FLAG</span> = 0x800               <span class="org-comment-delimiter"># </span><span class="org-comment">bit 11 indicates UTF-8 for filenames</span>
 <span class="org-variable-name">OS_FLAG</span> = 3                     <span class="org-comment-delimiter"># </span><span class="org-comment">3 represents UNIX</span>
+<span class="org-variable-name">FILEMODE</span> = 0o100664             <span class="org-comment-delimiter"># </span><span class="org-comment">filemode byte for -rw-rw-r--</span>
 
 <span class="org-keyword">with</span> ZipFile(<span class="org-string">'fixed.zip'</span>, mode=<span class="org-string">'w'</span>) <span class="org-keyword">as</span> ztf:
     <span class="org-variable-name">ztf.comment</span> = zf.comment
@@ -322,6 +323,7 @@ even the famous <a href="http://www.info-zip.org/FAQ.html#rename">Info-Zip</a> m
         <span class="org-variable-name">ztinfo.filename</span> = zinfo.filename.encode(<span class="org-string">'cp437'</span>).decode(<span class="org-string">'gbk'</span>)
         <span class="org-variable-name">ztinfo.flag_bits</span> |= LANG_FLAG
         <span class="org-variable-name">ztinfo.create_system</span> = OS_FLAG
+        <span class="org-variable-name">ztinfo.external_attr</span> = FILEMODE &lt;&lt; 16
         ztf.writestr(ztinfo, zf.read(zinfo))
 
 zf.close()
@@ -351,13 +353,13 @@ Archive:  fixed.zip
 
 
 <p>
-Some codes invite explanation, please refer to <a href="https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT">ZIP File Format
+Some codes invite explanation, please refer to <a href="https://www.pkware.com/documents/casestudies/APPNOTE.TXT">ZIP File Format
 specification</a>.
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2017-10-27 Fri 16:29</p>
+<p class="date">Created: 2017-10-28 Sat 23:35</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
