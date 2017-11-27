@@ -1,12 +1,13 @@
 #+STARTUP: content
-#+PROPERTY: header-args:sh :dir ~/Downloads/ :exports both :tangle no
-#+PROPERTY: header-args:python :dir ~/Downloads/ :session fixzip :results list :exports both :tangle ../tangled/zipfix.py
+#+PROPERTY: header-args:sh :dir ~/Downloads/ :exports both :tangle no :eval never-export
+#+PROPERTY: header-args:python :dir ~/Downloads/ :session fixzip :results list :exports both :tangle ../tangled/zipfix.py :eval never-export
 #+TITLE: Fix filename encoding for zip archive with Python
 #+AUTHOR: Lei Zhao
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
 #+OPTIONS: ^:nil
+#+HTML: <input id="disqus-identifier" value="LFJ102"></input>
 
 Sometimes after unzipping some ZIP archives you get from the Internet,
 you get directories and files with [[mojibake][mojibake]] names.  The names in a ZIP
