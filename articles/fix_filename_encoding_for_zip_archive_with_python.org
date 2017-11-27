@@ -1,6 +1,6 @@
 #+STARTUP: content
-#+PROPERTY: header-args:sh :dir ~/Downloads/ :exports both
-#+PROPERTY: header-args:python :dir ~/Downloads/ :session fixzip :results list :exports both
+#+PROPERTY: header-args:sh :dir ~/Downloads/ :exports both :tangle no
+#+PROPERTY: header-args:python :dir ~/Downloads/ :session fixzip :results list :exports both :tangle ../tangled/zipfix.py
 #+TITLE: Fix filename encoding for zip archive with Python
 #+AUTHOR: Lei Zhao
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
@@ -23,10 +23,16 @@ Wangpan]], which enforces GBK.  They might do it for compatibilities
 with legacy Chinese system, but I think they should really enforce
 UTF-8 instead of GBK.
 
-#+BEGIN_SRC python
+#+BEGIN_SRC python :shebang #!/usr/bin/env python
   from zipfile import ZipFile
+
   zname = '【批量下载】第一节 概念与性质等.zip'
   zf = ZipFile(zname)
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC python :tangle no
   zf.namelist()
 #+END_SRC
 
@@ -46,7 +52,7 @@ in CP437.  To get the original bytes in Python 3, just re-encode them
 in CP437.  With those bytes, you can get correctly decoded filename by
 decoding them in GBK.
 
-#+BEGIN_SRC python
+#+BEGIN_SRC python :tangle no
   [s.encode('cp437').decode('gbk') for s in zf.namelist()]
 #+END_SRC
 

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-08-24 Thu 02:06 -->
+<!-- 2017-11-27 Mon 10:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Intro to DB</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -180,6 +181,7 @@
   /*]]>*/-->
 </style>
 <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
+<link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
 <script type="text/javascript" src="../src/post.js"></script>
 <script type="text/javascript">
 /*
@@ -257,119 +259,119 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9162f8e">1. <span class="done DONE">DONE</span> SQL mini-course</a>
+<li><a href="#org39a4208">1. <span class="done DONE">DONE</span> SQL mini-course</a>
 <ul>
-<li><a href="#org2b22f66">1.1. <span class="done DONE">DONE</span> Lecture videos</a>
+<li><a href="#orgd732a5c">1.1. <span class="done DONE">DONE</span> Lecture videos</a>
 <ul>
-<li><a href="#org5b4a18e">1.1.1. <span class="done DONE">DONE</span> The Join family of Operators</a></li>
-<li><a href="#orgce42cf4">1.1.2. <span class="done DONE">DONE</span> Aggregation</a></li>
-<li><a href="#org130fbd8">1.1.3. <span class="done DONE">DONE</span> NULL values</a></li>
-<li><a href="#org370f1a1">1.1.4. <span class="done DONE">DONE</span> Data Modification Statements</a></li>
+<li><a href="#org0c9d899">1.1.1. <span class="done DONE">DONE</span> The Join family of Operators</a></li>
+<li><a href="#org98fd623">1.1.2. <span class="done DONE">DONE</span> Aggregation</a></li>
+<li><a href="#org94bd9d7">1.1.3. <span class="done DONE">DONE</span> NULL values</a></li>
+<li><a href="#org9047c5e">1.1.4. <span class="done DONE">DONE</span> Data Modification Statements</a></li>
 </ul>
 </li>
-<li><a href="#org9773047">1.2. <span class="done DONE">DONE</span> Exercises</a>
+<li><a href="#orgfa79476">1.2. <span class="done DONE">DONE</span> Exercises</a>
 <ul>
-<li><a href="#org63a894c">1.2.1. <span class="done DONE">DONE</span> Movie-Rating Query Core</a></li>
-<li><a href="#org866c8c9">1.2.2. <span class="done DONE">DONE</span> Movie-Rating Query Extras</a></li>
-<li><a href="#orgc01e62a">1.2.3. <span class="done DONE">DONE</span> Social-Network Query Core</a></li>
-<li><a href="#org8ab903a">1.2.4. <span class="done DONE">DONE</span> Social-Network Query Extras</a></li>
-<li><a href="#org5e9f550">1.2.5. <span class="done DONE">DONE</span> Movie-Rating Modification</a></li>
-<li><a href="#org52ccc45">1.2.6. <span class="done DONE">DONE</span> Social-Network Modification</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org1c97387">2. <span class="done DONE">DONE</span> XPath and XQuery mini-course</a>
-<ul>
-<li><a href="#orgb051301">2.1. <span class="done DONE">DONE</span> Lecture videos</a>
-<ul>
-<li><a href="#orga9adf4a">2.1.1. <span class="done DONE">DONE</span> XPath Introduction</a></li>
-<li><a href="#orgdb9eab7">2.1.2. <span class="done DONE">DONE</span> XPath Demo</a></li>
-<li><a href="#org5151e2d">2.1.3. <span class="done DONE">DONE</span> XQuery Introduction</a></li>
-<li><a href="#org10c23be">2.1.4. <span class="done DONE">DONE</span> XQuery Demo</a></li>
-</ul>
-</li>
-<li><a href="#org5cb0e5c">2.2. <span class="done DONE">DONE</span> Exercises</a>
-<ul>
-<li><a href="#orge93d719">2.2.1. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</a></li>
-<li><a href="#orgd2565f0">2.2.2. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</a></li>
-<li><a href="#orgeb24fcd">2.2.3. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</a></li>
-<li><a href="#orge4ad6fc">2.2.4. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</a></li>
+<li><a href="#org4429c2e">1.2.1. <span class="done DONE">DONE</span> Movie-Rating Query Core</a></li>
+<li><a href="#org008a042">1.2.2. <span class="done DONE">DONE</span> Movie-Rating Query Extras</a></li>
+<li><a href="#org5941694">1.2.3. <span class="done DONE">DONE</span> Social-Network Query Core</a></li>
+<li><a href="#org80c07ff">1.2.4. <span class="done DONE">DONE</span> Social-Network Query Extras</a></li>
+<li><a href="#org2d4304a">1.2.5. <span class="done DONE">DONE</span> Movie-Rating Modification</a></li>
+<li><a href="#org902ab57">1.2.6. <span class="done DONE">DONE</span> Social-Network Modification</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge36f376">3. <span class="done DONE">DONE</span> XSLT mini-course</a>
+<li><a href="#org9cdfba2">2. <span class="done DONE">DONE</span> XPath and XQuery mini-course</a>
 <ul>
-<li><a href="#orgf498953">3.1. <span class="done DONE">DONE</span> Lecture videos</a></li>
-<li><a href="#org338ae1c">3.2. <span class="done DONE">DONE</span> Exercises</a>
+<li><a href="#orgd94314a">2.1. <span class="done DONE">DONE</span> Lecture videos</a>
 <ul>
-<li><a href="#org3e4a9d1">3.2.1. <span class="done DONE">DONE</span> Course-Catalog XSLT</a></li>
-<li><a href="#org33158e9">3.2.2. <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</a></li>
-<li><a href="#org0d43977">3.2.3. <span class="done DONE">DONE</span> World-Countries XSLT</a></li>
-<li><a href="#orga02d8c3">3.2.4. <span class="done DONE">DONE</span> World-Countries XSLT Extras</a></li>
+<li><a href="#org841fb36">2.1.1. <span class="done DONE">DONE</span> XPath Introduction</a></li>
+<li><a href="#org2cbc593">2.1.2. <span class="done DONE">DONE</span> XPath Demo</a></li>
+<li><a href="#org36a841b">2.1.3. <span class="done DONE">DONE</span> XQuery Introduction</a></li>
+<li><a href="#org7c0e1bb">2.1.4. <span class="done DONE">DONE</span> XQuery Demo</a></li>
+</ul>
+</li>
+<li><a href="#orga9a6112">2.2. <span class="done DONE">DONE</span> Exercises</a>
+<ul>
+<li><a href="#orgb32cbe8">2.2.1. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</a></li>
+<li><a href="#org9e13d07">2.2.2. <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</a></li>
+<li><a href="#orgd1487be">2.2.3. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</a></li>
+<li><a href="#org9bbcbd3">2.2.4. <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org203ed6b">4. <span class="done DONE">DONE</span> Relational Design Theory mini-course</a>
+<li><a href="#orgb622c29">3. <span class="done DONE">DONE</span> XSLT mini-course</a>
 <ul>
-<li><a href="#org86ffa48">4.1. <span class="done DONE">DONE</span> Lecture videos</a>
+<li><a href="#org920dfdd">3.1. <span class="done DONE">DONE</span> Lecture videos</a></li>
+<li><a href="#org35153b8">3.2. <span class="done DONE">DONE</span> Exercises</a>
 <ul>
-<li><a href="#orgbc44ea3">4.1.1. <span class="done DONE">DONE</span> Overview</a></li>
-<li><a href="#org9065730">4.1.2. <span class="done DONE">DONE</span> Functional Dependencies</a></li>
-<li><a href="#org94a37d3">4.1.3. <span class="done DONE">DONE</span> Boyce-Codd Normal Form</a></li>
-<li><a href="#orgdbe8241">4.1.4. <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</a></li>
-<li><a href="#orge93266b">4.1.5. <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</a></li>
-</ul>
-</li>
-<li><a href="#org6bc42f3">4.2. <span class="done DONE">DONE</span> Exercises</a></li>
-</ul>
-</li>
-<li><a href="#orgfa794cd">5. <span class="done DONE">DONE</span> Unified Modeling Language mini-course</a>
-<ul>
-<li><a href="#orgdb771f8">5.1. <span class="done DONE">DONE</span> Lecture Videos</a>
-<ul>
-<li><a href="#orgad8736d">5.1.1. <span class="done DONE">DONE</span> UML Data Modeling</a></li>
-<li><a href="#org23a0aad">5.1.2. <span class="done DONE">DONE</span> UML to Relations</a></li>
-</ul>
-</li>
-<li><a href="#org41ef510">5.2. <span class="done DONE">DONE</span> Exercises</a></li>
-</ul>
-</li>
-<li><a href="#org34d38ee">6. <span class="done DONE">DONE</span> Indexes and Transactions mini-course</a>
-<ul>
-<li><a href="#org78e300a">6.1. <span class="done DONE">DONE</span> Lecture Videos</a>
-<ul>
-<li><a href="#orgd3f2475">6.1.1. <span class="done DONE">DONE</span> Indexes</a></li>
-<li><a href="#org4777963">6.1.2. <span class="done DONE">DONE</span> Introduction to Transactions</a></li>
-<li><a href="#orge3eec0d">6.1.3. <span class="done DONE">DONE</span> Transaction Properties</a></li>
-<li><a href="#org82e41d0">6.1.4. <span class="done DONE">DONE</span> Isolation Levels</a></li>
-</ul>
-</li>
-<li><a href="#org961ed75">6.2. <span class="done DONE">DONE</span> Exercises</a>
-<ul>
-<li><a href="#org3ed7ec4">6.2.1. <span class="done DONE">DONE</span> Index Quiz</a></li>
-<li><a href="#orgb57bc61">6.2.2. <span class="done DONE">DONE</span> Transaction Quiz</a></li>
+<li><a href="#orgf11494f">3.2.1. <span class="done DONE">DONE</span> Course-Catalog XSLT</a></li>
+<li><a href="#orge95bdeb">3.2.2. <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</a></li>
+<li><a href="#orga54a198">3.2.3. <span class="done DONE">DONE</span> World-Countries XSLT</a></li>
+<li><a href="#org2f7deef">3.2.4. <span class="done DONE">DONE</span> World-Countries XSLT Extras</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb668cf4">7. <span class="todo TODO">TODO</span> Constraints and Triggers mini-course</a>
+<li><a href="#orgccd18f3">4. <span class="done DONE">DONE</span> Relational Design Theory mini-course</a>
 <ul>
-<li><a href="#org3b0a515">7.1. <span class="todo TODO">TODO</span> Lecture Videos</a>
+<li><a href="#orgd995c61">4.1. <span class="done DONE">DONE</span> Lecture videos</a>
 <ul>
-<li><a href="#org70f5fb1">7.1.1. <span class="todo TODO">TODO</span> Motivation and Overview</a></li>
-<li><a href="#orgb2c6525">7.1.2. <span class="todo TODO">TODO</span> Constraints of Several Types</a></li>
-<li><a href="#org009de44">7.1.3. <span class="todo TODO">TODO</span> Referential Integrity</a></li>
-<li><a href="#org11ee41d">7.1.4. <span class="todo TODO">TODO</span> Triggers Introduction</a></li>
-<li><a href="#org63759fe">7.1.5. <span class="todo TODO">TODO</span> Triggers Demo</a></li>
+<li><a href="#org10e2507">4.1.1. <span class="done DONE">DONE</span> Overview</a></li>
+<li><a href="#org30361ac">4.1.2. <span class="done DONE">DONE</span> Functional Dependencies</a></li>
+<li><a href="#orgdafb7cb">4.1.3. <span class="done DONE">DONE</span> Boyce-Codd Normal Form</a></li>
+<li><a href="#org37a2edf">4.1.4. <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</a></li>
+<li><a href="#orgf6e933a">4.1.5. <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</a></li>
 </ul>
 </li>
-<li><a href="#org6084fcc">7.2. <span class="todo TODO">TODO</span> Exercises</a>
+<li><a href="#org7169dd1">4.2. <span class="done DONE">DONE</span> Exercises</a></li>
+</ul>
+</li>
+<li><a href="#org4e86a96">5. <span class="done DONE">DONE</span> Unified Modeling Language mini-course</a>
 <ul>
-<li><a href="#org26c287f">7.2.1. <span class="todo TODO">TODO</span> Constraints and Triggers</a></li>
-<li><a href="#org53c6390">7.2.2. <span class="todo TODO">TODO</span> SQL Social-Network Triggers</a></li>
+<li><a href="#org3892e6f">5.1. <span class="done DONE">DONE</span> Lecture Videos</a>
+<ul>
+<li><a href="#orgbb8134e">5.1.1. <span class="done DONE">DONE</span> UML Data Modeling</a></li>
+<li><a href="#orge5900d7">5.1.2. <span class="done DONE">DONE</span> UML to Relations</a></li>
+</ul>
+</li>
+<li><a href="#org81d15eb">5.2. <span class="done DONE">DONE</span> Exercises</a></li>
+</ul>
+</li>
+<li><a href="#orge7458e5">6. <span class="done DONE">DONE</span> Indexes and Transactions mini-course</a>
+<ul>
+<li><a href="#orga2113ba">6.1. <span class="done DONE">DONE</span> Lecture Videos</a>
+<ul>
+<li><a href="#orgca1c668">6.1.1. <span class="done DONE">DONE</span> Indexes</a></li>
+<li><a href="#orgad4057d">6.1.2. <span class="done DONE">DONE</span> Introduction to Transactions</a></li>
+<li><a href="#orgb5365b6">6.1.3. <span class="done DONE">DONE</span> Transaction Properties</a></li>
+<li><a href="#org90f25b4">6.1.4. <span class="done DONE">DONE</span> Isolation Levels</a></li>
+</ul>
+</li>
+<li><a href="#org7c7d871">6.2. <span class="done DONE">DONE</span> Exercises</a>
+<ul>
+<li><a href="#orgc30effa">6.2.1. <span class="done DONE">DONE</span> Index Quiz</a></li>
+<li><a href="#orga6db1e9">6.2.2. <span class="done DONE">DONE</span> Transaction Quiz</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9ab563a">7. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Constraints and Triggers mini-course</a>
+<ul>
+<li><a href="#org806ecec">7.1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Lecture Videos</a>
+<ul>
+<li><a href="#org2c430ca">7.1.1. <span class="done DONE">DONE</span> Motivation and Overview</a></li>
+<li><a href="#orgdec7888">7.1.2. <span class="done DONE">DONE</span> Constraints of Several Types</a></li>
+<li><a href="#org0b1597e">7.1.3. <span class="todo TODO">TODO</span> Referential Integrity</a></li>
+<li><a href="#org38300bf">7.1.4. <span class="todo TODO">TODO</span> Triggers Introduction</a></li>
+<li><a href="#orgcb62f9f">7.1.5. <span class="todo TODO">TODO</span> Triggers Demo</a></li>
+</ul>
+</li>
+<li><a href="#org9b6a153">7.2. <span class="todo TODO">TODO</span> Exercises</a>
+<ul>
+<li><a href="#org44697fc">7.2.1. <span class="todo TODO">TODO</span> Constraints and Triggers</a></li>
+<li><a href="#org3f6c8cc">7.2.2. <span class="todo TODO">TODO</span> SQL Social-Network Triggers</a></li>
 </ul>
 </li>
 </ul>
@@ -381,24 +383,21 @@ for the JavaScript code in this tag.
 <a href="https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about">Database</a> on Lagunita<br />
 </p>
 
-<div id="outline-container-org9162f8e" class="outline-2">
-<h2 id="org9162f8e"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/">SQL</a> mini-course</h2>
+<div id="outline-container-org39a4208" class="outline-2">
+<h2 id="org39a4208"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/">SQL</a> mini-course</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-:VISIBILITY: FOLDED<br />
-</p>
 </div>
-<div id="outline-container-org2b22f66" class="outline-3">
-<h3 id="org2b22f66"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-orgd732a5c" class="outline-3">
+<h3 id="orgd732a5c"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org5b4a18e" class="outline-4">
-<h4 id="org5b4a18e"><span class="section-number-4">1.1.1</span> <span class="done DONE">DONE</span> The Join family of Operators</h4>
+<div id="outline-container-org0c9d899" class="outline-4">
+<h4 id="org0c9d899"><span class="section-number-4">1.1.1</span> <span class="done DONE">DONE</span> The Join family of Operators</h4>
 <div class="outline-text-4" id="text-1-1-1">
 </div>
 </div>
-<div id="outline-container-orgce42cf4" class="outline-4">
-<h4 id="orgce42cf4"><span class="section-number-4">1.1.2</span> <span class="done DONE">DONE</span> Aggregation</h4>
+<div id="outline-container-org98fd623" class="outline-4">
+<h4 id="org98fd623"><span class="section-number-4">1.1.2</span> <span class="done DONE">DONE</span> Aggregation</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
 <pre class="src src-sql"><span class="org-keyword">select</span> <span class="org-builtin">avg</span>(GPA)
@@ -487,8 +486,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org130fbd8" class="outline-4">
-<h4 id="org130fbd8"><span class="section-number-4">1.1.3</span> <span class="done DONE">DONE</span> NULL values</h4>
+<div id="outline-container-org94bd9d7" class="outline-4">
+<h4 id="org94bd9d7"><span class="section-number-4">1.1.3</span> <span class="done DONE">DONE</span> NULL values</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <div class="org-src-container">
 <pre class="src src-sql"><span class="org-keyword">select</span> sID, sName, GPA
@@ -510,8 +509,8 @@ SQL uses three-valued logic (<a href="https://en.wikipedia.org/wiki/Three-valued
 </div>
 </div>
 
-<div id="outline-container-org370f1a1" class="outline-4">
-<h4 id="org370f1a1"><span class="section-number-4">1.1.4</span> <span class="done DONE">DONE</span> Data Modification Statements</h4>
+<div id="outline-container-org9047c5e" class="outline-4">
+<h4 id="org9047c5e"><span class="section-number-4">1.1.4</span> <span class="done DONE">DONE</span> Data Modification Statements</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <div class="org-src-container">
 <pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> College
@@ -581,12 +580,12 @@ SQL uses three-valued logic (<a href="https://en.wikipedia.org/wiki/Three-valued
 </div>
 </div>
 
-<div id="outline-container-org9773047" class="outline-3">
-<h3 id="org9773047"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-orgfa79476" class="outline-3">
+<h3 id="orgfa79476"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org63a894c" class="outline-4">
-<h4 id="org63a894c"><span class="section-number-4">1.2.1</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/">Core</a></h4>
+<div id="outline-container-org4429c2e" class="outline-4">
+<h4 id="org4429c2e"><span class="section-number-4">1.2.1</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/">Core</a></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Find the titles of all movies directed by Steven Spielberg.<br />
@@ -727,8 +726,8 @@ Don't just calculate the overall average rating before and after<br />
 </div>
 </div>
 </div>
-<div id="outline-container-org866c8c9" class="outline-4">
-<h4 id="org866c8c9"><span class="section-number-4">1.2.2</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_extra/">Extras</a></h4>
+<div id="outline-container-org008a042" class="outline-4">
+<h4 id="org008a042"><span class="section-number-4">1.2.2</span> <span class="done DONE">DONE</span> Movie-Rating Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_extra/">Extras</a></h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Find the names of all reviewers who rated Gone with the Wind.<br />
@@ -958,8 +957,8 @@ Ignore movies whose director is NULL.<br />
 </div>
 </div>
 
-<div id="outline-container-orgc01e62a" class="outline-4">
-<h4 id="orgc01e62a"><span class="section-number-4">1.2.3</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_core/">Core</a></h4>
+<div id="outline-container-org5941694" class="outline-4">
+<h4 id="org5941694"><span class="section-number-4">1.2.3</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_core/">Core</a></h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Find the names of all students who are friends with someone named<br />
@@ -1119,8 +1118,8 @@ other student.<br />
 </div>
 </div>
 
-<div id="outline-container-org8ab903a" class="outline-4">
-<h4 id="org8ab903a"><span class="section-number-4">1.2.4</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_extra/">Extras</a></h4>
+<div id="outline-container-org80c07ff" class="outline-4">
+<h4 id="org80c07ff"><span class="section-number-4">1.2.4</span> <span class="done DONE">DONE</span> Social-Network Query <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_query_extra/">Extras</a></h4>
 <div class="outline-text-4" id="text-1-2-4">
 <p>
 For every situation where student A likes student B, but student B<br />
@@ -1239,8 +1238,8 @@ friends.<br />
 </div>
 </div>
 
-<div id="outline-container-org5e9f550" class="outline-4">
-<h4 id="org5e9f550"><span class="section-number-4">1.2.5</span> <span class="done DONE">DONE</span> Movie-Rating <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_mod/">Modification</a></h4>
+<div id="outline-container-org2d4304a" class="outline-4">
+<h4 id="org2d4304a"><span class="section-number-4">1.2.5</span> <span class="done DONE">DONE</span> Movie-Rating <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_mod/">Modification</a></h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 Add the reviewer Roger Ebert to your database, with an rID of 209.<br />
@@ -1292,8 +1291,8 @@ Remove all ratings where the movie's year is before 1970 or after<br />
 </div>
 </div>
 
-<div id="outline-container-org52ccc45" class="outline-4">
-<h4 id="org52ccc45"><span class="section-number-4">1.2.6</span> <span class="done DONE">DONE</span> Social-Network <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_mod/">Modification</a></h4>
+<div id="outline-container-org902ab57" class="outline-4">
+<h4 id="org902ab57"><span class="section-number-4">1.2.6</span> <span class="done DONE">DONE</span> Social-Network <a href="https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_social_mod/">Modification</a></h4>
 <div class="outline-text-4" id="text-1-2-6">
 <p>
 It's time for the seniors to graduate.  Remove all 12th graders from<br />
@@ -1347,19 +1346,16 @@ it right.)<br />
 </div>
 
 
-<div id="outline-container-org1c97387" class="outline-2">
-<h2 id="org1c97387"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/">XPath and XQuery</a> mini-course</h2>
+<div id="outline-container-org9cdfba2" class="outline-2">
+<h2 id="org9cdfba2"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/">XPath and XQuery</a> mini-course</h2>
 <div class="outline-text-2" id="text-2">
-<p>
-:VISIBILITY: FOLDED<br />
-</p>
 </div>
-<div id="outline-container-orgb051301" class="outline-3">
-<h3 id="orgb051301"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-orgd94314a" class="outline-3">
+<h3 id="orgd94314a"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-orga9adf4a" class="outline-4">
-<h4 id="orga9adf4a"><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> XPath Introduction</h4>
+<div id="outline-container-org841fb36" class="outline-4">
+<h4 id="org841fb36"><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> XPath Introduction</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 Not nearly as mature as Querying Relational<br />
@@ -1403,8 +1399,8 @@ Sometimes result can be expressed as XML, but not always<br />
 </div>
 </div>
 
-<div id="outline-container-orgdb9eab7" class="outline-4">
-<h4 id="orgdb9eab7"><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> XPath Demo</h4>
+<div id="outline-container-org2cbc593" class="outline-4">
+<h4 id="org2cbc593"><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> XPath Demo</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Get the titles of books in the bookstore where the price is lower<br />
@@ -1505,8 +1501,8 @@ an author.<br />
 </div>
 </div>
 
-<div id="outline-container-org5151e2d" class="outline-4">
-<h4 id="org5151e2d"><span class="section-number-4">2.1.3</span> <span class="done DONE">DONE</span> XQuery Introduction</h4>
+<div id="outline-container-org36a841b" class="outline-4">
+<h4 id="org36a841b"><span class="section-number-4">2.1.3</span> <span class="done DONE">DONE</span> XQuery Introduction</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <ol class="org-ol">
 <li>XQuery is a expression language (compositional)<br /></li>
@@ -1538,8 +1534,8 @@ Mixing queries and XMl<br />
 </div>
 </div>
 
-<div id="outline-container-org10c23be" class="outline-4">
-<h4 id="org10c23be"><span class="section-number-4">2.1.4</span> <span class="done DONE">DONE</span> XQuery Demo</h4>
+<div id="outline-container-org7c0e1bb" class="outline-4">
+<h4 id="org7c0e1bb"><span class="section-number-4">2.1.4</span> <span class="done DONE">DONE</span> XQuery Demo</h4>
 <div class="outline-text-4" id="text-2-1-4">
 <div class="org-src-container">
 <pre class="src src-xquery">for $b in doc("BookstoreQ.xml")/Bookstore/Book
@@ -1655,12 +1651,12 @@ Again, implicitly existential quantification.<br />
 </div>
 </div>
 
-<div id="outline-container-org5cb0e5c" class="outline-3">
-<h3 id="org5cb0e5c"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-orga9a6112" class="outline-3">
+<h3 id="orga9a6112"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orge93d719" class="outline-4">
-<h4 id="orge93d719"><span class="section-number-4">2.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</h4>
+<div id="outline-container-orgb32cbe8" class="outline-4">
+<h4 id="orgb32cbe8"><span class="section-number-4">2.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 Return all Title elements (of both departments and courses).<br />
@@ -1757,8 +1753,8 @@ the other operand will go through type promotion.<br />
 </div>
 </div>
 
-<div id="outline-container-orgd2565f0" class="outline-4">
-<h4 id="orgd2565f0"><span class="section-number-4">2.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</h4>
+<div id="outline-container-org9e13d07" class="outline-4">
+<h4 id="org9e13d07"><span class="section-number-4">2.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XPath and XQuery Exercises Extras</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 Return the course number of the course that is cross-listed as "LING180".<br />
@@ -1960,8 +1956,8 @@ very challenging; extra congratulations if you get it right.)<br />
 </div>
 </div>
 
-<div id="outline-container-orgeb24fcd" class="outline-4">
-<h4 id="orgeb24fcd"><span class="section-number-4">2.2.3</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</h4>
+<div id="outline-container-orgd1487be" class="outline-4">
+<h4 id="orgd1487be"><span class="section-number-4">2.2.3</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <p>
 Return the area of Mongolia.<br />
@@ -2093,8 +2089,8 @@ are unique.  The result should take the form:<br />
 </div>
 </div>
 
-<div id="outline-container-orge4ad6fc" class="outline-4">
-<h4 id="orge4ad6fc"><span class="section-number-4">2.2.4</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</h4>
+<div id="outline-container-org9bbcbd3" class="outline-4">
+<h4 id="org9bbcbd3"><span class="section-number-4">2.2.4</span> <span class="done DONE">DONE</span> World-Countries XPath and XQuery Exercises Extras</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <p>
 Return the names of all countries with population greater than 100<br />
@@ -2489,15 +2485,12 @@ element.  For example, your result might look like:<br />
 </div>
 
 
-<div id="outline-container-orge36f376" class="outline-2">
-<h2 id="orge36f376"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/">XSLT</a> mini-course</h2>
+<div id="outline-container-orgb622c29" class="outline-2">
+<h2 id="orgb622c29"><span class="section-number-2">3</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/">XSLT</a> mini-course</h2>
 <div class="outline-text-2" id="text-3">
-<p>
-:VISIBILITY: FOLDED<br />
-</p>
 </div>
-<div id="outline-container-orgf498953" class="outline-3">
-<h3 id="orgf498953"><span class="section-number-3">3.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-org920dfdd" class="outline-3">
+<h3 id="org920dfdd"><span class="section-number-3">3.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 XSL = Extensible Stylesheet Language<br />
@@ -2527,12 +2520,12 @@ Implicit template priority scheme<br />
 </div>
 </div>
 
-<div id="outline-container-org338ae1c" class="outline-3">
-<h3 id="org338ae1c"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org35153b8" class="outline-3">
+<h3 id="org35153b8"><span class="section-number-3">3.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-3-2">
 </div>
-<div id="outline-container-org3e4a9d1" class="outline-4">
-<h4 id="org3e4a9d1"><span class="section-number-4">3.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XSLT</h4>
+<div id="outline-container-orgf11494f" class="outline-4">
+<h4 id="orgf11494f"><span class="section-number-4">3.2.1</span> <span class="done DONE">DONE</span> Course-Catalog XSLT</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 Return a list of department titles.<br />
@@ -2586,8 +2579,8 @@ structure.<br />
 </div>
 </div>
 
-<div id="outline-container-org33158e9" class="outline-4">
-<h4 id="org33158e9"><span class="section-number-4">3.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</h4>
+<div id="outline-container-orge95bdeb" class="outline-4">
+<h4 id="orge95bdeb"><span class="section-number-4">3.2.2</span> <span class="done DONE">DONE</span> Course-Catalog XSLT Extras</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 Return all courses with enrollment greater than 500.  Retain the<br />
@@ -2687,8 +2680,8 @@ quot;.)<br />
 </div>
 </div>
 
-<div id="outline-container-org0d43977" class="outline-4">
-<h4 id="org0d43977"><span class="section-number-4">3.2.3</span> <span class="done DONE">DONE</span> World-Countries XSLT</h4>
+<div id="outline-container-orga54a198" class="outline-4">
+<h4 id="orga54a198"><span class="section-number-4">3.2.3</span> <span class="done DONE">DONE</span> World-Countries XSLT</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 Return all countries with population between 9 and 10 million.  Retain<br />
@@ -2768,8 +2761,8 @@ and "cities" respectively).<br />
 </div>
 </div>
 
-<div id="outline-container-orga02d8c3" class="outline-4">
-<h4 id="orga02d8c3"><span class="section-number-4">3.2.4</span> <span class="done DONE">DONE</span> World-Countries XSLT Extras</h4>
+<div id="outline-container-org2f7deef" class="outline-4">
+<h4 id="org2f7deef"><span class="section-number-4">3.2.4</span> <span class="done DONE">DONE</span> World-Countries XSLT Extras</h4>
 <div class="outline-text-4" id="text-3-2-4">
 <p>
 Find all country names containing the string "stan"; return each one<br />
@@ -2813,19 +2806,16 @@ data should be the same.<br />
 </div>
 
 
-<div id="outline-container-org203ed6b" class="outline-2">
-<h2 id="org203ed6b"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/">Relational Design Theory</a> mini-course</h2>
+<div id="outline-container-orgccd18f3" class="outline-2">
+<h2 id="orgccd18f3"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/">Relational Design Theory</a> mini-course</h2>
 <div class="outline-text-2" id="text-4">
-<p>
-:VISIBILITY: FOLDED<br />
-</p>
 </div>
-<div id="outline-container-org86ffa48" class="outline-3">
-<h3 id="org86ffa48"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
+<div id="outline-container-orgd995c61" class="outline-3">
+<h3 id="orgd995c61"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> Lecture videos</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-orgbc44ea3" class="outline-4">
-<h4 id="orgbc44ea3"><span class="section-number-4">4.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
+<div id="outline-container-org10e2507" class="outline-4">
+<h4 id="org10e2507"><span class="section-number-4">4.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
 Design "anomalies"<br />
@@ -2916,8 +2906,8 @@ Decompose: <span class="underline">Apply(SSN, cName) HighSchool(SSN, HS)</span><
 </div>
 </div>
 
-<div id="outline-container-org9065730" class="outline-4">
-<h4 id="org9065730"><span class="section-number-4">4.1.2</span> <span class="done DONE">DONE</span> Functional Dependencies</h4>
+<div id="outline-container-org30361ac" class="outline-4">
+<h4 id="org30361ac"><span class="section-number-4">4.1.2</span> <span class="done DONE">DONE</span> Functional Dependencies</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <p>
 Functional dependencies =&gt; Boyce-Codd Normal Form<br />
@@ -3120,8 +3110,8 @@ hold on the relation follow from the dependencies in this set<br />
 </div>
 </div>
 
-<div id="outline-container-org94a37d3" class="outline-4">
-<h4 id="org94a37d3"><span class="section-number-4">4.1.3</span> <span class="done DONE">DONE</span> Boyce-Codd Normal Form</h4>
+<div id="outline-container-orgdafb7cb" class="outline-4">
+<h4 id="orgdafb7cb"><span class="section-number-4">4.1.3</span> <span class="done DONE">DONE</span> Boyce-Codd Normal Form</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <p>
 Decomposition of a relational schema<br />
@@ -3194,8 +3184,8 @@ We can extend A -&gt; BA+<br />
 </div>
 </div>
 
-<div id="outline-container-orgdbe8241" class="outline-4">
-<h4 id="orgdbe8241"><span class="section-number-4">4.1.4</span> <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</h4>
+<div id="outline-container-org37a2edf" class="outline-4">
+<h4 id="org37a2edf"><span class="section-number-4">4.1.4</span> <span class="done DONE">DONE</span> Multivalued Dependencies and 4th Normal Form</h4>
 <div class="outline-text-4" id="text-4-1-4">
 <p>
 Fourth Normal Form subsets Boyce-Codd Normal Form<br />
@@ -3258,13 +3248,13 @@ Relation R with MVDs is in 4NF if:<br />
 </div>
 </div>
 
-<div id="outline-container-orge93266b" class="outline-4">
-<h4 id="orge93266b"><span class="section-number-4">4.1.5</span> <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</h4>
+<div id="outline-container-orgf6e933a" class="outline-4">
+<h4 id="orgf6e933a"><span class="section-number-4">4.1.5</span> <span class="done DONE">DONE</span> Shortcomings of BCNF/4NF</h4>
 </div>
 </div>
 
-<div id="outline-container-org6bc42f3" class="outline-3">
-<h3 id="org6bc42f3"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org7169dd1" class="outline-3">
+<h3 id="org7169dd1"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 R(A,B)<br />
@@ -3291,19 +3281,16 @@ R(A,D)<br />
 </div>
 
 
-<div id="outline-container-orgfa794cd" class="outline-2">
-<h2 id="orgfa794cd"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/">Unified Modeling Language</a> mini-course</h2>
+<div id="outline-container-org4e86a96" class="outline-2">
+<h2 id="org4e86a96"><span class="section-number-2">5</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/">Unified Modeling Language</a> mini-course</h2>
 <div class="outline-text-2" id="text-5">
-<p>
-:VISIBILITY: FOLDED<br />
-</p>
 </div>
-<div id="outline-container-orgdb771f8" class="outline-3">
-<h3 id="orgdb771f8"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> Lecture Videos</h3>
+<div id="outline-container-org3892e6f" class="outline-3">
+<h3 id="org3892e6f"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> Lecture Videos</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-orgad8736d" class="outline-4">
-<h4 id="orgad8736d"><span class="section-number-4">5.1.1</span> <span class="done DONE">DONE</span> UML Data Modeling</h4>
+<div id="outline-container-orgbb8134e" class="outline-4">
+<h4 id="orgbb8134e"><span class="section-number-4">5.1.1</span> <span class="done DONE">DONE</span> UML Data Modeling</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 Entity-Relationship Model (E/R)<br />
@@ -3610,8 +3597,8 @@ of them are.<br />
 </div>
 </div>
 
-<div id="outline-container-org23a0aad" class="outline-4">
-<h4 id="org23a0aad"><span class="section-number-4">5.1.2</span> <span class="done DONE">DONE</span> UML to Relations</h4>
+<div id="outline-container-orge5900d7" class="outline-4">
+<h4 id="orge5900d7"><span class="section-number-4">5.1.2</span> <span class="done DONE">DONE</span> UML to Relations</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
 High-Level Database Design Model<br />
@@ -3862,25 +3849,22 @@ Apartment(_addr_, #units, cName)<br />
 </div>
 </div>
 
-<div id="outline-container-org41ef510" class="outline-3">
-<h3 id="org41ef510"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org81d15eb" class="outline-3">
+<h3 id="org81d15eb"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org34d38ee" class="outline-2">
-<h2 id="org34d38ee"><span class="section-number-2">6</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/">Indexes and Transactions</a> mini-course</h2>
+<div id="outline-container-orge7458e5" class="outline-2">
+<h2 id="orge7458e5"><span class="section-number-2">6</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/">Indexes and Transactions</a> mini-course</h2>
 <div class="outline-text-2" id="text-6">
-<p>
-:VISIBILITY: FOLDED<br />
-</p>
 </div>
-<div id="outline-container-org78e300a" class="outline-3">
-<h3 id="org78e300a"><span class="section-number-3">6.1</span> <span class="done DONE">DONE</span> Lecture Videos</h3>
+<div id="outline-container-orga2113ba" class="outline-3">
+<h3 id="orga2113ba"><span class="section-number-3">6.1</span> <span class="done DONE">DONE</span> Lecture Videos</h3>
 <div class="outline-text-3" id="text-6-1">
 </div>
-<div id="outline-container-orgd3f2475" class="outline-4">
-<h4 id="orgd3f2475"><span class="section-number-4">6.1.1</span> <span class="done DONE">DONE</span> Indexes</h4>
+<div id="outline-container-orgca1c668" class="outline-4">
+<h4 id="orgca1c668"><span class="section-number-4">6.1.1</span> <span class="done DONE">DONE</span> Indexes</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <p>
 Indexes<br />
@@ -4130,8 +4114,8 @@ drawbacks.<br />
 </div>
 </div>
 
-<div id="outline-container-org4777963" class="outline-4">
-<h4 id="org4777963"><span class="section-number-4">6.1.2</span> <span class="done DONE">DONE</span> Introduction to Transactions</h4>
+<div id="outline-container-orgad4057d" class="outline-4">
+<h4 id="orgad4057d"><span class="section-number-4">6.1.2</span> <span class="done DONE">DONE</span> Introduction to Transactions</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <p>
 Motivated by two independent requirements<br />
@@ -4142,7 +4126,7 @@ Motivated by two independent requirements<br />
 </ul>
 
 <p>
-<b>Concurrent Access</b>: Attribute-level Inconsistency <a id="org78cba0f"></a><br />
+<b>Concurrent Access</b>: Attribute-level Inconsistency <a id="orge65921d"></a><br />
 </p>
 
 <div class="org-src-container">
@@ -4173,7 +4157,7 @@ Possible outcomes<br />
 \end{align*}
 
 <p>
-<b>Concurrent Access</b>: Tuple-level Inconsistency <a id="orgd845a1a"></a><br />
+<b>Concurrent Access</b>: Tuple-level Inconsistency <a id="org12019f9"></a><br />
 </p>
 
 <div class="org-src-container">
@@ -4198,7 +4182,7 @@ one of the two changes<br />
 </p>
 
 <p>
-<b>Concurrent Access</b>: Table-level Inconsistency <a id="org81fefd7"></a><br />
+<b>Concurrent Access</b>: Table-level Inconsistency <a id="orgdbc31f3"></a><br />
 </p>
 
 <div class="org-src-container">
@@ -4215,7 +4199,7 @@ concurrent with &#x2026;<br />
 </div>
 
 <p>
-<b>Concurrent Access</b>: Multi-statement inconsistency <a id="orgd017c5c"></a><br />
+<b>Concurrent Access</b>: Multi-statement inconsistency <a id="orgcb3efa5"></a><br />
 </p>
 
 <div class="org-src-container">
@@ -4322,8 +4306,8 @@ SQL standard:<br />
 </div>
 </div>
 
-<div id="outline-container-orge3eec0d" class="outline-4">
-<h4 id="orge3eec0d"><span class="section-number-4">6.1.3</span> <span class="done DONE">DONE</span> Transaction Properties</h4>
+<div id="outline-container-orgb5365b6" class="outline-4">
+<h4 id="orgb5365b6"><span class="section-number-4">6.1.3</span> <span class="done DONE">DONE</span> Transaction Properties</h4>
 <div class="outline-text-4" id="text-6-1-3">
 <p>
 ACID Properties<br />
@@ -4335,7 +4319,7 @@ Isolation<br />
 </p>
 
 <p>
-<span class="underline">Serializability</span>  <a id="org2b1fa23"></a><br />
+<span class="underline">Serializability</span>  <a id="org8ba0068"></a><br />
 Operations may be interleaved, but execution must be equivalent to<br />
 <i>some</i> sequential (serial) order of all transactions<br />
 </p>
@@ -4345,7 +4329,7 @@ locking portion of the database<br />
 </p>
 
 <p>
-<a href="#org78cba0f">Attribute-level Inconsistency</a><br />
+<a href="#orge65921d">Attribute-level Inconsistency</a><br />
 </p>
 
 <p>
@@ -4358,7 +4342,7 @@ T2; T1<br />
 </p>
 
 <p>
-<a href="#orgd845a1a">Tuple-level Inconsistency</a><br />
+<a href="#org12019f9">Tuple-level Inconsistency</a><br />
 </p>
 
 <p>
@@ -4371,7 +4355,7 @@ both changes<br />
 </p>
 
 <p>
-<a href="#org81fefd7">Table-level Inconsistency</a><br />
+<a href="#orgdbc31f3">Table-level Inconsistency</a><br />
 </p>
 
 <p>
@@ -4384,7 +4368,7 @@ Order matters here.<br />
 </p>
 
 <p>
-<a href="#orgd017c5c">Multi-statement inconsistency</a><br />
+<a href="#orgcb3efa5">Multi-statement inconsistency</a><br />
 </p>
 
 <p>
@@ -4467,11 +4451,11 @@ Serializability ⇒ constraints always hold<br />
 </div>
 </div>
 
-<div id="outline-container-org82e41d0" class="outline-4">
-<h4 id="org82e41d0"><span class="section-number-4">6.1.4</span> <span class="done DONE">DONE</span> Isolation Levels</h4>
+<div id="outline-container-org90f25b4" class="outline-4">
+<h4 id="org90f25b4"><span class="section-number-4">6.1.4</span> <span class="done DONE">DONE</span> Isolation Levels</h4>
 <div class="outline-text-4" id="text-6-1-4">
 <p>
-<a href="#org2b1fa23">Serializability</a> ⇒ Overhead, Reduction in concurrency<br />
+<a href="#org8ba0068">Serializability</a> ⇒ Overhead, Reduction in concurrency<br />
 </p>
 
 <p>
@@ -4522,7 +4506,7 @@ concurrent with &#x2026;<br />
 Example 2<br />
 </p>
 <div class="org-src-container">
-<pre class="src src-sql" id="orgb4a0089"><span class="org-keyword">Update</span> Student <span class="org-keyword">Set</span> GPA = 1.1 * GPA <span class="org-keyword">Where</span> sizeHS &gt; 2500
+<pre class="src src-sql" id="org437e984"><span class="org-keyword">Update</span> Student <span class="org-keyword">Set</span> GPA = 1.1 * GPA <span class="org-keyword">Where</span> sizeHS &gt; 2500
 </pre>
 </div>
 <p>
@@ -4552,7 +4536,7 @@ Isolation Level: Read Uncommitted<br />
 </ul>
 
 <p>
-<a href="#orgb4a0089">Query</a> concurrent with &#x2026;<br />
+<a href="#org437e984">Query</a> concurrent with &#x2026;<br />
 </p>
 <div class="org-src-container">
 <pre class="src src-sql"><span class="org-keyword">Set</span> <span class="org-keyword">Transaction</span> <span class="org-keyword">Isolation</span> <span class="org-keyword">Level</span> <span class="org-keyword">Read</span> <span class="org-keyword">Uncommitted</span>;
@@ -4572,7 +4556,7 @@ Still does not guarantee global serializability<br />
 </p>
 
 <p>
-<a href="#orgb4a0089">Query</a> concurrent with &#x2026;<br />
+<a href="#org437e984">Query</a> concurrent with &#x2026;<br />
 </p>
 <div class="org-src-container">
 <pre class="src src-sql"><span class="org-keyword">Set</span> <span class="org-keyword">Transaction</span> <span class="org-keyword">Isolation</span> <span class="org-keyword">Level</span> <span class="org-keyword">Read</span> <span class="org-keyword">Committed</span>;
@@ -4624,7 +4608,7 @@ But a relation <i>can</i> change: "phantom" tuples<br />
 concurrent with &#x2026;<br />
 </p>
 <div class="org-src-container">
-<pre class="src src-sql" id="org22295a3"><span class="org-keyword">Set</span> <span class="org-keyword">Transaction</span> <span class="org-keyword">Isolation</span> <span class="org-keyword">Level</span> <span class="org-keyword">Repeatable</span> <span class="org-keyword">Read</span>;
+<pre class="src src-sql" id="orgad1dab8"><span class="org-keyword">Set</span> <span class="org-keyword">Transaction</span> <span class="org-keyword">Isolation</span> <span class="org-keyword">Level</span> <span class="org-keyword">Repeatable</span> <span class="org-keyword">Read</span>;
 <span class="org-keyword">Select</span> <span class="org-builtin">Avg</span>(GPA) <span class="org-keyword">From</span> Student;
 <span class="org-keyword">Select</span> <span class="org-builtin">Max</span>(GPA) <span class="org-keyword">From</span> Student;
 </pre>
@@ -4639,7 +4623,7 @@ The inserted tuples are called phantom tuples<br />
 </pre>
 </div>
 <p>
-concurrent with <a href="#org22295a3">Query</a><br />
+concurrent with <a href="#orgad1dab8">Query</a><br />
 </p>
 
 <p>
@@ -4747,17 +4731,17 @@ transaction's isolation level is serializable.<br />
 </div>
 </div>
 
-<div id="outline-container-org961ed75" class="outline-3">
-<h3 id="org961ed75"><span class="section-number-3">6.2</span> <span class="done DONE">DONE</span> Exercises</h3>
+<div id="outline-container-org7c7d871" class="outline-3">
+<h3 id="org7c7d871"><span class="section-number-3">6.2</span> <span class="done DONE">DONE</span> Exercises</h3>
 <div class="outline-text-3" id="text-6-2">
 </div>
-<div id="outline-container-org3ed7ec4" class="outline-4">
-<h4 id="org3ed7ec4"><span class="section-number-4">6.2.1</span> <span class="done DONE">DONE</span> Index Quiz</h4>
+<div id="outline-container-orgc30effa" class="outline-4">
+<h4 id="orgc30effa"><span class="section-number-4">6.2.1</span> <span class="done DONE">DONE</span> Index Quiz</h4>
 <div class="outline-text-4" id="text-6-2-1">
 </div>
 </div>
-<div id="outline-container-orgb57bc61" class="outline-4">
-<h4 id="orgb57bc61"><span class="section-number-4">6.2.2</span> <span class="done DONE">DONE</span> Transaction Quiz</h4>
+<div id="outline-container-orga6db1e9" class="outline-4">
+<h4 id="orga6db1e9"><span class="section-number-4">6.2.2</span> <span class="done DONE">DONE</span> Transaction Quiz</h4>
 <div class="outline-text-4" id="text-6-2-2">
 </div>
 </div>
@@ -4765,36 +4749,484 @@ transaction's isolation level is serializable.<br />
 </div>
 
 
-<div id="outline-container-orgb668cf4" class="outline-2">
-<h2 id="orgb668cf4"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> <a href="https://lagunita.stanford.edu/courses/DB/Constraints/SelfPaced/courseware/ch-constraints_and_triggers/">Constraints and Triggers</a> mini-course</h2>
+<div id="outline-container-org9ab563a" class="outline-2">
+<h2 id="org9ab563a"><span class="section-number-2">7</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> <a href="https://lagunita.stanford.edu/courses/DB/Constraints/SelfPaced/courseware/ch-constraints_and_triggers/">Constraints and Triggers</a> mini-course</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-org3b0a515" class="outline-3">
-<h3 id="org3b0a515"><span class="section-number-3">7.1</span> <span class="todo TODO">TODO</span> Lecture Videos</h3>
+</div>
+<div id="outline-container-org806ecec" class="outline-3">
+<h3 id="org806ecec"><span class="section-number-3">7.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Lecture Videos</h3>
 <div class="outline-text-3" id="text-7-1">
-</div><div id="outline-container-org70f5fb1" class="outline-4">
-<h4 id="org70f5fb1"><span class="section-number-4">7.1.1</span> <span class="todo TODO">TODO</span> Motivation and Overview</h4>
 </div>
-<div id="outline-container-orgb2c6525" class="outline-4">
-<h4 id="orgb2c6525"><span class="section-number-4">7.1.2</span> <span class="todo TODO">TODO</span> Constraints of Several Types</h4>
+<div id="outline-container-org2c430ca" class="outline-4">
+<h4 id="org2c430ca"><span class="section-number-4">7.1.1</span> <span class="done DONE">DONE</span> Motivation and Overview</h4>
+<div class="outline-text-4" id="text-7-1-1">
+<p>
+(Integrity) Contstraints  &lt;static&gt;<br />
+  constrain allowable database states<br />
+</p>
+
+
+<p>
+Triggers &lt;dynamic&gt;<br />
+  monitor database changes,<br />
+  check conditions and initiate actions<br />
+</p>
+
+
+<p>
+Integrity Constraints<br />
+  Impose restrictions on allowable data, beyond those imposed by<br />
+  structure and types<br />
+</p>
+
+
+<p>
+0.0 &lt; GPA &lt;= 4.0<br />
+enrollment &lt; 50,000 (75,000)<br />
+</p>
+
+
+<p>
+Why use them?<br />
+  Data-entry errors (inserts)<br />
+  Correctness criteria (updates)<br />
+  Enforce consistency<br />
+  Tell system about data<br />
+</p>
+
+
+<p>
+Classification<br />
+  Non-null<br />
+  Key<br />
+  Referential Integrity (foreign key)<br />
+</p>
+
+
+<p>
+Declaring and enforcing constraints<br />
+</p>
+
+<p>
+Declaration<br />
+</p>
+<ul class="org-ul">
+<li>With original schema - checked after bulk loading<br /></li>
+<li>Or later - checked on current DB<br /></li>
+</ul>
+
+
+<p>
+Enforcement<br />
+</p>
+<ul class="org-ul">
+<li>Check after every "dangerous" modification<br /></li>
+<li>Deferred constraint checking (transaction)<br /></li>
+</ul>
+
+
+<p>
+Triggers<br />
+"Event-Condition-Action Rules"<br />
+When <i>event</i> occurs, check <i>condition</i>; if true, do action<br />
+</p>
+
+
+<p>
+Examples<br />
+  enrollment &gt; 35,000 -&gt; reject all applicants<br />
+  insert app with GPA &gt; 3.95 -&gt; accept automatically<br />
+  update sizeHS to be &gt; 7,000 -&gt; change to "wrong", raise error<br />
+</p>
+
+
+<p>
+Why use them?<br />
+More logic from apps into DBMS<br />
+To enforce constraints<br />
+</p>
+<ul class="org-ul">
+<li>expressive<br /></li>
+<li>constraint "repair" logic<br /></li>
+</ul>
+
+
+
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">Create</span> <span class="org-keyword">Trigger</span> <span class="org-keyword">name</span>
+<span class="org-keyword">Before</span>|<span class="org-keyword">After</span>|Instead <span class="org-keyword">Of</span> events
+[ <span class="org-keyword">referencing</span>-variables ]
+[ <span class="org-keyword">For</span> <span class="org-keyword">Each</span> <span class="org-type">Row</span> ]
+<span class="org-keyword">When</span> (condition)
+<span class="org-keyword">action</span>
+</pre>
 </div>
-<div id="outline-container-org009de44" class="outline-4">
-<h4 id="org009de44"><span class="section-number-4">7.1.3</span> <span class="todo TODO">TODO</span> Referential Integrity</h4>
+
+<p>
+Constraints and Triggers<br />
+</p>
+<ul class="org-ul">
+<li>For relational databases<br /></li>
+<li>SQL standard; systems vary considerably<br /></li>
+</ul>
+
+<p>
+(Integrity) Constraints<br />
+</p>
+<ul class="org-ul">
+<li>constrain allowable database states<br /></li>
+</ul>
+
+<p>
+Triggers<br />
+</p>
+<ul class="org-ul">
+<li>monitor database changes,<br /></li>
+<li>check conditions and initiate actions<br /></li>
+</ul>
 </div>
-<div id="outline-container-org11ee41d" class="outline-4">
-<h4 id="org11ee41d"><span class="section-number-4">7.1.4</span> <span class="todo TODO">TODO</span> Triggers Introduction</h4>
 </div>
-<div id="outline-container-org63759fe" class="outline-4">
-<h4 id="org63759fe"><span class="section-number-4">7.1.5</span> <span class="todo TODO">TODO</span> Triggers Demo</h4>
+
+<div id="outline-container-orgdec7888" class="outline-4">
+<h4 id="orgdec7888"><span class="section-number-4">7.1.2</span> <span class="done DONE">DONE</span> Constraints of Several Types</h4>
+<div class="outline-text-4" id="text-7-1-2">
+<p>
+Integrity Constraints<br />
+</p>
+<ul class="org-ul">
+<li>Impose restrictions on allowable data, beyond those imposed by structure and types<br />
+<ul class="org-ul">
+<li>Non-null constraints<br /></li>
+<li>Key constraints<br /></li>
+<li>Attribute-based and tuple-based constraints (limits)<br /></li>
+<li>General assertions (not implemented by any database)<br /></li>
+</ul></li>
+</ul>
+
+<p>
+Not all constraints are implemented.<br />
+</p>
+
+<p>
+Constraints Demo<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">Student</span>(
+    sID <span class="org-type">int</span>,
+    sName text,
+    GPA <span class="org-type">real</span> <span class="org-keyword">not</span> <span class="org-keyword">null</span>,
+    sizeHS <span class="org-type">int</span>
+);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (123, <span class="org-string">'Amy'</span>, 3.9, 1000);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (234, <span class="org-string">'Bob'</span>, 3.6, <span class="org-keyword">null</span>);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (345, <span class="org-string">'Craig'</span>, <span class="org-keyword">null</span>, 500);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">update</span> Student <span class="org-keyword">set</span> GPA = <span class="org-keyword">null</span> <span class="org-keyword">where</span> sID = 123; <span class="org-comment">-- failed</span>
+<span class="org-keyword">update</span> Student <span class="org-keyword">set</span> GPA = <span class="org-keyword">null</span> <span class="org-keyword">where</span> sID = 456; <span class="org-comment">-- succeed since 456 doesn't exist</span>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">Student</span>(
+    sID <span class="org-type">int</span> <span class="org-keyword">primary</span> <span class="org-keyword">key</span>,
+    sName text,
+    GPA <span class="org-type">real</span>,
+    sizeHS <span class="org-type">int</span>
+);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (123, <span class="org-string">'Amy'</span>, 3.9, 1000);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (234, <span class="org-string">'Bob'</span>, 3.6, 1500);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (123, <span class="org-string">'Craig'</span>, 3.5, 500); <span class="org-comment">-- failed, key error</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">update</span> Student <span class="org-keyword">set</span> sID = 123 <span class="org-keyword">where</span> sName = <span class="org-string">'Bob'</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">update</span> Student <span class="org-keyword">set</span> sID = sID - 111; <span class="org-comment">-- succeed if query executed for sID 123 before 234</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">update</span> Student <span class="org-keyword">set</span> sID = sID + 111; <span class="org-comment">-- failed if query executed for sID 123 before 234</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">Student</span>(
+    sID <span class="org-type">int</span> <span class="org-keyword">primary</span> <span class="org-keyword">key</span>,
+    sName text <span class="org-keyword">unique</span>,
+    GPA <span class="org-type">real</span>,
+    sizeHS <span class="org-type">int</span>
+);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (123, <span class="org-string">'Amy'</span>, 3.9, 1000);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (234, <span class="org-string">'Bob'</span>, 3.6, 1500);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (345, <span class="org-string">'Amy'</span>, 3.5, 500); <span class="org-comment">-- failed</span>
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (456, <span class="org-string">'Doris'</span>, 3.9, 1000);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (567, <span class="org-string">'Amy'</span>, 3.8, 1500); <span class="org-comment">-- failed</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">College</span>(
+    cName text,
+    <span class="org-keyword">state</span> text,
+    enrollment <span class="org-type">int</span>,
+    pimary <span class="org-keyword">key</span> (cName, <span class="org-keyword">state</span>)
+);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> College <span class="org-keyword">values</span> (<span class="org-string">'Mason'</span>, <span class="org-string">'CA'</span>, 10000);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> College <span class="org-keyword">values</span> (<span class="org-string">'Mason'</span>, <span class="org-string">'NY'</span>, 5000);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> College <span class="org-keyword">values</span> (<span class="org-string">'Mason'</span>, <span class="org-string">'CA'</span>, 2000);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">Apply</span>(
+    sID <span class="org-type">int</span>,
+    cName text,
+    major text,
+    decision text,
+    <span class="org-keyword">unique</span>(sID, cName),
+    <span class="org-keyword">unique</span>(sID, major)
+);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-string">'Stanford'</span>, <span class="org-string">'CS'</span>, <span class="org-keyword">null</span>);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-string">'Berkeley'</span>, <span class="org-string">'EE'</span>, <span class="org-keyword">null</span>);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-string">'Stanford'</span>, <span class="org-string">'biology'</span>, <span class="org-keyword">null</span>); <span class="org-comment">-- failed</span>
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (234, <span class="org-string">'Stanford'</span>, <span class="org-string">'biology'</span>, <span class="org-keyword">null</span>);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-string">'MIT'</span>, <span class="org-string">'EE'</span>, <span class="org-keyword">null</span>); <span class="org-comment">-- failed</span>
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-string">'MIT'</span>, <span class="org-string">'biology'</span>, <span class="org-keyword">null</span>);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">update</span> Apply <span class="org-keyword">set</span> major = <span class="org-string">'CS'</span> <span class="org-keyword">where</span> cName = <span class="org-string">'MIT'</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-keyword">null</span>, <span class="org-keyword">null</span>, <span class="org-string">'Y'</span>);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-keyword">null</span>, <span class="org-keyword">null</span>, <span class="org-string">'N'</span>);
+</pre>
+</div>
+
+<p>
+Both queries above succeed.  SQL standard and most systems allow<br />
+duplicate null values for unique key.  Most systems do not permit<br />
+repeated null values for primary key.<br />
+</p>
+
+
+<p>
+Attribute check constraint<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">Student</span>(
+    sID <span class="org-type">int</span>,
+    sName text,
+    GPA <span class="org-type">real</span> <span class="org-keyword">check</span>(GPA &lt;= 4.0 <span class="org-keyword">and</span> GPA &gt; 0.0),
+    sizeHS <span class="org-type">int</span> <span class="org-keyword">check</span>(sizeHS &lt; 5000)
+);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (123, <span class="org-string">'Amy'</span>, 3.9, 1000);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Student <span class="org-keyword">values</span> (234, <span class="org-string">'Bob'</span>, 4.6, 1500);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">Apply</span>(
+    sID <span class="org-type">int</span>,
+    cName text,
+    major text,
+    decision text,
+    <span class="org-keyword">check</span>(decision = <span class="org-string">'N'</span> <span class="org-keyword">or</span> cName &lt;&gt; <span class="org-string">'Stanford'</span> <span class="org-keyword">or</span> major &lt;&gt; <span class="org-string">'CS'</span>)
+);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-string">'Stanford'</span>, <span class="org-string">'CS'</span>, <span class="org-string">'N'</span>);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-string">'MIT'</span>, <span class="org-string">'CS'</span>, <span class="org-string">'Y'</span>);
+<span class="org-keyword">insert</span> <span class="org-keyword">into</span> Apply <span class="org-keyword">values</span> (123, <span class="org-string">'Stanford'</span>, <span class="org-string">'CS'</span>, <span class="org-string">'Y'</span>);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">update</span> Apply <span class="org-keyword">set</span> decision = <span class="org-string">'Y'</span> <span class="org-keyword">where</span> cName = <span class="org-string">'Stanford'</span>;
+<span class="org-keyword">update</span> Apply <span class="org-keyword">set</span> cName = <span class="org-string">'Stanford'</span> <span class="org-keyword">where</span> cName = <span class="org-string">'MIT'</span>;
+</pre>
+</div>
+
+<p>
+Both queries failed on SQLite and Postgres, but not in MySQL (MySQL sucks).<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">Student</span>(
+    sID <span class="org-type">int</span>,
+    sName text,
+    GPA <span class="org-type">real</span> <span class="org-keyword">check</span>(GPA <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-keyword">null</span>),
+    sizeHS <span class="org-type">int</span>
+);
+</pre>
+</div>
+
+<p>
+The above is equivalent to <code>GPA real not null</code>.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">T</span>(
+    A <span class="org-type">int</span> <span class="org-keyword">check</span>(A <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> A <span class="org-keyword">from</span> T))
+);
+</pre>
+</div>
+
+<p>
+The above check constraint implements key constraint.  It fails on<br />
+SQLite for several reasons.  The order of execution and check matters.<br />
+It works for at least some database system.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">T</span>(
+    A <span class="org-type">int</span> <span class="org-keyword">check</span>((<span class="org-keyword">select</span> <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> A) <span class="org-keyword">from</span> T) =
+                (<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*) <span class="org-keyword">from</span> T))
+);
+</pre>
+</div>
+
+<p>
+No known database allows subquery, esp. aggregation, in check<br />
+expression, so the above query also doesn't work.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">Student</span>(
+    sID <span class="org-type">int</span>,
+    sName text,
+    GPA <span class="org-type">real</span>,
+    sizeHS <span class="org-type">int</span>
+);
+
+<span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">Apply</span>(
+    sID <span class="org-type">int</span>,
+    cName text,
+    major text,
+    decision text,
+    <span class="org-keyword">check</span>(sID <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID <span class="org-keyword">from</span> Student))
+);
+</pre>
+</div>
+
+<p>
+The above table definitions is valid according to SQL standards but no<br />
+database implements subquery in check constraint.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">table</span> <span class="org-function-name">College</span>(
+    cName text,
+    <span class="org-keyword">state</span> text,
+    enrollment <span class="org-type">int</span>,
+    <span class="org-keyword">check</span>(enrollment &gt; (<span class="org-keyword">select</span> <span class="org-builtin">max</span>(sizeHS) <span class="org-keyword">from</span> Student))
+);
+</pre>
+</div>
+
+<p>
+Also valid in SQL standard but no database allows this.  Now, suppose<br />
+this works for some system, it has other problems.  When student table<br />
+changes, the check constraint may no longer be valid.<br />
+</p>
+
+
+<p>
+General Assertions<br />
+</p>
+<ul class="org-ul">
+<li>They are very powerful but unfortunately not implemented by any RDBMS.<br /></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">assertion</span> <span class="org-keyword">Key</span>
+<span class="org-keyword">check</span> ((<span class="org-keyword">select</span> <span class="org-builtin">count</span>(<span class="org-keyword">distinct</span> A) <span class="org-keyword">from</span> T) =
+       (<span class="org-keyword">select</span> <span class="org-builtin">count</span>(*) <span class="org-keyword">from</span> T));
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">assertion</span> ReferentialIntegrity
+<span class="org-keyword">check</span>  (<span class="org-keyword">not</span> <span class="org-keyword">exists</span> (<span class="org-keyword">select</span> * <span class="org-keyword">from</span> Apply
+                    <span class="org-keyword">where</span> sID <span class="org-keyword">not</span> <span class="org-keyword">in</span> (<span class="org-keyword">select</span> sID <span class="org-keyword">from</span> Student)));
+</pre>
+</div>
+
+<p>
+It's common to write <code>not exists</code> in general assertions.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span class="org-keyword">create</span> <span class="org-keyword">assertion</span> AvgAccept
+<span class="org-keyword">check</span> (3.0 &lt; (<span class="org-keyword">select</span> <span class="org-builtin">avg</span>(GPA) <span class="org-keyword">from</span> Student
+              <span class="org-keyword">where</span> sID <span class="org-keyword">in</span>
+                (<span class="org-keyword">select</span> sID <span class="org-keyword">from</span> Apply <span class="org-keyword">where</span> decision = <span class="org-string">'Y'</span>)));
+</pre>
 </div>
 </div>
-<div id="outline-container-org6084fcc" class="outline-3">
-<h3 id="org6084fcc"><span class="section-number-3">7.2</span> <span class="todo TODO">TODO</span> Exercises</h3>
+</div>
+
+
+<div id="outline-container-org0b1597e" class="outline-4">
+<h4 id="org0b1597e"><span class="section-number-4">7.1.3</span> <span class="todo TODO">TODO</span> Referential Integrity</h4>
+</div>
+<div id="outline-container-org38300bf" class="outline-4">
+<h4 id="org38300bf"><span class="section-number-4">7.1.4</span> <span class="todo TODO">TODO</span> Triggers Introduction</h4>
+</div>
+<div id="outline-container-orgcb62f9f" class="outline-4">
+<h4 id="orgcb62f9f"><span class="section-number-4">7.1.5</span> <span class="todo TODO">TODO</span> Triggers Demo</h4>
+</div>
+</div>
+<div id="outline-container-org9b6a153" class="outline-3">
+<h3 id="org9b6a153"><span class="section-number-3">7.2</span> <span class="todo TODO">TODO</span> Exercises</h3>
 <div class="outline-text-3" id="text-7-2">
-</div><div id="outline-container-org26c287f" class="outline-4">
-<h4 id="org26c287f"><span class="section-number-4">7.2.1</span> <span class="todo TODO">TODO</span> Constraints and Triggers</h4>
 </div>
-<div id="outline-container-org53c6390" class="outline-4">
-<h4 id="org53c6390"><span class="section-number-4">7.2.2</span> <span class="todo TODO">TODO</span> SQL Social-Network Triggers</h4>
+<div id="outline-container-org44697fc" class="outline-4">
+<h4 id="org44697fc"><span class="section-number-4">7.2.1</span> <span class="todo TODO">TODO</span> Constraints and Triggers</h4>
+</div>
+<div id="outline-container-org3f6c8cc" class="outline-4">
+<h4 id="org3f6c8cc"><span class="section-number-4">7.2.2</span> <span class="todo TODO">TODO</span> SQL Social-Network Triggers</h4>
 <div class="outline-text-4" id="text-7-2-2">
 </div>
 </div>
@@ -4803,7 +5235,7 @@ transaction's isolation level is serializable.<br />
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2017-08-24 Thu 02:06</p>
+<p class="date">Created: 2017-11-27 Mon 10:15</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

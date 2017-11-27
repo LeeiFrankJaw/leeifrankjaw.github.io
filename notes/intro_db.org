@@ -3145,10 +3145,351 @@ transaction's isolation level is serializable.
     CLOSED: [2017-08-24 Thu 01:55]
 
 
-* TODO [[https://lagunita.stanford.edu/courses/DB/Constraints/SelfPaced/courseware/ch-constraints_and_triggers/][Constraints and Triggers]] mini-course
-** TODO Lecture Videos
-*** TODO Motivation and Overview
-*** TODO Constraints of Several Types
+* IN-PROGRESS [[https://lagunita.stanford.edu/courses/DB/Constraints/SelfPaced/courseware/ch-constraints_and_triggers/][Constraints and Triggers]] mini-course
+** IN-PROGRESS Lecture Videos
+*** DONE Motivation and Overview
+    CLOSED: [2017-11-26 Sun 18:42]
+
+(Integrity) Contstraints  <static>
+  constrain allowable database states
+
+
+Triggers <dynamic>
+  monitor database changes,
+  check conditions and initiate actions
+
+
+Integrity Constraints
+  Impose restrictions on allowable data, beyond those imposed by
+  structure and types
+
+
+0.0 < GPA <= 4.0
+enrollment < 50,000 (75,000)
+
+
+Why use them?
+  Data-entry errors (inserts)
+  Correctness criteria (updates)
+  Enforce consistency
+  Tell system about data
+
+
+Classification
+  Non-null
+  Key
+  Referential Integrity (foreign key)
+
+
+Declaring and enforcing constraints
+
+Declaration
+  * With original schema - checked after bulk loading
+  * Or later - checked on current DB
+
+
+Enforcement
+  * Check after every "dangerous" modification
+  * Deferred constraint checking (transaction)
+
+
+Triggers
+"Event-Condition-Action Rules"
+When /event/ occurs, check /condition/; if true, do action
+
+
+Examples
+  enrollment > 35,000 -> reject all applicants
+  insert app with GPA > 3.95 -> accept automatically
+  update sizeHS to be > 7,000 -> change to "wrong", raise error
+
+
+Why use them?
+More logic from apps into DBMS
+To enforce constraints
+  - expressive
+  - constraint "repair" logic
+
+
+
+
+#+BEGIN_SRC sql
+  Create Trigger name
+  Before|After|Instead Of events
+  [ referencing-variables ]
+  [ For Each Row ]
+  When (condition)
+  action
+#+END_SRC
+
+Constraints and Triggers
+  - For relational databases
+  - SQL standard; systems vary considerably
+
+(Integrity) Constraints
+  - constrain allowable database states
+
+Triggers
+  - monitor database changes,
+  - check conditions and initiate actions
+
+*** DONE Constraints of Several Types
+    CLOSED: [2017-11-27 Mon 10:15]
+
+Integrity Constraints
+  * Impose restrictions on allowable data, beyond those imposed by structure and types
+    - Non-null constraints
+    - Key constraints
+    - Attribute-based and tuple-based constraints (limits)
+    - General assertions (not implemented by any database)
+
+Not all constraints are implemented.
+
+Constraints Demo
+
+#+BEGIN_SRC sql
+  create table Student(
+      sID int,
+      sName text,
+      GPA real not null,
+      sizeHS int
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Student values (123, 'Amy', 3.9, 1000);
+  insert into Student values (234, 'Bob', 3.6, null);
+  insert into Student values (345, 'Craig', null, 500);
+#+END_SRC
+
+#+BEGIN_SRC sql
+  update Student set GPA = null where sID = 123; -- failed
+  update Student set GPA = null where sID = 456; -- succeed since 456 doesn't exist
+#+END_SRC
+
+
+#+BEGIN_SRC sql
+  create table Student(
+      sID int primary key,
+      sName text,
+      GPA real,
+      sizeHS int
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Student values (123, 'Amy', 3.9, 1000);
+  insert into Student values (234, 'Bob', 3.6, 1500);
+  insert into Student values (123, 'Craig', 3.5, 500); -- failed, key error
+#+END_SRC
+
+#+BEGIN_SRC sql
+  update Student set sID = 123 where sName = 'Bob';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  update Student set sID = sID - 111; -- succeed if query executed for sID 123 before 234
+#+END_SRC
+
+#+BEGIN_SRC sql
+  update Student set sID = sID + 111; -- failed if query executed for sID 123 before 234
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create table Student(
+      sID int primary key,
+      sName text unique,
+      GPA real,
+      sizeHS int
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Student values (123, 'Amy', 3.9, 1000);
+  insert into Student values (234, 'Bob', 3.6, 1500);
+  insert into Student values (345, 'Amy', 3.5, 500); -- failed
+  insert into Student values (456, 'Doris', 3.9, 1000);
+  insert into Student values (567, 'Amy', 3.8, 1500); -- failed
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create table College(
+      cName text,
+      state text,
+      enrollment int,
+      pimary key (cName, state)
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into College values ('Mason', 'CA', 10000);
+  insert into College values ('Mason', 'NY', 5000);
+  insert into College values ('Mason', 'CA', 2000);
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create table Apply(
+      sID int,
+      cName text,
+      major text,
+      decision text,
+      unique(sID, cName),
+      unique(sID, major)
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Apply values (123, 'Stanford', 'CS', null);
+  insert into Apply values (123, 'Berkeley', 'EE', null);
+  insert into Apply values (123, 'Stanford', 'biology', null); -- failed
+  insert into Apply values (234, 'Stanford', 'biology', null);
+  insert into Apply values (123, 'MIT', 'EE', null); -- failed
+  insert into Apply values (123, 'MIT', 'biology', null);
+#+END_SRC
+
+#+BEGIN_SRC sql
+  update Apply set major = 'CS' where cName = 'MIT';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Apply values (123, null, null, 'Y');
+  insert into Apply values (123, null, null, 'N');
+#+END_SRC
+
+Both queries above succeed.  SQL standard and most systems allow
+duplicate null values for unique key.  Most systems do not permit
+repeated null values for primary key.
+
+
+Attribute check constraint
+
+#+BEGIN_SRC sql
+  create table Student(
+      sID int,
+      sName text,
+      GPA real check(GPA <= 4.0 and GPA > 0.0),
+      sizeHS int check(sizeHS < 5000)
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Student values (123, 'Amy', 3.9, 1000);
+  insert into Student values (234, 'Bob', 4.6, 1500);
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create table Apply(
+      sID int,
+      cName text,
+      major text,
+      decision text,
+      check(decision = 'N' or cName <> 'Stanford' or major <> 'CS')
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Apply values (123, 'Stanford', 'CS', 'N');
+  insert into Apply values (123, 'MIT', 'CS', 'Y');
+  insert into Apply values (123, 'Stanford', 'CS', 'Y');
+#+END_SRC
+
+#+BEGIN_SRC sql
+  update Apply set decision = 'Y' where cName = 'Stanford';
+  update Apply set cName = 'Stanford' where cName = 'MIT';
+#+END_SRC
+
+Both queries failed on SQLite and Postgres, but not in MySQL (MySQL sucks).
+
+#+BEGIN_SRC sql
+  create table Student(
+      sID int,
+      sName text,
+      GPA real check(GPA is not null),
+      sizeHS int
+  );
+#+END_SRC
+
+The above is equivalent to =GPA real not null=.
+
+#+BEGIN_SRC sql
+  create table T(
+      A int check(A not in (select A from T))
+  );
+#+END_SRC
+
+The above check constraint implements key constraint.  It fails on
+SQLite for several reasons.  The order of execution and check matters.
+It works for at least some database system.
+
+#+BEGIN_SRC sql
+  create table T(
+      A int check((select count(distinct A) from T) =
+                  (select count(*) from T))
+  );
+#+END_SRC
+
+No known database allows subquery, esp. aggregation, in check
+expression, so the above query also doesn't work.
+
+#+BEGIN_SRC sql
+  create table Student(
+      sID int,
+      sName text,
+      GPA real,
+      sizeHS int
+  );
+
+  create table Apply(
+      sID int,
+      cName text,
+      major text,
+      decision text,
+      check(sID in (select sID from Student))
+  );
+#+END_SRC
+
+The above table definitions is valid according to SQL standards but no
+database implements subquery in check constraint.
+
+#+BEGIN_SRC sql
+  create table College(
+      cName text,
+      state text,
+      enrollment int,
+      check(enrollment > (select max(sizeHS) from Student))
+  );
+#+END_SRC
+
+Also valid in SQL standard but no database allows this.  Now, suppose
+this works for some system, it has other problems.  When student table
+changes, the check constraint may no longer be valid.
+
+
+General Assertions
+  - They are very powerful but unfortunately not implemented by any RDBMS.
+
+#+BEGIN_SRC sql
+  create assertion Key
+  check ((select count(distinct A) from T) =
+         (select count(*) from T));
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create assertion ReferentialIntegrity
+  check  (not exists (select * from Apply
+                      where sID not in (select sID from Student)));
+#+END_SRC
+
+It's common to write =not exists= in general assertions.
+
+#+BEGIN_SRC sql
+  create assertion AvgAccept
+  check (3.0 < (select avg(GPA) from Student
+                where sID in
+                  (select sID from Apply where decision = 'Y')));
+#+END_SRC
+
+
 *** TODO Referential Integrity
 *** TODO Triggers Introduction
 *** TODO Triggers Demo
@@ -3159,6 +3500,7 @@ transaction's isolation level is serializable.
 #+TITLE: Intro to DB
 #+AUTHOR: Lei Zhao
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
 # #+INFOJS_OPT: view:info path:../lib/org-info.js
 #+OPTIONS: ^:nil \n:t

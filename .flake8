@@ -1,0 +1,10 @@
+[flake8]
+ignore =
+    # line too long (82 > 79 characters)
+    # E501,
+    # missing whitespace around arithmetic operator
+    E226,
+    # line break occurred before a binary operator
+    W503,
+    # module level import not at top of file
+    E402
