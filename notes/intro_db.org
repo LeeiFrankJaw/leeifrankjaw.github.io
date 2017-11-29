@@ -3489,8 +3489,135 @@ It's common to write =not exists= in general assertions.
                   (select sID from Apply where decision = 'Y')));
 #+END_SRC
 
+*** DONE Referential Integrity
+    CLOSED: [2017-11-29 Wed 20:31]
 
-*** TODO Referential Integrity
+Integrity Constraints
+  - Impose restrictions on allowable data, beyond those imposed by
+    structure and types
+
+Referential integrity = Integrity of references = No "dangling pointers"
+
+
+Referential integrity from R.A to S.B
+  - Each value in column A of table R must appear in column B of table S
+    * A is called the "foreign key" (Foreign key constraints)
+    * B is usually required to be the /primary key/ for table S or at least /unique/
+    * Multi-attribute foreign keys are allowed
+
+Referential integrity is directional
+
+Referential Integrity Enforcement (R.A to S.B)
+- Potentially violating modifications:
+  * Insert into R
+  * Delete from S
+  * Update R.A
+  * Update S.B
+
+Special actions:
+- Delete from S
+  * Delete from S
+    + =Restrict= (default), =Set Null=, =Cascade=
+  * Update S.B
+    + =Restrict= (default), =Set Null=, =Cascade=
+
+#+BEGIN_SRC sql
+  create table College(
+      cName text primary key,
+      state text,
+      enrollment int
+  );
+
+  create table Student(
+      sID int primary key,
+      sName text,
+      GPA real,
+      sizeHS int
+  );
+
+  create table Apply(
+      sID int references Student(sID),
+      cName text references College(cName),
+      major text,
+      decision text
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Apply values (123, 'Stanford', 'CS', 'Y');
+  insert into Apply values (234, 'Berkeley', 'biology', 'N');
+#+END_SRC
+
+Both queries above failed.
+
+#+BEGIN_SRC sql
+  insert into Student values (123, 'Amy', 3.9, 1000);
+  insert into Student values (234, 'Bob', 3.6, 1500);
+  insert into College values ('Stanford', 'CA', 15000);
+  insert into College values ('Berkeley', 'CA', 36000);
+#+END_SRC
+
+After executing the above queries, the previous queries succeed.
+
+#+BEGIN_SRC sql
+  update Apply set sID = 345 where sID = 123; -- failed, break referential integrity
+  update Apply set sID = 234 where sID = 123; -- succeed
+#+END_SRC
+
+
+#+BEGIN_SRC sql
+  delete from College where cName = 'Stanford'; -- failed
+  delete from College where sID = 234;          -- failed
+  delete from College where sID = 123;          -- succeed
+#+END_SRC
+
+#+BEGIN_SRC sql
+  update College set cName = 'Bezerkeley' where cName = 'Berkeley'; -- failed
+#+END_SRC
+
+#+BEGIN_SRC sql
+  drop table Student;             -- failed
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create table Apply(
+      sID int references Student(sID) on delete set null,
+      cName text references College(cName) on update cascade,
+      major text,
+      decision text
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  delete from Student where sID > 200;
+#+END_SRC
+
+The Bezerkeley query now succeeds.
+
+#+BEGIN_SRC sql
+  create table T (
+      A int,
+      B int,
+      C int,
+      primary key (A, B),
+      foreign key (B, C) references T(A, B) on delete cascade
+  );
+  insert into T values (1, 1, 1);
+  insert into T values (2, 1, 1);
+  insert into T values (3, 2, 1);
+  insert into T values (4, 3, 2);
+  insert into T values (5, 4, 3);
+  insert into T values (6, 5, 4);
+  insert into T values (7, 6, 5);
+  insert into T values (8, 7, 6);
+#+END_SRC
+
+#+BEGIN_SRC sql
+  delete from T where A = 1;
+#+END_SRC
+
+The above query will delete all the rows in T.
+
 *** TODO Triggers Introduction
 *** TODO Triggers Demo
 ** TODO Exercises
