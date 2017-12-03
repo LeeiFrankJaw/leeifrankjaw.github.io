@@ -3146,7 +3146,8 @@ transaction's isolation level is serializable.
 
 
 * IN-PROGRESS [[https://lagunita.stanford.edu/courses/DB/Constraints/SelfPaced/courseware/ch-constraints_and_triggers/][Constraints and Triggers]] mini-course
-** IN-PROGRESS Lecture Videos
+** DONE Lecture Videos
+   CLOSED: [2017-12-03 Sun 22:19]
 *** DONE Motivation and Overview
     CLOSED: [2017-11-26 Sun 18:42]
 
@@ -3618,10 +3619,378 @@ The Bezerkeley query now succeeds.
 
 The above query will delete all the rows in T.
 
-*** TODO Triggers Introduction
-*** TODO Triggers Demo
-** TODO Exercises
-*** TODO Constraints and Triggers
+*** DONE Triggers Introduction
+    CLOSED: [2017-12-02 Sat 20:54]
+
+Triggers
+- "Event-Condition-Action Rules"
+- When /event/ occurs, check condition; if true, do action
+  1) Move monitoring logic from apps into DBMS
+  2) Enforce constraints
+     * Beyond what constraint system supports
+     * Automatic constraint "repair"
+
+*Implementations vary significantly*
+
+#+BEGIN_SRC sql
+  Create Trigger name
+  Before | After | Instead Of events
+  [ referencing-variables ]
+  [ For Each Row ]
+  When (condition)
+  action
+#+END_SRC
+
+Events are one of =insert on T=, =delete on T=, =update [of C1, ..., Cn] on T=.
+
+=[For Each Row]= means that the triggers should be executed once for
+each modified tuple.
+
+When event is an insert, =referencing-variables= can only reference
+the newly inserted data.  When event is a delete, =referencing-variables=
+can only reference the old deleted data.  When envent is an update,
+=referencing-variables= can reference both old and new data.
+
+If a row-level trigger is concerned and the event is a delete, we can
+refer both the old row and old table as different variables.  Old
+table does not refer to the old state of the table in the database but
+specifically refers to the rows deleted in the delete event.
+
+If a statement-level trigger is concerned, only table can be referenced.
+
+=(Condition)= is like SQL =where= clause.
+
+=action= is the action to be performed when triggered.  This is where
+various database systems differ.
+
+Referential Integrity:
+- R.A references S.B, cascaded delete
+
+#+BEGIN_SRC sql
+  Create Trigger Cascade
+  After Delete On S
+  Referencing Old Row As O
+  For Each Row
+  -- [ no condition ]
+  Delete From R Where A = O.B
+#+END_SRC
+
+#+BEGIN_SRC sql
+  Create Trigger Cascade
+  After Delete On S
+  Referencing Old Table As OT
+  -- [ For Each Row ]
+  -- [ no condition ]
+  Delete From R Where A in (Select B from OT)
+#+END_SRC
+
+
+Tricky Issues
+
+  * Row-level vs. Statement-level
+    - New/Old Row and New/Old Table
+    - Before, Instead Of
+
+  * Multiple triggers activated at same time
+
+  * Trigger actions activating other triggers (chaining)
+    - Also self-triggering, cycles, nested invocations
+
+  * Conditions in =When= vs. as part of =action=
+
+
+SQLite supports only row-level triggers.
+
+T(K,V) - K key, V value
+
+#+BEGIN_SRC sql
+  Create Trigger IncreaseInserts
+  After Insert On T
+  Referencing New Row As NR, New Table As NT
+  For Each Row
+  When (Select Avg(V) From T) <
+       (Select Avg(V) From NT)
+  Update T set V=V+10 where K=NR.K
+#+END_SRC
+
+  * No statement-level equivalent
+  * Nondeterministic final state
+
+*** DONE Triggers Demo
+    CLOSED: [2017-12-03 Sun 22:19]
+
+  * Before and After; Insert, Delete, and Update
+  * New and Old
+  * Conditions and actions
+  * Triggers enforcing constraints
+  * Trigger chaining
+  * Self-triggering, cycles
+  * Conflicts
+  * Nested trigger invocations
+
+Introduction video used SQL standard
+  * No DBMS implements exact standard
+  * Some deviate considerably
+    - In both syntax and behavior!
+
+Postgres > SQLite >> MySQL
+
+Postgres
+  * Expressiveness/behavior = full standard
+    row-level + statement-level, old/new row & table
+  * Cumbersome & awkward syntax
+
+SQLite
+  * Row-level only, immediate activation => no old/new table
+
+MySQL
+  * Row-level only, immediate activation => no old/new table
+  * Only one trigger per event type
+  * Limited trigger chaining
+
+
+SQLite - row-level triggers, immediate activation
+  * =For Each Row= implicit if not specified
+  * No =Old Table= or =New Table=
+  * No =Referencing= clause
+    - =Old= and =New= predefined for =Old Row= and =New Row=
+  * Trigger action: SQL statements in =begin-end= block
+
+
+#+BEGIN_SRC sql
+  create trigger R1
+  after insert on Student
+  for each row
+  when New.GPA > 3.3 and New.GPA <= 3.6
+  begin
+      insert into Apply values (New.sID, 'Stanford', 'geology', null);
+      insert into Apply values (New.sID, 'MIT', 'biology', null);
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger R2
+  after delete on Student
+  for each row
+  begin
+      delete from Apply where sID = Old.sID;
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger R3
+  after update of cName on College
+  for each row
+  begin
+      update Apply
+      set cName = New.cName
+      where cName = Old.cName;
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger R4
+  before insert on College
+  for each row
+  when exists (select * from College where cName = New.cName)
+  begin
+      select raise(ignore);
+  end;
+
+  create trigger R5
+  before update of cName on College
+  for each row
+  when exists (select * from College where cName = New.cName)
+  begin
+      select raise(ignore);
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger R6
+  after insert on Apply
+  for each row
+  when (select count(*) from Apply where cName = New.cName) > 10
+  begin
+      update College set cName = cName || '-Done'
+      where cName = New.cName;
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger R7
+  before insert on Student
+  for each row
+  when New.sizeHS < 100 or New.sizeHS > 5000
+  begin
+      select raise(ignore);
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger R7               -- alternative version using after
+  after insert on Student
+  for each row
+  when New.sizeHS < 100 or New.sizeHS > 5000
+  begin
+      delete from Student where sID = New.sID;
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger AutoAccept
+  after insert on Apply
+  for each row
+  when (New.cName = 'Berkeley' and
+        3.7 < (select GPA from Student where sID = New.sID) and
+        1200 < (select sizeHS from Student where sID = New.sID))
+  begin
+      update Apply
+      set decision = 'Y'
+      where sID = New.sID
+            and cName = New.cName;
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger TooMany
+  after update of enrollment on College
+  for each row
+  when (Old.enrollment <= 16000 and New.enrollment > 16000)
+  begin
+      delete from Apply
+          where cName = New.cName and major = 'EE';
+      update Apply
+          set decision = 'U'
+          where cName = New.cName
+                and decision = 'Y';
+  end;
+#+END_SRC
+
+
+self-triggering
+
+#+BEGIN_SRC sql
+  create trigger R1
+  after insert on T1
+  for each row
+  begin
+      insert into T1 values (New.A+1);
+  end;
+#+END_SRC
+
+The above query won't enter infinite loop since SQLite disallow a
+trigger to be triggered more than once in a trigger processing
+session.  But if we like, we can turn on =recursive_triggers= on.
+
+#+BEGIN_SRC sql
+  pragma recursive_triggers = on;
+  create trigger R1
+  after insert on T1
+  for each row
+  when (select count(*) from T1) < 10
+  begin
+      insert into T1 values (New.A+1);
+  end;
+#+END_SRC
+
+trigger each other in a cycle
+
+#+BEGIN_SRC sql
+  create trigger R1
+  after insert on T1
+  for each row
+  begin
+      insert into T2 values (New.A+1);
+  end;
+
+  create trigger R2
+  after insert on T2
+  for each row
+  begin
+      insert into T3 values (New.A+1);
+  end;
+
+  create trigger R3
+  after insert on T3
+  for each row
+  begin
+      insert into T1 values (New.A+1);
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  pragma recursive_triggers = on;
+  create trigger R3
+  after insert on T3
+  for each row
+  when (select count(*) from T1) < 100
+  begin
+      insert into T1 values (New.A+1);
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger R1
+  after insert on T1
+  for each row
+  begin
+      update T1 set A = 2;
+  end;
+
+  create trigger R2
+  after insert on T1
+  for each row
+  when exists (select * from T1 where A = 2)
+  begin
+      update T1 set A = 3;
+  end;
+#+END_SRC
+
+The second trigger is executed first in SQLite.
+
+
+nested trigger invocation
+
+#+BEGIN_SRC sql
+  create trigger R1
+  after insert on T1
+  for each row
+  begin
+      insert into T2 values (1);
+      insert into T3 values (1);
+  end;
+
+  create trigger R2
+  after insert on T2
+  for each row
+  begin
+      insert into T3 values (2);
+      insert into T4 values (2);
+  end;
+
+  create trigger R3
+  after insert on T3
+  for each row
+  begin
+      insert into T4 values (3);
+  end;
+#+END_SRC
+
+immediate activation semantics of SQLite for triggers
+
+#+BEGIN_SRC sql
+  create trigger R1
+  after insert on T1
+  for each row
+  begin
+      insert into T2 select avg(A) from T1;
+  end;
+#+END_SRC
+
+** IN-PROGRESS Exercises
+*** IN-PROGRESS Constraints and Triggers
+
 *** TODO SQL Social-Network Triggers
 
 #+TITLE: Intro to DB
