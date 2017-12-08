@@ -3989,9 +3989,9 @@ immediate activation semantics of SQLite for triggers
 #+END_SRC
 
 ** IN-PROGRESS Exercises
-*** IN-PROGRESS Constraints and Triggers
-
-*** TODO SQL Social-Network Triggers
+*** DONE Constraints and Triggers
+    CLOSED: [2017-12-04 Mon 20:23]
+*** IN-PROGRESS SQL Social-Network Triggers
 
 #+TITLE: Intro to DB
 #+AUTHOR: Lei Zhao
