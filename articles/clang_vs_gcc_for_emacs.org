@@ -21,8 +21,9 @@ I used the Bash shell keyword ~time~ to obtain time consumed by the
 building process.  I added the option ~-rtlib=compiler-rt~ to
 ~LDFLAGS~, since Clang would complain ~undefined reference to
 `__muloti4'~ without it (see [[clang-bug:16404][bug]]).  Clang 5.0 also provides a linker
-called ~lld~ and claims that it is faster than the built-in linker.  As per
-[[using-lld][instruction]], I added ~-fuse-ld=lld~ to ~LDFLAGS~ as a third group.
+called ~lld~ and claims that it is faster than the built-in linker.
+As per [[using-lld][instruction]], I added ~-fuse-ld=lld~ to ~LDFLAGS~ as a third
+group.
 
 The following was the commands I used for each group.
 
