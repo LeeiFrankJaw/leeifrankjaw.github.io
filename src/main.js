@@ -102,7 +102,7 @@ var LISTING = [
                 "type": "file",
                 "name": "clang_vs_gcc_for_emacs.html",
                 "title": "Clang vs. GCC for building Emacs",
-                "author_date": "2018-01-01T21:05:26.712174+08:00"
+                "author_date": "2017-12-18T17:10:32+08:00"
             },
             {
                 "type": "file",

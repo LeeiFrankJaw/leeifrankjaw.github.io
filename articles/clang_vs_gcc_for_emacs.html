@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-12-18 Mon 17:09 -->
+<!-- 2018-01-01 Mon 21:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clang vs. GCC for building Emacs</title>
@@ -233,6 +233,9 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">Clang vs. GCC for building Emacs</h1>
+<input id="disqus-identifier" value="LFJ103"></input>
+
+
 <p>
 Several days ago, I tried to play with Web Assembly and found out it
 requires Clang to run.  Clang has become the default compiler for many
@@ -252,8 +255,9 @@ I used the Bash shell keyword <code>time</code> to obtain time consumed by the
 building process.  I added the option <code>-rtlib=compiler-rt</code> to
 <code>LDFLAGS</code>, since Clang would complain <code>undefined reference to
 `__muloti4'</code> without it (see <a href="https://bugs.llvm.org/show_bug.cgi?id=16404">bug</a>).  Clang 5.0 also provides a linker
-called <code>lld</code> and claims that it is faster than the built-in linker.  As per
-<a href="https://lld.llvm.org/#using-lld">instruction</a>, I added <code>-fuse-ld=lld</code> to <code>LDFLAGS</code> as a third group.
+called <code>lld</code> and claims that it is faster than the built-in linker.
+As per <a href="https://lld.llvm.org/#using-lld">instruction</a>, I added <code>-fuse-ld=lld</code> to <code>LDFLAGS</code> as a third
+group.
 </p>
 
 <p>
@@ -599,7 +603,7 @@ In conclusion, Clang, particularly with <code>lld</code>, is slightly faster.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2017-12-18 Mon 17:09</p>
+<p class="date">Created: 2018-01-01 Mon 21:05</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
