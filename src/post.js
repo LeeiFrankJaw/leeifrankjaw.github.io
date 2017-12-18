@@ -8,4 +8,12 @@ document.addEventListener("DOMContentLoaded", function() {
     a.protocol = "https:";
     a.replaceChild(img, a.firstChild);
     // a.innerHTML = '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" width="88" height="31" />';
+    var anchors = document.getElementsByTagName("a");
+    for (var i = 0; i < anchors.length; i++) {
+        var anchor = anchors[i];
+        if (anchor.hostname !== window.location.hostname
+            || anchor.pathname !== window.location.pathname) {
+            anchor.target = "_blank";
+        }
+    }
 });
