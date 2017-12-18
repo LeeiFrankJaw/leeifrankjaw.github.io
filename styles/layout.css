@@ -2,3 +2,9 @@
   margin: 0 auto;
   max-width: 1080px;
 }
+
+@media (max-width: 1400px) {
+    #content, #postamble {
+        width: 768px;
+    }
+}
