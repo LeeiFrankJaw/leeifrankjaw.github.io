@@ -1,4 +1,4 @@
-pre.src /* -sql, pre.src-xml */ {
+pre.src, pre.example /* -sql, pre.src-xml */ {
     color: #303336;
     background-color: #eff0f1;
 }

@@ -3,6 +3,10 @@
   max-width: 1080px;
 }
 
+#postamble {
+    margin-top: 1.2em;
+}
+
 @media (max-width: 1400px) {
     #content, #postamble {
         width: 768px;

@@ -15,83 +15,141 @@ However, I had no personal experience with it and thus set out to gain
 some.
 
 I am no expert in performance testing, so don't blame me if I made
-mistakes.  I used the Bash builtin keyword ~time~ to obtain time
-comsumed by the building process.  I add the 
+some mistakes.
 
+I used the Bash shell keyword ~time~ to obtain time consumed by the
+building process.  I added the option ~-rtlib=compiler-rt~ to
+~LDFLAGS~, since Clang would complain ~undefined reference to
+`__muloti4'~ without it (see [[clang-bug:16404][bug]]).  Clang 5.0 also provides a linker
+called ~lld~ and claims that it is faster than the built-in linker.  As per
+[[using-lld][instruction]], I added ~-fuse-ld=lld~ to ~LDFLAGS~ as a third group.
+
+The following was the commands I used for each group.
 
 #+BEGIN_SRC bash
-  time make CC=clang CFLAGS='-g3 -O2 -rtlib=compiler-rt' bootstrap
+  # for GCC
+  time make bootstrap
+  # for Clang without lld
+  time make CC=clang LDFLAGS='-rtlib=compiler-rt' bootstrap
+  # for Clang with lld
+  time make CC=clang LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt' bootstrap
+#+END_SRC
+
+The following was the results.
+
+#+BEGIN_SRC bash
+  time make bootstrap
 #+END_SRC
 
 #+RESULTS:
-| real | 10m44.643s |
-| user | 9m40.844s  |
-| sys  | 0m28.492s  |
+| real | 10m39.673s |
+| user | 9m47.504s  |
+| sys  | 0m25.528s  |
 
-time make check
+#+BEGIN_SRC bash
+  time make check
+#+END_SRC
 
-real	2m6.082s
-user	0m34.968s
-sys	0m4.656s
+#+RESULTS:
+| real | 2m3.138s  |
+| user | 0m33.844s |
+| sys  | 0m4.332s  |
 
-time make bootstrap
+#+BEGIN_SRC bash
+  time make CC=clang LDFLAGS='-rtlib=compiler-rt' bootstrap
+#+END_SRC
 
-real	10m39.673s
-user	9m47.504s
-sys	0m25.528s
+#+RESULTS:
+| real | 10m21.240s |
+| user | 9m27.012s  |
+| sys  | 0m27.908s  |
 
-time make check
+#+BEGIN_SRC bash
+  time make check
+#+END_SRC
 
-real	2m3.138s
-user	0m33.844s
-sys	0m4.332s
+#+RESULTS:
+| real | 2m5.838s  |
+| user | 0m35.584s |
+| sys  | 0m4.636s  |
 
-time make CC=clang LDFLAGS='-rtlib=compiler-rt' bootstrap
+#+BEGIN_SRC bash
+  time make CC=clang LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt' bootstrap
+#+END_SRC
 
-real	10m21.240s
-user	9m27.012s
-sys	0m27.908s
+#+RESULTS:
+| real | 10m5.253s |
+| user | 9m12.172s |
+| sys  | 0m27.560s |
 
-time make check
+#+BEGIN_SRC bash
+  time make check
+#+END_SRC
 
-real	2m5.838s
-user	0m35.584s
-sys	0m4.636s
+#+RESULTS:
+| real | 2m0.545s  |
+| user | 0m31.992s |
+| sys  | 0m4.380s  |
 
-time make CC=clang LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt' bootstrap
 
-real	10m5.253s
-user	9m12.172s
-sys	0m27.560s
+On the next day, I re-compiled Emacs using GCC to compare binary
+functionality but accidentally found out that GCC compiled much faster
+than last time.  I don't know what exactly the boost came from. I
+surmise that it was due to reboot.  Therefore, I ran a follow-up and
+the following was results on the second day.
 
-time make check
+#+BEGIN_SRC bash
+  time make bootstrap
+#+END_SRC
 
-real	2m0.545s
-user	0m31.992s
-sys	0m4.380s
+#+RESULTS:
+| real | 9m59.694s |
+| user | 9m10.776s |
+| sys  | 0m24.756s |
 
-Second Day
+#+BEGIN_SRC bash
+  time make CC=clang LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt' bootstrap
+#+END_SRC
 
-time make CC=clang LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt' bootstrap
+#+RESULTS:
+| real | 9m25.487s |
+| user | 8m38.408s |
+| sys  | 0m24.996s |
 
-real	9m25.487s
-user	8m38.408s
-sys	0m24.996s
+#+BEGIN_SRC bash
+  time make bootstrap
+#+END_SRC
 
-time make bootstrap
+#+RESULTS:
+| real | 9m52.320s |
+| user | 9m5.648s  |
+| sys  | 0m23.000s |
 
-real	9m59.694s
-user	9m10.776s
-sys	0m24.756s
+#+BEGIN_SRC bash
+  time make CC=clang LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt' bootstrap
+#+END_SRC
 
-time make CC=clang LDFLAGS='-fuse-ld=lld -rtlib=compiler-rt' bootstrap
+#+RESULTS:
+| real | 9m47.568s |
+| user | 8m58.880s |
+| sys  | 0m26.516s |
 
-real	9m47.568s
-user	8m58.880s
-sys	0m26.516s
+In conclusion, Clang, particularly with ~lld~, is slightly faster.
 
-time make bootstrap
+# #+BEGIN_SRC bash
+#   time make CC=clang CFLAGS='-g3 -O2 -rtlib=compiler-rt' bootstrap
+# #+END_SRC
 
-real	9m52.320s
-user	9m5.648s
-sys	0m23.000s
+# #+RESULTS:
+# | real | 10m44.643s |
+# | user | 9m40.844s  |
+# | sys  | 0m28.492s  |
+
+# time make check
+
+# real	2m6.082s
+# user	0m34.968s
+# sys	0m4.656s
+
+#+LINK: clang-bug https://bugs.llvm.org/show_bug.cgi?id=%s
+#+LINK: using-lld https://lld.llvm.org/#using-lld
