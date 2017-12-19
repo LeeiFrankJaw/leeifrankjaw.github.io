@@ -3,28 +3,7 @@
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <title>Page not found &middot; GitHub Pages</title>
-        <script type="text/javascript" src="/src/polyfills.js"></script>
-        <script type="text/javascript">
-         const l = window.location;
-         const route = l.pathname.split("/")[1];
-         var res;
-         switch (route) {
-             case "articles":
-                 res = "for-in_vs_for-of.html";
-                 res = "fix_filename_encoding_for_zip_archive_with_python.html";
-                 res = "clang_vs_gcc_for_emacs.html";
-                 break;
-             case "notes":
-                 res = "intro_db.html";
-                 res = "automata.html";
-                 break;
-             default:
-                 break;
-         }
-         if (res) {
-             l.replace(["", route, res].join("/"));
-         }
-        </script>
+        <script type="text/javascript" src="/src/main.js"></script>
         <style type="text/css" media="screen">
          body {
              background-color: #f1f1f1;
