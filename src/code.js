@@ -46,7 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         var matched = listing.find(matchRoute);
         if (matched && matched.contents.length) {
-            window.location.replace(["", route, matched.contents[0]]);
+            window.location.replace(
+                ["", route, matched.contents[0].name].join("/")
+            );
         } else {
             document.title = title;
         }
