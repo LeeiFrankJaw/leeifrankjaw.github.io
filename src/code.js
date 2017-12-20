@@ -34,28 +34,27 @@ function newElement(tagName, target=main, text="") {
     return addTextNode(elem, text);
 }
 
-
-document.addEventListener("DOMContentLoaded", function() {
-    var pathsegs = window.location.pathname.split("/");
-    var route = pathsegs[1];
-    if (route) {
-        title = document.title;
-        document.title = "Redirecting";
-        function matchRoute(entry) {
-            return entry.type === "directory" && entry.name === route;
-        }
-        var matched = listing.find(matchRoute);
-        if (matched && matched.contents.length) {
-            window.location.replace(
-                ["", route, matched.contents[0].name].join("/")
-            );
-        } else {
-            document.title = title;
-        }
+var pathsegs = window.location.pathname.split("/");
+var route = pathsegs[1];
+if (route) {
+    title = document.title;
+    document.title = "Redirecting";
+    function matchRoute(entry) {
+        return entry.type === "directory" && entry.name === route;
+    }
+    var matched = listing.find(matchRoute);
+    if (matched && matched.contents.length) {
+        window.location.replace(
+            ["", route, matched.contents[0].name].join("/")
+        );
     } else {
+        document.title = title;
+    }
+} else {
+    document.addEventListener("DOMContentLoaded", function() {
         document.title = title;
         var header = document.getElementById("header");
         newElement("h1", header, title);
         main = document.getElementById("main");
-    }
-});
+    });
+}

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 import json
 import os
-from subprocess import run, PIPE
+from datetime import datetime
 from functools import reduce
+from subprocess import PIPE, run
 
 ignored_dirs = ['lib', 'src', 'img', 'styles']
 
@@ -30,7 +31,9 @@ def get_dir(obj, ks):
 def get_author_date(path):
     cmdargs = ['git', 'log', '--max-count=1', '--format=%aI', path]
     proc = run(cmdargs, stdout=PIPE)
-    return proc.stdout.decode().strip()
+    return (proc.stdout.decode().strip()
+            or (datetime.fromtimestamp(os.path.getmtime(path))
+                .astimezone().isoformat()))
 
 
 walker = os.walk('.')
