@@ -1,0 +1,32 @@
+#main, #header, #menu, #footer {
+    margin: 0 auto;
+    width: 62.5%;
+}
+
+#footer {
+    margin-top: 1.2em;
+}
+
+#left-pane {
+    float: left;
+}
+
+#right-pane {
+    float: right;
+    width: 18.75%;
+    height: 777px;
+}
+
+#right-pane a {
+    display: block;
+    background-position: right;
+    background-size:  cover;
+    height: 100%;
+    width: 100%;
+}
+
+@media (min-width: 1920px) {
+    #right-pane {
+        height: 1109px;
+    }
+}

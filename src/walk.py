@@ -29,11 +29,14 @@ def get_dir(obj, ks):
 
 
 def get_author_date(path):
-    cmdargs = ['git', 'log', '--max-count=1', '--format=%aI', path]
-    proc = run(cmdargs, stdout=PIPE)
-    return (proc.stdout.decode().strip()
-            or (datetime.fromtimestamp(os.path.getmtime(path))
-                .astimezone().isoformat()))
+    author_date = None
+    status_cmdargs = ['git', 'status', '--short', path]
+    status = run(status_cmdargs, stdout=PIPE).stdout.decode().strip()[:2]
+    if not status:
+        log_cmdargs = ['git', 'log', '--max-count=1', '--format=%aI', path]
+        author_date = run(log_cmdargs, stdout=PIPE).stdout.decode().strip()
+    return author_date or (datetime.fromtimestamp(os.path.getmtime(path))
+                           .astimezone().isoformat())
 
 
 walker = os.walk('.')
@@ -63,4 +66,4 @@ for dirpath, dirnames, filenames in walker:
     contents.sort(key=lambda x: x['author_date'], reverse=True)
 
 with open('listing.json', 'w') as f:
-    json.dump(listing, f, indent=2)
+    json.dump(listing, f, indent=4)
