@@ -101,16 +101,19 @@ var LISTING = [
             {
                 "type": "file",
                 "name": "clang_vs_gcc_for_emacs.html",
+                "title": "Clang vs. GCC for building Emacs",
                 "author_date": "2017-12-18T17:10:32+08:00"
             },
             {
                 "type": "file",
                 "name": "fix_filename_encoding_for_zip_archive_with_python.html",
+                "title": "Fix filename encoding for zip archive with Python",
                 "author_date": "2017-11-27T10:16:44+08:00"
             },
             {
                 "type": "file",
                 "name": "for-in_vs_for-of.html",
+                "title": "for...in vs. for...of",
                 "author_date": "2017-10-27T09:23:11+08:00"
             }
         ]
@@ -122,11 +125,13 @@ var LISTING = [
             {
                 "type": "file",
                 "name": "intro_db.html",
+                "title": "Intro to DB",
                 "author_date": "2017-12-03T22:21:53+08:00"
             },
             {
                 "type": "file",
                 "name": "automata.html",
+                "title": "Automata Theory",
                 "author_date": "2017-09-07T23:49:51+08:00"
             }
         ]
@@ -137,7 +142,7 @@ var CONTENT = {
     "title": "Abeunt studia in mores",
     "right-pane": {
         "link": "http://news.xinhuanet.com/politics/2016-08/29/c_129260594.htm",
-        "img": "img/art5030981023.jpg"
+        "img": "img/practice_luyou.jpg"
     }
 };
 
@@ -174,6 +179,7 @@ function clearElement(elem) {
 }
 
 
+// a more generealized function addNode should be implemented
 function addTextNode(elem, text, clear) {
     if (clear) {
         clearElement(elem);
@@ -206,6 +212,46 @@ function newElement(tagName, target, text) {
 }
 
 
+function newAnchor(link, target, text, reuse) {
+    var a = newElement("a", target, text);
+    a.href = link;
+    if (!reuse) {
+        a.target = "_blank";
+    }
+    return a;
+}
+
+
+function newTr(fields, target, isHead) {
+    var tItem = (isHead) ? "th" : "td";
+    var tr = newElement("tr", target);
+    for (var i = 0; i < fields.length; i++) {
+        if (typeof fields[i] === "string") {
+            newElement(tItem, tr, fields[i]);
+        } else {
+            newElement(tItem, tr).appendChild(fields[i]);
+        }
+    }
+    return tr;
+}
+
+
+function newWritingList(entry) {
+    var contents = entry.contents;
+    var table = document.createElement("table");
+    var thead = newElement("thead", table);
+    newTr(["Title", "Last Modified"], thead, true);
+    var tbody = newElement("tbody", table);
+    for (var i = 0; i < contents.length; i++) {
+        newTr([newAnchor(["", entry.name, contents[i].name].join("/"),
+                         null, contents[i].title),
+               new Date(contents[i].author_date).toLocaleDateString()],
+              tbody);
+    }
+    return table;
+}
+
+
 function renderHome() {
     var title = CONTENT.title;
     document.title = title;
@@ -214,15 +260,29 @@ function renderHome() {
     MAIN = document.getElementById("main");
     MENU = document.getElementById("menu");
     RIGHT_PANE = document.getElementById("right-pane");
+    var btns = [], btn, tables = [];
     for (var i = 0; i < LISTING.length; i++) {
         var entry = LISTING[i];
-        if (entry.type === "directory") {
-            newElement("button", MENU, entry.name);
-        }
+        // checking is unnecessary, since currently guaranteed
+        // if (entry.type === "directory") {
+        btn = newElement("button", MENU, entry.name);
+        btn.value = i;
+        btns.push(btn);
+        tables.push(newWritingList(entry));
+        // }
     }
-    var a = newElement("a", RIGHT_PANE);
-    var img = newElement("img", a);
+    for (i = 0; i < btns.length; i++) {
+        btns[i].onclick = function(e) {
+            var btn = document.getElementById("selected");
+            btn.removeAttribute("id");
+            e.target.id = "selected";
+            MAIN.replaceChild(tables[e.target.value], tables[btn.value]);
+        };
+    }
+    btns[0].id = "selected";
+    MAIN.appendChild(tables[0]);
     var rightPane = CONTENT["right-pane"];
-    a.href = rightPane.link;
-    a.style["background-image"] = "url(" + rightPane.img +")";
+    var a = newAnchor(rightPane.link, RIGHT_PANE);
+    var img = newElement("img", a);
+    img.src = rightPane.img;
 }

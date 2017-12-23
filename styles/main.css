@@ -3,6 +3,18 @@
     width: 62.5%;
 }
 
+#menu button {
+    margin-right: 0.5em;
+    padding: 0.5ex 1ex;
+    background: #dcdcdc;
+    border: none;
+    border-radius: 2px;
+}
+
+#menu button:hover, button#selected {
+    background: #c0c0c0;
+}
+
 #footer {
     margin-top: 1.2em;
 }
@@ -14,19 +26,25 @@
 #right-pane {
     float: right;
     width: 18.75%;
-    height: 777px;
 }
 
-#right-pane a {
-    display: block;
-    background-position: right;
-    background-size:  cover;
-    height: 100%;
+#right-pane img, table {
     width: 100%;
 }
 
-@media (min-width: 1920px) {
-    #right-pane {
-        height: 1109px;
-    }
+table {
+    table-layout: fixed;
+    text-align: left;
+}
+
+th, td {
+  padding: 0.4em 0;
+}
+
+thead th:last-child {
+    width: 20%;
+}
+
+table {
+    margin: 1.2em 0;
 }

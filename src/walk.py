@@ -5,6 +5,8 @@ from datetime import datetime
 from functools import reduce
 from subprocess import PIPE, run
 
+import lxml.html
+
 ignored_dirs = ['lib', 'src', 'img', 'styles']
 
 
@@ -39,6 +41,10 @@ def get_author_date(path):
                            .astimezone().isoformat())
 
 
+def get_title(path):
+    return ' '.join(lxml.html.parse(path).xpath('string(//title)').split())
+
+
 walker = os.walk('.')
 dirpath, dirnames, filenames = next(walker)
 ignore(dirnames)
@@ -60,6 +66,7 @@ for dirpath, dirnames, filenames in walker:
         contents.append({
             'type': 'file',
             'name': name,
+            'title': get_title(path),
             'author_date': get_author_date(path)
         })
     # ISO 8601 supports lexicographical sorting
