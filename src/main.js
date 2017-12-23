@@ -236,6 +236,11 @@ function newTr(fields, target, isHead) {
 }
 
 
+Date.prototype.toEnUSDateString = function() {
+    return [this.getMonth() + 1, this.getDate(), this.getFullYear()].join("/");
+};
+
+
 function newWritingList(entry) {
     var contents = entry.contents;
     var table = document.createElement("table");
@@ -245,7 +250,7 @@ function newWritingList(entry) {
     for (var i = 0; i < contents.length; i++) {
         newTr([newAnchor(["", entry.name, contents[i].name].join("/"),
                          null, contents[i].title),
-               new Date(contents[i].author_date).toLocaleDateString()],
+               new Date(contents[i].author_date).toEnUSDateString()],
               tbody);
     }
     return table;
