@@ -1,5 +1,12 @@
 #+STARTUP: content
 #+TODO: TODO IN-PROGRESS DONE
+#+TITLE: Intro to DB
+#+AUTHOR: Lei Zhao
+#+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
+# #+INFOJS_OPT: view:info path:../lib/org-info.js
+#+OPTIONS: ^:nil \n:t
 
 [[https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about][Database]] on Lagunita
 
@@ -838,29 +845,29 @@ Sometimes result can be expressed as XML, but not always
 Get the titles of books in the bookstore where the price is lower
 than 90 and Jeffrey Widom is an author.
 
-#+BEGIN_SRC xpath
+#+BEGIN_EXAMPLE
 doc("BookstoreQ.xml")/Bookstore/Book[@Price < 90 and
         Authors/Author[Last_name = "Widom" and
         First_Name="Jeffrey"]]/Title
-#+END_SRC
+#+END_EXAMPLE
 
 Get the titles of books where "Ullman" is an author and "Widom" is not
 an author.  *The below code doesn't work since there is no way using
 XPath language alone to achieve the query.*
 
-#+BEGIN_SRC xpath
+#+BEGIN_EXAMPLE
 doc("BookstoreQ.xml")/Bookstore/Book[
         Authors/Author/Last_Name = "Ullman" and
         Authors/Author/Last_Name != "Widom"]/Title
-#+END_SRC
+#+END_EXAMPLE
 
 Get all magazines where there's a book with the same title.  (An
 example of /self-join/ in XPath)
 
-#+BEGIN_SRC xpath
+#+BEGIN_EXAMPLE
 doc("BookstoreQ.xml")//Magazine[
         Title = doc("BookstoreQ.xml")//Book/Title]
-#+END_SRC
+#+END_EXAMPLE
 
 The equal sign in the above code is implicitly existentially
 quantified.  There is a lot of implicit existential quantification in
@@ -868,30 +875,30 @@ XPath and XQuery.
 
 All Elements whose parent is not "Bookstore" or "Book".
 
-#+BEGIN_SRC xpath
+#+BEGIN_EXAMPLE
 doc("BookstoreQ.xml")/Bookstore//*[
         name(parent::*) != "Bookstore"
         and name(parent::*) != "Book"]
-#+END_SRC
+#+END_EXAMPLE
 
 The above code use the navigation access =parent::=.
 
 All books and magazines with non-unique titles.
 
-#+BEGIN_SRC xpath
+#+BEGIN_EXAMPLE
 doc("BookstoreQ.xml")/Bookstore/(Book|Magazine)[
         Title = following-sibling::*/Title
         or Title = preceding-sibling::*/Title]
-#+END_SRC
+#+END_EXAMPLE
 
 Books where every author's first name includes "J".  This query will
 need universal quantification.
 
-#+BEGIN_SRC xpath
+#+BEGIN_EXAMPLE
 doc("BookstoreQ.xml")//Book[
         count(Authors/Author[contains(First_Name, "J")]) =
         count(Authors/Author/First_Name)]
-#+END_SRC
+#+END_EXAMPLE
 
 The built-in function =count= is used to simulate universal
 quantification.  This technique can solve previously undoable query.
@@ -899,11 +906,11 @@ quantification.  This technique can solve previously undoable query.
 Titles of books where "Ullman" is an author and "Widom" is not
 an author.
 
-#+BEGIN_SRC xpath
+#+BEGIN_EXAMPLE
 doc("BookstoreQ.xml")/Bookstore/Book[
         Authors/Author/Last_Name = "Ullman"
         and count(Authors/Author[Last_Name = "Widom"]) = 0]/Title
-#+END_SRC
+#+END_EXAMPLE
 
 *** DONE XQuery Introduction
     CLOSED: [2017-06-16 Fri 23:16]
@@ -914,31 +921,31 @@ doc("BookstoreQ.xml")/Bookstore/Book[
 
 XQuery: FLWOR expression
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 For $var in expr
 Let $var := expr
 Where condition
 Order By expr
 Return expr
-#+END_SRC
+#+END_EXAMPLE
 
-Mixing queries and XMl
+Mixing queries and XML
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <Result> { ...query goes here... } </Result>
-#+END_SRC
+#+END_EXAMPLE
 
 *** DONE XQuery Demo
     CLOSED: [2017-06-24 Sat 16:03]
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $b in doc("BookstoreQ.xml")/Bookstore/Book
 where $b/@Price < 90
   and $b/Authors/Author/Last_Name = "Ullman"
 return $b/Title
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $b in doc("BookstoreQ.xml")/Bookstore/Book
 where some $fn in $b/Authors/Author/First_Name
         satisfies contains($b/Title, $fn)
@@ -946,9 +953,9 @@ return <Book>
          { $b/Title }
          { $b/Authors/Author/First_Name }
        </Book>
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $b in doc("BookstoreQ.xml")/Bookstore/Book
 where some $fn in $b/Authors/Author/First_Name
         satisfies contains($b/Title, $fn)
@@ -957,16 +964,16 @@ return <Book>
          { for $fn in $b/Authors/Authors/Author/First_Name
            where contains($b/Title, $fn) return $fn }
        </Book>
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <Average>
   { let $plist := doc("BookstoreQ.xml")/Bookstore/Book/@Price
     return avg($plist) }
 </Average>
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 let $a := avg(doc("BookstoreQ.xml")/Bookstore/Book/@Price)
 for $b in doc("BookstoreQ.xml")/Bookstore/Book
 where $b/@Price < $a
@@ -974,30 +981,30 @@ return <Book>
           { $b/Title }
           <Price> { $b/data(@Price) } </Price>
        </Book>
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $b in doc("BookstoreQ.xml")/Bookstore/Book
 order by xs:int($b/@Price)
 return <Book>
           { $b/Title }
           <Price> { $b/data(@Price) } </Price>
        </Book>
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $n in distinct-values(doc("BookstoreQ.xml")//Last_Name)
 return <Last_Name> { $n } </Last_Name>
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $b in doc("BookstoreQ.xml")/Bookstore/Book
 where every $fn in $b/Authors/Author/First_Name
         satisfies contains($fn, "J")
 return $b
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $b1 in doc("BookstoreQ.xml")/Bookstore/Book
 for $b2 in doc("BookstoreQ.xml")/Bookstore/Book
 where $b1/Authors/Author/Last_Name = $b2/Authors/Author/Last_Name
@@ -1007,11 +1014,11 @@ return
         <Title1> { data($b1/Title) } </Title1>
         <Title2> { data($b2/Title) } </Title2>
     </BookPair>
-#+END_SRC
+#+END_EXAMPLE
 
 Again, implicitly existential quantification.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <InvertedBookstore>
     { for $ln in distinct-values(doc("BookstoreQ.xml")//Author/Last_Name)
       for $fn in distinct-values(doc("BookstoreQ.xml")//Author[
@@ -1028,85 +1035,85 @@ Again, implicitly existential quantification.
                        </Book>
           </Author> }
 </InvertedBookstore>
-#+END_SRC
+#+END_EXAMPLE
 
 ** DONE Exercises
    CLOSED: [2017-06-26 Mon 07:48]
-*** DONE Course-Catalog XPath and XQuery Exercises
+*** DONE Course-Catalog XPath and XQuery
     CLOSED: [2017-06-24 Sat 19:03]
 
 Return all Title elements (of both departments and courses).
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 doc("courses.xml")//Title
-#+END_SRC
+#+END_EXAMPLE
 
 Return last names of all department chairs.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 doc("courses.xml")//Department/Chair//Last_Name
-#+END_SRC
+#+END_EXAMPLE
 
 Return titles of courses with enrollment greater than 500.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 doc("courses.xml")//Course[@Enrollment > 500]/Title
-#+END_SRC
+#+END_EXAMPLE
 
 Return titles of departments that have some course that takes "CS106B"
 as a prerequisite.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 doc("courses.xml")//Department[Course/Prerequisites[Prereq = "CS106B"]]/Title
-#+END_SRC
+#+END_EXAMPLE
 
 Return last names of all professors or lecturers who use a middle
 initial.  Don't worry about eliminating duplicates.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 doc("courses.xml")//(Lecturer|Professor)[Middle_Initial]/Last_Name
-#+END_SRC
+#+END_EXAMPLE
 
 Return the count of courses that have a cross-listed course (i.e.,
 that have "Cross-listed" in their description).
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 count(doc("courses.xml")//Course[contains(Description, "Cross-listed")])
-#+END_SRC
+#+END_EXAMPLE
 
 Return the average enrollment of all courses in the CS department.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 avg(doc("courses.xml")//Department[@Code="CS"]/Course/@Enrollment)
-#+END_SRC
+#+END_EXAMPLE
 
 Return last names of instructors teaching at least one course that has
 "system" in its description and enrollment greater than 100.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 doc("courses.xml")//Course[@Enrollment > 100 and contains(Description, "system")]/Instructors//Last_Name
-#+END_SRC
+#+END_EXAMPLE
 
 Return the title of the course with the largest enrollment.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("courses.xml")//Course
 where every $e in doc("courses.xml")//Course/@Enrollment
         satisfies xs:int($e) <= xs:int($c/@Enrollment)
 return $c/Title
-#+END_SRC
+#+END_EXAMPLE
 
 Only one of the function call =xs:int= shown above is necessary since
 the other operand will go through type promotion.
 
-*** DONE Course-Catalog XPath and XQuery Exercises Extras
+*** DONE Course-Catalog XPath and XQuery Extras
     CLOSED: [2017-06-25 Sun 19:19]
 
 Return the course number of the course that is cross-listed as "LING180".
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("courses.xml")//Course[contains(Description, "Cross-listed as LING180")]/@Number)
-#+END_SRC
+#+END_EXAMPLE
 
 Return course numbers of courses that have the same title as some
 other course.  (Hint: You might want to use the "preceding" and
@@ -1114,82 +1121,82 @@ other course.  (Hint: You might want to use the "preceding" and
 the video or our demo script; they match any preceding or following
 node, not just siblings.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c1 in doc("courses.xml")//Course
 where some $c2 in doc("courses.xml")//Course
       satisfies $c1 != $c2
                 and $c1/Title = $c2/Title
 return data($c1/@Number)
-#+END_SRC
+#+END_EXAMPLE
 
 Return course numbers of courses taught by an instructor with first
 name "Daphne" or "Julie".
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("courses.xml")//Course[Instructors//First_Name = ("Daphne", "Julie")]/@Number)
-#+END_SRC
+#+END_EXAMPLE
 
 Return the number (count) of courses that have no lecturers as
 instructors.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 count(doc("courses.xml")//Course[not(Instructors[Lecturer])])
-#+END_SRC
+#+END_EXAMPLE
 
 Return titles of courses taught by the chair of a department.  For
 this question, you may assume that all professors have distinct last
 names.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 doc("courses.xml")//Course[
     Instructors/Professor/Last_Name =
         doc("courses.xml")//Department/Chair/Professor/Last_Name
 ]/Title
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("courses.xml")//Course
 where $c/Instructors/(Professor|Lecturer)/Last_Name
           = doc("courses.xml")//Department/Chair/(Professor|Lecturer)/Last_Name
 return $c/Title
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("courses.xml")//Course
 where some $t1 in $c/Instructors/(Professor|Lecturer)
       satisfies some $t2 in
                 doc("courses.xml")//Department/Chair/(Professor|Lecturer)
                 satisfies deep-equal($t1/*, $t2/*)
 return $c/Title
-#+END_SRC
+#+END_EXAMPLE
 
 Return titles of courses that have both a lecturer and a professor as
 instructors.  Return each title only once.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 doc("courses.xml")//Course[Instructors/Lecturer and Instructors/Professor]/Title
-#+END_SRC
+#+END_EXAMPLE
 
 Return titles of courses taught by a professor with the last name "Ng"
 but not by a professor with the last name "Thrun".
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("courses.xml")//Course[Instructors/Professor/Last_Name = "Ng"]
 where every $ln in $c/Instructors/Professor/Last_Name
       satisfies $ln != "Thrun"
 return $c/Title
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 doc("courses.xml")//Course[Instructors[
         Professor/Last_Name = "Ng" and
         count(Professor[Last_Name = "Thrun"]) = 0]]/Title
-#+END_SRC
+#+END_EXAMPLE
 
 Return course numbers of courses that have a course taught by Eric
 Roberts as a prerequisite.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("courses.xml")//Course
 where some $p in $c/Prerequisites/Prereq
       satisfies $p = data(
@@ -1198,13 +1205,13 @@ where some $p in $c/Prerequisites/Prereq
                   First_Name = "Eric" and
                   Last_Name = "Roberts"]]/@Number)
 return data($c/@Number)
-#+END_SRC
+#+END_EXAMPLE
 
 Create a summary of CS classes: List all CS department courses in
 order of enrollment.  For each course include only its Enrollment (as
 an attribute) and its Title (as a subelement).
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <Summary>
     { for $c in doc("courses.xml")//Department[@Code="CS"]/Course
       order by xs:int($c/@Enrollment)
@@ -1213,7 +1220,7 @@ an attribute) and its Title (as a subelement).
                  { $c/Title }
              </Course> }
 </Summary>
-#+END_SRC
+#+END_EXAMPLE
 
 Return a "Professors" element that contains as subelements a listing
 of all professors in all departments, sorted by last name with each
@@ -1224,13 +1231,13 @@ presence/absence of middle initials may require some special handling.
 (This problem is quite challenging; congratulations if you get it
 right.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <Professors>
     { for $ln in distinct-values(doc("courses.xml")//Professor/Last_Name)
       order by $ln
       return (doc("courses.xml")//Professor[Last_Name=$ln])[1] }
 </Professors>
-#+END_SRC
+#+END_EXAMPLE
 
 Expanding on the previous question, create an inverted course listing:
 Return an "Inverted_Course_Catalog" element that contains as
@@ -1243,7 +1250,7 @@ course number taught by that professor.  Professors who do not teach
 any courses should have no Courses subelement at all.  (This problem is
 very challenging; extra congratulations if you get it right.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <Inverted_Course_Catalog>
     { for $ln in distinct-values(doc("courses.xml")//Professor/Last_Name)
       let $prof := (doc("courses.xml")//Professor[Last_Name=$ln])[1]
@@ -1262,42 +1269,42 @@ very challenging; extra congratulations if you get it right.)
                    return $cs[Course] }
              </Professor>}
 </Inverted_Course_Catalog>
-#+END_SRC
+#+END_EXAMPLE
 
-*** DONE World-Countries XPath and XQuery Exercises
+*** DONE World-Countries XPath and XQuery 
     CLOSED: [2017-06-25 Sun 10:58]
 
 Return the area of Mongolia.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country[@name="Mongolia"]/@area)
-#+END_SRC
+#+END_EXAMPLE
 
 Return the names of all cities that have the same name as the country
 in which they are located.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("countries.xml")//country[@name = city/name]
 return $c/city[name = $c/@name]/name
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("countries.xml")//country[@name = city/name]
 return <name> { data($c/@name) } </name>
-#+END_SRC
+#+END_EXAMPLE
 
 Return the average population of Russian-speaking countries.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 avg(data(doc("countries.xml")//country[language = "Russian"]/@population))
-#+END_SRC
+#+END_EXAMPLE
 
 Return the names of all countries that have at least three cities with
 population greater than 3 million.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country[count(city[xs:int(population) > 3000000]) >= 3]/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 The function call =xs:int= in the above code is actually unnecessary
 since type promotion would occur due to right-hand operand.
@@ -1320,7 +1327,7 @@ result should take the form:
 </result>
 #+END_SRC
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <result>
   <French>
     { for $cn in data(doc("countries.xml")//country[language = "French"]/@name)
@@ -1331,9 +1338,9 @@ result should take the form:
       return <country> { $cn } </country> }
   </German>
 </result>
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <result>
   { let $langs := ("French", "German")
     for $lang in $langs
@@ -1341,7 +1348,7 @@ result should take the form:
     { for $cn in data(doc("countries.xml")//country[language=$lang]/@name)
           return <country> { $cn } </country> } }
 </result>
-#+END_SRC
+#+END_EXAMPLE
 
 Return the countries with the highest and lowest population densities.
 Note that because the "/" operator has its own meaning in XPath and
@@ -1356,7 +1363,7 @@ are unique.  The result should take the form:
 </result>
 #+END_SRC
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <result>
   { for $c1 in doc("countries.xml")//country
     let $density := $c1/@population div $c1/@area
@@ -1369,56 +1376,56 @@ are unique.  The result should take the form:
           satisfies $density <= $c2/@population div $c2/@area
     return <lowest density="{$density}"> { data($c1/@name) } </lowest> }
 </result>
-#+END_SRC
+#+END_EXAMPLE
 
-*** DONE World-Countries XPath and XQuery Exercises Extras
+*** DONE World-Countries XPath and XQuery Extras
     CLOSED: [2017-06-26 Mon 07:48]
 
 Return the names of all countries with population greater than 100
 million.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country[@population > 100000000]/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 Return the names of all countries where over 50% of the population
 speaks German.  (Hint: Depending on your solution, you may want to use
 ".", which refers to the "current element" within an XPath
 expression.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country[language[@percentage > 50.0] = "German"]/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 Return the names of all countries where a city in that country
 contains more than one-third of the country's population.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("countries.xml")//country
 where some $cp in $c/city/population
       satisfies $cp div $c/@population > 1 div 3
 return data($c/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 Return the population density of Qatar.  Note: Since the "/" operator
 has its own meaning in XPath and XQuery, the division operator is
 "div".  To compute population density use "(@population div @area)".
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 let $c := doc("countries.xml")//country[@name="Qatar"]
 return $c/@population div $c/@area
-#+END_SRC
+#+END_EXAMPLE
 
 Return the names of all countries whose population is less than one
 thousandth that of some city (in any country).
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 let $countries := doc("countries.xml")//country
 for $c in $countries
 where some $city in $countries/city
       satisfies $city/population * 0.001 > $c/@population
 return data($c/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 Return all city names that appear more than once, i.e., there is more
 than one city with that name in the data.  Return only one instance of
@@ -1427,12 +1434,12 @@ and/or "following" navigation axes for this query, which were not
 covered in the video or our demo script; they match any preceding or
 following node, not just siblings.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 let $cities := doc("countries.xml")//city
 for $city in distinct-values($cities/name)
 where count($cities[name = $city]) > 1
 return <name>{$city}</name>
-#+END_SRC
+#+END_EXAMPLE
 
 Return the names of all countries containing a city such that some
 other country has a city of the same name.  (Hint: You might want to
@@ -1440,26 +1447,26 @@ use the "preceding" and/or "following" navigation axes for this query,
 which were not covered in the video or our demo script; they match any
 preceding or following node, not just siblings.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 let $countries := doc("countries.xml")//country
 for $c in $countries
 where some $c2 in $countries
       satisfies not($c2 is $c)
                 and $c/city/name = $c2/city/name
 return data($c/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 Return the names of all countries whose name textually contains a
 language spoken in that country.  For instance, Uzbek is spoken in
 Uzbekistan, so return Uzbekistan.  (Hint: You may want to use ".",
 which refers to the "current element" within an XPath expression.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("countries.xml")//country
 where some $lang in $c/language
       satisfies contains($c/@name, $lang)
 return data($c/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 Return the names of all countries in which people speak a language
 whose name textually contains the name of the country.  For instance,
@@ -1467,9 +1474,9 @@ Japanese is spoken in Japan, so return Japan.  (Hint: You may want to
 use ".", which refers to the "current element" within an XPath
 expression.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country[language[contains(., ../@name)]]/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 Return all languages spoken in a country whose name textually contains
 the language name.  For instance, German is spoken in Germany, so
@@ -1477,9 +1484,9 @@ return German.  (Hint: Depending on your solution, may want to use
 data(.), which returns the text value of the "current element" within
 an XPath expression.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country/language[contains(../@name, .)])
-#+END_SRC
+#+END_EXAMPLE
 
 Return all languages whose name textually contains the name of a
 country in which the language is spoken.  For instance, Icelandic is
@@ -1487,51 +1494,51 @@ spoken in Iceland, so return Icelandic.  (Hint: Depending on your
 solution, may want to use data(.), which returns the text value of the
 "current element" within an XPath expression.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country/language[contains(., ../@name)])
-#+END_SRC
+#+END_EXAMPLE
 
 Return the number of countries where Russian is spoken.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 count(doc("countries.xml")//country[language = "Russian"])
-#+END_SRC
+#+END_EXAMPLE
 
 Return the names of all countries for which the data does not include
 any languages or cities, but the country has more than 10 million
 people.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country[not(language or city) and @population > 10000000]/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 Return the name of the country with the highest population.  (Hint: You
 may need to explicitly cast population numbers as integers with
 xs:int() to get the correct answer.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country[
     @population = max(doc("countries.xml")//country/@population)
 ]/@name)
-#+END_SRC)
+#+END_EXAMPLE)
 
 Return the name of the country that has the city with the highest
 population.  (Hint: You may need to explicitly cast population numbers
 as integers with xs:int() to get the correct answer.)
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 data(doc("countries.xml")//country[
     city/population = max(doc("countries.xml")//city/population)
 ]/@name)
-#+END_SRC
+#+END_EXAMPLE
 
 Return the average number of languages spoken in countries where
 Russian is spoken.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 avg(for $c in doc("countries.xml")//country[language = "Russian"]
 return count($c/language))
-#+END_SRC
+#+END_EXAMPLE
 
 Return all country-language pairs where the language is spoken in the
 country and the name of the country textually contains the language
@@ -1542,12 +1549,12 @@ e.g.,
 <country language="French">French Guiana</country>
 #+END_SRC
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $c in doc("countries.xml")//country
 for $lang in $c/language
 where contains($c/@name, $lang)
 return <country language="{$lang}"> { data($c/@name) } </country>
-#+END_SRC
+#+END_EXAMPLE
 
 Return all countries that have at least one city with population
 greater than 7 million.  For each one, return the country name along
@@ -1561,7 +1568,7 @@ with the cities greater than 7 million, in the format:
 </country>
 #+END_SRC
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $country in doc("countries.xml")//country
 let $c := <country>
               { $country/@name }
@@ -1570,28 +1577,28 @@ let $c := <country>
                 return <big>{data($city/name)}</big> }
           </country>
 return $c[big]
-#+END_SRC
+#+END_EXAMPLE
 
 Return all countries where at least one language is listed, but the
 total percentage for all listed languages is less than 90%.  Return the
 country element with its name attribute and its language subelements,
 but no other attributes or subelements.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $country in doc("countries.xml")//country[language]
 where sum($country/language/@percentage) < 90
 return <country>
            { $country/@name }
            { $country/language }
        </country>
-#+END_SRC
+#+END_EXAMPLE
 
 Return all countries where at least one language is listed, and every
 listed language is spoken by less than 20% of the population.  Return
 the country element with its name attribute and its language
 subelements, but no other attributes or subelements.
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 for $country in doc("countries.xml")//country[language]
 where every $lang in $country/language
       satisfies $lang/@percentage < 20
@@ -1599,7 +1606,7 @@ return <country>
            { $country/@name }
            { $country/language }
        </country>
-#+END_SRC
+#+END_EXAMPLE
 
 Find all situations where one country's most popular language is
 another country's least popular, and both countries list more than one
@@ -1615,7 +1622,7 @@ format:
 </LangPair>
 #+END_SRC
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 let $countries := doc("countries.xml")//country[count(language) > 1]
 for $c in $countries
 for $lang in $c/language
@@ -1629,9 +1636,9 @@ return (<LangPair language="{$lang}">
                     satisfies xs:float($lang3/@percentage) <= $lang2/@percentage
               return <LeastPopular> {data($c2/@name)}</LeastPopular> }
         </LangPair>)[LeastPopular]
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 let $countries :=
     for $c in doc("countries.xml")//country[count(language) > 1]
     let $most_lang :=
@@ -1656,7 +1663,7 @@ return <LangPair language="{$c1/MostPopular}">
            <MostPopular>{data($c1/@name)}</MostPopular>
            <LeastPopular>{data($c2/@name)}</LeastPopular>
        </LangPair>
-#+END_SRC
+#+END_EXAMPLE
 
 For each language spoken in one or more countries, create a "language"
 element with a "name" attribute and one "country" subelement for each
@@ -1679,7 +1686,7 @@ element.  For example, your result might look like:
 </languages>
 #+END_SRC
 
-#+BEGIN_SRC xquery
+#+BEGIN_EXAMPLE
 <languages>
     { for $lang in distinct-values(doc("countries.xml")//language)
       order by $lang
@@ -1692,7 +1699,7 @@ element.  For example, your result might look like:
                           </country> }
              </language> }
 </languages>
-#+END_SRC
+#+END_EXAMPLE
 
 
 * DONE [[https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/][XSLT]] mini-course
@@ -1727,7 +1734,7 @@ Return a list of department titles.
 
 Your solution should fill in the following stylesheet:
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match=...>
@@ -1735,9 +1742,9 @@ Your solution should fill in the following stylesheet:
     </xsl:template>
     ... more templates as needed ...
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="Department/Title">
@@ -1745,13 +1752,13 @@ Your solution should fill in the following stylesheet:
     </xsl:template>
     <xsl:template match="text()"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 Return a list of department elements with no attributes and two
 subelements each: the department title and the entire Chair subelement
 structure.
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="Department">
@@ -1762,7 +1769,7 @@ structure.
     </xsl:template>
     <xsl:template match="text()"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 *** DONE Course-Catalog XSLT Extras
     CLOSED: [2017-07-02 Sun 20:06]
@@ -1770,7 +1777,7 @@ structure.
 Return all courses with enrollment greater than 500.  Retain the
 structure of Course elements from the original data.
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="Course[@Enrollment &gt; 500]">
@@ -1778,13 +1785,13 @@ structure of Course elements from the original data.
   </xsl:template>
   <xsl:template match="text()"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 Remove from the data all courses with enrollment greater than 60, or
 with no enrollment listed.  Otherwise the structure of the data should
 be the same.
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:strip-space elements="*"/>
@@ -1795,7 +1802,7 @@ be the same.
   </xsl:template>
   <xsl:template match="Course[not(@Enrollment) or @Enrollment &gt; 60]"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 Create a summarized version of the EE part of the course catalog.  For
 each course in EE, return a Course element, with its Number and Title
@@ -1805,7 +1812,7 @@ about department titles, chairs, enrollment, and prerequisites, as
 well as all courses in departments other than EE.  (Note: To specify
 quotes within an already-quoted XPath expression, use quot;.)
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="Department[@Code='EE']">
@@ -1821,7 +1828,7 @@ quotes within an already-quoted XPath expression, use quot;.)
   </xsl:template>
   <xsl:template match="text()"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 Create an HTML table with one-pixel border that lists all CS
 department courses with enrollment greater than 200.  Each row should
@@ -1832,7 +1839,7 @@ border=1", and "<b>" and "<i>" tags for bold and italics respectively.
 To specify quotes within an already-quoted XPath expression, use
 quot;.)
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="Department[@Code='CS']">
@@ -1849,7 +1856,7 @@ quot;.)
   </xsl:template>
   <xsl:template match="text()"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 *** DONE World-Countries XSLT
     CLOSED: [2017-07-02 Sun 18:52]
@@ -1857,7 +1864,7 @@ quot;.)
 Return all countries with population between 9 and 10 million.  Retain
 the structure of country elements from the original data.
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="country[9000000 &lt;= @population and @population &lt;= 10000000]">
@@ -1865,7 +1872,7 @@ the structure of country elements from the original data.
   </xsl:template>
   <xsl:template match="text()"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 Create a table using HTML constructs that lists all countries that
 have more than 3 languages.  Each row should contain the country name
@@ -1875,7 +1882,7 @@ table, but use <table border="1"> to make it format nicely, should you
 choose to check your result in a browser.  (Hint: You may find the
 data-type and order attributes of <xsl:sort> to be useful.)
 
-#+BEGIN_SRC xlst
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="countries">
@@ -1896,14 +1903,14 @@ data-type and order attributes of <xsl:sort> to be useful.)
   </xsl:template>
   <xsl:template match="text()"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 Create an alternate version of the countries database: for each
-country, include its name and population as sublements, and the number
+country, include its name and population as subelements, and the number
 of languages and number of cities as attributes (called "languages"
 and "cities" respectively).
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="*|@*|text()">
@@ -1919,7 +1926,7 @@ and "cities" respectively).
     </country>
   </xsl:template>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 *** DONE World-Countries XSLT Extras
     CLOSED: [2017-07-02 Sun 19:21]
@@ -1928,7 +1935,7 @@ Find all country names containing the string "stan"; return each one
 within a "Stan" element.  (Note: To specify quotes within an
 already-quoted XPath expression, use quot;.)
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="country[contains(@name, 'stan')]">
@@ -1936,13 +1943,13 @@ already-quoted XPath expression, use quot;.)
   </xsl:template>
   <xsl:template match="text()"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 Remove from the data all countries with area greater than 40,000 and
 all countries with no cities listed.  Otherwise the structure of the
 data should be the same.
 
-#+BEGIN_SRC xslt
+#+BEGIN_EXAMPLE
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:strip-space elements="*"/>
@@ -1953,7 +1960,7 @@ data should be the same.
   </xsl:template>
   <xsl:template match="country[@area &gt; 40000 or not(city)]"/>
 </xsl:stylesheet>
-#+END_SRC
+#+END_EXAMPLE
 
 
 * DONE [[https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/][Relational Design Theory]] mini-course
@@ -1982,7 +1989,7 @@ Automatic decomposition
   Final set of relations satisfies /normal form/
   - No anomalies, no lost information
 
-Properites and Normal Forms
+Properties and Normal Forms
   Functional dependencies => Boyce-Codd Normal Form
   + Multivalued dependencies => Fourth Normal Form
 
@@ -2040,7 +2047,7 @@ Suppose priority is determined by GPA
 Two tuples with same GPA have same priority
 
 for t, u in student:
-    t.GPA = u.GPA => t.priorty = u.priority
+    t.GPA = u.GPA => t.priority = u.priority
 
 GPA -> priority
 
@@ -2160,7 +2167,7 @@ S2(sName, HSname, GPA, priority)
 Good decomposition exhibits lossless join property.
 
 BCNF
-Relation R with FDs is in BCNR if:
+Relation R with FDs is in BCNF if:
     For each \bar{A} -> B, \bar{A} is a key.
     BCNF violation (redundancy, update/delete anomalies)
 
@@ -2267,7 +2274,7 @@ Classes
 Name, attributes, methods
   For data modeling: add "pk", drop methods
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |-----------|
 |  Student  |
 |-----------|
@@ -2286,11 +2293,11 @@ Name, attributes, methods
 |-----------|
 | <methods> |
 |-----------|
-#+END_SRC
+#+END_EXAMPLE
 
 Relationships between objects of two classes
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |-----------|           |-----------|
 |  Student  |           | College   |
 |-----------|  Applied  |-----------|
@@ -2300,20 +2307,20 @@ Relationships between objects of two classes
 |-----------|           | <methods> |
 | <methods> |           |-----------|
 |-----------|
-#+END_SRC
+#+END_EXAMPLE
 
 Multiplicity of Associations
 
 Each object of class C1 is related to at least m and at most n objects
 of class C2
 
-#+BEGIN_SRC
+#+BEGIN_EXAMPLE
 |----|                |----|
 | C1 |                | C2 |
 |----|        m..n    |----|
 |    |----------------|    |
 |----|      A         |----|
-#+END_SRC
+#+END_EXAMPLE
 
 m..* at least m
 0..n at most n
@@ -2327,7 +2334,7 @@ the default is 1..1
 Students must apply somewhere and may not apply to more than 5
 colleges.  No college takes more than 20,000 applications.
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |-----------|                   |-----------|
 |  Student  |                   | College   |
 |-----------| 0..20000     1..5 |-----------|
@@ -2337,7 +2344,7 @@ colleges.  No college takes more than 20,000 applications.
 |-----------|                   | <methods> |
 | <methods> |                   |-----------|
 |-----------|
-#+END_SRC
+#+END_EXAMPLE
 
 Types of relationships
 
@@ -2349,12 +2356,12 @@ Complete             1..   1..
 Default is complete one-to-one
 
 
-Association Classses
+Association Classes
 
 Relationships between objects of two classes,
-with attributes on relationshps
+with attributes on relationships
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |-----------|                          |-----------|
 |  Student  |                          | College   |
 |-----------|        Applied           |-----------|
@@ -2366,7 +2373,7 @@ with attributes on relationshps
 |-----------|      | date     |
                    | decision |
                    |----------|
-#+END_SRC
+#+END_EXAMPLE
 
 It's hard to have more than one relationship association between the
 same student and college.
@@ -2374,7 +2381,7 @@ same student and college.
 Eliminating Association Classes
 Unnecessary if 0..1 or 1..1 multiplicity
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |----|                |----|
 | C1 |                | C2 |
 |----| *         1..1 |----|
@@ -2386,13 +2393,13 @@ Unnecessary if 0..1 or 1..1 multiplicity
            | A1 |
            | A2 |
            |----|
-#+END_SRC
+#+END_EXAMPLE
 
 Self-Associations
 
 Associations between a class and itself
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |---------|
 | Student |*
 |---------|-----|
@@ -2407,11 +2414,11 @@ Associations between a class and itself
 |         |0..10 |
 |---------|------|
            Satellite
-#+END_SRC
+#+END_EXAMPLE
 
 Subclasses
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
                     |---------|
                     | Student |  Superclass
                     |---------|  {complete, overlapping}
@@ -2435,7 +2442,7 @@ Subclasses
                                                    | year   |
                                                    | grade  |
                                                    |--------|
-#+END_SRC
+#+END_EXAMPLE
 
 Superclass = Generalization
 Subclass = Specialization
@@ -2453,7 +2460,7 @@ Composition & Aggregation
 
 Objects of one class belong to objects of another class
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |----------|               |------------|
 | College  |               | Department |
 |----------| 1..1          |------------|
@@ -2467,7 +2474,7 @@ Objects of one class belong to objects of another class
                | addr pk   |
                | #units    |
                |-----------|
-#+END_SRC
+#+END_EXAMPLE
 
 The symbol ◆ indicates composition, implicitly specifying 1..1.
 Department belongs to College.
@@ -2495,21 +2502,21 @@ Applied(sID, cName)
 
 Keys for association relations depends on multiplicity
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |-------|                      |-------|
 |  C1   |                      |  C2   |
 |-------| 0..1               * |-------|
 | K1 pk |----------------------| K2 pk |
 | O1    |          A           | O2    |
 |-------|                      |-------|
-#+END_SRC
+#+END_EXAMPLE
 
 C1(_K1_, O1)
 C2(_K2_, O2)
 
 A(K1, _K2_)
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |-----------|                          |-----------|
 |  Student  |                          | College   |
 |-----------| *      Applied     1..1  |-----------|
@@ -2521,7 +2528,7 @@ A(K1, _K2_)
 |-----------|      | date     |
                    | decision |
                    |----------|
-#+END_SRC
+#+END_EXAMPLE
 
 Applied(_sID_, cName)
 
@@ -2543,19 +2550,19 @@ Require a key for every "regular" class.
 
 Self-Associations
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |---------|
 | Student |*
 |---------|-----|
 |         |*    | Sibling
 |---------|-----|
-#+END_SRC
+#+END_EXAMPLE
 
 
 Student(_sID_, sName, GPA)
 Sibling(_sID1, sID2_)
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |----------|
 | College  | home
 |----------|-------|
@@ -2564,7 +2571,7 @@ Sibling(_sID1, sID2_)
 | enr      | 0..10 |
 |----------|-------|
              Satellite
-#+END_SRC
+#+END_EXAMPLE
 
 College(_cName_, state, enr)
 Branch(home, _satellite_)
@@ -2579,7 +2586,7 @@ Subclasses
 
 subclasses are not regular classes.
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
                         |-------|
                         |   S   |  superclass
                         |-------|
@@ -2594,7 +2601,7 @@ subclasses are not regular classes.
    |----|                                     |----|
    | B  |                                     | C  |
    |----|                                     |----|
-#+END_SRC
+#+END_EXAMPLE
 
 1) S(_K_, A), S1(_K_, B), S2(_K_, C)
 2) S(_K_, A), S1(_K_, A, B), S2(_K_, A, C)
@@ -2604,7 +2611,7 @@ Heavily overlapping => design 3
 
 Disjoint, Complete => design 2 with S(_K_, A) discarded
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
                     |---------|
                     | Student |  Superclass
                     |---------|  {complete, overlapping}
@@ -2628,7 +2635,7 @@ Disjoint, Complete => design 2 with S(_K_, A) discarded
                                                    | year   |
                                                    | grade  |
                                                    |--------|
-#+END_SRC
+#+END_EXAMPLE
 
 Student(_sID_, sName)
 ForeignS(_sID_, Country)
@@ -2639,7 +2646,7 @@ Took(_sID, Course#_, year, grade)
 
 Composition & Aggregation
 
-#+BEGIN_SRC uml
+#+BEGIN_EXAMPLE
 |----------|               |------------|
 | College  |               | Department |
 |----------| 1..1          |------------|
@@ -2653,8 +2660,9 @@ Composition & Aggregation
                | addr pk   |
                | #units    |
                |-----------|
-#+END_SRC
+#+END_EXAMPLE
 
+#+ATTR_HTML: :class pre
 College(_cName_, state)
 Department(dName, building, _cName_)
 Apartment(_addr_, #units, cName)
@@ -2781,14 +2789,14 @@ _Query Optimizer_ takes _Database statistics_, _Query or update_, and
 _indexes_ as input and gives _best execution plan with estimated cost_
 as output.
 
-Pysical design advisor experiments different indexes through query
+Physical design advisor experiments different indexes through query
 optimizer and gives recommended indexes, of which benefits outweigh
 drawbacks.
 
 #+BEGIN_SRC sql
 Create Index IndexName on T(A)
 Create Index IndexName on T(A1, A2, ..., An)
-Create Unique Index IndexNae on T(A)
+Create Unique Index IndexName on T(A)
 Drop Index IndexName
 #+END_SRC
 
@@ -2808,7 +2816,7 @@ Where cName = 'Stanford'
 concurrent with ...
 #+BEGIN_SRC sql
 Update College Set enrollment = enrollment + 1500
-Whre cName = 'Stanford'
+Where cName = 'Stanford'
 #+END_SRC
 
 get; modify; put
@@ -2843,7 +2851,7 @@ Where sID In (Select sID From Student Where GPA > 3.9)
 #+END_SRC
 concurrent with ...
 #+BEGIN_SRC sql
-Updaate Student Set GPA = 1.1 * GPA Where sizeHS > 2500
+Update Student Set GPA = 1.1 * GPA Where sizeHS > 2500
 #+END_SRC
 
 *Concurrent Access*: Multi-statement inconsistency <<ca:msi>>
@@ -2968,13 +2976,13 @@ Transaction Rollback (= Abort) ☆
   * Undoes _partial effects_ of transaction
   * Can be _system_ or _client initiated_
 
-#+BEGIN_SRC
+#+BEGIN_EXAMPLE
 Begin Transaction;
 <get input from user>
 SQL commands based on input
 <confirm results with user>
 If ans = 'ok' Then Commit; Else Rollback;
-#+END_SRC
+#+END_EXAMPLE
 
 Rollback only undoes data itself on database, but doesn't affect
 variable, and cash delivery etc.
@@ -3155,7 +3163,7 @@ transaction's isolation level is serializable.
 *** DONE Motivation and Overview
     CLOSED: [2017-11-26 Sun 18:42]
 
-(Integrity) Contstraints  <static>
+(Integrity) Constraints  <static>
   constrain allowable database states
 
 
@@ -3322,7 +3330,7 @@ Constraints Demo
       cName text,
       state text,
       enrollment int,
-      pimary key (cName, state)
+      primary key (cName, state)
   );
 #+END_SRC
 
@@ -3652,7 +3660,7 @@ each modified tuple.
 
 When event is an insert, =referencing-variables= can only reference
 the newly inserted data.  When event is a delete, =referencing-variables=
-can only reference the old deleted data.  When envent is an update,
+can only reference the old deleted data.  When event is an update,
 =referencing-variables= can reference both old and new data.
 
 If a row-level trigger is concerned and the event is a delete, we can
@@ -4099,10 +4107,427 @@ immediate activation semantics of SQLite for triggers
   end;
 #+END_SRC
 
-#+TITLE: Intro to DB
-#+AUTHOR: Lei Zhao
-#+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
-#+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
-#+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
-# #+INFOJS_OPT: view:info path:../lib/org-info.js
-#+OPTIONS: ^:nil \n:t
+
+* IN-PROGRESS [[https://lagunita.stanford.edu/courses/DB/Views/SelfPaced/courseware/ch-views/][Views and Authorization]] mini-course
+** IN-PROGRESS Lecture Videos
+*** DONE Defining and Using Views
+    CLOSED: [2017-12-26 Tue 18:38]
+
+Three-level vision of database
+ * Physical - Conceptual - Logical
+
+Why use views?
+ * Hide some data from some users
+ * Make some queries easier/more natural
+ * Modularity of database access
+
+Real applications tend to use lots and lots (and lots and lots!) of
+views
+
+Defining and using views
+ * View $V = \mathrm{ViewQuery}(R_1, R_2, \dotsc, R_n)$
+ * Schema of $V$ is schema of query result
+ * Query $Q$ involving $V$, conceptually:
+    \begin{align*}
+        &V := \mathrm{ViewQuery}(R_1, R_2, \dotsc, R_n) \\
+        &\mathrm{Evaluate}\ Q
+    \end{align*}
+ * In reality, $Q$ rewritten to use $R_1, \dotsc, R_n$ instead of $V$
+ * Notes: $R_i$ could itself be a view
+
+SQL Syntax
+#+BEGIN_SRC sql
+  Create View Vname as
+  <Query>
+
+  Create View Vname(A1, A2, ..., An) As
+  <Query>
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create view CSaccept as
+  select sID, cName
+  from Apply
+  where major = 'CS' and decision = 'Y';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  select Student.sID, sName, GPA
+  from Student, CSaccept
+  where Student.sID = CSaccept.sID and cName = 'Stanford' and GPA < 3.8;
+#+END_SRC
+
+The above query is conceptually equivalent to the following.
+
+#+BEGIN_SRC sql
+  create temporary table T as
+  select sID, cName
+  from Apply
+  where major = 'CS' and decision = 'Y';
+
+  select Student.sID, sName, GPA
+  from Student, T
+  where Student.sID = T.sID and cName = 'Stanford' and GPA < 3.8;
+
+  drop table T;
+#+END_SRC
+
+Some simple RDBMS often rewrites as the following.
+
+#+BEGIN_SRC sql
+  select Stuent.sID, sName, GPA
+  from Student,
+       (select sID, cName from Apply
+        where major = 'CS' and decision = 'Y') as CSaccept
+  where Student.sID = CSaccept.sID and cName = 'Stanford' and GPA < 3.8;
+#+END_SRC
+
+More powerful RDBMS rewrites as the following.
+
+#+BEGIN_SRC sql
+  select Student.sID, sName, GPA
+  from Student, Apply
+  where major = 'CS' and decision = 'Y'
+        and Student.sID = Apply.sID and cName = 'Stanford' and GPA < 3.8;
+#+END_SRC
+
+Views that use other views
+
+#+BEGIN_SRC sql
+  create view CSberk as
+  select Student.sID, sName, GPA
+  from Student, CSaccept
+  where Student.sID = CSaccept.sID and cName = 'Berkeley' and sizeHS > 500;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  select * from CSberk where GPA > 3.8;
+#+END_SRC
+
+Naive rewrite
+
+#+BEGIN_SRC sql
+  select * from
+  (select Student.sID, sName, GPA
+   from Student, (select sID, cName from Apply
+                  where major = 'CS' and decision = 'Y') as CSaccept
+   where Student.sID = CSaccept.sID and cName = 'Berkeley' and sizeHS > 500) CSberk
+  where GPA > 3.8;
+#+END_SRC
+
+Flattened rewrite
+
+#+BEGIN_SRC sql
+  select *
+  from Student, Apply
+  where major = 'CS' and decision = 'Y'
+        and Stduent.sID = Apply.sID and Apply.cName = 'Berkeley'
+        and sizeHS > 500 and GPA > 3.8;
+#+END_SRC
+
+The following will result in an error under PostgreSQL since other objects depend on
+~CSaccept~.
+
+#+BEGIN_SRC sql
+  drop view CSaccept;
+#+END_SRC
+
+However, under both SQLite and MySQL, the error is not thrown until we
+try tot use ~CSberk~.
+
+The following probably won't be what you want to do for large
+database.  Additionally, this is what Martin Fowler might refer to as
+natural aggregate.
+
+#+BEGIN_SRC sql
+  create view Mega as
+  select College.cName, state, enrollment,
+         Student.sID, sName, GPA, sizeHS, major, decision
+  from College, Student, Apply
+  where College.cName = Apply.cName and Student.sID = Apply.sID;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  select sID, sName, GPA, cName
+  from Mega
+  where GPA > 3.5 and major = 'CS' and enrollment > 15000;
+#+END_SRC
+
+Flattened rewrite
+
+#+BEGIN_SRC sql
+  select Student.sID, sName, GPA, College.cName
+  from College, Student, Apply
+  where College.cName = Apply.cName and Student.sID = Apply.sID
+        and GPA > 3.5 and major = 'CS' and enrollment > 15000;
+#+END_SRC
+
+*** DONE View Modifications - Introduction
+    CLOSED: [2017-12-27 Wed 09:31]
+Querying views
+ * Once $V$ defined, can reference $V$ like any table
+ * Queries involving $V$ rewritten to use base tables
+
+Modifying views
+ * Once $V$ defined, can we modify $V$ like any table?
+ * Doesn't make sense: $V$ is not stored
+ * Has to make sense: views are some users' entire "view" of the
+   database
+ * Solution: Modifications to $V$ rewritten to modify base tables
+
+Usually there are successful translations for view modifications.  The
+problem is there are too many and which one the user intends.
+
+Suppose we have the following schema.
+\begin{align*}
+  & R(A, B) \\
+  & V = \Pi_A(R)
+\end{align*}
+
+The table $R$ has $(1, 2)$ and thus $V = (1)$.  Say the user wants to
+insert $3$ into $V$.  Then the attribute $B$ is undecided for the
+newly inserted tuple.
+
+A more radical example follows.
+\begin{align*}
+  & R(N) = \{ (1), (3), (5) \} \\
+  & V = \operatorname{avg}(N) = \{ (3) \}
+\end{align*}
+
+And the user wants to update the average to $7$, then there are so
+many ways to update $R$ to achieve this.
+
+Existent systems do things quite differently.  There are several
+approaches.
+ 1) Rewriting process specified explicitly by view creator
+    * + Can handle all modifications
+    * − No guarantee of correctness (or meaningfulness)
+ 2) Restrict views + modifications so that translation to base table
+    modifications is meaningful and unambiguous
+    * + No user intervention
+    * − Restrictions are significant
+
+The first approach is enabled by ~instead of~ triggers or rules in
+Postgres' parlance.  The second approach is actually adopted by SQL
+standard.
+
+*** DONE View Modifications Using Triggers
+    CLOSED: [2017-12-27 Wed 09:34]
+Unlike queries, view modifications cannot be automated in general.
+
+The following query will result in an error in SQLite, since it
+doesn't allow update to views.
+
+#+BEGIN_SRC sql
+  delete from CSaccept where sID = 123;
+#+END_SRC
+
+We can create ~instead of~ triggers to achieve it.
+
+#+BEGIN_SRC sql
+  create trigger CSacceptDelete
+  instead of delete on CSaccept
+  for each row
+  begin
+    delete from Apply
+    where sID = Old.sID
+          and cName = Old.cName
+          and major = 'CS' and decision = 'Y';
+  end;
+#+END_SRC
+
+Now it works.
+
+Of course, I also need an ~instead of~ trigger for the following query
+to work.
+
+#+BEGIN_SRC sql
+  update CSaccept set cName = 'CMU' where sID = 345;
+#+END_SRC
+
+An example of erroneous ~instead of~ trigger
+
+#+BEGIN_SRC sql
+  create trigger CSacceptUpdate
+  instead of update of cName on CSaccept
+  for each row
+  begin
+    update Apply
+    set cName = New.cName
+    where sID = Old.sID
+          and cName = Old.cName
+          -- correct condition should be
+          --     and major = 'CS' and decision = 'Y';
+          and major = 'EE' and decision = 'N';
+  end;
+#+END_SRC
+
+
+#+BEGIN_SRC sql
+  create view CSEE as
+  select sID, cName, major
+  from Apply
+  where major = 'CS' or major = 'EE';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into CSEE values (111, 'Berkeley', 'CS');
+#+END_SRC
+
+Another example of erroneous ~instead of~ trigger
+
+#+BEGIN_SRC sql
+  create trigger CSEEinsert
+  instead of insert on CSEE
+  for each row
+  begin
+    insert into Apply values (New.sID, New.cName, New.major, null);
+  end;
+#+END_SRC
+
+What if we do the following?
+
+#+BEGIN_SRC sql
+  insert into CSEE values (222, 'Berkeley', 'biology');
+#+END_SRC
+
+Better trigger follows.
+
+#+BEGIN_SRC sql
+  drop trigger CSEEinsert;
+
+  create trigger  CSEEinsert
+  instead of insert on CSEE
+  for each row
+  when New.major = 'CS' or New.major = 'EE'
+  begin
+    insert into Apply values (New.sID, New.cName, New.major, null);
+  end;
+#+END_SRC
+
+This time, the following query won't insert data into Apply table.
+
+#+BEGIN_SRC sql
+  insert into CSEE values (333, 'Berkeley', 'biology');
+#+END_SRC
+
+The following will sucessfully insert data into the underlying Apply
+table.
+
+#+BEGIN_SRC sql
+  insert into CSEE values (333, 'Berkeley', 'EE');
+#+END_SRC
+
+When a view involves aggregation, it is generally a good idea to
+disallow user to modify views.
+
+#+BEGIN_SRC sql
+  create view HSgpa as
+  select sizeHS, avg(gpa) as avgGPA
+  from Student
+  group by sizeHS;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create view Majors as
+  select distinct major from Apply;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create view NonUnique as
+  select * from Student S1
+  where exists (select * from Student S2
+                where S1.sID <> S2.sID
+                      and S2.GPA = S1.GPA and S2.sizeHS = S1.sizeHS);
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create view Berk as
+  select Student.sID, major
+  from Student, Apply
+  where Student.sID = Apply.sID and cName = 'Berkeley';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger BerkInsert
+  instead of insert on Berk
+  for each row
+  when New.sID in (select sID from Student)
+  begin
+    insert into Apply values (New.sID, 'Berkeley', New.major, null);
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Berk
+  select sID, 'psychology' from Student
+  where sID not in (select sID from Apply where cName = 'Berkeley');
+#+END_SRC
+
+
+#+BEGIN_SRC sql
+  create trigger BerkDelete
+  instead of delete on BerkDelete
+  for each row
+  begin
+    delete from Apply
+    where sID = old.sID and cName = 'Berkeley' and major = Old.major;
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  delete from Berk where major = 'CS';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create trigger BerkUpdate
+  instead of update of major on Berk
+  for each row
+  begin
+    update Apply
+    set major = New.major
+    where sID = New.sId and cName = 'Berkeley' and major = Old.major;
+  end;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  update Berk set major = 'physics' where major = 'psycology';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  drop table Apply;
+  create table Apply(
+      sID int,
+      cName text,
+      major text,
+      decision text not null;
+  );
+#+END_SRC
+
+Now we cannot insert into the CSEE view.
+
+#+BEGIN_SRC sql
+  drop table Apply;
+  create table Apply(
+      sID int,
+      cName text,
+      major text,
+      decision text,
+      unique(sID, cName, major)
+  );
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into CSEE values (123, 'Berkeley', 'CS');
+  insert into CSEE values (123, 'Berkeley', 'EE');
+  insert into Berk values (123, 'EE');          -- failed.
+  update Berk set major = 'CS' where sID = 123; -- failed.
+#+END_SRC
+
+*** TODO Automatic View Modifications
+*** TODO Materialized Views
+*** TODO Authorization
+** TODO Exercises
+*** TODO Views Quiz
+*** TODO Authorization Quiz
+*** TODO SQL Movie-Rating View Modification

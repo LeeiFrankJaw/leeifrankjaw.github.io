@@ -55,11 +55,6 @@ for dirpath, dirnames, filenames in walker:
     # ignore(dirnames)
     pathsegs = dirpath.split('/')[1:]
     contents = []
-    get_dir(listing, pathsegs[:-1]).append({
-        'type': 'directory',
-        'name': pathsegs[-1],
-        'contents': contents
-    })
     filenames = filter(lambda x: x.endswith('.html'), filenames)
     for name in filenames:
         path = os.path.join(dirpath, name)
@@ -69,8 +64,14 @@ for dirpath, dirnames, filenames in walker:
             'title': get_title(path),
             'author_date': get_author_date(path)
         })
-    # ISO 8601 supports lexicographical sorting
-    contents.sort(key=lambda x: x['author_date'], reverse=True)
+    if contents:
+        # ISO 8601 supports lexicographical sorting
+        contents.sort(key=lambda x: x['author_date'], reverse=True)
+        get_dir(listing, pathsegs[:-1]).append({
+            'type': 'directory',
+            'name': pathsegs[-1],
+            'contents': contents
+        })
 
 with open('listing.json', 'w') as f:
     json.dump(listing, f, indent=4)
