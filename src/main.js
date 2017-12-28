@@ -126,13 +126,13 @@ var LISTING = [
                 "type": "file",
                 "name": "intro_db.html",
                 "title": "Intro to DB",
-                "author_date": "2017-12-28T14:34:59.472620+08:00"
+                "author_date": "2017-12-28T14:39:55+08:00"
             },
             {
                 "type": "file",
-                "name": "automata.html",
+                "name": "automata",
                 "title": "Automata Theory",
-                "author_date": "2017-09-07T23:49:51+08:00"
+                "author_date": "2017-12-09T21:12:05.916660+08:00"
             }
         ]
     }

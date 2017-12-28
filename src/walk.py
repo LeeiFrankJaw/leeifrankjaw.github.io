@@ -55,15 +55,20 @@ for dirpath, dirnames, filenames in walker:
     # ignore(dirnames)
     pathsegs = dirpath.split('/')[1:]
     contents = []
-    filenames = filter(lambda x: x.endswith('.html'), filenames)
     for name in filenames:
-        path = os.path.join(dirpath, name)
-        contents.append({
-            'type': 'file',
-            'name': name,
-            'title': get_title(path),
-            'author_date': get_author_date(path)
-        })
+        if name.endswith('.html'):
+            path = os.path.join(dirpath, name)
+            entry = {
+                'type': 'file',
+                'name': name,
+                'title': get_title(path),
+                'author_date': get_author_date(path)
+            }
+            if name != 'index.html':
+                contents.append(entry)
+            else:
+                entry['name'] = pathsegs[-1]
+                get_dir(listing, pathsegs[:-1]).append(entry)
     if contents:
         # ISO 8601 supports lexicographical sorting
         contents.sort(key=lambda x: x['author_date'], reverse=True)

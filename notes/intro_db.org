@@ -4759,6 +4759,7 @@ it.  However, a view can be partially updatable under MySQL since it
 is a little bit more generous.
 
 *** TODO Materialized Views
+    DEADLINE: <2017-12-29 Fri>
 *** TODO Authorization
 ** TODO Exercises
 *** TODO Views Quiz
