@@ -16,4 +16,25 @@ document.addEventListener("DOMContentLoaded", function() {
             anchor.target = "_blank";
         }
     }
+    document.onkeydown = function(e) {
+        if (!(e.ctrlKey || e.altKey || e.metaKey)) {
+            switch (e.key) {
+            case "t":
+                window.location.href = "#content";
+                break;
+            case "l":
+                window.history.back();
+                break;
+            case "r":
+                window.history.forward();
+                break;
+            case "n":
+                break;
+            case "p":
+                break;
+            default:
+                break;
+            }
+        }
+    };
 });

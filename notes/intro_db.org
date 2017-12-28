@@ -807,41 +807,54 @@ on R.ID2 = S.ID1 and S.ID2 <> R.ID1 and
   CLOSED: [2017-06-26 Mon 07:48]
   :PROPERTIES:
   :VISIBILITY: FOLDED
+  :CUSTOM_ID: xpath-and-xquery-mini-course
   :END:
 ** DONE Lecture videos
    CLOSED: <2017-06-24 Sat>
 *** DONE XPath Introduction
     CLOSED: [2017-06-03 Sat 00:50]
+    :PROPERTIES:
+    :CUSTOM_ID: xpath-introduction
+    :END:
 Not nearly as mature as Querying Relational
-XPath - path expressions + conditions
-XSLT - XPath + transformations, output
-XQuery - XPath + full-featured Q.L.
+ * XPath - path expressions + conditions
+ * XSLT - XPath + transformations, output
+ * XQuery - XPath + full-featured Q.L.
 
 Think of XML as a tree
 
 Basic Constructs
+#+BEGIN_EXAMPLE
 / root element and separator
 {element name} or *
 @{attribute name}
 // any descendants including self
 [condition] e.g. [@price < 50]
 [number] nth sub-element
+#+END_EXAMPLE
 
 Built-in functions (lots of them)
+#+BEGIN_EXAMPLE
 contains(s1, s2)
 name()
+#+END_EXAMPLE
 
 Navigation "axes" (13 of them)
+#+BEGIN_EXAMPLE
 parent::
 following-sibling::
 descendants:: (does not match self, cf. //)
 self::
+#+END_EXAMPLE
 
 XPath queries operate on and return /sequence/ of elements
 Sometimes result can be expressed as XML, but not always
 
 *** DONE XPath Demo
     CLOSED: [2017-06-05 Mon 00:16]
+    :PROPERTIES:
+    :CUSTOM_ID: xpath-demo
+    :END:
 Get the titles of books in the bookstore where the price is lower
 than 90 and Jeffrey Widom is an author.
 
@@ -914,6 +927,9 @@ doc("BookstoreQ.xml")/Bookstore/Book[
 
 *** DONE XQuery Introduction
     CLOSED: [2017-06-16 Fri 23:16]
+    :PROPERTIES:
+    :CUSTOM_ID: xquery-introduction
+    :END:
 
 1. XQuery is a expression language (compositional)
 2. Each expression operates on and returns sequence of elements
@@ -937,6 +953,9 @@ Mixing queries and XML
 
 *** DONE XQuery Demo
     CLOSED: [2017-06-24 Sat 16:03]
+    :PROPERTIES:
+    :CUSTOM_ID: xquery-demo
+    :END:
 
 #+BEGIN_EXAMPLE
 for $b in doc("BookstoreQ.xml")/Bookstore/Book
@@ -1041,6 +1060,9 @@ Again, implicitly existential quantification.
    CLOSED: [2017-06-26 Mon 07:48]
 *** DONE Course-Catalog XPath and XQuery
     CLOSED: [2017-06-24 Sat 19:03]
+    :PROPERTIES:
+    :CUSTOM_ID: course-catalog-xpath-and-xquery
+    :END:
 
 Return all Title elements (of both departments and courses).
 
@@ -1108,6 +1130,9 @@ the other operand will go through type promotion.
 
 *** DONE Course-Catalog XPath and XQuery Extras
     CLOSED: [2017-06-25 Sun 19:19]
+    :PROPERTIES:
+    :CUSTOM_ID: course-catalog-xpath-and-xquery-extras
+    :END:
 
 Return the course number of the course that is cross-listed as "LING180".
 
@@ -1273,6 +1298,9 @@ very challenging; extra congratulations if you get it right.)
 
 *** DONE World-Countries XPath and XQuery 
     CLOSED: [2017-06-25 Sun 10:58]
+    :PROPERTIES:
+    :CUSTOM_ID: world-countries-xpath-and-xquery
+    :END:
 
 Return the area of Mongolia.
 
@@ -1380,6 +1408,9 @@ are unique.  The result should take the form:
 
 *** DONE World-Countries XPath and XQuery Extras
     CLOSED: [2017-06-26 Mon 07:48]
+    :PROPERTIES:
+    :CUSTOM_ID: world-countries-xpath-and-xquery-extras
+    :END:
 
 Return the names of all countries with population greater than 100
 million.
@@ -1706,29 +1737,38 @@ element.  For example, your result might look like:
   CLOSED: [2017-07-02 Sun 20:06]
   :PROPERTIES:
   :VISIBILITY: FOLDED
+  :CUSTOM_ID: xslt-mini-course
   :END:
 ** DONE Lecture videos
    CLOSED: [2017-07-02 Sun 15:13]
-XSL = Extensible Stylesheet Language
-XSLT = XSL (with) transformations
+   :PROPERTIES:
+   :CUSTOM_ID: xslt-mini-course-lectures
+   :END:
+ * XSL = Extensible Stylesheet Language
+ * XSLT = XSL (with) transformations
 
 XSLT is more widely used than XSL.
 
 XSLT: Rule-Based Transformations
 
-Match template and replace
-Recursively match template
-Extract values
-Iteration (for-each)
-Conditionals (if)
+ * Match template and replace
+ * Recursively match template
+ * Extract values
+ * Iteration (for-each)
+ * Conditionals (if)
 
-Strange default/whitespace behavior
-Implicit template priority scheme
+Catches:
+
+ * Strange default/whitespace behavior
+ * Implicit template priority scheme
 
 ** DONE Exercises
    CLOSED: [2017-07-02 Sun 20:06]
 *** DONE Course-Catalog XSLT
     CLOSED: [2017-07-02 Sun 16:21]
+    :PROPERTIES:
+    :CUSTOM_ID: course-catalog-xslt
+    :END:
 
 Return a list of department titles.
 
@@ -1773,6 +1813,9 @@ structure.
 
 *** DONE Course-Catalog XSLT Extras
     CLOSED: [2017-07-02 Sun 20:06]
+    :PROPERTIES:
+    :CUSTOM_ID: course-catalog-xslt-extras
+    :END:
 
 Return all courses with enrollment greater than 500.  Retain the
 structure of Course elements from the original data.
@@ -1860,6 +1903,9 @@ quot;.)
 
 *** DONE World-Countries XSLT
     CLOSED: [2017-07-02 Sun 18:52]
+    :PROPERTIES:
+    :CUSTOM_ID: world-countries-xslt
+    :END:
 
 Return all countries with population between 9 and 10 million.  Retain
 the structure of country elements from the original data.
@@ -1930,6 +1976,9 @@ and "cities" respectively).
 
 *** DONE World-Countries XSLT Extras
     CLOSED: [2017-07-02 Sun 19:21]
+    :PROPERTIES:
+    :CUSTOM_ID: world-countries-xslt-extras
+    :END:
 
 Find all country names containing the string "stan"; return each one
 within a "Stan" element.  (Note: To specify quotes within an
@@ -1967,69 +2016,77 @@ data should be the same.
   CLOSED: [2017-07-24 Mon 02:23]
   :PROPERTIES:
   :VISIBILITY: FOLDED
+  :CUSTOM_ID: relational-design-theory-mini-course
   :END:
 ** DONE Lecture videos
    CLOSED: [2017-07-24 Mon 02:23]
+   :PROPERTIES:
+   :CUSTOM_ID: relational-design-theory-mini-course-lectures
+   :END:
 *** DONE Overview
     CLOSED: [2017-07-02 Sun 21:16]
 
 Design "anomalies"
-  Redundancy
-  Update anomaly
-  Deletion anomaly
+ * Redundancy
+ * Update anomaly
+ * Deletion anomaly
 
 Design by decomposition
-  Start with "mega" relations containing everything
-  Decompose into smaller, better relations with same info
-  Can do decomposition automatically
+ * Start with "mega" relations containing everything
+ * Decompose into smaller, better relations with same info
+ * Can do decomposition automatically
 
 Automatic decomposition
-  "Mega" relations + /properties of the data/
-  System decomposes based on properties
-  Final set of relations satisfies /normal form/
-  - No anomalies, no lost information
+ * "Mega" relations + /properties of the data/
+ * System decomposes based on properties
+ * Final set of relations satisfies /normal form/
+   - No anomalies, no lost information
 
 Properties and Normal Forms
-  Functional dependencies => Boyce-Codd Normal Form
-  + Multivalued dependencies => Fourth Normal Form
+ * Functional dependencies $\Rightarrow$ Boyce-Codd Normal Form
+ * + Multivalued dependencies $\Rightarrow$ Fourth Normal Form
 
-4NF subsets BCNF
+4NF $\subset$ BCNF
 
 Functional Dependencies and BCNF
-  Apply(SSN, sName, cName)
-    Redundancy; Update & Deletion Anomalies
-    Storing _SSN-sName_ pair once for each college
+ * Apply(SSN, sName, cName)
+   - Redundancy; Update & Deletion Anomalies
+   - Storing SSN-sName pair once for each college
 
-  /Functional Dependency/ _SSN -> sName_
-    Same _SSN_ always has same _sName_
-    Should store each _SSN_'s _sName_ only once
+ * /Functional Dependency/ SSN $\rightarrow$ sName
+   - Same SSN always has same sName
+   - Should store each SSN's sName only once
 
-  /Boyce-Codd Normal Form/ If _A -> B_ then _A_ is a key
+ * /Boyce-Codd Normal Form/ If A -> B then A is a key
 
-  _SSN_ should be a key but not.
+SSN should be a key but not.
 
-  Decompose: _Student(SSN, sName) Apply(SSN, cName)_
-  Pull out SSN and sName into its own relation
+ * Decompose: Student(SSN, sName) Apply(SSN, cName)
+
+Pull out SSN and sName into its own relation
 
 Multivalued Dependencies and 4NF
-  Apply(SSN, cName, HS)
-    Redundancy; Update & Deletion Anomalies
-    Multiplicative effect
-      C colleges, H high school
-      C * H tuples
-      Should be C + H
-    Not addressed by BCNF: No functional dependencies
+ * Apply(SSN, cName, HS)
+   - Redundancy; Update & Deletion Anomalies
+   - Multiplicative effect
+     + C colleges, H high school
+     + C * H tuples
+     + Should be C + H
+   - Not addressed by BCNF: No functional dependencies
 
-  /Multivalued Dependency/ _SSN ->> cName  SSN ->> HS_
-    Given _SSN_ has every combination of _cName_ with _HS_
-    Should store each _cName_ and each _HS_ for an _SSN_ once
+ * /Multivalued Dependency/ SSN $\twoheadrightarrow$ cName, SSN $\twoheadrightarrow$ HS
+   - Given SSN has every combination of cName with HS
+   - Should store each cName and each HS for an SSN once
 
-  /Fourth Normal Form/ If _A ->> B_ then _A_ is a key
+ * /Fourth Normal Form/ If A $\twoheadrightarrow$ B then A is a key
 
-  Decompose: _Apply(SSN, cName) HighSchool(SSN, HS)_
+ * Decompose: Apply(SSN, cName) HighSchool(SSN, HS)
 
 *** DONE Functional Dependencies
     CLOSED: [2017-07-16 Sun 19:51]
+    :PROPERTIES:
+    :CUSTOM_ID: functional-dependencies
+    :END:
 Functional dependencies => Boyce-Codd Normal Form
 Multivalued dependencies => Fourth Normal Form
 
@@ -2145,6 +2202,9 @@ hold on the relation follow from the dependencies in this set
 
 *** DONE Boyce-Codd Normal Form
     CLOSED: [2017-07-16 Sun 21:16]
+    :PROPERTIES:
+    :CUSTOM_ID: boyce-codd-normal-form
+    :END:
 Decomposition of a relational schema
 R(A1, ..., An)
 R1(B1, ..., Bk)
@@ -2190,6 +2250,9 @@ We can extend A -> BA+
 
 *** DONE Multivalued Dependencies and 4th Normal Form
     CLOSED: [2017-07-24 Mon 00:47]
+    :PROPERTIES:
+    :CUSTOM_ID: multivalued-dependencies-and-4th-normal-form
+    :END:
 Fourth Normal Form subsets Boyce-Codd Normal Form
 R  \bar{A} ->> \bar{B}  A1, ..., An, B1, ..., Bn
 
@@ -2227,6 +2290,9 @@ Relation R with MVDs is in 4NF if:
 
 ** DONE Exercises
    CLOSED: [2017-07-24 Mon 02:23]
+   :PROPERTIES:
+   :CUSTOM_ID: relational-design-theory-mini-course-exercises
+   :END:
 R(A,B)
 +R(A,C,D)+
 R(A,C)
@@ -4109,9 +4175,18 @@ immediate activation semantics of SQLite for triggers
 
 
 * IN-PROGRESS [[https://lagunita.stanford.edu/courses/DB/Views/SelfPaced/courseware/ch-views/][Views and Authorization]] mini-course
+  :PROPERTIES:
+  :CUSTOM_ID: views-and-authorization-mini-course
+  :END:
 ** IN-PROGRESS Lecture Videos
+   :PROPERTIES:
+   :CUSTOM_ID: views-and-authorization_mini-course-lectures
+   :END:
 *** DONE Defining and Using Views
     CLOSED: [2017-12-26 Tue 18:38]
+    :PROPERTIES:
+    :CUSTOM_ID: defining-and-using-views
+    :END:
 
 Three-level vision of database
  * Physical - Conceptual - Logical
@@ -4264,6 +4339,9 @@ Flattened rewrite
 
 *** DONE View Modifications - Introduction
     CLOSED: [2017-12-27 Wed 09:31]
+    :PROPERTIES:
+    :CUSTOM_ID: views-modifications-introduction
+    :END:
 Querying views
  * Once $V$ defined, can reference $V$ like any table
  * Queries involving $V$ rewritten to use base tables
@@ -4313,6 +4391,9 @@ standard.
 
 *** DONE View Modifications Using Triggers
     CLOSED: [2017-12-27 Wed 09:34]
+    :PROPERTIES:
+    :CUSTOM_ID: views-modifications-using-triggers
+    :END:
 Unlike queries, view modifications cannot be automated in general.
 
 The following query will result in an error in SQLite, since it
@@ -4524,7 +4605,159 @@ Now we cannot insert into the CSEE view.
   update Berk set major = 'CS' where sID = 123; -- failed.
 #+END_SRC
 
-*** TODO Automatic View Modifications
+*** DONE Automatic View Modifications
+    CLOSED: [2017-12-28 Thu 11:44]
+    :PROPERTIES:
+    :CUSTOM_ID: automatic-view-modifications
+    :END:
+Restrictions in SQL Standard for "updatable views":
+ 1) ~select~ (no ~distinct~) on single table ~T~
+ 2) Attributes not in view can be ~null~ or have default value
+ 3) Subqueries must not refer to ~T~
+ 4) No ~group by~ or aggregation
+
+MySQL is the only database (among MySQL, SQLite, and PostgreSQL) that
+supports automatic view modifications.  However, it is a little bit
+more generous than the SQL standard.
+
+#+BEGIN_SRC sql
+  insert into CSEE values (111, 'Berkeley', 'CS');
+  insert into CSEE values (222, 'Berkeley', 'psychology');
+  insert into CSaccept values (333, 'Berkeley');
+#+END_SRC
+
+All of the above queries will succeed.  The second query will insert a
+row with ~'psychology'~ major into ~Apply~ table, which won't reflect
+in the view ~CSEE~.  And the last query will insert a row with ~null~
+major and decision into ~Apply~ table.  Both of the results are not
+what we want.
+
+We can fix it like this.
+
+#+BEGIN_SRC sql
+  create view CSaccept2 as
+  select sID, cName
+  from Apply
+  where major = 'CS' and decision = 'Y'
+  with check option;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create view CSEE2 as
+  select sID, cName, major
+  from Apply
+  where major = 'CS' or major = 'EE'
+  with check option;
+#+END_SRC
+
+The ~delete~ and ~insert~ operations on ~HSgpa~ view will fail under
+both MySQL and SQL standard, since it contains aggregation.
+
+Views with subqueries that does not refer to outer table can be
+modified.
+
+#+BEGIN_SRC sql
+  create view Bio as
+  select * from Student
+  where sID in (select sID from Apply where major like 'bio%');
+#+END_SRC
+
+#+BEGIN_SRC sql
+  delete from Bio where sName = 'Bob';
+#+END_SRC
+
+For the above query, both MySQL and SQL standard will delete Bob from
+only the ~Student~ table, but not from the ~Apply~ table.  Of course,
+if the database is set up with proper referential integrity
+constrainst, Bob will be deleted from ~Apply~ table due to it.
+
+#+BEGIN_SRC sql
+  insert into Bio values (555, 'Karen', 3.9, 1000);
+#+END_SRC
+
+Karen will be inserted into ~Student~ table but won't appear in the
+~Bio~ view.
+
+#+BEGIN_SRC sql
+  create view Bio2 as
+  select * from Student
+  where sID in (select sID from Apply where major like 'bio%')
+  with check option;
+#+END_SRC
+
+Now the following query will fail.
+
+#+BEGIN_SRC sql
+  insert into Bio2 values (666, 'Lori', 3.9, 1000);
+#+END_SRC
+
+The ~with check option~ comes with an efficiency cost.
+
+MySQL does allow some modification on join view, whereas SQL standard
+doesn't.
+
+#+BEGIN_SRC sql
+  create view Stan(sID, aID, sName, major) as
+  select Student.sID, Apply.sID, sName, major
+  from Student, Apply
+  where Student.sID = Apply.sID and cName = 'Stanford';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  update Stan set sName = 'CS major' where major = 'CS';
+#+END_SRC
+
+The above query succeeds but the following will cause row being
+updated to disappear from the view ~Stan~.
+
+#+BEGIN_SRC sql
+  update Stan set aID = 666 where aID = 123;
+#+END_SRC
+
+#+BEGIN_SRC sql
+  create view Stan2(sID, aID, sName, major) as
+  select Student.sID, Apply.sID, sName, major
+  from Student, Apply
+  where Student.sID = Apply.sID and cName = 'Stanford'
+  with check option;
+#+END_SRC
+
+Now the same query will fail for view ~Stan2~.
+
+#+BEGIN_SRC sql
+  insert into Stan(sID, sName) values (777, 'Lance');
+#+END_SRC
+
+The above query will insert Lance only into ~Student~ table with
+~null~ GPA and high school size.  This is not what we want.  Also, the
+same query will fail on view ~Stan2~.  However, by inserting a
+correspondent row into ~Apply~, we can make it succeed, as shown
+below.
+
+#+BEGIN_SRC sql
+  insert into Apply values (888, 'Stanford', 'history', 'Y');
+  insert into Stan2(sID, sName) values (888, 'Mary');
+#+END_SRC
+
+#+BEGIN_SRC sql
+  insert into Apply values (999, 'MIT', 'history', 'Y');
+  insert into Stan2(sID, sName) values (999, 'Nancy');
+#+END_SRC
+
+The second ~insert~ query will fail since Nancy doesn't apply to
+Stanford.
+
+#+BEGIN_SRC sql
+  delete from Stan where sID = 123;
+#+END_SRC
+
+We cannot delete from join view under MySQL.
+
+Under SQL standard, a view is either updatable or not, meaning that if
+a view is updatable, then we can apply ~insert~, ~delete~, ~update~ on
+it.  However, a view can be partially updatable under MySQL since it
+is a little bit more generous.
+
 *** TODO Materialized Views
 *** TODO Authorization
 ** TODO Exercises
