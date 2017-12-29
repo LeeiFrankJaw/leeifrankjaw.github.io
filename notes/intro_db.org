@@ -1295,7 +1295,7 @@ very challenging; extra congratulations if you get it right.)
 </Inverted_Course_Catalog>
 #+END_EXAMPLE
 
-*** DONE World-Countries XPath and XQuery 
+*** DONE World-Countries XPath and XQuery
     CLOSED: [2017-06-25 Sun 10:58]
     :PROPERTIES:
     :CUSTOM_ID: world-countries-xpath-and-xquery
@@ -2056,7 +2056,7 @@ Functional Dependencies and BCNF
    - Same SSN always has same sName
    - Should store each SSN's sName only once
 
- * /Boyce-Codd Normal Form/ If A -> B then A is a key
+ * /Boyce-Codd Normal Form/ If A $\rightarrow$ B then A is a key
 
 SSN should be a key but not.
 
@@ -2125,7 +2125,7 @@ And
 
 transitivity
 
-#+BEGIN_SRC 
+#+BEGIN_SRC
 Apply(SSN, cName, state, date, major)
 #+END_SRC
 
@@ -2200,85 +2200,99 @@ hold on the relation follow from the dependencies in this set
     :CUSTOM_ID: boyce-codd-normal-form
     :END:
 Decomposition of a relational schema
-R(A1, ..., An)
-R1(B1, ..., Bk)
-R2(C1, ..., Cm)
+ * $R(A_1, \dotsc, A_n)$
+ * $R_1(B_1, \dotsc, B_k)$
+ * $R_2(C_1, \dotsc, C_m)$
 
-B union C = A
+Then we want
+ * $\bar{B} \cup \bar{C} = \bar{A}$
+ * $R_1 \Join R_2 = R$
 
-R1 natural join R2 = R
-
+#+BEGIN_EXAMPLE
 Student(SSN, sName, address, HScode, HSname, HScity, GPA, priority)
+#+END_EXAMPLE
 
 This is a decomposition.
+
+#+BEGIN_EXAMPLE
 S1(SSN, sName, address, HScode, GPA, priority)
 S2(HScode, HSname, HScity)
+#+END_EXAMPLE
 
 This is not a decomposition.
+
+#+BEGIN_EXAMPLE
 S1(SSN, sName, address, HScode, HSname, HScity)
 S2(sName, HSname, GPA, priority)
+#+END_EXAMPLE
 
 Good decomposition exhibits lossless join property.
 
 BCNF
-Relation R with FDs is in BCNF if:
-    For each \bar{A} -> B, \bar{A} is a key.
-    BCNF violation (redundancy, update/delete anomalies)
+ * Relation R with FDs is in BCNF if:
+   - For each $\bar{A} \rightarrow B$, $\bar{A}$ is a key.
+
+BCNF violation (redundancy, update/delete anomalies)
 
 note: a key can contain another key and thus is a super key.
 
 BCNF decomposition algorithm
 
-Input: relation R + FDs for R
-Output: decomposition of R into BCNF relations with "lossless join"
+ * Input: relation R + FDs for R
+ * Output: decomposition of R into BCNF relations with "lossless join"
 
-Compute keys for R
-Repeat until all relations are in BCNF
-    Pick any R' with A -> B that violates BCNF
-    Decompose R' into R1(A, B) and R2(A, rest)
-    Compute FDs for R1 and R2
-    Compute keys for R1 and R2
+
+ * Compute keys for $R$
+ * Repeat until all relations are in BCNF
+   - Pick any $R'$ with $A \rightarrow B$ that violates BCNF
+   - Decompose $R'$ into $R_1(A, B)$ and $R_2(A, \mathrm{rest})$
+   - Compute FDs for $R_1$ and $R_2$
+   - Compute keys for $R_1$ and $R_2$
 
 Randomness can result in different answer.
-We can extend A -> BA+
+We can extend $A \rightarrow BA^+$.
 
 *** DONE Multivalued Dependencies and 4th Normal Form
     CLOSED: [2017-07-24 Mon 00:47]
     :PROPERTIES:
     :CUSTOM_ID: multivalued-dependencies-and-4th-normal-form
     :END:
-Fourth Normal Form subsets Boyce-Codd Normal Form
-R  \bar{A} ->> \bar{B}  A1, ..., An, B1, ..., Bn
+Fourth Normal Form $\subset$ Boyce-Codd Normal Form
 
-for all t, u in R: t[\bar{A}] = u[\bar{A}] then
-    there exists v in R: v[\bar{A}] = t[\bar{A}] and
-                         v[\bar{B}] = t[\bar{B}] and
-                         v[rest] = u[rest]
+\[R \quad  \bar{A} \twoheadrightarrow \bar{B} \quad
+  A_1, \dotsc, A_n, B_1, \dotsc, B_n\]
+
+\[\forall t, u \in R \, \exists v \in R:\, 
+  t[\bar{A}] = u[\bar{A}] \implies
+  v[\bar{A}] = t[\bar{A}] \land
+  v[\bar{B}] = t[\bar{B}] \land
+  v[\mathrm{rest}] = u[\mathrm{rest}]\]
 
 Tuple-generating dependencies
 
-\bar{A} ->> \bar{B} implies \bar{A} ->> rest
+$\bar{A} \twoheadrightarrow \bar{B} \implies \bar{A} \twoheadrightarrow \mathrm{rest}$
 
 Trivial Multivalued Dependency
+ * $B \subset A$ or $A \cup B =$ all attrs
 
-A ->> B   B subset A or  A union B = all attrs
-
-A -> B implies A ->> B
+$A \rightarrow B \implies A \twoheadrightarrow B$
 
 FD-is-an-MVD rule
 
-4NF implies BCNF
+4NF $\implies$ BCNF
 
 Intersection rule
-A ->> B, A ->> C then A ->> B intersect C
+ * If $A \twoheadrightarrow B$, $A \twoheadrightarrow C$, then $A
+   \twoheadrightarrow B \cap C$
 
 Transitive rule
-A ->> B, B ->> C then A ->> C - B
+ * If $A \twoheadrightarrow B$, $B \twoheadrightarrow C$, then $A
+   \twoheadrightarrow C - B$
 
 Fourth Normal Form
 
 Relation R with MVDs is in 4NF if:
-    For each nontrivial A ->> B, A is a key
+ * For each nontrivial A $\twoheadrightarrow$ B, A is a key
 
 *** DONE Shortcomings of BCNF/4NF
 
@@ -2309,18 +2323,22 @@ Relation R with MVDs is in 4NF if:
   CLOSED: [2017-08-07 Mon 01:11]
   :PROPERTIES:
   :VISIBILITY: FOLDED
+  :CUSTOM_ID: uml-mini-course
   :END:
 ** DONE Lecture Videos
    CLOSED: [2017-08-06 Sun 18:04]
 *** DONE UML Data Modeling
    CLOSED: [2017-08-02 Wed 01:46]
+   :PROPERTIES:
+   :CUSTOM_ID: uml-data-modeling
+   :END:
 Entity-Relationship Model (E/R)
 Unified Modeling Language
-  Data modeling subset
+ * Data modeling subset
 
 Both are graphical
 Both can be translated to relations automatically
-  Or semi-automatically
+ * Or semi-automatically
 
 UML Data Modeling: 5 concepts
 
@@ -2334,7 +2352,7 @@ UML Data Modeling: 5 concepts
 Classes
 
 Name, attributes, methods
-  For data modeling: add "pk", drop methods
+ * For data modeling: add "pk", drop methods
 
 #+BEGIN_EXAMPLE
 |-----------|
@@ -2384,14 +2402,14 @@ of class C2
 |----|      A         |----|
 #+END_EXAMPLE
 
-m..* at least m
-0..n at most n
-0..* no restrictions
+ - m..* at least m
+ - 0..n at most n
+ - 0..* no restrictions
 
-the default is 1..1
+The default is 1..1
 
-1..1 abbreviated as 1
-0..* abbreviated as *
+ - 1..1 abbreviated as 1
+ - 0..* abbreviated as *
 
 Students must apply somewhere and may not apply to more than 5
 colleges.  No college takes more than 20,000 applications.
@@ -2410,10 +2428,10 @@ colleges.  No college takes more than 20,000 applications.
 
 Types of relationships
 
-One-to-One           0..1  0..1
-Many-to-One          *     0..1
-Many-to-Many         *     *
-Complete             1..   1..
+| One-to-One   | 0..1 | 0..1 |
+| Many-to-One  |    * | 0..1 |
+| Many-to-Many |    * |    a |
+| Complete     |  1.. |  1.. |
 
 Default is complete one-to-one
 
@@ -2421,7 +2439,7 @@ Default is complete one-to-one
 Association Classes
 
 Relationships between objects of two classes,
-with attributes on relationships
+ - with attributes on relationships
 
 #+BEGIN_EXAMPLE
 |-----------|                          |-----------|
@@ -2441,7 +2459,7 @@ It's hard to have more than one relationship association between the
 same student and college.
 
 Eliminating Association Classes
-Unnecessary if 0..1 or 1..1 multiplicity
+ * Unnecessary if 0..1 or 1..1 multiplicity
 
 #+BEGIN_EXAMPLE
 |----|                |----|
@@ -4186,7 +4204,7 @@ immediate activation semantics of SQLite for triggers
   :END:
 ** IN-PROGRESS Lecture Videos
    :PROPERTIES:
-   :CUSTOM_ID: views-and-authorization_mini-course-lectures
+   :CUSTOM_ID: views-and-authorization-mini-course-lectures
    :END:
 *** DONE Defining and Using Views
     CLOSED: [2017-12-26 Tue 18:38]
@@ -4302,7 +4320,7 @@ Flattened rewrite
   select *
   from Student, Apply
   where major = 'CS' and decision = 'Y'
-        and Stduent.sID = Apply.sID and Apply.cName = 'Berkeley'
+        and Student.sID = Apply.sID and Apply.cName = 'Berkeley'
         and sizeHS > 500 and GPA > 3.8;
 #+END_SRC
 
@@ -4498,7 +4516,7 @@ This time, the following query won't insert data into Apply table.
   insert into CSEE values (333, 'Berkeley', 'biology');
 #+END_SRC
 
-The following will sucessfully insert data into the underlying Apply
+The following will successfully insert data into the underlying Apply
 table.
 
 #+BEGIN_SRC sql
@@ -4578,7 +4596,7 @@ disallow user to modify views.
 #+END_SRC
 
 #+BEGIN_SRC sql
-  update Berk set major = 'physics' where major = 'psycology';
+  update Berk set major = 'physics' where major = 'psychology';
 #+END_SRC
 
 #+BEGIN_SRC sql
@@ -4675,7 +4693,7 @@ modified.
 For the above query, both MySQL and SQL standard will delete Bob from
 only the ~Student~ table, but not from the ~Apply~ table.  Of course,
 if the database is set up with proper referential integrity
-constrainst, Bob will be deleted from ~Apply~ table due to it.
+constraints, Bob will be deleted from ~Apply~ table due to it.
 
 #+BEGIN_SRC sql
   insert into Bio values (555, 'Karen', 3.9, 1000);
@@ -4764,17 +4782,175 @@ a view is updatable, then we can apply ~insert~, ~delete~, ~update~ on
 it.  However, a view can be partially updatable under MySQL since it
 is a little bit more generous.
 
-*** IN-PROGRESS Materialized Views
-    DEADLINE: <2017-12-29 Fri>
+*** DONE Materialized Views
+    CLOSED: [2017-12-29 Fri 19:34] DEADLINE: <2017-12-29 Fri>
     :PROPERTIES:
-    :VISIBILITY: children
+    :CUSTOM_ID: materialized-views
     :END:
 
 The views discussed in the previous section are sometimes called
 virtual views.
 
-*** TODO Authorization
+Materialized views have an additional advantage:
+ * improved query performance.
+
+Materialized views
+ * View $V = \mathrm{ViewQuery}(R_1, R_2, \dotsc, R_n)$
+ * Create table $V$ with schema of query result
+ * Execute $\mathrm{ViewQuery}$ and put results in $V$
+ * Queries refer to $V$ as if it's a table
+
+But...
+ * $V$ could be very large
+ * Modifications to $R_1, R_2, \dotsc, R_n \Rightarrow$
+   - recompute or modify $V$
+
+#+BEGIN_SRC sql
+  create materialized view CA-CS as
+  select C.cName, S.sName
+  from College C, Student S, Apply A
+  where C.cName = A.cName and S.sID = A.sID
+        and C.state = 'CA' and A.major = 'CS'
+#+END_SRC
+
+ * + Can use ~CA-CS~ as if it's a table (it is!)
+ * − Modifications to base data invalidate view (cf. general
+   assertions)
+
+Modifications on modifications views?
+ * Good news: just update the stored table
+ * Bad news: base tables must stay in sync
+   + Same issues as with virtual views
+
+Picking which materialized views to create
+ + (Efficiency) benefits of a materialized view depend on:
+   * Size of data
+   * Complexity of view
+   * Number of queries using view
+   * Number of modifications affecting view
+     - Also "incremental maintenance" versus full recomputation
+
+Query-Update trade off (cf. indexes)
+
+Automatic query rewriting to use materialized views
+
+#+BEGIN_SRC sql
+  create materialized view CA-Apply as
+  select sID, cName, major
+  from Apply A
+  where cName in (select cName from College where state = 'CA')
+#+END_SRC
+
+#+BEGIN_SRC sql
+  select distinct S.sID, S.GPA
+  from College C, Student S, Apply A
+  where C.cName = A.cName and S.sID =A.sID
+        and S.GPA > 3.5 and C.state = 'CA' and A.major = 'CS'
+#+END_SRC
+
+The above query will be rewritten as something like the following.
+
+#+BEGIN_SRC sql
+  select distinct S.sID, S.GPA
+  from Student S, CA-Apply A
+  where S.sID = A.sID and S.GPA > 3.5 and A.major = 'CS'
+#+END_SRC
+
+*** DONE Authorization
+    CLOSED: [2017-12-29 Fri 21:17] DEADLINE: <2017-12-30 Sat>
+    :PROPERTIES:
+    :CUSTOM_ID: authorization
+    :END:
+Database Authorization
+ * Make sure users see only the data they're supposed to see
+ * Guard the database against modifications by malicious users
+
+Users have /privileges/ and can only operate on data for which they are
+/authorized/.
+ * ~Select on R~ or ~Select(A1, ..., An) on R~
+ * ~Insert on R~ or ~Insert(A1, ..., An) on R~
+ * ~Update on R~ or ~Update(A1, ..., An) on R~
+ * ~Delete on R~
+
+#+BEGIN_SRC sql
+  update Apply
+  set dec = 'Y'
+  where sID in (select sID from Student where GPA > 3.9)
+#+END_SRC
+
+For the above query, we need the following privileges.
+ * Apply: ~update(dec)~, ~select(sID)~
+ * Student: ~select(sID, GPA)~
+
+#+BEGIN_SRC sql
+  delete from student
+  where sID not in (select sID from Apply)
+#+END_SRC
+
+ * Student: ~delete~
+ * Apply: ~select(sID)~
+
+/Select student info for Stanford applicants only/
+
+#+BEGIN_SRC sql
+  create view SS as
+  select * from Student
+  where sID in (select sID from Apply where cName = 'Stanford')
+#+END_SRC
+
+ * SS: ~select~
+
+/Delete Berkeley applications only/
+
+#+BEGIN_SRC sql
+  create view BA as
+  select * from Apply where cName = 'Berkeley'
+#+END_SRC
+
+ * BA: ~delete~
+
+Note: Updatable views is required to provide modification privileges
+through views
+
+In fact, authorization is one of the most important uses of views in database
+systems.
+
+Obtaining Privileges
+ * Relation creator is /owner/
+ * Owner has all privileges and may /grant/ privileges
+
+#+BEGIN_SRC sql
+  grant privs on R to users
+    [with grant option]
+#+END_SRC
+
+Revoking Privileges
+
+#+BEGIN_SRC sql
+  revoke privs on R from users
+    [cascade | restrict]
+#+END_SRC
+
+Cascade: Also revoke privileges granted from privileges being revoked
+(transitively), unless also granted from antoher source.
+
+Restrict: Disallow if /Cascade/ would revoke any other
+privileges. (This is the default.)
+
 ** TODO Exercises
+   DEADLINE: <2017-12-30 Sat>
+   :PROPERTIES:
+   :CUSTOM_ID: views-and-authorization-mini-course-exercises
+   :END:
 *** TODO Views Quiz
+    :PROPERTIES:
+    :CUSTOM_ID: views-quiz
+    :END:
 *** TODO Authorization Quiz
+    :PROPERTIES:
+    :CUSTOM_ID: authorization-quiz
+    :END:
 *** TODO SQL Movie-Rating View Modification
+    :PROPERTIES:
+    :CUSTOM_ID: sql-movie-rating-view-modification
+    :END:
