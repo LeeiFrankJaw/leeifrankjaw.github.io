@@ -2,21 +2,26 @@
 #+STARTUP: inlineimages
 #+STARTUP: hideblocks
 #+TODO: TODO IN-PROGRESS DONE
-#+PROPERTY: header-args:latex :results raw :headers '("\\usepackage{tikz}") :fit yes :imagemagick yes :iminoptions -density 300 :imoutoptions -flatten
+#+PROPERTY: header-args:latex :results raw :headers '("\\usepackage{tikz}") :fit yes :imagemagick yes :iminoptions -density 300 :imoutoptions -flatten :eval never-export
 
 #+TITLE: Automata Theory
 #+AUTHOR: Lei Zhao
-#+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
-#+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
-#+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
-# #+INFOJS_OPT: view:info path:../lib/org-info.js
-#+OPTIONS: ^:{} \n:t
+#+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
+#+OPTIONS: ^:{} ':t
 
 [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/][Automata Theory]] on Lagunita
 
 * IN-PROGRESS Week 1: [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/][Finite Automata]]
+  :PROPERTIES:
+  :CUSTOM_ID: finite-automata
+  :END:
 ** DONE Course outline and motivation
    CLOSED: [2017-08-26 Sat 11:00]
+   :PROPERTIES:
+   :CUSTOM_ID: course-outline-and-motivation
+   :END:
 Automata is ranked second after database for optional courses in a
 Stanford survey of grads 5 years out.  3X the score for AI.
 
@@ -60,10 +65,13 @@ Course Outline
     - The limit of what can be computed.
   * Intractable problems.
     - Problems that (appear to) require exponential time.
-    - NP-completeness and beyound.
+    - NP-completeness and beyond.
 
 ** DONE Informal introduction to finite automata
    CLOSED: [2017-09-05 Tue 20:43]
+   :PROPERTIES:
+   :CUSTOM_ID: informal-introduction-to-finite-automata
+   :END:
 
 What is a Finite Automaton?
 
@@ -171,21 +179,22 @@ Language of an Automaton
   * The set of strings accepted by an automaton A is the /language/ of A.
   * Denoted L(A).
   * Different sets of final states → different languages.
-  * Example: As designed, L(Tennis) = strings that determins the winner.
+  * Example: As designed, L(Tennis) = strings that determines the winner.
 
-** IN-PROGRESS Deterministic Finite Automata
+** DONE Deterministic Finite Automata
+   CLOSED: [2017-12-29 Fri 13:11]
    :PROPERTIES:
-   :VISIBILITY: children
+   :CUSTOM_ID: deterministic-finite-automata
    :END:
 
 Alphabets
 
   * An /alphabet/ is any finite set of symbols.
   * Examples:
-    ASCII, Unicode,
-    {0, 1} (/binary alphabet/),
-    {a, b, c}, {s, o},
-    set of signals used by a protocol.
+    - ASCII, Unicode,
+    - {0, 1} (/binary alphabet/),
+    - {a, b, c}, {s, o},
+    - set of signals used by a protocol.
 
 
 Strings
@@ -210,7 +219,7 @@ Languages
   * Example: The set of string of 0s and 1s with no two consecutive 1s.
   * L = {ε, 0, 1, 00, 01, 10, 000, 001, 010, 100, 101, 0000,
     0001, 0010, 0100, 0101, 1000, 1001, 1010, ...}
-    Fibonacci sequence hides here.
+    - Fibonacci sequence hides here.
 
 
 Deterministic Finite Automata
@@ -219,7 +228,7 @@ Deterministic Finite Automata
     consisting of:
     1. A finite set of /states/ (Q, typically).
     2. An /input alphabet/ (Σ, typically).
-    3. A /transition function/ (\delta, typically).
+    3. A /transition function/ (δ, typically).
     4. A /start state/ (q_{0}, in Q, typically).
     5. A set of /final states/ (F \subset Q, typically).
        + "Final" and "accepting" are synonyms.
@@ -228,7 +237,7 @@ Deterministic Finite Automata
 The Transition Function
 
   * Takes two arguments: a state and an input symbol.
-  * \delta(q, a) = the state that the DFA goes to when it is in state
+  * δ(q, a) = the state that the DFA goes to when it is in state
     q and input a is received.
   * Note: always a next state - add a /dead state/ if no transition
 
@@ -266,6 +275,7 @@ Graph Representation of DFAs
 \end{tikzpicture}
 #+END_SRC
 
+#+CAPTION: Recognizing strings ending in "ing"
 #+ATTR_HTML: :width 600px
 #+RESULTS:
 [[file:ing.png]]
@@ -285,6 +295,7 @@ Graph Representation of DFAs
 \end{tikzpicture}
 #+END_SRC
 
+#+CAPTION: Protocol for sending data
 #+ATTR_HTML: :width 500px
 #+RESULTS:
 [[file:send.png]]
@@ -311,12 +322,14 @@ C: Consecutive 1s have been seen.
 \end{tikzpicture}
 #+END_SRC
 
+#+CAPTION: Strings without two consecutive 1s
+#+NAME: img:strings
 #+ATTR_HTML: :width 500px
 #+RESULTS:
 [[file:strings.png]]
 
 
-ALternative Representation: Transition Table
+Alternative Representation: Transition Table
 
 |       |   | 0 | 1 |
 |-------+---+---+---|
@@ -325,3 +338,107 @@ ALternative Representation: Transition Table
 |       | C | C | C |
 |-------+---+---+---|
 
+Convention: Strings and Symbols
+  * ... w, x, y, z are strings.
+  * a, b, c, ... are single input symbols.
+
+Extended Transition Function
+  * We describe the effect of a string of inputs on a DFA by extending
+    δ to a state and a string.
+  * Intuition: Extended δ is computed for state q and inputs
+    a_{1}a_{2}...a_{n} by following a path in the transition graph,
+    starting at q and selecting the arcs with labels a_{1}, a_{2},
+    ..., a_{n} in turn.
+
+Inductive Definition of Extended δ
+  * Induction on length of string.
+  * Basis: δ(q, ε) = q
+  * Induction: δ(q, wa) = δ(δ(q, w), a)
+    * Remember: w is a string; a is an input symbol, by convention.
+
+Delta-hat
+  * We don't distinguish between the given delta and the extended
+    delta or delta-hat.
+  * The reason:
+    $\hat\delta(q, a) = \delta(\hat\delta(q, \epsilon), a) = \delta(q, a)$
+
+Language of a DFA
+  * Automata of all kinds define languages.
+  * If A is an automaton, L(A) is its language.
+  * For a DFA A, L(A) is the set of strings labeling paths from the
+    start state to a final state.
+  * Formally: L(A) = the set of strings w such that δ(q_{0}, w) is in F.
+  
+Example: String in a Language
+  * String 101 is in the language of the string [[img:strings][DFA]].
+  * The language of this DFA is:
+    - {w | w is in {0, 1}^{*} and w does not have two consecutive 1s}
+
+Proofs of Set Equivalence
+  * Often, we need to prove that two descriptions of sets are in fact
+    the same set
+  * Here, one set is "the language of this DFA," and the other is "the
+    set of strings of 0s and 1s with no consecutive 1s."
+
+Regular Languages
+  * A language L is /regular/ if it is the language accepted by some DFA.
+    * Note: the DFA must accept only the strings in L, no others.
+  * Some languages are not regular.
+    * Intuitively, regular languages "cannot count" to arbitrarily
+      high integers.
+
+Example: A Nonregular Language
+  * L_{1} = {0^{n}1^{n} | n ≥ 1}
+  * Note: a^{i} is conventional for i a's.
+    * Thus, 0^{4} = 0000, e.g.
+  * Read: The set of strings consisting of n 0s followed by n 1s,
+    such that n is at least 1.
+  * Thus, L_{1} = {01, 0011, 000111, ...}
+
+Another Example
+  * L_{2} = {w | w in {(, )}^{*} and w is /balanced/}
+  * Balanced parentheses are those sequences of parentheses that can
+    appear in an arithmetic expression.
+  * E.g., (), ()(), (()), (()()), ...
+
+But Many Languages are Regular
+  * They appear in many contexts and have many useful properties.
+  * Example: the strings that represent floating point numbers in your
+    favorite language is a regular language.
+
+Example: A Regular Language
+  * L_{3} = {w | w in {0, 1}^{*} and w, viewed as a binary integer, is
+    divisible by 23}
+  * The DFA:
+    * 23 states, named 0, 1, ..., 22.
+    * Correspond to the 23 remainders of an integer divided by 23.
+    * Start and only final state is 0.
+    * If string w represents integer i, then assume δ(0, w) = i % 23.
+    * Then w0 represents integer 2i, so we want δ(i%23, 0) = (2i) % 23.
+    * Similarly, w1 represents 2i+1, so we want δ(i%23, 1) =
+      (2i+1) % 23.
+      - Just let δ(q, a) = (2q+a) % 23.
+    * Example: δ(15, 0) = 30%23 = 7; δ(11, 1) = 23%23 = 0.
+
+Another Exapmle
+  * L_{4} = {w | w in {0, 1}^{*} and w, viewed as the reverse of a
+    binary integer, is divisible by 23}
+  * Example: 01110100 is in L_{4}, because its reverse, 00101110, is
+    46 in decimal.
+  * Hard to construct the DFA.
+  * But there is a theorem that says the reverse of a regular language
+    is also regular.
+
+** TODO Nondeterministic finite automata
+   DEADLINE: <2017-12-30 Sat>
+   :PROPERTIES:
+   :CUSTOM_ID: nondeterministic-finite-automata
+   :VISIBILITY: children
+   :END:
+
+** TODO Finite Automata Homework
+   DEADLINE: <2017-12-31 Sun>
+
+** TODO Challenge Problem 1
+
+** TODO Problem Session 1

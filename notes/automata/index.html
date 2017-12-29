@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-09-07 Thu 23:39 -->
+<!-- 2017-12-29 Fri 14:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Automata Theory</title>
@@ -180,9 +180,9 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
-<link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
-<script type="text/javascript" src="../src/post.js"></script>
+<link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
+<link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
+<script type="text/javascript" src="../../src/post.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -229,6 +229,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -237,307 +259,318 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6cf4fd6">1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: Finite Automata</a>
+<li><a href="#finite-automata">1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: Finite Automata</a>
 <ul>
-<li><a href="#org6d9c74c">1.1. <span class="done DONE">DONE</span> Course outline and motivation</a></li>
-<li><a href="#org004f2be">1.2. <span class="done DONE">DONE</span> Informal introduction to finite automata</a></li>
-<li><a href="#org48dd0ad">1.3. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Deterministic Finite Automata</a></li>
+<li><a href="#course-outline-and-motivation">1.1. <span class="done DONE">DONE</span> Course outline and motivation</a></li>
+<li><a href="#informal-introduction-to-finite-automata">1.2. <span class="done DONE">DONE</span> Informal introduction to finite automata</a></li>
+<li><a href="#deterministic-finite-automata">1.3. <span class="done DONE">DONE</span> Deterministic Finite Automata</a></li>
+<li><a href="#nondeterministic-finite-automata">1.4. <span class="todo TODO">TODO</span> Nondeterministic finite automata</a></li>
+<li><a href="#org5ec0608">1.5. <span class="todo TODO">TODO</span> Finite Automata Homework</a></li>
+<li><a href="#org189924e">1.6. <span class="todo TODO">TODO</span> Challenge Problem 1</a></li>
+<li><a href="#org6fabb61">1.7. <span class="todo TODO">TODO</span> Problem Session 1</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <p>
-<a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/">Automata Theory</a> on Lagunita<br />
+<a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/">Automata Theory</a> on Lagunita
 </p>
 
-<div id="outline-container-org6cf4fd6" class="outline-2">
-<h2 id="org6cf4fd6"><span class="section-number-2">1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org14b50c8" class="outline-2">
+<h2 id="finite-automata"><a id="org14b50c8"></a><span class="section-number-2">1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
+<div class="outline-text-2" id="text-finite-automata">
 </div>
-<div id="outline-container-org6d9c74c" class="outline-3">
-<h3 id="org6d9c74c"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Course outline and motivation</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org1ab171c" class="outline-3">
+<h3 id="course-outline-and-motivation"><a id="org1ab171c"></a><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Course outline and motivation</h3>
+<div class="outline-text-3" id="text-course-outline-and-motivation">
 <p>
-Automata is ranked second after database for optional courses in a<br />
-Stanford survey of grads 5 years out.  3X the score for AI.<br />
+Automata is ranked second after database for optional courses in a
+Stanford survey of grads 5 years out.  3X the score for AI.
 </p>
 
 <ul class="org-ul">
-<li>Regular expressions are used in many systems.<br />
+<li>Regular expressions are used in many systems.
 <ul class="org-ul">
-<li>UNIX a.*b.<br /></li>
-<li>DTD describe XML tags with a RE format like<br />
-<code>person(name, addr, child*)</code>.<br /></li>
+<li>UNIX a.*b.</li>
+<li>DTD describe XML tags with a RE format like
+<code>person(name, addr, child*)</code>.</li>
 </ul></li>
-<li>Finite automata model protocols, electronic circuits.<br /></li>
-<li>Context-free grammars are used to describe the syntax of<br />
-essentially every programming language.<br />
+<li>Finite automata model protocols, electronic circuits.</li>
+<li>Context-free grammars are used to describe the syntax of
+essentially every programming language.
 <ul class="org-ul">
-<li>Not to forget their important role in describing natural<br />
-languages.<br /></li>
+<li>Not to forget their important role in describing natural
+languages.</li>
 </ul></li>
-<li>And DTD taken as a whole, are really CFGs.<br /></li>
-<li>When developing solutions to real problems, we often confront the<br />
-limitations of what software can do.<br />
+<li>And DTD taken as a whole, are really CFGs.</li>
+<li>When developing solutions to real problems, we often confront the
+limitations of what software can do.
 <ul class="org-ul">
-<li><i>Undecidable</i> things - no program whatever can do it.<br /></li>
-<li><i>Intractable</i> things - there are programs, but no fast programs.<br /></li>
+<li><i>Undecidable</i> things - no program whatever can do it.</li>
+<li><i>Intractable</i> things - there are programs, but no fast programs.</li>
 </ul></li>
-<li>Automata theory gives you the tools.<br /></li>
+<li>Automata theory gives you the tools.</li>
 </ul>
 
 <p>
-Other Good Stuff<br />
+Other Good Stuff
 </p>
 
 <ul class="org-ul">
-<li>We'll learn how to deal formally with discrete systems.<br />
+<li>We&rsquo;ll learn how to deal formally with discrete systems.
 <ul class="org-ul">
-<li>Proofs: You never really prove a program correct, but you need<br />
-to be thinking of why a tricky technique really works.<br /></li>
+<li>Proofs: You never really prove a program correct, but you need
+to be thinking of why a tricky technique really works.</li>
 </ul></li>
-<li>We'll gain experience with abstract models and constructions.<br />
+<li>We&rsquo;ll gain experience with abstract models and constructions.
 <ul class="org-ul">
-<li>Models layered software architectures.<br /></li>
+<li>Models layered software architectures.</li>
 </ul></li>
 </ul>
 
 <p>
-Course Outline<br />
+Course Outline
 </p>
 
 <ul class="org-ul">
-<li>Regular Languages and their descriptors:<br />
+<li>Regular Languages and their descriptors:
 <ul class="org-ul">
-<li>Finite automata, nondeterministic finite automata, regular<br />
-expressions.<br /></li>
-<li>Algorithms to decide questions about regular languages, e.g., is<br />
-it empty?<br /></li>
-<li>Closure properties of regular languages.<br /></li>
+<li>Finite automata, nondeterministic finite automata, regular
+expressions.</li>
+<li>Algorithms to decide questions about regular languages, e.g., is
+it empty?</li>
+<li>Closure properties of regular languages.</li>
 </ul></li>
-<li>Context-free languages and their descriptors:<br />
+<li>Context-free languages and their descriptors:
 <ul class="org-ul">
-<li>Context-free grammars, pushdown automata.<br /></li>
-<li>Decision and closure properties.<br /></li>
+<li>Context-free grammars, pushdown automata.</li>
+<li>Decision and closure properties.</li>
 </ul></li>
-<li>Recursive and recursively enumerable languages.<br />
+<li>Recursive and recursively enumerable languages.
 <ul class="org-ul">
-<li>Turing machines, decidability of problems.<br /></li>
-<li>The limit of what can be computed.<br /></li>
+<li>Turing machines, decidability of problems.</li>
+<li>The limit of what can be computed.</li>
 </ul></li>
-<li>Intractable problems.<br />
+<li>Intractable problems.
 <ul class="org-ul">
-<li>Problems that (appear to) require exponential time.<br /></li>
-<li>NP-completeness and beyound.<br /></li>
+<li>Problems that (appear to) require exponential time.</li>
+<li>NP-completeness and beyond.</li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org004f2be" class="outline-3">
-<h3 id="org004f2be"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Informal introduction to finite automata</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org2abc2da" class="outline-3">
+<h3 id="informal-introduction-to-finite-automata"><a id="org2abc2da"></a><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Informal introduction to finite automata</h3>
+<div class="outline-text-3" id="text-informal-introduction-to-finite-automata">
 <p>
-What is a Finite Automaton?<br />
+What is a Finite Automaton?
 </p>
 
 <ul class="org-ul">
-<li>A formal system.<br /></li>
-<li>Remembers only a finite amount of information.<br /></li>
-<li>Information represented by its <i>state</i>.<br /></li>
-<li>State changes in response to <i>inputs</i>.<br /></li>
-<li>Rules that tell how the state changes in response to inputs are<br />
-called <i>transitions</i>.<br /></li>
+<li>A formal system.</li>
+<li>Remembers only a finite amount of information.</li>
+<li>Information represented by its <i>state</i>.</li>
+<li>State changes in response to <i>inputs</i>.</li>
+<li>Rules that tell how the state changes in response to inputs are
+called <i>transitions</i>.</li>
 </ul>
 
 
 <p>
-Tennis<br />
+Tennis
 </p>
 
 <ul class="org-ul">
-<li><i>Match</i> = 3-5 sets.<br /></li>
-<li><i>Set</i> = 6 or more games.<br /></li>
+<li><i>Match</i> = 3-5 sets.</li>
+<li><i>Set</i> = 6 or more games.</li>
 </ul>
 
 <p>
-Scoring a Game<br />
+Scoring a Game
 </p>
 
 <ul class="org-ul">
-<li>One person serves throughout.<br /></li>
-<li>To win, you must score at least 4 points.<br /></li>
-<li>You also must win by at least 2 points.<br /></li>
-<li>Inputs are s = "server wins point" and o = "opponent wins point."<br /></li>
+<li>One person serves throughout.</li>
+<li>To win, you must score at least 4 points.</li>
+<li>You also must win by at least 2 points.</li>
+<li>Inputs are s = &ldquo;server wins point&rdquo; and o = &ldquo;opponent wins point.&rdquo;</li>
 </ul>
 
 
 
 <div class="figure">
-<p><img src="tennis.png" alt="tennis.png" width="800px" /><br />
+<p><img src="tennis.png" alt="tennis.png" width="800px" />
 </p>
 </div>
 
 
 <p>
-Acceptance of Inputs<br />
+Acceptance of Inputs
 </p>
 
 <ul class="org-ul">
-<li>Given a sequence of inputs (<i>input string</i>), start in the start<br />
-state and follow the transition from each symbol in turn.<br /></li>
-<li>Input is <i>accepted</i> if you wind up in a final (accepting) state<br />
-after all inputs have been read.<br /></li>
+<li>Given a sequence of inputs (<i>input string</i>), start in the start
+state and follow the transition from each symbol in turn.</li>
+<li>Input is <i>accepted</i> if you wind up in a final (accepting) state
+after all inputs have been read.</li>
 </ul>
 
 <p>
-Language of an Automaton<br />
+Language of an Automaton
 </p>
 
 <ul class="org-ul">
-<li>The set of strings accepted by an automaton A is the <i>language</i> of A.<br /></li>
-<li>Denoted L(A).<br /></li>
-<li>Different sets of final states → different languages.<br /></li>
-<li>Example: As designed, L(Tennis) = strings that determins the winner.<br /></li>
+<li>The set of strings accepted by an automaton A is the <i>language</i> of A.</li>
+<li>Denoted L(A).</li>
+<li>Different sets of final states → different languages.</li>
+<li>Example: As designed, L(Tennis) = strings that determines the winner.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org48dd0ad" class="outline-3">
-<h3 id="org48dd0ad"><span class="section-number-3">1.3</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Deterministic Finite Automata</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orge17dcb0" class="outline-3">
+<h3 id="deterministic-finite-automata"><a id="orge17dcb0"></a><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> Deterministic Finite Automata</h3>
+<div class="outline-text-3" id="text-deterministic-finite-automata">
 <p>
-Alphabets<br />
+Alphabets
 </p>
 
 <ul class="org-ul">
-<li>An <i>alphabet</i> is any finite set of symbols.<br /></li>
-<li>Examples:<br />
-ASCII, Unicode,<br />
-{0, 1} (<i>binary alphabet</i>),<br />
-{a, b, c}, {s, o},<br />
-set of signals used by a protocol.<br /></li>
-</ul>
-
-
-<p>
-Strings<br />
-</p>
-
+<li>An <i>alphabet</i> is any finite set of symbols.</li>
+<li>Examples:
 <ul class="org-ul">
-<li>A <i>string</i> over an alphabet Σ is a list, each element of<br />
-which is a member of Σ.<br />
-<ul class="org-ul">
-<li>Strings shown with no commas or quotes, e.g., abc or 01101.<br /></li>
-</ul></li>
-<li>Σ<sup>*</sup> = set of all strings over alphabet Σ.<br /></li>
-<li>The <i>length</i> of a string is its number of positions.<br /></li>
-<li>ε stands for the <i>empty string</i> (string of length 0).<br /></li>
-</ul>
-
-<p>
-Example: Strings<br />
-</p>
-
-<ul class="org-ul">
-<li>{0, 1}<sup>*</sup> = {ε, 0, 1, 00, 01, 10, 11, 000, 001, &#x2026;}<br /></li>
-<li>Subtlety: 0 as a string, 0 as a symbol look the same.<br />
-<ul class="org-ul">
-<li>Context determines the type.<br /></li>
+<li>ASCII, Unicode,</li>
+<li>{0, 1} (<i>binary alphabet</i>),</li>
+<li>{a, b, c}, {s, o},</li>
+<li>set of signals used by a protocol.</li>
 </ul></li>
 </ul>
 
 
 <p>
-Languages<br />
+Strings
 </p>
 
 <ul class="org-ul">
-<li>A <i>language</i> is a subset of Σ<sup>*</sup> for some alphabet Σ.<br /></li>
-<li>Example: The set of string of 0s and 1s with no two consecutive 1s.<br /></li>
-<li>L = {ε, 0, 1, 00, 01, 10, 000, 001, 010, 100, 101, 0000,<br />
-0001, 0010, 0100, 0101, 1000, 1001, 1010, &#x2026;}<br />
-Fibonacci sequence hides here.<br /></li>
+<li>A <i>string</i> over an alphabet Σ is a list, each element of
+which is a member of Σ.
+<ul class="org-ul">
+<li>Strings shown with no commas or quotes, e.g., abc or 01101.</li>
+</ul></li>
+<li>Σ<sup>*</sup> = set of all strings over alphabet Σ.</li>
+<li>The <i>length</i> of a string is its number of positions.</li>
+<li>ε stands for the <i>empty string</i> (string of length 0).</li>
+</ul>
+
+<p>
+Example: Strings
+</p>
+
+<ul class="org-ul">
+<li>{0, 1}<sup>*</sup> = {ε, 0, 1, 00, 01, 10, 11, 000, 001, &#x2026;}</li>
+<li>Subtlety: 0 as a string, 0 as a symbol look the same.
+<ul class="org-ul">
+<li>Context determines the type.</li>
+</ul></li>
 </ul>
 
 
 <p>
-Deterministic Finite Automata<br />
+Languages
 </p>
 
 <ul class="org-ul">
-<li>A formalism for defining languages,<br />
-consisting of:<br />
+<li>A <i>language</i> is a subset of Σ<sup>*</sup> for some alphabet Σ.</li>
+<li>Example: The set of string of 0s and 1s with no two consecutive 1s.</li>
+<li>L = {ε, 0, 1, 00, 01, 10, 000, 001, 010, 100, 101, 0000,
+0001, 0010, 0100, 0101, 1000, 1001, 1010, &#x2026;}
+<ul class="org-ul">
+<li>Fibonacci sequence hides here.</li>
+</ul></li>
+</ul>
+
+
+<p>
+Deterministic Finite Automata
+</p>
+
+<ul class="org-ul">
+<li>A formalism for defining languages,
+consisting of:
 <ol class="org-ol">
-<li>A finite set of <i>states</i> (Q, typically).<br /></li>
-<li>An <i>input alphabet</i> (Σ, typically).<br /></li>
-<li>A <i>transition function</i> (&delta;, typically).<br /></li>
-<li>A <i>start state</i> (q<sub>0</sub>, in Q, typically).<br /></li>
-<li>A set of <i>final states</i> (F &sub; Q, typically).<br />
+<li>A finite set of <i>states</i> (Q, typically).</li>
+<li>An <i>input alphabet</i> (Σ, typically).</li>
+<li>A <i>transition function</i> (δ, typically).</li>
+<li>A <i>start state</i> (q<sub>0</sub>, in Q, typically).</li>
+<li>A set of <i>final states</i> (F &sub; Q, typically).
 <ul class="org-ul">
-<li>"Final" and "accepting" are synonyms.<br /></li>
+<li>&ldquo;Final&rdquo; and &ldquo;accepting&rdquo; are synonyms.</li>
 </ul></li>
 </ol></li>
 </ul>
 
 
 <p>
-The Transition Function<br />
+The Transition Function
 </p>
 
 <ul class="org-ul">
-<li>Takes two arguments: a state and an input symbol.<br /></li>
-<li>&delta;(q, a) = the state that the DFA goes to when it is in state<br />
-q and input a is received.<br /></li>
-<li>Note: always a next state - add a <i>dead state</i> if no transition<br /></li>
+<li>Takes two arguments: a state and an input symbol.</li>
+<li>δ(q, a) = the state that the DFA goes to when it is in state
+q and input a is received.</li>
+<li>Note: always a next state - add a <i>dead state</i> if no transition</li>
 </ul>
 
 
 <p>
-Graph Representation of DFAs<br />
+Graph Representation of DFAs
 </p>
 
 <ul class="org-ul">
-<li>Nodes = states.<br /></li>
-<li>Arcs represent transition function.<br />
+<li>Nodes = states.</li>
+<li>Arcs represent transition function.
 <ul class="org-ul">
-<li>Arc from state p to state q labeled by all those input symbols<br />
-that have transitions from p to q.<br /></li>
+<li>Arc from state p to state q labeled by all those input symbols
+that have transitions from p to q.</li>
 </ul></li>
-<li>Arrow labeled "Start" to the start state.<br /></li>
-<li>Final states indicated by double circles.<br /></li>
+<li>Arrow labeled &ldquo;Start&rdquo; to the start state.</li>
+<li>Final states indicated by double circles.</li>
 </ul>
 
 
 <div class="figure">
-<p><img src="ing.png" alt="ing.png" width="600px" /><br />
+<p><img src="ing.png" alt="ing.png" width="600px" />
 </p>
+<p><span class="figure-number">Figure 2: </span>Recognizing strings ending in &ldquo;ing&rdquo;</p>
 </div>
 
 
 
 <div class="figure">
-<p><img src="send.png" alt="send.png" width="500px" /><br />
+<p><img src="send.png" alt="send.png" width="500px" />
 </p>
+<p><span class="figure-number">Figure 3: </span>Protocol for sending data</p>
 </div>
 
 
 <p>
-A: String so far has no 11, does not end in 1.<br />
-B: String so far has no 11, but ends in a single 1.<br />
-C: Consecutive 1s have been seen.<br />
+A: String so far has no 11, does not end in 1.
+B: String so far has no 11, but ends in a single 1.
+C: Consecutive 1s have been seen.
 </p>
 
 
-<div class="figure">
-<p><img src="strings.png" alt="strings.png" width="500px" /><br />
+<div id="org4f39cc9" class="figure">
+<p><img src="strings.png" alt="strings.png" width="500px" />
 </p>
+<p><span class="figure-number">Figure 4: </span>Strings without two consecutive 1s</p>
 </div>
 
 
 <p>
-ALternative Representation: Transition Table<br />
+Alternative Representation: Transition Table
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -583,13 +616,190 @@ ALternative Representation: Transition Table<br />
 </tr>
 </tbody>
 </table>
+
+<p>
+Convention: Strings and Symbols
+</p>
+<ul class="org-ul">
+<li>&#x2026; w, x, y, z are strings.</li>
+<li>a, b, c, &#x2026; are single input symbols.</li>
+</ul>
+
+<p>
+Extended Transition Function
+</p>
+<ul class="org-ul">
+<li>We describe the effect of a string of inputs on a DFA by extending
+δ to a state and a string.</li>
+<li>Intuition: Extended δ is computed for state q and inputs
+a<sub>1</sub>a<sub>2</sub>&#x2026;a<sub>n</sub> by following a path in the transition graph,
+starting at q and selecting the arcs with labels a<sub>1</sub>, a<sub>2</sub>,
+&#x2026;, a<sub>n</sub> in turn.</li>
+</ul>
+
+<p>
+Inductive Definition of Extended δ
+</p>
+<ul class="org-ul">
+<li>Induction on length of string.</li>
+<li>Basis: δ(q, ε) = q</li>
+<li>Induction: δ(q, wa) = δ(δ(q, w), a)
+<ul class="org-ul">
+<li>Remember: w is a string; a is an input symbol, by convention.</li>
+</ul></li>
+</ul>
+
+<p>
+Delta-hat
+</p>
+<ul class="org-ul">
+<li>We don&rsquo;t distinguish between the given delta and the extended
+delta or delta-hat.</li>
+<li>The reason:
+\(\hat\delta(q, a) = \delta(\hat\delta(q, \epsilon), a) = \delta(q, a)\)</li>
+</ul>
+
+<p>
+Language of a DFA
+</p>
+<ul class="org-ul">
+<li>Automata of all kinds define languages.</li>
+<li>If A is an automaton, L(A) is its language.</li>
+<li>For a DFA A, L(A) is the set of strings labeling paths from the
+start state to a final state.</li>
+<li>Formally: L(A) = the set of strings w such that δ(q<sub>0</sub>, w) is in F.</li>
+</ul>
+
+<p>
+Example: String in a Language
+</p>
+<ul class="org-ul">
+<li>String 101 is in the language of the string <a href="#org4f39cc9">DFA</a>.</li>
+<li>The language of this DFA is:
+<ul class="org-ul">
+<li>{w | w is in {0, 1}<sup>*</sup> and w does not have two consecutive 1s}</li>
+</ul></li>
+</ul>
+
+<p>
+Proofs of Set Equivalence
+</p>
+<ul class="org-ul">
+<li>Often, we need to prove that two descriptions of sets are in fact
+the same set</li>
+<li>Here, one set is &ldquo;the language of this DFA,&rdquo; and the other is &ldquo;the
+set of strings of 0s and 1s with no consecutive 1s.&rdquo;</li>
+</ul>
+
+<p>
+Regular Languages
+</p>
+<ul class="org-ul">
+<li>A language L is <i>regular</i> if it is the language accepted by some DFA.
+<ul class="org-ul">
+<li>Note: the DFA must accept only the strings in L, no others.</li>
+</ul></li>
+<li>Some languages are not regular.
+<ul class="org-ul">
+<li>Intuitively, regular languages &ldquo;cannot count&rdquo; to arbitrarily
+high integers.</li>
+</ul></li>
+</ul>
+
+<p>
+Example: A Nonregular Language
+</p>
+<ul class="org-ul">
+<li>L<sub>1</sub> = {0<sup>n</sup>1<sup>n</sup> | n ≥ 1}</li>
+<li>Note: a<sup>i</sup> is conventional for i a&rsquo;s.
+<ul class="org-ul">
+<li>Thus, 0<sup>4</sup> = 0000, e.g.</li>
+</ul></li>
+<li>Read: The set of strings consisting of n 0s followed by n 1s,
+such that n is at least 1.</li>
+<li>Thus, L<sub>1</sub> = {01, 0011, 000111, &#x2026;}</li>
+</ul>
+
+<p>
+Another Example
+</p>
+<ul class="org-ul">
+<li>L<sub>2</sub> = {w | w in {(, )}<sup>*</sup> and w is <i>balanced</i>}</li>
+<li>Balanced parentheses are those sequences of parentheses that can
+appear in an arithmetic expression.</li>
+<li>E.g., (), ()(), (()), (()()), &#x2026;</li>
+</ul>
+
+<p>
+But Many Languages are Regular
+</p>
+<ul class="org-ul">
+<li>They appear in many contexts and have many useful properties.</li>
+<li>Example: the strings that represent floating point numbers in your
+favorite language is a regular language.</li>
+</ul>
+
+<p>
+Example: A Regular Language
+</p>
+<ul class="org-ul">
+<li>L<sub>3</sub> = {w | w in {0, 1}<sup>*</sup> and w, viewed as a binary integer, is
+divisible by 23}</li>
+<li>The DFA:
+<ul class="org-ul">
+<li>23 states, named 0, 1, &#x2026;, 22.</li>
+<li>Correspond to the 23 remainders of an integer divided by 23.</li>
+<li>Start and only final state is 0.</li>
+<li>If string w represents integer i, then assume δ(0, w) = i % 23.</li>
+<li>Then w0 represents integer 2i, so we want δ(i%23, 0) = (2i) % 23.</li>
+<li>Similarly, w1 represents 2i+1, so we want δ(i%23, 1) =
+(2i+1) % 23.
+<ul class="org-ul">
+<li>Just let δ(q, a) = (2q+a) % 23.</li>
+</ul></li>
+<li>Example: δ(15, 0) = 30%23 = 7; δ(11, 1) = 23%23 = 0.</li>
+</ul></li>
+</ul>
+
+<p>
+Another Exapmle
+</p>
+<ul class="org-ul">
+<li>L<sub>4</sub> = {w | w in {0, 1}<sup>*</sup> and w, viewed as the reverse of a
+binary integer, is divisible by 23}</li>
+<li>Example: 01110100 is in L<sub>4</sub>, because its reverse, 00101110, is
+46 in decimal.</li>
+<li>Hard to construct the DFA.</li>
+<li>But there is a theorem that says the reverse of a regular language
+is also regular.</li>
+</ul>
 </div>
+</div>
+
+<div id="outline-container-org4a789dd" class="outline-3">
+<h3 id="nondeterministic-finite-automata"><a id="org4a789dd"></a><span class="section-number-3">1.4</span> <span class="todo TODO">TODO</span> Nondeterministic finite automata</h3>
+<div class="outline-text-3" id="text-nondeterministic-finite-automata">
+</div>
+</div>
+
+<div id="outline-container-org5ec0608" class="outline-3">
+<h3 id="org5ec0608"><span class="section-number-3">1.5</span> <span class="todo TODO">TODO</span> Finite Automata Homework</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+</div>
+
+<div id="outline-container-org189924e" class="outline-3">
+<h3 id="org189924e"><span class="section-number-3">1.6</span> <span class="todo TODO">TODO</span> Challenge Problem 1</h3>
+</div>
+
+<div id="outline-container-org6fabb61" class="outline-3">
+<h3 id="org6fabb61"><span class="section-number-3">1.7</span> <span class="todo TODO">TODO</span> Problem Session 1</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2017-09-07 Thu 23:39</p>
+<p class="date">Created: 2017-12-29 Fri 14:13</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

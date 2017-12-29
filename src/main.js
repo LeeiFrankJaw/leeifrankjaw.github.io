@@ -132,7 +132,7 @@ var LISTING = [
                 "type": "file",
                 "name": "automata",
                 "title": "Automata Theory",
-                "author_date": "2017-12-09T21:12:05.916660+08:00"
+                "author_date": "2017-12-29T14:13:02.188152+08:00"
             }
         ]
     }
@@ -248,10 +248,12 @@ function newWritingList(entry) {
     newTr(["Title", "Last Modified"], thead, true);
     var tbody = newElement("tbody", table);
     for (var i = 0; i < contents.length; i++) {
-        newTr([newAnchor(["", entry.name, contents[i].name].join("/"),
-                         null, contents[i].title),
-               new Date(contents[i].author_date).toEnUSDateString()],
-              tbody);
+        if (contents[i].type === "file") {
+            newTr([newAnchor(["", entry.name, contents[i].name].join("/"),
+                             null, contents[i].title),
+                   new Date(contents[i].author_date).toEnUSDateString()],
+                  tbody);
+        }
     }
     return table;
 }

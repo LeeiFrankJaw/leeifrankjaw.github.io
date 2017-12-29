@@ -100,10 +100,12 @@ function newWritingList(entry) {
     newTr(["Title", "Last Modified"], thead, true);
     var tbody = newElement("tbody", table);
     for (var i = 0; i < contents.length; i++) {
-        newTr([newAnchor(["", entry.name, contents[i].name].join("/"),
-                         null, contents[i].title),
-               new Date(contents[i].author_date).toEnUSDateString()],
-              tbody);
+        if (contents[i].type === "file") {
+            newTr([newAnchor(["", entry.name, contents[i].name].join("/"),
+                             null, contents[i].title),
+                   new Date(contents[i].author_date).toEnUSDateString()],
+                  tbody);
+        }
     }
     return table;
 }
