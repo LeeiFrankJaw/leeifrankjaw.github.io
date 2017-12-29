@@ -45,6 +45,11 @@ def get_title(path):
     return ' '.join(lxml.html.parse(path).xpath('string(//title)').split())
 
 
+def sort_by_author_date(contents):
+    # ISO 8601 supports lexicographical sorting
+    contents.sort(key=lambda x: x['author_date'], reverse=True)
+
+
 walker = os.walk('.')
 dirpath, dirnames, filenames = next(walker)
 ignore(dirnames)
@@ -54,6 +59,7 @@ listing = []
 for dirpath, dirnames, filenames in walker:
     # ignore(dirnames)
     pathsegs = dirpath.split('/')[1:]
+    updir = get_dir(listing, pathsegs[:-1])
     contents = []
     for name in filenames:
         if name.endswith('.html'):
@@ -68,11 +74,11 @@ for dirpath, dirnames, filenames in walker:
                 contents.append(entry)
             else:
                 entry['name'] = pathsegs[-1]
-                get_dir(listing, pathsegs[:-1]).append(entry)
+                updir.append(entry)
+                sort_by_author_date(contents)
     if contents:
-        # ISO 8601 supports lexicographical sorting
-        contents.sort(key=lambda x: x['author_date'], reverse=True)
-        get_dir(listing, pathsegs[:-1]).append({
+        sort_by_author_date(contents)
+        updir.append({
             'type': 'directory',
             'name': pathsegs[-1],
             'contents': contents

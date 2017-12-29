@@ -5,7 +5,6 @@
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
-# #+INFOJS_OPT: view:info path:../lib/org-info.js
 #+OPTIONS: ^:nil \n:t
 
 [[https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about][Database]] on Lagunita
@@ -2044,7 +2043,7 @@ Automatic decomposition
 
 Properties and Normal Forms
  * Functional dependencies $\Rightarrow$ Boyce-Codd Normal Form
- * + Multivalued dependencies $\Rightarrow$ Fourth Normal Form
+ * Multivalued dependencies $\Rightarrow$ Fourth Normal Form
 
 4NF $\subset$ BCNF
 
@@ -2087,115 +2086,110 @@ Multivalued Dependencies and 4NF
     :PROPERTIES:
     :CUSTOM_ID: functional-dependencies
     :END:
-Functional dependencies => Boyce-Codd Normal Form
-Multivalued dependencies => Fourth Normal Form
-
 Functional dependencies are generally useful concepts
-  Data storage - compression
-  Reasoning about queries - optimization
+ * Data storage - compression
+ * Reasoning about queries - optimization
 
 Functional dependencies generalizes keys.
 
-Student(SS, sName, address,
-        HScode, HSname, HScity, GPA, priority)
+#+BEGIN_EXAMPLE
+Student(SS, sName, address, HScode, HSname, HScity, GPA, priority)
+#+END_EXAMPLE
 
 Suppose priority is determined by GPA
 
 Two tuples with same GPA have same priority
 
-for t, u in student:
-    t.GPA = u.GPA => t.priority = u.priority
+\[\forall t, u \in \mathrm{Student}\colon\,
+  t.\mathrm{GPA} = u.\mathrm{GPA} \Rightarrow t.\mathrm{priority} = u.\mathrm{priority}\]
 
-GPA -> priority
+GPA $\rightarrow$ priority
 
-for t, u in R:
-    t[A1, ..., An] = u[A1, ..., An] => t[B1, ..., Bn] = u[B1, ..., Bn]
+\[\forall t, u \in R\colon\,
+  t[A_1, \dotsc, A_n] = u[A_1, \dotsc, A_n] \Rightarrow t[B_1, \dotsc, B_n] = u[B_1, \dotsc, B_n]\]
 
-A1, ..., An -> B1, ..., Bn
+$A_1, \dotsc, A_n \rightarrow B_1, \dotsc, B_n$
 
-\bar{A} -> \bar{B}
+$\bar{A} \rightarrow \bar{B}$
 
-SSN -> sName
-SSN -> address (assume students don't work)
-HScode -> HSname, HScity
-HSname, HScity -> HScode (assume no schools with same name in the same city)
+ * SSN $\rightarrow$ sName
+ * SSN $\rightarrow$ address (assume students don't work)
+ * HScode $\rightarrow$ HSname, HScity
+ * HSname, HScity $\rightarrow$ HScode (assume no schools with same name in the same city)
 
-SSN -> GPA
-GPA -> priority
-SSN -> priority
+And
+
+ * SSN $\rightarrow$ GPA
+ * GPA $\rightarrow$ priority
+ * SSN $\rightarrow$ priority
 
 transitivity
 
+#+BEGIN_SRC 
 Apply(SSN, cName, state, date, major)
+#+END_SRC
 
-cName -> date
-SSN, cName -> major
+ * cName $\rightarrow$ date
+ * SSN, cName $\rightarrow$ major
 
-SSN -> state
+and
+
+ * SSN $\rightarrow$ state
 
 Functional Dependencies and Keys
 
-R(\bar{A}, \bar{B})
+$R(\bar{A}, \bar{B})$
 
 Trivial Functional Dependency
-
-\bar{A} -> \bar{B},  \bar{B} subset \bar{A}
+ * $\bar{A} \rightarrow \bar{B}$, $\bar{B} \subset \bar{A}$
 
 Nontrivial FD
-\bar{A} -> \bar{B},  \bar{B} not subset \bar{A}
+ * $\bar{A} \rightarrow \bar{B}$, $\bar{B} \not\subset \bar{A}$
 
 Completely nontrivial FD (most interested)
-A -> B, A intersect B = empty set
+ * $A \rightarrow B$, $A \cap B = \varnothing$
 
 Splitting rule
-
-\bar{A} -> B1, B2, ..., Bm
-=> \bar{A} -> B1, \bar{A} -> B2, ...
+ * $\bar{A} \rightarrow B_1, B_2, \dotsc, B_m \Rightarrow \bar{A} \rightarrow
+   B_1, \bar{A} \rightarrow B_2, \dotsc$
 
 Combining rule
-
-\bar{A} -> B1
-\bar{A} -> B2
-...
-=> \bar{A} -> B1, B2, ..., Bn
+ * $\bar{A} \rightarrow B_1, \bar{A} \rightarrow B_2, \dotsc \bar{A}
+   \rightarrow B_n \Rightarrow \bar{A} \rightarrow B_1, B_2, \dotsc,
+   B_n$
 
 Trivial-dependency rules
-
-A -> B, then A -> A union B
-
-A -> B, then A -> A intersect B
+ * A $\rightarrow$ B, then A $\rightarrow$ A $\cup$ B
+ * A $\rightarrow$ B, then A $\rightarrow$ A $\cap$ B
 
 Transitive rule
-
-A -> B, B -> C, then A -> C
+ * A $\rightarrow$ B, B $\rightarrow$ C, then A $\rightarrow$ C
 
 Closure of Attributes
-  Given relations, FDs, set of attributes \bar{A}
-  Find all B such that \bar{A} -> B
+ * Given relations, FDs, set of attributes $\bar{A}$
+ * Find all $B$ such that $\bar{A} \rightarrow B$
 
-\bar{A}^+
+$\bar{A}^+$
 
 apply transitive rule repeatedly to get the closure
 
-if \bar{A}^+ = all attrs, then \bar{A} is a key.
+if $\bar{A}^+$ = all attrs, then $\bar{A}$ is a key.
 
 Grow algorithms can be used to find all keys given a set of FDs.
 
-If \bar{A} is a key, then all its supersets are keys.  Hence, we are
+If $\bar{A}$ is a key, then all its supersets are keys.  Hence, we are
 often only interested the smallest key.
 
 Specifying FDs for a relation
-  S1 and S2 sets of FDs
-  S2 "follows from" S1 if every relation instance
-  satisfying S1 also satisfies S2
+ * $S_1$ and $S_2$ sets of FDs
+ * $S_2$ "follows from" $S_1$ if every relation instance satisfying $S_1$ also
+   satisfies $S_2$
+   - $S_2$: {SSN $\rightarrow$ priority}
+   - $S_1$: {SSN $\rightarrow$ GPA, GPA $\rightarrow$ priority}
 
-S2: {SSN -> priority}
-S1: {SSN -> GPA, GPA -> priority}
-
-Does A -> B follow from S?
-
-(1) A+ based S check if B in set.
-(2) Armstrong's Axioms
+Does A $\rightarrow$ B follow from S?
+ 1) $A^+$ based S check if B in set.
+ 2) Armstrong's Axioms
 
 Want: _Minimal_ set of _completely nontrivial_ FDs such that _all FDs_ that
 hold on the relation follow from the dependencies in this set
@@ -2293,20 +2287,22 @@ Relation R with MVDs is in 4NF if:
    :PROPERTIES:
    :CUSTOM_ID: relational-design-theory-mini-course-exercises
    :END:
-R(A,B)
-+R(A,C,D)+
-R(A,C)
-R(C,D)
+ * R(A,B)
+ * +R(A,C,D)+
+ * R(A,C)
+ * R(C,D)
 
-R(C,D)
-+R(A,B,C)+
-R(A,B)
-R(A,C)
 
-R(B,C)
-+R(A,B,D)+
-R(A,B)
-R(A,D)
+ * R(C,D)
+ * +R(A,B,C)+
+ * R(A,B)
+ * R(A,C)
+
+
+ * R(B,C)
+ * +R(A,B,D)+
+ * R(A,B)
+ * R(A,D)
 
 
 * DONE [[https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/][Unified Modeling Language]] mini-course
@@ -2577,9 +2573,11 @@ Keys for association relations depends on multiplicity
 |-------|                      |-------|
 #+END_EXAMPLE
 
-C1(_K1_, O1)
-C2(_K2_, O2)
+#+ATTR_HTML: :class pre
+C1( _K1_, O1)
+C2( _K2_, O2)
 
+#+ATTR_HTML: :class pre
 A(K1, _K2_)
 
 #+BEGIN_EXAMPLE
@@ -2596,21 +2594,25 @@ A(K1, _K2_)
                    |----------|
 #+END_EXAMPLE
 
-Applied(_sID_, cName)
+#+ATTR_HTML: :class pre
+Applied( _sID_, cName)
 
-C1(_K1_, O1)
-C2(_K2_, O2)  <-- C2(_K2_, O2, K1)
+#+ATTR_HTML: :class pre
+C1( _K1_, O1)
+C2( _K2_, O2)  <-- C2( _K2_, O2, K1)
 +A(K1, _K2_)+
 
-Student(_sID_, sName, GPA)  <-- Student(_sID_, sName, GPA, cName)
-College(_cName_, state)
-+Applied(_sID_, cName)+
+#+ATTR_HTML: :class pre
+Student( _sID_, sName, GPA)  <-- Student( _sID_, sName, GPA, cName)
+College( _cName_, state)
++Applied( _sID_, cName)+
 
 Association Classes
 
-Student(_sID_, sName, GPA)
-College(_cName_, state)
-Applied(_sID_, cName, date, decision)
+#+ATTR_HTML: :class pre
+Student( _sID_, sName, GPA)
+College( _cName_, state)
+Applied( _sID_, cName, date, decision)
 
 Require a key for every "regular" class.
 
@@ -2625,8 +2627,9 @@ Self-Associations
 #+END_EXAMPLE
 
 
-Student(_sID_, sName, GPA)
-Sibling(_sID1, sID2_)
+#+ATTR_HTML: :class pre
+Student( _sID_, sName, GPA)
+Sibling( _sID1, sID2_)
 
 #+BEGIN_EXAMPLE
 |----------|
@@ -2639,10 +2642,12 @@ Sibling(_sID1, sID2_)
              Satellite
 #+END_EXAMPLE
 
-College(_cName_, state, enr)
+#+ATTR_HTML: :class pre
+College( _cName_, state, enr)
 Branch(home, _satellite_)
 
-College(_cName_, state, enr, home) ???
+#+ATTR_HTML: :class pre
+College( _cName_, state, enr, home) ???
 
 
 Subclasses
@@ -2669,13 +2674,13 @@ subclasses are not regular classes.
    |----|                                     |----|
 #+END_EXAMPLE
 
-1) S(_K_, A), S1(_K_, B), S2(_K_, C)
-2) S(_K_, A), S1(_K_, A, B), S2(_K_, A, C)
-3) S(_K_, A, B, C)
+1) S( _K_, A), S1( _K_, B), S2( _K_, C)
+2) S( _K_, A), S1( _K_, A, B), S2( _K_, A, C)
+3) S( _K_, A, B, C)
 
 Heavily overlapping => design 3
 
-Disjoint, Complete => design 2 with S(_K_, A) discarded
+Disjoint, Complete => design 2 with S( _K_, A) discarded
 
 #+BEGIN_EXAMPLE
                     |---------|
@@ -2703,12 +2708,13 @@ Disjoint, Complete => design 2 with S(_K_, A) discarded
                                                    |--------|
 #+END_EXAMPLE
 
-Student(_sID_, sName)
-ForeignS(_sID_, Country)
-DomesticS(_sID_, State, _SSN_)
+#+ATTR_HTML: :class pre
+Student( _sID_, sName)
+ForeignS( _sID_, Country)
+DomesticS( _sID_, State, _SSN_)
 +APStudent(sID)+ <-- eliminated, implicated in Took
-APCourse(_Course#_, title, units)
-Took(_sID, Course#_, year, grade)
+APCourse( _Course#_, title, units)
+Took( _sID, Course#_, year, grade)
 
 Composition & Aggregation
 
@@ -2729,9 +2735,9 @@ Composition & Aggregation
 #+END_EXAMPLE
 
 #+ATTR_HTML: :class pre
-College(_cName_, state)
+College( _cName_, state)
 Department(dName, building, _cName_)
-Apartment(_addr_, #units, cName)
+Apartment( _addr_, #units, cName)
                             ↑
                           nullable
 
@@ -4758,8 +4764,15 @@ a view is updatable, then we can apply ~insert~, ~delete~, ~update~ on
 it.  However, a view can be partially updatable under MySQL since it
 is a little bit more generous.
 
-*** TODO Materialized Views
+*** IN-PROGRESS Materialized Views
     DEADLINE: <2017-12-29 Fri>
+    :PROPERTIES:
+    :VISIBILITY: children
+    :END:
+
+The views discussed in the previous section are sometimes called
+virtual views.
+
 *** TODO Authorization
 ** TODO Exercises
 *** TODO Views Quiz
