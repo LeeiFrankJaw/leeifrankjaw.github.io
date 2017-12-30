@@ -1,4 +1,3 @@
-#+STARTUP: content
 #+TODO: TODO IN-PROGRESS DONE
 #+TITLE: Intro to DB
 #+AUTHOR: Lei Zhao
@@ -12,14 +11,20 @@
 * DONE [[https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/][SQL]] mini-course
   CLOSED: [2017-06-02 Fri 13:07] DEADLINE: <2017-06-03 Sat 20:00>
   :PROPERTIES:
-  :VISIBILITY: FOLDED
+  :CUSTOM_ID: sql-mini-course
   :END:
 ** DONE Lecture videos
    CLOSED: [2017-05-31 Wed 09:53]
 *** DONE The Join family of Operators
     CLOSED: [2017-05-30 Tue 16:19]
+    :PROPERTIES:
+    :CUSTOM_ID: the-join-family-of-operators
+    :END:
 *** DONE Aggregation
      CLOSED: [2017-05-30 Tue 20:37]
+     :PROPERTIES:
+     :CUSTOM_ID: aggregation
+     :END:
 #+BEGIN_SRC sql
 select avg(GPA)
 from Student;
@@ -106,6 +111,9 @@ having max(GPA) < (select avg(GPA) from Student);
 
 *** DONE NULL values
      CLOSED: [2017-05-30 Tue 21:23]
+     :PROPERTIES:
+     :CUSTOM_ID: null-values
+     :END:
 #+BEGIN_SRC sql
 select sID, sName, GPA
 from Student
@@ -123,6 +131,9 @@ SQL uses three-valued logic ([[https://en.wikipedia.org/wiki/Three-valued_logic]
 
 *** DONE Data Modification Statements
      CLOSED: [2017-05-30 Tue 23:36]
+     :PROPERTIES:
+     :CUSTOM_ID: data-modification-statements
+     :END:
 #+BEGIN_SRC sql
 insert into College
 values ('Carnegie Mellon', 'PA', 11500);
@@ -805,7 +816,6 @@ on R.ID2 = S.ID1 and S.ID2 <> R.ID1 and
 * DONE [[https://lagunita.stanford.edu/courses/DB/XPath/SelfPaced/courseware/ch-querying_xml/][XPath and XQuery]] mini-course
   CLOSED: [2017-06-26 Mon 07:48]
   :PROPERTIES:
-  :VISIBILITY: FOLDED
   :CUSTOM_ID: xpath-and-xquery-mini-course
   :END:
 ** DONE Lecture videos
@@ -1735,7 +1745,6 @@ element.  For example, your result might look like:
 * DONE [[https://lagunita.stanford.edu/courses/DB/XSLT/SelfPaced/courseware/ch-querying_xml/][XSLT]] mini-course
   CLOSED: [2017-07-02 Sun 20:06]
   :PROPERTIES:
-  :VISIBILITY: FOLDED
   :CUSTOM_ID: xslt-mini-course
   :END:
 ** DONE Lecture videos
@@ -2014,7 +2023,6 @@ data should be the same.
 * DONE [[https://lagunita.stanford.edu/courses/DB/RD/SelfPaced/courseware/ch-relational_design_theory/][Relational Design Theory]] mini-course
   CLOSED: [2017-07-24 Mon 02:23]
   :PROPERTIES:
-  :VISIBILITY: FOLDED
   :CUSTOM_ID: relational-design-theory-mini-course
   :END:
 ** DONE Lecture videos
@@ -2262,7 +2270,7 @@ Fourth Normal Form $\subset$ Boyce-Codd Normal Form
 \[R \quad  \bar{A} \twoheadrightarrow \bar{B} \quad
   A_1, \dotsc, A_n, B_1, \dotsc, B_n\]
 
-\[\forall t, u \in R \, \exists v \in R:\, 
+\[\forall t, u \in R \, \exists v \in R:\,
   t[\bar{A}] = u[\bar{A}] \implies
   v[\bar{A}] = t[\bar{A}] \land
   v[\bar{B}] = t[\bar{B}] \land
@@ -2322,7 +2330,6 @@ Relation R with MVDs is in 4NF if:
 * DONE [[https://lagunita.stanford.edu/courses/DB/UML/SelfPaced/courseware/ch-unified_modeling_language/][Unified Modeling Language]] mini-course
   CLOSED: [2017-08-07 Mon 01:11]
   :PROPERTIES:
-  :VISIBILITY: FOLDED
   :CUSTOM_ID: uml-mini-course
   :END:
 ** DONE Lecture Videos
@@ -2763,7 +2770,6 @@ Apartment( _addr_, #units, cName)
 * DONE [[https://lagunita.stanford.edu/courses/DB/Indexes/SelfPaced/courseware/ch-indexes/][Indexes and Transactions]] mini-course
   CLOSED: [2017-08-24 Thu 01:56]
   :PROPERTIES:
-  :VISIBILITY: FOLDED
   :CUSTOM_ID: indexes-and-transactions-mini-course
   :END:
 ** DONE Lecture Videos
@@ -3246,7 +3252,6 @@ transaction's isolation level is serializable.
 * DONE [[https://lagunita.stanford.edu/courses/DB/Constraints/SelfPaced/courseware/ch-constraints_and_triggers/][Constraints and Triggers]] mini-course
   CLOSED: [2017-12-24 Sun 21:13]
   :PROPERTIES:
-  :VISIBILITY: FOLDED
   :CUSTOM_ID: constraints-and-triggers-mini-course
   :END:
 ** DONE Lecture Videos
@@ -4212,11 +4217,13 @@ immediate activation semantics of SQLite for triggers
 #+END_SRC
 
 
-* IN-PROGRESS [[https://lagunita.stanford.edu/courses/DB/Views/SelfPaced/courseware/ch-views/][Views and Authorization]] mini-course
+* DONE [[https://lagunita.stanford.edu/courses/DB/Views/SelfPaced/courseware/ch-views/][Views and Authorization]] mini-course
+  CLOSED: [2017-12-30 Sat 22:20]
   :PROPERTIES:
   :CUSTOM_ID: views-and-authorization-mini-course
   :END:
-** IN-PROGRESS Lecture Videos
+** DONE Lecture Videos
+   CLOSED: [2017-12-30 Sat 17:17]
    :PROPERTIES:
    :CUSTOM_ID: views-and-authorization-mini-course-lectures
    :END:
@@ -4241,10 +4248,12 @@ Defining and using views
  * View $V = \mathrm{ViewQuery}(R_1, R_2, \dotsc, R_n)$
  * Schema of $V$ is schema of query result
  * Query $Q$ involving $V$, conceptually:
+   #+HTML: <!--<![CDATA[
     \begin{align*}
         &V := \mathrm{ViewQuery}(R_1, R_2, \dotsc, R_n) \\
         &\mathrm{Evaluate}\ Q
     \end{align*}
+   #+HTML: ]]>-->
  * In reality, $Q$ rewritten to use $R_1, \dotsc, R_n$ instead of $V$
  * Notes: $R_i$ could itself be a view
 
@@ -4395,20 +4404,24 @@ Usually there are successful translations for view modifications.  The
 problem is there are too many and which one the user intends.
 
 Suppose we have the following schema.
+#+HTML: <!--<![CDATA[
 \begin{align*}
   & R(A, B) \\
   & V = \Pi_A(R)
 \end{align*}
+#+HTML: ]]>-->
 
 The table $R$ has $(1, 2)$ and thus $V = (1)$.  Say the user wants to
 insert $3$ into $V$.  Then the attribute $B$ is undecided for the
 newly inserted tuple.
 
 A more radical example follows.
+#+HTML: <!--<![CDATA[
 \begin{align*}
   & R(N) = \{ (1), (3), (5) \} \\
   & V = \operatorname{avg}(N) = \{ (3) \}
 \end{align*}
+#+HTML: ]]>-->
 
 And the user wants to update the average to $7$, then there are so
 many ways to update $R$ to achieve this.
@@ -4951,20 +4964,221 @@ Cascade: Also revoke privileges granted from privileges being revoked
 Restrict: Disallow if /Cascade/ would revoke any other
 privileges. (This is the default.)
 
-** TODO Exercises
-   DEADLINE: <2017-12-30 Sat>
+** DONE Exercises
+   CLOSED: [2017-12-30 Sat 22:20] DEADLINE: <2017-12-30 Sat>
    :PROPERTIES:
    :CUSTOM_ID: views-and-authorization-mini-course-exercises
    :END:
-*** TODO Views Quiz
+*** DONE Views Quiz
+    CLOSED: [2017-12-30 Sat 16:50]
     :PROPERTIES:
     :CUSTOM_ID: views-quiz
     :END:
-*** TODO Authorization Quiz
+*** DONE Authorization Quiz
+    CLOSED: [2017-12-30 Sat 17:06]
     :PROPERTIES:
     :CUSTOM_ID: authorization-quiz
     :END:
-*** TODO SQL Movie-Rating View Modification
+*** DONE SQL Movie-Rating View Modification
+    CLOSED: [2017-12-30 Sat 22:20]
     :PROPERTIES:
     :CUSTOM_ID: sql-movie-rating-view-modification
     :END:
+Write an instead-of trigger that enables updates to the title
+attribute of view *LateRating*.
+
+*Policy*: Updates to attribute title in LateRating should update
+Movie.title for the corresponding movie. (You may assume attribute mID
+is a key for table Movie.) Make sure the mID attribute of view
+LateRating has not also been updated -- if it has been updated, don't
+make any changes. Don't worry about updates to stars or ratingDate.
+
+#+BEGIN_SRC sql
+  create trigger UpdateLateRatingTitle
+  instead of update of title on LateRating
+  for each row
+  when Old.mId = New.mID
+  begin
+  update Movie
+  set title = New.title
+  where mID = Old.mID;
+  end;
+#+END_SRC
+
+Write an instead-of trigger that enables updates to the stars
+attribute of view *LateRating*.
+
+*Policy*: Updates to attribute stars in LateRating should update
+Rating.stars for the corresponding movie rating. (You may assume
+attributes [mID,ratingDate] together are a key for table Rating.) Make
+sure the mID and ratingDate attributes of view LateRating have not
+also been updated -- if either one has been updated, don't make any
+changes. Don't worry about updates to title.
+
+#+BEGIN_SRC sql
+  create trigger UpdateLateRatingStars
+  instead of update of stars on LateRating
+  for each row
+  when Old.mID = New.mID and Old.ratingDate = New.ratingDate
+  begin
+  update Rating
+  set stars = New.stars
+  where mID = Old.mID and ratingDate = Old.ratingDate;
+  end;
+#+END_SRC
+
+Write an instead-of trigger that enables updates to the mID attribute
+of view *LateRating*.
+
+*Policy*: Updates to attribute mID in LateRating should update Movie.mID
+and Rating.mID for the corresponding movie. Update all Rating tuples
+with the old mID, not just the ones contributing to the view. Don't
+worry about updates to title, stars, or ratingDate.
+
+#+BEGIN_SRC sql
+  create trigger UpdateLateRatingMID
+  instead of update of mID on LateRating
+  for each row
+  begin
+  update Movie
+  set mID = New.mID
+  where mID = Old.mID;
+  update Rating
+  set mID = New.mID
+  where mID = Old.mID;
+  end;
+#+END_SRC
+
+Finally, write a single instead-of trigger that combines all three of
+the previous triggers to enable simultaneous updates to attributes
+mID, title, and/or stars in view *LateRating*. Combine the view-update
+policies of the three previous problems, with the exception that mID
+may now be updated. Make sure the ratingDate attribute of view
+LateRating has not also been updated -- if it has been updated, don't
+make any changes.
+
+#+BEGIN_SRC sql
+  create trigger UpdateLateRating
+  instead of update on LateRating
+  for each row
+  when Old.ratingDate = New.ratingDate
+  begin
+  update Movie
+  set title = New.title,
+      mID = New.mID
+  where mID = Old.mID;
+  update Rating
+  set mID = New.mID
+  where mID = Old.mID;            -- this is the catch.
+  update Rating
+  set stars = New.stars
+  where mID = New.mID and ratingDate = Old.ratingDate;
+  end;
+#+END_SRC
+
+Write an instead-of trigger that enables deletions from view
+*HighlyRated*.
+
+*Policy*: Deletions from view HighlyRated should delete all ratings for
+the corresponding movie that have stars > 3.
+
+#+BEGIN_SRC sql
+  create trigger DeleteHighlyRated
+  instead of delete on HighlyRated
+  for each row
+  begin
+  delete from Rating
+  where mID = Old.mID and stars > 3; -- the second condition is the catch.
+  end;
+#+END_SRC
+
+Write an instead-of trigger that enables deletions from view
+*HighlyRated*.
+
+*Policy*: Deletions from view HighlyRated should update all ratings for
+the corresponding movie that have stars > 3 so they have stars = 3.
+
+#+BEGIN_SRC sql
+  create trigger DeleteHighlyRated
+  instead of delete on HighlyRated
+  for each row
+  begin
+  update Rating
+  set stars = 3
+  where mID = Old.mID and stars > 3;
+  end;
+#+END_SRC
+
+Write an instead-of trigger that enables insertions into view
+*HighlyRated*.
+
+*Policy*: An insertion should be accepted only when the (mID,title)
+pair already exists in the Movie table. (Otherwise, do nothing.)
+Insertions into view HighlyRated should add a new rating for the
+inserted movie with rID = 201, stars = 5, and NULL ratingDate.
+
+#+BEGIN_SRC sql
+  create trigger InsertHighlyRated
+  instead of insert on HighlyRated
+  for each row
+  when exists (select * from Movie
+               where mID = New.mID
+                     and title = New.title)
+  begin
+  insert into Rating
+  values (201, New.mID, 5, null);
+  end;
+#+END_SRC
+
+Write an instead-of trigger that enables insertions into view
+*NoRating*.
+
+*Policy*: An insertion should be accepted only when the (mID,title) pair
+already exists in the Movie table. (Otherwise, do nothing.) Insertions
+into view NoRating should delete all ratings for the corresponding
+movie.
+
+#+BEGIN_SRC sql
+  create trigger InsertNoRating
+  instead of insert on NoRating
+  for each row
+  when exists (select * from Movie
+               where mID = New.mID
+                     and title = New.title)
+  begin
+  delete from Rating
+  where mID = New.mID;
+  end;
+#+END_SRC
+
+Write an instead-of trigger that enables deletions from view
+*NoRating*.
+
+*Policy*: Deletions from view NoRating should delete the corresponding
+movie from the Movie table.
+
+#+BEGIN_SRC sql
+  create trigger DeleteNoRating
+  instead of delete on NoRating
+  for each row
+  begin
+  delete from Movie
+  where mID = Old.mID;
+  end;
+#+END_SRC
+
+Write an instead-of trigger that enables deletions from view
+*NoRating*.
+
+*Policy*: Deletions from view NoRating should add a new rating for the
+deleted movie with rID = 201, stars = 1, and NULL ratingDate.
+
+#+BEGIN_SRC sql
+  create trigger DeleteNoRating
+  instead of delete on NoRating
+  for each row
+  begin
+  insert into Rating
+  values (201, Old.mID, 1, null);
+  end;
+#+END_SRC
