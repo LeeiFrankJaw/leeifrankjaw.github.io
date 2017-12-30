@@ -5,7 +5,7 @@
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
-#+OPTIONS: ^:nil \n:t
+#+OPTIONS: ^:{} ':t
 
 [[https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about][Database]] on Lagunita
 
@@ -2524,21 +2524,16 @@ Subclasses
                                                    |--------|
 #+END_EXAMPLE
 
-Superclass = Generalization
-Subclass = Specialization
-
-Incomplete (Partial) vs. Complete
-
-Complete: every obj in the superclass is in at least one subclass
-
-Disjoint (Exclusive) vs. Overlapping
-
-Disjoint: every obj in the superclass is in at most one subclass
+ * Superclass = Generalization
+ * Subclass = Specialization
+ * Incomplete (Partial) vs. Complete
+   - Complete: every obj in the superclass is in at least one subclass
+ * Disjoint (Exclusive) vs. Overlapping
+   - Disjoint: every obj in the superclass is in at most one subclass
 
 
 Composition & Aggregation
-
-Objects of one class belong to objects of another class
+ * Objects of one class belong to objects of another class
 
 #+BEGIN_EXAMPLE
 |----------|               |------------|
@@ -2557,27 +2552,30 @@ Objects of one class belong to objects of another class
 #+END_EXAMPLE
 
 The symbol ◆ indicates composition, implicitly specifying 1..1.
-Department belongs to College.
+ * Department belongs to College.
 
 The symbol ◇ indicates aggregation, implicitly specifying 0..1.
-Some apartments are owned by or associated with colleges, but not all
-of them are.
+ * Some apartments are owned by or associated with colleges, but not
+   all of them are.
 
 *** DONE UML to Relations
     CLOSED: [2017-08-06 Sun 18:04]
+    :PROPERTIES:
+    :CUSTOM_ID: uml-to-relations
+    :END:
 High-Level Database Design Model
-  User-friendly (graphical) specification language
-  Translated into model of DBMS
+ * User-friendly (graphical) specification language
+ * Translated into model of DBMS
 
 Designs can be translated to relations automatically
-  Provided every "regular" class has a key
+ * Provided every "regular" class has a key
 
-Every class becomes a relation: pk -> primary key
+Every class becomes a relation: pk $\rightarrow$ primary key
 
 Associations
+ * Relation with key from each side
 
-Relation with key from each side
-
+#+ATTR_HTML: :class pre
 Applied(sID, cName)
 
 Keys for association relations depends on multiplicity
@@ -2617,11 +2615,11 @@ Applied( _sID_, cName)
 
 #+ATTR_HTML: :class pre
 C1( _K1_, O1)
-C2( _K2_, O2)  <-- C2( _K2_, O2, K1)
+C2( _K2_, O2)  $\leftarrow$ C2( _K2_, O2, K1)
 +A(K1, _K2_)+
 
 #+ATTR_HTML: :class pre
-Student( _sID_, sName, GPA)  <-- Student( _sID_, sName, GPA, cName)
+Student( _sID_, sName, GPA)  $\leftarrow$ Student( _sID_, sName, GPA, cName)
 College( _cName_, state)
 +Applied( _sID_, cName)+
 
@@ -2696,9 +2694,9 @@ subclasses are not regular classes.
 2) S( _K_, A), S1( _K_, A, B), S2( _K_, A, C)
 3) S( _K_, A, B, C)
 
-Heavily overlapping => design 3
+Heavily overlapping $\Rightarrow$ design 3
 
-Disjoint, Complete => design 2 with S( _K_, A) discarded
+Disjoint, Complete $\Rightarrow$ design 2 with S( _K_, A) discarded
 
 #+BEGIN_EXAMPLE
                     |---------|
@@ -2730,7 +2728,7 @@ Disjoint, Complete => design 2 with S( _K_, A) discarded
 Student( _sID_, sName)
 ForeignS( _sID_, Country)
 DomesticS( _sID_, State, _SSN_)
-+APStudent(sID)+ <-- eliminated, implicated in Took
++APStudent(sID)+ $\leftarrow$ eliminated, implicated in Took
 APCourse( _Course#_, title, units)
 Took( _sID, Course#_, year, grade)
 
@@ -2766,11 +2764,15 @@ Apartment( _addr_, #units, cName)
   CLOSED: [2017-08-24 Thu 01:56]
   :PROPERTIES:
   :VISIBILITY: FOLDED
+  :CUSTOM_ID: indexes-and-transactions-mini-course
   :END:
 ** DONE Lecture Videos
    CLOSED: [2017-08-24 Thu 01:54]
 *** DONE Indexes
     CLOSED: [2017-08-20 Sun 16:12]
+    :PROPERTIES:
+    :CUSTOM_ID: indexes
+    :END:
 
 Indexes
   * Primary mechanism to get improved performance
@@ -2797,20 +2799,17 @@ Indexes
              |   | ... | ... | ... |
 
 Index on T.A
-
-T.A = 'cow'
-T.A = 'cat'
+ * T.A = 'cow'
+ * T.A = 'cat'
 
 Index on T.B
-
-T.B = 2
-T.B < 6
-4 < T.B <= 8
+ * T.B = 2
+ * T.B < 6
+ * 4 < T.B ≤ 8
 
 Index on T.(A, B)
-
-T.A = 'cat' and T.B > 5
-T.A < 'd' and T.B = 1
+ * T.A = 'cat' and T.B > 5
+ * T.A < 'd' and T.B = 1
 
 Utility
   * Index = difference between full table scans and immediate location
@@ -2841,9 +2840,9 @@ From Student
 Where sName = 'Mary' And GPA > 3.9
 #+END_SRC
 
-Index on sName ← hash or tree
-Index on GPA ← tree-based
-Index on (sName, GPA)
+ * Index on sName ← hash or tree
+ * Index on GPA ← tree-based
+ * Index on (sName, GPA)
 
 #+BEGIN_SRC sql
 Select sName, cName
@@ -2851,7 +2850,7 @@ From Student, Apply
 Where Student.sID = Apply.sID
 #+END_SRC
 
-Index on student.sid or apply.sid or both
+ * Index on student.sid or apply.sid or both
 
 Query planning & optimization
 
@@ -2892,6 +2891,9 @@ Drop Index IndexName
 
 *** DONE Introduction to Transactions
     CLOSED: [2017-08-20 Sun 17:58]
+    :PROPERTIES:
+    :CUSTOM_ID: introduction-to-transactions
+    :END:
 
 Motivated by two independent requirements
   * Concurrent database access
@@ -2910,8 +2912,7 @@ Where cName = 'Stanford'
 #+END_SRC
 
 get; modify; put
-
-Possible outcomes
+ * Possible outcomes
 \begin{align*}
   15,000 + 2500 &amp;= 17,500 \\
          + 1000 &amp;= 16,000 \\
@@ -2929,9 +2930,8 @@ Update Apply Set decision = 'Y' Where sID = 123
 #+END_SRC
 
 get; modify; put
-
-both changes
-one of the two changes
+ * both changes
+ * one of the two changes
 
 *Concurrent Access*: Table-level Inconsistency <<ca:tbi>>
 
@@ -3009,35 +3009,34 @@ SQL standard:
 
 *** DONE Transaction Properties
     CLOSED: [2017-08-20 Sun 21:55]
+    :PROPERTIES:
+    :CUSTOM_ID: transaction-properties
+    :END:
 ACID Properties
-Atomicity, Consistency, Isolation, Durability
+ * Atomicity, Consistency, Isolation, Durability
 
 Isolation
-
-_Serializability_  <<def:serial>>
-Operations may be interleaved, but execution must be equivalent to
-/some/ sequential (serial) order of all transactions
+ * _Serializability_: <<def:serial>> Operations may be interleaved,
+   but execution must be equivalent to /some/ sequential (serial)
+   order of all transactions
 
 locking portion of the database
 
 [[ca:ali][Attribute-level Inconsistency]]
-
-T1; T2
-T2; T1
+ * T1; T2
+ * T2; T1
 
 15,000 → 17,500
 
 [[ca:tli][Tuple-level Inconsistency]]
-
-T1; T2
-T2; T1
+ * T1; T2
+ * T2; T1
 
 both changes
 
 [[ca:tbi][Table-level Inconsistency]]
-
-T1; T2
-T2; T1
+ * T1; T2
+ * T2; T1
 
 Order matters here.
 
@@ -3046,19 +3045,17 @@ Order matters here.
 Order also matters here.
 
 Durability
+ * If system crashes after transaction commits, all effects of
+   transaction remain in database.
 
-If system crashes after transaction commits, all effects of
-transaction remain in database.
-
-T2 {S1; S2; S3; commit} crashes
+~T2 {S1; S2; S3; commit}~ crashes
 
 implemented by logging
 
 Atomicity
+ * Each transaction is "all-or-nothing," never left half done
 
-Each transaction is "all-or-nothing," never left half done
-
-T2 { S1; S2; ... crashes ...; commit }
+~T2 { S1; S2; ... crashes ...; commit }~
 
 Logging
 
@@ -3080,15 +3077,17 @@ variable, and cash delivery etc.
 Never hold a transaction for long time.  Locking
 
 Consistency
-
-Each client, each transaction:
-  * Can assume all constraints hold when transaction begins
-  * Must guarantee all constraints hold when transaction ends
+ - Each client, each transaction:
+   * Can assume all constraints hold when transaction begins
+   * Must guarantee all constraints hold when transaction ends
 
 Serializability ⇒ constraints always hold
 
 *** DONE Isolation Levels
     CLOSED: [2017-08-23 Wed 23:47]
+    :PROPERTIES:
+    :CUSTOM_ID: isolation-levels
+    :END:
 
 [[def:serial][Serializability]] ⇒ Overhead, Reduction in concurrency
 
@@ -3098,15 +3097,16 @@ Weaker "Isolation Levels" (from weak to strong)
   * Repeatable Read
   * Serializable
 
-↓ Overhead ↑ Concurrency
-↓ Consistency Guarantees
+
+  * ↓ Overhead ↑ Concurrency
+  * ↓ Consistency Guarantees
 
 Isolation Levels
   * Per transaction
   * "In the eye of the beholder"
 
 Dirty Reads
-"Dirty" data item: written by an uncommitted transaction
+  * "Dirty" data item: written by an uncommitted transaction
 
 Example 1
 #+BEGIN_SRC sql
@@ -3144,7 +3144,7 @@ Select Avg(GPA) From Student;
 #+END_SRC
 
 Isolation Level: Read Committed
- * A transaction may /not/ perform dirty reads
+  * A transaction may /not/ perform dirty reads
 
 Still does not guarantee global serializability
 
@@ -3247,41 +3247,45 @@ transaction's isolation level is serializable.
   CLOSED: [2017-12-24 Sun 21:13]
   :PROPERTIES:
   :VISIBILITY: FOLDED
+  :CUSTOM_ID: constraints-and-triggers-mini-course
   :END:
 ** DONE Lecture Videos
    CLOSED: [2017-12-03 Sun 22:19]
+   :PROPERTIES:
+   :CUSTOM_ID: constraints-and-triggers-mini-course-lectures
+   :END:
 *** DONE Motivation and Overview
     CLOSED: [2017-11-26 Sun 18:42]
 
 (Integrity) Constraints  <static>
-  constrain allowable database states
+ * constrain allowable database states
 
 
 Triggers <dynamic>
-  monitor database changes,
-  check conditions and initiate actions
+ * monitor database changes,
+ * check conditions and initiate actions
 
 
 Integrity Constraints
-  Impose restrictions on allowable data, beyond those imposed by
-  structure and types
+ * Impose restrictions on allowable data, beyond those imposed by
+ * structure and types
 
 
-0.0 < GPA <= 4.0
-enrollment < 50,000 (75,000)
+ * 0.0 < GPA <= 4.0
+ * enrollment < 50,000 (75,000)
 
 
 Why use them?
-  Data-entry errors (inserts)
-  Correctness criteria (updates)
-  Enforce consistency
-  Tell system about data
+ * Data-entry errors (inserts)
+ * Correctness criteria (updates)
+ * Enforce consistency
+ * Tell system about data
 
 
 Classification
-  Non-null
-  Key
-  Referential Integrity (foreign key)
+ * Non-null
+ * Key
+ * Referential Integrity (foreign key)
 
 
 Declaring and enforcing constraints
@@ -3297,23 +3301,21 @@ Enforcement
 
 
 Triggers
-"Event-Condition-Action Rules"
-When /event/ occurs, check /condition/; if true, do action
+ * "Event-Condition-Action Rules"
+ * When /event/ occurs, check /condition/; if true, do action
 
 
 Examples
-  enrollment > 35,000 -> reject all applicants
-  insert app with GPA > 3.95 -> accept automatically
-  update sizeHS to be > 7,000 -> change to "wrong", raise error
+ * enrollment > 35,000 -> reject all applicants
+ * insert app with GPA > 3.95 -> accept automatically
+ * update sizeHS to be > 7,000 -> change to "wrong", raise error
 
 
 Why use them?
-More logic from apps into DBMS
-To enforce constraints
-  - expressive
-  - constraint "repair" logic
-
-
+ * More logic from apps into DBMS
+ * To enforce constraints
+   - expressive
+   - constraint "repair" logic
 
 
 #+BEGIN_SRC sql
@@ -3338,6 +3340,9 @@ Triggers
 
 *** DONE Constraints of Several Types
     CLOSED: [2017-11-27 Mon 10:15]
+    :PROPERTIES:
+    :CUSTOM_ID: constraints-of-several-types
+    :END:
 
 Integrity Constraints
   * Impose restrictions on allowable data, beyond those imposed by structure and types
@@ -3594,6 +3599,9 @@ It's common to write =not exists= in general assertions.
 
 *** DONE Referential Integrity
     CLOSED: [2017-11-29 Wed 20:31]
+    :PROPERTIES:
+    :CUSTOM_ID: referential-integrity
+    :END:
 
 Integrity Constraints
   - Impose restrictions on allowable data, beyond those imposed by
@@ -3723,6 +3731,9 @@ The above query will delete all the rows in T.
 
 *** DONE Triggers Introduction
     CLOSED: [2017-12-02 Sat 20:54]
+    :PROPERTIES:
+    :CUSTOM_ID: triggers-introduction
+    :END:
 
 Triggers
 - "Event-Condition-Action Rules"
@@ -3820,6 +3831,9 @@ T(K,V) - K key, V value
 
 *** DONE Triggers Demo
     CLOSED: [2017-12-03 Sun 22:19]
+    :PROPERTIES:
+    :CUSTOM_ID: triggers-demo
+    :END:
 
   * Before and After; Insert, Delete, and Update
   * New and Old
