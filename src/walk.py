@@ -73,9 +73,9 @@ for dirpath, dirnames, filenames in walker:
             if name != 'index.html':
                 contents.append(entry)
             else:
-                entry['name'] = pathsegs[-1]
+                entry['name'] = pathsegs[-1] + '/'
                 updir.append(entry)
-                sort_by_author_date(contents)
+                sort_by_author_date(updir)
     if contents:
         sort_by_author_date(contents)
         updir.append({
