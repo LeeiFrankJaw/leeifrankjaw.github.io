@@ -27,6 +27,12 @@ document.addEventListener("DOMContentLoaded", function() {
             case "r":
                 window.history.forward();
                 break;
+            case "<":
+                window.location.href = "#content";
+                break;
+            case ">":
+                window.location.href = "#postamble";
+                break;
             case "n":
                 break;
             case "p":
