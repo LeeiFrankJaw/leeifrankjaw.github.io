@@ -595,6 +595,7 @@ NFAs With ε-Transitions
 [[file:epsilon-nfa.png]]
 
 |       |   | 0         | 1         | ε         |
+|-------+---+-----------+-----------+-----------|
 | →     | A | {E}       | {B}       | \emptyset |
 |       | B | \emptyset | {C}       | {D}       |
 |       | C | \emptyset | {D}       | \emptyset |
@@ -647,6 +648,7 @@ $\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}$
 Example: ε-NFA to NFA
 
 |       |   | 0         | 1         |
+|-------+---+-----------+-----------|
 | →     | A | {E}       | {B}       |
 | \star | B | \emptyset | {C}       |
 |       | C | \emptyset | {D}       |
@@ -661,8 +663,182 @@ Summary
    states than a DFA.
  * But only a DFA can be implemented! (quantum computer for NFAs?)
 
-** TODO Finite Automata Homework
-   DEADLINE: <2017-12-31 Sun>
+** DONE Finite Automata Homework
+   CLOSED: [2018-01-03 Wed 10:55] DEADLINE: <2017-12-31 Sun>
+   :PROPERTIES:
+   :CUSTOM_ID: finite-automata-homework
+   :END:
+
+#+BEGIN_SRC latex :file w1hwq1-2.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    \node[state,initial] (A) {A};
+    \node[state,above right=of A] (B) {B};
+    \node[state,below right=of A] (C) {C};
+    \node[state,accepting,below right=of B] (D) {D};
+    \path[->] (A) edge node {0} (B)
+                  edge node {1} (C)
+              (B) edge node {1} (D)
+              (C) edge node {0} (D)
+              (D) edge [bend left=90,looseness=2] node {0} (A)
+                  edge [bend right=45] node [above right] {1} (B);
+  \end{tikzpicture}
+#+END_SRC
+
+*Question 1-2*
+
+#+ATTR_HTML: :width 400px
+#+RESULTS:
+[[file:w1hwq1-2.png]]
+
+#+BEGIN_SRC emacs-lisp
+  ;; native implementation
+  (defun N (k)
+    (cond ((< k 2) 0)
+          ((= k 2) 2)
+          (t (+ (N (- k 2)) (* 2 (N (- k 3)))))))
+#+END_SRC
+
+*Question 3*
+
+#+BEGIN_SRC latex :file w1hwq3.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    \node[state,initial] (A) {A};
+    \node[state,right=of A] (B) {B};
+    \node[state,accepting,right=of B] (C) {C};
+  
+    \path[->] (A) edge [loop above] node {0} (A)
+                  edge node {1} (B)
+              (B) edge node {0} (C)
+                  edge [bend left] node {0} (A)
+              (C) edge [bend left] node {1} (B)
+                  edge [bend left=60] node {1} (A);
+  \end{tikzpicture}
+#+END_SRC
+
+#+ATTR_HTML: :width 500px
+#+RESULTS:
+[[file:w1hwq3.png]]
+
+|       |       | 0     | 1         |
+|-------+-------+-------+-----------|
+| →     | {A}   | {A}   | {B}       |
+|       | {B}   | {A,C} | \emptyset |
+| \star | {A,C} | {A}   | {A,B}     |
+|       | {A,B} | {A,C} | {B}       |
+
+*Question 4*
+
+#+BEGIN_SRC latex :file w1hwq4.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    \node[state,initial] (A) {A};
+    \node[state,right=of A] (B) {B};
+    \node[state,right=of B] (C) {C};
+    \node[state,accepting,right=of C] (D) {D};
+
+    \path[->] (A) edge [loop above]    node {0} (A)
+                  edge                 node {0} (B)
+                  edge [bend right=75] node {1} (C)
+              (B) edge                 node {1} (C)
+                  edge [bend right=75] node {1} (D)
+              (C) edge [bend left=60]  node {0} (B)
+                  edge                 node {0,1} (D)
+              (D) edge [bend left=90]  node {0} (A)
+                  edge [loop above]    node {1} (D);
+  \end{tikzpicture}
+#+END_SRC
+
+#+ATTR_HTML: :width 500px
+#+RESULTS:
+[[file:w1hwq4.png]]
+
+|       |         | 0       | 1     |
+|-------+---------+---------+-------|
+| →     | {A}     | {A,B}   | {C}   |
+|       | {A,B}   | {A,B}   | {C,D} |
+|       | {C}     | {B,D}   | {D}   |
+| \star | {C,D}   | {A,B,D} | {D}   |
+| \star | {B,D}   | {A}     | {C,D} |
+| \star | {D}     | {A}     | {D}   |
+|       | {A,B,D} | {A,B}   | {C,D} |
+
+*Question 5*
+
+#+BEGIN_SRC latex :file w1hwq5.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=1.8cm,on grid,auto]
+    \node[state,initial] (A) {A};
+    \node[state,right=of A] (B) {B};
+    \node[state,above right=of B] (C) {C};
+    \node[state,below right=of B] (D) {D};
+    \node[state,right=of C] (E) {E};
+    \node[state,right=of D] (F) {F};
+    \node[state,above right=of F] (G) {G};
+    \node[state,right=of G] (H) {H};
+    \node[state,right=of H] (I) {I};
+    \node[state,above right=of I] (J) {J};
+    \node[state,below right=of I] (K) {K};
+    \node[state,right=of J] (L) {L};
+    \node[state,right=of K] (M) {M};
+    \node[state,accepting,above right=of M] (N) {N};
+    \path[->] (A) edge node {$\epsilon$} (B)
+                  edge [bend right=90] node {$\epsilon$} (H)
+              (B) edge node {$\epsilon$} (C)
+                  edge node {$\epsilon$} (D)
+              (C) edge node {0} (E)
+              (D) edge node {1} (F)
+              (E) edge node {$\epsilon$} (G)
+              (F) edge node {$\epsilon$} (G)
+              (G) edge [bend right=90,looseness=1.5] node [above] {$\epsilon$} (B)
+                  edge node {$\epsilon$} (H)
+              (H) edge node {$\epsilon$} (I)
+              (I) edge node {$\epsilon$} (J)
+                  edge node {$\epsilon$} (K)
+              (J) edge node {0} (L)
+              (K) edge node {$\epsilon$} (M)
+              (L) edge node {$\epsilon$} (N)
+              (M) edge node {$\epsilon$} (N);
+  \end{tikzpicture}
+
+#+END_SRC
+
+#+ATTR_HTML: :width 720px
+#+RESULTS:
+[[file:w1hwq5.png]]
+
+|          |           | 0         | 1         |
+| →, \star | {A}       | {E,L}     | {F}       |
+| \star    | {E,L}     | {E,L}     | {F}       |
+| \star    | {F}       | {E,L}     | {F}       |
+
+The above table is my original interpretation of construction from the
+lecture video.  Judged by the given choices, the following table is
+what the question wants.
+
+|          |                           | 0                         | 1                       |
+| →, \star | {A,B,C,D,H,I,J,K,M,N}     | {B,C,D,E,G,H,I,J,K,L,M,N} | {B,C,D,F,G,H,I,J,K,M,N} |
+| \star    | {B,C,D,E,G,H,I,J,K,L,M,N} | {B,C,D,E,G,H,I,J,K,L,M,N} | {B,C,D,F,G,H,I,J,K,M,N} |
+| \star    | {B,C,D,F,G,H,I,J,K,M,N}   | {B,C,D,E,G,H,I,J,K,L,M,N} | {B,C,D,F,G,H,I,J,K,M,N} |
+
+*Question 6*
+
+#+BEGIN_SRC latex :file w1hwq6.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    \node[state,initial] (A) {A};
+    \node[state,accepting,right=of A] (B) {B};
+    \path[->] (A) edge [loop above] node {0} (A)
+                  edge [bend left] node {1} (B)
+              (B) edge [loop above] node {0} (B)
+                  edge [bend left] node {1} (A);
+  \end{tikzpicture}
+#+END_SRC
+
+#+ATTR_HTML: :width 500px
+#+RESULTS:
+[[file:w1hwq6.png]]
 
 ** TODO Challenge Problem 1
 

@@ -126,7 +126,7 @@ var LISTING = [
                 "type": "file",
                 "name": "automata/",
                 "title": "Automata Theory",
-                "author_date": "2018-01-02T14:45:55+08:00"
+                "author_date": "2018-01-03T10:58:59+08:00"
             },
             {
                 "type": "file",
