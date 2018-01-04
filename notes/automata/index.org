@@ -12,7 +12,8 @@
 
 [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/][Automata Theory]] on Lagunita
 
-* IN-PROGRESS Week 1: [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/][Finite Automata]]
+* DONE [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/][Finite Automata]]
+  CLOSED: [2018-01-04 Thu 14:39]
   :PROPERTIES:
   :CUSTOM_ID: finite-automata
   :END:
@@ -420,7 +421,7 @@ Example: A Regular Language
       - Just let δ(q, a) = (2q+a) % 23.
     * Example: δ(15, 0) = 30%23 = 7; δ(11, 1) = 23%23 = 0.
 
-Another Exapmle
+Another Example
   * L_{4} = {w | w in {0, 1}^{*} and w, viewed as the reverse of a
     binary integer, is divisible by 23}
   * Example: 01110100 is in L_{4}, because its reverse, 00101110, is
@@ -554,7 +555,7 @@ Proof of Equivalence: Subset Construction
  * Show by induction on |w| that
    - δ_N(q_0, w) = δ_D({q_0}, w)
  * Basis: w = ε: δ_N(q_0, ε) = δ_D({q_0}, ε) = {q_0}.
- * Inuduction:
+ * Induction:
    * Assume IH for strings shorter than w.
    * Let w = xa, IH holds for x.
    * Let δ_N(q_0, x) = δ_D({q_0}, x) = S.
@@ -659,7 +660,7 @@ Example: ε-NFA to NFA
 Summary
  * DFAs, NFAs, and ε-NFAs all accept exactly the same set of
    languages: the regular languages.
- * The NFA types are easier to deisgn and may have exponentially fewer
+ * The NFA types are easier to design and may have exponentially fewer
    states than a DFA.
  * But only a DFA can be implemented! (quantum computer for NFAs?)
 
@@ -840,6 +841,138 @@ what the question wants.
 #+RESULTS:
 [[file:w1hwq6.png]]
 
-** TODO Challenge Problem 1
+** DONE Challenge Problem 1
+   CLOSED: [2018-01-04 Thu 12:42] DEADLINE: <2018-01-03 Wed>
+   :PROPERTIES:
+   :CUSTOM_ID: challenge-problem-1
+   :END:
+Let L be the language with alphabet {0, 1, 2} consisting of strings
+that do not have any three consecutive 0s, any three consecutive 1s,
+or any three consecutive 2s.  Prove that L is a regular language
+(hint: design automata or regular expressions for some simpler
+languages and then use closure properties of regular languages to get
+L).  Harder is to design a DFA A for which the language is L itself,
+but we encourage you try to design one as a second part of this
+exercise.
 
-** TODO Problem Session 1
+To prove $L$ is a regular language, we just need to construct a DFA
+and prove the language of this DFA is equivalent to $L$.  The following
+DFA is constructed for this purpose.
+
+#+BEGIN_SRC latex :file cp1.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    \node[state,initial,accepting,left=of C] (A) {A};
+    \node[state,accepting,above=of C] (B) {B};
+    \node[state,accepting] (C) {C};
+    \node[state,accepting,below=of C] (D) {D};
+    \node[state,right=of C] (E) {E};
+    \path[->] (A) edge node {0} (B)
+                  edge node {1} (C)
+                  edge node [below left] {2} (D)
+              (B) edge node {0} (E)
+                  edge [bend left=15] node [below right=.4cm and -1pt] {1} (C)
+                  edge [bend left] node [above right=.8cm and -3pt] {2} (D)
+              (C) edge [bend left=15] node [below left=.4cm and -1pt] {0} (B)
+                  edge node {1} (E)
+                  edge [bend left=15] node [above right=.4cm and -1pt] {2} (D)
+              (D) edge [bend left] node [below left=.8cm and -3pt] {0} (B)
+                  edge [bend left=15] node [above left=.4cm and -1pt] {1} (C)
+                  edge node [below right] {2} (E)
+              (E) edge [loop above] node {0,1,2} (E);
+  \end{tikzpicture}
+#+END_SRC
+
+#+ATTR_HTML: :width 400px
+#+RESULTS:
+[[file:cp1.png]]
+
+Inductive Hypotheses:
+ 1. If $\hat\delta(A, w) = A$, then $w \in L$ and $w = \epsilon$.
+ 2. If $\hat\delta(A, w) = B$, then $w \in L$ and $w$ ends in $0$.
+ 3. If $\hat\delta(A, w) = C$, then $w \in L$ and $w$ ends in $1$.
+ 4. If $\hat\delta(A, w) = D$, then $w \in L$ and $w$ ends in $2$.
+
+
+Basis: $\abs{w} = 0$, which means $w = \epsilon$.  IH1 clearly holds
+since $\hat\delta(A, \epsilon) = A$ and $\epsilon \in L$.  All other
+IHs hold /vacuously/.
+
+Induction: $\abs{w} > 0$
+ * Let $w = xa$ and assume IHs hold for $x$.
+ * $\hat\delta(A, w) = \delta(\hat\delta(A, x), a) \neq A$, since
+   $\delta(q, a) \neq A$ for all $q \in \Sigma$.  And thus IH1 holds
+   /vacuously/.
+ * If $\hat\delta(A, w) = \delta(\hat\delta(A, x), a) = B$, then
+   $\hat\delta(A, x) \in \{A,C,D\}$ and $a = 0$.
+   - If $\hat\delta(A, x) = A$, then $x = \epsilon$.  Therefore, $w
+     = \epsilon 0 = 0$ and $w \in L$.
+   - If $\hat\delta(A, x) = C$, then $x \in L$, and $x$ ends in $1$.
+     Let $x = y1$.  It follows that $w = y10$ and $w \in L$.
+   - Do the same thing for $\hat\delta(A, x) = D$ as above.
+   Thus, IH2 holds.
+ * Do the same thing for IH3 and IH4.
+ * All our IHs hold for $w$.
+
+Our IHs hold for all $w$, which is the same thing to say that every $w$
+accepted by this DFA is in the language $L$.
+
+To prove the other direction, we take the contrapositive.
+
+If $w$ is not accepted by this DFA, then $\hat\delta(A, w) = E$ and
+$\abs{w} > 1$.  Let $w = xab$.
+ * $\hat\delta(A, w) = \delta(\hat\delta(A, xa), b) = E$
+ * $\hat\delta(A, xa) \in \{B,C,D\}$
+   - If $\hat\delta(A, xa) = \delta(\hat\delta(A, x), a)= B$, then $b
+     = a = 0$.  Thus, $w = x00$ and $w \notin L$
+   - Do the same thing for $C$ and $D$.
+
+Therefore, $w \notin L$.  Hence, every string in the language $L$ is
+accepted by this DFA.
+
+** DONE Problem Session 1
+   CLOSED: [2018-01-04 Thu 14:38] DEADLINE: <2018-01-03 Wed>
+
+
+* TODO [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/b9162be11c7b4c61a573a50e3aba5738/8c5876c1e4bb46af8fbf4a51ecfccbbc/][Regular Expressions and Properties of Regular Languages]]
+  DEADLINE: <2018-01-11 Thu>
+  :PROPERTIES:
+  :CUSTOM_ID: regular-expressions-and-properties-of-regular-languages
+  :END:
+** TODO Regular expressions
+   DEADLINE: <2018-01-05 Fri>
+   :PROPERTIES:
+   :CUSTOM_ID: regular-expressions
+   :END:
+** TODO Regular expressions in the real world
+   DEADLINE: <2018-01-05 Fri>
+   :PROPERTIES:
+   :CUSTOM_ID: regular-expressions-in-the-real-world
+   :END:
+** TODO Regular-Expression Homework
+   DEADLINE: <2018-01-06 Sat>
+   :PROPERTIES:
+   :CUSTOM_ID: regular-expression-homework
+   :END:
+** TODO Decision algorithms for regular languages
+   DEADLINE: <2018-01-07 Sun>
+   :PROPERTIES:
+   :CUSTOM_ID: decision-algorithms-for-regular-languages
+   :END:
+** TODO Closure properties of regular languages
+   DEADLINE: <2018-01-07 Sun>
+   :PROPERTIES:
+   :CUSTOM_ID: closure-properties-of-regular-languages
+   :END:
+** TODO Properties-of-Regular-Languages Homework
+   DEADLINE: <2018-01-08 Mon>
+   :PROPERTIES:
+   :CUSTOM_ID: properties-of-regular-languages-homework
+   :END:
+** TODO Challenge Problems 2
+   DEADLINE: <2018-01-09 Tue>
+   :PROPERTIES:
+   :CUSTOM_ID: challenge-problem-2
+   :END:
+** TODO Problem Session 2
+   DEADLINE: <2018-01-10 Wed>

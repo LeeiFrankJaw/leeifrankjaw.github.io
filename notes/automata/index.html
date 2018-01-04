@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-03 Wed 11:00 -->
+<!-- 2018-01-04 Thu 16:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Automata Theory</title>
@@ -259,15 +259,27 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#finite-automata">1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: Finite Automata</a>
+<li><a href="#finite-automata">1. <span class="done DONE">DONE</span> Finite Automata</a>
 <ul>
 <li><a href="#course-outline-and-motivation">1.1. <span class="done DONE">DONE</span> Course outline and motivation</a></li>
 <li><a href="#informal-introduction-to-finite-automata">1.2. <span class="done DONE">DONE</span> Informal introduction to finite automata</a></li>
 <li><a href="#deterministic-finite-automata">1.3. <span class="done DONE">DONE</span> Deterministic Finite Automata</a></li>
 <li><a href="#nondeterministic-finite-automata">1.4. <span class="done DONE">DONE</span> Nondeterministic finite automata</a></li>
 <li><a href="#finite-automata-homework">1.5. <span class="done DONE">DONE</span> Finite Automata Homework</a></li>
-<li><a href="#org25afc9b">1.6. <span class="todo TODO">TODO</span> Challenge Problem 1</a></li>
-<li><a href="#org39c2706">1.7. <span class="todo TODO">TODO</span> Problem Session 1</a></li>
+<li><a href="#challenge-problem-1">1.6. <span class="done DONE">DONE</span> Challenge Problem 1</a></li>
+<li><a href="#org6bbcf36">1.7. <span class="done DONE">DONE</span> Problem Session 1</a></li>
+</ul>
+</li>
+<li><a href="#regular-expressions-and-properties-of-regular-languages">2. <span class="todo TODO">TODO</span> Regular Expressions and Properties of Regular Languages</a>
+<ul>
+<li><a href="#regular-expressions">2.1. <span class="todo TODO">TODO</span> Regular expressions</a></li>
+<li><a href="#regular-expressions-in-the-real-world">2.2. <span class="todo TODO">TODO</span> Regular expressions in the real world</a></li>
+<li><a href="#regular-expression-homework">2.3. <span class="todo TODO">TODO</span> Regular-Expression Homework</a></li>
+<li><a href="#decision-algorithms-for-regular-languages">2.4. <span class="todo TODO">TODO</span> Decision algorithms for regular languages</a></li>
+<li><a href="#closure-properties-of-regular-languages">2.5. <span class="todo TODO">TODO</span> Closure properties of regular languages</a></li>
+<li><a href="#properties-of-regular-languages-homework">2.6. <span class="todo TODO">TODO</span> Properties-of-Regular-Languages Homework</a></li>
+<li><a href="#challenge-problem-2">2.7. <span class="todo TODO">TODO</span> Challenge Problems 2</a></li>
+<li><a href="#org3b75334">2.8. <span class="todo TODO">TODO</span> Problem Session 2</a></li>
 </ul>
 </li>
 </ul>
@@ -277,12 +289,12 @@ for the JavaScript code in this tag.
 <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/">Automata Theory</a> on Lagunita
 </p>
 
-<div id="outline-container-org2691b6a" class="outline-2">
-<h2 id="finite-automata"><a id="org2691b6a"></a><span class="section-number-2">1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Week 1: <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
+<div id="outline-container-org49d33e5" class="outline-2">
+<h2 id="finite-automata"><a id="org49d33e5"></a><span class="section-number-2">1</span> <span class="done DONE">DONE</span> <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/">Finite Automata</a></h2>
 <div class="outline-text-2" id="text-finite-automata">
 </div>
-<div id="outline-container-orgf899c46" class="outline-3">
-<h3 id="course-outline-and-motivation"><a id="orgf899c46"></a><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Course outline and motivation</h3>
+<div id="outline-container-org16ad67a" class="outline-3">
+<h3 id="course-outline-and-motivation"><a id="org16ad67a"></a><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> Course outline and motivation</h3>
 <div class="outline-text-3" id="text-course-outline-and-motivation">
 <p>
 Automata is ranked second after database for optional courses in a
@@ -361,8 +373,8 @@ it empty?</li>
 </div>
 </div>
 
-<div id="outline-container-org13cd0f7" class="outline-3">
-<h3 id="informal-introduction-to-finite-automata"><a id="org13cd0f7"></a><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Informal introduction to finite automata</h3>
+<div id="outline-container-org997dff7" class="outline-3">
+<h3 id="informal-introduction-to-finite-automata"><a id="org997dff7"></a><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Informal introduction to finite automata</h3>
 <div class="outline-text-3" id="text-informal-introduction-to-finite-automata">
 <p>
 What is a Finite Automaton?
@@ -431,8 +443,8 @@ Language of an Automaton
 </div>
 </div>
 
-<div id="outline-container-org44b7906" class="outline-3">
-<h3 id="deterministic-finite-automata"><a id="org44b7906"></a><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> Deterministic Finite Automata</h3>
+<div id="outline-container-org2604381" class="outline-3">
+<h3 id="deterministic-finite-automata"><a id="org2604381"></a><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> Deterministic Finite Automata</h3>
 <div class="outline-text-3" id="text-deterministic-finite-automata">
 <p>
 Alphabets
@@ -563,7 +575,7 @@ C: Consecutive 1s have been seen.
 </p>
 
 
-<div id="org496012d" class="figure">
+<div id="org621b9d1" class="figure">
 <p><img src="strings.png" alt="strings.png" width="500px" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Strings without two consecutive 1s</p>
@@ -675,7 +687,7 @@ start state to a final state.</li>
 Example: String in a Language
 </p>
 <ul class="org-ul">
-<li>String 101 is in the language of the string <a href="#org496012d">DFA</a>.</li>
+<li>String 101 is in the language of the string <a href="#org621b9d1">DFA</a>.</li>
 <li>The language of this DFA is:
 <ul class="org-ul">
 <li>{w | w is in {0, 1}<sup>*</sup> and w does not have two consecutive 1s}</li>
@@ -763,7 +775,7 @@ divisible by 23}</li>
 </ul>
 
 <p>
-Another Exapmle
+Another Example
 </p>
 <ul class="org-ul">
 <li>L<sub>4</sub> = {w | w in {0, 1}<sup>*</sup> and w, viewed as the reverse of a
@@ -777,8 +789,8 @@ is also regular.</li>
 </div>
 </div>
 
-<div id="outline-container-org814e40c" class="outline-3">
-<h3 id="nondeterministic-finite-automata"><a id="org814e40c"></a><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> Nondeterministic finite automata</h3>
+<div id="outline-container-org53a33c6" class="outline-3">
+<h3 id="nondeterministic-finite-automata"><a id="org53a33c6"></a><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> Nondeterministic finite automata</h3>
 <div class="outline-text-3" id="text-nondeterministic-finite-automata">
 <p>
 Nondeterminism
@@ -804,7 +816,7 @@ adjacent black square).</li>
 </ul>
 
 
-<div id="orge39ec01" class="figure">
+<div id="org5f57025" class="figure">
 <p><img src="chess3x3.png" alt="chess3x3.png" width="300px" />
 </p>
 <p><span class="figure-number">Figure 5: </span>A 3×3 chessboard</p>
@@ -937,7 +949,7 @@ final state.</li>
 Example: Language of an NFA
 </p>
 <ul class="org-ul">
-<li>For our <a href="#orge39ec01">chessboard</a> NFA, we saw that rbb is accepted.</li>
+<li>For our <a href="#org5f57025">chessboard</a> NFA, we saw that rbb is accepted.</li>
 <li>If the input consists of only b&rsquo;s, the set of accessible states
 alternates between {5} and {1,3,7,9}, so only even-length, nonempty
 strings of b&rsquo;s are accepted.</li>
@@ -1071,7 +1083,7 @@ Proof of Equivalence: Subset Construction
 <li>δ<sub>N</sub>(q<sub>0</sub>, w) = δ<sub>D</sub>({q<sub>0</sub>}, w)</li>
 </ul></li>
 <li>Basis: w = ε: δ<sub>N</sub>(q<sub>0</sub>, ε) = δ<sub>D</sub>({q<sub>0</sub>}, ε) = {q<sub>0</sub>}.</li>
-<li>Inuduction:
+<li>Induction:
 <ul class="org-ul">
 <li>Assume IH for strings shorter than w.</li>
 <li>Let w = xa, IH holds for x.</li>
@@ -1313,15 +1325,15 @@ Summary
 <ul class="org-ul">
 <li>DFAs, NFAs, and ε-NFAs all accept exactly the same set of
 languages: the regular languages.</li>
-<li>The NFA types are easier to deisgn and may have exponentially fewer
+<li>The NFA types are easier to design and may have exponentially fewer
 states than a DFA.</li>
 <li>But only a DFA can be implemented! (quantum computer for NFAs?)</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgbcca9b3" class="outline-3">
-<h3 id="finite-automata-homework"><a id="orgbcca9b3"></a><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> Finite Automata Homework</h3>
+<div id="outline-container-orgbb381d4" class="outline-3">
+<h3 id="finite-automata-homework"><a id="orgbb381d4"></a><span class="section-number-3">1.5</span> <span class="done DONE">DONE</span> Finite Automata Homework</h3>
 <div class="outline-text-3" id="text-finite-automata-homework">
 <p>
 <b>Question 1-2</b>
@@ -1599,18 +1611,162 @@ what the question wants.
 </div>
 </div>
 
-<div id="outline-container-org25afc9b" class="outline-3">
-<h3 id="org25afc9b"><span class="section-number-3">1.6</span> <span class="todo TODO">TODO</span> Challenge Problem 1</h3>
+<div id="outline-container-orgd00c64c" class="outline-3">
+<h3 id="challenge-problem-1"><a id="orgd00c64c"></a><span class="section-number-3">1.6</span> <span class="done DONE">DONE</span> Challenge Problem 1</h3>
+<div class="outline-text-3" id="text-challenge-problem-1">
+<p>
+Let L be the language with alphabet {0, 1, 2} consisting of strings
+that do not have any three consecutive 0s, any three consecutive 1s,
+or any three consecutive 2s.  Prove that L is a regular language
+(hint: design automata or regular expressions for some simpler
+languages and then use closure properties of regular languages to get
+L).  Harder is to design a DFA A for which the language is L itself,
+but we encourage you try to design one as a second part of this
+exercise.
+</p>
+
+<p>
+To prove \(L\) is a regular language, we just need to construct a DFA
+and prove the language of this DFA is equivalent to \(L\).  The following
+DFA is constructed for this purpose.
+</p>
+
+
+<div class="figure">
+<p><img src="cp1.png" alt="cp1.png" width="400px" />
+</p>
 </div>
 
-<div id="outline-container-org39c2706" class="outline-3">
-<h3 id="org39c2706"><span class="section-number-3">1.7</span> <span class="todo TODO">TODO</span> Problem Session 1</h3>
+<p>
+Inductive Hypotheses:
+</p>
+<ol class="org-ol">
+<li>If \(\hat\delta(A, w) = A\), then \(w \in L\) and \(w = \epsilon\).</li>
+<li>If \(\hat\delta(A, w) = B\), then \(w \in L\) and \(w\) ends in \(0\).</li>
+<li>If \(\hat\delta(A, w) = C\), then \(w \in L\) and \(w\) ends in \(1\).</li>
+<li>If \(\hat\delta(A, w) = D\), then \(w \in L\) and \(w\) ends in \(2\).</li>
+</ol>
+
+
+<p>
+Basis: \(\abs{w} = 0\), which means \(w = \epsilon\).  IH1 clearly holds
+since \(\hat\delta(A, \epsilon) = A\) and \(\epsilon \in L\).  All other
+IHs hold <i>vacuously</i>.
+</p>
+
+<p>
+Induction: \(\abs{w} > 0\)
+</p>
+<ul class="org-ul">
+<li>Let \(w = xa\) and assume IHs hold for \(x\).</li>
+<li>\(\hat\delta(A, w) = \delta(\hat\delta(A, x), a) \neq A\), since
+\(\delta(q, a) \neq A\) for all \(q \in \Sigma\).  And thus IH1 holds
+<i>vacuously</i>.</li>
+<li><p>
+If \(\hat\delta(A, w) = \delta(\hat\delta(A, x), a) = B\), then
+\(\hat\delta(A, x) \in \{A,C,D\}\) and \(a = 0\).
+</p>
+<ul class="org-ul">
+<li>If \(\hat\delta(A, x) = A\), then \(x = \epsilon\).  Therefore, \(w
+     = \epsilon 0 = 0\) and \(w \in L\).</li>
+<li>If \(\hat\delta(A, x) = C\), then \(x \in L\), and \(x\) ends in \(1\).
+Let \(x = y1\).  It follows that \(w = y10\) and \(w \in L\).</li>
+<li>Do the same thing for \(\hat\delta(A, x) = D\) as above.</li>
+</ul>
+<p>
+Thus, IH2 holds.
+</p></li>
+<li>Do the same thing for IH3 and IH4.</li>
+<li>All our IHs hold for \(w\).</li>
+</ul>
+
+<p>
+Our IHs hold for all \(w\), which is the same thing to say that every \(w\)
+accepted by this DFA is in the language \(L\).
+</p>
+
+<p>
+To prove the other direction, we take the contrapositive.
+</p>
+
+<p>
+If \(w\) is not accepted by this DFA, then \(\hat\delta(A, w) = E\) and
+\(\abs{w} > 1\).  Let \(w = xab\).
+</p>
+<ul class="org-ul">
+<li>\(\hat\delta(A, w) = \delta(\hat\delta(A, xa), b) = E\)</li>
+<li>\(\hat\delta(A, xa) \in \{B,C,D\}\)
+<ul class="org-ul">
+<li>If \(\hat\delta(A, xa) = \delta(\hat\delta(A, x), a)= B\), then \(b
+     = a = 0\).  Thus, \(w = x00\) and \(w \notin L\)</li>
+<li>Do the same thing for \(C\) and \(D\).</li>
+</ul></li>
+</ul>
+
+<p>
+Therefore, \(w \notin L\).  Hence, every string in the language \(L\) is
+accepted by this DFA.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6bbcf36" class="outline-3">
+<h3 id="org6bbcf36"><span class="section-number-3">1.7</span> <span class="done DONE">DONE</span> Problem Session 1</h3>
+<div class="outline-text-3" id="text-1-7">
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf8b1126" class="outline-2">
+<h2 id="regular-expressions-and-properties-of-regular-languages"><a id="orgf8b1126"></a><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> <a href="https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/b9162be11c7b4c61a573a50e3aba5738/8c5876c1e4bb46af8fbf4a51ecfccbbc/">Regular Expressions and Properties of Regular Languages</a></h2>
+<div class="outline-text-2" id="text-regular-expressions-and-properties-of-regular-languages">
+</div>
+<div id="outline-container-org67be804" class="outline-3">
+<h3 id="regular-expressions"><a id="org67be804"></a><span class="section-number-3">2.1</span> <span class="todo TODO">TODO</span> Regular expressions</h3>
+<div class="outline-text-3" id="text-regular-expressions">
+</div>
+</div>
+<div id="outline-container-org787a76e" class="outline-3">
+<h3 id="regular-expressions-in-the-real-world"><a id="org787a76e"></a><span class="section-number-3">2.2</span> <span class="todo TODO">TODO</span> Regular expressions in the real world</h3>
+<div class="outline-text-3" id="text-regular-expressions-in-the-real-world">
+</div>
+</div>
+<div id="outline-container-orgc31032d" class="outline-3">
+<h3 id="regular-expression-homework"><a id="orgc31032d"></a><span class="section-number-3">2.3</span> <span class="todo TODO">TODO</span> Regular-Expression Homework</h3>
+<div class="outline-text-3" id="text-regular-expression-homework">
+</div>
+</div>
+<div id="outline-container-org08234bc" class="outline-3">
+<h3 id="decision-algorithms-for-regular-languages"><a id="org08234bc"></a><span class="section-number-3">2.4</span> <span class="todo TODO">TODO</span> Decision algorithms for regular languages</h3>
+<div class="outline-text-3" id="text-decision-algorithms-for-regular-languages">
+</div>
+</div>
+<div id="outline-container-orgd1e3b1c" class="outline-3">
+<h3 id="closure-properties-of-regular-languages"><a id="orgd1e3b1c"></a><span class="section-number-3">2.5</span> <span class="todo TODO">TODO</span> Closure properties of regular languages</h3>
+<div class="outline-text-3" id="text-closure-properties-of-regular-languages">
+</div>
+</div>
+<div id="outline-container-org4c9817b" class="outline-3">
+<h3 id="properties-of-regular-languages-homework"><a id="org4c9817b"></a><span class="section-number-3">2.6</span> <span class="todo TODO">TODO</span> Properties-of-Regular-Languages Homework</h3>
+<div class="outline-text-3" id="text-properties-of-regular-languages-homework">
+</div>
+</div>
+<div id="outline-container-org989a45a" class="outline-3">
+<h3 id="challenge-problem-2"><a id="org989a45a"></a><span class="section-number-3">2.7</span> <span class="todo TODO">TODO</span> Challenge Problems 2</h3>
+<div class="outline-text-3" id="text-challenge-problem-2">
+</div>
+</div>
+<div id="outline-container-org3b75334" class="outline-3">
+<h3 id="org3b75334"><span class="section-number-3">2.8</span> <span class="todo TODO">TODO</span> Problem Session 2</h3>
+<div class="outline-text-3" id="text-2-8">
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2018-01-03 Wed 11:00</p>
+<p class="date">Created: 2018-01-04 Thu 16:09</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
