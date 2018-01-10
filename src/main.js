@@ -126,7 +126,7 @@ var LISTING = [
                 "type": "file",
                 "name": "intro_db.html",
                 "title": "Intro to DB",
-                "author_date": "2018-01-10T18:24:59.248320+08:00"
+                "author_date": "2018-01-10T18:25:39+08:00"
             },
             {
                 "type": "file",
@@ -284,10 +284,17 @@ function renderHome() {
             btn.removeAttribute("id");
             e.target.id = "selected";
             MAIN.replaceChild(tables[e.target.value], tables[btn.value]);
+            window.history.pushState({}, "", "?list=" + e.target.value);
         };
     }
-    btns[0].id = "selected";
-    MAIN.appendChild(tables[0]);
+    var match = window.location.search.match(/list=(\d*)/),
+        index = (function() {
+            var index = (match && match[1]) ? parseInt(match[1]) : 0;
+            return (0 <= index && index < btns.length) ? index : 0;
+        }());
+    window.history.replaceState({}, "", "?list=" + index);
+    btns[index].id = "selected";
+    MAIN.appendChild(tables[index]);
     var rightPane = CONTENT["right-pane"];
     var a = newAnchor(rightPane.link, RIGHT_PANE);
     var img = newElement("img", a);
