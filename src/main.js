@@ -124,15 +124,15 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
-                "name": "automata/",
-                "title": "Automata Theory",
-                "author_date": "2018-01-04T13:09:59+08:00"
+                "name": "intro_db.html",
+                "title": "Intro to DB",
+                "author_date": "2018-01-10T18:24:59.248320+08:00"
             },
             {
                 "type": "file",
-                "name": "intro_db.html",
-                "title": "Intro to DB",
-                "author_date": "2017-12-30T22:45:02+08:00"
+                "name": "automata/",
+                "title": "Automata Theory",
+                "author_date": "2018-01-04T13:09:59+08:00"
             }
         ]
     }
