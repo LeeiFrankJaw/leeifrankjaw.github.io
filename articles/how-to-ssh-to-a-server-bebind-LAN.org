@@ -13,19 +13,19 @@ home.  To solve the problem, we need a third server.
 
 Let the server in the office be A, my boss's laptop at home be B, and
 the third server be C.  This third server C must be accessible by both
-A and B.  Suppose C is at domain ~public.example.com~ with a user ~C~
-and B is at domain ~private.example.com~ with a user ~B~.
+A and B.  Suppose C is at domain ~example.com~ with a user ~C~ and B
+has a user named ~B~.
 
 On server B, do the following to create a reverse tunnel from C to B.
 
 #+BEGIN_SRC bash
-  ssh -f -N -T -R 22222:localhost:22 C@public.example.com
+  ssh -f -N -T -R 22222:localhost:22 C@example.com
 #+END_SRC
 
 Then, on machine A, do the following to access server B via server C.
 
 #+BEGIN_SRC bash
-  ssh -t username@example.com ssh -p 22222 B@localhost
+  ssh -t C@example.com ssh -p 22222 B@localhost
 #+END_SRC
 
 References:
