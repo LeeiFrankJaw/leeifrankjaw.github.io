@@ -2438,7 +2438,7 @@ Types of relationships
 
 | One-to-One   | 0..1 | 0..1 |
 | Many-to-One  |    * | 0..1 |
-| Many-to-Many |    * |    a |
+| Many-to-Many |    * |    * |
 | Complete     |  1.. |  1.. |
 
 Default is complete one-to-one
