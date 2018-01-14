@@ -4249,12 +4249,10 @@ Defining and using views
  * View $V = \mathrm{ViewQuery}(R_1, R_2, \dotsc, R_n)$
  * Schema of $V$ is schema of query result
  * Query $Q$ involving $V$, conceptually:
-   #+HTML: <!--<![CDATA[
     \begin{align*}
-        &V := \mathrm{ViewQuery}(R_1, R_2, \dotsc, R_n) \\
-        &\mathrm{Evaluate}\ Q
+        &amp;V := \mathrm{ViewQuery}(R_1, R_2, \dotsc, R_n) \\
+        &amp;\mathrm{Evaluate}\ Q
     \end{align*}
-   #+HTML: ]]>-->
  * In reality, $Q$ rewritten to use $R_1, \dotsc, R_n$ instead of $V$
  * Notes: $R_i$ could itself be a view
 
@@ -4405,24 +4403,20 @@ Usually there are successful translations for view modifications.  The
 problem is there are too many and which one the user intends.
 
 Suppose we have the following schema.
-#+HTML: <!--<![CDATA[
 \begin{align*}
-  & R(A, B) \\
-  & V = \Pi_A(R)
+  &amp; R(A, B) \\
+  &amp; V = \Pi_A(R)
 \end{align*}
-#+HTML: ]]>-->
 
 The table $R$ has $(1, 2)$ and thus $V = (1)$.  Say the user wants to
 insert $3$ into $V$.  Then the attribute $B$ is undecided for the
 newly inserted tuple.
 
 A more radical example follows.
-#+HTML: <!--<![CDATA[
 \begin{align*}
-  & R(N) = \{ (1), (3), (5) \} \\
-  & V = \operatorname{avg}(N) = \{ (3) \}
+  &amp; R(N) = \{ (1), (3), (5) \} \\
+  &amp; V = \operatorname{avg}(N) = \{ (3) \}
 \end{align*}
-#+HTML: ]]>-->
 
 And the user wants to update the average to $7$, then there are so
 many ways to update $R$ to achieve this.
