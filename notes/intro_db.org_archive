@@ -2341,10 +2341,12 @@ Relation R with MVDs is in 4NF if:
    :CUSTOM_ID: uml-data-modeling
    :END:
 Entity-Relationship Model (E/R)
+
 Unified Modeling Language
  * Data modeling subset
 
 Both are graphical
+
 Both can be translated to relations automatically
  * Or semi-automatically
 
