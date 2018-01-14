@@ -5517,15 +5517,382 @@ Simulation using ~with rollup~
 | 60 | 120 |  86 |
 
 
-* TODO [[https://lagunita.stanford.edu/courses/DB/Recursion/SelfPaced/courseware/ch-recursion/][Recursion in SQL]] mini-course
+* DONE [[https://lagunita.stanford.edu/courses/DB/Recursion/SelfPaced/courseware/ch-recursion/][Recursion in SQL]] mini-course
+  CLOSED: [2018-01-14 Sun 16:02]
   :PROPERTIES:
   :CUSTOM_ID: recursion-in-sql-mini-course
   :END:
-** TODO Lecture Videos
-   DEADLINE: <2018-01-11 Thu>
-*** TODO Basic Recursive WITH Statement---Introduction
-*** TODO Basic Recursive WITH Statement---Demo
-*** TODO Nonlinear and Mutual Recursion
-** TODO Exercises
-   DEADLINE: <2018-01-12 Fri>
-*** TODO Recursion Quiz
+** DONE Lecture Videos
+   CLOSED: [2018-01-13 Sat 23:09] DEADLINE: <2018-01-11 Thu>
+*** DONE Basic Recursive WITH Statement---Introduction
+    CLOSED: [2018-01-11 Thu 20:32]
+    :PROPERTIES:
+    :CUSTOM_ID: basic-recursive-with-statement-introduction
+    :END:
+SQL is not a "Turing complete" language
+ * Simple, convenient, declarative
+ * Expressive enough for most database queries
+ * But basic SQL can't express unbounded computations
+
+Example 1: Ancesstors
+
+#+BEGIN_EXAMPLE
+  ParentOf(parent, child)
+#+END_EXAMPLE
+
+ * Find all of Mary's ancestors
+
+Example 2: Company hierarchy
+
+#+BEGIN_EXAMPLE
+  Employee(ID, salary)
+  Manager(mID, eID)
+  Project(name, mgrID)
+#+END_EXAMPLE
+
+ * Final total salary cost of project 'X'
+
+Example 3: Airline flights
+
+#+BEGIN_EXAMPLE
+  Flight(orig, dest, airline, cost)
+#+END_EXAMPLE
+
+ * Find cheapest way to fly from 'A' to 'B'
+
+SQL ~with~ Statement
+
+#+BEGIN_SRC sql
+  with R1 as (query-1),
+       R2 as (query-2),
+       ...
+       Rn as (query-n)
+  <query involving R1, ..., Rn (and other tables)>
+#+END_SRC
+
+#+BEGIN_SRC sql
+  with R1(A1, A2, ..., Am) as (query-1),
+       R2 as (query-2),
+       ...
+       Rn as (query-n)
+  <query involving R1, ..., Rn (and other tables)>
+#+END_SRC
+
+#+BEGIN_SRC sql
+  with recursive
+       R1 as (query-1),
+       R2 as (query-2),
+       ...
+       Rn as (query-n)
+  <query involving R1, ..., Rn (and other tables)>
+#+END_SRC
+
+SQL standard specifies ~recursive~ keyword goes with relation, but
+implementations differ and make it as modifier for ~with~, and thus
+any relations are allowed to be recursive if the ~recursive~ keyword
+is given.
+
+#+BEGIN_SRC sql
+  with recursive
+       R as (base query
+             union
+             recursive query)
+  <query involving R1, ..., Rn (and other tables)>
+#+END_SRC
+
+*** DONE Basic Recursive WITH Statement---Demo
+    CLOSED: [2018-01-13 Sat 16:13]
+    :PROPERTIES:
+    :CUSTOM_ID: basic-recursive-with-statement-demo
+    :END:
+#+BEGIN_SRC sql
+  with recursive Ancestor(a, d) as
+  (select parent as a, child as d from ParentOf
+   union
+   select Ancestor.a, ParentOf.child as d
+   from Ancestor, ParentOf
+   where Ancestor.d = ParentOf.parent)
+  select a from Ancestor where d = 'Mary';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  with recursive Superior as
+  (select * from Manager
+   union
+   select S.mID, M.eID
+   from Superior S, Manager M
+   where S.eID = M.mID)
+  select sum(salary)
+  from Employee
+  where ID in
+        (select mgrID from Project where name = 'X'
+         union
+         select eID from Project, Superior
+         where Project.name = 'X' and Project.mgrID = Superior.mID);
+#+END_SRC
+
+#+BEGIN_SRC sql
+  with recursive Xemps(ID) as
+  (select mgrID as ID from Project where name = 'X'
+   union
+   select eID as ID
+   from Manager M, Xemps X
+   where M.mID = X.ID)
+  select sum(salary)
+  from Employee
+  where ID in (select ID from Xemps);
+#+END_SRC
+
+#+BEGIN_SRC sql
+  with recursive
+    Yemps(ID) as (select mgrID as ID from Project where name = 'Y'
+                  union
+                  select eID as ID
+                  from Manager M, Yemps Y
+                  where M.mID = Y.ID),
+    Zemps(ID) as (select mgrID as ID from Project where name = 'Z'
+                  union
+                  select eID as ID
+                  from Manager M, Zemps Z
+                  where M.mID = Z.ID),
+  select 'Y-total', sum(salary)
+  from Employee
+  where ID in (select ID from Yemps)
+  union
+  select 'Z-total', sum(salary)
+  from Employee
+  where ID in (select ID from Zemps);
+#+END_SRC
+
+#+BEGIN_SRC sql
+  with recursive
+    Route(orig, dest, total) as
+      (select orig, dest, cost as total from Flight
+       union
+       select R.orig, F.dest, cost+total as total
+       from Route R, Flight F
+       where R.dest = F.orig)
+  select min(total) from Route
+  where orig = 'A' and dest = 'B';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  with recursive
+    FromA(dest, total) as
+      (select dest, cost as total from Flight where orig = 'A'
+       union
+       select F.dest, cost+total as total
+       from FromA FA, Flight F
+       where FA.dest = F.orig)
+  select min(total) from FromA where dest = 'B';
+#+END_SRC
+
+#+BEGIN_SRC sql
+  with recursive
+    ToB(orig, total) as
+      (select orig, cost as total from Flight where dest = 'B'
+       union
+       select F.orig, cost+total as total
+       from ToB, Flight F
+       where ToB.orig = Flight.dest)
+  select min(total) from ToB where orig = 'A';
+#+END_SRC
+
+All the above queries work well given that there is *no loop* in our
+Flight.
+
+A loop will overflow all the above queries.
+
+#+BEGIN_SRC sql
+  with recursive
+    Route(orig, dest, total) as
+      (select orig, dest, cost as total from Flight
+       union
+       select R.orig, F.dest, cost+total as total
+       from Route R, Flight F
+       where R.dest = F.orig
+       and cost+total < all (select total from Route R2
+                             where R2.orig = R.orig and R2.dest = F.dest))
+  select min(total) from Route
+  where orig = 'A' and dest = 'B';
+#+END_SRC
+
+The above query works conceptually but PostgresSQL doesn't allow
+recursive reference within a subquery.
+
+#+BEGIN_SRC sql
+  with recursive
+    Route(orig, dest, total) as
+      (select orig, dest, cost as total from Flight
+       union
+       select R.orig, F.dest, cost+total as total
+       from Route R, Flight F
+       where R.dest = F.orig)
+  select * from Route
+  where orig = 'A' and dest = 'B' limit 20;
+#+END_SRC
+
+The above query will give a table with 20 results and thus prevent
+infinite recursion.  However, if you replace ~*~ with ~min(total)~,
+infinite recursion comes back again.  The following is an alternative
+solution.
+
+#+BEGIN_SRC sql
+  with recursive
+    Route(orig, dest, total) as
+      (select orig, dest, cost as total, 1 from Flight
+       union
+       select R.orig, F.dest, cost+total as total, R.length+1 as length
+       from Route R, Flight F
+       where R.dest = F.orig and R.length < 10)
+  select min(total) from Route
+  where orig = 'A' and dest = 'B';
+#+END_SRC
+
+*** DONE Nonlinear and Mutual Recursion
+    CLOSED: [2018-01-13 Sat 23:09]
+    :PROPERTIES:
+    :CUSTOM_ID: nonlinear-and-mutual-recursion
+    :END:
+Linear Recursion
+ * there is at most one reference to R in the recursive query.
+
+Example: Ancestors
+
+#+BEGIN_SRC sql
+  with recursive
+    Ancestor(a, d) as
+      (select parent as a, child as d from ParentOf
+       union
+       select A1.a, A2.d
+       from Ancestor A1, Ancestor A2
+       where A1.d = A2.a)
+  select a from Ancestor where d = 'Mary';
+#+END_SRC
+
+This is a nonlinear recursion since there are two references to
+relation Ancestor.
+
+Nonlinear versus linear
+ * + Query looks cleaner
+ * + Converges faster
+ * − Harder to implement
+ * SQL standard only requires linear
+
+Mutual Recursion
+ * recursive queries refer to recursive relations other than
+   themselves.
+
+They work in tandem.  SQL standard allows mutual recursion in limited
+forms.
+
+Example: Hubs & Authorities
+
+#+BEGIN_EXAMPLE
+  Link(src, dest)
+  HubStart(node)
+  AuthStart(node)
+#+END_EXAMPLE
+
+Hub: points to greater than or equal to 3 authority node
+Authority: pointed to greater than or equal to 3 hub node
+
+Some nodes are pre-designated as hub and/or authority nodes.
+
+#+BEGIN_SRC sql
+  with recursive
+    Hub(node) as (select node from HubStart
+                  union
+                  select src as node from Link L
+                  where dest in (select node from Auth)
+                  group by src having count(*) >= 3),
+    Auth(node) as (select node from AuthStart
+                   union
+                   select dest as node from Link L
+                   where src in (select node from Hub)
+                   group by dest having count(*) >= 3)
+  select * from Hub;
+#+END_SRC
+
+It's been said there is no implementation of mutual recursion in
+common RDBMSs.  So the above query works only conceptually.
+
+#+BEGIN_SRC sql
+  with recursive
+    Hub(node) as (select node from HubStart
+                  union
+                  select src as node from Link L
+                  where src not in (select node from Auth)
+                  and dest in (select node from Auth)
+                  group by src having count(*) >= 3),
+    Auth(node) as (select node from AuthStart
+                   union
+                   select dest as node from Link L
+                   where dest not in (select node from Hub)
+                   and src in (select node from Hub)
+                   group by dest having count(*) >= 3)
+  select * from Hub;
+#+END_SRC
+
+The above query has non-unique fixed points (nondeterministic) of the
+recursion.  This is bad and thus SQL standard does't allow this
+type of mutual recursion.  In fact, the crux of the problem is
+negative dependence, which can also happen even without mutual
+recursion.  Non-mutual recursion with negative dependence is not
+allowed either.
+
+Example: Recursion with Aggregation
+
+#+BEGIN_EXAMPLE
+  P(x)
+#+END_EXAMPLE
+
+#+BEGIN_SRC sql
+  with recursive
+    R(x) as (select x from P
+             union
+             select sum(x) from R)
+  select * from R;
+#+END_SRC
+
+Recursion with aggregation is disallowed in the SQL standard and isn't
+supported by any system.
+
+Extends expressiveness of SQL
+ * Basic functionality: linear recursion
+ * Extended functionality: nonlinear recursion, mutual recursion
+ * Disallowed: negative dependence, aggregation
+
+** DONE Exercises
+   CLOSED: [2018-01-14 Sun 16:02] DEADLINE: <2018-01-12 Fri>
+*** DONE Recursion Quiz
+    CLOSED: [2018-01-14 Sun 16:02]
+    :PROPERTIES:
+    :CUSTOM_ID: recursion-quiz
+    :END:
+T(A) containing a set of positive integers with no duplicates.
+
+#+BEGIN_SRC sql
+  With Recursive Mystery(X,Y) As
+   (Select A As X, A As Y From T
+    Union
+    Select m1.X, m2.Y
+    From Mystery m1, Mystery m2
+    Where m2.X = m1.Y + 1)
+  Select Max(Y-X) + 1 From Mystery
+#+END_SRC
+
+The above query actually computes the length of the longest consecutive sequence in T.
+
+#+BEGIN_SRC sql
+  With Recursive Peer(X,Y) As
+    (Select M1.employee, M2.employee
+     From Manager M1, Manager M2
+     Where M1.manager = M2.manager AND M1.employee < M2.employee
+     Union
+     Select M1.employee, M2.employee
+     From Peer S, Manager M1, Manager M2
+     Where S.X = M1.manager AND S.Y = M2.manager
+     And M1.employee < M2.employee)
+  Select * from Peer
+#+END_SRC
