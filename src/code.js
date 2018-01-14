@@ -135,8 +135,9 @@ function renderHome() {
             var btn = document.getElementById("selected");
             btn.removeAttribute("id");
             e.target.id = "selected";
-            MAIN.replaceChild(tables[e.target.value], tables[btn.value]);
-            window.history.pushState({}, "", "?list=" + e.target.value);
+            var index = e.target.value;
+            MAIN.replaceChild(tables[index], tables[btn.value]);
+            window.history.pushState({list: index}, "", "?list=" + index);
         };
     }
     var match = window.location.search.match(/list=(\d*)/),
@@ -144,7 +145,15 @@ function renderHome() {
             var index = (match && match[1]) ? parseInt(match[1]) : 0;
             return (0 <= index && index < btns.length) ? index : 0;
         }());
-    window.history.replaceState({}, "", "?list=" + index);
+    window.history.replaceState({list: index}, "", "?list=" + index);
+    window.onpopstate = function(e) {
+        if (e.state) {
+            var btn = document.getElementById("selected");
+            btn.removeAttribute("id");
+            btns[e.state.list].id = "selected";
+            MAIN.replaceChild(tables[e.state.list], tables[btn.value]);
+        }
+    };
     btns[index].id = "selected";
     MAIN.appendChild(tables[index]);
     var rightPane = CONTENT["right-pane"];
