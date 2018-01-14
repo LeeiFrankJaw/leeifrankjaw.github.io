@@ -4960,7 +4960,7 @@ Revoking Privileges
 #+END_SRC
 
 Cascade: Also revoke privileges granted from privileges being revoked
-(transitively), unless also granted from antoher source.
+(transitively), unless also granted from another source.
 
 Restrict: Disallow if /Cascade/ would revoke any other
 privileges. (This is the default.)
@@ -5535,7 +5535,7 @@ SQL is not a "Turing complete" language
  * Expressive enough for most database queries
  * But basic SQL can't express unbounded computations
 
-Example 1: Ancesstors
+Example 1: Ancestors
 
 #+BEGIN_EXAMPLE
   ParentOf(parent, child)
@@ -5718,7 +5718,7 @@ A loop will overflow all the above queries.
   where orig = 'A' and dest = 'B';
 #+END_SRC
 
-The above query works conceptually but PostgresSQL doesn't allow
+The above query works conceptually but PostgreSQL doesn't allow
 recursive reference within a subquery.
 
 #+BEGIN_SRC sql
@@ -5836,7 +5836,7 @@ common RDBMSs.  So the above query works only conceptually.
 #+END_SRC
 
 The above query has non-unique fixed points (nondeterministic) of the
-recursion.  This is bad and thus SQL standard does't allow this
+recursion.  This is bad and thus SQL standard doesn't allow this
 type of mutual recursion.  In fact, the crux of the problem is
 negative dependence, which can also happen even without mutual
 recursion.  Non-mutual recursion with negative dependence is not
