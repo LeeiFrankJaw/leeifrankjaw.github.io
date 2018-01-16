@@ -861,38 +861,55 @@ DFA is constructed for this purpose.
 
 #+BEGIN_SRC latex :file cp1.png
   \usetikzlibrary{positioning,shapes,automata}
-  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+  \begin{tikzpicture}[shorten >=1pt,node distance=3.5cm,on grid,auto]
     \node[state,initial,accepting,left=of C] (A) {A};
     \node[state,accepting,above=of C] (B) {B};
     \node[state,accepting] (C) {C};
     \node[state,accepting,below=of C] (D) {D};
-    \node[state,right=of C] (E) {E};
+    \node[state,accepting,right=of B] (E) {E};
+    \node[state,accepting,right=of C] (F) {F};
+    \node[state,accepting,right=of D] (G) {G};
+    \node[state,right=of F] (H) {H};
     \path[->] (A) edge node {0} (B)
                   edge node {1} (C)
                   edge node [below left] {2} (D)
               (B) edge node {0} (E)
                   edge [bend left=15] node [below right=.4cm and -1pt] {1} (C)
-                  edge [bend left] node [above right=.8cm and -3pt] {2} (D)
+                  edge [bend left] node [below right=.2cm and 0pt] {2} (D)
               (C) edge [bend left=15] node [below left=.4cm and -1pt] {0} (B)
-                  edge node {1} (E)
+                  edge node {1} (F)
                   edge [bend left=15] node [above right=.4cm and -1pt] {2} (D)
-              (D) edge [bend left] node [below left=.8cm and -3pt] {0} (B)
+              (D) edge [bend left] node [below left=.2cm and 0pt] {0} (B)
                   edge [bend left=15] node [above left=.4cm and -1pt] {1} (C)
-                  edge node [below right] {2} (E)
-              (E) edge [loop above] node {0,1,2} (E);
+                  edge node [below] {2} (G)
+              (E) edge node {0} (H)
+                  edge node [above right=1cm and .6cm] {1} (C)
+                  edge [bend left=15] node [above right=2.5cm and 1cm] {2} (D)
+              (F) edge [bend right=15] node [below right=1cm and 1cm] {0} (B)
+                  edge node {1} (H)
+                  edge [bend left=15] node [above right=1cm and 1cm] {2} (D)
+              (G) edge [bend right=15] node [below right=2.5cm and 1cm] {0} (B)
+                  edge node [below right=1cm and .6cm] {1} (C)
+                  edge node {2} (H)
+              (H) edge [loop above] node {0,1,2} (H);
   \end{tikzpicture}
 #+END_SRC
 
-#+ATTR_HTML: :width 400px
+#+ATTR_HTML: :width 600px
 #+RESULTS:
 [[file:cp1.png]]
 
 Inductive Hypotheses:
  1. If $\hat\delta(A, w) = A$, then $w \in L$ and $w = \epsilon$.
- 2. If $\hat\delta(A, w) = B$, then $w \in L$ and $w$ ends in $0$.
- 3. If $\hat\delta(A, w) = C$, then $w \in L$ and $w$ ends in $1$.
- 4. If $\hat\delta(A, w) = D$, then $w \in L$ and $w$ ends in $2$.
-
+ 2. If $\hat\delta(A, w) = B$, then $w \in L$, $w$ ends in $0$, and
+    the second last symbol in $w$, if it has one, is not $0$.
+ 3. If $\hat\delta(A, w) = C$, then $w \in L$, $w$ ends in $1$, and
+    the second last symbol in $w$, if it has one, is not $1$.
+ 4. If $\hat\delta(A, w) = D$, then $w \in L$, $w$ ends in $2$, and
+    the second last symbol in $w$, if it has one, is not $2$.
+ 5. If $\hat\delta(A, w) = E$, then $w \in L$ and $w$ ends in $00$.
+ 6. If $\hat\delta(A, w) = F$, then $w \in L$ and $w$ ends in $11$.
+ 7. If $\hat\delta(A, w) = G$, then $w \in L$ and $w$ ends in $22$.
 
 Basis: $\abs{w} = 0$, which means $w = \epsilon$.  IH1 clearly holds
 since $\hat\delta(A, \epsilon) = A$ and $\epsilon \in L$.  All other
@@ -904,14 +921,21 @@ Induction: $\abs{w} > 0$
    $\delta(q, a) \neq A$ for all $q \in \Sigma$.  And thus IH1 holds
    /vacuously/.
  * If $\hat\delta(A, w) = \delta(\hat\delta(A, x), a) = B$, then
-   $\hat\delta(A, x) \in \{A,C,D\}$ and $a = 0$.
+   $\hat\delta(A, x) \in \{A,C,D,F,G\}$ and $a = 0$.
    - If $\hat\delta(A, x) = A$, then $x = \epsilon$.  Therefore, $w
      = \epsilon 0 = 0$ and $w \in L$.
    - If $\hat\delta(A, x) = C$, then $x \in L$, and $x$ ends in $1$.
-     Let $x = y1$.  It follows that $w = y10$ and $w \in L$.
+     Let $x = y1$, then $w = y10$.  It follows that $w \in L$, $w$
+     ends in $0$, and the second last symbol in $w$, if it has one, is
+     not $0$.
    - Do the same thing for $\hat\delta(A, x) = D$ as above.
+   - If $\hat\delta(A, x) = F$, then $x \in L$, and $x$ ends in $11$.
+     Let $x = y11$, then $w = y110$.  It follows that $w \in L$, $w$
+     ends in $0$, and the second last symbol in $w$, if it has one, is
+     not $0$.
+   - Do the same thing for $\hat\delta(A, x) = G$ as above.
    Thus, IH2 holds.
- * Do the same thing for IH3 and IH4.
+ * Do the same thing for IH3 through IH7.
  * All our IHs hold for $w$.
 
 Our IHs hold for all $w$, which is the same thing to say that every $w$
@@ -919,15 +943,16 @@ accepted by this DFA is in the language $L$.
 
 To prove the other direction, we take the contrapositive.
 
-If $w$ is not accepted by this DFA, then $\hat\delta(A, w) = E$ and
-$\abs{w} > 1$.  Let $w = xab$.
- * $\hat\delta(A, w) = \delta(\hat\delta(A, xa), b) = E$
- * $\hat\delta(A, xa) \in \{B,C,D\}$
-   - If $\hat\delta(A, xa) = \delta(\hat\delta(A, x), a)= B$, then $b
-     = a = 0$.  Thus, $w = x00$ and $w \notin L$
-   - Do the same thing for $C$ and $D$.
+If $w$ is not accepted by this DFA, then $\hat\delta(A, w) = H$ and
+$\abs{w} > 2$.  Let $w = xabc$.
+ * $\hat\delta(A, w) = \delta(\hat\delta(A, xab), c) = H$
+ * $\hat\delta(A, xab) \in \{E,F,G\}$
+   - If $\hat\delta(A, xab) = E$, then $c = a = b = 0$.  Thus, $w =
+     x000$ and $w \notin L$.
+   - Do the same thing for $F$ and $G$.
+ * Therefore, $w \notin L$.
 
-Therefore, $w \notin L$.  Hence, every string in the language $L$ is
+Hence, every string in the language $L$ is
 accepted by this DFA.
 
 ** DONE Problem Session 1
@@ -1150,7 +1175,7 @@ k-Path Induction
    * A k-path from $i$ to $j$ either:
      1. Never goes through state $k$, or
      2. Goes through $k$ one or more times.
-   * $R_{ij}^k = R_{ij}^{k-1} + R_{ik}(R_{kk}^{k-1})^*R_{kj}^{k-1}$.
+   * $R_{ij}^k = R_{ij}^{k-1} + R_{ik}^{k-1}(R_{kk}^{k-1})^*R_{kj}^{k-1}$.
  * Final Step
    * The RE with the same language as the DFA is the sum (union) of
      $R_{ij}^n$, where:
@@ -1242,7 +1267,7 @@ UNIX RE Notation
 Example: Text Processing
  * Remember our DFA for recognizing strings that end in "ing"?
  * It was rather tricking.
- * But the RE for such strings is easy: 
+ * But the RE for such strings is easy:
    ~.*ing~ where the dot is the UNIX "any."
  * Even an NFA is easy.
 
@@ -1311,8 +1336,8 @@ Example: Put-Back
        identifier.
    * Otherwise, put it back and declare the token is ~if~.
 
-** IN-PROGRESS Regular-Expression Homework
-   DEADLINE: <2018-01-06 Sat>
+** DONE Regular-Expression Homework
+   CLOSED: [2018-01-16 Tue 17:50] DEADLINE: <2018-01-06 Sat>
    :PROPERTIES:
    :CUSTOM_ID: regular-expression-homework
    :END:
