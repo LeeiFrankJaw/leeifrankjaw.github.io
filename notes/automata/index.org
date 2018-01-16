@@ -708,7 +708,7 @@ Summary
     \node[state,initial] (A) {A};
     \node[state,right=of A] (B) {B};
     \node[state,accepting,right=of B] (C) {C};
-  
+
     \path[->] (A) edge [loop above] node {0} (A)
                   edge node {1} (B)
               (B) edge node {0} (C)
@@ -934,45 +934,412 @@ accepted by this DFA.
    CLOSED: [2018-01-04 Thu 14:38] DEADLINE: <2018-01-03 Wed>
 
 
-* TODO [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/b9162be11c7b4c61a573a50e3aba5738/8c5876c1e4bb46af8fbf4a51ecfccbbc/][Regular Expressions and Properties of Regular Languages]]
+* IN-PROGRESS [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/b9162be11c7b4c61a573a50e3aba5738/8c5876c1e4bb46af8fbf4a51ecfccbbc/][Regular Expressions and Properties of Regular Languages]]
   DEADLINE: <2018-01-11 Thu>
   :PROPERTIES:
   :CUSTOM_ID: regular-expressions-and-properties-of-regular-languages
   :END:
-** TODO Regular expressions
-   DEADLINE: <2018-01-05 Fri>
+** DONE Regular expressions
+   CLOSED: [2018-01-15 Mon 17:04] DEADLINE: <2018-01-05 Fri>
    :PROPERTIES:
    :CUSTOM_ID: regular-expressions
    :END:
-** TODO Regular expressions in the real world
-   DEADLINE: <2018-01-05 Fri>
+REs: Introduction
+ * /Regular expressions/ describe languages by an algebra.
+ * They describe exactly the regular languages.
+ * If E is a regular expression, then L(E) is the language it defines.
+ * We'll describe REs and their languages recursively.
+
+Operations on Languages
+ * REs use three operations: union, concatenation, and Kleene star.
+ * The union of languages is the usual thing, since languages are
+   sets.
+   * Example: $\{01, 111, 10\} \cup \{00, 01\} = \{01, 111, 10, 00\}$.
+ * The /concatenation/ of languages L and M is denoted LM.  It
+   contains every string wx such that w is in L and x is in M.
+   * Example: $\{01, 111, 10\}\{00, 01\} = \{0100, 0101, 11100, 11101,
+     1000, 1001\}$
+ * If L is a language, then L^*, the /Kleene star/, or just star, is
+   the set of strings formed by concatenating zero or more strings
+   from L, in any order.
+   * $L^* = \{\epsilon\} \cup L \cup LL \cup LLL \cup \dotsb$
+   * Example: $\{0, 10\}^* = \{\epsilon, 0, 10, 00, 010, 100, 1010,
+     \dotsc\}$
+
+REs: Definition
+ * Basis 1: If $a$ is any symbol, then $\mathbf{a}$ is a RE, and
+   $L(\mathbf{a}) = \{a\}$.
+   * Note: $\{a\}$ is the language containing one string, and that string
+     is of length 1.
+ * Basis 2: $\epsilon$ is a RE, and $L(\epsilon) = \{\epsilon\}$.
+ * Basis 3: $\varnothing$ is a RE, and $L(\varnothing) = \varnothing$.
+ * Induction 1: If $E_1$ and $E_2$ are regular expressions, then
+   $E_1 + E_2$ is a regular expression, and $L(E_1+E_2) = L(E_1) \cup
+   L(E_2)$.
+ * Induction 2: If $E_1$ and $E_2$ are regular expressions, then $E_1
+   E_2$ is a regular expression, and $L(E_1 E_2) = L(E_1) L(E_2)$
+ * Induction 3: If $E$ is a RE, then $E^*$ is a RE, and $L(E^*) =
+   L(E)^*$.
+
+Precedence of Operators
+ * Parentheses may be used wherever needed to influence the grouping
+   of operators.
+ * Order of precedence is $*$ (highest), then concatenation, then $+$
+   (lowest).
+
+Examples: REs
+ * $L(\mathbf{01}) = \{01\}$.
+ * $L(\mathbf{01}+\mathbf{0}) = \{01, 0\}$.
+ * $L(\mathbf{0}(\mathbf{1}+\mathbf{0})) = \{01, 00\}$.
+   * Note order of precedence of operators.
+ * $L(\mathbf{0}^*) = \{\epsilon, 0, 00, 000, \dotsc\}$.
+ * $L((\mathbf{0}+\mathbf{10})^*(\epsilon+\mathbf{1})) =$ all strings
+   of 0s and 1s without two consecutive 1s.
+
+Equivalence of REs and Finite Automata
+ * We need to show that for every RE, there is a finite automaton that
+   accepts the same language.
+   * Pick the most powerful automaton type: the ε-NFA.
+ * And we need to show that for every finite automaton, there is a RE
+   defining its language.
+   * Pick the most restrictive type: the DFA.
+
+Converting a RE to an ε-NFA
+ * Proof is an induction on the number of operator (+, concatenation, *)
+   in the RE.
+ * We always construct an automaton of a special form.
+
+Form of ε-NFAs Constructed
+ * "Start" state: Only state with external predecessors
+ * "Final" state: Only state with external successors
+
+RE to ε-NFA: Basis
+ * Symbol $\mathbf{a}$:
+   #+BEGIN_SRC latex :file a.png
+     \usetikzlibrary{positioning,shapes,automata}
+     \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+       \node[state] (A) {};
+       \node[state,right=of A] (B) {};
+       \path[->] (A) edge node {a} (B);
+     \end{tikzpicture}
+   #+END_SRC
+   #+ATTR_HTML: :width 200px
+   #+RESULTS:
+   [[file:a.png]]
+ * $\epsilon$:
+   #+BEGIN_SRC latex :file epsilon.png
+     \usetikzlibrary{positioning,shapes,automata}
+     \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+       \node[state] (A) {};
+       \node[state,right=of A] (B) {};
+       \path[->] (A) edge node {$\epsilon$} (B);
+     \end{tikzpicture}
+   #+END_SRC
+   #+ATTR_HTML: :width 200px
+   #+RESULTS:
+   [[file:epsilon.png]]
+
+ * $\varnothing$:
+   #+BEGIN_SRC latex :file varnothing.png
+     \usetikzlibrary{positioning,shapes,automata}
+     \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+       \node[state] (A) {};
+       \node[state,right=of A] (B) {};
+     \end{tikzpicture}
+   #+END_SRC
+   #+ATTR_HTML: :width 200px
+   #+RESULTS:
+   [[file:varnothing.png]]
+
+RE to ε-NFA: Induction 1---Union
+#+BEGIN_SRC latex :file re-union.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    % \draw[help lines] (-1,-4) grid (8,4);
+    \node[state] (A) {};
+    \node[state,above right=of A] (B) {};
+    \node[state,below right=of A] (C) {};
+    \node[state,right=of B] (D) {};
+    \node[state,right=of C] (E) {};
+    \node[state,above right=of E] (F) {};
+    \path[->] (A) edge node {$\epsilon$} (B)
+                  edge node {$\epsilon$} (C)
+              (D) edge node {$\epsilon$} (F)
+              (E) edge node {$\epsilon$} (F);
+    \draw (3.6,2.1)  circle[x radius=2.2cm,y radius=1.2cm] node {For $E_1$};
+    \draw (3.6,-2.1) circle[x radius=2.2cm,y radius=1.2cm] node {For $E_2$};
+    \draw (3.6,0)    circle[x radius=4.2cm,y radius=3.5cm];
+  \end{tikzpicture}
+#+END_SRC
+#+CAPTION: For $E_1 + E_2$
+#+ATTR_HTML: :width 440px
+#+RESULTS:
+[[file:re-union.png]]
+
+RE to ε-NFA: Induction 2---Concatenation
+#+BEGIN_SRC latex :file re-concat.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    % \draw[help lines] (-1,-2) grid (10,2);
+    \node[state] (A) {};
+    \node[state,right=of A] (B) {};
+    \node[state,right=of B] (C) {};
+    \node[state,right=of C] (D) {};
+    \node[state,right=of C] (E) {};
+    \path[->] (B) edge node {$\epsilon$} (C);
+    \draw (1.5,0) circle[x radius=2.4cm,y radius=1cm] node {For $E_1$};
+    \draw (7.5,0) circle[x radius=2.4cm,y radius=1cm] node {For $E_2$};
+    \draw (4.5,0) circle[x radius=5.8cm,y radius=2cm];
+  \end{tikzpicture}
+
+#+END_SRC
+#+CAPTION: For $E_1 E_2$
+#+ATTR_HTML: :width 600px
+#+RESULTS:
+[[file:re-concat.png]]
+
+RE to ε-NFA: Induction 3---Closure
+#+BEGIN_SRC latex :file re-closure.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    % \draw[help lines] (-1,-3) grid (10,3);
+    \node[state] (A) {};
+    \node[state,right=of A] (B) {};
+    \node[state,right=of B] (C) {};
+    \node[state,right=of C] (D) {};
+    \node[state,right=of C] (E) {};
+    \path[->] (A) edge node {$\epsilon$} (B)
+                  edge[bend right=45] node {$\epsilon$} (D)
+              (C) edge node {$\epsilon$} (D)
+                  edge[bend right=90,looseness=1.3] node[above] {$\epsilon$} (B);
+    \draw (4.5,0) circle[x radius=2.4cm,y radius=1cm] node {For $E_1$};
+    \draw (4.5,0) circle[x radius=5.4cm,y radius=2.4cm];
+  \end{tikzpicture}
+#+END_SRC
+#+CAPTION: For $E^*$
+#+ATTR_HTML: :width 575px
+#+RESULTS:
+[[file:re-closure.png]]
+
+DFA to RE
+ * A strange sort of induction
+ * States of the DFA are named 1, 2, ..., n.
+ * Induction is on k, the maximum state number we are allowed to
+   traverse along a path.
+
+k-Paths
+ * A k-path is a path through the graph of the DFA that goes through
+   no state numbered higher than k.
+ * Endpoints are not restricted; they can be any state.
+ * n-paths are unrestricted.
+ * RE is the union of REs for the n-paths from the start state to each
+   final state.
+
+Basis: $k = 0$; only arcs or a node by itself.
+
+Induction: construct REs for paths allowed to pass through state $k$
+from paths allowed only up to $k-1$.
+
+k-Path Induction
+ * Let $R_{ij}^k$ be the regular expression for the set of labels of
+   k-paths from state $i$ to state $j$.
+ * Basis: $k = 0$. $R_{ij}^0 =$ sum of labels of arc from i to j.
+   * $\varnothing$ if no such arc.
+   * But add $\epsilon$ if $i = j$.
+ * Induction:
+   * A k-path from $i$ to $j$ either:
+     1. Never goes through state $k$, or
+     2. Goes through $k$ one or more times.
+   * $R_{ij}^k = R_{ij}^{k-1} + R_{ik}(R_{kk}^{k-1})^*R_{kj}^{k-1}$.
+ * Final Step
+   * The RE with the same language as the DFA is the sum (union) of
+     $R_{ij}^n$, where:
+     1. $n$ is the number of states; i.e., paths are unconstrained.
+     2. $i$ is the start state.
+     3. $j$ is one of the final states.
+
+Summary
+ * Each of the three types of automata (DFA, NFA, ε-NFA) we discussed,
+   and regular expressions as well, define exactly the same set of
+   languages: the regular languages.
+
+#+BEGIN_SRC latex :file re-summary.png
+  \usetikzlibrary{positioning,shapes}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    \node[draw] (A) {DFA};
+    \node[draw,right=of A] (B) {NFA};
+    \node[draw,below=of B] (C) {$\epsilon$-NFA};
+    \node[draw,below=of A] (D) {RE};
+    \path[->] (A) edge (B) edge (D)
+              (B) edge (A) edge (C)
+              (C) edge (B)
+              (D) edge (C);
+  \end{tikzpicture}
+#+END_SRC
+#+ATTR_HTML: :width 270px
+#+RESULTS:
+[[file:re-summary.png]]
+
+Algebraic Laws for REs
+ * Union and concatenation behave sort of like addition and
+   multiplication.
+   * + is commutative and associative; concatenation is associative.
+   * Concatenation distributes over +.
+   * Exception: Concatenation is not commutative.
+
+Identities and Annihilators
+ * $\varnothing$ is the identity for $+$.
+ * $\epsilon$ is the identity for concatenation.
+ * $\varnothing$ is the annihilator for concatenation.
+   * $\varnothing R = R \varnothing = \varnothing$.
+
+** DONE Regular expressions in the real world
+   CLOSED: [2018-01-16 Tue 08:40] DEADLINE: <2018-01-05 Fri>
    :PROPERTIES:
    :CUSTOM_ID: regular-expressions-in-the-real-world
    :END:
-** TODO Regular-Expression Homework
+Applications of Regular Expressions
+ * Unix REs
+ * Text processing
+ * Lexical analysis
+
+Some Applications
+ * REs appear in many systems, often private software that needs a
+   simple language to describe sequences of events.
+ * We'll use Junglee as an example, then talk about text processing
+   and lexical analysis.
+
+RE-Based Software Architecture
+ * Junglee used a common form of architecture:
+   * Use REs plus actions (arbitrary code) as your input language.
+   * Compile into a DFA or simulated NFA.
+   * Each accepting state is associated with an action, which is
+     executed when that state is entered.
+
+UNIX Regular Expressions
+ * UNIX, from the beginning, used regular expressions in many places,
+   including the "grep" command.
+   * Grep = "Global (search for a) Regular Expression and Print."
+     ~g/re/p~
+ * Most UNIX commands use an extended RE notation that still defines
+   only regular languages.
+
+UNIX RE Notation
+ * $[a_1 a_2 \dotsm a_n]$ is shorthand for $a_1 + a_2 + \dotsb + a_n$.
+ * /Ranges/ indicated by first-dash-last and brackets.
+   * Order is ASCII.
+   * Examples: ~[a-z]~ = "any lowercase letter," ~[a-zA-Z]~ = "any
+     letter."
+ * Dot = "any character."
+ * ~|~ is used for union instead of ~+~.
+ * But ~+~ has a meaning: "one or more of."
+   * ~E+~ = ~EE*~.
+   * Example: ~[a-z]+~ = "one or more lowercase letters."
+ * ~?~ = "zero or one of."
+   * ~E?~ = ~E + ε~.
+   * Example: ~[ab]?~ = ~a+b+ε~ = "an optional /a/ or /b/."
+
+Example: Text Processing
+ * Remember our DFA for recognizing strings that end in "ing"?
+ * It was rather tricking.
+ * But the RE for such strings is easy: 
+   ~.*ing~ where the dot is the UNIX "any."
+ * Even an NFA is easy.
+
+#+BEGIN_SRC latex :file nfa-ing.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    \node[state,initial] (A);
+    \node[state,right=of A] (B);
+    \node[state,right=of B] (C);
+    \node[state,accepting,right=of C] (D);
+    \path[->] (A) edge node {i} (B) edge[loop above] node {any} (A)
+              (B) edge node {n} (C)
+              (C) edge node {g} (D)
+  \end{tikzpicture}
+#+END_SRC
+#+CAPTION: NFA for strings ending in "ing"
+#+ATTR_HTML: :width 500px
+#+RESULTS:
+[[file:nfa-ing.png]]
+
+Lexical Analysis
+ * The first thing a compiler does is break a program into /tokens/ (=
+   substrings) that together represent a unit.
+   * Examples: identifiers, reserved words like ~if~, meaningful
+     single characters like ~;~ or ~+~, multicharacter operators like
+     ~<=~.
+ * Using a tool like Lex or Flex, one can write a regular expression
+   for each different kind of token.
+ * Example: in UNIX notation, identifiers are something like
+   ~[A-Za-z][A-Za-z0-9_]*~.
+ * Each RE has an associated action.
+   * Example: return a code for the token found.
+
+Tricks for Combining Tokens
+ * There are some ambiguities that need to be resolved as we convert
+   REs to a DFA.
+ * Examples:
+   1. ~if~ looks like an identifier, but it is a reserved word.
+   2. ~<~ might be a comparison operator, but if followed by ~=~, then
+      the token is ~<=~.
+ * Convert the RE for each token to an ε-NFA.
+   * Each has its own final state.
+ * Combine these all by introducing a new start state with
+   ε-transitions to the start states of each ε-NFA.
+ * Then convert to a DFA.
+ * If a DFA state has several final states among its members, give
+   them priority.
+ * Example: Give all reserved words priority over identifiers, so if
+   the DFA arrives at a state that contains final states for the ~if~
+   ε-NFA as well as for the identifier ε-NFA, it declares ~if~, not
+   identifier.
+ * It's a bit more complicated, because the DFA has to have an
+   additional power.
+ * It must be able to read an input symbol and then, when it accepts,
+   put that symbol back on the input to be read later.
+
+Example: Put-Back
+ * Suppose ~<~ is the first input symbol.
+ * Read the next input symbol.
+   * If it is ~=~, accept and declare the token is ~<=~.
+   * If it is anything else, put it back and declare the token is ~<~.
+ * Suppose ~if~ has been read from the input.
+ * Read the next input symbol.
+   * If it is a letter or digit, continue processing.
+     * You did not have reserved word ~if~; you are working on an
+       identifier.
+   * Otherwise, put it back and declare the token is ~if~.
+
+** IN-PROGRESS Regular-Expression Homework
    DEADLINE: <2018-01-06 Sat>
    :PROPERTIES:
    :CUSTOM_ID: regular-expression-homework
    :END:
+
 ** TODO Decision algorithms for regular languages
    DEADLINE: <2018-01-07 Sun>
    :PROPERTIES:
    :CUSTOM_ID: decision-algorithms-for-regular-languages
    :END:
+
 ** TODO Closure properties of regular languages
    DEADLINE: <2018-01-07 Sun>
    :PROPERTIES:
    :CUSTOM_ID: closure-properties-of-regular-languages
    :END:
+
 ** TODO Properties-of-Regular-Languages Homework
    DEADLINE: <2018-01-08 Mon>
    :PROPERTIES:
    :CUSTOM_ID: properties-of-regular-languages-homework
    :END:
+
 ** TODO Challenge Problems 2
    DEADLINE: <2018-01-09 Tue>
    :PROPERTIES:
    :CUSTOM_ID: challenge-problem-2
    :END:
+
 ** TODO Problem Session 2
    DEADLINE: <2018-01-10 Wed>
