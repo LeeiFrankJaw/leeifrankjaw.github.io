@@ -10,7 +10,7 @@
 #+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
 #+OPTIONS: ':t
 
-[[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/751b6dfa045849d8bec2fdd55c89a3b9/][Automata Theory]] on Lagunita
+[[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/about][Automata Theory]] on Lagunita
 
 * DONE [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/544b7a8df3844f428bc1a5125c594702/ec6439250bb4426ab93c543e140dacb4/][Finite Automata]]
   CLOSED: [2018-01-04 Thu 14:39]

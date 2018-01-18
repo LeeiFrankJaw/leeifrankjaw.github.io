@@ -130,6 +130,12 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
+                "name": "prob-stat/",
+                "title": "Probability and Statistics",
+                "author_date": "2018-01-18T23:34:11+08:00"
+            },
+            {
+                "type": "file",
                 "name": "automata/",
                 "title": "Automata Theory",
                 "author_date": "2018-01-16T21:41:16+08:00"

@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-01-18 Thu 23:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Probability and Statistics</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Lei Zhao" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
+<link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
+<script type="text/javascript" src="../../src/post.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Probability and Statistics</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#introduction">1. <span class="done DONE">DONE</span> Introduction</a></li>
+<li><a href="#exploratory-data-analysis">2. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Exploratory Data Analysis</a>
+<ul>
+<li><a href="#examining-distribution">2.1. <span class="todo IN_PROGRESS">IN-PROGRESS</span> Examining Distribution</a>
+<ul>
+<li><a href="#examining-distribution-overview">2.1.1. <span class="done DONE">DONE</span> Overview</a></li>
+<li><a href="#one-categorical-variable">2.1.2. <span class="done DONE">DONE</span> One Categorical Variable</a></li>
+<li><a href="#one-quantitative-variable-graphs">2.1.3. <span class="todo IN_PROGRESS">IN-PROGRESS</span> One Quantitative Variable: Graphs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="https://lagunita.stanford.edu/courses/course-v1:OLI+ProbStat+Open_Jan2017/about">Probability and Statistics</a> on Lagunita
+</p>
+
+<div id="outline-container-orgf1c7c7b" class="outline-2">
+<h2 id="introduction"><a id="orgf1c7c7b"></a><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Introduction</h2>
+<div class="outline-text-2" id="text-introduction">
+<p>
+In a nutshell, what statistics is all about is <b>converting data into useful information</b>.
+</p>
+
+
+<div class="figure">
+<p><img src="intro_stats_online_inference.png" alt="intro_stats_online_inference.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Big Picture of Statistics</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc4735d9" class="outline-2">
+<h2 id="exploratory-data-analysis"><a id="orgc4735d9"></a><span class="section-number-2">2</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Exploratory Data Analysis</h2>
+<div class="outline-text-2" id="text-exploratory-data-analysis">
+</div>
+<div id="outline-container-orga7668ce" class="outline-3">
+<h3 id="examining-distribution"><a id="orga7668ce"></a><span class="section-number-3">2.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Examining Distribution</h3>
+<div class="outline-text-3" id="text-examining-distribution">
+</div>
+<div id="outline-container-orgd53e6f2" class="outline-4">
+<h4 id="examining-distribution-overview"><a id="orgd53e6f2"></a><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
+<div class="outline-text-4" id="text-examining-distribution-overview">
+</div>
+<ol class="org-ol">
+<li><a id="data-and-variables"></a><a id="org6daa23f"></a>Data and Variables<br />
+<div class="outline-text-5" id="text-data-and-variables">
+<p>
+<b>Data</b> are pieces of information about individuals organized into
+variables.  By an <b>individual</b>, we mean a particular person or object.
+By a <b>variable</b>, we mean a particular characteristic of the individual.
+</p>
+
+<p>
+A <b>dataset</b> is a set of data identified with particular circumstances.
+Datasets are typically displayed in tables, in which rows represent
+individuals and columns represent variables.
+</p>
+
+
+<div class="figure">
+<p><img src="eda_examining_distributions_variables.png" alt="eda_examining_distributions_variables.png" width="700px" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Medical records from a particular survey</p>
+</div>
+
+<p>
+Variables can be classified into one of two types: categorical or quantitative.
+</p>
+<ul class="org-ul">
+<li><b>Categorical variables</b> take category or label values and place an
+individual into one of several groups.  Each observation can be
+placed in only one category, and the categories are mutually
+exclusive.</li>
+<li><b>Quantitative variables</b> take numerical values and represent some
+kind of measurement.</li>
+</ul>
+
+<p>
+Note: Categorical variables are sometimes called qualitative
+variables, but in this course we use the term categorical.
+</p>
+</div>
+</li>
+
+<li><a id="scale-of-measurement"></a><a id="org27515f8"></a>Scale of Measurement<br />
+<div class="outline-text-5" id="text-scale-of-measurement">
+<p>
+Previously, a simple distinction was made between quantitative and
+categorical variables.  However, there is a more precise method of
+categorizing variables: it is called <b>scale of measurement</b>.  The four
+different scales of measurement, from least to most precise, are
+</p>
+<ul class="org-ul">
+<li>Nominal</li>
+<li>Ordinal</li>
+<li>Interval</li>
+<li>Ratio</li>
+</ul>
+
+<p>
+Nominal Variables
+</p>
+<ul class="org-ul">
+<li>It only indicates differences and uses discrete categories to
+describe qualitative differences.</li>
+<li>Examples
+<ul class="org-ul">
+<li>Types of pets (birds, fish, cats, dogs)</li>
+<li>Gender (male, female, transgender)</li>
+<li>Eye color (blue, green, brown, hazel)</li>
+<li>Type of house (bungalow, duplex, ranch)</li>
+<li>Type of resident (homeowner, renter)</li>
+</ul></li>
+</ul>
+
+<p>
+Ordinal Variables
+</p>
+<ul class="org-ul">
+<li>It is more precise than nominal data as the differences can now be
+rank-orders.  However, it does not indicate the difference between
+two numbers are fixed or equal.</li>
+<li>An <i>ordinal</i> variable is a categorical variable for which the
+possible values are ordered.  Ordinal variables can be
+considered &ldquo;in between&rdquo; categorical and quantitative variables.</li>
+<li>Examples
+<ul class="org-ul">
+<li>Order of finishes in a race</li>
+<li>Educational level:
+<ol class="org-ol">
+<li>Elementary school education</li>
+<li>High school graduate</li>
+<li>Some college</li>
+<li>College graduate</li>
+<li>Graduate degree</li>
+</ol></li>
+<li>Survey question responses: &ldquo;My general health is &#x2026;&rdquo;
+<ol class="org-ol">
+<li>Poor</li>
+<li>Reasonable</li>
+<li>Good</li>
+<li>Excellent</li>
+</ol></li>
+</ul></li>
+</ul>
+
+<p>
+Interval Variables
+</p>
+<ul class="org-ul">
+<li>It takes numerical forms and the distance between pairs of
+consecutive numbers is assumed to be equal.</li>
+<li>However, interval variables do not have a meaningful zero point.</li>
+<li>Examples
+<ul class="org-ul">
+<li>Temperature in Celsius</li>
+<li>IQ scores</li>
+<li>SAT scores</li>
+</ul></li>
+</ul>
+
+<p>
+Ratio Variables
+</p>
+<ul class="org-ul">
+<li>It is like the interval data plus a meaningful zero point.</li>
+<li>Examples
+<ul class="org-ul">
+<li>Age</li>
+<li>Height</li>
+<li>Weight</li>
+<li>Cost of a car, in dollars</li>
+</ul></li>
+</ul>
+
+<p>
+More precise level of measurement can be converted to a less precise
+level of measurement.
+</p>
+
+<p>
+Age in years is a ratio variable and can be scaled into an ordinal
+variable of age groups, which can include toddler, adolescent, young
+adulthood, and middle age.
+</p>
+
+<p>
+Less precise data cannot be made into more precise data.
+</p>
+
+<p>
+In order to convert these raw data into useful information we need to
+summarize and then examine the <b>distribution</b> of the variable.  By
+<b>distribution</b> of a variable, we mean:
+</p>
+<ul class="org-ul">
+<li>what values the variables takes, and</li>
+<li>how often the variable takes those values.</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgd7a8816" class="outline-4">
+<h4 id="one-categorical-variable"><a id="orgd7a8816"></a><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> One Categorical Variable</h4>
+<div class="outline-text-4" id="text-one-categorical-variable">
+</div>
+<ol class="org-ol">
+<li><a id="pie-and-bar-charts"></a><a id="org16df09f"></a>Pie and Bar Charts<br />
+<div class="outline-text-5" id="text-pie-and-bar-charts">
+<p>
+In order to visualize the numerical summaries we&rsquo;ve obtained, we need
+a graphical display. There are two simple graphical displays for
+visualizing the distribution of categorical data:
+</p>
+<ol class="org-ol">
+<li><p>
+The pie chart
+</p>
+
+<div class="figure">
+<p><img src="pie-chart.png" alt="pie-chart.png" width="650px" />
+</p>
+</div></li>
+<li><p>
+The bar chart
+</p>
+
+<div class="figure">
+<p><img src="bar-chart-count.png" alt="bar-chart-count.png" width="650px" />
+</p>
+</div>
+
+<p>
+Or
+</p>
+
+<div class="figure">
+<p><img src="bar-chart-pct.png" alt="bar-chart-pct.png" width="650px" />
+</p>
+</div></li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgba05c6e" class="outline-4">
+<h4 id="one-quantitative-variable-graphs"><a id="orgba05c6e"></a><span class="section-number-4">2.1.3</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> One Quantitative Variable: Graphs</h4>
+<div class="outline-text-4" id="text-one-quantitative-variable-graphs">
+<p>
+To display data from one quantitative variable graphically, we can use
+either the <b>histogram</b> or the <b>stemplot</b>.  (Another graph, the <b>boxplot</b>,
+will be covered in another section).
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="histogram-intervals"></a><a id="org479394a"></a>Histogram: Intervals<br />
+<div class="outline-text-5" id="text-histogram-intervals">
+<p>
+Break the range of values into intervals and count how many
+observations fall into each interval.
+</p>
+
+<p>
+Here are the exam grades of 15 students:
+</p>
+<pre class="example">
+88, 48, 60, 51, 57, 85, 69, 75, 97, 72, 71, 79, 65, 63, 73
+</pre>
+
+<p>
+We first need to break the range of values into intervals (also called
+&ldquo;bins&rdquo; or &ldquo;classes&rdquo;).  In this case, since our dataset consists of
+exam scores, it will make sense to choose intervals that typically
+correspond to the range of a letter grade, 10 points wide: 40-50,
+50-60, &#x2026;, 90-100.  By counting how many of the 15 observations fall
+in each of the intervals, we get the following table:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="200px">
+<caption class="t-above"><span class="table-number">Table 1:</span> Exam Grades</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Score</th>
+<th scope="col" class="org-right">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">[40-50)</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-left">[50-60)</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">[60-70)</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-left">[70-80)</td>
+<td class="org-right">5</td>
+</tr>
+
+<tr>
+<td class="org-left">[80-90)</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">[90-100]</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+To construct the histogram from this table we plot the intervals on
+the X-axis, and show the number of observations in each interval
+(frequency of the interval) on the Y-axis, which is represented by the
+height of a rectangle located above the interval:
+</p>
+
+<div class="figure">
+<p><img src="hist-exam-grades.png" alt="hist-exam-grades.png" width="690px" />
+</p>
+</div>
+
+<p>
+The table above can also be turned into a relative frequency table.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="500px">
+<caption class="t-above"><span class="table-number">Table 2:</span> Exam Grades with relative frequency</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Score</th>
+<th scope="col" class="org-right">Count</th>
+<th scope="col" class="org-right">Relative Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">[40-50)</td>
+<td class="org-right">1</td>
+<td class="org-right">0.07</td>
+</tr>
+
+<tr>
+<td class="org-left">[50-60)</td>
+<td class="org-right">2</td>
+<td class="org-right">0.13</td>
+</tr>
+
+<tr>
+<td class="org-left">[60-70)</td>
+<td class="org-right">4</td>
+<td class="org-right">0.27</td>
+</tr>
+
+<tr>
+<td class="org-left">[70-80)</td>
+<td class="org-right">5</td>
+<td class="org-right">0.33</td>
+</tr>
+
+<tr>
+<td class="org-left">[80-90)</td>
+<td class="org-right">2</td>
+<td class="org-right">0.13</td>
+</tr>
+
+<tr>
+<td class="org-left">[90-100]</td>
+<td class="org-right">1</td>
+<td class="org-right">0.07</td>
+</tr>
+
+<tr>
+<td class="org-left">Total</td>
+<td class="org-right">15</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+A relative frequency table, like the one above, can be used to
+determine the frequency of scores occurring at or across intervals.
+</p>
+</div>
+</li>
+
+<li><a id="histogram-shape"></a><a id="org1e6d3b4"></a>Histogram: Shape<br />
+<div class="outline-text-5" id="text-histogram-shape">
+<p>
+Once the distribution has been displayed graphically, we can describe
+the overall pattern of the distribution and mention any striking
+deviations from that pattern.  More specifically, we should consider
+the following features of the distribution:
+</p>
+<ul class="org-ul">
+<li>Overall pattern
+<ul class="org-ul">
+<li>Shape</li>
+<li>Center</li>
+<li>Spread</li>
+</ul></li>
+<li>deviations from the pattern
+<ul class="org-ul">
+<li>Outliers</li>
+</ul></li>
+</ul>
+
+<p>
+When describing the shape of a distribution, we should consider:
+</p>
+<ol class="org-ol">
+<li><b>Symmetry/skewness</b> of the distribution.</li>
+<li><b>Peakedness (modality)</b>&#x2014;the number of peaks (modes) the distribution has.</li>
+</ol>
+
+<p>
+We distinguish between:
+</p>
+<ul class="org-ul">
+<li><p>
+Symmetric distributions
+</p>
+
+
+<div class="figure">
+<p><img src="symmetric-unimodal.gif" alt="symmetric-unimodal.gif" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="symmetric-bimodal.gif" alt="symmetric-bimodal.gif" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="symmetric-uniform.gif" alt="symmetric-uniform.gif" />
+</p>
+</div>
+
+<p>
+Note that all three distributions are symmetric, but are different
+in their modality (peakedness).  The first distribution is
+<b>unimodal</b>&#x2014;it has one mode (roughly at 10) around which the
+observations are concentrated.  The second distribution is
+<b>bimodal</b>&#x2014;it has two modes (roughly at 10 and 20) around which
+the observations are concentrated.  The third distribution is kind
+of flat, or uniform.  The distribution has no modes, or no value
+around which the observations are concentrated.  Rather, we see
+that the observations are roughly uniformly distributed among the
+different values.
+</p></li>
+
+<li><p>
+Skewed right distributions
+</p>
+
+
+<div class="figure">
+<p><img src="skewed-right.gif" alt="skewed-right.gif" />
+</p>
+</div>
+
+<p>
+A distribution is called <b>skewed right</b> if, as in the histogram
+above, the right tail (larger values) is much longer than the left
+tail (small values).  Note that in a skewed right distribution, the
+bulk of the observations are small/medium, with a few observations
+that are much larger than the rest.  An example of a real-life
+variable that has a skewed right distribution is salary.  Most
+people earn in the low/medium range of salaries, with a few
+exceptions (CEOs, professional athletes etc.) that are distributed
+along a large range (long &ldquo;tail&rdquo;) of higher values.
+</p></li>
+
+<li><p>
+Skewed left distributions
+</p>
+
+
+<div class="figure">
+<p><img src="skewed-left.gif" alt="skewed-left.gif" />
+</p>
+</div>
+
+<p>
+A distribution is called <b>skewed left</b> if, as in the histogram above,
+the left tail (smaller values) is much longer than the right tail
+(larger values).  Note that in a skewed left distribution, the bulk
+of the observations are medium/large, with a few observations that
+are much smaller than the rest.  An example of a real life variable
+that has a skewed left distribution is age of death from natural
+causes (heart disease, cancer etc.).  Most such deaths happen at
+older ages, with fewer cases happening at younger ages.
+</p></li>
+</ul>
+
+<p>
+Comments:
+</p>
+<ol class="org-ol">
+<li><p>
+Note that skewed distributions can also be bimodal.  Here is an
+example.  A medium size neighborhood 24-hour convenience store
+collected data from 537 customers on the amount of money spend in
+a single visit to the store.  The following histogram displays the
+data.
+</p>
+
+
+<div class="figure">
+<p><img src="skewed-right-bimodal.png" alt="skewed-right-bimodal.png" />
+</p>
+</div>
+
+<p>
+Note that the overall shape of the distribution is skewed to the
+right with a clear mode around $25.  In addition it has another
+(smaller) “peak” (mode) around $50-55.  The majority of the
+customers spend around $25 but there is a cluster of customers who
+enter the store and spend around $50-55.
+</p></li>
+
+<li>If a distribution has more than two modes, we say that the
+distribution is <b>multimodal</b>.</li>
+</ol>
+
+<p>
+The distribution for exam grades is roughly symmetric.
+</p>
+</div>
+</li>
+
+<li><a id="histogram-center-spread-outliers"></a><a id="org3aab059"></a>Histogram: Center, Spread, &amp; Outliers<br />
+<div class="outline-text-5" id="text-histogram-center-spread-outliers">
+<p>
+Center
+</p>
+<ul class="org-ul">
+<li>The center of the distribution is its <b>midpoint</b>&#x2014;the value that
+divides the distribution so that approximately half the
+observations take smaller values, and approximately half the
+observations take larger values.  Note that from looking at the
+histogram we can get only a rough estimate for the center of the
+distribution.</li>
+</ul>
+
+<p>
+Spread
+</p>
+<ul class="org-ul">
+<li>The <b>spread</b> (also called <b>variability</b>) of the distribution can be
+described by the approximate range covered by the data.  From
+looking at the histogram, we can approximate the smallest
+observation (<b>min</b>), and the largest observation (<b>max</b>), and thus
+approximate the range.</li>
+</ul>
+
+<p>
+Outliers
+</p>
+<ul class="org-ul">
+<li><p>
+<b>Outliers</b> are observations that fall outside the overall pattern.
+For example, the following histogram represents a distribution that
+has a high probable outlier:
+</p>
+
+
+<div class="figure">
+<p><img src="outlier.gif" alt="outlier.gif" />
+</p>
+</div></li>
+</ul>
+</div>
+</li>
+
+
+<li><a id="stemplot"></a><a id="org77e46bd"></a>Stemplot<br />
+<div class="outline-text-5" id="text-stemplot">
+<p>
+The stemplot (also called stem and leaf plot) is another graphical
+display of the distribution of quantitative data.
+</p>
+
+<p>
+Separate each data point into a stem and leaf, as follows:
+</p>
+<ul class="org-ul">
+<li>The leaf is the right-most digit.</li>
+<li>The stem is everything except the right-most digit.</li>
+<li>So, if the data point is 34, then 3 is the stem and 4 is the leaf.</li>
+<li>If the data point is 3.41, then 3.4 is the stem and 1 is the leaf.</li>
+</ul>
+
+<p>
+To make a stemplot:
+</p>
+<ol class="org-ol">
+<li>Separate each observation into a stem and a leaf.</li>
+<li>Write the stems in a vertical column with the smallest at the top,
+and draw a vertical line at the right of this column.</li>
+<li>Go through the data points, and write each leaf in the row to the
+right of its stem.</li>
+<li>Rearrange the leaves in an increasing order.</li>
+</ol>
+
+<p>
+When some of the stems hold a large number of leaves, we can split
+each stem into two: one holding the leaves 0-4, and the other holding
+the leaves 5-9. A statistical software package will often do the
+splitting for you, when appropriate.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">actress = c(34, 34, 27, 37, 42, 41, 36, 32, 41, 33, 31, 74, 33, 49,
+38, 61, 21, 41, 26, 80, 42, 29, 33, 36, 45, 49, 39, 34, 26, 25, 33,
+35, 35, 28, 30, 29, 61, 32, 33, 45, 29, 62, 22, 44)
+stem(actress)
+</pre>
+</div>
+
+<pre class="example">
+
+The decimal point is 1 digit(s) to the right of the |
+
+2 | 1256678999
+3 | 0122333334445566789
+4 | 1112245599
+5 | 
+6 | 112
+7 | 4
+8 | 0
+
+</pre>
+
+<p>
+Note that when rotated 90 degrees counterclockwise, the stemplot
+visually resembles a histogram.
+</p>
+
+<p>
+This orientation makes the right-skewedness of the distribution
+clearly visible.
+</p>
+
+<p>
+The stemplot has additional unique features:
+</p>
+<ul class="org-ul">
+<li>It preserves the original data.</li>
+<li>It sorts the data (which will become very useful in the next
+section).</li>
+</ul>
+
+
+<p>
+Dotplot
+</p>
+<ul class="org-ul">
+<li>There is another type of display that we can use to summarize a
+quantitative variable graphically—the dotplot. The dotplot, like
+the stemplot, shows each observation, but displays it with a dot
+rather than with its actual value. Here is the dotplot for the ages
+of Best Actress Oscar winners.</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="dotplot.jpg" alt="dotplot.jpg" width="696px" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Lei Zhao</p>
+<p class="date">Created: 2018-01-18 Thu 23:31</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
