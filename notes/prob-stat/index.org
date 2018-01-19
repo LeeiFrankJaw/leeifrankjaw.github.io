@@ -534,10 +534,10 @@ magnitude), while the median is resistant to outliers.*
    equal to $M$.
 
  - For skewed right distributions and/or datasets with high outliers,
-   $\bar{x} > M$.
+   $\bar{x} &gt; M$.
 
  - For skewed left distributions and/or datasets with low outliers,
-   $\bar{x} < M$.
+   $\bar{x} &lt; M$.
 
 We will therefore use $\bar{x}$ as a measure of center for symmetric
 distributions with no outliers.  Otherwise, the median will be a more
