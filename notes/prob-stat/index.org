@@ -1,5 +1,6 @@
 #+STARTUP: inlineimages
 #+TODO: TODO IN-PROGRESS DONE
+#+PROPERTY: header-args:R :exports both :eval never-export
 
 #+TITLE: Probability and Statistics
 #+AUTHOR: Lei Zhao
@@ -29,6 +30,7 @@ In a nutshell, what statistics is all about is *converting data into useful info
 ** IN-PROGRESS Examining Distribution
    :PROPERTIES:
    :CUSTOM_ID: examining-distribution
+   :header-args:R: :session edaed :exports both :eval never-export
    :END:
 *** DONE Overview
     CLOSED: [2018-01-18 Thu 18:43]
@@ -161,10 +163,10 @@ visualizing the distribution of categorical data:
     #+ATTR_HTML: :width 650px
     [[file:bar-chart-pct.png]]
 
-*** IN-PROGRESS One Quantitative Variable: Graphs
+*** DONE One Quantitative Variable: Graphs
+    CLOSED: [2018-01-19 Fri 10:03]
     :PROPERTIES:
     :CUSTOM_ID: one-quantitative-variable-graphs
-    :VISIBILITY: all
     :END:
 To display data from one quantitative variable graphically, we can use
 either the *histogram* or the *stemplot*.  (Another graph, the *boxplot*,
@@ -210,7 +212,7 @@ height of a rectangle located above the interval:
 The table above can also be turned into a relative frequency table.
 
 #+CAPTION: Exam Grades with relative frequency
-#+ATTR_HTML: :width 500px
+#+ATTR_HTML: :width 380px
 | Score    | Count | Relative Frequency |
 |----------+-------+--------------------|
 | [40-50)  |     1 |               0.07 |
@@ -338,7 +340,6 @@ Outliers
 
    [[file:outlier.gif]]
 
-
 **** Stemplot
      :PROPERTIES:
      :CUSTOM_ID: stemplot
@@ -365,7 +366,7 @@ each stem into two: one holding the leaves 0-4, and the other holding
 the leaves 5-9. A statistical software package will often do the
 splitting for you, when appropriate.
 
-#+BEGIN_SRC R :results output :exports both :eval never-export
+#+BEGIN_SRC R :results output
   actress = c(34, 34, 27, 37, 42, 41, 36, 32, 41, 33, 31, 74, 33, 49,
   38, 61, 21, 41, 26, 80, 42, 29, 33, 36, 45, 49, 39, 34, 26, 25, 33,
   35, 35, 28, 30, 29, 61, 32, 33, 45, 29, 62, 22, 44)
@@ -384,13 +385,12 @@ splitting for you, when appropriate.
   6 | 112
   7 | 4
   8 | 0
-
 #+end_example
 
 Note that when rotated 90 degrees counterclockwise, the stemplot
 visually resembles a histogram.
 
-This orientation makes the right-skewedness of the distribution
+This orientation makes the right-skewness of the distribution
 clearly visible.
 
 The stemplot has additional unique features:
@@ -408,3 +408,147 @@ Dotplot
 
 #+ATTR_HTML: :width 696px
 [[file:dotplot.jpg]]
+
+*** DONE One Quantitative Variable: Measures of Center
+    CLOSED: [2018-01-19 Fri 16:56]
+    :PROPERTIES:
+    :CUSTOM_ID: one-quantitative-variable-measures-of-center
+    :END:
+The three main numerical measures for the center of a distribution are
+the *mode*, the *mean* and the *median*.  Each one of these measures
+is based on a completely different idea of describing the center of a
+distribution. We will first present each one of the measures, and then
+compare their properties.
+
+**** Mode
+     :PROPERTIES:
+     :CUSTOM_ID: mode
+     :END:
+So far, when we looked at the shape of the distribution, we identified
+the mode as the value where the distribution has a “peak” and saw
+examples when distributions have one mode (unimodal distributions) or
+two modes (bimodal distributions).  In other words, so far we
+identified the mode visually from the histogram.
+
+Technically, the mode is the most commonly occurring value in a
+distribution.  For simple datasets where the frequency of each value
+is available or easily determined, the value that occurs with the
+highest frequency is the mode.
+
+#+BEGIN_SRC R
+  hrs = c(1, 6, 7, 5, 5, 8, 11, 12, 15)
+  table(hrs)
+#+END_SRC
+
+#+RESULTS:
+|  1 | 1 |
+|  5 | 2 |
+|  6 | 1 |
+|  7 | 1 |
+|  8 | 1 |
+| 11 | 1 |
+| 12 | 1 |
+| 15 | 1 |
+
+**** Mean
+     :PROPERTIES:
+     :CUSTOM_ID: mean
+     :END:
+The mean is the average of a set of observations (i.e., the sum of the
+observations divided by the number of observations).  If the n
+observations are $x_1, x_2, \dotsc, x_n$, their mean, which we denote
+by $\bar{x}$, is therefore $\bar{x} = (x_1 + x_2 + \dotsb + x_n) /
+n$.
+
+#+BEGIN_SRC R
+  mean(hrs)
+#+END_SRC
+
+#+RESULTS:
+: 7.77777777777778
+
+#+BEGIN_SRC R
+  hrs2 = rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+             c(3, 5, 15, 25, 20, 15, 5, 1, 1))
+  mean(hrs2)
+#+END_SRC
+
+#+RESULTS:
+: 4.44444444444444
+
+**** Median
+     :PROPERTIES:
+     :CUSTOM_ID: median
+     :END:
+The median $M$ is the midpoint of the distribution.  It is the number
+such that half of the observations fall above, and half fall below.
+To find the median:
+ * Order the data from smallest to largest.
+ * Consider whether $n$, the number of observations, is even or odd.
+   * If $n$ is *odd*, the median $M$ is the center observation in the
+     ordered list.  This observation is the one "sitting" in the
+     $(n + 1) / 2$ spot in the ordered list.
+   * If $n$ is *even*, the median $M$ is the *mean* of the *two center
+     observations* in the ordered list.  These two observations are the
+     ones "sitting" in the $n / 2$ and $n / 2 + 1$ spots in the ordered
+     list.
+
+#+BEGIN_SRC R
+  median(actress)
+#+END_SRC
+
+#+RESULTS:
+: 34.5
+
+#+BEGIN_SRC R
+  median(hrs)
+#+END_SRC
+
+#+RESULTS:
+: 7
+
+#+BEGIN_SRC R
+  pamphlets = rep(c(6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+                  c(3, 3, 8, 4, 1, 1, 4, 2, 1, 2, 1))
+  median(pamphlets)
+#+END_SRC
+
+#+RESULTS:
+: 9
+
+**** Comparing Mean and Median
+     :PROPERTIES:
+     :CUSTOM_ID: comparing-mean-and-median
+     :END:
+As we have seen, mean and the median, two of the common measures of
+center, each describe the center of a distribution of values in a
+different way.  The mean describes the center as an average value, in
+which the /actual values/ of the data points play an important role.
+The median, on the other hand, locates the middle value as the center,
+and the /order/ of the data is the key to finding it.
+
+*The mean is very sensitive to outliers (because it factors in their
+magnitude), while the median is resistant to outliers.*
+
+ - For symmetric distributions with no outliers: $\bar{x}$ is approximately
+   equal to $M$.
+
+ - For skewed right distributions and/or datasets with high outliers,
+   $\bar{x} > M$.
+
+ - For skewed left distributions and/or datasets with low outliers,
+   $\bar{x} < M$.
+
+We will therefore use $\bar{x}$ as a measure of center for symmetric
+distributions with no outliers.  Otherwise, the median will be a more
+appropriate measure of the center of our data.
+
+A description of a distribution almost always includes a measure of
+its center or average.  The two common measures of center are the *mean*
+and the *median*.
+
+*** TODO One Quantitative Variable: Measures of Spread
+    :PROPERTIES:
+    :CUSTOM_ID: one-quantitative-variable-measures-of-spread
+    :VISIBILITY: all
+    :END:

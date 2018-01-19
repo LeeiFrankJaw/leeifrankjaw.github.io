@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-18 Thu 23:31 -->
+<!-- 2018-01-19 Fri 16:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Probability and Statistics</title>
@@ -229,6 +229,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -244,7 +266,9 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#examining-distribution-overview">2.1.1. <span class="done DONE">DONE</span> Overview</a></li>
 <li><a href="#one-categorical-variable">2.1.2. <span class="done DONE">DONE</span> One Categorical Variable</a></li>
-<li><a href="#one-quantitative-variable-graphs">2.1.3. <span class="todo IN_PROGRESS">IN-PROGRESS</span> One Quantitative Variable: Graphs</a></li>
+<li><a href="#one-quantitative-variable-graphs">2.1.3. <span class="done DONE">DONE</span> One Quantitative Variable: Graphs</a></li>
+<li><a href="#one-quantitative-variable-measures-of-center">2.1.4. <span class="done DONE">DONE</span> One Quantitative Variable: Measures of Center</a></li>
+<li><a href="#one-quantitative-variable-measures-of-spread">2.1.5. <span class="todo TODO">TODO</span> One Quantitative Variable: Measures of Spread</a></li>
 </ul>
 </li>
 </ul>
@@ -256,8 +280,8 @@ for the JavaScript code in this tag.
 <a href="https://lagunita.stanford.edu/courses/course-v1:OLI+ProbStat+Open_Jan2017/about">Probability and Statistics</a> on Lagunita
 </p>
 
-<div id="outline-container-orgf1c7c7b" class="outline-2">
-<h2 id="introduction"><a id="orgf1c7c7b"></a><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Introduction</h2>
+<div id="outline-container-orge88d9a7" class="outline-2">
+<h2 id="introduction"><a id="orge88d9a7"></a><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Introduction</h2>
 <div class="outline-text-2" id="text-introduction">
 <p>
 In a nutshell, what statistics is all about is <b>converting data into useful information</b>.
@@ -273,20 +297,20 @@ In a nutshell, what statistics is all about is <b>converting data into useful in
 </div>
 
 
-<div id="outline-container-orgc4735d9" class="outline-2">
-<h2 id="exploratory-data-analysis"><a id="orgc4735d9"></a><span class="section-number-2">2</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Exploratory Data Analysis</h2>
+<div id="outline-container-orgbca40e5" class="outline-2">
+<h2 id="exploratory-data-analysis"><a id="orgbca40e5"></a><span class="section-number-2">2</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Exploratory Data Analysis</h2>
 <div class="outline-text-2" id="text-exploratory-data-analysis">
 </div>
-<div id="outline-container-orga7668ce" class="outline-3">
-<h3 id="examining-distribution"><a id="orga7668ce"></a><span class="section-number-3">2.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Examining Distribution</h3>
+<div id="outline-container-org93e3472" class="outline-3">
+<h3 id="examining-distribution"><a id="org93e3472"></a><span class="section-number-3">2.1</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> Examining Distribution</h3>
 <div class="outline-text-3" id="text-examining-distribution">
 </div>
-<div id="outline-container-orgd53e6f2" class="outline-4">
-<h4 id="examining-distribution-overview"><a id="orgd53e6f2"></a><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
+<div id="outline-container-org23b1c60" class="outline-4">
+<h4 id="examining-distribution-overview"><a id="org23b1c60"></a><span class="section-number-4">2.1.1</span> <span class="done DONE">DONE</span> Overview</h4>
 <div class="outline-text-4" id="text-examining-distribution-overview">
 </div>
 <ol class="org-ol">
-<li><a id="data-and-variables"></a><a id="org6daa23f"></a>Data and Variables<br />
+<li><a id="data-and-variables"></a><a id="orgd7016e3"></a>Data and Variables<br />
 <div class="outline-text-5" id="text-data-and-variables">
 <p>
 <b>Data</b> are pieces of information about individuals organized into
@@ -326,7 +350,7 @@ variables, but in this course we use the term categorical.
 </div>
 </li>
 
-<li><a id="scale-of-measurement"></a><a id="org27515f8"></a>Scale of Measurement<br />
+<li><a id="scale-of-measurement"></a><a id="org57b9607"></a>Scale of Measurement<br />
 <div class="outline-text-5" id="text-scale-of-measurement">
 <p>
 Previously, a simple distinction was made between quantitative and
@@ -446,12 +470,12 @@ summarize and then examine the <b>distribution</b> of the variable.  By
 </ol>
 </div>
 
-<div id="outline-container-orgd7a8816" class="outline-4">
-<h4 id="one-categorical-variable"><a id="orgd7a8816"></a><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> One Categorical Variable</h4>
+<div id="outline-container-orged6adda" class="outline-4">
+<h4 id="one-categorical-variable"><a id="orged6adda"></a><span class="section-number-4">2.1.2</span> <span class="done DONE">DONE</span> One Categorical Variable</h4>
 <div class="outline-text-4" id="text-one-categorical-variable">
 </div>
 <ol class="org-ol">
-<li><a id="pie-and-bar-charts"></a><a id="org16df09f"></a>Pie and Bar Charts<br />
+<li><a id="pie-and-bar-charts"></a><a id="org7b6635b"></a>Pie and Bar Charts<br />
 <div class="outline-text-5" id="text-pie-and-bar-charts">
 <p>
 In order to visualize the numerical summaries we&rsquo;ve obtained, we need
@@ -490,8 +514,8 @@ Or
 </ol>
 </div>
 
-<div id="outline-container-orgba05c6e" class="outline-4">
-<h4 id="one-quantitative-variable-graphs"><a id="orgba05c6e"></a><span class="section-number-4">2.1.3</span> <span class="todo IN_PROGRESS">IN-PROGRESS</span> One Quantitative Variable: Graphs</h4>
+<div id="outline-container-org0ed70a8" class="outline-4">
+<h4 id="one-quantitative-variable-graphs"><a id="org0ed70a8"></a><span class="section-number-4">2.1.3</span> <span class="done DONE">DONE</span> One Quantitative Variable: Graphs</h4>
 <div class="outline-text-4" id="text-one-quantitative-variable-graphs">
 <p>
 To display data from one quantitative variable graphically, we can use
@@ -501,7 +525,7 @@ will be covered in another section).
 </div>
 
 <ol class="org-ol">
-<li><a id="histogram-intervals"></a><a id="org479394a"></a>Histogram: Intervals<br />
+<li><a id="histogram-intervals"></a><a id="org8721da5"></a>Histogram: Intervals<br />
 <div class="outline-text-5" id="text-histogram-intervals">
 <p>
 Break the range of values into intervals and count how many
@@ -587,7 +611,7 @@ height of a rectangle located above the interval:
 The table above can also be turned into a relative frequency table.
 </p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="500px">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="380px">
 <caption class="t-above"><span class="table-number">Table 2:</span> Exam Grades with relative frequency</caption>
 
 <colgroup>
@@ -656,7 +680,7 @@ determine the frequency of scores occurring at or across intervals.
 </div>
 </li>
 
-<li><a id="histogram-shape"></a><a id="org1e6d3b4"></a>Histogram: Shape<br />
+<li><a id="histogram-shape"></a><a id="orgd3c73ae"></a>Histogram: Shape<br />
 <div class="outline-text-5" id="text-histogram-shape">
 <p>
 Once the distribution has been displayed graphically, we can describe
@@ -804,7 +828,7 @@ The distribution for exam grades is roughly symmetric.
 </div>
 </li>
 
-<li><a id="histogram-center-spread-outliers"></a><a id="org3aab059"></a>Histogram: Center, Spread, &amp; Outliers<br />
+<li><a id="histogram-center-spread-outliers"></a><a id="orgf18bc63"></a>Histogram: Center, Spread, &amp; Outliers<br />
 <div class="outline-text-5" id="text-histogram-center-spread-outliers">
 <p>
 Center
@@ -848,8 +872,7 @@ has a high probable outlier:
 </div>
 </li>
 
-
-<li><a id="stemplot"></a><a id="org77e46bd"></a>Stemplot<br />
+<li><a id="stemplot"></a><a id="org717bfbc"></a>Stemplot<br />
 <div class="outline-text-5" id="text-stemplot">
 <p>
 The stemplot (also called stem and leaf plot) is another graphical
@@ -904,7 +927,6 @@ The decimal point is 1 digit(s) to the right of the |
 6 | 112
 7 | 4
 8 | 0
-
 </pre>
 
 <p>
@@ -913,7 +935,7 @@ visually resembles a histogram.
 </p>
 
 <p>
-This orientation makes the right-skewedness of the distribution
+This orientation makes the right-skewness of the distribution
 clearly visible.
 </p>
 
@@ -947,12 +969,239 @@ of Best Actress Oscar winners.</li>
 </li>
 </ol>
 </div>
+
+<div id="outline-container-org0b8f753" class="outline-4">
+<h4 id="one-quantitative-variable-measures-of-center"><a id="org0b8f753"></a><span class="section-number-4">2.1.4</span> <span class="done DONE">DONE</span> One Quantitative Variable: Measures of Center</h4>
+<div class="outline-text-4" id="text-one-quantitative-variable-measures-of-center">
+<p>
+The three main numerical measures for the center of a distribution are
+the <b>mode</b>, the <b>mean</b> and the <b>median</b>.  Each one of these measures
+is based on a completely different idea of describing the center of a
+distribution. We will first present each one of the measures, and then
+compare their properties.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="mode"></a><a id="org81845e7"></a>Mode<br />
+<div class="outline-text-5" id="text-mode">
+<p>
+So far, when we looked at the shape of the distribution, we identified
+the mode as the value where the distribution has a “peak” and saw
+examples when distributions have one mode (unimodal distributions) or
+two modes (bimodal distributions).  In other words, so far we
+identified the mode visually from the histogram.
+</p>
+
+<p>
+Technically, the mode is the most commonly occurring value in a
+distribution.  For simple datasets where the frequency of each value
+is available or easily determined, the value that occurs with the
+highest frequency is the mode.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">hrs = c(1, 6, 7, 5, 5, 8, 11, 12, 15)
+table(hrs)
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">15</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="mean"></a><a id="orgddf188d"></a>Mean<br />
+<div class="outline-text-5" id="text-mean">
+<p>
+The mean is the average of a set of observations (i.e., the sum of the
+observations divided by the number of observations).  If the n
+observations are \(x_1, x_2, \dotsc, x_n\), their mean, which we denote
+by \(\bar{x}\), is therefore \(\bar{x} = (x_1 + x_2 + \dotsb + x_n) /
+n\).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">mean(hrs)
+</pre>
+</div>
+
+<pre class="example">
+7.77777777777778
+
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-R">hrs2 = rep(c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+           c(3, 5, 15, 25, 20, 15, 5, 1, 1))
+mean(hrs2)
+</pre>
+</div>
+
+<pre class="example">
+4.44444444444444
+
+</pre>
+</div>
+</li>
+
+<li><a id="median"></a><a id="org8a84c7f"></a>Median<br />
+<div class="outline-text-5" id="text-median">
+<p>
+The median \(M\) is the midpoint of the distribution.  It is the number
+such that half of the observations fall above, and half fall below.
+To find the median:
+</p>
+<ul class="org-ul">
+<li>Order the data from smallest to largest.</li>
+<li>Consider whether \(n\), the number of observations, is even or odd.
+<ul class="org-ul">
+<li>If \(n\) is <b>odd</b>, the median \(M\) is the center observation in the
+ordered list.  This observation is the one &ldquo;sitting&rdquo; in the
+\((n + 1) / 2\) spot in the ordered list.</li>
+<li>If \(n\) is <b>even</b>, the median \(M\) is the <b>mean</b> of the <b>two center
+observations</b> in the ordered list.  These two observations are the
+ones &ldquo;sitting&rdquo; in the \(n / 2\) and \(n / 2 + 1\) spots in the ordered
+list.</li>
+</ul></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-R">median(actress)
+</pre>
+</div>
+
+<pre class="example">
+34.5
+
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-R">median(hrs)
+</pre>
+</div>
+
+<pre class="example">
+7
+
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-R">pamphlets = rep(c(6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+                c(3, 3, 8, 4, 1, 1, 4, 2, 1, 2, 1))
+median(pamphlets)
+</pre>
+</div>
+
+<pre class="example">
+9
+
+</pre>
+</div>
+</li>
+
+<li><a id="comparing-mean-and-median"></a><a id="orgf6ce8a4"></a>Comparing Mean and Median<br />
+<div class="outline-text-5" id="text-comparing-mean-and-median">
+<p>
+As we have seen, mean and the median, two of the common measures of
+center, each describe the center of a distribution of values in a
+different way.  The mean describes the center as an average value, in
+which the <i>actual values</i> of the data points play an important role.
+The median, on the other hand, locates the middle value as the center,
+and the <i>order</i> of the data is the key to finding it.
+</p>
+
+<p>
+<b>The mean is very sensitive to outliers (because it factors in their
+magnitude), while the median is resistant to outliers.</b>
+</p>
+
+<ul class="org-ul">
+<li>For symmetric distributions with no outliers: \(\bar{x}\) is approximately
+equal to \(M\).</li>
+
+<li>For skewed right distributions and/or datasets with high outliers,
+\(\bar{x} > M\).</li>
+
+<li>For skewed left distributions and/or datasets with low outliers,
+\(\bar{x} < M\).</li>
+</ul>
+
+<p>
+We will therefore use \(\bar{x}\) as a measure of center for symmetric
+distributions with no outliers.  Otherwise, the median will be a more
+appropriate measure of the center of our data.
+</p>
+
+<p>
+A description of a distribution almost always includes a measure of
+its center or average.  The two common measures of center are the <b>mean</b>
+and the <b>median</b>.
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org2f72704" class="outline-4">
+<h4 id="one-quantitative-variable-measures-of-spread"><a id="org2f72704"></a><span class="section-number-4">2.1.5</span> <span class="todo TODO">TODO</span> One Quantitative Variable: Measures of Spread</h4>
+<div class="outline-text-4" id="text-one-quantitative-variable-measures-of-spread">
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2018-01-18 Thu 23:31</p>
+<p class="date">Created: 2018-01-19 Fri 16:58</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
