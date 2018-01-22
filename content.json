@@ -3,5 +3,8 @@
     "right-pane": {
         "link": "http://news.xinhuanet.com/politics/2016-08/29/c_129260594.htm",
         "img": "img/practice_luyou.jpg"
+    },
+    "left-pane": {
+        "img": "img/analects-1-14.jpg"
     }
 }

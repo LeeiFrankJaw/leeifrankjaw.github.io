@@ -1,6 +1,8 @@
 #main, #header, #menu, #footer {
-    margin: 0 auto;
-    width: 62.5%;
+    margin-left: 11%;
+    width: 70.25%;
+    box-sizing: border-box;
+    padding: 0 3em;
 }
 
 #menu button {
@@ -21,6 +23,7 @@
 
 #left-pane {
     float: left;
+    width: 11%;
 }
 
 #right-pane {
@@ -28,6 +31,7 @@
     width: 18.75%;
 }
 
+#left-pane img,
 #right-pane img, table {
     width: 100%;
 }

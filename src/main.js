@@ -132,7 +132,7 @@ var LISTING = [
                 "type": "file",
                 "name": "prob-stat/",
                 "title": "Probability and Statistics",
-                "author_date": "2018-01-19T17:19:01+08:00"
+                "author_date": "2018-01-21T22:27:32.218556+08:00"
             },
             {
                 "type": "file",
@@ -155,6 +155,9 @@ var CONTENT = {
     "right-pane": {
         "link": "http://news.xinhuanet.com/politics/2016-08/29/c_129260594.htm",
         "img": "img/practice_luyou.jpg"
+    },
+    "left-pane": {
+        "img": "img/analects-1-14.jpg"
     }
 };
 
@@ -178,7 +181,7 @@ if (!route || window.location.protocol === "file:") {
     }
 }
 
-var MAIN, MENU, RIGHT_PANE;
+var MAIN, MENU, LEFT_PANE, RIGHT_PANE;
 
 
 function clearElement(elem) {
@@ -278,6 +281,7 @@ function renderHome() {
     newElement("h1", header, title);
     MAIN = document.getElementById("main");
     MENU = document.getElementById("menu");
+    LEFT_PANE = document.getElementById("left-pane");
     RIGHT_PANE = document.getElementById("right-pane");
     var btns = [], btn, tables = [];
     for (var i = 0; i < LISTING.length; i++) {
@@ -316,8 +320,10 @@ function renderHome() {
     };
     btns[index].id = "selected";
     MAIN.appendChild(tables[index]);
+    var leftPane = CONTENT["left-pane"];
     var rightPane = CONTENT["right-pane"];
     var a = newAnchor(rightPane.link, RIGHT_PANE);
     var img = newElement("img", a);
     img.src = rightPane.img;
+    newElement("img", LEFT_PANE).src = leftPane.img;
 }
