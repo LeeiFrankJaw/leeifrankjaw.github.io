@@ -1,6 +1,7 @@
 pre.src, pre.example /* -sql, pre.src-xml */ {
     color: #303336;
     background-color: #eff0f1;
+    border-radius: 4px;
 }
 pre .org-string { color: #7D2727 } /* string  - pink */
 pre .org-keyword { color: #101094 }
