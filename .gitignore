@@ -5,3 +5,5 @@ listing.json
 img/129254852_*.jpg
 *.[Rr][Dd]ata
 .Rhistory
+*.log
+*.pid

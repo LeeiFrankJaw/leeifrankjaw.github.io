@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 if ! pgrep nginx; then
-    sudo nginx -c nginx.conf -p .
+    nginx -c nginx.conf -p .
 fi
