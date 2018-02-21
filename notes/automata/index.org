@@ -1280,7 +1280,7 @@ Example: Text Processing
     \node[state,accepting,right=of C] (D);
     \path[->] (A) edge node {i} (B) edge[loop above] node {any} (A)
               (B) edge node {n} (C)
-              (C) edge node {g} (D)
+              (C) edge node {g} (D);
   \end{tikzpicture}
 #+END_SRC
 #+CAPTION: NFA for strings ending in "ing"
@@ -1342,11 +1342,112 @@ Example: Put-Back
    :CUSTOM_ID: regular-expression-homework
    :END:
 
-** TODO Decision algorithms for regular languages
+** IN-PROGRESS Decision algorithms for regular languages
    DEADLINE: <2018-01-07 Sun>
    :PROPERTIES:
    :CUSTOM_ID: decision-algorithms-for-regular-languages
    :END:
+Properties of Languages Classes
+ * A /language class/ is a set of languages.
+   * Example: the regular languages.
+ * Language classes have two important kinds of properties:
+   1. Decision properties.
+   2. Closure properties.
+
+Closure Properties
+ * A /closure property/ of a language class says that given languages
+   in the class, an operation (e.g., union) produces another languages
+   in the same class.
+ * Example: the regular languages are obviously closed under union,
+   concatenation, and (Kleene) star.
+   * Use the RE representation of languages.
+
+Representation of Languages
+ * Representations can be formal or informal.
+ * Formal: represent a language by a RE or FA defining it.
+ * Informal: a logical or prose statement about its strings:
+   * $\{ 0^n 1^n \mid n \text{ is a nonnegative integer} \}$
+   * "The set of strings consisting of some number of 0s followed by
+     the same number of 1s."
+
+Decision Properties
+ * A /decision property/ for a class of languages is an algorithm that
+   takes a formal description of a language (e.g., a DFA) and tells
+   whether or not some property holds.
+ * Example: Is language L empty?
+
+Why Decision Properties?
+ * Think about DFAs representing protocols.
+ * Example: "Does the protocol terminate?" = "Is the language finite?"
+   * Make the final state be the "error" state.
+ * We might want a "smallest" representation for a language, e.g., a
+   minimum-state DFA or a shortest RE.
+ * If you can't decide "Are these two languages the same?"
+   * Do two DFAs define the same language?
+   you can't find a "smallest."
+
+The Membership Problem
+ * Our first decision property for regular languages is the question:
+   "is string w in regular language L?"
+ * Assume L is represented by a DFA A.
+ * Simulate the action of A on the sequence of input symbols forming
+   w.
+
+For any representations of regular languages that is not DFA, we can
+convert them into DFA first.
+
+The Emptiness Problem
+ * Given a regular language, does the language contain any string at
+   all?
+ * Assume representation is DFA.
+ * Compute the set of states reachable from the start state.
+ * If at least one final state is reachable, then yes, else no.
+
+The Infiniteness Problem
+ * Is a given regular language infinite?
+ * Start with a DFA for the language.
+ * Key idea: if the DFA has n states, and the language contains any
+   string of length n or more, then the language is infinite.
+ * Otherwise, the language is surely finite.
+   * Limited to strings of length n or less.
+
+Proof of Key Idea
+ * If an n-state DFA accepts a string w of length n or more, then
+   there must be a state that appears twice on the path labeled w from
+   the start state to a final state.
+ * Because there are at least n+1 states along the path.
+
+\[ w = xyz \]
+
+Let us assume $y$ is not $\epsilon$.
+
+#+BEGIN_SRC latex :file xyz.png
+  \usetikzlibrary{positioning,shapes,automata}
+  \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+    \node[state,initial] (A);
+    \node[state,right=of A] (B) {q};
+    \node[state,accepting,right=of B] (C);
+    \path[->] (A) edge node {x} (B)
+              (B) edge [loop above] node {y} (B)
+                  edge node {z} (C);
+  \end{tikzpicture}
+#+END_SRC
+
+#+ATTR_HTML: :width 500px
+#+RESULTS:
+[[file:xyz.png]]
+
+Then $xy^iz$ is in the language for all $i \ge 0$.
+
+Since $y$ is not $\epsilon$, we see an infinite number of strings in
+$L$.
+
+ * We do not yet have an algorithm.
+ * There are an infinite number of strings of length $> n$, and we can't
+   test them all.
+ * Second key idea: if there is a string of length $\ge n$ ($=$ number
+   of states) in $L$, then there is a string of length between $n$ and
+   $2n-1$.
 
 ** TODO Closure properties of regular languages
    DEADLINE: <2018-01-07 Sun>
