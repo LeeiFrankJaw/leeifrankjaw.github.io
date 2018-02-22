@@ -1,0 +1,15 @@
+#+STARTUP: showall
+#+OPTIONS: toc:nil
+
+* Personal Website
+This is my personal static website.
+
+Put ~pre-commit~ hook under ~.git/hooks/~ so that ~build.sh~ is
+automatically run each time before committing.
+
+The script ~./run.sh~ no longer requires root privilege and the
+following alert is ignorable.
+
+#+BEGIN_EXAMPLE
+  nginx: [alert] could not open error log file: open() "/var/log/nginx/error.log" failed (13: Permission denied)
+#+END_EXAMPLE
