@@ -23,10 +23,12 @@ def pred_gen(**kwargs):
 
 
 def get_dir(obj, ks):
+
     def get_dir_aux(obj, k):
         pred = pred_gen(type='directory', name=k)
         res = next(filter(pred, obj))
         return res['contents']
+
     return reduce(get_dir_aux, ks, obj)
 
 
@@ -53,6 +55,7 @@ def sort_by_author_date(contents):
 walker = os.walk('.')
 dirpath, dirnames, filenames = next(walker)
 ignore(dirnames)
+dirnames.sort()
 
 listing = []
 
