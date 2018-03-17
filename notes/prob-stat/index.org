@@ -944,7 +944,35 @@ The following picture illustrates this rule.
 
 [[file:edaed-sdgraph2.gif]]
 
-** TODO Examining Relationship
+** IN-PROGRESS Examining Relationship
    :PROPERTIES:
    :CUSTOM_ID: examining-relationship
    :END:
+
+*** IN-PROGRESS Overview
+In most studies involving two variables, each of the variables has a
+role. We distinguish between:
+
+ * the *explanatory* variable (also commonly referred to as the
+   *independent variable*)---the variable that claims to explain, predict
+   or affect the response---and
+ * the *response* variable (also commonly referred to as the *dependent
+   variable*)---the outcome of the study.
+
+Typically the explanatory (or independent) variable is denoted by X,
+while the response (or dependent) variable is denoted by Y.
+
+If we further classify each of the two relevant variables according to
+*type* (categorical or quantitative), we get the following 4
+possibilities for *"role-type classification"*:
+
+ 1. Categorical explanatory and quantitative response
+ 2. Categorical explanatory and categorical response
+ 3. Quantitative explanatory and quantitative response
+ 4. Quantitative explanatory and categorical response
+
+This role-type classification can be summarized and easily visualized
+in the following table (note that the explanatory variable is always
+listed first):
+
+[[file:edaer-overview.png]]
