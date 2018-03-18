@@ -1,4 +1,4 @@
-#+STARTUP: inlineimages
+#+STARTUP: inlineimages showall
 #+TODO: TODO IN-PROGRESS DONE
 #+PROPERTY: header-args:R :exports both :eval never-export
 
@@ -402,7 +402,7 @@ The stemplot has additional unique features:
 
 Dotplot
  * There is another type of display that we can use to summarize a
-   quantitative variable graphically—the dotplot. The dotplot, like
+p   quantitative variable graphically—the dotplot. The dotplot, like
    the stemplot, shows each observation, but displays it with a dot
    rather than with its actual value. Here is the dotplot for the ages
    of Best Actress Oscar winners.
@@ -816,7 +816,7 @@ observation that was classified as a suspected outlier using the
 [[file:boxplot-actors.png]]
 
 #+BEGIN_SRC R :results output
-  load('graduation.RData')
+  load("graduation.RData")
   summary(grad_data)
 #+END_SRC
 
@@ -947,9 +947,11 @@ The following picture illustrates this rule.
 ** IN-PROGRESS Examining Relationship
    :PROPERTIES:
    :CUSTOM_ID: examining-relationship
+   :header-args:R: :session edaer :exports both :eval never-export
    :END:
 
-*** IN-PROGRESS Overview
+*** DONE Overview
+    CLOSED: [2018-03-18 Sun 16:28]
 In most studies involving two variables, each of the variables has a
 role. We distinguish between:
 
@@ -976,3 +978,90 @@ in the following table (note that the explanatory variable is always
 listed first):
 
 [[file:edaer-overview.png]]
+
+*Principle*
+
+When confronted with a research question that involves exploring the
+relationship between two variables, the first and most crucial step is
+to determine which of the 4 cases represents the data structure of the
+problem.  In other words, the first step should be classifying the two
+relevant variables according to their role and type, and only then can
+we determine what statistical tools should be used to analyze them.
+
+*** DONE Case C → Q
+    CLOSED: [2018-03-18 Sun 16:49]
+
+*** DONE Case C → C
+    CLOSED: [2018-03-18 Sun 18:16]
+    :PROPERTIES:
+    :CUSTOM_ID: case-c-to-c
+    :END:
+
+#+BEGIN_SRC R :results output
+  load("nightlight.RData")
+  t = table(nightlight)
+  t
+#+END_SRC
+
+#+RESULTS:
+:              Nearsightedness
+: Light          No Yes
+:   lamp         34  41
+:   night light 153  79
+:   no light    155  17
+
+#+BEGIN_SRC R :results output
+  prop.table(t, 1)
+#+END_SRC
+
+#+RESULTS:
+:              Nearsightedness
+: Light                 No        Yes
+:   lamp        0.45333333 0.54666667
+:   night light 0.65948276 0.34051724
+:   no light    0.90116279 0.09883721
+
+#+BEGIN_SRC R :results output
+  prop.table(t, 2)
+#+END_SRC
+
+#+RESULTS:
+:              Nearsightedness
+: Light                No       Yes
+:   lamp        0.0994152 0.2992701
+:   night light 0.4473684 0.5766423
+:   no light    0.4532164 0.1240876
+
+#+BEGIN_SRC R :results output
+  prop.table(t, 1) * 100
+#+END_SRC
+
+#+RESULTS:
+:              Nearsightedness
+: Light                No       Yes
+:   lamp        45.333333 54.666667
+:   night light 65.948276 34.051724
+:   no light    90.116279  9.883721
+
+*** IN-PROGRESS Case Q → Q: Scatterplots
+    :PROPERTIES:
+    :CUSTOM_ID: case-q-to-q-scatterplots
+    :END:
+
+#+BEGIN_SRC R :results graphics :file scatter-height.png
+  load("height.RData")
+  plot(h$height, h$weight, xlab="Height (inches)", ylab="Weight (lbs)")
+#+END_SRC
+
+#+RESULTS:
+[[file:scatter-height.png]]
+
+#+BEGIN_SRC R :results graphics :file scatter-height-colored.png
+  plot(h$height, h$weight, xlab="Height (inches)", ylab="Weight (lbs)", type="n")
+  points(h$height[h$gender==0], h$weight[h$gender==0], col="blue")
+  points(h$height[h$gender==1], h$weight[h$gender==1], col="red")
+  legend(55, 235, pch=1, col=c("blue", "red"), legend=c("males", "females"))
+#+END_SRC
+
+#+RESULTS:
+[[file:scatter-height-colored.png]]
