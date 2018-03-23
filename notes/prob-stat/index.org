@@ -1043,7 +1043,8 @@ we determine what statistical tools should be used to analyze them.
 :   night light 65.948276 34.051724
 :   no light    90.116279  9.883721
 
-*** IN-PROGRESS Case Q → Q: Scatterplots
+*** DONE Case Q → Q: Scatterplots
+    CLOSED: [2018-03-23 Fri 20:36]
     :PROPERTIES:
     :CUSTOM_ID: case-q-to-q-scatterplots
     :END:
@@ -1065,3 +1066,11 @@ we determine what statistical tools should be used to analyze them.
 
 #+RESULTS:
 [[file:scatter-height-colored.png]]
+
+*** IN-PROGRESS Case Q → Q: Linear Relationship
+
+*Definition:* The *correlation coefficient (r)* is a numerical measure
+that measures the *strength* and *direction* of a linear relationship
+between two quantitative variables.
+
+\[ r = \frac1{n-1} \sum_{i=1}^n \left( \frac{x_i - \bar x}{S_x} \right) \left( \frac{y_i - \bar y}{S_y} \right) \]
