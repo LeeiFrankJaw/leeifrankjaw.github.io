@@ -1067,10 +1067,130 @@ we determine what statistical tools should be used to analyze them.
 #+RESULTS:
 [[file:scatter-height-colored.png]]
 
-*** IN-PROGRESS Case Q → Q: Linear Relationship
+*** DONE Case Q → Q: Linear Relationship
+    CLOSED: [2018-03-25 Sun 18:34]
 
 *Definition:* The *correlation coefficient (r)* is a numerical measure
 that measures the *strength* and *direction* of a linear relationship
 between two quantitative variables.
 
 \[ r = \frac1{n-1} \sum_{i=1}^n \left( \frac{x_i - \bar x}{S_x} \right) \left( \frac{y_i - \bar y}{S_y} \right) \]
+
+ 1. The correlation does not change when the units of measurement of
+    either one of the variables change.  In other words, if we change
+    the units of measurement of the explanatory variable and/or the
+    response variable, the change has no effect on the correlation
+    (r).  The correlation (r) is /unitless/.  It is just a number.
+
+ 2. The correlation measures only the /strength/ of a linear
+    relationship between two variables.  It ignores any other type of
+    relationship, no matter how strong it is.
+
+ 3. The correlation by itself is /not/ sufficient to determine whether a
+    relationship is linear.
+
+ 4. The correlation is heavily influenced by outliers.
+
+#+BEGIN_SRC R :results graphics :file animals.png
+  load("animals.RData")
+  plot(a$longevity, a$gestation, xlab="Average Longevity of Species (years)",
+       ylab="Average Gestation Period of Species (days)")
+#+END_SRC
+
+#+RESULTS:
+[[file:animals.png]]
+#+BEGIN_SRC R
+  cor(a$longevity, a$gestation)
+#+END_SRC
+
+#+RESULTS:
+: 0.663239674858505
+
+#+BEGIN_SRC R
+  cor(a$longevity[a$animal!="elephant"], a$gestation[a$animal!="elephant"])
+#+END_SRC
+
+#+RESULTS:
+: 0.519038911146676
+
+The technique that specifies the dependence of the response variable
+on the explanatory variable is called *regression*.  When that
+dependence is linear (which is the case in our examples in this
+section), the technique is called *linear regression*.  Linear
+regression is therefore the technique of finding the line that best
+fits the pattern of the linear relationship (or in other words, the
+line that best describes how the response variable linearly depends on
+the explanatory variable).
+
+The most commonly used criterion is called the *least squares*
+criterion.  This criterion says: Among all the lines that look good on
+your data, choose the one that has the smallest sum of squared
+vertical deviations.  Visually, each squared deviation is represented
+by the area of one of the squares in the plot below.  Therefore, we
+are looking for the line that will have the smallest total yellow
+area.
+
+[[file:edaer-linear.gif]]
+
+This line is called the *least-squares regression line*, and, as we'll
+see, it fits the linear pattern of the data very well.
+
+The equation of the least-squares regression line for summarizing the
+linear relationship between the response variable (Y) and the
+explanatory variable (X) has the form:
+
+\[ Y = a + bX , \]
+
+where
+
+\begin{align*} 
+b &= r \left( \frac{S_Y}{S_X} \right) , \\
+a &= \overline{Y} - b \overline{X} .
+\end{align*}
+
+Prediction for ranges of the explanatory variable that are not in the
+data is called *extrapolation*.  Since there is no way of knowing whether
+a relationship holds beyond the range of the explanatory variable in
+the data, extrapolation is not reliable, and should be avoided.
+
+#+BEGIN_SRC R :results graphics :file olympic.png
+  load("olympics_2012.RData")
+  plot(olym$Year, olym$Time, xlab="Year of Olympic Games",
+       ylab="Winning Time of 1500m Race (secs)")
+  model = lm(olym$Time~olym$Year)
+  abline(model)
+#+END_SRC
+
+#+RESULTS:
+[[file:olympic.png]]
+
+#+BEGIN_SRC R :results output
+  coef(model)
+#+END_SRC
+
+#+RESULTS:
+: (Intercept)   olym$Year 
+: 916.4323092  -0.3527988
+
+#+BEGIN_SRC R :results graphics :file olympic-no-outlier.png
+  plot(olym$Year[olym$Year!=1896], olym$Time[olym$Year!=1896],
+       xlab="Year of Olympic Games",
+       ylab="Winning Time of 1500m Race (secs)")
+  L = lm(olym$Time[olym$Year!=1896]~olym$Year[olym$Year!=1896])
+  abline(L)
+  cf = coef(L)
+  legend(1965, 245,
+         legend=paste("time = ", round(cf[1], 0), round(cf[2], 2), "year"))
+#+END_SRC
+
+#+RESULTS:
+[[file:olympic-no-outlier.png]]
+
+#+BEGIN_SRC R :results output
+  cf
+#+END_SRC
+
+#+RESULTS:
+:                  (Intercept) olym$Year[olym$Year != 1896] 
+:                  811.5357030                   -0.2997465
+
