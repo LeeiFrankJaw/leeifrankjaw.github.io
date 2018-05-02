@@ -960,7 +960,6 @@ accepted by this DFA.
 
 
 * IN-PROGRESS [[https://lagunita.stanford.edu/courses/course-v1:ComputerScience+Automata+SelfPaced/courseware/b9162be11c7b4c61a573a50e3aba5738/8c5876c1e4bb46af8fbf4a51ecfccbbc/][Regular Expressions and Properties of Regular Languages]]
-  DEADLINE: <2018-01-11 Thu>
   :PROPERTIES:
   :CUSTOM_ID: regular-expressions-and-properties-of-regular-languages
   :END:
@@ -1343,7 +1342,6 @@ Example: Put-Back
    :END:
 
 ** IN-PROGRESS Decision algorithms for regular languages
-   DEADLINE: <2018-01-07 Sun>
    :PROPERTIES:
    :CUSTOM_ID: decision-algorithms-for-regular-languages
    :END:
@@ -1450,22 +1448,18 @@ $L$.
    $2n-1$.
 
 ** TODO Closure properties of regular languages
-   DEADLINE: <2018-01-07 Sun>
    :PROPERTIES:
    :CUSTOM_ID: closure-properties-of-regular-languages
    :END:
 
 ** TODO Properties-of-Regular-Languages Homework
-   DEADLINE: <2018-01-08 Mon>
    :PROPERTIES:
    :CUSTOM_ID: properties-of-regular-languages-homework
    :END:
 
 ** TODO Challenge Problems 2
-   DEADLINE: <2018-01-09 Tue>
    :PROPERTIES:
    :CUSTOM_ID: challenge-problem-2
    :END:
 
 ** TODO Problem Session 2
-   DEADLINE: <2018-01-10 Wed>
