@@ -1,0 +1,50 @@
+#+STARTUP: inlineimages showall
+
+#+TITLE: Delivering a Relational Data Warehouse
+#+AUTHOR: Lei Zhao
+#+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
+#+OPTIONS: ':t
+
+[[https://www.edx.org/course/delivering-a-relational-data-warehouse][Delivering a Relational Data Warehouse]] on edX
+
+* TODO Introducing the Data Warehouse
+
+** TODO The Business Case for a Data Warehouse
+
+Definition of Business Intelligence (BI)
+
+According to [[https://www.gartner.com/it-glossary/business-intelligence-bi/][Gartner]], BI is defined as:
+
+#+BEGIN_QUOTE
+A broad category of applications and technologies for gathering,
+storing, analyzing, sharing and providing access to data to help
+enterprise users make better business decisions.
+#+END_QUOTE
+
+[[https://www.edx.org/bio/peter-myers][Peter Myers]] simplifies it as:
+
+#+BEGIN_QUOTE
+It transforms data into knowledge to support decisions. 
+#+END_QUOTE
+
+BI is used by decision makers to:
+ - Understand the health of the organization.
+ - Collaborate on a shared view of:
+   * Data,
+   * Business logic, and
+   * Business drivers.
+ - Reduce the time to decision.
+
+Its goal is often to:
+ - Impact the bottom line by measuring specific operations.
+ - Enhance competitive advantage.
+
+#+BEGIN_QUOTE
+BI is no longer a luxury afforded by a larger companies---it is
+considered an essential part of the IT portfolio.
+#+END_QUOTE
+
+It encompasses a broad spectrum of technologies and requires skilled
+professionals to design, develop and manage.

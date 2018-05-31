@@ -1,4 +1,4 @@
-pre.src, pre.example /* -sql, pre.src-xml */ {
+pre.src, pre.example, blockquote /* -sql, pre.src-xml */ {
     color: #303336;
     background-color: #eff0f1;
     border-radius: 4px;
@@ -34,4 +34,9 @@ pre .dec { color: #101094 } /* decimal         - lightgreen */
 p.pre {
     white-space: pre-wrap;
     font-family: monospace;
+}
+
+blockquote {
+    border: 1px solid #ccc;
+    padding: 0 1em;
 }

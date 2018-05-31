@@ -130,6 +130,12 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
+                "name": "DAT216x/",
+                "title": "Delivering a Relational Data Warehouse",
+                "author_date": "2018-06-01T00:07:35+08:00"
+            },
+            {
+                "type": "file",
                 "name": "prob-stat/",
                 "title": "Probability and Statistics",
                 "author_date": "2018-03-25T18:41:41+08:00"
