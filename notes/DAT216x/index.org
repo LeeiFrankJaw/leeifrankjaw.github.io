@@ -48,3 +48,55 @@ considered an essential part of the IT portfolio.
 
 It encompasses a broad spectrum of technologies and requires skilled
 professionals to design, develop and manage.
+
+Common questions addressed by BI.
+ * What sales have been made, and where?
+ * How are the salespeople performing?
+ * Which customers are likely to buy from us?
+ * Which products do our customers buy together?
+ * What is the customer sentiment of our new product?
+
+Organizations have large volumes of related data stored in a variety
+of data systems, often in different formats, and possibly residing in
+different locations (on-premises, or cloud)
+
+Data systems may not:
+ - Be easily queried.
+ - Be optimized for analytical queries.
+ - Contain all the data required, by design, or in history.
+ - Manage historical context.
+ - Be available or accessible.
+
+Employees may not have sufficient skills, tools, or permissions to
+query data systems.
+ - Commonly, employees do not have access to operational data systems,
+   due to valid concerns that analytic queries can negatively impact
+   on performance.
+
+Systems may not have consistent definitions.
+
+Decision makers need:
+ - Data catalogs to discover and understand data assets.
+ - Reliable, secure access to data.
+ - Flexibility in the ways they access data
+ - Low latency query results
+ - Tools and training
+   * View and interact with data assets and reports
+   * Produce their own data models, reports, and dashboards (Self-Service BI)
+
+Operational Reporting
+ - Provides improved access to data from operational data systems.
+
+Business Process or Activity Management
+ - Provides improved analysis and reporting capabilities for specific
+   business processes or activities.
+
+Data Mart
+ - Provides improved tools and access to business users of an
+   application to enhance its value by improving decision making.
+ - Delivers integrated reporting and analytics for a single subject area.
+
+Enterprise Data Warehousing
+ - Providing comprehensive integration of critical information across
+   the enterprise
+ - Breaks down the barriers between applications
