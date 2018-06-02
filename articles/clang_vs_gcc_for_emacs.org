@@ -1,6 +1,7 @@
 #+PROPERTY: header-args:bash :exports both :eval never-export
 #+TITLE: Clang vs. GCC for building Emacs
 #+AUTHOR: Lei Zhao
+#+DATE: <2017-12-18 Mon 17:10>
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>

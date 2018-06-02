@@ -6,3 +6,4 @@ img/129254852_*.jpg
 .Rhistory
 *.log
 *.pid
+.mypy_cache/

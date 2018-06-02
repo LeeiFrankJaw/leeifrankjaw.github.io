@@ -3,6 +3,7 @@
 #+PROPERTY: header-args:python :dir ~/Downloads/ :session fixzip :results list :exports both :tangle ../tangled/zipfix.py :eval never-export
 #+TITLE: Fix filename encoding for zip archive with Python
 #+AUTHOR: Lei Zhao
+#+DATE: <2017-11-27 Mon 10:16>
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>

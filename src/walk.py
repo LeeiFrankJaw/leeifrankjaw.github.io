@@ -33,14 +33,20 @@ def get_dir(obj, ks):
 
 
 def get_author_date(path):
-    author_date = None
+    html = lxml.html.parse(path)
+    date_text = html.xpath('string(//div[@id="postamble"]/p[@class="date"])')
+    if date_text:
+        date_str = date_text.split(': ')[1]
+        return (datetime.strptime(date_str, '%Y-%m-%d %a %H:%M')
+                .astimezone().isoformat())
+
     status_cmdargs = ['git', 'status', '--short', path]
     status = run(status_cmdargs, stdout=PIPE).stdout.decode().strip()[:2]
     if not status:
         log_cmdargs = ['git', 'log', '--max-count=1', '--format=%aI', path]
-        author_date = run(log_cmdargs, stdout=PIPE).stdout.decode().strip()
-    return author_date or (datetime.fromtimestamp(os.path.getmtime(path))
-                           .astimezone().isoformat())
+        return run(log_cmdargs, stdout=PIPE).stdout.decode().strip()
+    return (datetime.fromtimestamp(os.path.getmtime(path))
+            .astimezone().isoformat())
 
 
 def get_title(path):
@@ -57,7 +63,9 @@ dirpath, dirnames, filenames = next(walker)
 ignore(dirnames)
 dirnames.sort()
 
-listing = []
+# yapf: disable
+listing = []                    # type: list
+# yapf: enable
 
 for dirpath, dirnames, filenames in walker:
     # ignore(dirnames)

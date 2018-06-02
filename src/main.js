@@ -102,19 +102,19 @@ var LISTING = [
                 "type": "file",
                 "name": "how-to-ssh-to-a-server-bebind-LAN.html",
                 "title": "How to ssh to a server behind LAN",
-                "author_date": "2018-01-13T16:22:03+08:00"
+                "author_date": "2018-01-13T16:22:00+08:00"
             },
             {
                 "type": "file",
                 "name": "clang_vs_gcc_for_emacs.html",
                 "title": "Clang vs. GCC for building Emacs",
-                "author_date": "2017-12-18T17:10:32+08:00"
+                "author_date": "2017-12-18T17:10:00+08:00"
             },
             {
                 "type": "file",
                 "name": "fix_filename_encoding_for_zip_archive_with_python.html",
                 "title": "Fix filename encoding for zip archive with Python",
-                "author_date": "2017-11-27T10:16:44+08:00"
+                "author_date": "2017-11-27T10:16:00+08:00"
             },
             {
                 "type": "file",
@@ -132,25 +132,25 @@ var LISTING = [
                 "type": "file",
                 "name": "DAT216x/",
                 "title": "Delivering a Relational Data Warehouse",
-                "author_date": "2018-06-01T21:43:47.757890+08:00"
+                "author_date": "2018-06-02T21:30:00+08:00"
             },
             {
                 "type": "file",
                 "name": "prob-stat/",
                 "title": "Probability and Statistics",
-                "author_date": "2018-03-25T18:41:41+08:00"
+                "author_date": "2018-03-25T18:41:00+08:00"
             },
             {
                 "type": "file",
                 "name": "automata/",
                 "title": "Automata Theory",
-                "author_date": "2018-02-21T20:55:24+08:00"
+                "author_date": "2018-02-16T01:38:00+08:00"
             },
             {
                 "type": "file",
                 "name": "intro_db.html",
                 "title": "Intro to DB",
-                "author_date": "2018-01-14T19:44:27+08:00"
+                "author_date": "2018-01-14T19:44:00+08:00"
             }
         ]
     }
