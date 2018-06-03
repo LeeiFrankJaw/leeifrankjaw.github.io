@@ -2,6 +2,7 @@
 
 #+TITLE: Delivering a Relational Data Warehouse
 #+AUTHOR: Lei Zhao
+#+DATE: <2018-06-04 Mon 00:23>
 #+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
@@ -15,7 +16,7 @@
 
 Definition of Business Intelligence (BI)
 
-According to [[https://www.gartner.com/it-glossary/business-intelligence-bi/][Gartner]], BI is defined as:
+According to Gartner, [[https://www.gartner.com/it-glossary/business-intelligence-bi/][BI]] is defined as follows.
 
 #+BEGIN_QUOTE
 A broad category of applications and technologies for gathering,
@@ -23,7 +24,7 @@ storing, analyzing, sharing and providing access to data to help
 enterprise users make better business decisions.
 #+END_QUOTE
 
-[[https://www.edx.org/bio/peter-myers][Peter Myers]] simplifies it as:
+[[https://www.edx.org/bio/peter-myers][Peter Myers]] simplifies it as follows.
 
 #+BEGIN_QUOTE
 It transforms data into knowledge to support decisions. 
@@ -100,3 +101,114 @@ Enterprise Data Warehousing
  - Providing comprehensive integration of critical information across
    the enterprise
  - Breaks down the barriers between applications
+
+Demo objectives:
+ 1. Describe common data challenges.
+ 2. Describe the purpose of the data warehouse.
+ 3. Describe the data warehouse ecosystem.
+
+Delivering Business Intelligence
+ 1. Organizations accumulate data in many data sources and formats.
+ 2. Users may access data sources directly.
+ 3. Data sources can be mirrored/replicated to reduce contention.
+ 4. Operational data sources can be prepared for analytics.
+ 5. The data warehouse manages data for reporting and analytics.
+    - Enterprise Data Warehouse consists of a series of data marts.
+ 6. Staging area may simply the loading of the data warehouse.
+ 7. Master data systems can manage consistent definitions.
+ 8. Data quality systems can help detect and cleanse dirty data.
+ 9. Only complete, credible, clean, consistent data is loaded.
+ 10. Data marts are designed with schemas optimized for analytics.
+ 11. The data warehouse comprises additional data assets (data models
+     or cubes).
+
+The data warehouse can enable governed Self-Service BI.
+
+The data warehouse ecosystem consists of components and services to
+deliver the data warehouse goals.
+ - Extract, Transform, and Load systems
+ - Operational Data Stores (ODS)
+ - Staging systems
+ - Master Data Management systems
+ - Data Quality Management systems
+ - Data models (OLAP)
+ - Prediction models (data mining, or machine learning)
+ - Data dictionaries
+
+ETL
+ * Extract, Transform, and Load (ETL) systems are concerned with
+   moving and transforming data.
+ * Transformations can include data integration, aggregation, change
+   detection, calculations, conforming or cleansing.
+ * ETL development is often complex and development can be challenging.
+   - It is estimated that 60-80% of the data warehouse development
+     effort is dedicated to the ETL process.
+
+ODS
+ * An ODS delivers a subject-oriented integrated store.
+ * It serves two possible purposes:
+   - Integration point for operational systems, providing real-time
+     source for critical details (balances, etc.)
+   - To supply current and detailed data for decision support
+ * The ODS is updated frequently.
+ * Contains all detail data required to describe low-level
+   transactions.
+
+Staging systems
+ * Staging systems support data loading and transformation
+   requirements
+ * They are never intended to be accessed by end users
+ * They can also provide ETL restartability, without the need to
+   reload data from source systems
+
+Master Data Management Systems
+ * Master Data Management (MDM) systems deliver a master data hub that
+   provides access to authoritative, standardized, and validated
+   versions of data
+ * They are concerned with the concept of the "Golden Record"
+ * They are commonly used to define and maintain key business
+   entities, for example, a master list of products
+
+Data Quality Management Systems
+ * Data Quality Management systems profile data to discover
+   inconsistencies and other anomalies
+ * They can also perform data cleansing activities to improve the data
+   quality
+
+Data Models
+ * Data models deliver intuitive browsing and high performance query
+   results---even over large volumes of data.
+ * Data models are more commonly known as cubes.
+
+Prediction Models
+ * Prediction models are trained from data warehouse data, to detect
+   patterns, clusters, relationships, and rules.
+ * They deliver a model which can be used to explore data, or to
+   perform predictions.
+
+Current Trends
+ * Based on recent technological advancements, today we are witnessing
+   a paradigm shift in data warehousing.
+   - Integration of big data analytics
+   - Real-time insights
+   - Complex data types
+   - In-memory technologies
+   - Seamless integration of data among cloud, on-premises, and hybrid
+     environments
+
+Gartner defines [[https://www.gartner.com/it-glossary/data-warehouse/][data warehouse]] as follows.
+
+#+BEGIN_QUOTE
+A *data warehouse* is a storage architecure designed to hold data
+extracted from transaction systems, operational data stores and
+external sources.  The warehouse then combines that data in an
+aggregate, summary form suitable for enterprise-wide data analysis and
+reporting for predefined business needs.
+
+The five components of a data warehouse are:
+ 1. production data sources,
+ 2. data extraction and conversion,
+ 3. the data warehouse database management system
+ 4. data warehouse administration
+ 5. BI tools
+#+END_QUOTE

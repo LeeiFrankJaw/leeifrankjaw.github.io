@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-31 Thu 23:39 -->
+<!-- 2018-06-04 Mon 00:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Delivering a Relational Data Warehouse</title>
@@ -237,9 +237,9 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2739458">1. <span class="todo TODO">TODO</span> Introducing the Data Warehouse</a>
+<li><a href="#org32afeae">1. <span class="todo TODO">TODO</span> Introducing the Data Warehouse</a>
 <ul>
-<li><a href="#org30f6e62">1.1. <span class="todo TODO">TODO</span> The Business Case for a Data Warehouse</a></li>
+<li><a href="#org37f4d60">1.1. <span class="todo TODO">TODO</span> The Business Case for a Data Warehouse</a></li>
 </ul>
 </li>
 </ul>
@@ -249,19 +249,19 @@ for the JavaScript code in this tag.
 <a href="https://www.edx.org/course/delivering-a-relational-data-warehouse">Delivering a Relational Data Warehouse</a> on edX
 </p>
 
-<div id="outline-container-org2739458" class="outline-2">
-<h2 id="org2739458"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> Introducing the Data Warehouse</h2>
+<div id="outline-container-org32afeae" class="outline-2">
+<h2 id="org32afeae"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> Introducing the Data Warehouse</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org30f6e62" class="outline-3">
-<h3 id="org30f6e62"><span class="section-number-3">1.1</span> <span class="todo TODO">TODO</span> The Business Case for a Data Warehouse</h3>
+<div id="outline-container-org37f4d60" class="outline-3">
+<h3 id="org37f4d60"><span class="section-number-3">1.1</span> <span class="todo TODO">TODO</span> The Business Case for a Data Warehouse</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Definition of Business Intelligence (BI)
 </p>
 
 <p>
-According to <a href="https://www.gartner.com/it-glossary/business-intelligence-bi/">Gartner</a>, BI is defined as:
+According to Gartner, <a href="https://www.gartner.com/it-glossary/business-intelligence-bi/">BI</a> is defined as follows.
 </p>
 
 <blockquote>
@@ -273,7 +273,7 @@ enterprise users make better business decisions.
 </blockquote>
 
 <p>
-<a href="https://www.edx.org/bio/peter-myers">Peter Myers</a> simplifies it as:
+<a href="https://www.edx.org/bio/peter-myers">Peter Myers</a> simplifies it as follows.
 </p>
 
 <blockquote>
@@ -315,13 +315,276 @@ considered an essential part of the IT portfolio.
 It encompasses a broad spectrum of technologies and requires skilled
 professionals to design, develop and manage.
 </p>
+
+<p>
+Common questions addressed by BI.
+</p>
+<ul class="org-ul">
+<li>What sales have been made, and where?</li>
+<li>How are the salespeople performing?</li>
+<li>Which customers are likely to buy from us?</li>
+<li>Which products do our customers buy together?</li>
+<li>What is the customer sentiment of our new product?</li>
+</ul>
+
+<p>
+Organizations have large volumes of related data stored in a variety
+of data systems, often in different formats, and possibly residing in
+different locations (on-premises, or cloud)
+</p>
+
+<p>
+Data systems may not:
+</p>
+<ul class="org-ul">
+<li>Be easily queried.</li>
+<li>Be optimized for analytical queries.</li>
+<li>Contain all the data required, by design, or in history.</li>
+<li>Manage historical context.</li>
+<li>Be available or accessible.</li>
+</ul>
+
+<p>
+Employees may not have sufficient skills, tools, or permissions to
+query data systems.
+</p>
+<ul class="org-ul">
+<li>Commonly, employees do not have access to operational data systems,
+due to valid concerns that analytic queries can negatively impact
+on performance.</li>
+</ul>
+
+<p>
+Systems may not have consistent definitions.
+</p>
+
+<p>
+Decision makers need:
+</p>
+<ul class="org-ul">
+<li>Data catalogs to discover and understand data assets.</li>
+<li>Reliable, secure access to data.</li>
+<li>Flexibility in the ways they access data</li>
+<li>Low latency query results</li>
+<li>Tools and training
+<ul class="org-ul">
+<li>View and interact with data assets and reports</li>
+<li>Produce their own data models, reports, and dashboards (Self-Service BI)</li>
+</ul></li>
+</ul>
+
+<p>
+Operational Reporting
+</p>
+<ul class="org-ul">
+<li>Provides improved access to data from operational data systems.</li>
+</ul>
+
+<p>
+Business Process or Activity Management
+</p>
+<ul class="org-ul">
+<li>Provides improved analysis and reporting capabilities for specific
+business processes or activities.</li>
+</ul>
+
+<p>
+Data Mart
+</p>
+<ul class="org-ul">
+<li>Provides improved tools and access to business users of an
+application to enhance its value by improving decision making.</li>
+<li>Delivers integrated reporting and analytics for a single subject area.</li>
+</ul>
+
+<p>
+Enterprise Data Warehousing
+</p>
+<ul class="org-ul">
+<li>Providing comprehensive integration of critical information across
+the enterprise</li>
+<li>Breaks down the barriers between applications</li>
+</ul>
+
+<p>
+Demo objectives:
+</p>
+<ol class="org-ol">
+<li>Describe common data challenges.</li>
+<li>Describe the purpose of the data warehouse.</li>
+<li>Describe the data warehouse ecosystem.</li>
+</ol>
+
+<p>
+Delivering Business Intelligence
+</p>
+<ol class="org-ol">
+<li>Organizations accumulate data in many data sources and formats.</li>
+<li>Users may access data sources directly.</li>
+<li>Data sources can be mirrored/replicated to reduce contention.</li>
+<li>Operational data sources can be prepared for analytics.</li>
+<li>The data warehouse manages data for reporting and analytics.
+<ul class="org-ul">
+<li>Enterprise Data Warehouse consists of a series of data marts.</li>
+</ul></li>
+<li>Staging area may simply the loading of the data warehouse.</li>
+<li>Master data systems can manage consistent definitions.</li>
+<li>Data quality systems can help detect and cleanse dirty data.</li>
+<li>Only complete, credible, clean, consistent data is loaded.</li>
+<li>Data marts are designed with schemas optimized for analytics.</li>
+<li>The data warehouse comprises additional data assets (data models
+or cubes).</li>
+</ol>
+
+<p>
+The data warehouse can enable governed Self-Service BI.
+</p>
+
+<p>
+The data warehouse ecosystem consists of components and services to
+deliver the data warehouse goals.
+</p>
+<ul class="org-ul">
+<li>Extract, Transform, and Load systems</li>
+<li>Operational Data Stores (ODS)</li>
+<li>Staging systems</li>
+<li>Master Data Management systems</li>
+<li>Data Quality Management systems</li>
+<li>Data models (OLAP)</li>
+<li>Prediction models (data mining, or machine learning)</li>
+<li>Data dictionaries</li>
+</ul>
+
+<p>
+ETL
+</p>
+<ul class="org-ul">
+<li>Extract, Transform, and Load (ETL) systems are concerned with
+moving and transforming data.</li>
+<li>Transformations can include data integration, aggregation, change
+detection, calculations, conforming or cleansing.</li>
+<li>ETL development is often complex and development can be challenging.
+<ul class="org-ul">
+<li>It is estimated that 60-80% of the data warehouse development
+effort is dedicated to the ETL process.</li>
+</ul></li>
+</ul>
+
+<p>
+ODS
+</p>
+<ul class="org-ul">
+<li>An ODS delivers a subject-oriented integrated store.</li>
+<li>It serves two possible purposes:
+<ul class="org-ul">
+<li>Integration point for operational systems, providing real-time
+source for critical details (balances, etc.)</li>
+<li>To supply current and detailed data for decision support</li>
+</ul></li>
+<li>The ODS is updated frequently.</li>
+<li>Contains all detail data required to describe low-level
+transactions.</li>
+</ul>
+
+<p>
+Staging systems
+</p>
+<ul class="org-ul">
+<li>Staging systems support data loading and transformation
+requirements</li>
+<li>They are never intended to be accessed by end users</li>
+<li>They can also provide ETL restartability, without the need to
+reload data from source systems</li>
+</ul>
+
+<p>
+Master Data Management Systems
+</p>
+<ul class="org-ul">
+<li>Master Data Management (MDM) systems deliver a master data hub that
+provides access to authoritative, standardized, and validated
+versions of data</li>
+<li>They are concerned with the concept of the &ldquo;Golden Record&rdquo;</li>
+<li>They are commonly used to define and maintain key business
+entities, for example, a master list of products</li>
+</ul>
+
+<p>
+Data Quality Management Systems
+</p>
+<ul class="org-ul">
+<li>Data Quality Management systems profile data to discover
+inconsistencies and other anomalies</li>
+<li>They can also perform data cleansing activities to improve the data
+quality</li>
+</ul>
+
+<p>
+Data Models
+</p>
+<ul class="org-ul">
+<li>Data models deliver intuitive browsing and high performance query
+results&#x2014;even over large volumes of data.</li>
+<li>Data models are more commonly known as cubes.</li>
+</ul>
+
+<p>
+Prediction Models
+</p>
+<ul class="org-ul">
+<li>Prediction models are trained from data warehouse data, to detect
+patterns, clusters, relationships, and rules.</li>
+<li>They deliver a model which can be used to explore data, or to
+perform predictions.</li>
+</ul>
+
+<p>
+Current Trends
+</p>
+<ul class="org-ul">
+<li>Based on recent technological advancements, today we are witnessing
+a paradigm shift in data warehousing.
+<ul class="org-ul">
+<li>Integration of big data analytics</li>
+<li>Real-time insights</li>
+<li>Complex data types</li>
+<li>In-memory technologies</li>
+<li>Seamless integration of data among cloud, on-premises, and hybrid
+environments</li>
+</ul></li>
+</ul>
+
+<p>
+Gartner defines <a href="https://www.gartner.com/it-glossary/data-warehouse/">data warehouse</a> as follows.
+</p>
+
+<blockquote>
+<p>
+A <b>data warehouse</b> is a storage architecure designed to hold data
+extracted from transaction systems, operational data stores and
+external sources.  The warehouse then combines that data in an
+aggregate, summary form suitable for enterprise-wide data analysis and
+reporting for predefined business needs.
+</p>
+
+<p>
+The five components of a data warehouse are:
+</p>
+<ol class="org-ol">
+<li>production data sources,</li>
+<li>data extraction and conversion,</li>
+<li>the data warehouse database management system</li>
+<li>data warehouse administration</li>
+<li>BI tools</li>
+</ol>
+</blockquote>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Created: 2018-05-31 Thu 23:39</p>
+<p class="date">Updated: 2018-06-04 Mon 00:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
