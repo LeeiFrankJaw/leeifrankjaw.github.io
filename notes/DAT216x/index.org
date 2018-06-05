@@ -12,7 +12,8 @@
 
 * TODO Introducing the Data Warehouse
 
-** TODO The Business Case for a Data Warehouse
+** DONE The Business Case for a Data Warehouse
+   DEADLINE: <2018-06-04 Mon 00:24>
 
 Definition of Business Intelligence (BI)
 
@@ -122,6 +123,19 @@ Delivering Business Intelligence
  11. The data warehouse comprises additional data assets (data models
      or cubes).
 
+Discussion with [[https://www.linkedin.com/in/satpalseehra/][Satpal Seehra]]:
+
+Challenges:
+ * 3Vs:
+   * Variety
+   * Volume
+   * Velocity
+ * Data explosion
+ * Flexibility
+
+The key to success in delivering business intelligence is effective
+planning.
+
 The data warehouse can enable governed Self-Service BI.
 
 The data warehouse ecosystem consists of components and services to
@@ -212,3 +226,45 @@ The five components of a data warehouse are:
  4. data warehouse administration
  5. BI tools
 #+END_QUOTE
+
+
+** TODO Planning for a Data Warehouse
+
+Kimball Business Dimensional Lifecycle
+
+Future-proof your design.
+
+Leverage in-memory technologies and better indexing techniques.
+
+And future-proof is possible.
+
+Gathering Requirements
+
+There are several data warehouse design architectures adopted today:
+ - Kimball's *Dimensional Data Warehouse*
+ - Inmon's *Corporate Information Factory*
+ - Standalone data mart
+
+The *Dimensional Data Warehouse* is also known as:
+ - Enterprise data warehouse
+ - Bus architecture
+ - Architected data marts
+ - Virtual data marts
+
+In essence:
+ - The design is an integrated repository of atomic data.
+ - All data is organized dimensionally.
+ - It may be accessed by end users directly.
+ - Data marts are subject area within the data warehouse, and are not
+   required to be separate databases.
+
+The *Corporate Information Factory* is also known as:
+ - Atomic data warehosue
+ - Enterprise data warehouse
+
+In essence:
+ - The data warehouse is an integrated repository of atomic data,
+   often normalized to 3NF
+ - It is not accessed directly
+ - Dimensional design is used to create data marts which reorganize
+   data into subject areas
