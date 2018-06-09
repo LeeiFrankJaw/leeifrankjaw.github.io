@@ -2,7 +2,7 @@
 
 #+TITLE: Delivering a Relational Data Warehouse
 #+AUTHOR: Lei Zhao
-#+DATE: <2018-06-04 Mon 00:23>
+#+DATE: <2018-06-09 Sat 20:25>
 #+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>

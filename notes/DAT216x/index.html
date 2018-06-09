@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-06-04 Mon 00:23 -->
+<!-- 2018-06-09 Sat 20:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Delivering a Relational Data Warehouse</title>
@@ -237,9 +237,23 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org32afeae">1. <span class="todo TODO">TODO</span> Introducing the Data Warehouse</a>
+<li><a href="#org0e6a5f3">1. <span class="done DONE">DONE</span> Introducing the Data Warehouse</a>
 <ul>
-<li><a href="#org37f4d60">1.1. <span class="todo TODO">TODO</span> The Business Case for a Data Warehouse</a></li>
+<li><a href="#org6f59249">1.1. <span class="done DONE">DONE</span> The Business Case for a Data Warehouse</a></li>
+<li><a href="#org2aeb141">1.2. <span class="done DONE">DONE</span> Planning for a Data Warehouse</a>
+<ul>
+<li><a href="#org9caf5ef">1.2.1. Data Warehouse Planning</a></li>
+<li><a href="#orge0b6747">1.2.2. Disucssion</a></li>
+<li><a href="#orgf89a25e">1.2.3. Gathering Requirements</a></li>
+<li><a href="#org445ac05">1.2.4. Data Warehouse Architectures</a></li>
+<li><a href="#org0730ee9">1.2.5. Demo</a></li>
+</ul>
+</li>
+<li><a href="#org8aa6dc0">1.3. <span class="done DONE">DONE</span> Exploring Data Warehouse Architectures</a>
+<ul>
+<li><a href="#org4756346">1.3.1. Hardware Considerations</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -249,12 +263,13 @@ for the JavaScript code in this tag.
 <a href="https://www.edx.org/course/delivering-a-relational-data-warehouse">Delivering a Relational Data Warehouse</a> on edX
 </p>
 
-<div id="outline-container-org32afeae" class="outline-2">
-<h2 id="org32afeae"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> Introducing the Data Warehouse</h2>
+<div id="outline-container-org0e6a5f3" class="outline-2">
+<h2 id="org0e6a5f3"><span class="section-number-2">1</span> <span class="done DONE">DONE</span> Introducing the Data Warehouse</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org37f4d60" class="outline-3">
-<h3 id="org37f4d60"><span class="section-number-3">1.1</span> <span class="todo TODO">TODO</span> The Business Case for a Data Warehouse</h3>
+
+<div id="outline-container-org6f59249" class="outline-3">
+<h3 id="org6f59249"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> The Business Case for a Data Warehouse</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Definition of Business Intelligence (BI)
@@ -437,6 +452,29 @@ or cubes).</li>
 </ol>
 
 <p>
+Discussion with <a href="https://www.linkedin.com/in/satpalseehra/">Satpal Seehra</a>:
+</p>
+
+<p>
+Challenges:
+</p>
+<ul class="org-ul">
+<li>3Vs:
+<ul class="org-ul">
+<li>Variety</li>
+<li>Volume</li>
+<li>Velocity</li>
+</ul></li>
+<li>Data explosion</li>
+<li>Flexibility</li>
+</ul>
+
+<p>
+The key to success in delivering business intelligence is effective
+planning.
+</p>
+
+<p>
 The data warehouse can enable governed Self-Service BI.
 </p>
 
@@ -560,7 +598,7 @@ Gartner defines <a href="https://www.gartner.com/it-glossary/data-warehouse/">da
 
 <blockquote>
 <p>
-A <b>data warehouse</b> is a storage architecure designed to hold data
+A <b>data warehouse</b> is a storage architecture designed to hold data
 extracted from transaction systems, operational data stores and
 external sources.  The warehouse then combines that data in an
 aggregate, summary form suitable for enterprise-wide data analysis and
@@ -580,11 +618,461 @@ The five components of a data warehouse are:
 </blockquote>
 </div>
 </div>
+
+
+<div id="outline-container-org2aeb141" class="outline-3">
+<h3 id="org2aeb141"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Planning for a Data Warehouse</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+
+<div id="outline-container-org9caf5ef" class="outline-4">
+<h4 id="org9caf5ef"><span class="section-number-4">1.2.1</span> Data Warehouse Planning</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+The successful implementation of a data warehouse depends on good planning
+</p>
+<ul class="org-ul">
+<li>Specifically, to manage the integration of numerous associated
+tasks and components</li>
+</ul>
+
+<p>
+A well recognized example of a mature approach to design, develop and
+deploy a data warehouse is the <b>Kimball Business Dimensional
+Lifecycle</b>
+</p>
+
+
+<div class="figure">
+<p><img src="Kimball-Business-Dimensional-Lifectyle.png" alt="Kimball-Business-Dimensional-Lifectyle.png" width="736px" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Kimball Business Dimensional Lifecycle</p>
+</div>
+
+<p>
+The greatest risk to the success of data warehouse project is lack of
+trust, which leads to the lack of adoption.
+</p>
+
+<p>
+Data warehouse designers must have a sound understanding of the
+business, and the end user requirements.
+</p>
+
+<p>
+The understanding then leads to parallel tracks focused on:
+</p>
+<ul class="org-ul">
+<li>Technology</li>
+<li>Data</li>
+<li>End user access</li>
+</ul>
+
+<p>
+Assemble a team of skilled professionals, and manage the project like
+any other major undertaking.
+</p>
+
+<p>
+Wherer possible, strive to future-proof the data warehouse design.
+</p>
+<ul class="org-ul">
+<li>Design for extensibility, as change is inevitable (new sources, new
+formats, new columns, new calculations, etc.)</li>
+<li>Know that data volumes almost always grow</li>
+<li>Recognize that data warehouse maintenance will be required</li>
+</ul>
+
+<p>
+Understand that the end users know best, though they often requires
+guidance to elicit what they genuinely need.
+</p>
+
+<p>
+Do not attempt to deliver entire enterprise data warehouse in a single
+project.
+</p>
+<ul class="org-ul">
+<li>Plan to deliver single data marts by an agreed priority and timeline</li>
+</ul>
+
+<p>
+Demand top-level organizational support for the project, so to avoid
+internal politics denying access to data, overriding sensible design,
+and other hindrances.
+</p>
+
+<p>
+Be prepared to rethink the data warehouse logical and physical
+designed based on new technology or evolving requirements.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge0b6747" class="outline-4">
+<h4 id="orge0b6747"><span class="section-number-4">1.2.2</span> Disucssion</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Leverage in-memory technologies and better indexing techniques.
+</p>
+
+<p>
+And future-proof is possible.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf89a25e" class="outline-4">
+<h4 id="orgf89a25e"><span class="section-number-4">1.2.3</span> Gathering Requirements</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Business requirements impact on every aspect of the data warehouse
+project.
+</p>
+
+<p>
+Listening to the right people, and asking the right questions will help you to
+</p>
+<ul class="org-ul">
+<li>understand the business, and</li>
+<li>produce an accurate list of requirements and priorities.</li>
+</ul>
+
+<p>
+This is usually achieved by conducting interviews, which can be formal
+or informal.
+</p>
+
+<p>
+Always start with the project sponsor, and ensure that scope is clear,
+understood and achievable.
+</p>
+<ul class="org-ul">
+<li>Also enquire whether there have been other data warehouse
+projects&#x2014;successful or not</li>
+<li>If there have been other projects, be sure to learn about their
+outcomes</li>
+</ul>
+
+<p>
+Next, interview end users, sampling across the organization, and at
+different levels of the organization (executives to analysts)
+</p>
+<ul class="org-ul">
+<li>Learn about their particular job challenges and objectives, and
+understand how they make decisions</li>
+</ul>
+
+<p>
+Once a consistent theme arises from the business, commence more formal
+discussions with IT professionals
+</p>
+<ul class="org-ul">
+<li>business analysts, DBAs, source system experts, data stewards, and
+software developers</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org445ac05" class="outline-4">
+<h4 id="org445ac05"><span class="section-number-4">1.2.4</span> Data Warehouse Architectures</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+There are several data warehouse design architectures adopted today:
+</p>
+<ul class="org-ul">
+<li>Kimball&rsquo;s <b>Dimensional Data Warehouse</b></li>
+<li>Inmon&rsquo;s <b>Corporate Information Factory</b></li>
+<li>Standalone data mart</li>
+</ul>
+
+<p>
+The <b>Dimensional Data Warehouse</b> is also known as:
+</p>
+<ul class="org-ul">
+<li>Enterprise data warehouse</li>
+<li>Bus architecture</li>
+<li>Architected data marts</li>
+<li>Virtual data marts</li>
+</ul>
+
+<p>
+In essence:
+</p>
+<ul class="org-ul">
+<li>The design is an integrated repository of atomic data.</li>
+<li>All data is organized dimensionally.</li>
+<li>It may be accessed by end users directly.</li>
+<li>Data marts are subject area within the data warehouse, and are not
+required to be separate databases.</li>
+</ul>
+
+<p>
+The <b>Corporate Information Factory</b> is also known as:
+</p>
+<ul class="org-ul">
+<li>Atomic data warehosue</li>
+<li>Enterprise data warehouse</li>
+</ul>
+
+<p>
+In essence:
+</p>
+<ul class="org-ul">
+<li>The data warehouse is an integrated repository of atomic data,
+often normalized to 3NF</li>
+<li>It is not accessed directly</li>
+<li>Dimensional design is used to create data marts which reorganize
+data into subject areas</li>
+</ul>
+
+<p>
+The <b>Standalone Data Mart</b> is also known as:
+</p>
+<ul class="org-ul">
+<li>Data mart</li>
+<li>Silo</li>
+<li>Stovepipe</li>
+<li>Island</li>
+</ul>
+
+<p>
+It is a subject area implementation <span class="underline">without an enterprise context</span>.
+</p>
+
+<p>
+It commonly adopts a dimensional design.
+</p>
+
+<p>
+It is perhaps useful for a POC, or first subject area exploration.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0730ee9" class="outline-4">
+<h4 id="org0730ee9"><span class="section-number-4">1.2.5</span> Demo</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+AdventureWorks is one of the databases commissioned by Microsoft to
+support documentation and tutorials for SQL Server.
+</p>
+
+<p>
+The fictitious AdventureWorks is a large, multinational manufacturing
+company which manufactures and sells bicyles to North American,
+European, and Pacific commercial markets.  
+</p>
+
+<p>
+The products are sold through reseller and Internet channels.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8aa6dc0" class="outline-3">
+<h3 id="org8aa6dc0"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> Exploring Data Warehouse Architectures</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+
+<div id="outline-container-org4756346" class="outline-4">
+<h4 id="org4756346"><span class="section-number-4">1.3.1</span> Hardware Considerations</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+If building the data warehouse on-premises, the project is responsible
+for technical architecture, product selection, and installation.
+</p>
+
+<p>
+Data warehouse deployments on the cloud, to a large extent, remove the
+need to consider or manage technical specifics.
+</p>
+
+<p>
+Cloud deployments can be:
+</p>
+<ul class="org-ul">
+<li><b>PaaS</b> (Platform as a Service)&#x2014;hardware and software infrastructure
+is provided.</li>
+<li><b>Iass</b> (Infrastructure as a Service)&#x2014;hosted virtual machines
+(VM), with the ability to configure a degree of scale</li>
+</ul>
+
+<p>
+To build a high-performance data warehouse, careful hardware
+considerations must be made.
+</p>
+
+<p>
+The goal is to achieve high scalability and performance, which is
+achieved through parallelism and with high I/O throughput.
+</p>
+
+<p>
+In addition, you need to understand:
+</p>
+<ul class="org-ul">
+<li>Data size</li>
+<li>Volatility of data</li>
+<li>Number of concurrent users</li>
+<li>Number of business processes</li>
+<li>Type of software</li>
+<li>ETL workload</li>
+<li>Data model and machine learning processing workload</li>
+<li>Query workload</li>
+<li>Existing platforms and software choices, and available skills</li>
+<li>Disaster recovery and high availability requirements</li>
+<li>Budget</li>
+</ul>
+
+<p>
+In general, considerations need to be given to:
+</p>
+<ul class="org-ul">
+<li>Number, and placement, of servers</li>
+<li>Server subsystems:
+<ul class="org-ul">
+<li>Processors</li>
+<li>Memory</li>
+<li>Disk</li>
+<li>Networking</li>
+</ul></li>
+</ul>
+
+<p>
+In large deplyments, servers can be dedicated to specific data
+warehouse roles:
+</p>
+<ul class="org-ul">
+<li>Staging</li>
+<li>Master Data Management</li>
+<li>Data Quality Management</li>
+<li>ETL processing</li>
+<li>Data warehouse</li>
+<li>Data mart</li>
+<li>Data models and machine learning models</li>
+<li>Reporting</li>
+</ul>
+
+<p>
+Consider co-locating services, especially where workloads are
+compatible.
+</p>
+
+<p>
+Servers can be located on-premises, or the cloud (IaaS), or a hybrid
+topology spanning both on-premises and the cloud.
+</p>
+
+<p>
+Give considerations also to development and test environments.
+</p>
+
+<p>
+Scale and performance is achieved with parallel processing
+architectures.
+</p>
+<ul class="org-ul">
+<li>SMP (Symmetric Multiprocessing)&#x2014;scale wthin a single machine</li>
+<li>MPP (Massively Parallel Processing)&#x2014;scale across machines
+<ul class="org-ul">
+<li>Ensure software or design compatibility</li>
+</ul></li>
+</ul>
+
+<p>
+ETL processing, aggregation, indexing, data model and machine learning
+processing, and certain queries can be very processor-intensive.
+</p>
+
+<p>
+Thanks to the decreased cost of memory, software is increasingly
+exploiting available memory
+</p>
+<ul class="org-ul">
+<li>In general, memory is x100 faster than disk I/O</li>
+</ul>
+
+<p>
+For high performance, plan for sufficient memory to host entire
+datasets and models
+</p>
+
+<p>
+Ensure operating systems can use the installed memory.
+</p>
+
+<p>
+Disk I/O performance should be a key consideration.
+</p>
+
+<p>
+The typical data warehouse workload is especially I/O intensive.
+</p>
+
+<p>
+The underlying I/O system for a data warehouse should be designed to
+meet these heavy requirements.
+</p>
+
+<p>
+Give consideration to appropriate storage solutions:
+</p>
+<ul class="org-ul">
+<li>RAID (Redundant Array of Independent Disks)</li>
+<li>SSD (Solid State Drive)</li>
+<li>SAN (Storage Area Network)</li>
+<li>NAS (Network-Attached Storage)</li>
+</ul>
+
+<p>
+Ensure sufficent network bandwidth is available to transfer data
+volumes, especially during ETL processing and data model processing.
+</p>
+
+<p>
+Consider also network throughput for SAN and NAS devices
+</p>
+
+<p>
+When leveraging cloud services, consdier Internet bandwidth and
+availability:
+</p>
+<ul class="org-ul">
+<li>Paas or IaaS</li>
+<li>Data sources and data services</li>
+</ul>
+
+<p>
+Work closely with infrastructure experts.
+</p>
+
+<p>
+Design for growth.
+</p>
+
+<p>
+Consider new in-memory technologies available for relational databases
+and data models.
+</p>
+
+<p>
+Be aware of hardware and software decisions and design solutions to
+exploit them accordingly.
+</p>
+
+<p>
+Consider cloud alternatives, including hybrid opportunities.
+</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Lei Zhao</p>
-<p class="date">Updated: 2018-06-04 Mon 00:23</p>
+<p class="date">Updated: 2018-06-09 Sat 20:25</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
