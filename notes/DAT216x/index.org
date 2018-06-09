@@ -10,7 +10,8 @@
 
 [[https://www.edx.org/course/delivering-a-relational-data-warehouse][Delivering a Relational Data Warehouse]] on edX
 
-* TODO Introducing the Data Warehouse
+* DONE Introducing the Data Warehouse
+  CLOSED: [2018-06-09 Sat 20:24]
 
 ** DONE The Business Case for a Data Warehouse
    DEADLINE: <2018-06-04 Mon 00:24>
@@ -213,7 +214,7 @@ Current Trends
 Gartner defines [[https://www.gartner.com/it-glossary/data-warehouse/][data warehouse]] as follows.
 
 #+BEGIN_QUOTE
-A *data warehouse* is a storage architecure designed to hold data
+A *data warehouse* is a storage architecture designed to hold data
 extracted from transaction systems, operational data stores and
 external sources.  The warehouse then combines that data in an
 aggregate, summary form suitable for enterprise-wide data analysis and
@@ -228,17 +229,93 @@ The five components of a data warehouse are:
 #+END_QUOTE
 
 
-** TODO Planning for a Data Warehouse
+** DONE Planning for a Data Warehouse
+   CLOSED: [2018-06-06 Wed 23:18]
 
-Kimball Business Dimensional Lifecycle
+*** Data Warehouse Planning
 
-Future-proof your design.
+The successful implementation of a data warehouse depends on good planning
+ - Specifically, to manage the integration of numerous associated
+   tasks and components
+
+A well recognized example of a mature approach to design, develop and
+deploy a data warehouse is the *Kimball Business Dimensional
+Lifecycle*
+
+#+CAPTION: Kimball Business Dimensional Lifecycle
+#+ATTR_HTML: :width 736px
+[[file:Kimball-Business-Dimensional-Lifectyle.png]]
+
+The greatest risk to the success of data warehouse project is lack of
+trust, which leads to the lack of adoption.
+
+Data warehouse designers must have a sound understanding of the
+business, and the end user requirements.
+
+The understanding then leads to parallel tracks focused on:
+ - Technology
+ - Data
+ - End user access
+
+Assemble a team of skilled professionals, and manage the project like
+any other major undertaking.
+
+Wherer possible, strive to future-proof the data warehouse design.
+ - Design for extensibility, as change is inevitable (new sources, new
+   formats, new columns, new calculations, etc.)
+ - Know that data volumes almost always grow
+ - Recognize that data warehouse maintenance will be required
+
+Understand that the end users know best, though they often requires
+guidance to elicit what they genuinely need.
+
+Do not attempt to deliver entire enterprise data warehouse in a single
+project.
+ - Plan to deliver single data marts by an agreed priority and timeline
+
+Demand top-level organizational support for the project, so to avoid
+internal politics denying access to data, overriding sensible design,
+and other hindrances.
+
+Be prepared to rethink the data warehouse logical and physical
+designed based on new technology or evolving requirements.
+
+*** Disucssion
 
 Leverage in-memory technologies and better indexing techniques.
 
 And future-proof is possible.
 
-Gathering Requirements
+*** Gathering Requirements
+
+Business requirements impact on every aspect of the data warehouse
+project.
+
+Listening to the right people, and asking the right questions will help you to
+ - understand the business, and
+ - produce an accurate list of requirements and priorities.
+
+This is usually achieved by conducting interviews, which can be formal
+or informal.
+
+Always start with the project sponsor, and ensure that scope is clear,
+understood and achievable.
+ - Also enquire whether there have been other data warehouse
+   projects---successful or not
+ - If there have been other projects, be sure to learn about their
+   outcomes
+
+Next, interview end users, sampling across the organization, and at
+different levels of the organization (executives to analysts)
+ - Learn about their particular job challenges and objectives, and
+   understand how they make decisions
+
+Once a consistent theme arises from the business, commence more formal
+discussions with IT professionals
+ - business analysts, DBAs, source system experts, data stewards, and
+   software developers
+
+*** Data Warehouse Architectures
 
 There are several data warehouse design architectures adopted today:
  - Kimball's *Dimensional Data Warehouse*
@@ -268,3 +345,142 @@ In essence:
  - It is not accessed directly
  - Dimensional design is used to create data marts which reorganize
    data into subject areas
+
+The *Standalone Data Mart* is also known as:
+ - Data mart
+ - Silo
+ - Stovepipe
+ - Island
+
+It is a subject area implementation _without an enterprise context_.
+
+It commonly adopts a dimensional design.
+
+It is perhaps useful for a POC, or first subject area exploration.
+
+*** Demo
+
+AdventureWorks is one of the databases commissioned by Microsoft to
+support documentation and tutorials for SQL Server.
+
+The fictitious AdventureWorks is a large, multinational manufacturing
+company which manufactures and sells bicyles to North American,
+European, and Pacific commercial markets.  
+
+The products are sold through reseller and Internet channels.
+
+** DONE Exploring Data Warehouse Architectures
+   CLOSED: [2018-06-09 Sat 20:24]
+
+*** Hardware Considerations
+
+If building the data warehouse on-premises, the project is responsible
+for technical architecture, product selection, and installation.
+
+Data warehouse deployments on the cloud, to a large extent, remove the
+need to consider or manage technical specifics.
+
+Cloud deployments can be:
+ - *PaaS* (Platform as a Service)---hardware and software infrastructure
+   is provided.
+ - *Iass* (Infrastructure as a Service)---hosted virtual machines
+   (VM), with the ability to configure a degree of scale
+
+To build a high-performance data warehouse, careful hardware
+considerations must be made.
+
+The goal is to achieve high scalability and performance, which is
+achieved through parallelism and with high I/O throughput.
+
+In addition, you need to understand:
+ - Data size
+ - Volatility of data
+ - Number of concurrent users
+ - Number of business processes
+ - Type of software
+ - ETL workload
+ - Data model and machine learning processing workload
+ - Query workload
+ - Existing platforms and software choices, and available skills
+ - Disaster recovery and high availability requirements
+ - Budget
+
+In general, considerations need to be given to:
+ - Number, and placement, of servers
+ - Server subsystems:
+   * Processors
+   * Memory
+   * Disk
+   * Networking
+
+In large deplyments, servers can be dedicated to specific data
+warehouse roles:
+ - Staging
+ - Master Data Management
+ - Data Quality Management
+ - ETL processing
+ - Data warehouse
+ - Data mart
+ - Data models and machine learning models
+ - Reporting
+
+Consider co-locating services, especially where workloads are
+compatible.
+
+Servers can be located on-premises, or the cloud (IaaS), or a hybrid
+topology spanning both on-premises and the cloud.
+
+Give considerations also to development and test environments.
+
+Scale and performance is achieved with parallel processing
+architectures.
+ - SMP (Symmetric Multiprocessing)---scale wthin a single machine
+ - MPP (Massively Parallel Processing)---scale across machines
+   * Ensure software or design compatibility
+
+ETL processing, aggregation, indexing, data model and machine learning
+processing, and certain queries can be very processor-intensive.
+
+Thanks to the decreased cost of memory, software is increasingly
+exploiting available memory
+ - In general, memory is x100 faster than disk I/O
+
+For high performance, plan for sufficient memory to host entire
+datasets and models
+
+Ensure operating systems can use the installed memory.
+
+Disk I/O performance should be a key consideration.
+
+The typical data warehouse workload is especially I/O intensive.
+
+The underlying I/O system for a data warehouse should be designed to
+meet these heavy requirements.
+
+Give consideration to appropriate storage solutions:
+ - RAID (Redundant Array of Independent Disks)
+ - SSD (Solid State Drive)
+ - SAN (Storage Area Network)
+ - NAS (Network-Attached Storage)
+
+Ensure sufficent network bandwidth is available to transfer data
+volumes, especially during ETL processing and data model processing.
+
+Consider also network throughput for SAN and NAS devices
+
+When leveraging cloud services, consdier Internet bandwidth and
+availability:
+ - Paas or IaaS
+ - Data sources and data services
+
+Work closely with infrastructure experts.
+
+Design for growth.
+
+Consider new in-memory technologies available for relational databases
+and data models.
+
+Be aware of hardware and software decisions and design solutions to
+exploit them accordingly.
+
+Consider cloud alternatives, including hybrid opportunities.
