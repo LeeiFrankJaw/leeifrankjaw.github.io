@@ -1,3 +1,4 @@
+# -*- mode: org; -*-
 #+STARTUP: inlineimages showall
 
 #+TITLE: Delivering a Relational Data Warehouse
@@ -369,6 +370,14 @@ European, and Pacific commercial markets.
 
 The products are sold through reseller and Internet channels.
 
+*** Additional Resources
+
+Data Warehouse Design Considerations by Dave Browning and Joy Mundy
+can be downloaded from [[https://www.microsoft.com/en-us/download/details.aspx?id=51958][SQL Server 2000 Retired Technical documentation]]
+(p. 19613--19629).
+
+A standalone copy can be found [[file:Browning-and-Mundy.pdf][here]].
+
 ** DONE Exploring Data Warehouse Architectures
    CLOSED: [2018-06-09 Sat 20:24]
 
@@ -468,6 +477,7 @@ volumes, especially during ETL processing and data model processing.
 
 Consider also network throughput for SAN and NAS devices
 
+
 When leveraging cloud services, consdier Internet bandwidth and
 availability:
  - Paas or IaaS
@@ -484,3 +494,40 @@ Be aware of hardware and software decisions and design solutions to
 exploit them accordingly.
 
 Consider cloud alternatives, including hybrid opportunities.
+
+* TODO Designing a Relational Data Warehouse Schema
+
+** TODO Designing Dimension Tables
+
+*** Star Table
+
+[[file:Star-Schema.png]]
+
+Transform source data into a relational model, optimized for analytic
+query workloads (efficient filtering, grouping, and aggregation).
+
+Deliver higher-performance queries.
+ - Fewer table joins
+ - Higher likelihood of useful indexes
+
+Use mature modeling techniques that are widely supported by many BI
+tools.
+
+Require low maintenance as the data warehouse design evolves.
+
+*** Dimension Table Fundamentals
+
+Generally, dimension tables are quite wide in a number of attributes
+and relatively shadow in the number of rows that are stored.
+
+Attributes in the dimension table can be organized into hierarchies.
+
+*** Dimension Table Design Concept
+
+Dimension Table can be implemented as:
+ - Denormalized star schema dimension
+ - Normalized snowflake dimension
+ - Self-referencing relationship
+
+*** Demo
+
