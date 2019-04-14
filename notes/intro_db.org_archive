@@ -6,7 +6,7 @@
 #+HTML_HEAD: <link type="text/css" href="../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../src/post.js"></script>
-#+OPTIONS: ^:{} ':t
+#+OPTIONS: ^:{} ':t todo:nil
 
 [[https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about][Database]] on Lagunita
 
