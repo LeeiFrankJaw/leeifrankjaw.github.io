@@ -17,20 +17,20 @@ the third server be C.  This third server C must be accessible by both
 A and B.  Suppose C is at domain ~example.com~ with a user ~C~ and B
 has a user named ~B~.
 
-On server B, do the following to create a reverse tunnel from C to B.
+On server A, do the following to create a reverse tunnel from C to A.
 
 #+BEGIN_SRC bash
   ssh -f -N -T -R 22222:localhost:22 C@example.com
 #+END_SRC
 
-Then, on machine A, do the following to access server B via server C.
+Then, on machine B, do the following to access server A via server C.
 
 #+BEGIN_SRC bash
   ssh -t C@example.com ssh -p 22222 B@localhost
 #+END_SRC
 
 References:
- * https://unix.stackexchange.com/questions/46235/how-does-reverse-ssh-tunneling-work/46271#46271
- * https://superuser.com/questions/661749/how-exactly-does-a-remote-program-like-team-viewer-work#answer-661759
- * https://stackoverflow.com/questions/5458311/teamviewer-like-tool-for-ssh#answer-5458981
+ * [[https://unix.stackexchange.com/a/46271/81809][How does reverse SSH tunneling work?]]
+ * [[https://superuser.com/a/661759/174389][How exactly does a remote program like Team Viewer work?]]
+ * [[https://stackoverflow.com/a/5458981/2117531][teamviewer-like tool for ssh?]]
 
