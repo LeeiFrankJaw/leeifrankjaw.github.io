@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-24 Thu 12:30 -->
+<!-- 2019-10-24 Thu 23:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How to ssh to a server behind LAN</title>
@@ -262,7 +262,7 @@ Then, on machine B, do the following to access server A via server C.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">ssh -t C@example.com ssh -p 22222 B@localhost
+<pre class="src src-bash">ssh -t C@example.com ssh -p 22222 A@localhost
 </pre>
 </div>
 

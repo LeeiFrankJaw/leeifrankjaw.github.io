@@ -26,7 +26,7 @@ On server A, do the following to create a reverse tunnel from C to A.
 Then, on machine B, do the following to access server A via server C.
 
 #+BEGIN_SRC bash
-  ssh -t C@example.com ssh -p 22222 B@localhost
+  ssh -t C@example.com ssh -p 22222 A@localhost
 #+END_SRC
 
 References:
