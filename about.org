@@ -1,0 +1,18 @@
+#+TITLE:  Freelance developer
+#+DATE: <2020-05-12 Tue 17:34>
+#+HTML_HEAD: <link type="text/css" href="/styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="/styles/layout.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="/src/post.js"></script>
+#+OPTIONS: ^:nil
+#+HTML: <input id="disqus-identifier" value="LFJ105"></input>
+
+
+I am Lei Zhao, a freelance software developer from Shanghai.  I
+provide full-stack web development, data management, and many other
+software development related services.  These services can be charged
+either on a hourly basis or on task-by-task basis.  I am familiar with
+Python, JavasScript, SQL, C, Clojure, Angular, Vue, Java, Scala, OLAP,
+ETL.  I have intensive experience with both MySQL and PostgreSQL.
+
+The price is open to negotiation.  My contact info can be found at
+[[https://github.com/LeeiFrankJaw/Resumes/raw/master/plain/cv.pdf][here]].

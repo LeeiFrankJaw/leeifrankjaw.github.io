@@ -7,3 +7,4 @@ img/129254852_*.jpg
 *.log
 *.pid
 .mypy_cache/
+/pac.txt
