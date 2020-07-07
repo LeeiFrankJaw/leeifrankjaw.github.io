@@ -8,3 +8,5 @@ img/129254852_*.jpg
 *.pid
 .mypy_cache/
 /pac.txt
+*.p12
+*.pem

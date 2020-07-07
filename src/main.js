@@ -153,6 +153,18 @@ var LISTING = [
                 "author_date": "2018-01-14T19:44:00+08:00"
             }
         ]
+    },
+    {
+        "type": "directory",
+        "name": "tests",
+        "contents": [
+            {
+                "type": "file",
+                "name": "sketchup-embed.html",
+                "title": "Sketchup Embed",
+                "author_date": "2020-07-08T01:22:54.058341+08:00"
+            }
+        ]
     }
 ];
 
