@@ -92,3 +92,21 @@ if (!Array.prototype.find) {
     }
   });
 }
+
+var map = Function.bind.call(Function.call, Array.prototype.map);
+
+if (!Object.values) {
+  Object.values = function values(O) {
+    return Object.keys(O).map(function (k) {
+      return O[k];
+    });
+  };
+}
+
+if (!Object.entries) {
+  Object.entries = function entries(O) {
+    return Object.keys(O).map(function (k) {
+      return [k, O[k]];
+    });
+  };
+}

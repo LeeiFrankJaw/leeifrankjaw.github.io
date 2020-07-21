@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Embed SketchUp via Wavefront OBJ export</title>
+    <style>
+     #viewer {
+       width: 580px;
+       height: 326px;
+     }
+    </style>
+  </head>
+  <body>
+    <h1>Embed SketchUp via Wavefront OBJ export</h1>
+    <div id="viewer"></div>
+    <script src="https://unpkg.com/three@0.118.3/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.118.3/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/three@0.118.3/examples/js/loaders/MTLLoader.js"></script>
+    <script src="https://unpkg.com/three@0.118.3/examples/js/loaders/OBJLoader.js"></script>
+    <script>
+     const WIDTH = viewer.offsetWidth;
+     const HEIGHT = viewer.offsetHeight;
+
+     var camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.01, 100);
+     camera.position.set(5, 3, 5);
+     camera.lookAt(0, 1.5, 0);
+
+     var scene = new THREE.Scene();
+     scene.background = new THREE.Color(0x222222);
+     scene.add(new THREE.GridHelper(10, 10));
+
+     var ambient = new THREE.HemisphereLight(0xbbbbff, 0x886666, 0.75);
+     ambient.position.set(-0.5, 0.75, -1);
+     scene.add(ambient);
+
+     var light = new THREE.DirectionalLight(0xffffff, 0.75);
+     light.position.set(1, 0.75, 0.5);
+     scene.add(light);
+
+     var renderer = new THREE.WebGLRenderer({antialias: true});
+     renderer.setPixelRatio(window.devicePixelRatio);
+     renderer.setSize(WIDTH, HEIGHT);
+     viewer.appendChild(renderer.domElement);
+
+     var controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+     function animate() {
+	 renderer.render(scene, camera);
+	 requestAnimationFrame(animate);
+     }
+     requestAnimationFrame(animate);
+
+     var loader = new THREE.MTLLoader();
+     loader.setCrossOrigin(true);
+     loader.setMaterialOptions({ignoreZeroRGBs: true});
+     loader.load("1301008-4-felt-1030.mtl", function(materials) {
+         var loader = new THREE.OBJLoader();
+         loader.setMaterials(materials);
+         loader.load("1301008-4-felt-1030.obj", function(object) {
+             var box = new THREE.Box3();
+             box.setFromObject(object);
+
+             var center = new THREE.Vector3(),
+                 size = new THREE.Vector3();
+             box.getCenter(center);
+             center.y = box.min.y;
+	     object.position.sub(center);
+             
+	     var scaler = new THREE.Group();
+	     scaler.add(object);
+	     scaler.scale.setScalar(6 / box.getSize(size).length());
+	     scene.add(scaler);
+         });
+     });
+    </script>
+  </body>
+</html>

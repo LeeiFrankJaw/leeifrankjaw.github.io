@@ -69,7 +69,7 @@ listing = []                    # type: list
 
 for dirpath, dirnames, filenames in walker:
     # ignore(dirnames)
-    pathsegs = dirpath.split('/')[1:]
+    pathsegs = dirpath.split(os.sep)[1:]
     updir = get_dir(listing, pathsegs[:-1])
     contents = []
     for name in filenames:

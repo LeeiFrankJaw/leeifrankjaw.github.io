@@ -93,6 +93,24 @@ if (!Array.prototype.find) {
   });
 }
 
+var map = Function.bind.call(Function.call, Array.prototype.map);
+
+if (!Object.values) {
+  Object.values = function values(O) {
+    return Object.keys(O).map(function (k) {
+      return O[k];
+    });
+  };
+}
+
+if (!Object.entries) {
+  Object.entries = function entries(O) {
+    return Object.keys(O).map(function (k) {
+      return [k, O[k]];
+    });
+  };
+}
+
 var LISTING = [
     {
         "type": "directory",
@@ -126,6 +144,42 @@ var LISTING = [
     },
     {
         "type": "directory",
+        "name": "demo",
+        "contents": [
+            {
+                "type": "file",
+                "name": "gltf.html",
+                "title": "Embed SketchUp via glTF",
+                "author_date": "2020-07-21T08:11:38.947455+08:00"
+            },
+            {
+                "type": "file",
+                "name": "gltf-model-viewer.html",
+                "title": "Embed SketchUp via glTF rendered by <model-viewer>",
+                "author_date": "2020-07-21T06:44:37.772512+08:00"
+            },
+            {
+                "type": "file",
+                "name": "3d-warehouse.html",
+                "title": "Embed SketchUp via 3D Warehouse",
+                "author_date": "2020-07-21T06:37:58.754652+08:00"
+            },
+            {
+                "type": "file",
+                "name": "collada.html",
+                "title": "Embed SketchUp via COLLADA export",
+                "author_date": "2020-07-21T05:55:57.860964+08:00"
+            },
+            {
+                "type": "file",
+                "name": "wavefront-obj.html",
+                "title": "Embed SketchUp via Wavefront OBJ export",
+                "author_date": "2020-07-21T05:54:14.379058+08:00"
+            }
+        ]
+    },
+    {
+        "type": "directory",
         "name": "notes",
         "contents": [
             {
@@ -151,18 +205,6 @@ var LISTING = [
                 "name": "intro_db.html",
                 "title": "Intro to DB",
                 "author_date": "2018-01-14T19:44:00+08:00"
-            }
-        ]
-    },
-    {
-        "type": "directory",
-        "name": "tests",
-        "contents": [
-            {
-                "type": "file",
-                "name": "sketchup-embed.html",
-                "title": "Sketchup Embed",
-                "author_date": "2020-07-08T01:22:54.058341+08:00"
             }
         ]
     }
