@@ -44,7 +44,7 @@ newmtl _Wood_floor_light_
 Ka 0.000000 0.000000 0.000000
 Kd 0.800000 0.690196 0.498039
 Ks 0.330000 0.330000 0.330000
-map_Kd 1301008-4-felt-1030/_Wood_floor_light_.jpg
+map_Kd 1301008-4-felt-1030/Wood_floor_light_.jpg
 
 newmtl _Translucent_Glass_Gray_1
 Ka 0.000000 0.000000 0.000000
