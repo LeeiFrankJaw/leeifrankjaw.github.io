@@ -22,13 +22,25 @@ limitations under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="demo-styles.css">
+    <style>
+     model-viewer + div {
+       margin: 10px;
+       margin-bottom: 20px;
+     }
+    </style>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.4.3/webcomponents-bundle.js"></script>
     <script src="https://unpkg.com/@google/model-viewer@1.0.0/dist/model-viewer.min.js" type="module"></script>
     <script src="https://unpkg.com/@google/model-viewer@1.0.0/dist/model-viewer-legacy.js" nomodule></script>
   </head>
 <body>
   <h1>Embed SketchUp via glTF rendered by &lt;model-viewer&gt;</h1>
-  <p>The glTF itself was converted from wavefront OBJ by <a href="https://github.com/CesiumGS/obj2gltf">obj2gltf</a>.</p>
+  <p>The glTF used in the first demo was converted from wavefront OBJ
+    by <a href="https://github.com/CesiumGS/obj2gltf">obj2gltf</a>.
+    The glTF used in the second demo was converted directly from
+    SketchUp by extension <a href="https://extensions.sketchup.com/extension/052071e5-6c19-4f02-a7e8-fcfcc28a2fd8/gl-tf-export">glTF
+    Export</a>. The quality of glTF Export is subpar to obj2gltf by
+    looking at the "Kolbotn" text.  And the texture of the marble is
+    also lost. </p>
   <model-viewer src="1301008-4-felt-1030.glb"
                 camera-controls
                 style="background-color:#70BCD1"
@@ -37,8 +49,18 @@ limitations under the License.
                 environment-intensity="2"
                 camera-orbit="-20deg 75deg 2m">
   </model-viewer>
+  <div>obj2gltf</div>
+  <model-viewer src="1301008-4-felt-1030.ext.glb"
+                camera-controls
+                style="background-color:#70BCD1"
+                shadow-intensity="1"
+                stage-light-intensity="3"
+                environment-intensity="2"
+                camera-orbit="-20deg 75deg 2m">
+  </model-viewer>
+  <div>glTF Export</div>
   <div id="postamble" style="display:none">
-    <p class="date">Updated: 2020-07-21 Tue 06:44</p>
+    <p class="date">Updated: 2020-07-24 Fri 05:47</p>
   </div>
 </body>
 </html>

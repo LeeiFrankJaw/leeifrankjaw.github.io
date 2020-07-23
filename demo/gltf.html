@@ -6,9 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Embed SketchUp via glTF</title>
     <style>
-     #viewer {
+     #canvas {
+       position: absolute;
+       left: 0;
+       top: 0;
+       width: 100%;
+       height: 100%;
+     }
+
+     #content {
+       position: relative;
+       top: 0;
+       z-index: 1;
+     }
+
+     #content > div {
+       width: 580px;
+       margin: 0 auto;
+       /* z-index: 100; */
+     }
+
+     #content > div > div:first-child {
        width: 580px;
        height: 326px;
+       /* border: 1px solid red; */
+     }
+
+     #content > div > div:last-child {
+       text-align: center;
+       margin: 10px;
+       margin-bottom: 20px;
      }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
@@ -16,51 +43,43 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script> -->
   </head>
   <body>
-    <h1>Embed SketchUp via glTF</h1>
-    <p>The glTF itself was converted from wavefront OBJ by <a href="https://github.com/CesiumGS/obj2gltf">obj2gltf</a>.</p>
-    <div id="viewer"></div>
+    <canvas id="canvas"></canvas>
+    <div id="content">
+      <h1>Embed SketchUp via glTF</h1>
+      <p>The glTF used in the first demo was converted from wavefront
+        OBJ by <a href="https://github.com/CesiumGS/obj2gltf">obj2gltf</a>.
+        The glTF used in the second demo was converted directly from
+        SketchUp by extension <a href="https://extensions.sketchup.com/extension/052071e5-6c19-4f02-a7e8-fcfcc28a2fd8/gl-tf-export">glTF
+        Export</a>. The quality of glTF Export is subpar to obj2gltf
+        by looking at the "Kolbotn" text.  And the texture of the
+        marble is also lost. </p>
+      <div>
+        <div id="gltf"></div>
+        <div>obj2gltf</div>
+      </div>
+      <div>
+        <div id="gltf-ext"></div>
+        <div>glTF Export</div>
+      </div>
+    </div>
     <script src="https://unpkg.com/three@0.118.3/build/three.min.js"></script>
     <script src="https://unpkg.com/three@0.118.3/examples/js/controls/OrbitControls.js"></script>
     <script src="https://unpkg.com/three@0.118.3/examples/js/loaders/GLTFLoader.js"></script>
     <script>
-     const WIDTH = viewer.offsetWidth;
-     const HEIGHT = viewer.offsetHeight;
-
-     var camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.01, 100);
-     camera.position.set(5, 3, 5);
-     camera.lookAt(0, 1.5, 0);
-
-     var scene = new THREE.Scene();
-     scene.background = new THREE.Color(0x222222);
-     scene.add(new THREE.GridHelper(10, 10));
-
-     var ambient = new THREE.HemisphereLight(0xbbbbff, 0x886666, 0.75);
-     ambient.position.set(-0.5, 0.75, -1);
-     scene.add(ambient);
-
-     var light = new THREE.DirectionalLight(0xffffff, 0.75);
-     light.position.set(1, 0.75, 0.5);
-     scene.add(light);
-
-     var renderer = new THREE.WebGLRenderer({antialias: true});
-     renderer.setPixelRatio(window.devicePixelRatio);
-     renderer.setSize(WIDTH, HEIGHT);
-     viewer.appendChild(renderer.domElement);
-
-     var controls = new THREE.OrbitControls(camera, renderer.domElement);
-
-     function animate() {
-	 renderer.render(scene, camera);
-	 requestAnimationFrame(animate);
-     }
+     const canvas = document.getElementById("canvas"),
+           viewer1 = document.getElementById("gltf"),
+           viewer2 = document.getElementById("gltf-ext"),
+           viewers = [viewer1, viewer2],
+           scenes = [];
+     var render;
+     init();
      animate();
 
-     var loader = new THREE.GLTFLoader();
-     loader.setCrossOrigin(true);
-     /* loader.setMaterialOptions({ignoreZeroRGBs: true}); */
-     loader.load("1301008-4-felt-1030.glb", function(gltf) {
+     function loadGLTF(url, scene) {
+       var loader = new THREE.GLTFLoader();
+       loader.setCrossOrigin(true);
+       loader.load(url, function(gltf) {
          scene.add(gltf.scene);
-         scene.dispose();
 
          var object = scene.children[3];
 
@@ -71,16 +90,118 @@
              size = new THREE.Vector3();
          box.getCenter(center);
          center.y = box.min.y;
-	 object.position.sub(center);
+         object.position.sub(center);
 
-	 var scaler = new THREE.Group();
-	 scaler.add(object);
-	 scaler.scale.setScalar(6 / box.getSize(size).length());
-	 scene.add(scaler);
-     });
+         var scaler = new THREE.Group();
+         scaler.add(object);
+         scaler.scale.setScalar(6 / box.getSize(size).length());
+         scene.add(scaler);
+       });
+     }
+
+     function init() {
+       for (var i = 0; i < viewers.length; i++) {
+         var viewer = viewers[i],
+             WIDTH = viewer.offsetWidth,
+             HEIGHT = viewer.offsetHeight;
+         
+         var scene = new THREE.Scene();
+         scene.userData.element = viewer;
+
+         scene.background = new THREE.Color(0x222222);
+         scene.add(new THREE.GridHelper(10, 10));
+
+         var ambient = new THREE.HemisphereLight(0xbbbbff, 0x886666, 0.75);
+         ambient.position.set(-0.5, 0.75, -1);
+         scene.add(ambient);
+
+         var light = new THREE.DirectionalLight(0xffffff, 0.75);
+         light.position.set(1, 0.75, 0.5);
+         scene.add(light);
+
+	 /* var mesh = new THREE.Mesh(
+          *   new THREE.PlaneBufferGeometry( 100, 100 ),
+          *   new THREE.MeshPhongMaterial({color: 0x999999, depthWrite: false})
+          * );
+	    mesh.rotation.x = - Math.PI / 2;
+	    mesh.receiveShadow = true;
+	    scene.add(mesh); */
+
+         var camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.01, 100);
+         camera.position.set(5, 3, 5);
+         camera.lookAt(0, 1.5, 0);
+         scene.userData.camera = camera;
+
+         var controls = new THREE.OrbitControls(camera, viewer);
+         scene.userData.controls = controls;
+
+         scenes.push(scene);
+       }
+       loadGLTF("1301008-4-felt-1030.glb", scenes[0]);
+       loadGLTF("1301008-4-felt-1030.ext.glb", scenes[1]);
+       renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true });
+       renderer.setClearColor(0xffffff, 1);
+       renderer.clear();
+       renderer.setPixelRatio(window.devicePixelRatio);
+     }
+
+     function animate() {
+       render();
+       requestAnimationFrame(animate);
+     }
+
+     function updateSize() {
+
+       var width = canvas.clientWidth;
+       var height = canvas.clientHeight;
+
+       if (canvas.width !== width || canvas.height !== height) {
+	 renderer.setSize( width, height, false );
+       }
+     }
+
+     function render() {
+       updateSize();
+
+       canvas.style.transform = "translateY(" + window.pageYOffset + "px)";
+
+       renderer.setClearColor(0xffffff);
+       renderer.setScissorTest(false);
+       renderer.clear();
+
+       renderer.setClearColor( 0xe0e0e0 );
+       renderer.setScissorTest(true);
+
+       scenes.forEach(function(scene) {
+	 var element = scene.userData.element;
+         var camera = scene.userData.camera;
+
+	 var rect = element.getBoundingClientRect();
+         if (rect.bottom < 0
+             || rect.top > renderer.domElement.clientHeight
+             || rect.right < 0
+             || rect.left > renderer.domElement.clientWidth) {
+	   return; // it's off screen
+
+	 }
+         var width = rect.right - rect.left;
+	 var height = rect.bottom - rect.top;
+	 var left = rect.left;
+         /* console.log(element);
+          * console.log(rect);
+          * console.log(renderer.domElement); */
+	 var bottom = renderer.domElement.clientHeight - rect.bottom;
+         /* console.log(bottom); */
+
+	 renderer.setViewport(left, bottom, width, height);
+	 renderer.setScissor(left, bottom, width, height);
+
+         renderer.render(scene, camera);
+       });
+     };
     </script>
     <div id="postamble" style="display:none">
-      <p class="date">Updated: 2020-07-21 Tue 08:11</p>
+      <p class="date">Updated: 2020-07-24 Fri 05:55</p>
     </div>
   </body>
 </html>
