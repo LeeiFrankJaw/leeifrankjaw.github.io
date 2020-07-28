@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+     Copyright 2019 Google LLC
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+     https://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<html lang="en">
+  <head>
+    <title>Use &lt;model-viewer&gt; in Vue</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="demo-styles.css">
+    <style>
+     model-viewer + div {
+       margin: 10px;
+       margin-bottom: 20px;
+     }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.4.3/webcomponents-bundle.js"></script>
+    <script src="https://unpkg.com/@google/model-viewer@1.0.0/dist/model-viewer.min.js" type="module"></script>
+    <script src="https://unpkg.com/@google/model-viewer@1.0.0/dist/model-viewer-legacy.js" nomodule></script>
+  </head>
+  <body>
+    <!-- <h1>Embed SketchUp via glTF rendered by &lt;model-viewer&gt;</h1>
+         <p>The glTF used in the first demo was converted from wavefront OBJ
+         by <a href="https://github.com/CesiumGS/obj2gltf">obj2gltf</a>.
+         The glTF used in the second demo was converted directly from
+         SketchUp by extension <a href="https://extensions.sketchup.com/extension/052071e5-6c19-4f02-a7e8-fcfcc28a2fd8/gl-tf-export">glTF
+         Export</a>. The quality of glTF Export is subpar to obj2gltf by
+         looking at the "Kolbotn" text.  And the texture of the marble is
+         also lost. </p> -->
+    <div id="app"></div>
+    <!-- <model-viewer src="1301008-4-felt-1030.glb"
+         camera-controls
+         style="background-color:#70BCD1"
+         shadow-intensity="1"
+         stage-light-intensity="3"
+         environment-intensity="2"
+         camera-orbit="-20deg 75deg 2m">
+         </model-viewer> -->
+    <script type="text/x-template" id="gltf-viewer-template">
+      <model-viewer :src="src"
+                    camera-controls
+                    style="background-color:#70BCD1"
+                    shadow-intensity="1"
+                    stage-light-intensity="3"
+                    environment-intensity="2"
+                    camera-orbit="-20deg 75deg 2m">
+      </model-viewer>
+    </script>
+    <script>
+      Vue.config.ignoredElements = ['model-viewer'];
+      Vue.component('gltf-viewer', {
+          props: ['src'],
+          template: '#gltf-viewer-template'
+      });
+      var vm = new Vue({
+          el: '#app',
+          template: '<gltf-viewer src="1301008-4-felt-1030.glb"></gltf-viewer>'
+      });
+    </script>
+    <div id="postamble" style="display:none">
+      <p class="date">Updated: 2020-07-27 Mon 15:45</p>
+    </div>
+  </body>
+</html>
+
+<!-- Local Variables: -->
+<!-- mode: vue-html -->
+<!-- End: -->

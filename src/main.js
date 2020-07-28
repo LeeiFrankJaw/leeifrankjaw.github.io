@@ -148,15 +148,21 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
+                "name": "model-viewer-in-vue.html",
+                "title": "Use <model-viewer> in Vue",
+                "author_date": "2020-07-27T15:45:00+08:00"
+            },
+            {
+                "type": "file",
                 "name": "gltf.html",
                 "title": "Embed SketchUp via glTF",
-                "author_date": "2020-07-21T08:11:00+08:00"
+                "author_date": "2020-07-24T05:55:00+08:00"
             },
             {
                 "type": "file",
                 "name": "gltf-model-viewer.html",
                 "title": "Embed SketchUp via glTF rendered by <model-viewer>",
-                "author_date": "2020-07-21T06:44:00+08:00"
+                "author_date": "2020-07-24T05:47:00+08:00"
             },
             {
                 "type": "file",

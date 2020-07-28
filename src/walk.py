@@ -36,7 +36,6 @@ def get_author_date(path):
     html = lxml.html.parse(path)
     date_text = html.xpath('string(//div[@id="postamble"]/p[@class="date"])')
     if date_text:
-        print(date_text)
         date_str = date_text.split(': ')[1]
         return (datetime.strptime(date_str, '%Y-%m-%d %a %H:%M')
                 .astimezone().isoformat())
