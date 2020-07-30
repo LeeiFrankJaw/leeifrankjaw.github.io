@@ -148,9 +148,15 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
+                "name": "gltf-in-vue.html",
+                "title": "Use three.js in Vue",
+                "author_date": "2020-07-30T08:35:00+08:00"
+            },
+            {
+                "type": "file",
                 "name": "model-viewer-in-vue.html",
                 "title": "Use <model-viewer> in Vue",
-                "author_date": "2020-07-27T15:45:00+08:00"
+                "author_date": "2020-07-30T07:17:00+08:00"
             },
             {
                 "type": "file",

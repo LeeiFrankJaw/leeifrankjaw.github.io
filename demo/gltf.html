@@ -71,7 +71,9 @@
            viewer2 = document.getElementById("gltf-ext"),
            viewers = [viewer1, viewer2],
            scenes = [];
+
      var render;
+
      init();
      animate();
 
@@ -104,7 +106,7 @@
          var viewer = viewers[i],
              WIDTH = viewer.offsetWidth,
              HEIGHT = viewer.offsetHeight;
-         
+
          var scene = new THREE.Scene();
          scene.userData.element = viewer;
 
@@ -137,8 +139,10 @@
 
          scenes.push(scene);
        }
+
        loadGLTF("1301008-4-felt-1030.glb", scenes[0]);
        loadGLTF("1301008-4-felt-1030.ext.glb", scenes[1]);
+
        renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true });
        renderer.setClearColor(0xffffff, 1);
        renderer.clear();
@@ -156,7 +160,7 @@
        var height = canvas.clientHeight;
 
        if (canvas.width !== width || canvas.height !== height) {
-	 renderer.setSize( width, height, false );
+	 renderer.setSize(width, height, false);
        }
      }
 
@@ -169,7 +173,7 @@
        renderer.setScissorTest(false);
        renderer.clear();
 
-       renderer.setClearColor( 0xe0e0e0 );
+       renderer.setClearColor(0xe0e0e0);
        renderer.setScissorTest(true);
 
        scenes.forEach(function(scene) {

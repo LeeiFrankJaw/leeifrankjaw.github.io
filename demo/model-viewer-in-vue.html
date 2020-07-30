@@ -28,7 +28,7 @@
        margin-bottom: 20px;
      }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.4.3/webcomponents-bundle.js"></script>
     <script src="https://unpkg.com/@google/model-viewer@1.0.0/dist/model-viewer.min.js" type="module"></script>
     <script src="https://unpkg.com/@google/model-viewer@1.0.0/dist/model-viewer-legacy.js" nomodule></script>
@@ -42,15 +42,9 @@
          Export</a>. The quality of glTF Export is subpar to obj2gltf by
          looking at the "Kolbotn" text.  And the texture of the marble is
          also lost. </p> -->
-    <div id="app"></div>
-    <!-- <model-viewer src="1301008-4-felt-1030.glb"
-         camera-controls
-         style="background-color:#70BCD1"
-         shadow-intensity="1"
-         stage-light-intensity="3"
-         environment-intensity="2"
-         camera-orbit="-20deg 75deg 2m">
-         </model-viewer> -->
+    <div id="app">
+      <gltf-viewer src="1301008-4-felt-1030.glb"></gltf-viewer>
+    </div>
     <script type="text/x-template" id="gltf-viewer-template">
       <model-viewer :src="src"
                     camera-controls
@@ -64,20 +58,15 @@
     <script>
       Vue.config.ignoredElements = ['model-viewer'];
       Vue.component('gltf-viewer', {
-          props: ['src'],
-          template: '#gltf-viewer-template'
+        props: ['src'],
+        template: '#gltf-viewer-template'
       });
       var vm = new Vue({
-          el: '#app',
-          template: '<gltf-viewer src="1301008-4-felt-1030.glb"></gltf-viewer>'
+        el: '#app'
       });
     </script>
     <div id="postamble" style="display:none">
-      <p class="date">Updated: 2020-07-27 Mon 15:45</p>
+      <p class="date">Updated: 2020-07-30 Thu 07:17</p>
     </div>
   </body>
 </html>
-
-<!-- Local Variables: -->
-<!-- mode: vue-html -->
-<!-- End: -->

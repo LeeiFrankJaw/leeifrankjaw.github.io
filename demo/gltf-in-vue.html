@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Use three.js in Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://unpkg.com/three@0.118.3/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.118.3/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/three@0.118.3/examples/js/loaders/GLTFLoader.js"></script>
+    <style>
+     #app, .getting-started {
+       width: 580px;
+       height: 326px;
+     }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <gltf-viewer src="1301008-4-felt-1030.glb"
+                   :width="580"
+                   :height="326">
+      </gltf-viewer>
+    </div>
+    <script type="text/x-template" id="gltf-viewer-template">
+      <canvas></canvas>
+    </script>
+    <script>
+      Vue.component('gltf-viewer', {
+        props: {
+          src: {
+            type: String,
+            required: true,
+          },
+          width: Number,
+          height: Number,
+        },
+        data() {
+          return {
+            renderer: null,
+            scene: new THREE.Scene(),
+            camera: null,
+          }
+        },
+        template: '#gltf-viewer-template',
+        methods: {
+          init() {
+            const viewer = this.$el;
+            const WIDTH = this.width;
+            const HEIGHT = this.height;
+
+            var camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.01, 100);
+            this.camera = camera;
+            camera.position.set(5, 3, 5);
+            camera.lookAt(0, 1.5, 0);
+
+            var scene = this.scene;
+            scene.background = new THREE.Color(0x222222);
+            scene.add(new THREE.GridHelper(10, 10));
+
+            var ambient = new THREE.HemisphereLight(0xbbbbff, 0x886666, 0.75);
+            ambient.position.set(-0.5, 0.75, -1);
+            scene.add(ambient);
+
+            var light = new THREE.DirectionalLight(0xffffff, 0.75);
+            light.position.set(1, 0.75, 0.5);
+            scene.add(light);
+
+            var renderer = new THREE.WebGLRenderer({
+              canvas: this.$el,
+              antialias: true
+            });
+            this.renderer = renderer;
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(WIDTH, HEIGHT);
+
+            var controls = new THREE.OrbitControls(camera, renderer.domElement);
+          },
+          load() {
+            var scene = this.scene;
+            var render = this.render;
+            
+            var loader = new THREE.GLTFLoader();
+            loader.setCrossOrigin(true);
+            
+            loader.load(this.src, function(gltf) {
+              scene.add(gltf.scene);
+
+              var object = scene.children[3];
+
+              var box = new THREE.Box3();
+              box.setFromObject(object);
+
+              var center = new THREE.Vector3(),
+                  size = new THREE.Vector3();
+              box.getCenter(center);
+              center.y = box.min.y;
+	      object.position.sub(center);
+
+	      var scaler = new THREE.Group();
+	      scaler.add(object);
+	      scaler.scale.setScalar(6 / box.getSize(size).length());
+	      scene.add(scaler);
+              render();
+            });
+          },
+          render() {
+            this.renderer.render(this.scene, this.camera);
+          },
+          animate() {
+            this.render();
+            requestAnimationFrame(this.animate);
+          }
+        },
+        mounted() {
+          this.init();
+          this.animate();
+          this.load();
+        }
+      });
+      var vm = new Vue({
+        el: '#app',
+      });
+    </script>
+    <div id="postamble" style="display:none">
+      <p class="date">Updated: 2020-07-30 Thu 08:35</p>
+    </div>
+  </body>
+</html>
