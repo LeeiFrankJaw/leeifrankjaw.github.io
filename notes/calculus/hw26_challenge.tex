@@ -1,0 +1,83 @@
+\input{preamble}
+
+\begin{document}
+    \Prblm{1}{$ \frac{d}{dx} \int_{t=0}^{\arcsin x} \ln \left| \sin t + \cos t
+                \right| \, dt $.}
+    {$ \frac{1}{\sqrt{1-x^2}}\ln \left| x + \sqrt{1-x^2} \right| $.}
+    
+    \begin{align*}
+    \frac{d}{dx} \int_{t=0}^{\arcsin x} \ln \left| \sin t + \cos t \right| \, dt
+        &= \frac{d}{dx} \int_{t=0}^{u} \ln \left| \sin t + \cos t
+            \right| \, dt
+            && \reason{$ u = \arcsin x $} \\
+        &= \ln |\sin u + \cos u| \cdot \frac{du}{dx}
+            && \reason{$\textstyle \frac{d}{dx} \int_{t=a}^{u(x)} f(t) \,dt =
+                        f(u(x)) \frac{du(x)}{dx} $} \\
+        &= \frac{\ln |x + \cos(\arcsin x)|}{\sqrt{1-x^2}}
+            && \reason{$ u = \arcsin x $ and evaluate $ \tfrac{du}{dx} $} \\
+        &= \frac{\ln |x + \sqrt{1-x^2}|}{\sqrt{1-x^2}}
+            && \reason{$ \cos(\arcsin x) = \sqrt{1-x^2} $}
+    \end{align*}
+    
+    \Prblm{2}{$ \frac{d}{dx} \int_{t=\sin x}^{\tan x} e^{-t^2} \, dt $.}
+    {$ e^{-\tan^2 x} \cdot \sec^2 x - e^{-\sin^2 x} \cdot \cos x $.}
+    
+    \begin{align*}
+    \frac{d}{dx} \int_{t=\sin x}^{\tan x} e^{-t^2} \, dt
+        &= \frac{d}{dx} \paren{\int_{t=0}^{\tan x} e^{-t^2} \, dt -
+            \int_{t=0}^{\sin x} e^{-t^2} \, dt}
+            && \reason{additivity} \\
+        &= \frac{d}{dx} \int_{t=0}^{\tan x} e^{-t^2} \, dt
+            - \frac{d}{dx} \int_{t=0}^{\sin x} e^{-t^2} \, dt
+            && \reason{linearity} \\
+        &= e^{-\tan^2 x} \cdot \sec^2 x - e^{-\sin^2 x} \cdot \cos x.
+            && \reason{$\textstyle \frac{d}{dx} \int_{t=a}^{u(x)} f(t) \,dt =
+                f(u(x)) \frac{du(x)}{dx} $} \\
+    \end{align*}
+    
+    \Prblm{3}
+    {Which of the following is the leading order term in the Taylor series about
+    $ x=0 $ of
+        \[ f(x) = \int_{t=0}^x\ln(\cosh t) \, dt \]
+    \textbf{Hint:} yes, there's more than one way to do this problem\dots\ Try
+    using the F.T.I.C. to compute the derivatives.}
+    {$ \frac{x^3}{3!} = \frac{x^3}6 $.}
+    
+    \parasp
+    The constant term of the Taylor series must be zero since $\textstyle f(0) =
+    \int_{t=0}^0 x\ln(\cosh t) \, dt $. So if the first derivative at $ x=0 $ is
+    nonzero, then $ f'(0)\cdot x $ must be the leading order term. And
+        \[ \frac{d}{dx} f(x) = \frac{d}{dx} \int_{t=0}^x\ln(\cosh t) \, dt
+                             = \ln(\cosh x)\,, \]
+    so $ f'(0) = \ln(\cosh 0) = \ln 1 = 0 $. Oops, we have to take the second
+    derivative at $ x=0 $,
+        \[ \frac{d^2}{dx^2} f(x) = \frac{d}{dx} \ln(\cosh x)
+                                 = \frac{\sinh x}{\cosh x}\,, \]
+    so $ f''(0) = \sinh 0 / \cosh 0 = 0 $. Oops again, let's take the third derivative,
+        \[ \frac{d^3}{dx^3} f(x) = \frac{d}{dx} \frac{\sinh x}{\cosh x}
+                                 = \frac{1}{\cosh^2 x}\,, \]
+    so $ f'''(0) = 1 $. Thus, the leading order term is
+        \[ \frac{x^3}{3!} = \frac{x^3}6. \]
+    
+    \Prblm{4}
+    {We usually use Riemann sums to approximate integrals, but we can go the
+    other way, too, using an antiderivative to approximate a sum. Using only
+    your head (no paper, no calculator), tell me which of the following is the
+    best estimate for
+        \[ \sum_{n=0}^{100} n^3. \]}
+    {$ 2.5\times 10^7 $.}
+    
+    \begin{align*}
+        \sum_{n=0}^{100} n^3
+            &\approx \int_0^{100} x^3 \, dx \\
+            &= 100^4/4 \\
+            &= 2.5\times 10^7
+    \end{align*}
+    
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{hw26_challenge_fig1}
+    \label{fig:hw26_challenge_fig1}
+    \end{figure}
+
+\end{document}

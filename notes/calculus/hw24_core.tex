@@ -1,0 +1,106 @@
+\input{preamble}
+
+\newcommand{\dirm}{\deduce \text{direct method}}
+\everymath{\displaystyle}
+
+\begin{document}
+    \Prblm{1}{$ \int \frac{5+x}{x^2+x-6} \, dx. $}
+    {$ \frac{7}{5} \ln|x-2| - \frac{2}{5} \ln|x+3| + C. $}
+    
+    \begin{align*}
+        \int \frac{5+x}{x^2 + x - 6} \, dx
+            &= \int \frac{5+x}{(x-2)(x+3)} \, dx \\
+            &= \int \left( \frac{A}{x-2} + \frac{B}{x+3} \right) \, dx \\
+            &\deduce \\
+        A(x+3) +{} &B(x-2) = 5+x \\
+            &\dirm \\
+        A = \frac{7}{5} &\quad B = -\frac{2}{5} \\
+            &\deduce \\
+        \int \frac{5+x}{x^2 + x - 6} \, dx
+            &= \frac{1}{5} \int \paren{\frac{7}{x-2} - \frac{2}{x+3}}
+                \, dx \\
+            &= \frac{1}{5} \left( 7 \int \frac{dx}{x-2} - 2 \int
+                \frac{dx}{x+3} \right) \\
+            &= \frac{1}{5}\,(7\ln|x-2| - 2\ln|x+3| + C) \\
+            &= \frac{7}{5} \ln|x-2| - \frac{2}{5} \ln|x+3| + C.
+    \end{align*}
+    
+    \Prblm{2}{$ \int \frac{2x + 3}{6x^2 + 5x + 1} \, dx. $}
+    {$ \frac{7}{3}\ln|3x+1| - 2\ln|2x+1| + C. $}
+    
+    \begin{align*}
+        \int \frac{2x + 3}{6x^2 + 5x + 1} \, dx
+            &= \int \frac{2x + 3}{(2x+1)(3x+1)} \, dx \\
+            &= \int \paren{\frac{A}{2x+1} + \frac{B}{3x+1}} \, dx \\
+            &\deduce \\
+        A(3x+1) +{} &B(2x+1) = 2x+3 \\
+            &\dirm \\
+        A = -4 &\quad B = 7 \\
+            &\deduce \\
+        \int \frac{2x + 3}{6x^2 + 5x + 1} \, dx
+            &= 7 \int \frac{dx}{3x+1} - 4 \int \frac{dx}{2x+1} \\
+            &= \frac{7}{3}\ln|3x+1| - 2\ln|2x+1| + C.
+    \end{align*}
+    
+    \Prblm{3}{$ \int \frac{x^2-x+5}{(x-2)(x-1)(x+3)} \, dx. $}
+    {$ \frac{7}{5}\ln|x-2| - \frac{5}{4}\ln|x-1| + \frac{17}{20}\ln|x+3| + C. $}
+    
+    \begin{align*}
+        \int \frac{x^2-x+5}{(x-2)(x-1)(x+3)} \, dx
+            &= \int \paren{\frac{A}{x-2} + \frac{B}{x-1} + \frac{C}{x+3}}
+                \, dx \\
+            &\deduce \\
+        A(x-1)(x+3) + B(x-2)(x&+3) + C(x-2)(x-1) = x^2 - x + 5 \\
+            &\dirm \\
+        A = \frac{7}{5} \quad B &= -\frac{5}{4} \quad C = \frac{17}{20} \\
+            &\deduce \\
+        \int \frac{x^2-x+5}{(x-2)(x-1)(x+3)} \, dx
+            &= \frac{7}{5} \int \frac{dx}{x-2} - \frac{5}{4} \int \frac{dx}{x-1}
+                + \frac{17}{20} \int \frac{dx}{x+3} \\
+            &= \frac{7}{5}\ln|x-2| - \frac{5}{4}\ln|x-1| + \frac{17}{20}\ln|x+3|
+                + C.
+    \end{align*}
+    
+    \Prblm{4}{$ \int \frac{2x-1}{x^3-x} \, dx. $}
+    {$ \ln|x| + \frac{1}{2}\ln|x-1| - \frac{3}{2}\ln|x+1| + C. $}
+    
+    \begin{align*}
+        \int \frac{2x-1}{x^3-x} \, dx
+            &= \int \frac{2x - 1}{x (x-1) (x+1)}\, dx \\
+            &= \int \paren{\frac{A}{x} + \frac{B}{x-1} + \frac{C}{x+1}} \, dx \\
+            &\deduce \\
+        A(x-1)(x+1) + Bx(x&+1) + Cx(x-1) = 2x-1 \\
+            &\dirm \\
+        A = 1 \quad B &= \frac{1}{2} \quad C = -\frac{3}{2} \\
+            &\deduce \\
+        \int \frac{2x-1}{x^3-x} \, dx
+            &= \ln|x| + \frac{1}{2}\ln|x-1| - \frac{3}{2}\ln|x+1| + C.
+    \end{align*}
+    
+    \Prblm{5}{$ \int \frac{x^2-3}{x^2-4} \, dx. $ \\[3pt]
+    \textbf{Hint:} start by performing long division of the numerator by the denominator.}
+    {$ x + \frac{1}{4} \ln\abs{\frac{x-2}{x+2}} + C. $}
+    
+    \begin{align*}
+        \int \frac{x^2-3}{x^2-4} \, dx
+            &= \int \paren{1 + \frac{1}{4(x-2)} - \frac{1}{4(x+2)}} \, dx \\
+            &= x + \frac{1}{4} \ln|x-2| - \frac{1}{4} \ln|x+2| + C \\
+            &= x + \frac{1}{4} \ln\abs{\frac{x-2}{x+2}} + C.
+    \end{align*}
+    \newpage
+    
+    \Prblm{6}{$ \int \frac{dx}{x^2 - 4x + 8}. $}
+    {$ \frac{1}{2} \arctan \frac{x-2}{2} + C $.}
+    
+    \begin{align*}
+        \int \frac{dx}{x^2 - 4x + 8}
+            &= \int \frac{dx}{(x-2)^2 + 4} \\
+            &= \frac{1}{2} \int \frac{\cancel{\sec^2 \theta} \, d\theta}
+                {\cancel{\sec^2 \theta}}
+                && \reason{Let $ x = 2\tan \theta + 2 $} \\
+            &= \frac{1}{2} \theta + C \\
+            &= \frac{1}{2} \arctan \frac{x-2}{2} + C.
+                && \reason{substitute back with $ \theta =
+                    \arctan \frac{x-2}{2} $}
+    \end{align*}
+\end{document}

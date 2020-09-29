@@ -1,0 +1,90 @@
+\input{preamble}
+
+\everymath{\displaystyle}
+
+\begin{document}
+    \Prblm{1}{$ \int \frac{x^3+10x^2+33x+36}{x^2+4x+3} \, dx. $}
+    {$ \frac{1}{2}x^2 + 6x + 6 \ln |x+1| + C. $}
+    
+    \begin{align*}
+        \int \frac{x^3+10x^2+33x+36}{x^2+4x+3} \, dx
+            &= \int \paren{x+6+\frac{6}{x+1}} \, dx \\
+            &= \frac{x^2}{2} + 6x + 6 \ln|x+1| + C.
+    \end{align*}
+    
+    \Prblm{2}{$ \int \frac{x+2}{(x-1)^2} \, dx. $}
+    {$ \ln|x-1| - \frac{3}{x-1} + C. $}
+    
+    \begin{align*}
+        \int \frac{x+2}{(x-1)^2} \, dx
+            &= \int \paren{\frac{A}{x-1} + \frac{B}{(x-1)^2}} \, dx \\
+            &\deduce \\
+        A(x-1) &+ B = x+2 \\
+            &\deduce \\
+        A = 1 &\quad B = 3 \\
+            &\deduce \\
+        \int \frac{x+2}{(x-1)^2} \, dx
+            &= \int \paren{\frac{1}{x-1} + \frac{3}{(x-1)^2}} \, dx \\
+            &= \ln|x-1| - \frac{3}{x-1} + C.
+    \end{align*}
+    
+    \Prblm{3}{$ \int \frac{dx}{x^4 - 6x^3 + 12x^2} $}
+    {}
+    
+    \begin{align*}
+        \int \frac{dx}{x^4 - 6x^3 + 12x^2}
+            &= \int \frac{dx}{x^2(x^2 - 6x + 12)} \\
+            &= \int \paren{\frac{A}{x} + \frac{B}{x^2}
+                                       + \frac{Cx+D}{x^2 - 6x + 12}} \, dx \\
+            &\deduce \\
+        Ax(x^2 - 6x + 12) +{} &B(x^2 - 6x + 12) + (Cx+D)x^2 = 1 \\
+            &\deduce \\
+        &\hspace{-1in}\left\{\begin{aligned}
+              &A && & {}+{} &C && &&= 0 \\
+            -6&A & {}+\phantom{12} &B && &{}+{}&D &&= 0 \\
+            12&A & {}-\phantom{1}6 &B && && &&= 0 \\
+              &  & 12 &B && && &&= 1
+        \end{aligned}\,\middle|
+        \begin{aligned}
+            x^3 \\ x^2 \\ x^1 \\ x^0
+        \end{aligned}\right. \\
+            &\deduce \\
+        A=\frac1{24} \quad B=\frac{1}{12}
+            &\quad C=-\frac1{24} \quad D=\frac16 \\
+            &\deduce
+    \end{align*}
+    
+    \begin{align*}
+        \int \frac{dx}{x^4 - 6x^3 + 12x^2}
+            &= \frac1{24}\ln|x| - \frac1{12x}
+                    - \frac1{24} \int \frac{x-4}{(x-3)^2+3} \, dx \\
+            &\deduce \\
+        \int \frac{x-4}{(x-3)^2+3} \, dx
+            &= \int \frac{(\sqrt3\tan\theta-1)\cancel{\sqrt3\sec^2\theta}}
+                         {\cancelto{\sqrt3}{3\sec^2\theta}} \, d\theta
+                &&\hspace{-0.7in}\reason{Let $ x=\sqrt3\tan\theta + 3 $} \\
+            &= \int \paren{\tan\theta - \frac1{\sqrt3}} \, d\theta \\
+            &= \int \tan\theta \, d\theta - \frac{\theta}{\sqrt3} \\
+            &\deduce \\
+        \int \tan\theta \, d\theta
+            &= \int \frac{\sin\theta}{\cos\theta} \, dx \\
+            &= -\int \frac{d\cos\theta}{\cos\theta} \\
+            &= -\ln|\cos\theta| + C \\
+            &\deduce \\
+        \int \frac{x-4}{(x-3)^2+4} \, dx
+            &= -\ln|\cos\theta| - \frac{\theta}{\sqrt3} + C\\
+            &= -\ln\abs{\cos\paren{\arctan\frac{x-3}{\sqrt3}}}
+                   - \frac{1}{\sqrt3}\arctan\frac{x-3}{\sqrt3} + C
+                &&\hspace{-0.7in}\reason{$ \theta=\arctan\frac{x-3}{\sqrt3} $} \\
+            &= \frac12 \ln\paren{\paren{\frac{x-3}{\sqrt3}}^2 + 1}
+                   - \frac{1}{\sqrt3}\arctan\frac{x-3}{\sqrt3} + C
+                &&\hspace{-0.7in}\reason{$ \cos(\arctan z) = 1/\sqrt{x^2+1} $} \\
+            &= \frac12 \ln(x^2-6x+12)
+                    - \frac{1}{\sqrt3} \arctan\frac{x-3}{\sqrt3} + C
+                &&\hspace{-0.7in}\reason{$ -\ln3 $ is absorbed by $ C $} \\
+            &\deduce \\
+        \int \frac{dx}{x^4 - 6x^3 + 12x^2}
+            &= \frac1{24}\left[ \ln|x| - \frac2x - \frac12 \ln(x^2-6x+12)
+                     + \frac{1}{\sqrt3} \arctan\frac{x-3}{\sqrt3}  \right] + C.
+    \end{align*}
+\end{document}

@@ -1,0 +1,134 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5755,        124]
+NotebookOptionsPosition[      5441,        108]
+NotebookOutlinePosition[      5786,        123]
+CellTagsIndexPosition[      5743,        120]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"DiscretePlot", "[", 
+  RowBox[{
+   RowBox[{"n", "^", "3"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "0", ",", "100"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6453567299794397`*^9, 3.6453567528234615`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.24720000000000014`, 0.24, 0.6], {
+     {Opacity[0.2], LineBox[{{{0., 0.}, {0., 0}}},
+       VertexColors->None]}, 
+     {Opacity[0.2], 
+      LineBox[{{{1., 1.}, {1., 0}}, {{2., 8.}, {2., 0}}, {{3., 27.}, {
+         3., 0}}, {{4., 64.}, {4., 0}}, {{5., 125.}, {5., 0}}, {{6., 216.}, {
+         6., 0}}, {{7., 343.}, {7., 0}}, {{8., 512.}, {8., 0}}, {{9., 729.}, {
+         9., 0}}, {{10., 1000.}, {10., 0}}, {{11., 1331.}, {11., 0}}, {{12., 
+         1728.}, {12., 0}}, {{13., 2197.}, {13., 0}}, {{14., 2744.}, {
+         14., 0}}, {{15., 3375.}, {15., 0}}, {{16., 4096.}, {16., 0}}, {{17., 
+         4913.}, {17., 0}}, {{18., 5832.}, {18., 0}}, {{19., 6859.}, {
+         19., 0}}, {{20., 8000.}, {20., 0}}, {{21., 9261.}, {21., 0}}, {{22., 
+         10648.}, {22., 0}}, {{23., 12167.}, {23., 0}}, {{24., 13824.}, {
+         24., 0}}, {{25., 15625.}, {25., 0}}, {{26., 17576.}, {26., 0}}, {{
+         27., 19683.}, {27., 0}}, {{28., 21952.}, {28., 0}}, {{29., 24389.}, {
+         29., 0}}, {{30., 27000.}, {30., 0}}, {{31., 29791.}, {31., 0}}, {{
+         32., 32768.}, {32., 0}}, {{33., 35937.}, {33., 0}}, {{34., 39304.}, {
+         34., 0}}, {{35., 42875.}, {35., 0}}, {{36., 46656.}, {36., 0}}, {{
+         37., 50653.}, {37., 0}}, {{38., 54872.}, {38., 0}}, {{39., 59319.}, {
+         39., 0}}, {{40., 64000.}, {40., 0}}, {{41., 68921.}, {41., 0}}, {{
+         42., 74088.}, {42., 0}}, {{43., 79507.}, {43., 0}}, {{44., 85184.}, {
+         44., 0}}, {{45., 91125.}, {45., 0}}, {{46., 97336.}, {46., 0}}, {{
+         47., 103823.}, {47., 0}}, {{48., 110592.}, {48., 0}}, {{49., 
+         117649.}, {49., 0}}, {{50., 125000.}, {50., 0}}, {{51., 132651.}, {
+         51., 0}}, {{52., 140608.}, {52., 0}}, {{53., 148877.}, {53., 0}}, {{
+         54., 157464.}, {54., 0}}, {{55., 166375.}, {55., 0}}, {{56., 
+         175616.}, {56., 0}}, {{57., 185193.}, {57., 0}}, {{58., 195112.}, {
+         58., 0}}, {{59., 205379.}, {59., 0}}, {{60., 216000.}, {60., 0}}, {{
+         61., 226981.}, {61., 0}}, {{62., 238328.}, {62., 0}}, {{63., 
+         250047.}, {63., 0}}, {{64., 262144.}, {64., 0}}, {{65., 274625.}, {
+         65., 0}}, {{66., 287496.}, {66., 0}}, {{67., 300763.}, {67., 0}}, {{
+         68., 314432.}, {68., 0}}, {{69., 328509.}, {69., 0}}, {{70., 
+         343000.}, {70., 0}}, {{71., 357911.}, {71., 0}}, {{72., 373248.}, {
+         72., 0}}, {{73., 389017.}, {73., 0}}, {{74., 405224.}, {74., 0}}, {{
+         75., 421875.}, {75., 0}}, {{76., 438976.}, {76., 0}}, {{77., 
+         456533.}, {77., 0}}, {{78., 474552.}, {78., 0}}, {{79., 493039.}, {
+         79., 0}}, {{80., 512000.}, {80., 0}}, {{81., 531441.}, {81., 0}}, {{
+         82., 551368.}, {82., 0}}, {{83., 571787.}, {83., 0}}, {{84., 
+         592704.}, {84., 0}}, {{85., 614125.}, {85., 0}}, {{86., 636056.}, {
+         86., 0}}, {{87., 658503.}, {87., 0}}, {{88., 681472.}, {88., 0}}, {{
+         89., 704969.}, {89., 0}}, {{90., 729000.}, {90., 0}}, {{91., 
+         753571.}, {91., 0}}, {{92., 778688.}, {92., 0}}, {{93., 804357.}, {
+         93., 0}}, {{94., 830584.}, {94., 0}}, {{95., 857375.}, {95., 0}}, {{
+         96., 884736.}, {96., 0}}, {{97., 912673.}, {97., 0}}, {{98., 
+         941192.}, {98., 0}}, {{99., 970299.}, {99., 0}}, {{100., 1.*^6}, {
+         100., 0}}},
+       VertexColors->None]}}}, 
+   {RGBColor[0.24720000000000014`, 0.24, 0.6], {}, PointBox[CompressedData["
+1:eJxt01tIU3EAx/GT2c0uLLNtldQ0s7WWbN1cN3e0Mru6zGpRLImEpCAh6vlA
+q6dREr3Zgz300lMQBablaEGDjWCMKAbCuhARwUaJFUW3/b49FA3Gj8/58Tv/
+cwarOXa6o7vMMIzuX9/f+f9PMfh3GqbCRU4lN5A2MkRWKc2j2EmeJKuVvWf/
+ua9F1iqTF3Ed97uM65Xpq9hN9pMepec69nLeDdygjNzEPvIW6Vf6b+OVPM9d
+vEqZuodX83wjeE0pLftDvJbnfYQb1Sce4wCZItepjz7B63mfDNbvHg9k8Ube
+7yneVEoz8ww3KSM5HNTeMYpNMq+0ZFfsBdeblf5X9HJX4TV9izL5hl4eGHpL
+v1mZekcv58ff029RmgV6uS9bpN9aSsv+gV729Xykb1Wmx+jlUHCcfpv2iU/0
+cjH8hb6N/Eov2wa/cX279tHv9HLYbzSr36HrngmyJZ/wltHvLDkemEgvB9rL
+6Xdp3zuJXm7rn0y/u2QzM4VedlZOo9+jfaSCXnbfmU7frvMdM+nlzxdm0f/5
+39pkUy5PYEt2xWbLcfnU4Ur2e7X3z2Evj82oYi93FXBcPvJ8LvsO7ZN29vLx
+Bw728sCQk72cHpnHfp/2qfns5c7RBezl/Hg1e3nYsZB9p/bmIvbyy0YXe7kv
+i+Oy/UwN+/0lW/Za9nLuPrZkX89i9vIlZx37Azo/jU35yvkl7OVQsJ693PoD
+Gwd1fmIpe7ki5mYvF8PL2MtNHg/7sM43lrOXW3LYkm2DXvbyuWsr2B/S+dGG
+5p+g29Yi
+     "]], {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesOrigin->{0, 0},
+  Method->{"MessagesHead" -> DiscretePlot},
+  PlotRange->{{0, 100}, {0, 1.*^6}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.02]}}]], "Output",
+ CellChangeTimes->{{3.6453567417295494`*^9, 3.6453567537765865`*^9}}]
+}, Open  ]]
+},
+WindowSize->{692, 748},
+WindowMargins->{{Automatic, 93}, {-100, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 243, 6, 43, "Input"],
+Cell[825, 30, 4600, 75, 313, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
