@@ -1,0 +1,89 @@
+\input{config.tex}
+
+\input{userCommands.tex}
+
+\begin{document}
+\begin{CJK*}{UTF8}{gkai}
+\subsection*{\S 3. 分部积分法} \ 
+
+\vspace{-3em}
+若$u(x)$, $v(x)$连续可导, 则$[u(x) v(x)]' = u'(x)v(x) + u(x)v'(x)$, 就有
+\[ \int u(x) v'(x) \, dx = u(x) v(x) - \int v(x) u'(x) \, dx \]
+或者
+\[ \underset{\text{难}}{\underline{\int u(x) \, dv(x)}} =
+u(x) v(x) - \underset{\text{易}}{\underline{\int v(x) \, du(x)}}. \]
+
+这种方法适用于函数本身比较难, 但是其导函数比较简单. 这样的函数$ u(x) $一般有
+\[ \begin{matrix}
+\ln x,	& \arctan x,	& \arcsin x	& \text{函数复杂, 导数简单,} \\
+e^x,	& \sin x,		& \cos x		& \text{函数导数, 难度相同.}
+\end{matrix} \]
+
+\exds{1}{\int \ln x \, dx .}
+\begin{align*}
+	\int \underset{u(x)}{\underline{\ln x}} \, \underset{dv(x)}{\underline{dx}}
+		&= x \ln x - \int \underset{v(x)}{\underline{x}} \, \underset{du(x)}{\underline{d\ln x}}
+			&& \reason{\text{分部积分法}} \\
+		&= x \ln x - \int dx
+			&& \reason{d\ln x = \frac{1}{x} \, dx} \\
+		&= x \ln x - x + C .
+			&& \reason{dx = dx}
+\end{align*}
+
+\exds{2}{\int x \arctan x \, dx .}
+\begin{align*}
+	\int x \, \underset{u(x)}{\underline{\arctan x}} \, dx
+		&= \int \arctan x \, d\frac{x^2}{2}
+			&& \reason{d\frac{x^2}{2} = x \, dx} \\
+		&= \frac{x^2}{2} \arctan x - \int \frac{x^2}{2} \, d(\arctan x)
+			&& \reason{\text{分部积分法}} \\
+		&= \frac{x^2}{2} \arctan x - \int \frac{x^2}{2(1+x^2)} \, dx
+			&& \reason{d(\arctan x) = \frac{1}{1+x^2}} \\
+		&= \frac{x^2}{2} \arctan x - \frac{1}{2} \int \paren{1 - \frac{1}{1+x^2}} \, dx
+			&& \reason{\frac{x^2}{1+x^2} = 1 - \frac{1}{1+x^2}} \\
+		&= \frac{1}{2} \paren{x^2 \arctan x - \int dx + \int \frac{dx}{1+x^2}}
+			&& \reason{\text{积分的加法法则}} \\
+		&= \frac{1}{2} [(x^2+1) \arctan x - x] + C .
+			&& \reason{dx = dx,\, d(\arctan x) = \frac{1}{1+x^2}}
+\end{align*}
+
+\exds{3}{\int x^2 e^x \, dx.}
+\begin{align*}
+	\text{原式}
+		&= \int x^2 \, de^x \\
+		&= x^2 e^x - \int e^x \, d(x^2)
+			&& \reason{\text{分部积分法}} \\
+		&= x^2 e^x - 2\int x \, de^x \\
+		&= x^2 e^x - 2\paren{x e^x - \int e^x \, dx}
+			&& \reason{\text{分部积分法}} \\
+		&= (x^2 - 2x + 2) e^x + C.
+\end{align*}
+
+\exds{4}{\int x \sin(2x) \, dx.}
+\begin{align*}
+	\text{原式}
+		&= \frac{1}{2} \int x \, d[-\cos(2x)] \\
+		&= \frac{1}{2} \paren{\int \cos(2x) \, dx - x \cos(2x)}
+			&& \reason{\text{分部积分法}} \\
+		&= \frac{1}{2} \paren{\frac{1}{2} \sin(2x) - x \cos(2x)} + C.
+\end{align*}
+
+\exds{5}{\int e^x \sin x \, dx.}
+\begin{align*}
+	-\int e^x \, d\cos x
+		&= \text{原式}
+		= \int \sin x \, de^x \\
+	- e^x \cos x + \int \cos x \, de^x
+		&= \text{原式}
+		= e^x \sin x - \int e^x \, d\sin x
+			&& \reason{\text{分部积分法}} \\
+	\intertexti{因为$\int \cos x \, de^x = \int e^x \cos x \, dx = \int e^x \, d\sin x$, 所以}
+	\int e^x \cos x \, dx
+		&= \frac{\sin x + \cos x}{2} e^x + C \\
+	\text{原式}
+		&= e^x \sin x - \frac{\sin x + \cos x}{2} e^x + C \\
+		&= \frac{\sin x - \cos x}{2} e^x + C.
+\end{align*}
+
+\end{CJK*}
+\end{document}

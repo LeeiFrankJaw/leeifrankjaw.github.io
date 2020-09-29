@@ -1,0 +1,254 @@
+\documentclass{article}
+
+\usepackage{CJKutf8, amsmath, amsthm, amsfonts, caption}
+\usepackage[a4paper, top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
+\usepackage{hyperref, adjustbox, cancel}
+
+\setlength{\parskip}{12pt}
+\renewcommand{\arraystretch}{2}
+\hypersetup{ colorlinks=true, linkcolor=blue }
+
+\newcommand*{\hangpar}[2]{\hangindent=1cm \textbf{#1}\\[6pt]#2}
+\newcommand*{\veq}{\ensuremath{\mathrel{\:\rotatebox{90}{=}}}}
+\newcommand*{\intertexti}[1]{\intertext{\indent#1}}
+
+\begin{document}
+\begin{CJK*}{UTF8}{gkai}
+\section*{第6章\ 不定积分}
+\subsection*{\S 1. 原函数与不定积分} \ 
+
+\vspace{-3em}
+\textbf{定义: }若函数$f(x)$是函数$ F(x) $在开区间$ \left(a, b\right) $上的导函数,
+则称函数$F(x)$为函数$f(x)$在$(a,b)$上的一个原函数.
+
+\textbf{例: } $ f(x) = \sin x $是在$\mathbb{R}$上的一个函数, 则函数$ F(x) = -\cos x $是
+$ f(x) $在$ \mathbb{R} $上的一个原函数, 因为$ f(x) = F'(x) $.
+
+\begin{table*}[h]
+	\caption*{导数表}
+	\centering
+	\begin{tabular}{ l l }
+		原函数		&	导函数 \\
+		$F(x)$		&	$f(x)$ \\
+		$x^p$		&	$px^{p-1}$ \\
+		$e^x$		&	$e^x$ \\
+		$a^x$		&	$a^x \cdot \ln a$ \\
+		$\ln |x|$	&	$\frac{1}{x}$
+	\end{tabular}
+	\begin{tabular}{ l l }
+		原函数			&	导函数 \\
+		$F(x)$			&	$f(x)$ \\
+		$\log_a |x|$	&	$\frac{1}{x \cdot \ln a}$ \\
+		$\sin x$		&	$\cos x$ \\
+		$\cos x$		&	$-\sin x$ \\
+		$\tan x$		&	$\sec^2 x$
+	\end{tabular}
+	\begin{tabular}{ l l }
+		原函数		&	导函数 \\
+		$F(x)$		&	$f(x)$ \\
+		$\arcsin x$	&	$\frac{1}{\sqrt{1-x^2}}$ \\
+		$\arccos x$&	$-\frac{1}{\sqrt{1-x^2}}$ \\
+		$\arctan x$&	$\frac{1}{1+x^2}$ \\ \ 
+	\end{tabular}
+\end{table*}
+
+\begin{table*}[h]
+	\caption*{原函数表}
+	\centering
+	\begin{tabular}{ l l }
+		函数			&	原函数 \\
+		$f(x)$			&	$F(x)$ \\
+		$x^p(p\ne-1)$	&	$\frac{1}{p+1} x^{p+1}$ \\
+		$e^x$			&	$e^x$ \\
+		$a^x$			&	$\frac{a^x}{\ln a}$ \\
+		$\frac{1}{x}$	&	$\ln |x|$
+	\end{tabular}
+	\begin{tabular}{ l l }
+		函数						&	原函数 \\
+		$f(x)$						&	$F(x)$ \\
+		$\sin x$					&	$-\cos x$ \\
+		$\cos x$					&	$\sin x$ \\
+		$\sec^2 x$					&	$\tan x$ \\
+		$\frac{1}{\sqrt{1-x^2}}$	&	$\arcsin x$
+	\end{tabular}
+	\begin{tabular}{ l l }
+		函数						&	原函数 \\
+		$f(x)$						&	$F(x)$ \\
+		$-\frac{1}{\sqrt{1-x^2}}$	&	$\arccos x$ \\
+		$\frac{1}{1+x^2}$			&	$\arctan x$ \\ \\ \ 
+	\end{tabular}
+\end{table*}
+
+\textbf{问题I: }什么样的$f(x)$在$(a,b)$上存在原函数?
+
+\textbf{答: }\parbox[t]{5in}{
+(1) $ f \in C(a,b) $, 则$ f $在$(a,b)$内一定存在原函数.（下一章, 即第7章）\\
+(2) $f$在$(a,b)$不连续, 是否还有可能存在原函数?}
+
+\textbf{反例}
+\begin{gather*}
+	f(x) =
+	\begin{cases}
+		2x \sin \frac{1}{x} - \cos \frac{1}{x}, & x \ne 0 \\
+		0, & x = 0
+	\end{cases} \label{E:counterExample} \tag{反例}\\
+	F(x) =
+	\begin{cases}
+		x^2 \sin \frac{1}{x}, & x \ne 0 \\
+		0, & x = 0
+	\end{cases}
+\end{gather*}
+$F(x)$在$\mathbb{R}$上是可导函数, 所以有$F'(x) = f(x)$, \ $x \in \mathbb{R}$.
+
+\textbf{问题II: }什么样的函数$f(x)$在$(a,b)$上没有原函数?
+
+\textbf{答: }要回答这个问题, 我们要先回顾一下微分学中学过的Darboux定理.
+
+\hangpar{Darboux定理: }{
+若$F(x)$在$[a,b]$上可导(在$a$点右导数存在, 在b点左导数存在)且$F'(a) = \alpha$,
+$F'(b) = \beta$, $\alpha \ne \beta$, 则对于任何介于$\alpha$, $\beta$的实数$\eta$,
+存在$\xi \in (a,b) $使得$F'(\xi) = \eta$. (导数的介值定理) }
+
+Darboux定理的逆否命题就说明: 不满足介值性质的函数没有原函数.
+
+\textbf{例: }若$f(x)$在$(a,b)$上有第一类间断点, 则$f(x)$在$(a,b)$不满足介值定理,
+从而在$(a,b)$上没有原函数.
+\[f(x) = \begin{cases}
+1, & x \ge 0 \\
+-1, & x < 0
+\end{cases}\]
+$x = 0$是第一类间断点, $f(x)$在$(a,b)\ (a<0, b>0)$上没有原函数.
+
+\textbf{例: }
+\[f(x) = \begin{cases}
+2x \sin \frac{1}{x} - \cos \frac{1}{x} + 2, & x \ne 0 \\
+-2, & x = 0
+\end{cases}\]
+$x=0$是第二类间断点, $f(x)$在$(a,b)\ (a<0, b>0)$上不存在原函数. (cf.~\ref{E:counterExample})
+
+\textbf{问题III: }若$f(x)$在$(a,b)$上有原函数, 有几个原函数?
+
+\textbf{答: }有无数个.
+
+\hangpar{不同原函数之间的关系: }{
+若$F(x)$是$f(x)$在$(a,b)$内的一个原函数, 则$F(x)+C$均为$f(x)$的原函数, 并且$f(x)$的
+所有原函数构成的集合为$\{F(x)+C\}$, 其中$C \in \mathbb{R}$为任意常数.}
+
+\textbf{证明: }
+
+\vspace{-6pt}
+(i) 若$F(x)$是$f(x)$在$(a,b)$上的一个原函数, 则$F'(x)=f(x)$, \ $x\in (a,b)$. 从而$[F(x)+C]' = f(x)$,
+\ $x\in (a,b)$, 所以$F(x)+C$都是$f(x)$的原函数.
+
+(ii) 若$G(x)$是$f(x)$在$(a,b)$上的一个原函数, 则$G'(x)=f(x)=F'(x)$, $x\in (a,b)$, 从而$[G(x) - F(x)]' = 0$,
+$x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \in (a, b)$. \qed
+
+我们称$\{F(x)+C\}$为原函数族, 只要找一个原函数为代表, 就能表示所有的原函数.
+
+\textbf{定义: }我们把原函数族称为$f(x)$的不定积分. 记作
+\[\{F(x)+C\} = \int f(x) \,dx.\]
+\begin{alignat*}{3}
+	F&(x) &&\xrightarrow{\text{求导}} &&f(x) \; \text{导函数} \\
+	F(x) &+ C &&\xleftarrow[\text{不定积分}]{} &&f(x) \\
+	&\veq \\
+	\int f(&x) \, dx && &&\text{互为逆过程}
+\end{alignat*}
+
+通过上面的原函数表, 给每一个函数加上一个$C$, 就可以构成不定积分表.
+
+\hangpar{不定积分的性质}{
+(1) 若$f,g \in R[a,b]$, 则$\int [f(x)+g(x)] \,dx = \int f(x) \,dx + \int g(x) \,dx$\,; \\
+(2) 若$f \in R[a,b]$, $\lambda \in \mathbb{R}$, 则$\int [\lambda f(x)] \,dx = \lambda \int f(x) \,dx$.}
+
+\newpage
+\textbf{对(1)的证明: }
+
+\vspace{-6pt}
+(i) 因为$ (F(x) + G(x))' = F'(x) + G'(x) = f(x) + g(x) $, 所以$ F(x) + G(x) $是$ f(x) + g(x) $的一个原函数.
+
+(ii)
+\begin{align*}
+	\left( \int [f(x) + g(x)] \,dx \right)' = f(x) &+ g(x) \\
+	& \veq \\
+	\left( \int f(x) \,dx + \int g(x) \,dx \right)' = f(x) &+ g(x) \\
+	\intertexti{所以}
+	\int [f(x) + g(x)] \,dx = \int f(x) \,dx &+ \int g(x) \,dx.
+\end{align*} \qed
+
+\textbf{对(2)的证明: }
+
+\vspace{-6pt}
+(i) 因为$ (\lambda F(x))' = \lambda F'(x) = \lambda f(x) $, 所以$ \lambda F(x) $是$ \lambda f(x) $的一个原函数.
+
+(ii)
+\begin{align*}
+	\left( \int \lambda f(x) \,dx \right)' = \lambda &f(x) \\
+	& \veq \\
+	\left( \lambda \int f(x) \,dx \right)' = \lambda &f(x) \\
+	\intertexti{所以}
+	\int \lambda f(x) \,dx = \lambda &\int f(x) \,dx.
+\end{align*} \qed
+
+性质(1)叫做加法法则, 性质(2)叫做数乘法则, 同时使用这两个法则得到:
+\[ \int [\lambda f(x) + \mu g(x)] \,dx = \int \lambda f(x) \,dx + \int \mu g(x) \,dx
+= \lambda \int f(x) \,dx + \mu \int g(x) \,dx. \]
+
+所谓的减法法则, 可以看成上式的特例: 
+\[ \int [f(x) - g(x)] \,dx = \int f(x) \,dx - \int g(x) \,dx \quad (\lambda = 1, \mu = -1). \]
+
+\textbf{例1: }$ \displaystyle \int (3x^2 - 2^x) \,dx. $
+\begin{align*}
+	\int (3x^2 - 2^x) \,dx &= 3 \int x^2 \,dx - \int 2^x \,dx \\
+	&= 3 \left(\frac{x^3}{3} + C\right) - \left(\frac{2^x}{\ln 2} + C\right) \\
+	&= x^3 - \frac{2^x}{\ln 2} + {\color{red} C}.
+\end{align*}
+
+\textbf{例2: }$ \displaystyle \int \frac{x^4}{1+x^2} \, dx. $
+\begin{align*}
+	\intertexti{将这个代入上式}
+	x^4  = (x^4 -1) + 1 &= (x^2-1)(x^2+1) + 1 \\
+	\intertexti{得}
+	\int \frac{x^4}{1+x^2} \, dx
+	&= \int \frac{(x^2-1)(x^2+1) + 1}{1+x^2} \, dx \\
+	&= \int \left(x^2 -1 + \frac{1}{1+x^2}\right) \, dx \\
+	& = \int x^2 \, dx - \int dx + \int \frac{1}{1+x^2} \, dx \\
+	& = \frac{x^3}{3} - x + \arctan x + C.
+\end{align*}
+
+\textbf{例3: }$ \displaystyle \int \frac{\cos 2x}{\cos x - \sin x} \, dx. $
+\begin{align*}
+\intertexti{将倍角公式代入}
+\cos 2x = \cos^2 x - \sin^2 x &= (\cos x + \sin x)(\cos x - \sin x) \\
+\int \frac{(\cos x + \sin x)\cancel{(\cos x - \sin x)}}{\cancel{\cos x - \sin x}} \, dx
+&= \int (\cos x + \sin x) \, dx \\
+&= \int \cos x \, dx + \int \sin x \, dx \\
+&= \sin x - \cos x + C.
+\end{align*}
+
+\textbf{例4: }$ \displaystyle \int \lvert x - 1 \rvert \, dx. $
+\begin{align*}
+	\lvert x - 1 \rvert &= \begin{cases}
+		x - 1, & x \ge 1 \\
+		1 - x, & x < 1
+	\end{cases} \\
+	\int \lvert x - 1 \rvert \, dx &= \begin{cases}
+		\int (x - 1) \, dx, & x \ge 1 \\
+		\int (1 - x) \, dx, & x < 1
+	\end{cases} \\
+	&= \begin{cases}
+		\frac{x^2}{2} - x + C_1, & x \ge 1 \\
+		x - \frac{x^2}{2} + C_2, & x < 1
+	\end{cases} \\
+	\intertexti{为了保证$\int \lvert x - 1 \rvert \, dx$在$x=1$处可导, 则必须保证在此处连续. 所以}
+	C_1 &= C_2 + 1 \\
+	\intertexti{设}
+	F(x) &= \begin{cases}
+		\frac{x^2}{2} - x + 1, & x \ge 1 \\
+		x - \frac{x^2}{2}, & x < 1
+	\end{cases} \\
+	\intertexti{则$ F(x) $为$ \lvert x - 1 \rvert $的一个原函数, 就有}
+	\int \lvert x - 1 \rvert \, dx & = F(x) + C.
+\end{align*}
+
+\end{CJK*}
+\end{document}

@@ -1,0 +1,159 @@
+\input{config.tex}
+
+\input{userCommands.tex}
+
+\begin{document}
+\begin{CJK*}{UTF8}{gkai}
+\subsection*{\S 2. 换元积分法}
+\subsubsection*{一. 第一换元法} \ 
+
+\vspace{-3em}
+设$ \int f(u) \, dx = F(u) + C $且$\varphi(x) \in C^1$,
+则$ \int f(\varphi(x)) \varphi'(x) \, dx = F(\varphi(x)) +C $.
+
+\textbf{证明：}$ (\text{左边})' = f(\varphi(x)) \varphi'(x) = (\text{右边})' $. \qed
+
+在实际使用中, 换元法体现了莱布尼茨微分记号的优越性. 将
+\begin{align*}
+	\varphi'(x) \, dx
+		& = d\varphi(x) \\
+	\intertexti{代入原式, 得}
+	\int f(\varphi(x)) \varphi'(x) \, dx
+		& = \int f(\varphi(x)) \, d\varphi(x)
+	\intertexti{用$ u $代替$ \varphi(x) $}
+		& = \int f(u) \, du \\
+		& = F(u) + C \\
+		& = F(\varphi(x)) + C.
+\end{align*}
+
+\exds{1}{ \int x \sin(x^2) \, dx. }
+
+将$x \, dx = \frac{1}{2} \, dx$代入得
+\begin{align*}
+	\int x \sin(x^2) \, dx
+		&= \frac{1}{2} \int \sin(x^2) \, d(x^2) \\
+	\intertexti{用$u$代替$x^2$}
+		&= \frac{1}{2} \int \sin u \, du \\
+		&= -\frac{1}{2} \cos(u) + C \\
+		&= -\frac{1}{2} \cos(x^2) + C.
+\end{align*}
+
+\exds{2}{ \int \cot x \, dx. }
+\begin{align*}
+	\text{原式}
+		&= \int \frac{\cos x}{\sin x} \, dx
+			&& \reason{ \cot x = \frac{\cos x}{\sin x} }\\
+		&= \int \frac{1}{\sin x} \, d(\sin x)
+			&& \reason{ d\sin x = \cos x \, dx } \\
+		&= \int \frac{du}{u}
+			&& \reason{ u = \sin x } \\
+		&= \ln \abs{u} + C
+			&& \reason{ d\ln \abs{u} = \frac{1}{u} \, du } \\
+		&= \ln \abs{\sin x} + C.
+			&& \reason{ u = \sin x }
+\end{align*}
+
+\exds{3}{ \int \frac{dx}{a^2 + x^2} \qquad (a \ne 0). }
+\begin{align*}
+	\text{原式} &= \frac{1}{a^2} \int \frac{dx}{1+\paren{\frac{x}{a}}^2}
+		&& \reason{ \text{因为$a \ne 0$, 提取因子$\frac{1}{a^2}$} } \\
+	&= \frac{1}{a^2} \int \frac{d(au)}{1+u^2}
+		&& \reason{ u = \frac{x}{a} } \\
+	&= \frac{1}{a} \int \frac{du}{1+u^2}
+		&& \reason{ d(au) = a \, du } \\
+	&= \frac{1}{a}\arctan u + C
+		&& \reason{ d\arctan u = \frac{1}{1+u^2} \, du } \\
+	&= \frac{1}{a}\arctan \frac{x}{a} + C.
+		&& \reason{ u = \frac{x}{a} }
+\end{align*}
+
+\exds{4}{ \int \frac{dx}{\sqrt{a^2 - x^2}} \qquad (a > 0). }
+\begin{align*}
+	\text{原式} &= \frac{1}{a} \int \frac{dx}{\sqrt{1-\paren{\frac{x}{a}}^2}}
+		&& \reason{ \text{因为$a > 0$, 提取因子$\frac{1}{a}$} } \\
+	&= \frac{1}{a} \int \frac{d(au)}{\sqrt{1-u^2}}
+		&& \reason{ u = \frac{x}{a} } \\
+	&= \int \frac{du}{\sqrt{1-u^2}}
+		&& \reason{ d(au) = a \, du } \\
+	&= \arcsin u + C
+		&& \reason{ d\arcsin u = \frac{1}{\sqrt{1-u^2}} \, du } \\
+	&= \arcsin \frac{x}{a} + C.
+		&& \reason{ u = \frac{x}{a} }
+\end{align*}
+
+\subsection*{二. 第二换元法} \ 
+
+\vspace{-3em}
+设$ f(x) $为连续函数, $ x = \varphi(t) $连续可导且有反函数, 则
+\[ \int f(x) \, dx = \int f(\varphi(t)) \varphi'(t) \, dt. \]
+
+若右边的原函数可求得, 记\ds{ G(t) = \int f(\varphi(t)) \varphi'(t) \, dt }, 则
+\[ \int f(x) \, dx = G(\varphi^{-1}(x)) + C. \]
+
+\exds{1}{ \int \sqrt{a^2 - x^2} \, dx. }
+\begin{align*}
+	\intertexti{假设$ a > 0 $, 则$ -a \le x \le a$}
+	\text{原式} &= \int a(\sqrt{1-\sin^2 t}) \, d(a\sin t)
+		&& \reason{x = a \sin t, \  t \in [-\frac{\pi}{2}, \frac{\pi}{2}] } \\
+	&= a^2 \int \cos^2 t \, dt
+		&& \reason{ \cos t = \sqrt{1-\sin^2 t},\ d(a\sin t) = a\cos t \, dt } \\
+	&= a^2 \int \frac{1+\cos 2t}{2} \, dt
+		&& \reason{ \cos^2 t = \frac{1+\cos 2t}{2} } \\
+	&= \frac{a^2}{2} t + \frac{\sin 2t}{4} + C
+		&& \reason{ d\frac{t}{2} = \frac{1}{2} \, dt,\ d\frac{\sin 2t}{4} = \frac{\cos 2t}{2} \, dt } \\
+	&= \frac{a^2}{2} \arcsin \frac{x}{a} + \frac{ \sin(2\arcsin\frac{x}{a})}{2} + C.
+		&& \reason{ t = \arcsin\frac{x}{a} }
+\end{align*}
+
+\exds{2}{ \int \frac{dx}{\sqrt{x^2 - a^2}}. }
+
+假设$a>0$, 则$x>a$或$x<-a$
+\begin{align*}
+	\text{原式} &= \int \frac{dx}{a \sqrt{\sec^2 t - 1}}
+		&& \reason{ x = a\sec t, \  t \in (0, \frac{\pi}{2}) } \\
+	&= \int \frac{ \bcancel{a} \sec t \,\cancel{\tan t} }{\bcancel{a} \,\cancel{\tan t}} \, dt
+		&& \reason{ d(a\sec t) = a \sec t \tan t \, dt } \\
+	&= \int \frac{dt}{\cos t}
+		&& \reason{ \sec t = \frac{1}{\cos t} } \\
+	&= \int \frac{\cos t \, dt}{\cos^2 t}
+		&& \reason{ \text{分子分母同乘以$\cos t$} } \\
+	&= \int \frac{d\sin t}{1 - \sin^2 t}
+		&& \reason{ d\sin t = \cos t \, dt, \  \cos^2 t = 1 - \sin^2 t} \\
+	&= \int \frac{du}{1-u^2}
+		&& \reason{ u = \sin t } \\
+	&= \frac{1}{2}\paren{\int \frac{du}{1-u} + \int \frac{du}{1+u} }
+		&& \reason{ \frac{1}{1-u^2} = \frac{1}{2}\paren{\frac{1}{1-u} + \frac{1}{1+u}} } \\
+	&= \frac{1}{2}(\ln \abs{1+u} - \ln \abs{1-u} + C)
+		&& \reason{ d\ln \abs{1+u} = \frac{1}{1+u},\ d\ln \abs{1-u} = -\frac{1}{1-u} } \\
+	&= \frac{1}{2} \ln \abs{\frac{1+\sin t}{1 - \sin t}} + C
+		&& \reason{ \text{对数的性质},\ u = \sin t } \\
+	&= \frac{1}{2} \ln \abs{ \frac{1 + \sqrt{1-\paren{\frac{a}{x}}^2}}
+								{1 - \sqrt{1-\paren{\frac{a}{x}}^2}} } + C
+		&& \reason{ \sin^2 t = 1 - \paren{\frac{a}{x}}^2} \\
+	&= \frac{1}{2} \ln \abs{ \frac{\paren{1 + \sqrt{1-\paren{\frac{a}{x}}^2}}^2}
+								{\paren{\frac{a}{x}}^2} } +C
+		&& \reason{\text{分母有理化}} \\
+	&= \ln \paren{x + \sqrt{x^2-a^2}} + C.
+		&& \reason{\text{对数的性质}}
+\end{align*}
+
+\exds{3}{ \int \frac{dx}{x^2 \sqrt{x^2+1}}. }
+\begin{align*}
+	\text{原式} &= \int \frac{d\tan t}{\tan^2 t \sqrt{\tan^2 t + 1}}
+		&& \reason{\text{$x = \tan t$,
+						因为$x \ne 0$,
+						所以$t \in (-\frac{\pi}{2},\frac{\pi}{2})\setminus\{0\}$}} \\
+	&= \int \frac{\sec^{\cancel{2}} t \, dt}{\tan^2 t \,\cancel{\sec t}}
+		&& \reason{ \sec^2 t - \tan^2 t = 1 } \\
+	&= \int \frac{\cos t \, dt}{\sin^2 t}
+		&& \reason{ \sec t = \frac{1}{\cos t},\  \tan t = \frac{\sin t}{\cos t} } \\
+	&= \int \frac{d\sin t}{\sin^2 t}
+		&& \reason{ d\sin t = \cos t \, dt } \\
+	&= -\frac{1}{\sin t} + C
+		&& \reason{ \int u^p \, du = \frac{u^{p+1}}{p+1} + C } \\
+	&= -\frac{\sqrt{1+x^2}}{x} + C.
+		&& \frac{1}{\sin t} = \frac{\sqrt{1+x^2}}{x}
+\end{align*}
+
+\end{CJK*}
+\end{document}
