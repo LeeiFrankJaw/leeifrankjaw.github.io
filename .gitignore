@@ -10,3 +10,6 @@ img/129254852_*.jpg
 /pac.txt
 *.p12
 *.pem
+*.aux
+*.out
+*.gz

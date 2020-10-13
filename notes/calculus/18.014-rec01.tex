@@ -1,0 +1,66 @@
+\input{preamble-mt}
+
+\title{\bf Solutions to Recitation 1}
+\author{Lei Zhao}
+% \date{}
+
+\begin{document}
+\maketitle
+This is my own solution to the recitation assignment of
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/recitations/}{18.014}.
+
+This assignment includes exercise 10, 15, and 18 from page 16 of
+Apostol's \emph{Calculus, Vol.1}, 1967.
+
+
+\Prblm{1}{Prove \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\) and
+  \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).} {Let
+  \(X = A \cap (B \cup C)\) and \(Y = (A \cap B) \cup (A \cap C)\).
+  If \(x \in X\), then \(x \in A\) and \(x \in B \cup C\), which means
+  \(x \in B\) or \(x \in C\).  If \(x \in B\), then
+  \(x \in A \cap B\), which implies \(x \in Y\).  Similarly if
+  \(x \in C\), we can also deduce \(x \in Y\).  In both cases, we have
+  \(x \in Y\); hence, \(X \subseteq Y\).  Conversely, if \(x \in Y\),
+  then \(x \in A \cap B\) or \(x \in A \cap C\).  If
+  \(x \in A \cap B\), then \(x \in A\) and \(x \in B\), which implies
+  \(x \in B \cup C\). Thus \(x \in X\).  By the same fasion if
+  \(x \in A \cap C\), \(x \in X\).  In both cases, we have
+  \(x \in X\).  This is to say \(Y \subseteq X\).  Therefore,
+  \(X = Y\). \qed}
+
+{\parasp Let \(X = A \cup (B \cap C)\) and
+  \(Y = (A \cup B) \cap (A \cup C)\).  If \(x \in X\), then
+  \(x \in A\) or \(x \in B \cap C\).  If \(x \in A\), then
+  \(x \in A \cup B\) and \(x \in A \cup C\), which is the same as
+  \(x \in Y\).  If \(x \in B \cap C\), then \(x \in B\) and
+  \(x \in C\), which further implies that \(x \in B \cup A\) and
+  \(x \in C \cup A\); hence \(x \in Y\).  In both cases, we have
+  \(x \in Y\); thus \(X \subseteq Y\).  Conversely, if \(x \in Y\),
+  then \(x \in A \cup B\) and \(x \in A \cup C\).  If \(x \in A\),
+  then \(x \in X\).  If \(x \notin A\), it must be the case that
+  \(x \in B\) and \(x \in C\).  This is to say \(x \in B \cap C\),
+  which implies \(x \in X\).  In both cases, we have \(x \in X\);
+  hence \(Y \subseteq X\).  Therefore, \(X = Y\). \qed}
+
+\Prblm{2}{Prove that if \(A \subseteq C\) and \(B \subseteq C\), then
+  \(A \cup B \subseteq C\).}  {If \(x \in A \cup B\), then \(x \in A\)
+  or \(x \in B\).  If \(x \in A\), then by \(A \subseteq C\) we have
+  \(x \in C\).  Similarly, if \(x \in B\), then by \(B \subseteq C\)
+  we have \(x \in C\).  Hence, \(A \cup B \subseteq C\). \qed}
+
+
+\Prblm{3}{Prove \(A - (B \cap C) = (A-B) \cup (A-C)\).}  {Let
+  \(X = A - (B \cap C)\) and \(Y = (A-B) \cup (A-C)\).  If
+  \(x \in X\), then \(x \in A\) and \(x \notin B \cap C\), which means
+  it is not the case that \(x \in B\) and \(x \in C\).  This is the
+  same as saying \(x \notin B\) or \(x \notin C\).  If \(x \notin B\),
+  then \(x \in A-B\), which implies \(x \in Y\).  And if
+  \(x \notin C\), then \(x \in A-C\), which also implies \(x \in Y\).
+  Thus \(X \subseteq Y\).  Conversely, if \(x \in Y\), then
+  \(x \in A-B\) or \(x \in A-C\).  If \(x \in A-B\), then \(x \in A\)
+  and \(x \notin B\), which implies \(x \notin B \cap C\).  Thus
+  \(x \in X\).  Similarly if \(x \in A-C\), we deduces that
+  \(x \in X\).  This means \(Y \subseteq X\).  Therefore, \(X =
+  Y\). \qed}
+
+\end{document}
