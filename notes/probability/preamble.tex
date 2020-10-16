@@ -1,0 +1,87 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{mathtools,amssymb,amsthm}
+\usepackage[hmargin=1in,vmargin=1in]{geometry}
+\usepackage{graphicx,cancel}
+\usepackage[math-style=TeX]{unicode-math}
+% \usepackage[lite,subscriptcorrection,nofontinfo]{mtpro2}
+\usepackage{fontspec}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+
+\defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
+\setmainfont{Palatino Linotype}
+\setmathfont{TeX Gyre Pagella Math}
+%\usepackage[integrals]{wasysym}
+\frenchspacing
+
+\newcommand*{\parasp}{\setlength{\parskip}{10pt plus 2pt minus 3pt}}
+\newcommand*{\noparasp}{\setlength{\parskip}{0pt plus 1pt}}
+\newcommand*{\setparasp}[1]{\setlength{\parskip}{#1}}
+\newcommand*{\pskip}{\vskip 10pt plus 2pt minus 3pt}
+\newcommand\LEFTRIGHT[3]{\left#1 #3 \right#2}
+\newcommand*{\paren}[1]{\LEFTRIGHT(){#1}}
+\newcommand*{\brkt}[1]{\LEFTRIGHT[]{#1}}
+\newcommand*{\unit}[1]{\,\mathrm{#1}}
+\newcommand*{\DeclareUnit}[2]{\newcommand*{#1}{\unit{#2}}}
+\DeclareUnit{\cm}{cm}
+% \renewcommand*{\m}{\unit{m}}
+\DeclareUnit{\m}{m}
+\DeclareUnit{\kg}{kg}
+\DeclareUnit{\s}{s}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\Rp}{(0,+\infty)}
+\newcommand*{\Rm}{(-\infty,0)}
+\newcommand*{\deduce}{\mathrel{\Downarrow}}
+\newcommand*{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand*{\reason}[1]{\langle \, \text{#1} \, \rangle}
+
+\newcounter{ListCounter}
+\newenvironment{enumerate*}%
+{\begin{list}%
+        {\arabic{ListCounter}.}%
+        {\usecounter{ListCounter}%
+            \setlength{\topsep}{1.5pt}%
+            \setlength{\itemsep}{1.5pt} } }%
+    {\end{list}}
+
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\gammaf}{\Gamma}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\Ber}{Bernoulli}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\E}{E}
+%\newcommand*{\diff}{\mathop{}\!d}
+\newcommand*{\diff}{\mathop{}\!\mathit{d}}
+%\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand*{\dx}{\diff x}
+\newcommand*{\dy}{\diff y}
+\newcommand*{\dt}{\diff t}
+\newcommand*{\du}{\diff u}
+\newcommand*{\dv}{\diff v}
+\newcommand*{\dtheta}{\diff \theta}
+\newcommand*{\ddx}{\frac{\diff}{\dx}}
+\newcommand*{\fwdf}{\mathop{}\!\Delta}
+\newcommand*{\dydx}{\frac\dy\dx}
+\newcommand*{\pdpdx}{\frac\partial{\partial x}}
+\newcommand*{\pdpdy}{\frac\partial{\partial y}}
+\newcommand*{\pdpdz}{\frac\partial{\partial z}}
+\newcommand*{\pdpdu}{\frac\partial{\partial u}}
+\newcommand*{\pdpdv}{\frac\partial{\partial v}}
+\newcommand*{\pdpdt}{\frac\partial{\partial t}}
+\newcommand*{\pdzpdx}{\frac{\partial z}{\partial x}}
+\newcommand*{\pdzpdy}{\frac{\partial z}{\partial y}}
+\newcommand*{\pdzpdt}{\frac{\partial z}{\partial t}}
+\newcommand*{\pdxpdt}{\frac{\partial x}{\partial t}}
+\newcommand*{\pdypdt}{\frac{\partial y}{\partial t}}
+
+\AtBeginDocument{%
+	\renewcommand{\perp}{\mathrel{\bot}}
+	\let\leq\leqslant
+	\let\le\leq}
+
+\newcommand*{\Prb}[1]{\section*{Problem #1}}
+\newcommand{\Q}[1]{\textbf{Question:} #1}
+\newcommand*{\A}[1]{\textbf{Answer:} #1}
+\newcommand{\Prblm}[3]{\Prb{#1} \Q{#2} \\[6pt] \A{#3}}

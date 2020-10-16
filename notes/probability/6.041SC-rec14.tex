@@ -1,0 +1,137 @@
+\input{preamble}
+
+\title{Solutions to Recitation 14}
+\author{Lei Zhao}
+
+\begin{document}
+\maketitle
+
+This is my own solutions to the recitation 14 problems from
+\href{https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/unit-iii/lecture-13/}{6.041\textsc{sc}}.
+
+\begin{enumerate}
+\item You are visiting the rainforest, but unfortunately your insect
+  repellent has run out.  As a result, at each second, a mosquito
+  lands on your neck with probability \(0.5\).  If one lands, with
+  probability \(0.2\) it bites you, and with probability \(0.8\) it
+  never bothers you, independently of other mosquitoes.
+
+  \begin{enumerate} \parasp
+  \item What is the expected time between successive mosquito bites?
+    What is the variance of the time between successive mosquito
+    bites?
+
+    At each second, the probability that a mosquito lands on your neck
+    and bites you is \(0.5 \times 0.2 = 0.1\).  As the length of first
+    string of losing days discussed in the lecture, the time between
+    successive mosquito bites have the same model.  It is a geometric
+    variable with parameter \(0.1\). So the expected time is
+    \(1/0.1 = 10\) and the variance is \((1-0.1)/0.1^2 = 90\).
+
+  \item In addition, a tick lands on your neck with probability
+    \(0.1\).  If one lands, with probability \(0.7\) it bites you, and
+    with probability \(0.3\), it never bothers you, independently of
+    other ticks and mosquitoes.  Now, what is expected time between
+    successive bug bites?  What is the variance of the time between
+    successive bug bites?
+
+    This is a merging of two Bernoulli processes into another Bernoulli
+    process.  At each second, the probability that a bug bites you is
+    \(1 - (1 - 0.5 \times 0.2)(1 - 0.1 \times 0.7) = 0.163\).  The time
+    between successive bug bites is a geometric random variable with
+    parameter \(0.163\).  Thus the expecation is \(1/0.163 \approx 6.135\)
+    and the variance \((1-0.163)/0.163^2 \approx 31.503\).
+  \end{enumerate}
+
+\item Al performs an experiment comprising a series of independent
+  trials.  On each trial, he simultaneously flips a set of three fair
+  coins.
+
+  \begin{enumerate} \parasp
+  \item Given that Al has just had a trial with \(3\) \emph{tails},
+    what is the probability that both of the next two trials will also
+    have this result?
+
+    Since these trials are independent, what happened in the past has no
+    influence on what will happen in the future.  So the probability is
+    simply \((1/2)^3 (1/2)^3 = 1/64\).
+
+  \item Whenever all three coins land on the same side in any given
+    trial, Al calls the trial a success. \noparasp
+
+    \begin{enumerate} \parasp
+    \item Find the \textsc{pmf} for \(K\), the number of trials up to, but
+      \emph{not} including, the second success.
+
+      At each trial, the probability of success is \(2 \times (1/2)^3 = 1/4\).
+      Thus the \textsc{pmf} is
+
+      \[ p_K(k) = \left(\frac34\right)^k \frac14 = \frac{3^k}{4^{k+1}}. \]
+
+    \item Find the expectation and variance of \(M\), the number of tails that
+      occur \emph{before} the first success.
+
+      Let \(G\) be the geometric random variable with parameter \(1/4\) and
+      \(X_i\) is the number of tails in trial \(i\).  Trials are independent
+      from each other and so are \(X_i\).  Conditioned on \(G\), we have
+      \begin{align*}
+        \E[M \mid G = g] &= \E[\sum_{i=1}^{g-1} X_i \mid G = g] \\
+                         &= \sum_{i=1}^{g-1} \E[X_i \mid G = g] \\
+                         &= \sum_{i=1}^{g-1} \sum_{j=1}^2 j \, p_{X_i \mid G}(j \mid g) \\
+                         &= \sum_{i=1}^{g-1} \left(\frac{{3 \choose 1} (1/2)^3}{1 - 2 (1/2)^3} + 2\frac{{3 \choose 2} (1/2)^3}{1 - 2 (1/2)^3}\right) \\
+                         &= \sum_{i=1}^{g-1} \frac32 = \frac32 (g-1),
+      \end{align*}
+      and
+      \begin{align*}
+        \var(M \mid G = g) &= \var(\sum_{i=1}^{g-1} X_i \mid G = g) \\
+                           &= \sum_{i=1}^{g-1} \var(X_i \mid G = g) \\
+                           &= \sum_{i=1}^{g-1} \left(\left(1- \frac32\right)^2 \frac12 + \left(2 - \frac32\right)^2 \frac12\right) \\
+        &= \sum_{i=1}^{g-1} \frac14 = \frac14 (g-1).
+      \end{align*}
+      By applying law of iterated expectation, we have
+      \begin{align*}
+        \E[M] &= \E[\E[M \mid G]] \\
+              &= \E[\frac32 (G-1)] \\
+              &= \frac32 (\E[G] - 1) = \frac92.
+      \end{align*}
+      By applying law of total variance, we have
+      \begin{align*}
+        \var(M) &= \E[\var(M \mid G)] + \var(\E[M \mid G]) \\
+                &= \E[\frac14 (G-1)] + \var(\frac32 (G-1)) \\
+                &= \frac14 (\E[G] - 1) + \paren{\frac32}^2 \var(G) \\
+                &= \frac34 + 27 = \frac{111}{4} = 27.75.
+      \end{align*}
+    \end{enumerate}
+  \item Bob conducts an experiment like Al’s, except that he uses 4 coins
+    for the first trial, and then he obeys the following rule: Whenever
+    all of the coins land on the same side in a trial, Bob permanently
+    removes one coin from the experiment and continues with the trials.
+    He follows this rule until the \emph{third} time he removes a coin, at
+    which point the experiment ceases. Find \(\E[N]\), where \(N\) is the
+    number of trials in Bob’s experiment. \parasp
+
+    It can be easily shown that \(N\) is a sum of three geometric random
+    variables \(G_1\), \(G_2\), \(G_3\) with parameter \(1/8\), \(1/4\),
+    and \(1/2\) respectively. Thus
+    \(\E[N] = \E[G_1+ G_2 + G_3] = \E[G_1] + \E[G_2] + \E[G_3] = 8 + 4 + 2
+    = 14\).
+  \end{enumerate}
+\item Suppose there are \(n\) papers in a drawer.  You draw a paper and
+  sign it, and then, instead of filing it away, you place the paper back
+  into the drawer.  If any paper is equally likely to be drawn each time,
+  independent of all other draws, what is the expected number of papers
+  that you will draw before signing all \(n\) papers?  You may leave your
+  answer in the form of a summation. \parasp
+
+  Let \(N\) be such the number of papers.  This also can be seen as a sum
+  of \(n\) geomeric random variables \(N_1\), \(N_2\), \dots, \(N_n\) with
+  parameter \(n/n\), \((n-1)/n\), \dots, \(1/n\).  Notice that the first
+  random variable is degenerate.  The expected number is
+  \begin{align*}
+    \E[N] &= \E[N_1 + N_2 + \dots + N_n] \\
+          &= \E[N_1]+ \E[N_2] + \dots + \E[N_n] \\
+          &= \frac{n}{n} + \frac{n}{n-1} + \dots + \frac{n}{1} \\
+          &= n \sum_{k=1}^n \frac1k = n \, H_n.
+  \end{align*}
+\end{enumerate}
+\end{document}
