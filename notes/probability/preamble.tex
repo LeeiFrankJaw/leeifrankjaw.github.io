@@ -57,6 +57,7 @@
 %\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
 \newcommand*{\dx}{\diff x}
 \newcommand*{\dy}{\diff y}
+\newcommand*{\dz}{\diff z}
 \newcommand*{\dt}{\diff t}
 \newcommand*{\du}{\diff u}
 \newcommand*{\dv}{\diff v}
@@ -79,7 +80,9 @@
 \AtBeginDocument{%
 	\renewcommand{\perp}{\mathrel{\bot}}
 	\let\leq\leqslant
-	\let\le\leq}
+	\let\le\leq
+        \let\geq\geqslant
+        \let\ge\geq}
 
 \newcommand*{\Prb}[1]{\section*{Problem #1}}
 \newcommand{\Q}[1]{\textbf{Question:} #1}

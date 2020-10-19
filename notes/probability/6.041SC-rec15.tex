@@ -1,0 +1,218 @@
+\input{preamble}
+
+\title{Solutions to Recitation 15}
+\author{Lei Zhao}
+
+\hyphenpenalty=687
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item Beginning at time \(t = 0\), we begin using bulbs, one at a
+  time, to illuminate a room.  Bulbs are replaced immediately upon
+  failure.  Each new bulb is selected independently by an equally
+  likely choice between a type-A bulb and a type-B bulb.  The
+  lifetime, \(X\), of any particular bulb of a particular type is a
+  random variable, independent of everything else, with the following
+  \textsc{pdf}:
+  \begin{center}
+    \begin{tabular}{rl}
+      for type-A bulbs:
+      & \(f_X(x) =
+        \begin{cases}
+          \mathrlap{e^{-x},} \hphantom{3e^{-3x},} & x \geq 0, \\
+          0,     & \text{otherwise;}
+        \end{cases}\) \\[1.5em]
+      for type-B bulbs:
+      & \(f_X(x) =
+        \begin{cases}
+          3e^{-3x}, & x \geq 0, \\
+          0,       & \text{otherwise.}
+        \end{cases}\)
+    \end{tabular}
+  \end{center}
+
+  \begin{enumerate} \parasp
+  \item Find the expected time until the first failure.
+
+    Let \(Y\) be the random variable such that \(Y=0\) whenever type-A
+    bulb is chosen and \(Y=1\) whenever type-B bulb is chosen.  The
+    expected time until the first failure actually is \(\E[X]\).  By
+    the law of iterated expectation, we have
+    \begin{align*}
+      \E[X] &= \E[\E[X \mid Y]] \\
+            &= p_Y(0) \E[X \mid Y=0] + p_Y(1) \E[X \mid Y=1] \\
+            &= \frac12 + \frac12 \cdot \frac13 = \frac23.
+    \end{align*}
+
+  \item Find the probability that there are no bulb failures before
+    time \(t\).
+
+    This probabity is \(P(X > t)\).  By total probability theorem, we
+    have
+    \begin{align*}
+      P(X > t) &= P(Y=0) P(X > t \mid Y=0) + P(Y=1) P(X > t \mid Y=1) \\
+               &= \frac12  \int_t^{+\infty} e^{-x} \dx + \frac12 \int_t^{+\infty} 3e^{-3x} \dx \\
+               &= \left.\frac12 e^{-x}\right\vert_{+\infty}^t + \left.\frac12 e^{-3x}\right\vert_{+\infty}^t \\
+               &= \frac12 (e^{-t} + e^{-3t}).
+    \end{align*}
+
+  \item Given that there are no failures until time \(t\), determine
+    the conditional probability that the first bulb used is a type-A
+    bulb.
+
+    By Bayes' theorem, we have
+    \begin{align*}
+      P(Y=0 \mid X > t) &= \frac{P(Y=0) P(X > t \mid Y=0)}{P(X > t)} \\
+                        &= \frac{e^{-t}/2}{(e^{-t} + e^{-3t})/2} \\
+                        &= \frac1{1+e^{-2t}}.
+    \end{align*}
+
+  \item Determine the probability that the total period of
+    illumination provided by the first two type-B bulbs is longer than
+    that provided by the first type-A bulb.
+
+    Let \(X_1\), \(X_2\) be the lifetime of first two type-B bulbs and
+    \(X_3\) be the lifetime of first type-A bulb.  The probability to be
+    determined is actually \(P(X_1+X_2 > X_3) = P(X_1 + X_2 - X_3 > 0)\).
+    Let \(S = X_1 + X_2\) and \(Z = S - X_3\).  By Erlang distribution,
+    when \(s \geq 0\) we have
+    \[ f_S(s) = \frac{3^2se^{-3s}}{(2-1)!} = 9se^{-3s}.\]
+    By convolution formula, we have
+    \begin{align*}
+      f_Z(z) &= \int_{-\infty}^{+\infty} f_S(s) f_{-X_3}(z-s) \diff s \\
+             &= \int_{-\infty}^{+\infty} f_S(s) f_{X_3}(s-z) \diff s \\
+             &= \int_{\max(0, z)}^{+\infty} 9se^{-3s} e^{-(s-z)} \diff s \\
+             &= 9e^z \int_{\max(0, z)}^{+\infty} se^{-4s} \diff s \\
+             &= \frac94 e^z \left.\paren{s+\frac14} e^{-4s}\right\vert_{+\infty}^{\max(0, z)} \\
+             &=
+               \begin{cases}
+                 \frac{9}{16} e^z, & z \leq 0, \\[1em]
+                 \frac94 \paren{z+\frac14} e^{-3z}, & z > 0.
+               \end{cases}
+    \end{align*}
+    Thus the probability to be determined is
+    \begin{align*}
+      P(Z > 0) &= 1 - P(Z \leq 0) \\
+               &= 1 - \int_{-\infty}^0 \frac{9}{16} e^z \dz \\
+               &= 1 - \frac{9}{16} = \frac{7}{16}.
+    \end{align*}
+
+  \item Suppose the process terminates as soon as a total of exactly
+    \(12\) bulb failures have occurred. Determine the expected value and
+    variance of the total period of illumination provided by type-B
+    bulbs while the process is in operation.
+
+    Let \(K\) be the number of type-B bulbs occurred in the process
+    and \(X\) be the total period of illumination provided by type-B
+    bulbs.  Fix \(K = k\), we have
+    \begin{gather*}
+      \E[X \mid K=k] = \frac{k}{3} \\
+      \intertext{and}
+      \var(X \mid K=k) = \frac{k}{9}.
+    \end{gather*}
+    Therefore,
+    \begin{gather*}
+      \E[X \mid K] = \frac{K}{3} \\
+      \intertext{and}
+      \var(X \mid K) = \frac{K}{9}.
+    \end{gather*}
+    By law of iterated expectation and law of total variance, we have
+    \begin{align*}
+      \E[X] &= \E[\E[X \mid K]] \\
+            &= \E[K/3] \\
+            &= \frac13\E[K] \\
+            &= \frac13 \cdot 12 \cdot \frac12= 2 \\
+      \intertext{and}
+      \var(X) &= \E[\var(X \mid K)] + \var(\E[X \mid K]) \\
+            &= \E[K/9] + \var(K/3) \\
+            &= \frac19 \E[K] + \frac19 \var(K) \\
+            &= \frac19 (6 + 3) = 1.
+    \end{align*}
+
+  \item Given that there are no failures until time \(t\), find the
+    expected value of the time until the first failure.
+
+    The entire process is not memoryless; however, condtioned upon chosen
+    type of bulbs, the conditional probability of bulb lifetime is
+    memeryless.  Using notation from (a)--(c), we have
+    \begin{align*}
+      \E[X \mid X > t] &= t + \E[X-t \mid X>t] \\
+                       &= t + P(Y=0 \mid X>t) \E[X-t \mid X>t, Y=0] \\
+                       &\phantom{{}=t} + P(Y=1 \mid X>t) \E[X-t \mid X>t, Y=1] \\
+                       &= t + \frac1{1+e^{-2t}} + \frac1{3(1+e^{2t})}.
+    \end{align*}
+  \end{enumerate}
+
+\item A service station handles jobs of two types, A and B.  (Multiple
+  jobs can be processed simultane­ously.)  Arrivals of the two job
+  types are independent Poisson processes with parameters \(λ_A=3\)
+  and \(λ_B=4\) per minute, respectively.  Type A jobs stay in the
+  service station for exactly one minute.  Each type B job stays in
+  the service station for a random but integer amount of time which is
+  geometrically distributed, with mean equal to \(2\), and independent
+  of everything else.  The service station started operating at some
+  time in the remote past.
+  
+  \begin{enumerate} \parasp
+  \item What is the mean, variance, and \textsc{pmf} of the total
+    number of jobs that arrive within a given three-minute interval?
+
+    Let \(K\) be the total number of job arrivals within a given
+    three-minute interval.  The merging of two Poisson process is
+    another Poisson process with parameter \(\lambda_A + \lambda_B\),
+    thus we have
+    \begin{gather*}
+      p_K(k) = \frac{(3(3+4))^k}{k!} e^{-3(3+4)} = \frac{21^k}{k!} e^{-21}, \\[1em]
+      \E[K] = 21, \\
+      \intertext{and}
+      \var(K) = 21.
+    \end{gather*}
+
+  \item We are told that during a \(10\)-minute interval, exactly \(10\) new
+    jobs arrived.  What is the probability that exactly \(3\) of them are
+    of type A?
+
+    Since the number of type A and type B job arrivals during a 10-minute
+    interval is indepent from each other.  Let \(K_{\lambda \tau}\)
+    denoate the Poisson random variable with parameter \(\lambda \tau\), the
+    probability to be determined is
+    \begin{align*}
+      P(K_{3\times10} = 3 \mid K_{(3+4)\times10} = 10)
+      &= \frac{P(K_{30} = 3) \, P(K_{40} = 7)}{P(K_{70} = 10)} \\
+      &= \frac{\frac{30^{3}}{3!} e^{-30} \, \frac{40^{7}}{7!} e^{-40}}{\frac{70^{10}}{10!} e^{-70}} \\
+      &= \binom{10}{3} \paren{\frac37}^3 \paren{\frac47}^7 \approx 18.79\%.
+    \end{align*}
+
+  \item At time \(0\), no job is present in the service station.  What is
+    the \textsc{pmf} of the number of type B jobs that arrive in the
+    future, but before the first type A arrival?
+
+    Let \(K\) denote the number of type B job arrival before the first
+    type A job arrival and \(X\) denote the time of first type A arrival.
+    Then, we have
+    \[P(K=k \mid X=t) = \frac{(4t)^k}{k!} e^{-4t}\]
+    and
+    \begin{align*}
+      P(K) &= \int_0^{+\infty} f_X(t) P(K=k \mid X=t) \dt \\
+           &= \frac{3 \times 4^k}{k!} \int_0^{+\infty} t^k \, e^{-7t} \dt.
+    \end{align*}
+  \end{enumerate}
+
+\item Let \(X\), \(Y\), and \(Z\) be independent exponential random
+  variables with parameters \(λ\), \(μ\), and \(ν\), respectively.  Find
+  \(P(X < Y < Z)\).
+
+  \begin{align*}
+    P(X < Y < Z) &= \iiint_{\{(x,y,z) \mid x < y <z\}} f_X(x) f_Y(y) f_Z(z) \dx \dy \dz \\
+                 &= \int_0^{+\infty} \int_x^{+\infty} \int_y^{+\infty} f_X(x) f_Y(y) f_Z(z) \dz \dy \dx \\
+                 &= \int_0^{+\infty} f_X(x) \int_x^{+\infty} f_Y(y) \int_y^{+\infty} f_Z(z) \dz \dy \dx \\
+                 &= \int_0^{+\infty} \lambda e^{-\lambda x} \int_x^{+\infty} \mu e^{-\mu y} \int_y^{+\infty} \nu e^{-\nu z} \dz \dy \dx \\
+                 &= \int_0^{+\infty} \lambda e^{-\lambda x} \int_x^{+\infty} \mu e^{-(\mu+\nu)y} \dy \dx \\
+                 &= \frac{\lambda \mu}{\mu + \nu} \int_0^{+\infty} e^{-(\lambda + \mu + \nu)x} \dx \\
+                 &= \frac{\lambda \mu}{(\mu + \nu)(\lambda + \mu + \nu)}.
+  \end{align*}
+\end{enumerate}
+
+\end{document}
