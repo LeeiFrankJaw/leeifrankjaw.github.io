@@ -1,0 +1,125 @@
+\input{preamble}
+
+\title{Solutions to Recitation 17}
+\author{Lei Zhao}
+
+\hyphenpenalty=687
+
+\begin{document}
+\maketitle
+
+This is my own solutions to the problems from recitation 17 of
+\href{https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/unit-iii/lecture-15/}{6.041\textsc{sc}}.
+
+\begin{enumerate}
+\item Iwana Passe is taking a multiple-choice exam.  You may assume that the
+  number of questions is infinite.  \emph{Simultaneously, but independently}, her
+  conscious and subconscious faculties are generating answers for her, each
+  in a Poisson manner.  (Her conscious and subconscious are always working
+  on different questions.)  Conscious responses are generated at the rate
+  \(λ_c\) responses per minute.  Subconscious responses are generated at the
+  rate \(λ_s\) responses per minute.  Assume \(λ_c \ne λ_s\).  Each
+  conscious response is an independent Bernoulli trial with probability
+  \(p_c\) of being correct.  Similarly, each subconscious response is an
+  independent Bernoulli trial with probability \(p_s\) of being correct.
+  Iwana responds only once to each question, and you can assume that her
+  time for recording these conscious and subconscious responses is
+  negligible.
+  \begin{enumerate} \parasp
+  \item Determine \(p_K(k)\), the probability mass function for the number
+    of conscious responses Iwana makes in an interval of \(T\) minutes.
+
+    \[p_K(k) = \frac{(\lambda_c T)^k}{k!} e^{-\lambda_c T}.\]
+
+  \item If we pick any question to which Iwana has responded, what is the
+    probability that her answer to that question:
+    \begin{enumerate} \parasp
+    \item represents a conscious response?
+
+      \[\frac{\lambda_c}{\lambda_c + \lambda_s}.\]
+
+    \item represents a conscious correct response?
+      \[\frac{\lambda_c p_c}{\lambda_c + \lambda_s}.\]
+    \end{enumerate}
+
+  \item If we pick an interval of \(T\) minutes, what is the probability
+    that in that interval Iwana will make exactly \(r\) conscious responses
+    and \(s\) subconscious responses?
+
+    \[\frac{\lambda_c^r \lambda_s^s T^{r+s}}{r!s!} e^{-(\lambda_c + \lambda_s) T}.\]
+
+  \item Determine the probability density function for random variable
+    \(X\), where \(X\) is the time from the start of the exam until Iwana
+    makes her first conscious response which is preceded by at least one
+    subconscious response.
+
+    \[\frac{\lambda_c \lambda_s}{\lambda_c - \lambda_s} (e^{-\lambda_sx} - e^{-\lambda_cx}).\]
+
+  \end{enumerate}
+
+\item Shem, a local policeman, drives from intersection to intersection in
+  times that are independent and all exponentially distributed with
+  parameter \(λ\).  At each intersection he observes (and reports) a car
+  accident with probability \(p\).  (This activity does not slow his driving
+  at all.)  Independently of all else, Shem receives extremely brief radio
+  calls in a Poisson manner with an average rate of \(μ\) calls per hour.
+  \begin{enumerate} \parasp
+  \item Determine the \textsc{pmf} for \(N\), the number of intersections
+    Shem visits up to and including the one where he reports his first
+    accident.
+
+    \[p_N(n) = (1-p)^{n-1}p.\]
+
+  \item Determine the \textsc{pdf} for \(Q\), the length of time Shem drives between
+    reporting accidents.
+
+    \[f_Q(q) = \lambda p e^{-\lambda p q}.\]
+
+  \item What is the \textsc{pmf} for \(M\), the number of accidents which Shem reports in
+    two hours?
+
+    \[p_M(m) = \frac{(2\lambda p)^m}{m!} e^{-2\lambda}.\]
+
+  \item What is the \textsc{pmf} for \(K\), the number of accidents Shem reports between
+    his receipt of two successive radio calls?
+
+    \[p_K(k) = \paren{\frac{\lambda p}{\mu + \lambda p}}^k \frac{\mu}{\mu + \lambda p}.\]
+
+  \item We observe Shem at a random instant long after his shift has begun.
+    Let \(W\) be the total time from Shem’s last radio call until his next
+    radio call.  What is the \textsc{pdf} of \(W\)?
+
+    \[f_W(w) = \mu^2 w e^{-\mu w} .\]
+  \end{enumerate}
+
+\item \emph{Random incidence in an Erlang arrival process}
+
+  Consider an arrival process in which the interarrival times are
+  independent Erlang random variables of order \(2\), with mean
+  \(2/λ\).  Assume that the arrival process has been ongoing for a
+  very long time.  An external observer arrives at a given time \(t\).
+  Find the \textsc{pdf} of the length of the interarrival interval
+  that contains \(t\).
+
+  Let \(X\) denote the length of the interarrival interval that
+  contains \(t\).  The random variable \(X\) can be decomposed into three
+  component \(X_1\), \(X_2\), and \(X_3\), each of which has an exponential distribution with
+  parameter \(\lambda\).  Thus, by convolution, we have
+
+  \begin{align*}
+    f_{X_1+X_2}(x)
+    &= \int_0^x f_{X_1}(t) \, f_{X_2}(x - t) \dt \\
+    &= \int_0^x \lambda e^{-\lambda t} \, \lambda e^{-\lambda(x - t)} \dt \\
+    &= \lambda^2 e^{-\lambda x} \int_0^x \dt \\
+    &= \lambda^2 x e^{-\lambda x} \\
+    \intertext{and}
+    f_{X}(x)
+    &= \int_0^x f_{X_1+X_2}(t) \, f_{X_3}(x - t) \dt \\
+    &= \int_0^x \lambda^2 t e^{-\lambda t} \, \lambda e^{-\lambda(x - t)} \dt \\
+    &= \lambda^3 e^{-\lambda x} \int_0^x t \dt \\
+    &= \frac{\lambda^3 x^2}{2} e^{-\lambda x}.
+  \end{align*}
+  Hence, the \textsc{pdf} of \(X\) is an Erlang distribution of order \(3\) with parameter \(\lambda\).
+\end{enumerate}
+
+\end{document}

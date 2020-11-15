@@ -9,6 +9,7 @@
 % \usepackage[lite,subscriptcorrection,nofontinfo]{mtpro2}
 \usepackage{fontspec}
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage[open]{bookmark}
 
 \defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
 \setmainfont{Palatino Linotype}
@@ -36,6 +37,7 @@
 \newcommand*{\deduce}{\mathrel{\Downarrow}}
 \newcommand*{\abs}[1]{\left\lvert #1 \right\rvert}
 \newcommand*{\reason}[1]{\langle \, \text{#1} \, \rangle}
+\newcommand*{\textop}[1]{\mathop{\text{#1}}}
 
 \newcounter{ListCounter}
 \newenvironment{enumerate*}%
@@ -63,6 +65,7 @@
 \newcommand*{\dv}{\diff v}
 \newcommand*{\dtheta}{\diff \theta}
 \newcommand*{\ddx}{\frac{\diff}{\dx}}
+\newcommand*{\ddt}{\frac{\diff}{\dt}}
 \newcommand*{\fwdf}{\mathop{}\!\Delta}
 \newcommand*{\dydx}{\frac\dy\dx}
 \newcommand*{\pdpdx}{\frac\partial{\partial x}}
@@ -78,11 +81,11 @@
 \newcommand*{\pdypdt}{\frac{\partial y}{\partial t}}
 
 \AtBeginDocument{%
-	\renewcommand{\perp}{\mathrel{\bot}}
-	\let\leq\leqslant
-	\let\le\leq
-        \let\geq\geqslant
-        \let\ge\geq}
+  % \renewcommand{\perp}{\mathrel{\bot}}
+  \let\leq\leqslant
+  \let\le\leq
+  \let\geq\geqslant
+  \let\ge\geq}
 
 \newcommand*{\Prb}[1]{\section*{Problem #1}}
 \newcommand{\Q}[1]{\textbf{Question:} #1}

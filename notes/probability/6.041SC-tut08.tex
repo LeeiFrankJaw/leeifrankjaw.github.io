@@ -1,0 +1,102 @@
+\input{preamble}
+
+\title{Solutions to Tutorial 8}
+\author{Lei Zhao}
+
+\begin{document}
+\maketitle
+
+This is my own solutions to the problems from tutorial 8 of
+\href{https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/unit-iii/lecture-15/}{6.041\textsc{sc}}.
+
+\begin{enumerate}
+\item Type A, B, and C items are placed in a common
+  buffer, each type arriving as part of an inde­pendent Poisson
+  process with average arrival rates, respectively, of \(a\), \(b\),
+  and \(c\) items per minute.  For the first four parts of this
+  problem, assume the buffer is discharged immediately whenever it
+  contains a total of ten items.
+  \begin{enumerate}
+  \item What is the probability that, of the first ten items to arrive
+    at the buffer, only the first and one other are type A?
+
+    \[\frac{a}{a+b+c} \binom91 \frac{a}{a+b+c} \paren{\frac{b+c}{a+b+c}}^8 = \frac{9 a^2 (b+c)^8}{(a+b+c)^{10}}.\]
+
+  \item What is the probability that any particular discharge of the
+    buffer contains five times as many type A items as type B items?
+
+    \[\binom{10}{5, 1, 4}\paren{\frac{a}{a+b+c}}^5 \paren{\frac{b}{a+b+c}} \paren{\frac{c}{a+b+c}}^4 + \paren{\frac{c}{a+b+c}}^{10} = \frac{1260 \, a^5 b c^4 + c^{10}}{(a+b+c)^{10}}.\]
+
+  \item Determine the \textsc{pdf}, expectation, and variance for the total
+    time between consecutive discharges of the buffer.
+
+    Let \(T\) be the time between consecutive discharges of the buffer.  Then,
+    \begin{gather*}
+      f_T(t) = \frac{(a+b+c)^{10} t^9}{9!} e^{-(a+b+c)t}, \\
+      E[T] = \frac{10}{a+b+c}, \\
+      \intertext{and}
+      \var(T) = \frac{10}{(a+b+c)^2}.
+    \end{gather*}
+
+  \item Determine the probability that exactly two of each of the
+    three item types arrive at the buffer input during any particular
+    five minute interval.
+
+    \[\paren{\frac{(5a)^2}{2} e^{-5a}}\paren{\frac{(5c)^2}{2} e^{-5c}}\paren{\frac{(5c)^2}{2} e^{-5c}} = \frac{(125abc)^2}{8} e^{-5(a+b+c)}.\]
+  \end{enumerate}
+
+\item A store opens at \(t = 0\) and \emph{potential} customers arrive
+  in a Poisson manner at an average arrival rate of \(λ\) potential
+  customers per hour.  As long as the store is open, and independently
+  of all other events, each particular potential customer becomes an
+  \emph{actual} customer with probability \(p\).  The store closes as
+  soon as ten actual customers have arrived.
+  \begin{enumerate}
+  \item What is the probability that exactly three of the first five
+    potential customers become actual customers?
+
+    \[\binom53 \, p^3 (1-p)^2.\]
+
+  \item What is the probability that the fifth potential customer to
+    arrive becomes the third actual customer?
+
+    \[\binom42 \, p^3 (1-p)^2.\]
+
+  \item What is the \textsc{pdf} and expected value for \(L\), the
+    duration of the interval from store opening to store closing?
+
+    \begin{gather*}
+      f_L(t) = \frac{(\lambda p)^{10} t^9}{9!} e^{-\lambda p t}, \\
+      \intertext{and}
+      E[L] = \frac{10}{\lambda p}.
+    \end{gather*}
+
+  \item Given only that exactly three of the first five potential
+    customers became actual customers, what is the conditional
+    expected value of the \emph{total} time the store is open?
+
+    \[\frac{5}{λ} + \frac{7}{λp}.\]
+    
+  \item Considering only customers arriving between \(t = 0\) and the
+    closing of the store, what is the probability that no two actual
+    customers arrive within \(τ\) time units of each other?
+
+    \[e^{-9λpτ}.\]
+  \end{enumerate}
+  
+\item Consider a Poisson process with parameter \(λ\), and an
+  independent random variable \(T\), which is exponential with
+  parameter \(ν\).  Find the \textsc{pmf} of the number of Poisson
+  arrivals during the time interval \([0, T]\).
+
+  Let \(K\) be the number of Poisson arrivals.  Then,
+  \begin{align*}
+    p_K(k) &= \int_0^{+\infty} f_T(t) \, p_{K \mid T}(k \mid t) \dt \\
+           &= \int_0^{+\infty} νe^{-νt} \, \frac{(λt)^k}{k!} e^{-λt} \dt \\
+           &= \frac{νλ^k}{k!} \int_0^{+\infty} t^k e^{-(λ+ν)t} \dt \\
+           &= \frac{νλ^k}{k!} \left.\paren{\sum_{k=0}^k \frac{k!t^i}{i!(λ+ν)^{k+1-i}} e^{-(λ+ν)t}}\right\vert_{+\infty}^0 \\
+           &= \frac{νλ^k}{(λ+ν)^{k+1}}.
+  \end{align*}
+\end{enumerate}
+
+\end{document}
