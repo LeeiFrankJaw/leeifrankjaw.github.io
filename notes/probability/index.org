@@ -1,0 +1,16 @@
+#+STARTUP: inlineimages showall
+
+#+TITLE: Collective notes and solutions for probability
+#+AUTHOR: Lei Zhao
+#+DATE: <2020-12-05 Sat 19:53>
+#+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
+#+OPTIONS: ':t
+
+ * [[./6.041SC-rec14.pdf][6.041SC-rec14.pdf]]
+ * [[./6.041SC-rec15.pdf][6.041SC-rec15.pdf]]
+ * [[./6.041SC-rec17.pdf][6.041SC-rec17.pdf]]
+ * [[./6.041SC-tut07.pdf][6.041SC-tut07.pdf]]
+ * [[./6.041SC-tut08.pdf][6.041SC-tut08.pdf]]
+ * [[./6.041SC-PS07.pdf][6.041SC-PS07.pdf]]

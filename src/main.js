@@ -196,6 +196,12 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
+                "name": "probability/",
+                "title": "Collective notes and solutions for probability",
+                "author_date": "2020-12-05T19:53:00+08:00"
+            },
+            {
+                "type": "file",
                 "name": "DAT216x/",
                 "title": "Delivering a Relational Data Warehouse",
                 "author_date": "2018-06-09T20:25:00+08:00"

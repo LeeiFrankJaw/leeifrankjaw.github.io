@@ -3,9 +3,9 @@
 \title{Solutions to Problem Set 7}
 \author{Lei Zhao}
 
-\usepackage{xcolor}
-\definecolor{linkcolor}{rgb}{0,0.2,0.6}
-\hypersetup{allcolors=linkcolor,linkcolor=black}
+% \usepackage{xcolor}
+% \definecolor{linkcolor}
+\hypersetup{allcolors=[rgb]{0,0.2,0.6},linkcolor=black}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \hyphenpenalty=687
 
@@ -429,14 +429,14 @@ This is my own solutions to the problem set 7 of
   \item \currentpdfbookmark{d}{6.d} Consider the following two
     experiments:
     \begin{enumerate}
-    \item \subpdfbookmark{i}{6.i} Pick a card at random from a group
+    \item \subpdfbookmark{i}{6.d.i} Pick a card at random from a group
       of completed cards and note the total time, \(Y\), the card was
       in service.  Find \(\E[Y]\) and \(\var(Y)\).
 
       It is easy to see that \(Y = X_3\).  So we have \(\E[Y] = 3/2\)
       and \(\var(Y) = 3/4\).
 
-    \item \currentpdfbookmark{ii}{6.ii} Come to the corner at a random
+    \item \currentpdfbookmark{ii}{6.d.ii} Come to the corner at a random
       time.  When the card in use at the time of your arrival is
       completed, note the total time it was in service (the time from
       the start of its service to its completion).  Call this time
@@ -449,12 +449,13 @@ This is my own solutions to the problem set 7 of
   \end{enumerate}
   
 \item[G1{\footnotemark[2]}.] \footnotetext[2]{Required for 6.431;
-    optional for 6.041} Consider a Poisson process with rate \(λ\),
-  and let \(N(G_i)\) denote the number of arrivals of the process
-  during an interval \(G_i = (t_i, t_i + c_i]\).  Suppose we have
-  \(n\) such intervals, \(i = 1,2,··· , n\), mutually disjoint.
-  Denote the union of these intervals by \(G\), and their total length
-  by \(c = c_1 + c_2 + \dots + c_n\).  Given \(k_i \ge 0\) and with
+    optional for 6.041} \pdfbookmark{G1}{G1} Consider a Poisson
+  process with rate \(λ\), and let \(N(G_i)\) denote the number of
+  arrivals of the process during an interval
+  \(G_i = (t_i, t_i + c_i]\).  Suppose we have \(n\) such intervals,
+  \(i = 1,2,··· , n\), mutually disjoint.  Denote the union of these
+  intervals by \(G\), and their total length by
+  \(c = c_1 + c_2 + \dots + c_n\).  Given \(k_i \ge 0\) and with
   \(k = k_1 + k_2 + \dots + k_n\), determine
   \[P(N(G_1) = k_1, N(G_2) = k_2, \dots, N(G_n) = k_n \mid N(G) = k).\]
 
