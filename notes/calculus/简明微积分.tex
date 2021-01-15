@@ -1,0 +1,57 @@
+\documentclass[a4paper,punct=CCT]{ctexbook}
+
+\title{简明微积分习题解答}
+\author{赵磊}
+
+\input{preamble-all}
+
+% \usepackage[lite,subscriptcorrection,nofontinfo]{mtpro2}
+\usepackage{fontspec}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Palatino Linotype}
+%\usepackage[integrals]{wasysym}
+% \usepackage{fontawesome}
+
+% \xeCJKsetup{CJKecglue=\,}
+% \ltjsetparameter{xkanjiskip={0.13\zw plus 1pt minus 1pt}}
+\setCJKmainfont{Songti SC}[
+  BoldFont = * Black,
+  ItalicFont = * Bold
+]
+
+\usepackage[math-style=TeX]{unicode-math}
+\setmathfont{TeX Gyre Pagella Math}
+
+\usepackage{microtype}
+
+% \newcommand*{\enumparen}[1]{(\makebox[0.6em][c]{#1})}
+\renewcommand{\labelenumii}{(\arabic{enumii})}
+
+\AtBeginDocument{%
+  % \renewcommand{\perp}{\mathrel{\bot}}
+  \let\leq\leqslant
+  \let\le\leq
+  \let\geq\geqslant
+  \let\ge\geq}
+
+\begin{document}
+\maketitle
+
+这是我对龚昇的《简明微积分》所做的部分习题解答.
+
+\chapter{微积分的概念}
+
+\section{函数与极限}
+
+\begin{enumerate}
+  \setcounter{enumi}{2}
+\item 由库仑定律可知
+  \[
+    f = k \frac{q_1 q_2}{r^2}\text{，}
+  \]
+  其中\(k\)为库仑常数.
+
+\end{enumerate}
+
+\end{document}
