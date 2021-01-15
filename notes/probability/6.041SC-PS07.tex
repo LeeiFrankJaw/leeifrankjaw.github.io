@@ -115,10 +115,10 @@ This is my own solutions to the problem set 7 of
     call.
 
     \begin{align*}
-      P(X_2 = 5 \mid X_2 \ne 2) &= \frac{P(X_2 = 5, X_2 \ne 2)}{P(X_2 \ne 2)} \\
-                                &= \frac{P(X_2 = 5)}{1 - P(X_2 = 2)} \\
-                                &= \frac{1/64}{1 - (1/2)^2} \\
-                                &= \frac{1}{48}.
+      P(X_2 = 5 \mid X_2 > 2) &= \frac{P(X_2 = 5, X_2 > 2)}{P(X_2 > 2)} \\
+                              &= \frac{P(X_2 = 5)}{1 - P(X_2 = 2)} \\
+                              &= \frac{4 \cdot 1/2^5}{1 - (1/2)^2} \\
+                              &= \frac{1}{6}.
     \end{align*}
 
   \item \currentpdfbookmark{e}{2.e} We will say that Fred “needs a new
@@ -129,7 +129,7 @@ This is my own solutions to the problem set 7 of
 
     \begin{align*}
       P(X_2 \ge 5) &= \sum_{i=5}^\infty \binom{i-1}{1} \paren{\frac12}^2 \paren{\frac12}^{i-2} \\
-                   &= \sum_{j=0}^1 \binom4i \paren{\frac12}^i \paren{\frac12}^{4-i} \\
+                   &= \sum_{j=0}^1 \binom4j \paren{\frac12}^j \paren{\frac12}^{4-j} \\
                    &= (1 + 4) \frac1{2^4} = \frac{5}{16}.
     \end{align*}
 
@@ -447,7 +447,7 @@ This is my own solutions to the problem set 7 of
       \(\E[W] = 4/2 = 2\) and \(\var(W) = 4/4 = 1\).
     \end{enumerate}
   \end{enumerate}
-  
+
 \item[G1{\footnotemark[2]}.] \footnotetext[2]{Required for 6.431;
     optional for 6.041} \pdfbookmark{G1}{G1} Consider a Poisson
   process with rate \(λ\), and let \(N(G_i)\) denote the number of
