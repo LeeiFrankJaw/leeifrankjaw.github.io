@@ -1,0 +1,24 @@
+\documentclass[a4paper]{article}
+
+\input{preamble-all}
+
+\AtBeginDocument{%
+  % \renewcommand{\perp}{\mathrel{\bot}}
+  \let\leq\leqslant
+  \let\le\leq
+  \let\geq\geqslant
+  \let\ge\geq}
+
+\begin{document}
+The area of a circle can be given by
+\begin{align*}
+  \iint\limits_{\mathclap{x^2 + y^2 \le r^2}} \dx\dy
+  &= \int_{-r}^{r} \int_{-\sqrt{r^2 - x^2}}^{\sqrt{r^2 - x^2}} \dy \dx \\
+  &= \int_{-r}^{r} 2 \sqrt{r^2 - x^2} \dx \\
+  &= \int_{-\frac\pi2}^{\frac\pi2} 2 \sqrt{r^2 - (r \sin t)^2} \diff (r \sin t) \\
+  &= \int_{-\frac\pi2}^{\frac\pi2} 2r^2 \cos^2 t \dt \\
+  &= r^2 \int_{-\frac\pi2}^{\frac\pi2} (1 + \cos 2t) \dt \\
+  &= r^2 \paren*{t + \frac{\sin 2t}{2}} \bigg\vert_{-\frac\pi2}^{\frac\pi2} \\
+  &= \pi r^2.
+\end{align*}
+\end{document}

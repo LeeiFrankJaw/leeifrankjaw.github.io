@@ -9,7 +9,7 @@
   urlcolor=[rgb]{0,0.2,0.6},
   linkcolor={.},
   bookmarksdepth=2}
-\usepackage[open]{bookmark}
+\usepackage{bookmark}
 
 \frenchspacing
 
@@ -24,9 +24,12 @@
   \nonscript\:
   \mathopen{}}
 % \newcommand*{\paren}[1]{\LEFTRIGHT(){#1}}
-\DeclarePairedDelimiter{\paren}{\lparen}{\rparen}
+\DeclarePairedDelimiterX{\paren}[1]{\lparen}{\rparen}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 % \newcommand*{\brkt}[1]{\LEFTRIGHT[]{#1}}
 \DeclarePairedDelimiterX{\brkt}[1]{\lbrack}{\rbrack}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiterX{\brce}[1]{\lbrace}{\rbrace}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \newcommand*{\unit}[1]{\,\mathrm{#1}}
 \newcommand*{\DeclareUnit}[2]{\newcommand*{#1}{\unit{#2}}}
@@ -36,6 +39,7 @@
 \DeclareUnit{\kg}{kg}
 \DeclareUnit{\s}{s}
 \newcommand*{\R}{\mathbb{R}}
+\newcommand*{\Z}{\mathbb{Z}}
 % \newcommand*{\Rp}{(0,+\infty)}
 % \newcommand*{\Rm}{(-\infty,0)}
 \newcommand*{\deduce}{\mathrel{\Downarrow}}
@@ -55,18 +59,21 @@
 \DeclareMathOperator{\Ber}{Bernoulli}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\E}{E}
+\def\argmax{\qopname\relax m{arg\,max}}
 \DeclarePairedDelimiterXPP{\Eb}[1]{\E}{\lbrack}{\rbrack}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterXPP{\varp}[1]{\var}{\lparen}{\rparen}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterXPP{\Covp}[1]{\Cov}{\lparen}{\rparen}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
-\DeclarePairedDelimiterXPP{\expp}[1]{\exp}{\lparen}{\rparen}{}{#1}
+\DeclarePairedDelimiterXPP{\expp}[1]{\exp}{\lbrace}{\rbrace}{}{#1}
 \renewcommand*{\Pr}{\mathop{P}}
 \DeclarePairedDelimiterXPP{\Prp}[1]{\Pr}{\lparen}{\rparen}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \newcommand*{\pnorm}{\mathop{\Phi}}
 \DeclarePairedDelimiterXPP{\pnormp}[1]{\pnorm}{\lparen}{\rparen}{}{#1}
+\newcommand*{\dnorm}{\mathop{\varphi}}
+\DeclarePairedDelimiterXPP{\dnormp}[1]{\dnorm}{\lparen}{\rparen}{}{#1}
 \newcommand*{\qnorm}{\mathop{\Phi^{-1}}}
 %\newcommand*{\diff}{\mathop{}\!d}
 \newcommand*{\diff}{\mathop{}\!\mathit{d}}
@@ -74,6 +81,7 @@
 \newcommand*{\dx}{\diff x}
 \newcommand*{\dy}{\diff y}
 \newcommand*{\dz}{\diff z}
+\newcommand*{\ds}{\diff s}
 \newcommand*{\dt}{\diff t}
 \newcommand*{\du}{\diff u}
 \newcommand*{\dv}{\diff v}
@@ -81,7 +89,9 @@
 \newcommand*{\dd}[2][]{\frac{\diff#1}{\diff#2}}
 \newcommand*{\ddx}{\frac{\diff}{\dx}}
 \newcommand*{\ddt}{\frac{\diff}{\dt}}
+\newcommand*{\ddy}{\dd y}
 \newcommand*{\ddtheta}{\frac{\diff}{\dtheta}}
+\newcommand*{\ddz}{\dd z}
 \newcommand*{\fwdf}{\mathop{}\!\Delta}
 \newcommand*{\dydx}{\frac\dy\dx}
 \newcommand*{\pdpd}[2][]{\frac{\partial#1}{\partial#2}}
@@ -96,5 +106,3 @@
 \newcommand*{\pdzpdt}{\frac{\partial z}{\partial t}}
 \newcommand*{\pdxpdt}{\frac{\partial x}{\partial t}}
 \newcommand*{\pdypdt}{\frac{\partial y}{\partial t}}
-
-\let\vect\symbf
