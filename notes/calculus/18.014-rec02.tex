@@ -1,0 +1,62 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Recitation 2}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to the recitation 2 of
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/recitations/}{18.014},
+which includes Theorem I.9-10 and Exercise 4 from Apostol's
+\emph{Calculus} (1: 18-19).
+
+\pskip
+
+The cancellation law (Theorem I.7) implies the uniqueness of the
+inverse if it exists and thus we use the notation \(a^{-1}\)
+introduced in the Theorem I.8 freely without any ambiguity.
+Furthermore, if \(a \ne 0\), then \(a^{-1} \ne 0\).  If otherwise,
+\(a \cdot a^{-1} = a \cdot 0 = 0 \ne 1\).
+
+\begin{enumerate}
+\item If \(a \ne 0\), then \(b/a = b \cdot a^{-1}\).
+
+  We have
+  \begin{align*}
+    a \cdot \paren{b/a}
+    &= b                        && \reason{by definition of division,} \\
+    &= 1 \cdot b                && \reason{by the identity axiom,}\\
+    &= \paren{aa^{-1}} \cdot b  && \reason{by the inverse axiom,} \\
+    &= a \cdot \paren{a^{-1} b} && \reason{by associativity,} \\
+    &= a \cdot \paren{ba^{-1}}  && \reason{by commutativity.}
+  \end{align*}
+  We apply the cancellation law (Theorem I.7) to the above and obtain
+  \(b/a = b \cdot a^{-1}\).  \qed
+
+\item If \(a \ne 0\), then \(\paren{a^{-1}}^{-1} = a\).
+
+  Since \(a \ne 0\), \(a^{-1} \ne 0\).  And we have
+  \begin{align*}
+    a^{-1} \cdot \paren{a^{-1}}^{-1}
+    &= 1              && \reason{by definition of reciprocal,} \\
+    &= a \cdot a^{-1} && \reason{by the inverse axiom,} \\
+    &= a^{-1} \cdot a && \reason{by commutativity.}
+  \end{align*}
+  By the cancellation law, we obtain \(\paren{a^{-1}}^{-1} = a\).  \qed
+
+\item Zero has no reciprocal.
+
+  Suppose zero has a reciprocal and let us denote it as \(0^{-1}\).  Then
+  \begin{align*}
+    0 &= 0 \cdot 0^{-1} && \reason{by Theorem I.6,} \\
+      &= 1              && \reason{by definition of reciprocal.}
+  \end{align*}
+  But by the identity axoim, \(0 \ne 1\).  This is contradictory.  \qed
+\end{enumerate}
+
+\end{document}

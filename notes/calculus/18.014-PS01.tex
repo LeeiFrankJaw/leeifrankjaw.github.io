@@ -1,0 +1,102 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Problem Set 1}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to the problem set 1 of
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/assignments/}{18.014}.
+The first three problems are from Apostol's \emph{Calculus} and the next
+three problems are from Munkres's Course Note A (1: 18, 20, 43; 9--10).
+
+\begin{enumerate}
+\item Prove Theorem I.11: If \(ab=0\), then \(a=0\) or \(b=0\).
+
+  \begin{proof}
+    If not, then \(a \ne 0\) and \(b \ne 0\), which implies
+    \begin{align*}
+      1 &= 1 \cdot 1           && \reason{by the identity axiom,} \\
+        &= (aa^{-1}) (bb^{-1}) && \reason{by the inverse axiom,} \\
+        &= (a^{-1}a) (bb^{-1}) && \reason{by commutativity,} \\
+        &= a (a(bb^{-1}))      && \reason{by associativity,} \\
+        &= a ((ab)b^{-1})      && \reason{by associativity,} \\
+        &= a (0 \cdot b^{-1})  && \reason{by assumption,} \\
+        &= a \cdot 0           && \reason{by Theorem I.6,} \\
+        &= 0                   && \reason{by Theorem I.6.}
+    \end{align*}
+    But we know by Axiom 4 that \(1 \ne 0\).  Thus, either \(a = 0\) or
+    \(b = 0\).
+  \end{proof}
+
+\item Prove Theorem I.25: If \(a < c\) and \(b < d\), then \(a+b < c+d\).
+
+  \begin{proof}
+    We have
+    \begin{align*}
+      a + b &< c + b && \reason{by Theorem I.18,} \\
+            &= b + c && \reason{by commutativity,} \\
+            &< d + c && \reason{by Theorem I.18,} \\
+            &= c + d && \reason{by commutativity.} \qedhere
+    \end{align*}
+  \end{proof}
+
+\item Prove that \(\abs*{\abs x - \abs y} \le \abs{x - y}\).
+
+  There are two ways to prove this.  One is logical and the other is
+  algebraic.
+
+  \begin{proof}
+    If \(\abs x - \abs y \ge 0\), then
+    \[
+      \abs*{\abs x - \abs y} = \abs x - \abs y \le \abs{x - y}.
+    \]
+    If \(\abs x - \abs y < 0\), then
+    \[
+      \abs*{\abs x - \abs y} = - (\abs x - \abs y) = \abs y - \abs x \le \abs{y - x} = \abs{x - y}.
+    \]
+    In all cases, the inequality holds.
+  \end{proof}
+
+  \begin{proof}
+    We have
+    \begin{align*}
+      xy &\le \abs{xy} = \abs x \abs y         && \iff \\
+      -2\abs x\abs y
+         &\le -2xy                             && \iff \\
+      \abs x^2 - 2\abs x\abs y + \abs y^2
+         &\le x^2 - 2xy + y^2                  && \iff \\
+      \paren{\abs x - \abs y}^2
+         &\le \paren{x - y}^2                  && \iff \\
+      \sqrt{\paren{\abs x - \abs y}^2}
+         &\le \sqrt{\paren{x - y}^2}           && \iff \\
+      \abs*{\abs x - \abs y} &\le \abs{x - y}. && \qedhere
+    \end{align*}
+  \end{proof}
+
+\item Prove Theorem 6: If \(a\) and \(b\) are in
+  \(\mathbf{P}\), so is \(ab\).
+
+  \begin{proof}
+    We choose a fixed positive integer \(a\) and then prove this theorem
+    by induction on \(b\).  First, \(a \cdot 1\) is in \(\mathbf{P}\),
+    since \(a \cdot 1 = a\) by the identity axiom and \(a\) is in
+    \(\mathbf{P}\).  Now suppose \(b\) is a positive integer such that
+    \(ab\) is in \(\mathbf{P}\).  Then \(a(b+1) = ab + a \).  By the
+    induction hypothesis, \(ab\) is a positive integer.  And \(a\) is also
+    a positive integer.  We have already shown that \(P\) is closed under
+    addition.  Thus, \(ab + a\) is also a positive integer, which means
+    \(a(b+1)\) is in \(\mathbf{P}\).  This proves that \(\mathbf{P}\) is
+    also closed under multiplication.
+  \end{proof}
+  
+\item Prove Theorem 12: \(a^n b^n = \paren{ab}^n\), where \(a\) and \(b\) are any real numbers and \(n\)
+  is a positive integer.
+\end{enumerate}
+
+\end{document}
