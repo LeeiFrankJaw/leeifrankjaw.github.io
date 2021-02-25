@@ -5,6 +5,9 @@
 
 \input{preamble-all}
 \input{preamble-en}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
 \input{preamble-begin}
 
 \begin{document}
@@ -87,16 +90,136 @@ three problems are from Munkres's Course Note A (1: 18, 20, 43; 9--10).
     by induction on \(b\).  First, \(a \cdot 1\) is in \(\mathbf{P}\),
     since \(a \cdot 1 = a\) by the identity axiom and \(a\) is in
     \(\mathbf{P}\).  Now suppose \(b\) is a positive integer such that
-    \(ab\) is in \(\mathbf{P}\).  Then \(a(b+1) = ab + a \).  By the
-    induction hypothesis, \(ab\) is a positive integer.  And \(a\) is also
-    a positive integer.  We have already shown that \(P\) is closed under
-    addition.  Thus, \(ab + a\) is also a positive integer, which means
-    \(a(b+1)\) is in \(\mathbf{P}\).  This proves that \(\mathbf{P}\) is
-    also closed under multiplication.
+    \(ab\) is in \(\mathbf{P}\).  Then we have \(a(b+1) = ab + a \) by
+    distributivity.  By the induction hypothesis, \(ab\) is a positive
+    integer.  And \(a\) is also a positive integer.  We have already shown
+    that \(\mathbf{P}\) is closed under addition.  Thus, \(ab + a\) is
+    also a positive integer, which means \(a(b+1)\) is in \(\mathbf{P}\).
+    This proves that \(\mathbf{P}\) is also closed under multiplication.
   \end{proof}
-  
-\item Prove Theorem 12: \(a^n b^n = \paren{ab}^n\), where \(a\) and \(b\) are any real numbers and \(n\)
-  is a positive integer.
+
+\item Prove Theorem 12: \(a^n b^n = \paren{ab}^n\), where \(a\) and
+  \(b\) are any real numbers and \(n\) is a positive integer.
+
+  \begin{proof}
+    The formula is trivially true for \(n=1\), since
+    \(a^1 b^1 = ab = \paren{ab}^n\).  Now suppose the formula holds
+    for some \(n\).  Then
+    \begin{align*}
+      a^{n+1} b^{n+1}
+      &= (a^n a) (b^n b) && \reason{by definition of exponent,} \\
+      &= (a^n b^n) (ab)  && \reason{by associativity and commutativity,} \\
+      &= (ab)^n (ab)     && \reason{by the induction hypothesis,} \\
+      &= (ab)^{n+1}      && \reason{by definition of exponent.}
+    \end{align*}
+    This proves the formula holds for any positive integer \(n\).
+  \end{proof}
+
+\item Let \(a\) and \(h\) be real numbers; let \(m\) be a positive
+  integer.  Show by induction that if \(a\) and \(a+h\) are positive,
+  then
+  \[
+    (a+h)^m \ge a^m + ma^{m-1}h.
+  \]
+
+  \begin{proof}
+    The inequality is true for \(m=1\), since
+    \(\paren{a+h}^1 = a + h = a^1 + 1 \cdot a^{1-1} h\).  Now suppose it
+    is true for some \(m \ge 1\), then
+    \begin{align*}
+      \paren{a+h}^{m+1}
+      &= \paren{a+h}^m \paren{a+h}              && \reason{by definition of exponent,} \\
+      &\ge \paren{a^m + ma^{m-1}h} \paren{a+h}  && \reason{by the induction hypothesis} \\
+      &                                         && \reason{and positivity of \(a+h\),} \\
+      &= a^{m+1} + ma^m h + a^m h + ma^{m-1}h^2 && \reason{by distributivity, associativity,} \\
+      &                                         && \reason{commutativity, and definition of exponent,} \\
+      &= a^{m+1} + (m+1)a^m h + ma^{m-1}h^2     && \reason{by associativity, the identity axiom,} \\
+      &                                         && \reason{and distributivity,} \\
+      &\ge a^{m+1} + (m+1)a^m h                 && \reason{by positivity of \(m\), \(a\), and \(h^2\),} \\
+      &                                         && \reason{the closure axiom, and Theorem I.18.} \qedhere
+    \end{align*}
+  \end{proof}
+
+\item[7.\footnotemark] \footnotetext{Only to be attempted once other
+    problems are completed} Let
+  \[
+    A_n = \frac{x_1 + x_2 + \dotsb + x_n}{n} \quad \text{and} \quad
+    G_n = \paren{x_1 x_2 \dotsm x_n}^{1/n}
+  \]
+  represent the arithmetic and geometric mean respectively for a set
+  of \(n\) positive real numbers.
+  \begin{enumerate}
+  \item Prove that \(G_n \le A_n\) for \(n = 2\).
+
+    \begin{proof}
+      Let \(a\) and \(b\) be any arbitrary real numbers.  Then
+      \begin{align*}
+        (a - b)^2 &\ge 0   && \reason{by Theorem I.20, }  && \iff \\
+        a^2 + b^2 &\ge 2ab && \reason{by simple algebra.}
+      \end{align*}
+      By Theorem I.35, \(x_1^{1/2}\) and \(x_2^{1/2}\) are meaningful.
+      Let \(a = x_1^{1/2}\) and \(b = x_2^{1/2}\).  Then
+      \begin{align*}
+        \frac{x_1 + x_2}{2} &\ge \paren{x_1 x_2}^{1/2} && \reason{by simple algebra,} && \iff \\
+        G_2 &\le A_2                                   && \reason{by definition.} && \qedhere
+      \end{align*}
+    \end{proof}
+
+  \item Use induction to show \(G_n \le A_n\) for any \(n = 2^k\)
+    where \(k\) is a positive integer.
+
+    \begin{proof}
+      The previous part proves that the inequality holds for
+      \(k = 1\).  Suppose the inequality holds for some \(k \ge 1\).
+      By the induction hypothesis, we have
+      \begin{align}
+        \label{eq:1}
+        \frac{1}{2^k} \sum_{i=1}^{2^k} x_i
+          &\ge \paren*{\prod_{i=1}^{2^k} x_i}^{1/2^k} \\
+        \intertext{and}
+        \label{eq:2}
+        \frac{1}{2^k} \mspace{9mu} \sum_{\mathclap{i=2^k+1}}^{2^{k+1}} \mspace{4mu} x_i
+          &\ge \paren*{\mspace{12mu} \prod_{\mathclap{i=2^k+1}}^{2^{k+1}} \mspace{5mu} x_i}^{\mathrlap{1/2^k}}.
+      \end{align}
+      By adding~\eqref{eq:1} and~\eqref{eq:2} and halving the sum, we obtain
+      \begin{displaymath}
+        \frac{1}{2^{k+1}} \sum_{i=1}^{2^{k+1}} x_i
+        \ge \frac12 \brce*{\paren*{\prod_{i=1}^{2^k} x_i}^{\mathrlap{1/2^k}} \mspace{12mu} + \mspace{9mu} \paren*{\mspace{12mu} \prod_{\mathclap{i=2^k+1}}^{2^{k+1}} \mspace{5mu} x_i}^{1/2^k}}
+        \ge \paren*{\prod_{i=1}^{2^{k+1}} x_i}^{1/2^{k+1}}
+      \end{displaymath}
+      The last inequality sign holds by applying the induction hypothesis to
+      the right-hand sides of both~\eqref{eq:1} and~\eqref{eq:2}.
+    \end{proof}
+    
+  \item Now for any positive integer \(n\), suppose \(n < 2^m\) for some
+    integer \(m\).  Using the set
+    \[
+      \brce*{x_1, x_2, \dotsc , x_n, A_n, A_n, \dotsc, A_n}
+    \]
+    where the \(A_n\) appears \(2^m − n\) times in the set, show that
+    \(G_n \le A_n\).
+
+    \begin{proof}
+      Apply to the set the result from the previous problem and we have
+      \begin{align*}
+        A_n &= \frac{1}{2^m} \brkt*{\paren{2^m - n}A_n + n A_n} \\
+            &= \frac{1}{2^m} \brce*{\paren{2^m - n}A_n + \sum_{i=1}^n x_i} \\
+            &\ge \brce*{\paren*{\mspace{6mu} \prod_{i=1}^{\mathclap{2^m-n}} A_n}  \paren*{\prod_{i=1}^{n} x_i}}^{1/2^m} \\
+            &= \paren*{A_n^{2^m-n} G_n^n}^{1/2^m} \\
+            &= \paren*{\frac{A_n}{G_n}}^{\frac{2^m-n}{2^m}} G_n.
+      \end{align*}
+      Now suppose \(A_n < G_n\), then we have
+      \begin{displaymath}
+        \frac{A_n}{G_n} < \paren*{\frac{A_n}{G_n}}^{\frac{2^m-n}{2^m}} < 1,
+      \end{displaymath}
+      which implies
+      \begin{displaymath}
+        A_n = \frac{A_n}{G_n} \cdot G_n < \paren*{\frac{A_n}{G_n}}^{\frac{2^m-n}{2^m}} G_n \le A_n.
+      \end{displaymath}
+      This is absurd.  Thus, it must be the case that \(G_n \le A_n\), which
+      is consistent with the above result.
+    \end{proof}
+  \end{enumerate}
 \end{enumerate}
 
 \end{document}

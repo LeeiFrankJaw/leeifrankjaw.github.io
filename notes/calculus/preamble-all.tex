@@ -2,13 +2,17 @@
 \usepackage{textcomp}
 \usepackage{mathtools,amssymb,amsthm}
 \usepackage[hmargin=1in,vmargin=1in]{geometry}
-\usepackage{graphicx,cancel}
+\usepackage{graphicx,xcolor}
 \usepackage{hyperref}
+\makeatletter
 \hypersetup{%
   colorlinks=true,
   urlcolor=[rgb]{0,0.2,0.6},
   linkcolor={.},
-  bookmarksdepth=2}
+  bookmarksdepth=2,
+  pdftitle={\@title},
+  pdfauthor={\@author}}
+\makeatother
 \usepackage{bookmark}
 
 \frenchspacing
