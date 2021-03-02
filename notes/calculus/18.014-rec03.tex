@@ -1,0 +1,88 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Recitation 3}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to the Recitation~3 of
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/recitations/}{18.014},
+which includes Theorem~I.24 and Exercise~1a, 11, and 6 from Apostol's
+\textit{Calculus} (1: 20, 35--36, 40).
+
+\begin{enumerate}
+\item If \(ab > 0\), then both \(a\) and \(b\) are positive or both
+  negative.
+
+  \begin{proof}
+    If either \(a\) or \(b\) is zero, then \(ab = 0\) by Theorem~I.6.  But
+    by Axiom~9, \(0 \ngtr 0\).  Thus, neither \(a\) nor \(b\) is zero.  If
+    one is negative and the other positive, say, \(a < 0\) and \(b > 0\),
+    then \(-a > 0\) by Theorem~I.23 and \(-ab = (-a)b > 0\) by Theorem~I.12
+    and Axiom~7.  However, this contradicts with Axiom~8 since both
+    \(ab > 0\) and \(-ab >0\).  It is easy to verify that no contradiction
+    will be derived in the remaining scenarios.  % If both are negative, then
+    % \(-a > 0\) and \(-b > 0\) by Theorem~I.23, and \(ab = (-a)(-b) > 0\) by
+    % Theorem~I.12 and Axiom~7.  If both are positive, then it follows that
+    % \(ab > 0\) by Axiom~7 solely.
+  \end{proof}
+  
+\item Prove \(1 + 2 + 3 + \dotsb + n = n(n+1)/2 \) by induction.
+
+  \begin{proof}
+    The basis is clearly true for \(n = 1\) since \(1 = 1 \cdot (1+1)/2\).
+    Now suppose the above holds for some \(k \ge 1\).  Then
+    \begin{align*}
+      1 + 2 + 3 + \dotsb + k + (k+1)
+        &= \frac{k(k+1)}{2} + (k+1) \\
+        &= \paren*{\frac{k}{2} + 1} (k+1) \\
+        &= \frac{(k+2)(k+1)}{2} \\
+        &= \frac{(k+1)\brkt*{(k+1)+1}}{2}. \qedhere
+    \end{align*}
+  \end{proof}
+  
+\item Let \(n\) and \(d\) denote integers.  We say that \(d\) is a
+  \emph{divisor} of \(n\) if \(n = cd\) for some integer \(c\).  An
+  integer \(n\) is called a \emph{prime} if \(n > 1\) and if the only
+  positive divisors of \(n\) are \(1\) and \(n\).  Prove, by induction,
+  that every integer \(n > 1\) is either a prime or a product of primes.
+
+  \begin{proof}
+    It's easy to verify that \(2\) is a prime and its only positive
+    divisors are \(1\) and \(2\).  Now suppose the above statement holds
+    for some \(n > 1\).  We are going to establish that \(n+1\) is either
+    a prime or a product of primes.  Suppose \(n+1\) is not a prime.  Then
+    by definition and simple reasoning there exist integers \(c\) and
+    \(d\) such that \(1 < c, d < n+1\).  Then by the induction hypothesis,
+    \(c\) and \(d\) are either a prime or a product of primes, which
+    implies \(n+1\) is a product of primes.  Thus, \(n+1\) is either a
+    prime or a product of primes (constructive dilemma).
+  \end{proof}
+  
+\item Derive the formula
+  \begin{displaymath}
+    \sum_{k=1}^n k^2 = \frac{n^2}{3} + \frac{n^2}{2} + \frac{n}{6}.
+  \end{displaymath}
+
+  We have
+  \begin{align*}
+    3 \paren*{\sum_{k=1}^n k^2} - 3 \paren*{\sum_{k=1}^n k}  + n
+      &= \sum_{k=1}^n (3k^2 - 3k + 1) && \reason{by linearity,} \\
+      &= \sum_{k=1}^n \brkt[\big]{k^3 - \paren{k-1}^3} \\
+      &= n^3 - 0^3 && \reason{by telescoping property,} \\
+      &= n^3.
+  \end{align*}
+  We already know that \(\sum_{k=1}^n k = n^2/2 + n/2\).  Substitute this
+  into the above equation, do some simple algebra, and we obtain
+  \begin{displaymath}
+    \sum_{k=1}^n k^2
+      = \frac13 \paren*{n^3 + \frac32 n^2 + \frac32 n - n}
+      = \frac{n^3}{3} + \frac{n^2}{2} + \frac{n}{6}.
+  \end{displaymath}
+\end{enumerate}
+\end{document}

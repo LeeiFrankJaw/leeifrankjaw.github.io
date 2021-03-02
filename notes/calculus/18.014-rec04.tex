@@ -1,0 +1,50 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Recitation 4}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to the Recitation~4 of
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/recitations/}{18.014},
+which includes Exercise~3 from Munkres's Course Note~A and Exercise~3 and
+1achi from Apostol's \textit{Calculus} (9; 1: 28, 43).
+
+\begin{enumerate}
+\item Show that if a set \(A\) of integers is bounded above, then
+  \(A\) has a largest element.
+
+  \begin{proof}
+    By the least-upper-bound axiom, there exists a real number \(u\) such
+    that \(u = \sup A\).  If \(u \in A\), we are done since \(u\) is the
+    largest element.  If \(u \notin A\), then by definition there must
+    exist an integer \(n \in A\) such that \(u-1 < n < u\).  The last
+    inequality is the same as \(u < n+1 < u+1\).  If \(n+1 \in A\), then
+    \(u\) is not a upper bound for \(A\).  It follows that \(k \notin A\)
+    for all integers \(k \ge n+1\).  Then we find the largest element in
+    \(A\), which is simply \(n\).  (Furthermore, \(u = n\).)
+  \end{proof}
+
+\item If \(x > 0\), prove that there is a positive integer \(n\) such that
+  \(1/n < x\).
+
+  \begin{proof}
+    Simply apply Theorem~I.30 with \(y = 1\) and we have \(nx > 1\).
+    Divide both side of the inequality with \(n\) and we obtain
+    \(1/n < x\).
+  \end{proof}
+  
+\item Prove each of the following properties of absolute values.
+  \begin{enumerate}
+  \item \(\abs{x} = 0\) if and only if \(x = 0\).
+  \item \(\abs{x-y} = \abs{y-x}\).
+  \item \(\abs{x-y} \le \abs{x} + \abs{y}\).
+  \item \(\abs{x} - \abs{y} \le \abs{x-y}\).
+  \end{enumerate}
+\end{enumerate}
+\end{document}

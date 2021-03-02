@@ -15,11 +15,11 @@
 
 This is my own solution to the problem set 1 of
 \href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/assignments/}{18.014}.
-The first three problems are from Apostol's \emph{Calculus} and the next
-three problems are from Munkres's Course Note A (1: 18, 20, 43; 9--10).
+The first three problems are from Apostol's \textit{Calculus} and the next
+three problems are from Munkres's Course Note~A (1: 18, 20, 43; 9--10).
 
 \begin{enumerate}
-\item Prove Theorem I.11: If \(ab=0\), then \(a=0\) or \(b=0\).
+\item Prove Theorem~I.11: If \(ab=0\), then \(a=0\) or \(b=0\).
 
   \begin{proof}
     If not, then \(a \ne 0\) and \(b \ne 0\), which implies
@@ -30,21 +30,21 @@ three problems are from Munkres's Course Note A (1: 18, 20, 43; 9--10).
         &= a (a(bb^{-1}))      && \reason{by associativity,} \\
         &= a ((ab)b^{-1})      && \reason{by associativity,} \\
         &= a (0 \cdot b^{-1})  && \reason{by assumption,} \\
-        &= a \cdot 0           && \reason{by Theorem I.6,} \\
-        &= 0                   && \reason{by Theorem I.6.}
+        &= a \cdot 0           && \reason{by Theorem~I.6,} \\
+        &= 0                   && \reason{by Theorem~I.6.}
     \end{align*}
     But we know by Axiom 4 that \(1 \ne 0\).  Thus, either \(a = 0\) or
     \(b = 0\).
   \end{proof}
 
-\item Prove Theorem I.25: If \(a < c\) and \(b < d\), then \(a+b < c+d\).
+\item Prove Theorem~I.25: If \(a < c\) and \(b < d\), then \(a+b < c+d\).
 
   \begin{proof}
     We have
     \begin{align*}
-      a + b &< c + b && \reason{by Theorem I.18,} \\
+      a + b &< c + b && \reason{by Theorem~I.18,} \\
             &= b + c && \reason{by commutativity,} \\
-            &< d + c && \reason{by Theorem I.18,} \\
+            &< d + c && \reason{by Theorem~I.18,} \\
             &= c + d && \reason{by commutativity.} \qedhere
     \end{align*}
   \end{proof}
@@ -82,7 +82,7 @@ three problems are from Munkres's Course Note A (1: 18, 20, 43; 9--10).
     \end{align*}
   \end{proof}
 
-\item Prove Theorem 6: If \(a\) and \(b\) are in
+\item Prove Theorem~6: If \(a\) and \(b\) are in
   \(\mathbf{P}\), so is \(ab\).
 
   \begin{proof}
@@ -98,7 +98,7 @@ three problems are from Munkres's Course Note A (1: 18, 20, 43; 9--10).
     This proves that \(\mathbf{P}\) is also closed under multiplication.
   \end{proof}
 
-\item Prove Theorem 12: \(a^n b^n = \paren{ab}^n\), where \(a\) and
+\item Prove Theorem~12: \(a^n b^n = \paren{ab}^n\), where \(a\) and
   \(b\) are any real numbers and \(n\) is a positive integer.
 
   \begin{proof}
@@ -136,7 +136,7 @@ three problems are from Munkres's Course Note A (1: 18, 20, 43; 9--10).
       &= a^{m+1} + (m+1)a^m h + ma^{m-1}h^2     && \reason{by associativity, the identity axiom,} \\
       &                                         && \reason{and distributivity,} \\
       &\ge a^{m+1} + (m+1)a^m h                 && \reason{by positivity of \(m\), \(a\), and \(h^2\),} \\
-      &                                         && \reason{the closure axiom, and Theorem I.18.} \qedhere
+      &                                         && \reason{the closure axiom, and Theorem~I.18.} \qedhere
     \end{align*}
   \end{proof}
 
@@ -154,14 +154,14 @@ three problems are from Munkres's Course Note A (1: 18, 20, 43; 9--10).
     \begin{proof}
       Let \(a\) and \(b\) be any arbitrary real numbers.  Then
       \begin{align*}
-        (a - b)^2 &\ge 0   && \reason{by Theorem I.20, }  && \iff \\
+        (a - b)^2 &\ge 0   && \reason{by Theorem~I.20, }  && \iff \\
         a^2 + b^2 &\ge 2ab && \reason{by simple algebra.}
       \end{align*}
-      By Theorem I.35, \(x_1^{1/2}\) and \(x_2^{1/2}\) are meaningful.
+      By Theorem~I.35, \(x_1^{1/2}\) and \(x_2^{1/2}\) are meaningful.
       Let \(a = x_1^{1/2}\) and \(b = x_2^{1/2}\).  Then
       \begin{align*}
         \frac{x_1 + x_2}{2} &\ge \paren{x_1 x_2}^{1/2} && \reason{by simple algebra,} && \iff \\
-        G_2 &\le A_2                                   && \reason{by definition.} && \qedhere
+        G_2 &\le A_2                                   && \reason{by definition.}     && \qedhere
       \end{align*}
     \end{proof}
 
@@ -185,7 +185,7 @@ three problems are from Munkres's Course Note A (1: 18, 20, 43; 9--10).
       \begin{displaymath}
         \frac{1}{2^{k+1}} \sum_{i=1}^{2^{k+1}} x_i
         \ge \frac12 \brce*{\paren*{\prod_{i=1}^{2^k} x_i}^{\mathrlap{1/2^k}} \mspace{12mu} + \mspace{9mu} \paren*{\mspace{12mu} \prod_{\mathclap{i=2^k+1}}^{2^{k+1}} \mspace{5mu} x_i}^{1/2^k}}
-        \ge \paren*{\prod_{i=1}^{2^{k+1}} x_i}^{1/2^{k+1}}
+        \ge \paren*{\prod_{i=1}^{2^{k+1}} x_i}^{\mathrlap{1/2^{k+1}}}.
       \end{displaymath}
       The last inequality sign holds by applying the induction hypothesis to
       the right-hand sides of both~\eqref{eq:1} and~\eqref{eq:2}.
