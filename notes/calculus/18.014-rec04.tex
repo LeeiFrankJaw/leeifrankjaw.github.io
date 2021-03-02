@@ -38,13 +38,45 @@ which includes Exercise~3 from Munkres's Course Note~A and Exercise~3 and
     Divide both side of the inequality with \(n\) and we obtain
     \(1/n < x\).
   \end{proof}
-  
+
 \item Prove each of the following properties of absolute values.
   \begin{enumerate}
   \item \(\abs{x} = 0\) if and only if \(x = 0\).
+
+    \begin{proof}
+      If \(\abs{x} = 0\), then either \(x = -\abs{x} = -0\) or
+      \(x = \abs{x} = 0\).  In both cases, we have \(x = 0\).  If
+      \(x = 0\), then clearly we have \(\abs{x} = x = -x = 0\).
+    \end{proof}
+
   \item \(\abs{x-y} = \abs{y-x}\).
+
+    \begin{proof}
+      We have \(\abs{x-y} = \abs{-(y-x)} = \abs{y-x}\).
+    \end{proof}
+
   \item \(\abs{x-y} \le \abs{x} + \abs{y}\).
+
+    \begin{proof}
+      We have
+      \begin{align*}
+        \abs{x-y} &= \abs{x+(-y)} \\
+                  &\le \abs{x} + \abs{-y} \\
+                  &=\abs{x} + \abs{y}. \qedhere
+      \end{align*}
+    \end{proof}
+
   \item \(\abs{x} - \abs{y} \le \abs{x-y}\).
+
+    \begin{proof}
+      We have
+      \begin{align*}
+        \abs{x} &= \abs{x - y + y} \\
+                &\le \abs{x-y} + \abs{y}.
+      \end{align*}
+      Substract \(\abs{y}\) from both sides of the above inequality and we
+      obtain the result.
+    \end{proof}
   \end{enumerate}
 \end{enumerate}
 \end{document}
