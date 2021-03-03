@@ -196,6 +196,12 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
+                "name": "calculus/",
+                "title": "Collective notes and solutions for calculus",
+                "author_date": "2021-03-03T02:23:00+08:00"
+            },
+            {
+                "type": "file",
                 "name": "probability/",
                 "title": "Collective notes and solutions for probability",
                 "author_date": "2020-12-05T19:53:00+08:00"

@@ -7,7 +7,7 @@ from subprocess import PIPE, run
 
 import lxml.html
 
-ignored_dirs = ['lib', 'src', 'img', 'styles']
+ignored_dirs = ['lib', 'src', 'img', 'styles', 'auto']
 
 
 def is_ignored(dirname):
@@ -68,7 +68,7 @@ listing = []                    # type: list
 # yapf: enable
 
 for dirpath, dirnames, filenames in walker:
-    # ignore(dirnames)
+    ignore(dirnames)
     pathsegs = dirpath.split(os.sep)[1:]
     updir = get_dir(listing, pathsegs[:-1])
     contents = []
