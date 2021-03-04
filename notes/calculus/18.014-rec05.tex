@@ -20,7 +20,7 @@ which includes Exercise~9abc, 11, 1ab, and 4a from Apostol's
   polynomials.  Let \(f(x) = \sum_{k=0}^n c_k x^k\) be a polynomial of
   degree \(n\).  Prove each of the following:
   \begin{enumerate}
-  \item If \(n \ge 1\) and \(f(0) = 0\), then \(f(x) = xg(x)\), where
+  \item If \(n \ge 1\) and \(f(0) = 0\), then \(f(x) = x \, g(x)\), where
     \(g\) is a polynomial of degree \(n-1\).
 
     \begin{proof}
@@ -31,7 +31,7 @@ which includes Exercise~9abc, 11, 1ab, and 4a from Apostol's
       But \(f(0) = 0\), which implies \(c_0 = 0\).  Then let
       \(g = \sum_{k=1}^n c_k x^{k-1}\) and we obtain
       \begin{displaymath}
-        f(x) = x \sum_{k=1}^n c_k x^{k-1} = xg(x).
+        f(x) = x \sum_{k=1}^n c_k x^{k-1} = x \, g(x).
       \end{displaymath}
     \end{proof}
 
@@ -47,6 +47,168 @@ which includes Exercise~9abc, 11, 1ab, and 4a from Apostol's
                &= \sum_{k=0}^n \brce*{ \sum_{i=0}^{n-k} \binom{k+i}{k} c_{k+i} a^{i} } x^k. \qedhere
       \end{align*}
     \end{proof}
+    The above proof says too much, which not only shows the new
+    polynomial is of the same degree but also provide a way to compute
+    the coefficients for it.  A less combinatorial proof is as
+    follows.
+
+    \begin{proof}
+      The statement clearly holds for \(n = 0\) since \(f(x+a) = f(x) = c_0\).
+      Suppose the statement holds for some \(n \ge 0\) and \(f\) is a polynomial
+      of degree \(n+1\).  We decompose \(f(x+a)\) into
+      \begin{displaymath}
+        f(x+a) = \sum_{k=0}^{n+1} c_k \paren{x+a}^k = \paren*{ \sum_{k=0}^n c_k \paren{x+a}^k } + c_{n+1} \paren{x+a}^{n+1}.
+      \end{displaymath}
+      Let \(g(x) = \sum_{k=0}^n c_k x^k\).  Since \(g\) is a polynomial of
+      degree \(n\), then there must be a sequence of coefficients \(d_k\) such
+      that \(g(x+a) = \sum_{k=0}^n d_k x^k\).  Thus
+      \begin{align*}
+        f(x+a) &= g(x+a) + c_{n+1} \paren{x+a}^{n+1} \\
+               &= \sum_{k=0}^n d_k x^k + c_{n+1} \sum_{k=0}^{n+1} \binom{n+1}{k} a^{n+1-k} x^k \\
+               &= \paren*{ \sum_{k=0}^n d_k x^k } + \brce*{ \sum_{k=0}^n \binom{n+1}{k} c_{n+1} a^{n+1-k}x^k } + c_{n+1} x^{n+1} \\
+               &= \brce*{ \sum_{k=0}^n \brkt*{ d_k + \binom{n+1}{k} c_{n+1} a^{n+1-k} } x^k } + c_{n+1} x^{n+1}.
+      \end{align*}
+      Let
+      \begin{displaymath}
+        e_k =
+        \begin{cases}
+          d_k + \binom{n+1}{k} c_{n+1} a^{n+1-k}, &  0 \le k \le n, \\
+          c_{n+1}, & k = n+1.
+        \end{cases}
+      \end{displaymath}
+      Then we could rewrite \(f(x+a)\) as
+      \begin{displaymath}
+        f(x+a) = \paren*{ \sum_{k=0}^n e_k x^k } + e_{n+1} x^{n+1} = \sum_{k=0}^{n+1} e_k x^k. \qedhere
+      \end{displaymath}
+    \end{proof}
+
+  \item If \(n \ge 1\) and \(f(a) = 0\) for some real \(a\), then
+    \(f(x) = (x-a) \, h(x)\), where \(h\) is a polynomial of degree
+    \(n-1\).
+
+    \begin{proof}
+      Let \(g(x) = f(x+a)\).  By the result from \enumparen{b}, \(g\) is a
+      polynomial of degree \(n\).  Since \(n \ge 1\) and
+      \(g(0) = f(a) = 0\), by the result from \enumparen{a},
+      \(g(x) = x \, p(x) \), where \(p(x)\) is a polynomial of degree
+      \(n-1\).  Let \(h(x) = p(x-a)\).  Again by the result from
+      \enumparen{b}, \(h\) is also a polynomial of degree \(n-1\).  Then
+      \(f(x) = g(x-a) = (x-a) \, p(x-a) = (x-a) \, h(x)\).
+    \end{proof}
+  \end{enumerate}
+
+\item In each case, find all polynomials \(p\) of degree \(\le 2\) which
+  satisfy the given conditions for all real \(x\).
+  \begin{enumerate}
+  \item \(p(x) = p(1-x)\).
+
+    The coefficient \(c_0\) can be any real number regardless of the
+    degree.
+
+    When the degree is zero, the condition clearly holds for all constant
+    polynonimals.
+
+    When the degree is \(1\) (\(c_1 \ne 0\)), we have
+    \begin{gather*}
+      c_1 x = c_1 (1-x), \text{ or} \\
+      c_1 (2x-1) = 0.
+    \end{gather*}
+    Since \(c_1\) is not zero, it must be the case that \(x = 1/2\).  This
+    means there is no polynonimal of degree \(1\) which satisfies the
+    above condition for all real \(x\).
+
+    When the degree is \(2\) (\(c_2 \ne 0\)), we have
+    \begin{displaymath}
+      c_1 x + c_2 x^2 = c_1 (1-x) + c_2 \paren{1-x}^2,
+    \end{displaymath}
+    which simplies to
+    \begin{displaymath}
+      (c_1 + c_2)(2x - 1) = 0.
+    \end{displaymath}
+    By the same reasoning in the case of degree \(1\), it must be the case
+    that \(c_1 + c_2 = 0\).
+
+  \item \(p(x) = p(1+x)\).
+
+    As in the previous exercise, the coefficient \(c_0\) can be any real
+    number regardless of the degree.
+
+    By the same reasoning, it's easy to show that there is no polynonimal
+    of degree \(1\) which satisfies the above condition for all real
+    \(x\).
+
+    When the degree is \(2\) (\(c_2 \ne 0\)), we have
+    \begin{displaymath}
+      c_1 x + c_2 x^2 = c_1 (1+x) + c_2 \paren{1+x}^2,
+    \end{displaymath}
+    which simplies to
+    \begin{displaymath}
+      c_1 + c_2 (2x+1) = 0.
+    \end{displaymath}
+    Since \(c_2\) is not zero, no matter what value \(c_1\) is, we can
+    always find a real number \(x\) such that \(c_1 + c_2 (2x+1) \ne 0\).
+    This means there is no polynonimal of degree \(2\) which satisfies the
+    above condition for all real \(x\) either.
+
+  \item \(p(2x) = 2p(x)\).
+
+    The coefficient \(c_0\) must be zero regardless of the degree for the
+    above condition to hold for all real \(x\), since
+    \begin{gather*}
+      p(2\cdot 0) = 2p(0), \text{ or} \\
+      p(0) = c_0 = 0.
+    \end{gather*}
+
+    When the degree is zero, the only polynonimal satisfying the stated
+    condition for all real \(x\) is \(p(x) = 0\).
+
+    When the degree is \(1\), we have
+    \begin{displaymath}
+      c_0 + c_1 (2x) = 2(c_0 + c_1 x)
+    \end{displaymath}
+    and since \(c_0 = 0\), the above equality can be simplified into
+    \begin{displaymath}
+      2 c_1 x = 2 c_1 x,
+    \end{displaymath}
+    which is a tautology.  This means \(c_1\) can take any value except
+    zero as long as \(c_0\) is zero.
+
+    When the degree is \(2\), we have
+    \begin{gather*}
+      c_2 \paren{2x}^2 = 2 c_2 x^2, \text{ or} \\
+      2c_2x^2 = 0.
+    \end{gather*}
+    Since \(c_2 \ne 0\), the last equality is only satisfied when
+    \(x = 0\).  This means there is no polynonimal of degree \(2\)
+    satisfying the stated condition for all real \(x\).
+
+  \item \(p(3x) = p(x+3)\).
+
+    As before, the coefficient \(c_0\) can be any real number regardless
+    of the degree.
+
+    When the degree is zero, the stated condition holds for all constant
+    polynonimals.
+
+    When the degree is \(1\) (\(c_1 \ne 0\)), we have
+    \begin{gather*}
+      c_1 (3x) = c_1 (x+3), \text{ or} \\
+      x = \frac32.
+    \end{gather*}
+    This means there is no polynonimal of degree \(1\) satisfying the
+    stated condition for all real \(x\).
+
+    When the degree is \(2\), we have
+    \begin{gather*}
+      c_1 (3x) + c_2 \paren{3x}^2 = c_1 (x+3) + c_2 \paren{x+3}^2, \text{ or} \\
+      \brkt*{c_1 + c_2 (4x+3)} (2x-3) = 0.
+    \end{gather*}
+    Solve the last equation and we obtain
+    \begin{displaymath}
+      x = -\frac14 \paren*{\frac{c_1}{c_2} + 3} \quad \text{or} \quad x = \frac32.
+    \end{displaymath}
+    This means there is no polynonimal of degree \(2\) satisfying the
+    stated condition for all real \(x\).
   \end{enumerate}
 \end{enumerate}
 \end{document}
