@@ -1,0 +1,52 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Recitation 5}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to the Recitation~5 of
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/recitations/}{18.014},
+which includes Exercise~9abc, 11, 1ab, and 4a from Apostol's
+\textit{Calculus} (1: 57, 63).
+
+\begin{enumerate}
+\item This exercise develops some fundamental properties of
+  polynomials.  Let \(f(x) = \sum_{k=0}^n c_k x^k\) be a polynomial of
+  degree \(n\).  Prove each of the following:
+  \begin{enumerate}
+  \item If \(n \ge 1\) and \(f(0) = 0\), then \(f(x) = xg(x)\), where
+    \(g\) is a polynomial of degree \(n-1\).
+
+    \begin{proof}
+      Since \(n \ge 1\), we can rewrite \(f\) as
+      \begin{displaymath}
+        f(x) = c_0 + \sum_{k=1}^n c_k x^k = c_0 + x \sum_{k=1}^n c_k x^{k-1}.
+      \end{displaymath}
+      But \(f(0) = 0\), which implies \(c_0 = 0\).  Then let
+      \(g = \sum_{k=1}^n c_k x^{k-1}\) and we obtain
+      \begin{displaymath}
+        f(x) = x \sum_{k=1}^n c_k x^{k-1} = xg(x).
+      \end{displaymath}
+    \end{proof}
+
+  \item For each real \(a\), the function \(p\) given by
+    \(p(x) = f(x+a)\) is a polynomial of degree \(n\).
+
+    \begin{proof}
+      We have
+      \begin{align*}
+        f(x+a) &= \sum_{k=0}^n c_k \paren{x+a}^k \\
+               &= \sum_{k=0}^n \brce*{ c_k \sum_{i=0}^k \binom{k}{i} a^{k-i} x^i } \\
+               &= \sum_{k=0}^n \sum_{i=0}^k \binom{k}{i} c_k a^{k-i} x^i \\
+               &= \sum_{k=0}^n \brce*{ \sum_{i=0}^{n-k} \binom{k+i}{k} c_{k+i} a^{i} } x^k. \qedhere
+      \end{align*}
+    \end{proof}
+  \end{enumerate}
+\end{enumerate}
+\end{document}
