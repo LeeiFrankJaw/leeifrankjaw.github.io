@@ -1,10 +1,16 @@
 \documentclass[a4paper]{article}
 
-\title{Solutions to Recitation 5}
+\title{Solutions to Recitation~5}
 \author{L. F. \textsc{Jaw}}
 
 \input{preamble-all}
 \input{preamble-en}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,automata,external}
+\tikzexternalize[mode=list and make,prefix=figures/]
+\tikzexternaldisable
+
 \input{preamble-begin}
 
 \begin{document}
@@ -29,9 +35,9 @@ which includes Exercise~9abc, 11, 1ab, and 4a from Apostol's
         f(x) = c_0 + \sum_{k=1}^n c_k x^k = c_0 + x \sum_{k=1}^n c_k x^{k-1}.
       \end{displaymath}
       But \(f(0) = 0\), which implies \(c_0 = 0\).  Then let
-      \(g = \sum_{k=1}^n c_k x^{k-1}\) and we obtain
+      \(g(x) = \sum_{k=1}^n c_k x^{k-1}\) and we obtain
       \begin{displaymath}
-        f(x) = x \sum_{k=1}^n c_k x^{k-1} = x \, g(x).
+        f(x) = x \sum_{k=1}^n c_k x^{k-1} = x \, g(x). \qedhere
       \end{displaymath}
     \end{proof}
 
@@ -210,5 +216,85 @@ which includes Exercise~9abc, 11, 1ab, and 4a from Apostol's
     This means there is no polynonimal of degree \(2\) satisfying the
     stated condition for all real \(x\).
   \end{enumerate}
+
+\item Let \(f(x) = [x]\) and let \(g(x) = [2x]\) for all real \(x\).
+  In each case, draw the graph of the function \(h\) defined over the
+  interval \([-1, 2]\) by the formula given.
+  \begin{enumerate}
+  \item \(h(x) = f(x) + g(x)\).
+
+    \begin{figure}[H]
+      \centering
+      \tikzsetnextfilename{18.014-rec05.3a}
+      \begin{tikzpicture}[yscale=0.5,font=\scriptsize]
+        \draw[->] (-2,0) -- (3,0) node[anchor=west] {\(x\)};
+        \draw[->] (0,-3.5) -- (0,6.5) node[anchor=south] {\(y\)};
+        \draw[thick] plot[jump mark left,mark=*,mark options={xscale=0.5}]
+                     coordinates{(-1,-3) (-0.5,-1) (0,0) (0.5,1) (1,3) (1.5,4) (2,6)};
+        \draw[-] (-1,-0.1)  node[anchor=north,yshift=1pt]                 {\(-1\)} -- (-1,0.1);
+        \draw[-] (0,-0.1)   node[anchor=north east,yshift=1pt,xshift=1pt] {\(0\)}  -- (0,0.1);
+        \draw[-] (1,-0.1)   node[anchor=north,yshift=1pt]                 {\(1\)}  -- (1,0.1);
+        \draw[-] (2,-0.1)   node[anchor=north,yshift=1pt]                 {\(2\)}  -- (2,0.1);
+        \draw[-] (-0.05,-3) node[anchor=east,xshift=3pt]                  {\(-3\)} -- (0.05,-3);
+        \draw[-] (-0.05,-2) node[anchor=east,xshift=3pt]                  {\(-2\)} -- (0.05,-2);
+        \draw[-] (-0.05,-1) node[anchor=north east,yshift=2pt,xshift=3pt] {\(-1\)} -- (0.05,-1);
+        \draw[-] (-0.05,1)  node[anchor=east,xshift=3pt]                  {\(1\)}  -- (0.05,1);
+        \draw[-] (-0.05,2)  node[anchor=east,xshift=3pt]                  {\(2\)}  -- (0.05,2);
+        \draw[-] (-0.05,3)  node[anchor=east,xshift=3pt]                  {\(3\)}  -- (0.05,3);
+        \draw[-] (-0.05,4)  node[anchor=east,xshift=3pt]                  {\(4\)}  -- (0.05,4);
+        \draw[-] (-0.05,5)  node[anchor=east,xshift=3pt]                  {\(5\)}  -- (0.05,5);
+        \draw[-] (-0.05,6)  node[anchor=east,xshift=3pt]                  {\(6\)}  -- (0.05,6);
+      \end{tikzpicture}
+    \end{figure}
+
+  \item \(h(x) = f(x) + g(x/2)\).
+
+    \begin{figure}[H]
+      \centering
+      \tikzsetnextfilename{18.014-rec05.3b}
+      \begin{tikzpicture}[yscale=0.5,font=\scriptsize]
+        \draw[->] (-2,0) -- (3,0) node[anchor=west] {\(x\)};
+        \draw[->] (0,-3.5) -- (0,6.5) node[anchor=south] {\(y\)};
+        \draw[thick] plot[jump mark left,mark=*,mark options={xscale=0.5}]
+                     coordinates{(-1,-2) (0,0) (1,2) (2,4)};
+        \draw[-] (-1,-0.1)  node[anchor=north,yshift=1pt]                 {\(-1\)} -- (-1,0.1);
+        \draw[-] (0,-0.1)   node[anchor=north east,yshift=1pt,xshift=1pt] {\(0\)}  -- (0,0.1);
+        \draw[-] (1,-0.1)   node[anchor=north,yshift=1pt]                 {\(1\)}  -- (1,0.1);
+        \draw[-] (2,-0.1)   node[anchor=north,yshift=1pt]                 {\(2\)}  -- (2,0.1);
+        \draw[-] (-0.05,-3) node[anchor=east,xshift=3pt]                  {\(-3\)} -- (0.05,-3);
+        \draw[-] (-0.05,-2) node[anchor=north east,yshift=2pt,xshift=3pt] {\(-2\)} -- (0.05,-2);
+        \draw[-] (-0.05,-1) node[anchor=east,xshift=3pt]                  {\(-1\)} -- (0.05,-1);
+        \draw[-] (-0.05,1)  node[anchor=east,xshift=3pt]                  {\(1\)}  -- (0.05,1);
+        \draw[-] (-0.05,2)  node[anchor=east,xshift=3pt]                  {\(2\)}  -- (0.05,2);
+        \draw[-] (-0.05,3)  node[anchor=east,xshift=3pt]                  {\(3\)}  -- (0.05,3);
+        \draw[-] (-0.05,4)  node[anchor=east,xshift=3pt]                  {\(4\)}  -- (0.05,4);
+        \draw[-] (-0.05,5)  node[anchor=east,xshift=3pt]                  {\(5\)}  -- (0.05,5);
+        \draw[-] (-0.05,6)  node[anchor=east,xshift=3pt]                  {\(6\)}  -- (0.05,6);
+      \end{tikzpicture}
+    \end{figure}
+  \end{enumerate}
+
+\item Prove that \([x+n] = [x] + n\) for every integer \(n\).
+
+  \begin{proof}
+    By definition of greatest-integer function, we have
+    \begin{gather}
+      \label{eq:1}
+      [x] \le x < [x]+1 \\
+      \intertext{and}
+      \label{eq:2}
+      [x+n] \le x+n < [x+n] + 1.
+    \end{gather}
+    We multiply \eqref{eq:1} by \(-1\), add the result to \eqref{eq:2}, and obtain
+    \begin{displaymath}
+      [x+n] - [x] - 1 < n < [x+n] - [x] + 1,
+    \end{displaymath}
+    which is the same as
+    \begin{displaymath}
+      n-1 < [x+n] - [x] < n+1.
+    \end{displaymath}
+    The only integer lies between \(n-1\) and \(n+1\) is \(n\) and this is
+    to say \([x+n] - [x] = n\).
+  \end{proof}
 \end{enumerate}
 \end{document}

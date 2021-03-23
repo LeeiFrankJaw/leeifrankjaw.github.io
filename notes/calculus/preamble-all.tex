@@ -14,6 +14,7 @@
   pdfauthor={\@author}}
 \makeatother
 \usepackage{bookmark}
+\usepackage{float}
 
 \frenchspacing
 
@@ -55,9 +56,17 @@
 
 \newcommand*{\enumparen}[1]{(\makebox[0.6em][c]{#1})}
 \renewcommand{\labelenumii}{\enumparen{\theenumii}}
+\newcommand*{\upstar}{\textsuperscript{\normalfont\textasteriskcentered}}%
+\makeatletter
+\newcommand*{\bonus}{\@itemlabel\upstar}%
+\def\contitem{%
+  \def\H@item{%
+    \@inmatherr\item
+    \@noitemargtrue
+    \@ifnextchar[\@item{\@item[\@itemlabel]}}}
+\makeatother
 
 \DeclareMathOperator{\arccosh}{arccosh}
-\DeclareMathOperator{\gammaf}{\Gamma}
 \DeclareMathOperator{\var}{var}
 \DeclareMathOperator{\Ber}{Bernoulli}
 \DeclareMathOperator{\Cov}{Cov}
@@ -70,14 +79,17 @@
 \DeclarePairedDelimiterXPP{\Covp}[1]{\Cov}{\lparen}{\rparen}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterXPP{\expp}[1]{\exp}{\lbrace}{\rbrace}{}{#1}
-\renewcommand*{\Pr}{\mathop{P}}
+\newcommand*{\Fn}[1]{\mathop{\relax #1}\nolimits}
+\newcommand*{\fn}[1]{\mathop{\relax\kern0pt #1}\nolimits}
+\newcommand*{\gammaf}{\Fn{\Gamma}}
+\renewcommand*{\Pr}{\Fn{P}}
 \DeclarePairedDelimiterXPP{\Prp}[1]{\Pr}{\lparen}{\rparen}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
-\newcommand*{\pnorm}{\mathop{\Phi}}
+\newcommand*{\pnorm}{\Fn{\Phi}}
 \DeclarePairedDelimiterXPP{\pnormp}[1]{\pnorm}{\lparen}{\rparen}{}{#1}
-\newcommand*{\dnorm}{\mathop{\varphi}}
+\newcommand*{\dnorm}{\fn{\varphi}}
 \DeclarePairedDelimiterXPP{\dnormp}[1]{\dnorm}{\lparen}{\rparen}{}{#1}
-\newcommand*{\qnorm}{\mathop{\Phi^{-1}}}
+\newcommand*{\qnorm}{\Fn{\Phi}^{-1}}
 %\newcommand*{\diff}{\mathop{}\!d}
 \newcommand*{\diff}{\mathop{}\!\mathit{d}}
 %\newcommand*{\diff}{\mathop{}\!\mathrm{d}}

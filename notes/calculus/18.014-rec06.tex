@@ -1,0 +1,151 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Recitation~6}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to the Recitation~6 from
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/recitations/}{18.014},
+which includes Exercise~1bcde, 2, 3, and 13 from Apostol's
+\textit{Calculus} (1: 70--71).
+
+\begin{enumerate}
+\item Compute the value of each of the following integrals.  You may use
+  theorems of Section 1.13 whenever it is convenient to do so.  The
+  notation \([x]\) denotes the greatest integer \(\le x\).
+  \begin{enumerate}
+    \everymath{\displaystyle}
+  \item \(\int_{-1}^3 [x + \tfrac12] \dx\).
+
+    \begin{displaymath}
+      \int_{-1}^3 [x + \tfrac12] \dx
+      = \int_{-0.5}^{3.5} [x] \dx
+      = -1 \times 0.5 + 0 + 1 + 2 + 3 \times 0.5
+      = 4.
+    \end{displaymath}
+
+  \item \(\int_{-1}^3 \paren[\big]{[x] + [x + \tfrac12]} \dx\).
+
+    \begin{displaymath}
+      \int_{-1}^3 \paren[\big]{[x] + [x + \tfrac12]} \dx
+        = \int_{-1}^3 [x] \dx + \int_{-1}^3 [x + \tfrac12] \dx
+        = 2 + 4 = 6.
+    \end{displaymath}
+
+  \item \(\int_{-1}^3 2[x] \dx\).
+
+    \begin{displaymath}
+      \int_{-1}^3 2[x] \dx = 2 \int_{-1}^3 [x] \dx = 2 \times 2 = 4.
+    \end{displaymath}
+
+  \item \(\int_{-1}^3 [2x] \dx\).
+
+    \begin{displaymath}
+      \int_{-1}^3 [2x] \dx
+        = \frac12 \int_{-2}^6 [x] \dx
+        = \frac12 \paren*{\int_{-2}^{-1} [x] \dx + \int_{-1}^3 [x] \dx
+          + \int_3^6 [x] \dx}
+        = \frac12 (-2 + 2 + 3 + 4 + 5)
+        = 6.
+    \end{displaymath}
+  \end{enumerate}
+
+\item Give an example of a step function \(s\), defined on the closed
+  interval \([0, 5]\), which has the following properties:
+  \[
+    \int_0^2 s(x) \dx = 5
+    \quad \text{and} \quad
+    \int_0^5 s(x) \dx = 2.
+  \]
+
+  Simply define
+  \[
+    s(x) = \begin{cases}
+      \frac52, & 0 \le x < 2, \\[1ex]
+      -1,      & 2 \le x \le 5.
+    \end{cases}
+  \]
+
+\item Show that \(\int_a^b [x] \dx + \int_a^b [-x] \dx = a-b\).
+
+  \begin{proof}
+    By linearity, we have
+    \[
+      \int_a^b [x] \dx + \int_a^b [-x] \dx
+        = \int_a^b \paren[\big]{[x] + [-x]} \dx.
+    \]
+    Let us define \(f(x) = [x] + [-x]\).  Notice that
+    \[
+      f(x) =
+      \begin{cases}
+        0, & x \text{ is an integer,} \\
+        -1, & \text{otherwise.}
+      \end{cases}
+    \]
+
+    The case for \(a = b\) is trivial.  When \(a < b\), we can find a
+    partitation \(P = \{x_0, x_1, \dotsc, x_n\}\), where \(x_0 = a\),
+    \(x_n = b\), and \(x_k \in \mathbf{Z}\) for all \(a < k < b\).  Then
+    we have
+    \begin{align*}
+      \int_a^b f(x) \dx
+        &= \sum_{k=1}^n (-1)(x_k - x_{k-1})  && \reason{by definition of integral of step functions,} \\
+        &= (-1) \sum_{k=1}^n (x_k - x_{k-1}) && \reason{by homogeneity of summation,} \\
+        &= (-1) (x_n - x_{0})                && \reason{by telescoping property of summation,} \\
+        &= a - b                             && \reason{by our choice of partition and simple algebra.}
+    \end{align*}
+    % It is easy to verify that \(f\) is an even function.  When \(a > b\),
+    % we have
+    % \begin{align*}
+    %   \int_a^b f(x) \dx
+    %     &= \int_{-b}^{-a} f(-x) \dx && \reason{by reflection property,} \\
+    %     &= \int_{-b}^{-a} f(x) \dx  && \reason{by definition of even function,} \\
+    %     &= -b - (-a)                && \reason{by the fact that \(-b < -a\),} \\
+    %     &= a - b                    && \reason{by simple algebra.} \qedhere
+    % \end{align*}
+    When \(a > b\), we have
+    \begin{align*}
+      \int_a^b f(x) \dx
+        &= -\int_b^a f(x) \dx && \reason{by our convention,} \\
+        &= -(b-a)             && \reason{by the fact that \(b < a\),} \\
+        &= a - b              && \reason{by simple algebra.} \qedhere
+    \end{align*}
+  \end{proof}
+
+\item Prove Theorem~1.2 (the additive property).
+
+  \begin{proof}
+    When \(a=b\), the proof is trivial since all are zeros.  Then, we
+    prove the property holds when \(a < b\).  We can find the common
+    refinement \(P = \{x_0, x_1, \dotsc, x_n\}\) of the partitions \(P_1\)
+    and \(P_2\) corresponding to step functions \(s\) and \(t\)
+    respectively.  Simply let \(P = P_1 \cup P_2\). Hence
+    \begin{align*}
+      \int_a^b s + \int_a^b t
+        &= \sum_{k=1}^n s_k (x_k - x_{k-1}) + \sum_{k=1}^n t_k (x_k - x_{k-1})
+      && \reason{by definition,} \\
+        &= \sum_{k=1}^n \brce*{s_k (x_k - x_{k-1}) + t_k (x_k - x_{k-1})}
+      && \reason{by additivity of summation,} \\
+        &=\sum_{k=1}^n (s_k + t_k)(x_k - x_{k-1})
+      && \reason{by distributivity,} \\
+        &= \int_a^b (s + t)
+      && \reason{by definition.}
+    \end{align*}
+    When \(a > b\), we
+    have
+    \begin{align*}
+      \int_a^b (s + t)
+        &= -\int_b^a (s + t)                            && \reason{by our convention,} \\
+        &= -\paren*{\int_b^a s + \int_b^a t}            && \reason{by the fact that \(b < a\),} \\
+        &= \paren*{-\int_b^a s} + \paren*{- \int_b^a t} && \reason{by distributivity,} \\
+        &= \int_a^b s + \int_a^b t                      && \reason{by our convention again.} \qedhere
+    \end{align*}
+  \end{proof}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,287 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Problem Set~2}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\contitem
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to Problem Set~2 of
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/assignments/}{18.014}.
+The first four problems are from Apostol's \textit{Calculus} (1: 57, 60, 70).
+
+\begin{enumerate}
+\item
+  \begin{enumerate}
+  \item Let \(f(x) = \sum_{k=0}^n c_k x^k\) be either a zero polynomial or a
+    polynomial of degree at most \(n\).  If \(f(x) = 0\) for \(n+1\)
+    distinct real values of \(x\), then \(f\) is a zero polynomial.
+
+    \begin{proof}
+      Let \(x_k\) denote the zeros for \(f\).  The statement clearly holds for
+      \(n=0\).  If \(f\) is of degree \(0\), then \(f(x_0) = c_0 = 0\), which
+      contradicts the assumption \(c_0 \ne 0\).  Thus, \(f\) must be a zero
+      polynomial.  Suppose the statement holds for some \(n \ge 0\).  We are
+      going to show that the statement also holds for \(n+1\).  Assume that
+      \(f\) is either a zero polynomial or a polynomial of degree at most
+      \(n+1\) and have \(n+2\) distinct zeros.  The polynomial \(f\) can be
+      factored into \((x-x_0) \, h(x)\), where \(h\) is either a zero
+      polynomial or a polynomial of degree at most \(n\).  Our induction basis
+      implies the degree of \(f\) cannot be \(0\).  If the degree of \(f\) is
+      at least one, then this is so by the result we proved in Recitation~5.
+      If \(f\) is a zero polynomial, then \(f(x) = 0 = (x-x_0) \cdot 0\).  In
+      both cases, the stated decomposition holds.  Other than \(x_0\), \(f\)
+      still has \(n+1\) distinct zeros.  By Theorem~I.11, \(h\) must have
+      \(n+1\) distinct zeros.  By our induction hypothesis, \(h\) is a zero
+      polynomial.  This means \(f\) is also a zero polynomial.
+    \end{proof}
+
+    An alternative view, which is less wordy, to look at the problem is as
+    follows.
+
+    \begin{proof}
+      Suppose the degree of the polynomial \(f\) is well-defined.  Then let
+      \(m\) denote the degree of \(f\).  By the result from Recitation~5, we
+      have
+      \begin{align*}
+        f(x) &= h_0(x) \\
+             &= (x-x_0) \, h_1(x) \\
+             &= (x-x_0)(x-x_1) \, h_2(x) \\
+             &= \brce[\bigg]{\prod_{k=0}^{m-1} (x-x_k)} \, h_m(x),
+      \end{align*}
+      where each \(h_i\) is a polynomial of degree \(m-i\).  Since
+      \(0 \le m \le n\) and \(f\) has \(n+1\) distinct zeros, there is at
+      least one \(x_m\) different from \(x_0, x_1, \dotsc, x_{m-1}\) such
+      that
+      \[
+        f(x_m) = \brce[\bigg]{\prod_{k=0}^{m-1} (x_m-x_k)} \, h_m(x_m) = 0.
+      \]
+      The product in the braces is not zero, then by Theorem~I.11
+      \(h_m(x_m) = 0\).  This is impossible since \(h_m\) is of degree
+      \(0\).  Thus, \(f\) must be a zero polynomial.
+    \end{proof}
+
+  \item Let \(f(x) = \sum_{k=0}^n c_k x^k\) and
+    \(g(x) = \sum_{k=0}^m b_k x^k\) be polynomials of degree \(n\) and \(m\)
+    respectively and \(m \ge n\).  Prove that if \(g(x) = f(x)\) for \(m+1\)
+    distinct real values of \(x\), then \(m = n\), \(b_k = c_k\) for each
+    \(k\), and \(g(x) = f(x)\) for all real \(x\).
+
+    \begin{proof}
+      Let \(h(x) = g(x) - f(x)\).  Then it is easy to see that \(h\) is
+      either a zero polynomial or a polynomial of degree at most \(m\).  The
+      polynomial \(h\) has \(m+1\) distinct zeros since \(g(x) = f(x)\) for
+      \(m+1\) distinct real values of \(x\).  By the result from the
+      previous part, \(h\) is thus a zero polynomial.  We have
+      \begin{align*}
+        h(x) &= g(x) - f(x) \\
+             &= \sum_{k=0}^m b_k x^k - \sum_{k=0}^n c_k x^k \\
+             &= \sum_{k=0}^n b_k x^k + \sum_{\mathclap{k=n+1}}^m b_k x^k - \sum_{k=0}^n c_k x^k \\
+             &= \sum_{\mathclap{k=n+1}}^m b_k x^k + \sum_{k=0}^n \paren[\big]{b_k x^k - c_k x^k} \\
+             &= \sum_{\mathclap{k=n+1}}^m b_k x^k + \sum_{k=0}^n \paren{b_k - c_k} x^k \\
+             &= 0.
+      \end{align*}
+      If \(m > n\), then the above won't hold since \(b_m \ne 0\).  Thus,
+      \(m = n\) and \(b_k - c_k = 0\) for each \(k\).
+    \end{proof}
+  \end{enumerate}
+
+\item Let \(A = \brce{1, 2, 3, 4, 5}\), and let \(\mathcal{M}\) denote the
+  class of all subsets of \(A\).  (There are \(32\) altogether, counting
+  \(A\) itself and the empty set \(\emptyset\).)  For each set \(S\) in
+  \(\mathcal{M}\), let \(n(S)\) denote the number of distinct elements in
+  \(S\).  If \(S = \brce{1, 2, 3, 4}\) and \(T = \brce{3, 4, 5}\), compute
+  \(n(S \cup T)\), \(n(S \cap T)\), \(n(S - T)\), and \(n(T - S)\).  Prove
+  that the set function \(n\) satisfies the first three axioms for area.
+
+  We have \(S \cup T = \brce{1, 2, 3, 4, 5}\), \(S \cap T = \brce{3, 4}\),
+  \(S - T = \brce{1, 2}\), and \(T - S = \brce{5}\).  Thus,
+  \(n(S \cup T) = 5\), \(n(S \cap T) = 2\), \(n(S - T) = 2\) and
+  \(n(T - S) = 1\).
+
+  \begin{proof}
+    The empty set \(\emptyset\) has the least number of distinct elements,
+    namely \(0\).  Any nonempty set \(S\) has at least one element and hence
+    \(n(S) > 0\).  Thus, \(n(S) \ge 0\) for each set \(S \in \mathcal{M}\).
+    This proves the nonnegative property.
+
+    Now suppose \(S\) and \(T\) are both in \(\mathcal{M}\).  For any
+    \(x \in S \cup T\), either \(x \in S\) or \(x \in T\).  If \(x \in S\),
+    then \(x \in A\) since \(S \subseteq A\).  Similarly, if \(x \in T\),
+    then \(x \in A\) since \(T \subseteq A\).  Thus, \(x \in A\).  This
+    means \(S \cup T\) is a subset of \(A\) and thus is in \(\mathcal{M}\).
+    In the same fasion, we can show that \(S \cap T\) is also in
+    \(\mathcal{M}\).  It is easy to see that the sets \(S \cap T\),
+    \(S - T\), \(T - S\) are disjoint from each other and
+    \begin{gather*}
+      S = (S-T) \cup (S \cap T), \\
+      T = (T-S) \cup (S \cap T), \\
+      S \cup T = (S-T) \cup (S \cap T) \cup (T-S).
+    \end{gather*}
+    Thus, we have
+    \begin{gather}
+      \label{eq:1}
+      n(S) = n(S-T) + n(S \cap T), \\
+      \label{eq:2}
+      n(T) = n(T-S) + n(S \cap T), \\
+      \label{eq:3}
+      n(S \cup T) = n(S - T) + n(S \cap T) + n(T - S).
+    \end{gather}
+    Subsitute~\eqref{eq:1} and~\eqref{eq:2} into~\eqref{eq:3} and we obtain
+    \[
+      n(S \cup T) = n(S) + n(T) - n(S \cap T).
+    \]
+    This proves the additive property.
+
+    With additional condition \(S \subseteq T\), we have \(S \cup T = T\),
+    \(S \cap T = S\), and \(S - T = \emptyset\).  Substitute into
+    \eqref{eq:3} and we get
+    \begin{gather*}
+      n(T) = n(\emptyset) + n(S) + n(T - S), \text{ or} \\
+      n(T - S) = n(T) - n(S).
+    \end{gather*}
+    This proves the difference property.
+  \end{proof}
+
+\item
+  \begin{enumerate}
+  \item Compute \(\int_0^9 [\sqrt t] \dt\).
+
+    We can find a partition \(\brce{0, 1, 4, 9}\) for the step function
+    \([\sqrt t]\) and then
+    \begin{displaymath}
+      \int_0^9 [\sqrt t] \dt = 0 \times 1 + 1 \times (4-1) + 2 \times (9-4) = 13.
+    \end{displaymath}
+
+  \item If \(n\) is a positive integer, prove that
+    \(\int_0^{n^2} [\sqrt t] \dt = n(n-1)(4n+1)/6\).
+
+    \begin{proof}
+      We can find a partition \(\brce{0, 1, 4, \dotsc, n^2}\) for the step
+      function \([\sqrt t]\) and then
+      \begin{align*}
+        \int_0^{n^2} [\sqrt t] \dt
+          &= \sum_{k=1}^n (k-1)\brce[\big]{k^2 - (k-1)^2} \\
+          &= \sum_{k=1}^n (k-1)(2k-1) \\
+          &= \sum_{k=1}^n (2k^2 - 3k + 1) \\
+          &= 2 \sum_{k=1}^n k^2 - 3 \sum_{k=1}^n k + \sum_{k=1}^n 1 \\
+          &= \frac{n(n+1)(2n+1)}{3} - \frac{3n(n+1)}{2} + n \\
+          &= \frac{n(n-1)(4n+1)}{6}. \qedhere
+      \end{align*}
+  \end{proof}
+  \end{enumerate}
+
+\item If, instead of defining integrals of step functions by using formula
+  (1.3), we used the definition
+  \[
+    \int_a^b s(x) \dx = \sum_{k=1}^n s_k^3 \cdot (x_k - x_{k-1}),
+  \]
+  a new and different theory of integration would result.  Which of the
+  following properties would remain valid in this new theory?
+  \begin{enumerate}
+    \everymath{\displaystyle}
+  \item \(\int_a^b s + \int_b^c s = \int_a^c s\).
+
+    This is valid.
+
+    \begin{proof}
+      Let \(P_1 = \brce{x_0, x_1, \dotsc, x_n}\) be a partition for \(s\) on
+      \([a, b]\) and \(P_2 = \brce{x_0', x_1', \dotsc, x_m'}\) be a partition
+      for \(s\) on \([b, c]\).  Then \(s(x) = s_k\) on every open interval
+      \((x_{k-1}, x_k)\) and \(s(x) = s_j'\) on every open interval
+      \((x_{j-1}', x_j')\), where \(0 \le k \le n\), \(0 \le j \le m\), and
+      \(s_k\) and \(s_j'\) are all constants.  Notice that \(x_n = x_0' = b\).
+      We now can form a new partition
+      \(P = \brce{x_0, x_1, \dotsc, x_n, x_1', \dotsc, x_m'}\).  We set
+      \(x_k = x_{k-n}'\) and \(s_k = s_{k-n}'\) when \(k > n\).  Then
+      \begin{align*}
+        \int_a^b s + \int_b^c s
+          &= \sum_{k=1}^n s_k^3 (x_k - x_{k-1}) + \sum_{j=1}^m s_j'^3 (x_j' - x_{j-1}') \\
+          &= \sum_{k=1}^n s_k^3 (x_k - x_{k-1}) + \sum_{\mathclap{k=n+1}}^{\mathclap{n+m}} s_k^3 (x_k - x_{k-1}) \\
+          &= \sum_{k=1}^{\mathclap{n+m}} s_k^3 (x_k - x_{k-1}) \\
+          &= \int_a^c s. \qedhere
+      \end{align*}
+    \end{proof}
+
+  \item \(\int_a^b c \cdot s = c \int_a^b s\).
+
+    This is invalid.  Let \(P = \brce{x_0, x_1, \dotsc, x_n}\) be a partition
+    for \(s\) on \([a, b]\) and \(s(x) = s_k\) on every open interval
+    \((x_k, x_{k-1})\).  Then
+    \begin{displaymath}
+      \int_a^b c \cdot s
+        = \sum_{k=1}^n (cs_k)^3 (x_k - x_{k-1})
+        = \sum_{k=1}^n c^3 s_k^3 (x_k - x_{k-1})
+        \ne c \sum_{k=1}^n s_k^3 (x_k - x_{k-1})
+        = c \int_a^b s.
+      \end{displaymath}
+      However, we do have
+      \[
+        \int_a^b c \cdot s = c^3 \int_a^b s.
+      \]
+  \end{enumerate}
+
+\item Prove, using properties of the integral, that for \(a, b > 0\)
+  \[
+    \int_1^a \frac{\dx}{x} + \int_1^b \frac{\dx}{x} = \int_1^{ab} \frac{\dx}{x}.
+  \]
+  Define a function \(f(w) = \int_1^w \frac1x \dx\), for
+  \(w \in \mathbf{R}^+\).  Rewrite the equation above in terms of the
+  function \(f\).  Give an example of a function that has the same
+  property as the one displayed here by \(f\).
+
+  \begin{proof}
+    We have
+    \begin{align*}
+      \int_1^b \frac{\dx}{x}
+        &= \frac1a \int_a^{ab} \frac{\dx}{x/a} && \reason{by Theorem~1.19,} \\
+        &= \int_a^{ab} \frac{\dx}{x} && \reason{by homogeneity and cancellation,} \\
+        &= \int_a^1 \frac{\dx}{x} + \int_1^{ab} \frac{\dx}x && \reason{by Theorem~1.17,} \\
+        &= -\int_1^a \frac{\dx}{x} + \int_1^{ab} \frac{\dx}x && \reason{by our convention.}
+    \end{align*}
+    Move the first term of the RHS to the LHS and we obtain the equation.
+  \end{proof}
+
+  We can rewrite the equation in terms of the function \(f\) as
+  \[
+    f(a) + f(b) = f(ab).
+  \]
+  The logarithm functions observe the stated property
+  \[
+    \log a + \log b = \log ab.
+  \]
+
+\item Suppose we define
+  \(\int_a^b s(x) \dx = \sum s_k \paren{x_{k-1} - x_k}^2\) for a step
+  function \(s(x)\) with partition \(P = \brce{x_0, x_1, \dotsc, x_n}\).
+  Is this integral well-defined?  That is, will the value of the integral
+  be independent of the choice of partition?  (If well-defined, prove it.
+  If not well-defined, provide a counterexample.)
+
+  Clearly, this integeral is not well-defined since the factor
+  \(\paren{x_{k-1} - x_k}^2\) does not observe telescoping property
+  under refinement.  A counterexample will be as follows.  Let us define
+  \(s(x) = 1\) on \([0, 2]\).  Then both \(P_1 = \brce{0, 2}\) and
+  \(P_2 = \brce{0, 1, 2}\) are partitions for \(s\), with \(P_2\) being
+  a refinement of \(P_1\).  However, we have
+  \begin{displaymath}
+    \int_0^2 s = \paren{2-0}^2 = 4 \ne 2 = \paren{1-0}^2 + \paren{2-1}^2 = \int_0^2 s.
+  \end{displaymath}
+
+\item[\bonus] Define the function (where \(n\) is in the positive integers)
+  \[
+    f(x) =
+    \begin{cases}
+      x, & x = \frac1{n^2}, \\[1ex]
+      0, & x \ne \frac1{n^2}.
+    \end{cases}
+  \]
+  Prove that \(f\) is integrable on \([0, 1]\) and that
+  \(\int_0^1 f(x) \dx = 0\).
+\end{enumerate}
+\end{document}
