@@ -115,7 +115,7 @@ The first four problems are from Apostol's \textit{Calculus} (1: 57, 60, 70).
     then \(x \in A\) since \(S \subseteq A\).  Similarly, if \(x \in T\),
     then \(x \in A\) since \(T \subseteq A\).  Thus, \(x \in A\).  This
     means \(S \cup T\) is a subset of \(A\) and thus is in \(\mathcal{M}\).
-    In the same fasion, we can show that \(S \cap T\) is also in
+    In the same fashion, we can show that \(S \cap T\) is also in
     \(\mathcal{M}\).  It is easy to see that the sets \(S \cap T\),
     \(S - T\), \(T - S\) are disjoint from each other and
     \begin{gather*}
@@ -132,7 +132,7 @@ The first four problems are from Apostol's \textit{Calculus} (1: 57, 60, 70).
       \label{eq:3}
       n(S \cup T) = n(S - T) + n(S \cap T) + n(T - S).
     \end{gather}
-    Subsitute~\eqref{eq:1} and~\eqref{eq:2} into~\eqref{eq:3} and we obtain
+    Substitute~\eqref{eq:1} and~\eqref{eq:2} into~\eqref{eq:3} and we obtain
     \[
       n(S \cup T) = n(S) + n(T) - n(S \cap T).
     \]
@@ -263,7 +263,7 @@ The first four problems are from Apostol's \textit{Calculus} (1: 57, 60, 70).
   be independent of the choice of partition?  (If well-defined, prove it.
   If not well-defined, provide a counterexample.)
 
-  Clearly, this integeral is not well-defined since the factor
+  Clearly, this integral is not well-defined since the factor
   \(\paren{x_{k-1} - x_k}^2\) does not observe telescoping property
   under refinement.  A counterexample will be as follows.  Let us define
   \(s(x) = 1\) on \([0, 2]\).  Then both \(P_1 = \brce{0, 2}\) and
@@ -283,5 +283,40 @@ The first four problems are from Apostol's \textit{Calculus} (1: 57, 60, 70).
   \]
   Prove that \(f\) is integrable on \([0, 1]\) and that
   \(\int_0^1 f(x) \dx = 0\).
+
+  \begin{proof}
+    For any \(\epsilon > 0\), by the Archimedean property of real numbers
+    we can always find a positive integer \(n_0\) such that
+    \(1/n_0^2 < \epsilon\). Then we can define two step functions \(s\)
+    and \(t\) on \([0, 1]\) as follows.  Let
+    \begin{displaymath}
+      s(x) =
+      \begin{cases}
+        x, & x = \frac{1}{n^2} \tand x > \frac{1}{n_0^2}, \\[1ex]
+        0, & \otherwise,
+      \end{cases}
+      \qand
+      t(x) =
+      \begin{cases}
+        x, & x = \frac{1}{n^2} \tand x > \frac{1}{n_0^2}, \\[1ex]
+        \frac{1}{n_0^2}, & 0 \le x \le \frac{1}{n_0^2}, \\[1ex]
+        0, & \otherwise.
+      \end{cases}
+    \end{displaymath}
+    It is easy to verify that
+    \begin{displaymath}
+      \int_0^1 s = 0
+      \qand
+      \int_0^1 t = \frac{1}{n_0^4}.
+    \end{displaymath}
+    Therefore, we have
+    \begin{gather*}
+      \int_0^1 t - \int_0^1 s = \frac{1}{n_0^4} \le \frac{1}{n_0^2} < \epsilon \\
+      \iand
+      \int_0^1 s \le 0 \le \int_0^1 t.
+    \end{gather*}
+    By Theorem~2 from Course Note~C, the function \(f\) is integrable on
+    \([0, 1]\) and \(\int_0^1 f(x) \dx = 0\).
+  \end{proof}
 \end{enumerate}
 \end{document}
