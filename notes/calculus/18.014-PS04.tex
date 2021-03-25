@@ -1,0 +1,71 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Problem Set~4}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\contitem
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to Problem Set~4 of
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/assignments/}{18.014}.
+Problem~1 and 6 are taken from Apostol's \textit{Calculus} and Problem~3 is taken from Munkres's Course Note~F (1: 83, 94;).
+
+\begin{enumerate}
+\item
+  \begin{enumerate}
+    \everymath{\displaystyle}
+  \item \(\lim_{x \to 0} \frac{\sin 5x}{\sin x} = 5\).
+  \item \(\lim_{x \to 0} \frac{\sin 5x - \sin 3x}{x} = 2\).
+  \item \(\lim_{x \to 0} \frac{1 - \sqrt{1-x^2}}{x^2} = \frac12\).
+  \end{enumerate}
+
+\item Let \(A(x) = \int_{-2}^x f(t) \dt\) where \(f(t) = -1\) if
+  \(t < 0\) and \(f(t) = 1\) if \(t \ge 0\).  Graph \(y = A(x)\) for
+  \(x \in [-2,2]\).  Using \(\epsilon\)--\(\delta\) language, show that
+  \(\lim_{x \to 0} A(x)\) exists and find its value.
+
+\item Let \(f(x)\) be defined for all \(x\), and continuous except for
+  \(x = -1\) and \(x = 3\).  Let
+  \[
+    g(x) =
+    \begin{cases}
+      x^2 + 1, & \tfor x > 0, \\
+      x - 3, & \tfor x \le 0.
+    \end{cases}
+  \]
+  For what values of \(x\) can you be sure that \(f(g(x))\) is continuous?
+  Explain.
+
+\item Suppose that \(g\), \(h\) are two continuous functions on \([a,b]\).
+  Suppose there exists \(c \in (a,b)\) such that \(g(c) = h(c)\).  Define
+  \(f(x)\) such that \(f(x) = g(x)\) for \(x < c\) and \(f(x) = h(x)\) for
+  \(x \ge c\).  Prove that \(f\) is continuous on \([a,b]\).
+
+\item Let \(f(x) = \sin(1/x)\) for \(x \in \mathbf{R}\), \(x \ne 0\).
+  Show that for any \(a \in \mathbf{R}\), the function \(g(x)\) defined by
+  \[
+    g(x) =
+    \begin{cases}
+      f(x), & x \ne 0, \\
+      a, & x = 0,
+    \end{cases}
+  \]
+  is not continuous at \(x = 0\).
+
+\item Given a real-valued function \(f\) which is continuous on the closed
+  inverval \([0,1]\).  Assume that \(0 \le f(x) \le 1\) for each \(x\) in
+  \([0,1]\).  Prove that there is at least one point \(c\) in \([0,1]\)
+  for which \(f(c) = c\).  Such a point is called a \emph{fixed point} of
+  \(f\).  The result of this exercise is a special case of \emph{Brouwer's
+    fixed-point theorem}.
+
+\item[\bonus] Let \(f\) be a bounded function that is integrable on
+  \([a,b]\).  Prove that there exists \(c \in \mathbf{R}\) with
+  \(a \le c \le b\) such that \(\int_a^b f(x) \dx = 2 \int_a^c f(x) \dx\).
+\end{enumerate}
+\end{document}
