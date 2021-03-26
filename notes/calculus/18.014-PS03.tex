@@ -72,7 +72,7 @@ The first two problems are from Apostol's \textit{Calculus} (1: 83, 94).
     a(S) &= \int_{-1}^0 \paren*{\,f(x) - g(x)} \dx + \int_0^{\sqrt2} \paren*{g(x) - f(x)} \dx \\
          &= \int_{-1}^0 \paren[\big]{x^3 - 2x} \dx + \int_0^{\sqrt2} \paren[\big]{2x-x^3} \dx \\
          &= \int_0^1 \paren[\big]{2x - x^3} \dx + \int_0^{\sqrt2} \paren[\big]{2x-x^3} \dx \\
-         &= 1 - \frac14 + 2 - \frac{2\sqrt2}{3} = \frac{11}{4} - \frac23\sqrt2.
+         &= 1 - \frac14 + 2 - 1 = \frac74.
   \end{align*}
 
   The sketch is as follows.
@@ -99,6 +99,28 @@ The first two problems are from Apostol's \textit{Calculus} (1: 83, 94).
   Show that the equality if and only if \(s = ct\) for some
   \(c \in \mathbf{R}\).
 
+  \begin{proof}
+    Let \(P_1\) and \(P_2\) be partitions for \(s\) and \(t\) respectively.
+    Let \(P = \brce{x_0, x_1, \dotsc, x_n}\) be the common refinement of
+    \(P_1\) and \(P_2\).  Denote \(s(x) = s_k\) and \(t(x) = t_k\) for all
+    \(x\) on every open interval \((x_{k-1}, x_k)\).  Then we have
+    \begin{align*}
+      \paren[\bigg]{\int_a^b s \cdot t}^2
+        &= \brce*{\sum_{k=1}^n s_k t_k \paren{x_k - x_{k-1}}}^2 \\
+        &= \brce*{\sum_{k=1}^n \paren[\big]{s_k \sqrt{x_k - x_{k-1}}} \paren[\big]{t_k \sqrt{x_k - x_{k-1}}}}^2 \\
+        &\le \brce*{\sum_{k=1}^n s_k^2 \paren{x_k - x_{k-1}}} \brce*{\sum_{k=1}^n t_k^2 \paren{x_k - x_{k-1}}} \\
+        &= \int_a^b s^2 \cdot \int_a^b t^2.
+    \end{align*}
+    The equality holds if and only if there exists a constant \(c\) such
+    that
+    \[
+      s_k \sqrt{x_k - x_{k-1}} = c t_k \sqrt{x_k - x_{k-1}}
+    \]
+    for each \(k\).  Since \(x_k - x_{k-1} > 0\), we can cancel out the
+    \(\sqrt{x_k - x_{k-1}}\) factor from both sides of the above equation
+    and obtain \(s_k = c t_k\) for each \(k\).
+  \end{proof}
+
 \item[\bonus] Let
   \(B = \brce{x \in [0, 1] \mid x = m/2^n \text{ for some } m, n \in
     \mathbf{Z}}\).  Prove that the function
@@ -110,5 +132,9 @@ The first two problems are from Apostol's \textit{Calculus} (1: 83, 94).
     \end{cases}
   \]
   is not integrable on \([0, 1]\) by our definition of integrability.
+
+  \begin{proof}
+    
+  \end{proof}
 \end{enumerate}
 \end{document}
