@@ -133,8 +133,48 @@ The first two problems are from Apostol's \textit{Calculus} (1: 83, 94).
   \]
   is not integrable on \([0, 1]\) by our definition of integrability.
 
+  \newtheorem*{lemma}{Lemma}
+  \begin{lemma}
+    If \(0 \le \alpha < \beta \le 1 \), then we can always find a third
+    number \(\gamma\) such that \(\gamma \in B\) and
+    \(\alpha < \gamma < \beta\).
+  \end{lemma}
+
   \begin{proof}
-    
+    Let \(s\) and \(t\) be two arbitrary step functions satisfying
+    \(s \le f \le t\) on \([0, 1]\).  We can always find a common
+    partition \(P = \brce{x_0, x_1, \dotsc, x_n}\) for both \(s\) and
+    \(t\) such that \(s(x) = s_k\) and \(t(x) = t_k\) on every open
+    interval \((x_{k-1}, x_k)\).  The constant \(t_k\) cannot be less than
+    \(1\).  If so, we can always find a \(\alpha \in B\) such that
+    \(x_{k-1} < \alpha < x_k\).  This means \(t(\alpha) < f(\alpha)\) for
+    this \(\alpha\), which contradicts our choice of \(t\).  By a similar
+    argument, the constant \(s_k\) cannot be greater than \(0\).  This is
+    to say, \(s_k \le 0\) and \(t_k \ge 1\) for each \(k\).  Then we have
+    \begin{align*}
+      \int_0^1 t - \int_0^1 s
+        &= \int_0^1 (t-s) \\
+        &= \sum_{k=1}^n (t_k - s_k)(x_k - x_{k-1}) \\
+        &\ge \sum_{k=1}^n (x_k - x_{k-1}) \\
+        &= 1.
+    \end{align*}
+    Choose an \(\epsilon\) where \(0 < \epsilon < 1\).  Due to the
+    arbitrariness of \(s\) and \(t\), the Riemann condition is broken
+    here.  Thus, the function \(f\) is not integrable on \([0, 1]\).
+  \end{proof}
+
+  \begin{proof}[Proof of the lemma]
+    It is easy to show that \(n < 2^n\) for every positive integer \(n\).
+    Let \(x = \beta - \alpha\).  By the Archimedean property, we can
+    always find an \(n\) such that \(1 < nx < 2^n x\).  This means
+    \(1/2^n < x\).  We apply the Archimedean property again along with the
+    well-ordering principle and find a smallest positive integer \(m\)
+    such that \(\alpha < m/2^n\).  Suppose \(m/2^n \ge \beta\).  Then we
+    have \(\alpha < \beta - 1/2^n \le m/2^n - 1/2^n = (m-1)/2^n\).  We
+    find another integer \(m-1\) which is smaller than \(m\) and this
+    contradicts our choice of \(m\).  Then it must be the case
+    \(m/2^n < \beta\).  Let \(\gamma = m/2^n\).  Then we have
+    \(\alpha < \gamma < \beta\).
   \end{proof}
 \end{enumerate}
 \end{document}
