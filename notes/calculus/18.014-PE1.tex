@@ -30,6 +30,20 @@ This is my own solution to Practice Exam~1 of
   \(h\).  Using Cavalieri's Theorem, determine the volume of the
   pyramid.
 
+  By elementary geometry, we have
+  \[
+    a_S(x) = \frac{(h-x)^2 r^2}{h^2}.
+  \]
+  Then
+  \begin{align*}
+    v(S) &= \int_0^h a_S(x) \dx \\
+         &= \int_0^h \frac{(h-x)^2 r^2}{h^2} \dx \\
+         &= \frac{r^2}{h^2} \int_0^h (h-x)^2 \dx \\
+         &= \frac{r^2}{h^2} \int_{-h}^0 x^2 \dx \\
+         &= \frac{r^2}{h^2} \cdot \frac{h^3}{3}
+           = \frac{r^2 h}{3}.
+  \end{align*}
+
 \item Let \(f\) be an integrable function on \([0, 1]\).  Prove that
   \(\abs{\,f}\) is integrable on \([0, 1]\).
 
@@ -68,7 +82,36 @@ This is my own solution to Practice Exam~1 of
   the natural numbers has a least element.  Prove the well-ordering
   principle implies the principle of mathematical induction.
 
+  \begin{proof}
+    Let \(T\) be the set of all positive integers not in \(S\).  Suppose
+    \(T\) is nonempty.  By the well-ordering principle, \(T\) has a smallest
+    member.  Let \(m\) denote such a member.  The fact that \(m \notin S \)
+    implies \(m \ne 1\).  It cannot be the case that \(m < 1\) since \(1\)
+    is the smallest positive integer.  Thus, \(m > 1\).  Then \(m-1\) is
+    another integer since \(\mathbf{Z}\) is closed under subtraction.  And
+    it is positive since \(m > 1\) implies \(m-1>0\).  It cannot be in
+    \(S\).  If so, then \(m\) will be in \(S\), which contradicts our
+    definition of \(T\).  This means \(m-1\) is another positive integer not
+    in \(S\) and is thus in \(T\).  Notice that \(m-1\) is smaller than
+    \(m\).  This contradicts the well-ordering principle.  Thus, \(T\) must
+    be empty.  This is to say that \(S\) contains all positive integers.
+  \end{proof}
+
 \item Suppose \(\lim_{x \to p^+} f(x) = \lim_{x \to p^-} f(x) = A\).
   Prove \(\lim_{x \to p} f(x) = A\).
+
+  \begin{proof}
+    For any \(\epsilon > 0\), there exist \(\delta_1, \delta_2 > 0\) such
+    that
+    \begin{gather*}
+      \abs{\,f(x) - A} < \epsilon \txt{whenener} 0 < x - p < \delta_1 \\
+      \iand
+      \abs{\,f(x) - A} < \epsilon \txt{whenener} 0 < p - x < \delta_2.
+    \end{gather*}
+    Let \(\delta = \min\brce{\delta_1, \delta_2}\).  Then
+    \[
+      \abs{\,f(x) - A} < \epsilon \txt{whenener} 0 < \abs{x - p} < \delta.  \qedhere
+    \]
+  \end{proof}
 \end{enumerate}
 \end{document}
