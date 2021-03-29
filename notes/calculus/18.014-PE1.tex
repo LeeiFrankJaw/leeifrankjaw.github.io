@@ -1,0 +1,74 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Practice Exam~1}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to Practice Exam~1 of
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/exams/}{18.014}.
+
+\begin{enumerate}
+\item Compute \(\int_{99}^{103} \paren{2x-198}^2 [\sqrt{x-99}] \dx\)
+  where here \([x]\) is defined to be the largest integer \(\le x\).
+
+  We have
+  \begin{align*}
+    \int_{99}^{103} \paren{2x-198}^2 [\sqrt{x-99}] \dx
+      &= \int_0^4 \paren{2x}^2 [\sqrt x] \dx \\
+      &= \int_0^1 0 \dx + 4 \int_1^4 x^2 \dx \\
+      &= 4 \cdot \frac{4^3 - 1^3}{3} \\
+      &= 84.
+  \end{align*}
+
+\item Let \(S\) be a square pyramid with base area \(r^2\) and height
+  \(h\).  Using Cavalieri's Theorem, determine the volume of the
+  pyramid.
+
+\item Let \(f\) be an integrable function on \([0, 1]\).  Prove that
+  \(\abs{\,f}\) is integrable on \([0, 1]\).
+
+  \begin{proof}
+    Since \(f\) is integrable on \([0, 1]\), for any \(\epsilon > 0\), we
+    can always find step functions \(s\) and \(t\) such that
+    \(s \le f \le t\) and
+    \[
+      \int_0^1 t - \int_0^1 s < \epsilon.
+    \]
+    Let \(P = \brce{x_0, x_1, \dotsc, x_n}\) be a common partition for \(s\)
+    and \(t\).  Denote \(s(x) = s_k\) and \(t(x) = t_k\) on every open
+    interval \((x_{k-1}, x_k)\).  We construct two other step functions
+    \begin{gather*}
+      s'(x) =
+      \begin{cases}
+        s(x), & s(x) \ge 0, \\
+        -t(x), & t(x) \le 0,
+      \end{cases}
+      \qand
+      t'(x) =
+      \begin{cases}
+        t(x), & s(x) \ge 0, \\
+        -s(x), & t(x) \le 0.
+      \end{cases}
+    \end{gather*}
+    It is easy to verify that \(s' \le \abs{\,f} \le t'\) and
+    \[
+      \int_0^1 t' - \int_0^1 s' = \int_0^1 t - \int_0^1 s < \epsilon.
+    \]
+    This means that \(\abs{\,f}\) also satisfies the Riemann condition and
+    is thus integrable.
+  \end{proof}
+
+\item The well-ordering principle states that every non-empty subset of
+  the natural numbers has a least element.  Prove the well-ordering
+  principle implies the principle of mathematical induction.
+
+\item Suppose \(\lim_{x \to p^+} f(x) = \lim_{x \to p^-} f(x) = A\).
+  Prove \(\lim_{x \to p} f(x) = A\).
+\end{enumerate}
+\end{document}
