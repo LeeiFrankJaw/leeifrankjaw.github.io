@@ -3,12 +3,16 @@
 \usepackage{mathtools,amssymb,amsthm}
 \usepackage[hmargin=1in,vmargin=1in]{geometry}
 \usepackage{graphicx,xcolor}
-\usepackage[pdfusetitle]{hyperref}
+\usepackage{hyperref}
+\makeatletter
 \hypersetup{%
   colorlinks=true,
   urlcolor=[rgb]{0,0.2,0.6},
   linkcolor={.},
-  bookmarksdepth=2}
+  bookmarksdepth=2,
+  pdftitle={\@title},
+  pdfauthor={\@author}}
+\makeatother
 \usepackage{bookmark}
 \usepackage{float}
 
@@ -32,6 +36,7 @@
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterX{\brce}[1]{\lbrace}{\rbrace}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiter{\chev}{\langle}{\rangle}
 \newcommand*{\unit}[1]{\,\mathrm{#1}}
 \newcommand*{\DeclareUnit}[1]{\expandafter\def\csname#1\endcsname{\unit{#1}}}
 \DeclareUnit{cm}
@@ -44,20 +49,17 @@
 % \newcommand*{\Rp}{(0,+\infty)}
 % \newcommand*{\Rm}{(-\infty,0)}
 \newcommand*{\deduce}{\mathrel{\Downarrow}}
-% \newcommand*{\abs}[1]{\left\lvert #1 \right\rvert}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-% \newcommand*{\ceil}[1]{\left\lceil#1\right\rceil}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \newcommand*{\textop}[1]{\mathbin{\text{#1}}}
 \newcommand*{\tand}{\textop{and}}
 \newcommand*{\tor}{\textop{or}}
-\newcommand*{\txt}[2][\quad]{#1 \text{#2} #1}
+\newcommand*{\txt}[1]{\quad \text{#1} \quad}
 \newcommand*{\qand}{\txt{and}}
 \newcommand*{\iand}{\intertext{and}}
 \newcommand*{\DeclareText}[1]{\expandafter\def\csname#1\endcsname{\text{#1}}}
 \DeclareText{otherwise}
 \newcommand*{\tfor}{\text{for }}
-\newcommand*{\qfor}{\txt{for}}
 
 \newcommand*{\enumparen}[1]{(\makebox[0.6em][c]{#1})}
 \renewcommand{\labelenumii}{\enumparen{\theenumii}}

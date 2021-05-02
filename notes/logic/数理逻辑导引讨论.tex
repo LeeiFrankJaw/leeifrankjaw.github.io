@@ -1,0 +1,70 @@
+\documentclass[a4paper]{ctexart}
+
+\title{《数理逻辑导引》讨论}
+\author{赵磊}
+
+\input{preamble-all}
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+    \let \footnote \thanks
+    {\LARGE \@title \par}%
+    \vskip 1.5em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother
+
+\xeCJKDeclareCharClass{CJK}{"2460 -> "2473}
+\renewcommand{\labelenumi}{\enumparen{\theenumi}}
+
+\input{preamble-cn}
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+第12页中间的\(s\)和\(t\)最好是
+\begin{gather*}
+  s =  \chev{s_0, \dotsc, s_{\abs{s}-1}} \\
+  \intertext{和}
+  s * t = \chev{s_0, \dotsc, s_{\abs{s}-1}, t_0, \dotsc, t_{\abs{t}-1}}.
+\end{gather*}
+如若不然，\(\Sigma^*\)和脚注③中对\(s * t\)的定义就说不通了.  这里
+\(\Sigma^*\)的定义很巧妙，正因为一个自然数是按照引言里被定义成所有小于
+它的自然数组成的集合，所以\(s\colon n \to \Sigma\)这样的写法才是有意义
+的.  而且\(\Sigma^*\)还包含了空字符串，因为\(0 = \emptyset\)，所以
+\(\Sigma^*\)包含一个空函数.  自然数\(n\)是\(\brce{0, 1, \dotsc, n-1}\)
+这样的一个集合.  脚注③里把\(s * t\)定义成一个分段函数，其条件里对\(i\)
+的限制也符合从\(0\)开始计数的习惯.  当然你可以说用\(s_1\)来表示
+\(s(0)\)，也就是用来表示字符串的第\(1\)个的字符，但是这样总感觉很别扭.
+
+第13页定义1.2、引理1.1和定理1.2中的\(\chev{\lparen\neg}\)都应该是
+\(\chev{\lparen,\neg}\)，因为引理1.2（前缀引理）证明里，用的就是
+\(\chev{\lparen,\neg}\)，这也符合第12页的写法. 如果\(\chev{s_0, s_1}\)
+可以简记成\(\chev{s_0 s_1}\)，可以在脚注里说明一下，我是看到前缀引理里
+的写法才确信自己没有理解错这个记号的意思.
+
+第13页在介绍前缀引理之前可以先给出前缀和真前缀的定义，我第一次看到这里
+就郁闷了，怎么还没定义就直接使用前缀这个概念了.  我根据前缀引理的证明
+反推出前缀和真前缀的如下定义.  两个字符串\(s\)和\(t\)，我们说\(t\)是
+\(s\)的一个前缀当且仅当
+\begin{enumerate}
+  \renewcommand{\labelenumi}{（\theenumi）}
+\item \(\abs{t} \le \abs{s}\)且
+\item 对于所有的\(i < \abs{t}\)，都有\(s(i) = t(i)\).
+\end{enumerate}
+特别地，当\(\abs{t} < \abs{s}\)时，我们说\(t\)是\(s\)的一个真前缀.
+日常语言里用到前缀后缀这样的词都是按照语义或者结构来划分的，这里的前缀
+明显是专业里的特别用法，所以需要给出定义.  对于我这种没有老师，只能通
+过阅读来自学数理逻辑的人，遇到这种情况，真的会很困惑.
+\end{document}
+
+% Local Variables:
+% TeX-engine: xetex
+% End:
