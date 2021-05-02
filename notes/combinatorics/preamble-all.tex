@@ -1,0 +1,128 @@
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{mathtools,amssymb,amsthm}
+\usepackage[hmargin=1in,vmargin=1in]{geometry}
+\usepackage{graphicx,xcolor}
+\usepackage[pdfusetitle]{hyperref}
+\hypersetup{%
+  colorlinks=true,
+  urlcolor=[rgb]{0,0.2,0.6},
+  linkcolor={.},
+  bookmarksdepth=2}
+\usepackage{bookmark}
+\usepackage{float}
+
+\frenchspacing
+
+\newcommand*{\parasp}{\setlength{\parskip}{10pt plus 2pt minus 3pt}}
+\newcommand*{\noparasp}{\setlength{\parskip}{0pt plus 1pt}}
+\newcommand*{\setparasp}[1]{\setlength{\parskip}{#1}}
+\newcommand*{\pskip}{\vskip 10pt plus 2pt minus 3pt}
+% \newcommand\LEFTRIGHT[3]{\left#1 #3 \right#2}
+\newcommand\SetSymbol[1][]{%
+  \nonscript\:#1\vert
+  \allowbreak
+  \nonscript\:
+  \mathopen{}}
+% \newcommand*{\paren}[1]{\LEFTRIGHT(){#1}}
+\DeclarePairedDelimiterX{\paren}[1]{\lparen}{\rparen}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+% \newcommand*{\brkt}[1]{\LEFTRIGHT[]{#1}}
+\DeclarePairedDelimiterX{\brkt}[1]{\lbrack}{\rbrack}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiterX{\brce}[1]{\lbrace}{\rbrace}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\newcommand*{\unit}[1]{\,\mathrm{#1}}
+\newcommand*{\DeclareUnit}[1]{\expandafter\def\csname#1\endcsname{\unit{#1}}}
+\DeclareUnit{cm}
+% \renewcommand*{\m}{\unit{m}}
+\DeclareUnit{m}
+\DeclareUnit{kg}
+\DeclareUnit{s}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\Z}{\mathbb{Z}}
+% \newcommand*{\Rp}{(0,+\infty)}
+% \newcommand*{\Rm}{(-\infty,0)}
+\newcommand*{\deduce}{\mathrel{\Downarrow}}
+% \newcommand*{\abs}[1]{\left\lvert #1 \right\rvert}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+% \newcommand*{\ceil}[1]{\left\lceil#1\right\rceil}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\newcommand*{\textop}[1]{\mathbin{\text{#1}}}
+\newcommand*{\tand}{\textop{and}}
+\newcommand*{\tor}{\textop{or}}
+\newcommand*{\txt}[2][\quad]{#1 \text{#2} #1}
+\newcommand*{\qand}{\txt{and}}
+\newcommand*{\iand}{\intertext{and}}
+\newcommand*{\DeclareText}[1]{\expandafter\def\csname#1\endcsname{\text{#1}}}
+\DeclareText{otherwise}
+\newcommand*{\tfor}{\text{for }}
+\newcommand*{\qfor}{\txt{for}}
+
+\newcommand*{\enumparen}[1]{(\makebox[0.6em][c]{#1})}
+\renewcommand{\labelenumii}{\enumparen{\theenumii}}
+\newcommand*{\upstar}{\textsuperscript{\normalfont\textasteriskcentered}}%
+\makeatletter
+\newcommand*{\bonus}{\@itemlabel\upstar}%
+\def\contitem{%
+  \def\H@item{%
+    \@inmatherr\item
+    \@noitemargtrue
+    \@ifnextchar[\@item{\@item[\@itemlabel]}}}
+\makeatother
+
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\Ber}{Bernoulli}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\E}{E}
+\def\argmax{\qopname\relax m{arg\,max}}
+\DeclarePairedDelimiterXPP{\Eb}[1]{\E}{\lbrack}{\rbrack}{}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiterXPP{\varp}[1]{\var}{\lparen}{\rparen}{}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiterXPP{\Covp}[1]{\Cov}{\lparen}{\rparen}{}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiterXPP{\expp}[1]{\exp}{\lbrace}{\rbrace}{}{#1}
+\newcommand*{\Fn}[1]{\mathop{\relax #1}\nolimits}
+\newcommand*{\fn}[1]{\mathop{\relax\kern0pt #1}\nolimits}
+\newcommand*{\gammaf}{\Fn{\Gamma}}
+\renewcommand*{\Pr}{\Fn{P}}
+\DeclarePairedDelimiterXPP{\Prp}[1]{\Pr}{\lparen}{\rparen}{}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\newcommand*{\pnorm}{\Fn{\Phi}}
+\DeclarePairedDelimiterXPP{\pnormp}[1]{\pnorm}{\lparen}{\rparen}{}{#1}
+\newcommand*{\dnorm}{\fn{\varphi}}
+\DeclarePairedDelimiterXPP{\dnormp}[1]{\dnorm}{\lparen}{\rparen}{}{#1}
+\newcommand*{\qnorm}{\Fn{\Phi}^{-1}}
+%\newcommand*{\diff}{\mathop{}\!d}
+\newcommand*{\diff}{\mathop{}\!\mathit{d}}
+%\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand*{\dx}{\diff x}
+\newcommand*{\dy}{\diff y}
+\newcommand*{\dz}{\diff z}
+\newcommand*{\ds}{\diff s}
+\newcommand*{\dt}{\diff t}
+\newcommand*{\du}{\diff u}
+\newcommand*{\dv}{\diff v}
+\newcommand*{\dtheta}{\diff \theta}
+\newcommand*{\dd}[2][]{\frac{\diff#1}{\diff#2}}
+\newcommand*{\ddx}{\frac{\diff}{\dx}}
+\newcommand*{\ddt}{\frac{\diff}{\dt}}
+\newcommand*{\ddy}{\dd y}
+\newcommand*{\ddtheta}{\frac{\diff}{\dtheta}}
+\newcommand*{\ddz}{\dd z}
+\newcommand*{\fwdf}{\mathop{}\!\Delta}
+\newcommand*{\dydx}{\frac\dy\dx}
+\newcommand*{\pdpd}[2][]{\frac{\partial#1}{\partial#2}}
+\newcommand*{\pdpdx}{\frac\partial{\partial x}}
+\newcommand*{\pdpdy}{\frac\partial{\partial y}}
+\newcommand*{\pdpdz}{\frac\partial{\partial z}}
+\newcommand*{\pdpdu}{\frac\partial{\partial u}}
+\newcommand*{\pdpdv}{\frac\partial{\partial v}}
+\newcommand*{\pdpdt}{\frac\partial{\partial t}}
+\newcommand*{\pdzpdx}{\frac{\partial z}{\partial x}}
+\newcommand*{\pdzpdy}{\frac{\partial z}{\partial y}}
+\newcommand*{\pdzpdt}{\frac{\partial z}{\partial t}}
+\newcommand*{\pdxpdt}{\frac{\partial x}{\partial t}}
+\newcommand*{\pdypdt}{\frac{\partial y}{\partial t}}

@@ -1,0 +1,78 @@
+\documentclass[a4paper]{book}
+
+\title{Solutions to Graph Theory with Applications}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\input{preamble-begin}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+This is a collection of personal solutions to \textit{Graph theory
+  with Applications} by Bondy and Murty.
+
+% \tableofcontents
+\mainmatter
+
+\chapter{Graphs and Subgraphs}
+\label{chap:1}
+
+\section{Graphs and Simple Graphs}
+\label{sec:1.1}
+
+\section{Graph Isomorphism}
+\label{sec:1.2}
+
+\begin{enumerate}
+  \setcounter{enumi}{7}
+\item
+  \begin{enumerate}
+  \item
+    \begin{proof}
+      The set of vertices of \(K_{m,n}\) can be partitioned into two
+      sets \(X\) and \(Y\), where \(\abs{X} = m\) and \(\abs{Y} = n\).
+      Since \(K_{m,n}\) is also simple, we have
+      \(E(K_{m,n}) = X \times Y\).  It follows that
+      \[
+        \varepsilon = \abs{E(K_{m,n})} = \abs{X \times Y} = \abs{X} \cdot \abs{Y} = mn. \qedhere
+      \]
+  \end{proof}
+    
+  \item
+    \begin{proof}
+      For any simple and bipartite graph \(G\), which can be
+      partitioned into \(X\) and \(Y\), we always have
+      \(\varepsilon \le \varepsilon(K_{m,n})\), where \(m = \abs{X}\)
+      and \(n = \abs{Y}\).  Since \(\nu = m+n\), for any bipartition
+      \((X, Y)\), we have
+      \begin{align*}
+        \varepsilon &\le \max \varepsilon(K_{m,n}) \\
+                    &= \max m(\nu-m) \\
+                    &= \frac{\nu}{2} \paren[\Big]{\nu - \frac{\nu}{2}}
+                      = \frac{\nu^2}{4}. \qedhere
+      \end{align*}
+    \end{proof}
+  \end{enumerate}
+  
+\item 
+\end{enumerate}
+
+\newpage
+\null
+\end{document}
+
