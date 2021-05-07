@@ -69,7 +69,54 @@ This is a collection of personal solutions to \textit{Graph theory
     \end{proof}
   \end{enumerate}
   
-\item 
+\item
+  \begin{enumerate}
+  \item
+    \begin{proof}
+      When \(n = m\), we have \(T_{m,n} = T_{m,m} = K_m\) and \(k = \brkt{n/m} = \brkt{m/m} = 1\).  Thus, 
+      \begin{align*}
+        \binom{n-k}{2} + (m-1) \binom{k+1}{2}
+          &= \frac{(m-1)(m-2)}{2} + (m-1) \\
+          &= \frac{(m-1)m}{2}
+            = \binom{m}{2} \\
+          &= \varepsilon(K_m)
+            = \varepsilon(T_{m,n}).
+      \end{align*}
+      This is our induction base.  Suppose now the formula holds for
+      some \(1 \le m \le n\).  Let \(k = \brkt{n/m}\).  Then
+      \begin{align*}
+        \varepsilon(T_{m,n+1})
+          &= \varepsilon(T_{m,n}) + k(m-1) + (n+1 - km -1) \\
+          &= \varepsilon(T_{m,n}) + n - k \\
+          &= \binom{n-k}{2} + (m-1) \binom{k+1}{2} + n - k \\
+          &= \frac{(n-k)(n-k-1)}{2} + n - k + (m-1) \binom{k+1}{2} \\
+          &= \frac{(n-k)(n-k+1)}{2} + (m-1) \binom{k+1}{2} \\
+          &= \binom{n+1-k}{2} + (m-1) \binom{k+1}{2}. \qedhere
+      \end{align*}
+      Notice that the choice of \(k\) is subtle here.
+    \end{proof}
+  \item
+    \begin{proof}
+      Let \(G\) be a complete \(m\)-partite graph on \(n\) vertices.
+      Let \(n_1, n_2, \dotsc, n_m\) denote the size of the partitions
+      for \(G\).  If \(\abs{n_i - n_j} \le 1\) for all \(i\) and \(j\),
+      then \(G \cong T_{m,n}\).  The contrapositive of the previous
+      proposition says if \(G \ncong T_{m,n}\), then there exist a pair
+      \(i\) and \(j\) such that \(n_i - n_j > 1\).  Then we modify the
+      graph \(G\) such that the \(i\)th partition one less vertex and
+      the \(j\)th partition has one more vertex.  Outside the two
+      partition concerned, the \emph{number} of edges is unchanged.
+      Within the two partition concerned, the change of number of edges
+      is
+      \begin{align*}
+        (n_i - 1)(n_j + 1) - n_i n_j
+          &= n_i n_j + n_i - n_j - 1 - n_i n_j \\
+          &= n_i - n_j - 1 \\
+          &> 0.
+      \end{align*}
+      This completes the proof.
+  \end{proof}
+  \end{enumerate}
 \end{enumerate}
 
 \newpage
