@@ -1,0 +1,116 @@
+\documentclass[a4paper]{ctexart}
+
+\title{日语基础笔记}
+\author{赵磊}
+
+\input{preamble-all}
+\input{preamble-ja}
+
+\usepackage{tabularx}
+\usepackage{diagbox}
+% \usepackage[column=C]{cellspace}
+% \addparagraphcolumntypes{Y}
+\usepackage{luatexja-ruby}
+\makeatletter
+\def\arraycentercr{\let\newline\@centercr}
+\makeatother
+\newfontface{\ipafont}{Gentium Plus}
+\newcommand{\ipa}[1]{\footnotesize[{\ipafont#1}]}
+
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+\section{\ruby{五十音}{ごじゅうおん}\ruby{図}{ず}}
+
+\begin{table}[H]
+  \centering
+  % \newcolumntype{Y}{>{\centering\arraybackslash\arraycentercr}X}
+  \renewcommand{\tabularxcolumn}[1]{
+    >{\centering\arraybackslash\arraycentercr}m{#1}}
+  % \setlength{\cellspacetoplimit}{1em}
+  % \setlength{\cellspacebottomlimit}{1em}
+  \begin{tabularx}{4in}{c*{5}{|X}}
+    \diagbox{\ruby{行}{ぎょう}}{\ruby{段}{だん}}
+      & あ段
+      & い段
+      & う段
+      & え段
+      & お段 \\
+    \hline
+    あ行
+      & あ \newline \ipa{ä}
+      & い \newline \ipa{i}
+      & う \newline \ipa{ɯ̟}
+      & え \newline \ipa{e̞}
+      & お \newline \ipa{o̞} \\
+    \hline
+    か行
+      & か \newline \ipa{kä}
+      & き \newline \ipa{ki}
+      & く \newline \ipa{kɯ̟}
+      & け \newline \ipa{ke̞}
+      & こ \newline \ipa{ko̞} \\
+    \hline
+    さ行
+      & さ \newline \ipa{sä}
+      & し \newline \ipa{ɕi}
+      & す \newline \ipa{sɨ}
+      & せ \newline \ipa{se̞}
+      & そ \newline \ipa{so̞} \\
+    \hline
+    た行
+      & た \newline \ipa{tä}
+      & ち \newline \ipa{t͡ɕi}
+      & つ \newline \ipa{tɯ̟}
+      & て \newline \ipa{te̞}
+      & と \newline \ipa{to̞} \\
+    \hline
+    な行
+      & な \newline \ipa{nä}
+      & に \newline \ipa{ɲ̟i}
+      & ぬ \newline \ipa{nɯ̟}
+      & ね \newline \ipa{ne̞}
+      & の \newline \ipa{no̞} \\
+    \hline
+    は行
+      & は \newline \ipa{hä}
+      & ひ \newline \ipa{çi}
+      & ふ \newline \ipa{ɸɯ̟}
+      & へ \newline \ipa{he̞}
+      & ほ \newline \ipa{ho̞} \\
+    \hline
+    ま行
+      & ま \newline \ipa{mä}
+      & み \newline \ipa{mʲi}
+      & む \newline \ipa{mɯ̟}
+      & め \newline \ipa{me̞}
+      & も \newline \ipa{mo̞} \\
+    \hline
+    や行
+      & や \newline \ipa{jä}
+      &
+      & ゆ \newline \ipa{jɯ̟}
+      &
+      & よ \newline \ipa{jo̞} \\
+    \hline
+    ら行
+      & ら \newline \ipa{ɾä}
+      & り \newline \ipa{ɾʲi}
+      & る \newline \ipa{ɾɯ̟}
+      & れ \newline \ipa{ɾe̞}
+      & ろ \newline \ipa{ɾo̞} \\
+    \hline
+    わ行
+      & わ \newline \ipa{ɰä}
+      &
+      &
+      &
+      & を \newline \ipa{o̞} \\
+    \hline
+    \ruby{撥}{はつ}\ruby{音}{おん}
+      & ん \newline \ipa{n m ŋ ɲ}
+  \end{tabularx}
+\end{table}
+\end{document}
