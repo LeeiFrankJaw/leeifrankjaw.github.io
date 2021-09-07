@@ -8,30 +8,31 @@
 
 \usepackage{tabularx}
 \usepackage{diagbox}
-% \usepackage[column=C]{cellspace}
-% \addparagraphcolumntypes{Y}
+\usepackage[column=C]{cellspace}
+\addparagraphcolumntypes{X}
+\setlength{\cellspacetoplimit}{1ex}
+\setlength{\cellspacebottomlimit}{1ex}
 \usepackage{luatexja-ruby}
+\ltjsetruby{stretch=101}
 \makeatletter
 \def\arraycentercr{\let\newline\@centercr}
 \makeatother
 \newfontface{\ipafont}{Gentium Plus}
-\newcommand{\ipa}[1]{\footnotesize[{\ipafont#1}]}
+\newcommand{\ipa}[1]{{\footnotesize[{\ipafont#1}]}}
 
 \input{preamble-begin}
 
 \begin{document}
 \maketitle
 
-\section{\ruby{五十音}{ごじゅうおん}\ruby{図}{ず}}
+\section[五十音図]{\ruby{五十音|図}{ごじゅうおん|ず}}
 
 \begin{table}[H]
   \centering
   % \newcolumntype{Y}{>{\centering\arraybackslash\arraycentercr}X}
   \renewcommand{\tabularxcolumn}[1]{
     >{\centering\arraybackslash\arraycentercr}m{#1}}
-  % \setlength{\cellspacetoplimit}{1em}
-  % \setlength{\cellspacebottomlimit}{1em}
-  \begin{tabularx}{4in}{c*{5}{|X}}
+  \begin{tabularx}{4in}{c*{5}{|C{X}}}
     \diagbox{\ruby{行}{ぎょう}}{\ruby{段}{だん}}
       & あ段
       & い段
@@ -40,77 +41,369 @@
       & お段 \\
     \hline
     あ行
-      & あ \newline \ipa{ä}
-      & い \newline \ipa{i}
-      & う \newline \ipa{ɯ̟}
-      & え \newline \ipa{e̞}
-      & お \newline \ipa{o̞} \\
+      & あ \newline[-.8ex] \ipa{ä}
+      & い \newline[-.8ex] \ipa{i}
+      & う \newline[-.8ex] \ipa{ɯ̟}
+      & え \newline[-.8ex] \ipa{e̞}
+      & お \newline[-.8ex] \ipa{o̞} \\
     \hline
     か行
-      & か \newline \ipa{kä}
-      & き \newline \ipa{ki}
-      & く \newline \ipa{kɯ̟}
-      & け \newline \ipa{ke̞}
-      & こ \newline \ipa{ko̞} \\
+      & か \newline[-.8ex] \ipa{kä}
+      & き \newline[-.8ex] \ipa{kʲi}
+      & く \newline[-.8ex] \ipa{kɯ̟}
+      & け \newline[-.8ex] \ipa{ke̞}
+      & こ \newline[-.8ex] \ipa{ko̞} \\
     \hline
     さ行
-      & さ \newline \ipa{sä}
-      & し \newline \ipa{ɕi}
-      & す \newline \ipa{sɨ}
-      & せ \newline \ipa{se̞}
-      & そ \newline \ipa{so̞} \\
+      & さ \newline[-.8ex] \ipa{sä}
+      & し \newline[-.8ex] \ipa{ɕi}
+      & す \newline[-.8ex] \ipa{sɨ}
+      & せ \newline[-.8ex] \ipa{se̞}
+      & そ \newline[-.8ex] \ipa{so̞} \\
     \hline
     た行
-      & た \newline \ipa{tä}
-      & ち \newline \ipa{t͡ɕi}
-      & つ \newline \ipa{tɯ̟}
-      & て \newline \ipa{te̞}
-      & と \newline \ipa{to̞} \\
+      & た \newline[-.8ex] \ipa{tä}
+      & ち \newline[-.8ex] \ipa{t͡ɕi}
+      & つ \newline[-.8ex] \ipa{t͡sɨ}
+      & て \newline[-.8ex] \ipa{te̞}
+      & と \newline[-.8ex] \ipa{to̞} \\
     \hline
     な行
-      & な \newline \ipa{nä}
-      & に \newline \ipa{ɲ̟i}
-      & ぬ \newline \ipa{nɯ̟}
-      & ね \newline \ipa{ne̞}
-      & の \newline \ipa{no̞} \\
+      & な \newline[-.8ex] \ipa{nä}
+      & に \newline[-.8ex] \ipa{ɲ̟i}
+      & ぬ \newline[-.8ex] \ipa{nɯ̟}
+      & ね \newline[-.8ex] \ipa{ne̞}
+      & の \newline[-.8ex] \ipa{no̞} \\
     \hline
     は行
-      & は \newline \ipa{hä}
-      & ひ \newline \ipa{çi}
-      & ふ \newline \ipa{ɸɯ̟}
-      & へ \newline \ipa{he̞}
-      & ほ \newline \ipa{ho̞} \\
+      & は \newline[-.8ex] \ipa{hä}
+      & ひ \newline[-.8ex] \ipa{çi}
+      & ふ \newline[-.8ex] \ipa{ɸɯ̟}
+      & へ \newline[-.8ex] \ipa{he̞}
+      & ほ \newline[-.8ex] \ipa{ho̞} \\
     \hline
     ま行
-      & ま \newline \ipa{mä}
-      & み \newline \ipa{mʲi}
-      & む \newline \ipa{mɯ̟}
-      & め \newline \ipa{me̞}
-      & も \newline \ipa{mo̞} \\
+      & ま \newline[-.8ex] \ipa{mä}
+      & み \newline[-.8ex] \ipa{mʲi}
+      & む \newline[-.8ex] \ipa{mɯ̟}
+      & め \newline[-.8ex] \ipa{me̞}
+      & も \newline[-.8ex] \ipa{mo̞} \\
     \hline
     や行
-      & や \newline \ipa{jä}
-      &
-      & ゆ \newline \ipa{jɯ̟}
-      &
-      & よ \newline \ipa{jo̞} \\
+      & や \newline[-.8ex] \ipa{jä}
+      & \
+      & ゆ \newline[-.8ex] \ipa{jɯ̟}
+      & \
+      & よ \newline[-.8ex] \ipa{jo̞} \\
     \hline
     ら行
-      & ら \newline \ipa{ɾä}
-      & り \newline \ipa{ɾʲi}
-      & る \newline \ipa{ɾɯ̟}
-      & れ \newline \ipa{ɾe̞}
-      & ろ \newline \ipa{ɾo̞} \\
+      & ら \newline[-.8ex] \ipa{ɾä}
+      & り \newline[-.8ex] \ipa{ɾʲi}
+      & る \newline[-.8ex] \ipa{ɾɯ̟}
+      & れ \newline[-.8ex] \ipa{ɾe̞}
+      & ろ \newline[-.8ex] \ipa{ɾo̞} \\
     \hline
     わ行
-      & わ \newline \ipa{ɰä}
-      &
-      &
-      &
-      & を \newline \ipa{o̞} \\
+      & わ \newline[-.8ex] \ipa{ɰä}
+      & \
+      & \
+      & \
+      & を \newline[-.8ex] \ipa{o̞} \\
     \hline
-    \ruby{撥}{はつ}\ruby{音}{おん}
-      & ん \newline \ipa{n m ŋ ɲ}
+    \ruby{撥|音}{はつ|おん}
+      & ん \newline[-.8ex] \ipa{n m ŋ ɲ}
+  \end{tabularx}
+  \caption{\ruby{平|仮|名}{ひら|が|な}の五十音図}
+\end{table}
+
+此处虽然用{\ipafont [ɰ]}来表示日语的{\ipafont /w/}，但要注意日语
+的{\ipafont /w/}和国际音标的{\ipafont [ɰ]}并不完全一致。
+
+\begin{table}[H]
+  \centering
+  \renewcommand{\tabularxcolumn}[1]{
+    >{\centering\arraybackslash\arraycentercr}m{#1}}
+  \begin{tabularx}{4in}{c*{5}{|C{X}}}
+    \diagbox{行}{段}
+      & ア段
+      & イ段
+      & ウ段
+      & エ段
+      & オ段 \\
+    \hline
+    ア行
+      & ア
+      & イ
+      & ウ
+      & エ
+      & オ \\
+    \hline
+    カ行
+      & カ
+      & キ
+      & ク
+      & ケ
+      & コ \\
+    \hline
+    サ行
+      & サ
+      & シ
+      & ス
+      & セ
+      & ソ \\
+    \hline
+    タ行
+      & タ
+      & チ
+      & ツ
+      & テ
+      & ト \\
+    \hline
+    ナ行
+      & ナ
+      & ニ
+      & ヌ
+      & ネ
+      & ノ \\
+    \hline
+    ハ行
+      & ハ
+      & ヒ
+      & フ
+      & ヘ
+      & ホ \\
+    \hline
+    マ行
+      & マ
+      & ミ
+      & ム
+      & メ
+      & モ \\
+    \hline
+    ヤ行
+      & ヤ
+      & \
+      & ユ
+      & \
+      & ヨ \\
+    \hline
+    ラ行
+      & ラ
+      & リ
+      & ル
+      & レ
+      & ロ \\
+    \hline
+    ワ行
+      & ワ
+      & \
+      & \
+      & \
+      & \  \\
+    \hline
+    撥音
+      & ン
+  \end{tabularx}
+  \caption{\ruby{片|仮|名}{かた|か|な}の五十音図}
+\end{table}
+
+上面两个表里的都是\ruby{清|音}{せい|おん}，日语除了清音，还
+有\ruby{濁|音}{だく|おん}和\ruby{半}{はん}濁音，分别在仮名右上角
+加\ruby{濁|点}{だく|てん}和半濁点来表示。
+
+\begin{table}[H]
+  \centering
+  \renewcommand{\tabularxcolumn}[1]{
+    >{\centering\arraybackslash\arraycentercr}m{#1}}
+  \begin{tabularx}{4in}{c*{5}{|C{X}}}
+    \diagbox{行}{段}
+      & あ段
+      & い段
+      & う段
+      & え段
+      & お段 \\
+    \hline
+    が行
+      & が \newline[-.8ex] \ipa{ɡä}
+      & ぎ \newline[-.8ex] \ipa{ɡʲi}
+      & ぐ \newline[-.8ex] \ipa{ɡɯ̟}
+      & げ \newline[-.8ex] \ipa{ɡe̞}
+      & ご \newline[-.8ex] \ipa{ɡo̞} \\
+    \hline
+    ざ行
+      & ざ \newline[-.8ex] \ipa{d͡zä}
+      & じ \newline[-.8ex] \ipa{d͡ʑi}
+      & ず \newline[-.8ex] \ipa{d͡zɨ}
+      & ぜ \newline[-.8ex] \ipa{d͡ze̞}
+      & ぞ \newline[-.8ex] \ipa{d͡zo̞} \\
+    \hline
+    だ行
+      & だ \newline[-.8ex] \ipa{dä}
+      & ぢ \newline[-.8ex] \ipa{d͡ʑi}
+      & づ \newline[-.8ex] \ipa{d͡zɨ}
+      & で \newline[-.8ex] \ipa{de̞}
+      & ど \newline[-.8ex] \ipa{do̞} \\
+    \hline
+    ば行
+      & ば \newline[-.8ex] \ipa{bä}
+      & び \newline[-.8ex] \ipa{bʲi}
+      & ぶ \newline[-.8ex] \ipa{bɯ̟}
+      & べ \newline[-.8ex] \ipa{be̞}
+      & ぼ \newline[-.8ex] \ipa{bo̞} \\
+    \hline
+    ぱ行
+      & ぱ \newline[-.8ex] \ipa{pä}
+      & ぴ \newline[-.8ex] \ipa{pʲi}
+      & ぷ \newline[-.8ex] \ipa{pɯ̟}
+      & ぺ \newline[-.8ex] \ipa{pe̞}
+      & ぽ \newline[-.8ex] \ipa{po̞} \\
+  \end{tabularx}
+  \caption{濁音と半濁音}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \renewcommand{\tabularxcolumn}[1]{
+    >{\centering\arraybackslash\arraycentercr}m{#1}}
+  \begin{tabularx}{\textwidth}{c*{11}{|C{X}}}
+    \diagbox{段}{行}
+      & か行
+      & さ行
+      & た行
+      & な行
+      & は行
+      & ま行
+      & ら行
+      & が行
+      & ざ行
+      & ば行
+      & ぱ行 \\
+    \hline
+    あ段
+      & きゃ \newline[-.8ex] \ipa{kʲä}
+      & じゃ \newline[-.8ex] \ipa{ɕä}
+      & ちゃ \newline[-.8ex] \ipa{t͡ɕä}
+      & にゃ \newline[-.8ex] \ipa{ɲ̟ä}
+      & ひゃ \newline[-.8ex] \ipa{çä}
+      & みゃ \newline[-.8ex] \ipa{mʲä}
+      & りゃ \newline[-.8ex] \ipa{ɾʲä}
+      & ぎゃ \newline[-.8ex] \ipa{gʲä}
+      & じゃ \newline[-.8ex] \ipa{d͡ʑä}
+      & びゃ \newline[-.8ex] \ipa{bʲä}
+      & ぴゃ \newline[-.8ex] \ipa{pʲä} \\
+    \hline
+    う段
+      & きゅ \newline[-.8ex] \ipa{kʲɨ}
+      & しゅ \newline[-.8ex] \ipa{ɕɨ}
+      & ちゅ \newline[-.8ex] \ipa{t͡ɕɨ}
+      & にゅ \newline[-.8ex] \ipa{ɲ̟ɨ}
+      & ひゅ \newline[-.8ex] \ipa{çɨ}
+      & みゅ \newline[-.8ex] \ipa{mʲɨ}
+      & りゅ \newline[-.8ex] \ipa{ɾʲɨ}
+      & ぎゅ \newline[-.8ex] \ipa{gʲɨ}
+      & じゅ \newline[-.8ex] \ipa{d͡ʑɨ}
+      & びゅ \newline[-.8ex] \ipa{bʲɨ}
+      & ぴゅ \newline[-.8ex] \ipa{pʲɨ} \\
+    \hline
+    お段
+      & きょ \newline[-.8ex] \ipa{kʲo̞}
+      & しょ \newline[-.8ex] \ipa{ɕo̞}
+      & ちょ \newline[-.8ex] \ipa{t͡ɕo̞}
+      & にょ \newline[-.8ex] \ipa{ɲ̟o̞}
+      & ひょ \newline[-.8ex] \ipa{ço̞}
+      & みょ \newline[-.8ex] \ipa{mʲo̞}
+      & りょ \newline[-.8ex] \ipa{ɾʲo̞}
+      & ぎょ \newline[-.8ex] \ipa{gʲo̞}
+      & じょ \newline[-.8ex] \ipa{d͡ʑo̞}
+      & びょ \newline[-.8ex] \ipa{bʲo̞}
+      & ぴょ \newline[-.8ex] \ipa{pʲo̞}
+  \end{tabularx}
+  \caption{\ruby{拗}{よう}音}
+\end{table}
+
+\section[挨拶]{\ruby{挨|拶}{あい|さつ}の\ruby{言|葉}{こと|ば}}
+
+\begingroup
+\setlength{\parskip}{1em plus 1pt}
+
+お\ruby{早}{はよ}う\ruby{御}{ご}\ruby{座}{ざ}います。
+
+\ruby{今}{こん}\ruby{日}{にち}は。
+
+さようなら。
+
+\ruby{今}{こん}\ruby{晩}{ばん}は。
+
+お\ruby{休}{やす}みなさい。
+
+\ruby{初}{はじ}めまして、どうぞ、\ruby{宜}{よろ}しくお\ruby{願}{ねが}いします。
+
+すみません。
+
+\ruby{有}{あり}\ruby{難}{がと}う御座いました。
+
+いいえ、どう\ruby{致}{いた}しまして。
+
+\ruby{頂}{いただ}きます。
+
+ご\ruby{馳|走}{ち|そう}\ruby{様}{さま}でした。
+\endgroup
+
+\section[語彙]{\ruby{語}{ご}\ruby{彙}{い}}
+
+\begin{table}[H]
+  \centering
+  \renewcommand{\tabularxcolumn}[1]{
+    >{\centering\arraybackslash\arraycentercr}m{#1}}
+  \newcolumntype{Y}{>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X}
+  \begin{tabularx}{\textwidth}{*{9}{C{X}|}C{X}}
+    \ruby{花}{はな}
+    & \ruby{母}{はは}
+    & \ruby{私}{わたし}
+    & \ruby{川}{かわ}
+    & \ruby{旗}{はた}
+    & \ruby{学|生}{がく|せい}
+    & \ruby{本}{ほん}
+    & \ruby{映|画}{えい|が}
+    & \ruby{駅}{えき}
+    & \ruby{公|園}{こう|えん} \\
+    \hline
+    \ruby{部|屋}{へ|や}
+    & \ruby{平|和}{へい|わ}
+    & \ruby{学|校}{がっ|こう}
+    & \ruby{工|場}{こう|じょう}
+    & \ruby{お|菓|子}{|か|し}
+    & \ruby{顔}{かお}
+    & \ruby{応|接|間}{おう|せつ|ま}
+    & \ruby{旗}{はた}
+    & \ruby{砂|糖}{さ|とう}
+    & \ruby{妹}{いもうと} \\
+    \hline
+    \ruby{日|曜|日}{にち|よう|び}
+    & \ruby{帽|子}{ぼう|し}
+    & \ruby{動|物}{どう|ぶつ}
+    & \ruby{教|室}{きょう|しつ}
+    & \ruby{大|きい}{おお|}
+    & \ruby{多|い}{おお|}
+    & \ruby{氷}{こおり}
+    & \ruby{遠|い}{とお|}
+    & \ruby{十}{とお}
+    & \ruby{石|鹸}{せっ|けん} \\
+    \hline
+    \ruby{切|手}{きっ|て}
+    & \ruby{雑|誌}{ざっ|し}
+    & \ruby{辞|典}{じ|てん}
+    & \ruby{漢|字}{かん|じ}
+    & \ruby{縮|む}{ちぢ|}
+    & \ruby{近|々}{ちか|ぢか}
+    & \multicolumn{2}{C{Y}|}{\ruby{茶|飲|み|茶|碗}{ちゃ|の||ぢゃ|わん}}
+    & \ruby{水}{みず}
+    & \ruby{数}{かず} \\
+    \hline
+    \ruby{続|く}{つづ|}
+    & \ruby{近|づく}{ちか|}
+    & \ruby{缶|詰}{かん|づめ}
+    & \ruby{飯|茶|碗}{めし|ぢゃ|わん}
   \end{tabularx}
 \end{table}
 \end{document}

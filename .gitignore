@@ -18,3 +18,4 @@ figures/
 *.figlist
 *.makefile
 _region_.tex
+*.ltjruby
