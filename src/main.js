@@ -192,6 +192,18 @@ var LISTING = [
     },
     {
         "type": "directory",
+        "name": "music",
+        "contents": [
+            {
+                "type": "file",
+                "name": "carulli/",
+                "title": "Ferdinando Carulli",
+                "author_date": "2024-01-17T16:14:00+08:00"
+            }
+        ]
+    },
+    {
+        "type": "directory",
         "name": "notes",
         "contents": [
             {

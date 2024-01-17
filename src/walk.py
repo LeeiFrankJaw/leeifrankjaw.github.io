@@ -87,7 +87,7 @@ for dirpath, dirnames, filenames in walker:
                 entry['name'] = pathsegs[-1] + '/'
                 updir.append(entry)
                 sort_by_author_date(updir)
-    if contents:
+    if contents or dirnames:
         sort_by_author_date(contents)
         updir.append({
             'type': 'directory',
