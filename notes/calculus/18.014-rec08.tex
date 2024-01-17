@@ -1,0 +1,83 @@
+\documentclass[a4paper]{article}
+
+\title{Solutions to Recitation~8}
+\author{L. F. \textsc{Jaw}}
+
+\input{preamble-all}
+\input{preamble-en}
+\input{preamble-begin}
+
+\begin{document}
+\maketitle
+
+This is my own solution to the Recitation~8 from
+\href{https://ocw.mit.edu/courses/mathematics/18-014-calculus-with-theory-fall-2010/recitations/}{18.014},
+which includes Exercise~24 and Theorem~1.6 from Apostol's
+\textit{Calculus} (1: 84, 67).
+
+\begin{enumerate}
+\item Find a cubic polynomial \(P\) for which \(P(0) = P(-2) = 0\),
+  \(P(1) = 15\), and \(3\int_{-2}^0 P(x) \dx = 4\).
+
+  Let \(P(x) = c_0 + c_1 x + c_2 x^2 + c_3 x^3\).  Then \(P(0) = c_0 = 0 \).
+  Thus
+  \begin{align*}
+    P(-2) &= -2 c_1 + 4 c_2 - 8 c_3 = 0 \\
+    P(1)  &= c_1 + c_2 + c_3 = 15 \\
+    \iand
+    3\int_{-2}^0 P(x) \dx
+          &= 3 \int_0^2 P(-x) \dx \\
+          &= 3 \paren[\big]{-2c_1 + \tfrac83 c_2 - 4 c_3} \\
+          &= -6 c_1 + 8 c_2 - 12 c_3 \\
+          &= 4.
+  \end{align*}
+  We now have a system of linear equations
+  \[
+    \begin{pmatrix}
+      -1 & 2 & -4 \\
+      1  & 1 & 1 \\
+      -6 & 8 & -12
+    \end{pmatrix}
+    \begin{pmatrix}
+      c_1 \\ c_2 \\ c_3
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      0 \\ 15 \\ 4
+    \end{pmatrix}.
+  \]
+  Solve the equations and we obtain
+  \[
+    c_1 = 4, \quad c_2 = 8, \qand c_3 = 3.
+  \]
+
+\item Prove Theorem~1.6.
+
+  For \(\int_a^c s\) and \(\int_c^b s\) to make sense, there must be two partitions
+  \[
+    P_1 = \brce{x_0, x_1, \dotsc, x_n} \qand P_2 = \brce{x_0', x_1', \dotsc, x_m}
+  \]
+  such that
+  \begin{alignat*}{2}
+    s(x) &= s_k & \quad &\qfor x_{k-1} < x < x_k \\
+    \iand
+    s(x) &= s_k' & \quad &\qfor x_{k-1}' < x < x_k'.
+  \end{alignat*}
+  Then we can concatenate \(P_1\) and \(P_2\) to form a new partition
+  \[
+    P = \brce{x_0, x_1, \dotsc, x_n, x_{n+1}, \dotsc, x_{n+m}},
+  \]
+  where each \(x_{n+k} = x_k'\).  Notice that \(x_0 = a\),
+  \(x_n = c = x_0' \), and \(x_{n+m} = x_m' = b\).
+
+  Clearly, \(P\) is a partition for \(s\) over \([a, b]\) and
+  \[
+    s(x) = s_k \quad \qfor x_{k-1} < x < x_k,
+  \]
+  where each \(s_{n+k} = s_k'\).  Thus,
+  \begin{align*}
+    \int_a^c s + \int_c^b s
+      &= \sum
+  \end{align*}
+\end{enumerate}
+\end{document}
