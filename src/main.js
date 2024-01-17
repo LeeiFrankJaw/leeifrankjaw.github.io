@@ -196,6 +196,12 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
+                "name": "weiss/",
+                "title": "Sylvius Leopold Weiss",
+                "author_date": "2024-01-17T16:28:00+08:00"
+            },
+            {
+                "type": "file",
                 "name": "carulli/",
                 "title": "Ferdinando Carulli",
                 "author_date": "2024-01-17T16:14:00+08:00"
