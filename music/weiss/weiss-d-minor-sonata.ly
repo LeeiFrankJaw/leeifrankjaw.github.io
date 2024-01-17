@@ -20,8 +20,8 @@
   system-system-spacing.padding = #4
 }
 
-\include "./baroque-lute-fretboards.ly"
-\include "./roman_numeral_analysis_tool.ily"
+\include "../baroque-lute-fretboards.ly"
+\include "../roman_numeral_analysis_tool.ily"
 
 \layout {
   \context {

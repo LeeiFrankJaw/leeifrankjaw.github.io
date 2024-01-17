@@ -1,8 +1,8 @@
 #+STARTUP: inlineimages showall
 
-#+TITLE: Ferdinando Carulli
+#+TITLE: Sylvius Leopold Weiss
 #+AUTHOR: Leei Jaw
-#+DATE: <2024-01-17 Wed 16:14>
+#+DATE: <2024-01-17 Wed 16:28>
 #+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
@@ -10,5 +10,4 @@
 
 * Work in progress
 
- * [[file:Carulli-fr.pdf][Carulli, op. 27 in French]]
- * [[file:Carulli-it.pdf][Carulli, op. 27 in Italian]]
+ * [[file:weiss-d-minor-sonata.pdf][Weiss, WeissSW 34]]
