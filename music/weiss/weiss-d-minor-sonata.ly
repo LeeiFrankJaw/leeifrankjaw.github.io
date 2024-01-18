@@ -70,30 +70,36 @@ prelude = \relative {
       \voiceTwo
       d, d' d, d'
       d, d' d, d'
-      cs a d d
-      bf g c, c
-      a' f
+      d, d' cs a
+      d d bf g
+      c, c a' f
       \omit StringNumber
-      bf\7 a
-      g e a g
-      fs'\5 d g,
-      f e c f g
-      a bf, c d
-      e f c'' g,
-      c, f c f
-      a
+      bf\7 a g e
+      a g fs'\5 d
+      g, f e c
+      f g a bf,
+      c d e f~
+      f g c, f
+      c f a bf\7
+      g c, cs' d
+      g, a fs'\5 g,~
+      g a2 g4
+      f e d d
+      d r
       \bar "|."
     }
     \\
     {
       \omit StringNumber
       \voiceOne
-      r16 f''\2 [a f\2]
+      r16 f''\2 a f\2
       r f\2 [a f\2]
       r g\2 [bf g\2]
       r g\2 [bf g\2]
       r g\2 [a g\2]
       r g\2 [a g\2]
+      r f\2 [a f\2]
+      r f\2 [a f\2]
       r e [g e]
       r e [g e]
       r e [g e]
@@ -126,24 +132,40 @@ prelude = \relative {
       r f e_(d)
       r g f\2_(e)
       r a e f
-      r d a_(c)
+      c d a_(c)
       r bf g_(f)
       r e c'_(bf)
       r a g_(f)
       r e g bf
       r a f c'
       r c f e
+      r d bf_(a)
+      r b g'_(f)
+      r e c_(bf)
+      r a a'_(g)
+      r f e_(d)
+      r bf' e,_(d)
+      r cs a\4_(g)
+      r d' g c,
+      r b d a'
+      e g d\3 g
+      r cs, e g
+      d\3 e f a,
     }
   >>
 }
 
 preludeChords = \chordmode {
-  d2:m  g:m/d b:aug7/d e:m7.5-
+  d2:m
+  g:m/d
+  d:sus
+  d:m
+  e:m7.5-/d
   a4:7/cs a:7
-  d:m3.9 d:m
-  g:m/bf g:m7
-  c:3.9 c
-  f:7/a f:7
+  d2:m
+  g4:m/bf g:m7
+  c2
+  f4:7/a f:7
   bf bf:7/a
   e:dim/g e:m7.5-
   a:m a:m7/g
@@ -157,19 +179,24 @@ preludeChords = \chordmode {
   d:m7/c g:m7
   c:7 f
   c:7 f
-  a:m
+  f:7/a bf:maj7
+  g:7 c:7
+  a:7/cs d:m
+  e:dim/g a:7
+  d:/fs g
 }
 
 preludeFigures = \figuremode {
-  s2
   \bassFigureExtendersOn
+  s2
   <6 4>4 <6 4>
   <5 4> <5 4>
+  s s
   <2> <2>
   s <7>
-  <3 2> <3>
+  s s
   <6> <7>
-  <3 2> <3>
+  s s
   <6 5> <7>
   s <2>
   <6> <7>
@@ -182,7 +209,11 @@ preludeFigures = \figuremode {
   <2> <7>
   <7> s
   <7> s
-  s
+  <6 5> <7>
+  <7> <7>
+  <6 5> s
+  <6 5> <7>
+  <6 5> s
 }
 
 \score {
