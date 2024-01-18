@@ -1,0 +1,11 @@
+#+STARTUP: inlineimages showall
+
+#+TITLE: Francesco Molino
+#+AUTHOR: Leei Jaw
+#+DATE: <2024-01-17 Wed 21:00>
+#+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
+#+OPTIONS: ':t
+
+ * [[file:Molino-Romance.jpg][Molino, Romance in C Major]]
