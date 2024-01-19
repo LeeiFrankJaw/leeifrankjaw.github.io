@@ -1,0 +1,386 @@
+\documentclass[a4paper]{book}
+
+\linespread{1.5}
+\setlength{\intextsep}{15pt}
+
+\usepackage[hmarginratio={1:1},hmargin=1in,vmargin=1in]{geometry}
+\usepackage{indentfirst}
+
+\usepackage{titlesec}
+\titleclass{\part}{top}
+\titleformat{\part}[block]{\centering\normalfont\LARGE\bfseries}{}{0pt}{}[\markboth{}{}]
+\titlespacing*{\part}{0pt}{50pt}{40pt}
+\titleclass{\chapter}{straight}
+\titleformat{\chapter}[block]{\centering\normalfont\LARGE\bfseries}{}{0pt}{}[\markboth{}{}]
+\titlespacing*{\chapter}{0pt}{10pt}{10pt}
+\titleclass{\section}{straight}
+\titleformat{\section}[block]{\centering\normalfont\LARGE\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+
+\usepackage[labelformat=empty,textfont={Large,bf},justification=centering]{caption}
+\usepackage{float}
+
+\usepackage{lyluatex}
+
+\usepackage[italian]{babel}
+
+\usepackage{lipsum}
+
+\title{%
+  \Huge\textbf{METODO COMPLETO}\\[-1ex]
+  \textsc{\large per}\\[-.5ex]
+  \textbf{CHITARRA}\\[.5ex]
+  \textit{\Large Composto espressamente\\
+    per l'insegnamento di suo Figlio\\[.5ex]}
+  \huge\textbf{Gustavo}}
+\author{\Huge\bfseries FERDINANDO CARULLI}
+\date{}
+
+\begin{document}
+\frontmatter
+
+\maketitle
+\thispagestyle{empty}
+\cleardoublepage
+
+\part*{PREFAZIONE}
+
+Ho composto, alcuni anni fa, un Metodo di Chitarra che il Pubblico accolse favorevolmente.
+
+Trovando ora che la terza edizione di quest' opera è esaurita, approfitto dell' occasione onde farvi per la terza volta i cambiamenti e le aggiunte che l'esperienza mi additò necessarie per giovare alio studio della Chitarra.
+
+Ebbi cura particolare in questa nuova Edizione del mio Metodo di presentare all' allievo gradatamente le difficoltà, e di mostrargliene l'esecuzione con altrettanti esempi.
+
+Possa finalmente aver io raggiunto lo scopo che mi sono sempre proposto, e meritar l'approvazione degli amatori d'un istrumento, che non la cede a verun altro quando si sappia coll' arte cavarne degli effetti di cui è suscettibile.
+
+\textit{NB\@.}  Quest' opera contiene tutto quanto è necessario per imparare a suonar bene la Chitarra; ma siccome gli esempi e gli esercizj ne sono succinti, ho composto un supplemento il quale contiene una quantità di pezzi che fanno seguito a tutto quanto si contiene in questo Metodo, più le Scale, Esercizj e Pezzi nei toni difficili.
+\clearpage
+\thispagestyle{empty}
+
+\mainmatter
+
+\renewcommand{\contentsname}{\Large\centering QUESTO METODO È DIVISO
+  COME SEGUE.}
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+\thispagestyle{empty}
+
+\part{PRIMA PARTE}
+
+La Chitarra, così detta Francese, non ha che sei corde, di cui la prima, chiamata Cantino, è Mi; la seconda Si, la terza Sol, la quarta Re, la quint a La e la sesta Mi.
+
+\begin{figure}[h]
+  \centering
+  \caption{ESEMPIO}
+  \lilypondfile{strings.ly}
+  \label{fig:strings}
+\end{figure}
+
+\chapter[Il modo di tener la Chitarra e di collocar le mani]{%
+  MODO DI TENER LA CHITARRA\\
+  \small E DI COLLOCAR LE MANI}
+
+Si deve star seduto non troppo alto ne troppo basso; onde la Chitarra non salga troppo verso il petto o cada verso le ginocchia.
+
+Si deve appoggiar I'istrumento sulla coscia sinistra; il manico sia più alto che la parte inferiore del corpo.  Le signore possono collocar su di un piccolo sgabello il piede sinistro.
+
+La posizione del braccio sinistro non deve esser sempre la stessa; essa deve variare secondo che lo esige il movimento delle dita.
+
+Il manico deve appoggiarsi sulle prime giunture del pollice e dell'indice della mano sinistra, lasciando liberi questi due diti.  Il pollice, che sta dietro il manico, non ha posizione fissa; ma a misura che le altre dita prendono posizioni più o meno difficili, esso deve trovarsi più infuori o più addentro del manico.
+
+In alcuni Metodi gli Autori proibiscono agli allievi di valersi del poIlice della mano sinistra dal lato opposto alle altre dita sulla sesta corda e talvolta sulla quinta.
+\clearpage
+
+La Musica riesce tanto più piacevole quanto più è ricca d'armonia, e quattro diti non bastnndo per eseguire nel medesimo tempo un canto e dei bassi ragionati in diversi toni, bisogna adopefar necessariamente il pollice; cosi invito coloro, che vogliono suonare con maggior facilità, a valersene.
+
+Il braccio destro debb'essere appoggiato sul lato che forma l'asse e la tavola armonica della Chitarra in linea retta del ponticello; la mano deve appoggiarsi leggiermente sul mignolo che deve posare quasi accanto al Cantino; e precisamente in mezzo della distanza dal ponticello all'apertura: questa mano non ha posizione fissa perché a misura che si vuol addolcire i suoni ed imitar l'Arpa, bisogna ravvicinarla all'apertura, e quando si vuol suonar forte bisogna accostarla al ponticello.
+
+Si vedrà nella seconda parte il modo di pizzicar la difficoltà; ma nel prineipio, si pizzicherà la sesta, quinta e quarta corda col pollice della mano destra; la terza e seconda coll'indice, ed il cantino col medio.  Bisogna osservare però che negli arpeggi bisogna pizzicar talvolta la terza corda col pollice e talvolta la quinta e la quarta coll'indice ed il medio.
+
+\begin{figure}[h]
+  \centering
+  \caption{ESEMPIO}
+  \lilypondfile[indent=15pt]{right-hand-1.ly}
+  \label{fig:right-hand-1}
+\end{figure}
+
+Quando il canto d'un pezzo di musica va discendendo, e che vi sono delle note basse d'accompagnamento, allora si è obbligato di pizzicar coll'indice fino alla quinta corda, e se invece il basso ascende bisogna che il pollice pizzichi fino alia seconda corda.
+
+\begin{figure}[h]
+  \centering
+  \caption{ESEMPIO}
+  \lilypondfile[indent=15pt]{right-hand-2.ly}
+  \label{fig:right-hand-2}
+\end{figure}
+
+Il dito anulare non serve che nel pizzicato.
+
+Bisogna far ben attenzione, pizzicando, che il pollice della mano destra, si trovi più in fuori degli altri diti, e che la mano non sia nè troppo alta ne troppo bassa indietro.
+\clearpage
+
+\chapter[Il modo di accordarla]{MODO D'ACCORDAR LA CHITARRA}
+
+Il modo migliore d'accordar la Chitarra si e di accordarla all'orecchio a corde vuote, come si accorda il Violino.\ ecc..
+
+Questa maniera non potendo essere descritta, indico la segneute per coloro che non potessero adoperare la prima.
+
+
+Si accorda la quinta corda, che è La, col Diapason, istrumento d'acciajo cosi chiamato, oppure con un altro istrumento già stato accordato col Diapason; inseguito si pone un dito sul quinto tasto di questa stessa corda cho dà il Re, e si accorda la quarta all'unisono.  Si pone un dito al quarto tasto della terza corda che dà il Si, e si accorda la seconda all'unisono.  Si mette un dito sul quinto tasto del la seconda corda che dà il Mi, e si accorda il cantino all'unisono.  La sesta corda si accorda col cantino, ma due ottave più basso.
+
+\chapter[La scala e gli esercizj per imparar a leggere le note alle
+prima posizione]{%
+  SCALA ALLA PRIMA POSIZIONE}
+
+Le cifre indicano i diti della mano sinistra ed i tasti dove vanno collocati.
+
+Le note a corda vuota sono indicate da un 0; l'indice da 1; il medio da 2; I'anulare da 3; ed il mignolo da 4.
+
+\begin{figure}[h]
+  \centering
+  \lilypondfile{first-position.ly}
+  \label{fig:first-position}
+\end{figure}
+
+\section*{ESERCIZI\\
+  \normalsize\textsc{\mdseries per imparar bene a legare le note alle prima posizione}}
+
+\begin{figure}[h]
+  \centering
+  \caption{\large SCALA}
+  \lilypondfile{scale.ly}
+  \label{fig:scale}
+\end{figure}
+\clearpage
+
+\lilypondfile[indent=15pt]{scale-3-ex.ly}
+
+\chapter[Scala con diesis e bemoli, ed un esercizio]{%
+  SCALA\\
+  \small CON DIESIS E BEMOLI}
+
+\begin{figure}[H]
+  \centering
+  \lilypondfile{first-position-sharp.ly}
+  \lilypondfile{first-position-flat.ly}
+  \label{fig:first-position-chromatic}
+\end{figure}
+
+\section*{ESERCIZIO\\
+  \normalsize\textsc{\mdseries per imparar bene a legar le note coi diesis ed i bemoli}}
+
+\begin{figure}[H]
+  \centering
+  \lilypondfile{scale-chromatic-ex.ly}
+\end{figure}
+\clearpage
+
+\chapter[Il piccolo e grande accordo]{DEGLI ACCORDI}
+
+Vi è il piccolo ed il grande accordo.  Si chiama piccolo Accordo quando si e obbligato di prendere due o tre corde nel medesimo tasto col primo dito della mano sinistra e grande Accordo, quando se ne devono prendere cinque o sei.
+
+{
+  \setlength{\intextsep}{0pt}
+  \begin{figure}[h]
+    \centering
+    \caption{ESEMPIO}
+    \lilypondfile{barre.ly}
+    \label{fig:barre}
+  \end{figure}
+}
+
+\chapter[Il modi di pizzicar gli accordi]{%
+  MODO DI PIZZICAR GLI ACCORDI\\[-1ex]
+  \small COLLA MANO DESTRA}
+
+Molti pizzicano gli accordi solamente col pollice, passandolo su tutte le corde.  Questa maniera non aggiunge veruna grazia alla mano e rende l'accordo troppo secco; cosi quando un accordo è di quattro note, bisogna pizzicarlo con quattro dita, ma assai celeremente, affinchè queste abbiano l'aria d'esser state pizzicate quasi insieme.
+
+Quando l'accordo è di cinque note, si deve sdrucciolar il pollice sopra due corde e le altre corde cogli altri tre diti, e quando è di sei note, si deve sdrucciolar il pollice sopra tre corde, e le altre tre corde cogli altri tie diti.
+
+\section*{ESEMPIO}
+
+\textit{N.B\@.}  Il pollice della mano destia sarà indicato da un punto (.) l'indice da due punti (..) il medio da tre (...) e l'anulare da quattro (....)
+
+\captionsetup{textfont={scriptsize,bf}}
+{
+  \setlength{\abovecaptionskip}{7pt}
+  \begin{figure}[H]
+    \centering
+    \begin{minipage}{2.4in}
+      \caption{ACCORDO di QUATTRO NOTE}
+      \lilypondfile{pluck-4.ly}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{3in}
+      \caption{ACCORDO di CINQUE NOTE}
+      \lilypondfile{pluck-5.ly}
+    \end{minipage}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+    \begin{minipage}{3.6in}
+    \caption{ACCORDO di SEI NOTE}
+    \lilypondfile{pluck-6.ly}
+  \end{minipage}
+  \end{figure}
+}
+
+\chapter[Gli arpeggi ed un esercizio]{DEGLI ARPEGGI}
+
+Vi sono Arpeggi di tre, quattro, sei, otto, nove, dodici e sedici note, e si pizzicano con tre o quattro diti.  Se ne può fare una grandissima quantità, ma per esser breve, indichero i principali.
+
+\begin{figure}[H]
+  \centering
+  \hspace*{15pt}
+  \begin{minipage}{2.4in}
+    \caption{ARPEGGI di TRE NOTE}
+    \lilypondfile{arpeggio-3.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{3in}
+    \caption{ARPEGGI di QUATTRO NOTE}
+    \lilypondfile{arpeggio-4.ly}
+  \end{minipage}
+  \hspace*{10pt}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{4.5in}
+    \caption{ARPEGGI di SEI NOTE}
+    \lilypondfile{arpeggio-6.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{3.2in}
+    \caption{ARPEGGI di OTTO NOTE}
+    \lilypondfile{arpeggio-8.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{2.7in}
+    \caption{ARPEGGI di NOVE NOTE}
+    \lilypondfile{arpeggio-9.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{4.4in}
+    \caption{ARPEGGI di DODICI NOTE}
+    \lilypondfile{arpeggio-12.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{5.6in}
+    \caption{ARPEGGI di SEDICI NOTE}
+    \lilypondfile{arpeggio-16.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{6in}
+    \caption{ARPEGGI a DOPPIE NOTE}
+    \lilypondfile{arpeggio-double.ly}
+  \end{minipage}
+\end{figure}
+
+\textit{N.B\@.}  Per addestrar le dita della mano dritta ed esercitarsi a far gli arpeggi con molta prestezza, si devono eseguir quelli che ho dati colla lezione seguente ad eccezione degli arpeggi a dodici od a sedici note.
+
+Per suonar bene sulla Chitarra un pezzo di musica, bisogna, quando s'incontrano delle note di basso che non sono corde vuote, Iasciar sulla corda il dito fino a che un'altra nota obbliga di levarlo; quest'attenzione è necessaria per sostenere il suono di questa nota ed evitar quello che si produrrèbbe dalla vibrazione della corda vuota nel momento in cui il dito cesserebbe di premerla.
+
+\begin{figure}[h]
+  \centering
+  \lilypondfile[indent=15pt]{arpeggio-ex.ly}
+\end{figure}
+
+\section*{\Large SEGUITO D'ARPEGGI DIFFICILI\\[-1.5ex]
+  \small PER ESERCITARSI NELLA STESSA LEZIONE}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{1.8in}
+    \caption{ARPEGGIO di TRE NOTE}
+    \lilypondfile{arpeggio-3-difficult.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{1.9in}
+    \caption{ARPEGGIO di QUATTRO NOTE}
+    \lilypondfile{arpeggio-4-difficult.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{2.1in}
+    \caption{ARPEGGIO di SEI NOTE}
+    \lilypondfile{arpeggio-6-difficult.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{1.8in}
+    \caption{ARPEGGIO di OTTO NOTE}
+    \lilypondfile{arpeggio-8-difficult.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{1.9in}
+    \caption{LO STESSO}
+    \lilypondfile{arpeggio-8-difficult-2.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{2.1in}
+    \caption{LO STESSO}
+    \lilypondfile{arpeggio-8-difficult-3.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \hfill
+  \begin{minipage}{1.9in}
+    \caption{ARPEGGIO di QUATTRO NOTE}
+    \lilypondfile{arpeggio-4-difficult-2.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{2.1in}
+    \caption{ARPEGGIO di OTTO NOTE}
+    \lilypondfile{arpeggio-8-difficult-4.ly}
+  \end{minipage}
+  \hfill{}
+\end{figure}
+
+Ciascun istrumento ha i suoi toni favoriti: si può suonare sulla Chitarra in tutti i toni; ma quelli che le convengono meglio sono La Maggiore e Minore, Re Maggiore e Minore, Mi Maggiore e Minore, Do, Sol, Fa.  Gli altri sono difficili; quindi ho dato le Scale, gli Accordi, gli Esercizj ed i pezzi seguenti nei toni più usitati e più facili pei principianti.
+
+\chapter[Scale, accordi, esercizj e pezzi progressivi in varj toni i più necessarj]{%
+  SCALE, ACCORDI, ESERCIZI,\\[.5ex]
+  \small E PEZZI PROGRESSIVI IN DIFFERENTI TONI I PIÙ USITATI\\[-1em]
+  ALLA PRIMA POSIZIONE}
+
+\textit{N.B\@.}  Le cifre non indicano che i diti della mano sinistra.  Le note con una doppia coda vanno pizzicato col pollice della mano destra.
+
+Nella Scala seguente bisogna che la mano sinistra si avanzi al secondo tasto per facilitare la digitazione.
+
+Quando si iaiovano due note insieme che stanno ambedue sulla stessa corda, si fa la più alta al suo posto e la più bassa sulla corda che vien dopo.
+
+\section*{ESEMPIO}
+
+Re e Si sono ambidue sulla seconda corda; allora bisogna fàr il Re al suo posto ed il Si sulla terza corda al quarto tasto.
+
+Sol e Mi sono ambidue sul cantino; bisogna fare il Sol al suo posto ed il Mi sulla seconda corda al quinto tasto.
+
+\chapter[Seguito di pezzi progressivi per esercitarsi meglio]{%
+  SEGUITO DI PEZZI PROGRESSIVI\\
+  \small PER ESERCITARSI MEGLIO ALLA PRIMA POSIZIONE..}
+
+
+\section*{FINE DELLA PRIMA PARTE}
+
+\textit{\bfseries N.B\@.}  L'allievo passando alla Seconda Parte deve continuare ad esercitarsi con pezzi facili ch'egli troverà nelle opere 145. 120. 121. 122.\ ma specialmente nell'opera 114, opere tutte dell'Autore
+\end{document}
+
+% Local Variables:
+% TeX-command-extra-options: "--shell-escape"
+% End:

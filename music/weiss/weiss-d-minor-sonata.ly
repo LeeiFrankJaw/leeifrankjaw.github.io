@@ -85,13 +85,17 @@ prelude = \relative {
       g, a fs'\5 g,~
       g a2 g4
       f e d d
-      d r
+      d2 e4 f
+      g g f e
+      a d, c bf
+      a' gs2 a4~
+      a a d,2
       \bar "|."
     }
     \\
     {
-      \omit StringNumber
       \voiceOne
+      \omit StringNumber
       r16 f''\2 a f\2
       r f\2 [a f\2]
       r g\2 [bf g\2]
@@ -151,6 +155,13 @@ prelude = \relative {
       e g d\3 g
       r cs, e g
       d\3 e f a,
+      r bf f' e
+      r a, e'_(d)
+      r g, d' cs
+      <f, a d>4
+      <d fs c'>
+      r16 d g bf
+      a8. g16
     }
   >>
 }
@@ -175,15 +186,20 @@ preludeChords = \chordmode {
   f g:m
   a:m e:m7.5-/bf
   a:m/c d:m
-  e:dim f:maj7
-  d:m7/c g:m7
+  e:dim d:m7/f
+  s g:m7
   c:7 f
   c:7 f
   f:7/a bf:maj7
   g:7 c:7
   a:7/cs d:m
-  e:dim/g a:7
+  e:dim7/g a:7
   d:/fs g
+  e:m7 a:7
+  d:m e:dim/g
+  d:m/f cs:dim/e
+  d:m d:7
+  g:m/d
 }
 
 preludeFigures = \figuremode {
@@ -205,7 +221,7 @@ preludeFigures = \figuremode {
   s <2>
   <6> <7>
   s2 s1
-  s4 <7>
+  s4 <6 5>
   <2> <7>
   <7> s
   <7> s
@@ -214,6 +230,11 @@ preludeFigures = \figuremode {
   <6 5> s
   <6 5> <7>
   <6 5> s
+  <6> <7 _+>
+  s <6>
+  <6> <6>
+  s <7>
+  <6 4>
 }
 
 \score {

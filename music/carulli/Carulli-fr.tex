@@ -1,0 +1,388 @@
+\documentclass[a4paper]{book}
+
+\linespread{1.5}
+
+\usepackage[hmargin=1in,vmargin=1in]{geometry}
+\usepackage{indentfirst}
+
+\usepackage{titlesec}
+\titleclass{\part}{top}
+\titleformat{\part}[block]{\centering\normalfont\LARGE\bfseries}{}{0pt}{}[\markboth{}{}]
+\titlespacing*{\part}{0pt}{50pt}{40pt}
+\titleclass{\chapter}{straight}
+\titleformat{\chapter}[block]{\centering\normalfont\LARGE\bfseries}{}{0pt}{}[\markboth{}{}]
+\titlespacing*{\chapter}{0pt}{10pt}{10pt}
+\titleclass{\section}{straight}
+\titleformat{\section}[block]{\centering\normalfont\LARGE\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+
+\usepackage[labelformat=empty,textfont={Large,bf}]{caption}
+\usepackage{float}
+
+\usepackage{lyluatex}
+
+\usepackage[french]{babel}
+
+\title{%
+  \Huge\textbf{MÉTHODE COMPLÈTE}\\
+  pour Guitare\\
+  \LARGE\textsc{composée expressement}\\
+  \textit{pour l'Enseignement de son fils}\\
+  \huge\textbf{Gustavo}}
+\author{\Huge\bfseries FERDINANDO CARULLI}
+\date{}
+
+\begin{document}
+\frontmatter
+
+\maketitle
+\thispagestyle{empty}
+\cleardoublepage
+
+\mainmatter
+
+\chapter*{AVANT-PROPOS}
+
+J'ai composé, il y a quelques années, une Méthode de Guitare que le Public a bien voulu accueuillir favorablement.
+
+La troisième Edition de cet ouvrage étant épuisée, j'ai profite de cette circonstance pour y faire, pour la troisième fois, les changemens\footnote{old spelling for changements} et additions que l'expérience m'a démontré nécessaires, pour l'agrément et l'utilité des personnes qui se livrent à l'étude de la Guitare.
+
+Je me suis particulièrement attaché, dans cette nouvelle Edition de ma Méthode, à ne présenter les difficultés que graduellement à l'élève, et à lui en démontrer l'exécution par autant d'exemples.
+
+Puissè-je avoir enfin atteint le but que je me suis toujours proposé, et mériter l'approbation des nombreux amateurs d'un instrument qui ne le cède à aucun autre, lorsque l'on sait avec art en ménager les effets.
+
+N\rlap{.}\textsuperscript{ta}\,B\rlap{\@.}\textsuperscript{ne}
+Cet ouvrage contient tout ce qu'il faut pour apprendre à bien jouer de la Guitare; mais comme les exemples et les exercices en sont succinets, je viens de composer un suplément qui contient une quantité de mourceaux qui font suite à tout ce qu'il y a dans cette Méthode, plus les Gammes, Exercices et Mourceaux dans les tons difficiles.
+\clearpage
+
+{
+  \let\cleardoublepage\clearpage
+  \renewcommand{\contentsname}{Cette Méthode est divisée en trois Parties}
+  \tableofcontents
+}
+
+\part{PREMIÈRE PARTIE}
+
+La Guitare française ou italienne n'a que six cordes, dont la première, ou chanterelle se nomme Mi; la seconde Si; la troisième Sol; la quatrième Ré; la cinquième La, et la sixième Mi.
+
+\begin{figure}[h]
+  \centering
+  \caption{Exemple.}
+  \lilypondfile{strings-fr.ly}
+  \label{fig:strings}
+\end{figure}
+
+\chapter[La manière de tenir la guitare et de placer les mains]{%
+  MANIÈRE DE TENIR LA GUITARE\\
+  \footnotesize ET DE PLACER LES MAINS.}
+
+On ne doit pas être assis ni trop haut, ni trop bas, pour que la Guitare ne soit pas trop élevée vers la poitrine, ou qu'elle ne glisse vers les genoux.
+
+On doit appuyer l'instrument sur la cuisse gauche, le manche plus élevé que la partie inférieure du corps.  Les dames peuvent placer un tabouret sous le pied gauche.
+
+La position du bras gauche ne doit pas être toujours la même; elle doit varier suivant que l'exige le mouvement des doigts.
+
+Le manche doit appuyer sur les premières jointures du pouce et de l'index de la main gauche, en laissant libre ces deux doigts.  Le pouce qui reste derrière le manche n'a pas de position fixe; mais à mesure que les autres doigts prennent des positions plus ou moins difficiles, il doit être plus en dehors ou plus en dedans du manche.
+
+Dans quelques Méthodes, Auteurs défendent absolument aux élèves de se servir du pouce de la main gauche, par le côté opposé aux autres doigts, sur la sixième corde et quelquefois sur la cinquième.
+\clearpage
+
+La Musique est d'autant plus agréable qu'elle est plus riche d'harmonie, et quatre doigts ne suffisant pas pour exécuter, en même tems, un chant et des basses raisonnées en différens tons, il faut nécessairement employer le pouce; ainsi, j'invite tous ceux qui veulent jouer avec plus de facilité, à s'en servir.
+
+Le bras droit doit être appuyé sur le coin qui forme l'éclisse et la table d'harmonie de la Guitare, en ligne directe du chevalet; la main doit s'appuyer légèrement sur le petit doigt qui doit se poser presque à côté de la chanterelle, et précisément au milieu de la distance du chevalet à la rosette: cette main n'a pas de position fixe, parce qu'à mesure que l'on veut adoucir les sons et imiter la Harpe, on doit la rapprocher de la rosette, et lorsqu'on veut jouer Forte, on doit la rapprocher du chevalet.
+
+On verra, dans la seconde partie, la manière de pincer la difficulté; mais dans le commencement, on pincera la sixième, cinquième et quatrième corde avec pouce de la main droite; la troisième et seconde avec l'index, et la chanterelle avec le médium.  Il faut observer cependant, que dans les batteries ou arpèges, on est obligé de pincer quelquefois la troisième corde avec le pouce, et quelquefois la cinquième et quatrième avec l'index et le médium.
+
+\begin{figure}[h]
+  \centering
+  \caption{Exemple.}
+  \lilypondfile{right-hand-1-fr.ly}
+  \label{fig:right-hand-1}
+\end{figure}
+
+Lorsque le chant d'un morceau de musique va bien bas, et qu'il y a des notes basses d'accompagnement, alors on est obligé de pincer avec l'index jusqu'à la cinquième corde, et si au contraire la basse va bien haut, il faut que le pouce pince jusqu'à la second corde.
+
+\begin{figure}[h]
+  \centering
+  \caption{Exemple.}
+  \lilypondfile{right-hand-2-fr.ly}
+  \label{fig:right-hand-2}
+\end{figure}
+
+Le doigt annulaire ne sert que dans les pincés.
+
+Il faut bien avoir l'attention, en pinçant, que le pouce de la main droite se trouve plus en dehors que les autres doigts, et que la main ne soit ni trop relevée, ni trop baissée en arrière.
+\clearpage
+
+\chapter[La manière de d'accorder]{MANIÈRE D'ACCORDER LA GUITARE.}
+
+La meilleure manière d'accorder la Guitare est de l'accorder à l'oreille, c'est-à-dire à vide, comme on accorde le Violon, la Basse, etc.
+
+Cette manière ne pouvant pas se décrire, j'indique la suivante pour ceux qui ne pourraient employer la première.
+
+On accorde la cinquième corde qui est La, avec de Diapason, instrument d'acier ainsi nommé, ou avec un autre instrument qui a été accordé avec le diapason; ensuite, on pose un doigt à la cinquième touche ou case de cette même corde, ce qui fait Ré, et on accorde la quatrième à l'unisson: on pose un doigt à la cinquième touche de la quatrième corde, ce qui fait Sol, et on accorde la troisième à l'unisson: on pose un doigt à la quatrième touche de la troisième corde, ce qui fait Si, et on accorde la seconde à l'unisson: on pose un doigt à la cinquième touche de la seconde corde, ce qui fait Mi, et on accorde la chanterelle à l'unisson: la sixième corde étant un Mi, s'accorde à vide avec la chanterelle; mais deux octaves plus bas.
+
+\chapter[La Gamme et des exercices pour bien apprendre à lire les notes à\\
+la première position]{%
+  GAMME À LA PREMIÈRE POSITION.}
+
+Les chiffres indiquent les doigts de la main gauche, et les touches ou cases où il faut les poser.
+
+Let notes à vides sont indiquées par un 0; l'index par 1; le médium par 2; l'annulaire par 3; et le petit doigt par 4.
+
+\begin{figure}[h]
+  \centering
+  \lilypondfile{first-position-fr.ly}
+  \label{fig:first-position}
+\end{figure}
+
+\section*{EXERCICES\\
+  Pour bien apprendre à lire les notes à la première position.}
+
+\begin{figure}[h]
+  \centering
+  \caption{\normalsize GAMME.}
+  \lilypondfile{scale.ly}
+  \label{fig:scale}
+\end{figure}
+\clearpage
+
+\lilypondfile[indent=15pt]{scale-3-ex-fr.ly}
+
+\chapter[Gammes avec les dièses et les bémols, et un exercices]{%
+  GAMME\\
+  \footnotesize AVEC LES DIÈSES ET LES BÉMOLS.}
+
+\begin{figure}[h]
+  \centering
+  \lilypondfile{first-position-sharp-fr.ly}
+  \lilypondfile{first-position-flat-fr.ly}
+  \label{fig:first-position-chromatic}
+\end{figure}
+
+\section*{EXERCICES\\
+  Pour bien apprendre à lire les notes\\
+  avec les dièses et les bémols.}
+
+\begin{figure}[h]
+  \centering
+  \lilypondfile{scale-chromatic-ex-fr.ly}
+\end{figure}
+
+\chapter[Le petit et le grande Barré]{DU BARRÉ.}
+
+Il y a le petit et le grand Barré.  On appelle petit barré, lorsqu'on est obligé de prendre deux ou trois cordes dans la même touche ou case, avec le premier doigt de la main gauche, et grand barré, lorsqu'on en doit prendre cinq ou six.
+
+{
+  \setlength{\intextsep}{0pt}
+  \setlength{\abovecaptionskip}{-1ex}
+  \begin{figure}[h]
+    \centering
+    \caption{Exemple.}
+    \lilypondfile{barre-fr.ly}
+    \label{fig:barre}
+  \end{figure}
+}
+
+\chapter[La manière de pincer les accords]{%
+  MANIÈRE DE PINCER LES ACCORDS\\
+  \footnotesize AVEC LA MAIN DROITE.}
+
+Beaucoup de personnes pincent les accords seulement avec le pouce, le passant sur toutes les cordes.  Cette manière ne donne aucune grace à la main et rend l'accord fort see; ainsi, lorsqu'un accord est de quatre notes, on doit le pincer avec quatre doigts, mais avec beaucoup de vitesse, pour qu'elles aient l'air d'avoir été pincées presqu'ensemble.
+
+Lorsque l'accord est de cinq notes, on doit glisser le pouce sur deux cordes, et les autres trois cordes avec les autres trois doigts, et lorsqu'il est de six notes, on doit glisser le pouce sur trois cordes, et les autres trois cordes avec les autres trois doigts.
+
+\section*{Exemple.}
+
+{\footnotesize Nota.}  Le pouce de main droit\footnote{misspelling of droite} sera indiqué par un point, (\raisebox{.2ex}{.}) l'index par deux, (\raisebox{.2ex}{..}) le médium par trois, (\raisebox{.2ex}{...}) et l'annulaire par quatre, (\raisebox{.2ex}{....})
+
+\captionsetup{textfont={footnotesize,bf}}
+{
+  \setlength{\intextsep}{10pt}
+  \setlength{\abovecaptionskip}{0pt}
+  \begin{figure}[h]
+    \centering
+    \hfill
+    \begin{minipage}{2.4in}
+      \caption{Accord de quatre notes.}
+      \lilypondfile{pluck-4-fr.ly}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{3in}
+      \caption{Accord de cinq notes.}
+      \lilypondfile{pluck-5-fr.ly}
+    \end{minipage}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+    \begin{minipage}{3.6in}
+      \caption{Accord de six notes.}
+      \lilypondfile{pluck-6-fr.ly}
+    \end{minipage}
+  \end{figure}
+}
+
+\chapter[Les batteries ou arpèges, et un exercice]{DES ARPÈGES}
+
+Il y a des Arpèges de trois, quatre, six, huit, neuf, douze et seize notes; et on les pur e avec trois et quatre doigts: on en peut faire une très grande quantité; mais pour être bref, je vais indiquer les principaux.
+
+\begin{figure}[H]
+  \centering
+  \hspace*{12pt}
+  \begin{minipage}{2.4in}
+    \caption{Arpèges de trois notes.}
+    \lilypondfile{arpeggio-3.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{3in}
+    \caption{Arpèges de quatre notes.}
+    \lilypondfile{arpeggio-4.ly}
+  \end{minipage}
+  \hspace*{10pt}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{4.2in}
+    \caption{Arpèges de six notes.}
+    \lilypondfile{arpeggio-6.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{3.2in}
+    \caption{ARPEGGI di OTTO NOTE}
+    \lilypondfile{arpeggio-8-fr.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{2.7in}
+    \caption{ARPEGGI di NOVE NOTE}
+    \lilypondfile{arpeggio-9.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{4.4in}
+    \caption{Arpèges de douze notes.}
+    \lilypondfile{arpeggio-12.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{5.6in}
+    \caption{Arpèges de seize notes.}
+    \lilypondfile{arpeggio-16-fr.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{6in}
+    \caption{Arpèges à doubles notes.}
+    \lilypondfile{arpeggio-double.ly}
+  \end{minipage}
+\end{figure}
+
+N\rlap{.}\textsuperscript{ta}\,B\rlap{\@.}\textsuperscript{ne}
+Pour bien dégager les doigts de la main droite et s'exercer à faire les arpèges avec beaucoup de vitesse, on doit exécuter ceux que je viens de noter avec la leçon suivante, à l'exception des arpèges à douze et à seize notes.
+
+Pour bien rendre sur la Guitare un morceau de musique, il faut, lorsqu'on rencontre des notes de basse qui ne sont pas à vide, laisser le doigt sur la corde jusqu'à ce qu'une autre note oblige de le lever; cette attention est nécessaire pour soutenir le son de cette note et éviter celui qui rendrait la vibration de la corde à vide au moment où le doigt cesserait de la comprimer.
+
+\begin{figure}[h]
+  \centering
+  \lilypondfile[indent=15pt]{arpeggio-ex-fr.ly}
+\end{figure}
+
+\section*{\Large Suite d'Arpèges difficiles\\[-1.5ex]
+  pour exercer avec la même leçon}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{1.8in}
+    \caption{Arpège de trois notes.}
+    \lilypondfile{arpeggio-3-difficult.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{1.9in}
+    \caption{Arpège de quatre notes.}
+    \lilypondfile{arpeggio-4-difficult.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{2.1in}
+    \caption{Arpège de six notes.}
+    \lilypondfile{arpeggio-6-difficult.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{1.8in}
+    \caption{Arpège de huit notes.}
+    \lilypondfile{arpeggio-8-difficult.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{1.9in}
+    \caption{De même}
+    \lilypondfile{arpeggio-8-difficult-2.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{2.1in}
+    \caption{De même}
+    \lilypondfile{arpeggio-8-difficult-3.ly}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \hfill
+  \begin{minipage}{1.9in}
+    \caption{Arpège de quatre notes.}
+    \lilypondfile{arpeggio-4-difficult-2.ly}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{2.1in}
+    \caption{Arpège de huit notes.}
+    \lilypondfile{arpeggio-8-difficult-4.ly}
+  \end{minipage}
+  \hfill{}
+\end{figure}
+
+Chaque instrument a ses tons favoris: on peut jouer sur la Guitare dans tous les tons; mais ceux qui lui conviennent le mieux sont La majeur et mineur, Ré majeur et mineur, Mi majeur et mineur, Ut, Sol, Fa.  Les autres sont difficiles; ainsi j'ai noté les Gammes, les Accords et Exercices, et les morceaux suivants dans les tons les plus usites\footnote{misspelling of usités} et les plus faciles pour les commençans\footnote{old spelling of commençants}.
+
+\chapter[Gammes, accords, exercices et morceaux progressifs en différens\\
+tons les plus nécessaires]{%
+  GAMMES, ACCORDS, EXERCICES,\\
+  \Large Et Morceaux progressifs en differens\footnote{%
+    misspelling of différens, which itself is old spelling of différents}
+  Tons les plus usités\\
+  à la première position.}
+
+{\footnotesize NOTA\@.}
+Les chiffres n'indiquent que les doigts de la main gauche.  Les notes avec une double queue doivent être pincées avec le pouce de la main droite.
+
+Dans la Gamme suivante, il faut que la main gauche s'avance à la deuxième touche, ou case, pour faciliter le doigté.
+
+Quand on trouve deux notes ensemble qui sont toutes deux sur la même corde, oh\footnote{misspelling of on} fait la plus haute à sa place et la plus basse sur la corde après.
+
+\section*{Exemple.}
+
+Ré et Si sont tous deux sur la seconde corde; alors il faut faire le Ré à sa place et le Si sur la troisième corde, à la quatrième touche.
+
+Sol et Mi sont tous deux sur la chanterelle; il faut faire Sol à sa place et Mi sur la seconde corde, à la cinquième case.
+
+\chapter[Suite de morceaux progressifs pour mieux s'exercer]{%
+  SUITE DE MORCEAUX PROGRESSIFS\\
+  \normalsize Pour mieux s'exercer\footnote{misspelling of s'exécuter} à la première position.}
+
+\section*{FIN DE LA PREMIÈRE PARTIE.}
+
+N\rlap{.}\textsuperscript{ta}\,B\rlap{\@.}\textsuperscript{ne}
+L'élève en passant à la Seconde Partie, doit continuer à s'exercer avec des morceaux faciles qu'il trouvera dans les oeuvres 145, 120, 121, 122, 50 et 7, surtout dans l'oeuvre 114, tous ouvrages de l'auteur.
+\end{document}
+
+% Local Variables:
+% TeX-command-extra-options: "--shell-escape"
+% End:
