@@ -57,6 +57,8 @@
   }
 }
 
+#(define RH rightHandFinger)
+
 music = \relative {
   \transposition c
   f'4 d a f d a g f e d c b a
@@ -162,6 +164,22 @@ prelude = \relative {
       <d fs c'>
       r16 d g bf
       a8. g16
+      r cs g e'
+      r d a f'
+      r e bf d
+      <cs e a>4
+      <a d a'>
+      <b e g>
+      <cs e g>
+      <d d f>
+      <d d f>
+      <d d f>
+      <d d f>
+      <b d f>2
+      r16 e\RH2 cs\RH2 g\RH2
+      f\5\RH1 a d d,
+      r e d' cs
+      <f, a d>2
     }
   >>
 }
@@ -199,7 +217,16 @@ preludeChords = \chordmode {
   d:m e:dim/g
   d:m/f cs:dim/e
   d:m d:7
-  g:m/d
+  g:m/d s
+  a:7/e d:m/f
+  e:m7.5-/g a:7/g
+  d:m/f e:m
+  a:7 d:m
+  d:m7 bf
+  d:m/a gs:dim7
+  s a:7
+  d:m/a a:7
+  d2:m
 }
 
 preludeFigures = \figuremode {
@@ -234,7 +261,16 @@ preludeFigures = \figuremode {
   s <6>
   <6> <6>
   s <7>
-  <6 4>
+  <6 4> <6 4>
+  <6+> <6>
+  <6 5> <6 4+ 2>
+  <6> s
+  <7> s
+  <2> s
+  <6 4> <7 _!>
+  s <7 _+>
+  <6 4> <7>
+  s2
 }
 
 \score {
