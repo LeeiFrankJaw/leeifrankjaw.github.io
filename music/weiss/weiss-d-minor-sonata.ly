@@ -152,7 +152,7 @@ prelude = \relative {
       r f e_(d)
       r bf' e,_(d)
       r cs a\4_(g)
-      r d' g c,
+      r d' a' c,
       r b d a'
       e g d\3 g
       r cs, e g
@@ -163,7 +163,7 @@ prelude = \relative {
       <f, a d>4
       <d fs c'>
       r16 d g bf
-      a8. g16
+      a8.\trill g16
       r cs g e'
       r d a f'
       r e bf d
@@ -194,25 +194,25 @@ preludeChords = \chordmode {
   d2:m
   g4:m/bf g:m7
   c2
-  f4:7/a f:7
-  bf bf:7/a
+  f4:maj7/a f:maj7
+  bf bf:maj7/a
   e:dim/g e:m7.5-
   a:m a:m7/g
   d d:7
   g:m g:m7/f
   c:/e c:7
   f g:m
-  a:m e:m7.5-/bf
+  a:m bf
   a:m/c d:m
   e:dim d:m7/f
   s g:m7
   c:7 f
   c:7 f
-  f:7/a bf:maj7
+  f:maj7/a bf:maj7
   g:7 c:7
   a:7/cs d:m
   e:dim7/g a:7
-  d:/fs g
+  d:7/fs g
   e:m7 a:7
   d:m e:dim/g
   d:m/f cs:dim/e
@@ -273,14 +273,18 @@ preludeFigures = \figuremode {
   s2
 }
 
+% \include "articulate.ly"
+
 \score {
   \header {
     piece = "Prelude"
   }
+  % \articulate
   <<
-    \new ChordNames \preludeChords
+    % \new ChordNames \preludeChords
     \new Staff \transpose c c' \prelude
-    \new FiguredBass \preludeFigures
+    % \new FiguredBass \preludeFigures
     \new TabStaff \prelude
   >>
+  % \midi {}
 }
