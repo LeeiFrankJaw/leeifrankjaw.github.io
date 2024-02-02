@@ -1,5 +1,7 @@
 \languageSaveAndChange "english"
 
+\version "2.24.3"
+
 \makeDefaultStringTuning #'baroque-lute-tuning \stringTuning <a, d f a d' f'>
 % \makeDefaultStringTuning #'baroque-lute-bass-tuning \stringTuning <a,, b,, c, d, e, f, g,>
 
@@ -8,8 +10,6 @@
 
 #(define custom-fret-table-two
   (make-fretboard-table default-fret-table))
-
-\version "2.24.3"
 
 \addChordShape #'ef:m #baroque-lute-tuning "x;1-1-(;1-1;1-1;1-1;1-1-);"
 \addChordShape #'ef #baroque-lute-tuning "x;1-1-(;2-2;1-1;1-1-);2-3;"

@@ -21,7 +21,7 @@
 }
 
 \include "../baroque-lute-fretboards.ly"
-\include "../roman_numeral_analysis_tool.ily"
+% \include "../roman_numeral_analysis_tool.ily"
 
 \layout {
   \context {
@@ -59,10 +59,10 @@
 
 #(define RH rightHandFinger)
 
-music = \relative {
-  \transposition c
-  f'4 d a f d a g f e d c b a
-}
+% music = \relative {
+%   \transposition c
+%   f'4 d a f d a g f e d c b a
+% }
 
 prelude = \relative {
   \key d \minor
