@@ -48,6 +48,7 @@
 % #(define RH rightHandFinger)
 
 music = \relative {
+  \key f \major
   \time 2/2
   % \tempo 4 = 85
   <<
@@ -94,14 +95,14 @@ music = \relative {
 }
 
 musicChords = \chordmode {
-  c2 bf:maj7
-  c g:m7
-  c bf:maj7
-  c4:7 g:m7 c2
+  c2 bf
+  c g
+  c bf
+  c4 g c2
   g4:m g:m7/f d2:m
   d4:m d:m7/c g2:m
   g4:m g:m7/f d2:m
-  c4:7 g:m7 c2
+  c4 g c2
 }
 
 \score {
