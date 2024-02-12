@@ -1,0 +1,15 @@
+#+STARTUP: inlineimages showall
+
+#+TITLE: Matteo Carcassi
+#+AUTHOR: Leei Jaw
+#+DATE: <2024-02-12 Mon 17:27>
+#+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
+#+OPTIONS: ':t
+
+* Méthode complète pour la guitare, op. 59
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=AEi2FZWipPITbVXX&amp;list=PLaJmk-NjxoXJXk5Nmulwvwn09HwGsavP0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export

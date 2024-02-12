@@ -2,13 +2,22 @@
 
 #+TITLE: Ferdinando Carulli
 #+AUTHOR: Leei Jaw
-#+DATE: <2024-01-17 Wed 16:14>
+#+DATE: <2024-02-12 Mon 17:37>
 #+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
 #+OPTIONS: ':t
+#+HTML: <input id="disqus-identifier" value="LFJ106"></input>
 
-* Work in progress
+* 24 Duos from op. 27
+
+** No. 3
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z9iuxhUPjtY?si=YrDFFBOL0wl9zrO-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* Work in Progress
 
  * [[file:Carulli-fr.pdf][Carulli, op. 27 in French]]
  * [[file:Carulli-it.pdf][Carulli, op. 27 in Italian]]

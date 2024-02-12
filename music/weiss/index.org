@@ -2,13 +2,23 @@
 
 #+TITLE: Sylvius Leopold Weiss
 #+AUTHOR: Leei Jaw
-#+DATE: <2024-01-31 Wed 14:23>
+#+DATE: <2024-02-12 Mon 18:08>
 #+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
 #+OPTIONS: ':t
+#+HTML: <input id="disqus-identifier" value="LFJ107"></input>
 
-* Work in progress
+* Work in Progress
 
- * [[file:weiss-d-minor-sonata.pdf][Weiss, WeissSW 34]]
-   * [[file:weiss-d-minor-prelude.pdf][Prelude]]
+** Weiss, WeissSW 34
+
+   Score link: [[file:weiss-d-minor-sonata.pdf][Weiss, WeissSW 34]]
+
+*** Prelude
+
+    Links: [[file:weiss-d-minor-prelude.pdf][PDF]], [[file:~/leeifrankjaw.github.io/music/weiss/weiss-d-minor-prelude.midi][MIDI]], [[file:~/leeifrankjaw.github.io/music/weiss/weiss-d-minor-prelude.mscz][MuseScore]], computer-generated [[file:~/leeifrankjaw.github.io/music/weiss/weiss-d-minor-prelude.mp3][MP3]]
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hyyM15s2dXo?si=b1u9H8SDMae0H-vN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export

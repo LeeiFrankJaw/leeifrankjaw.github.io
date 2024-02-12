@@ -2,11 +2,12 @@
 
 #+TITLE: Anonymous
 #+AUTHOR: Leei Jaw
-#+DATE: <2024-02-12 Mon 06:30>
+#+DATE: <2024-02-12 Mon 17:56>
 #+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
 #+OPTIONS: ':t
+#+HTML: <input id="disqus-identifier" value="LFJ109"></input>
 
 * William Ballet's lute book (TCD MS 408)
 
@@ -24,3 +25,7 @@
 * Utilis et compendiaria
 
  * [[file:christ-ist-erstanden.pdf][Christ ist erstanden]]
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CDy5zkE79MY?si=TL-rjJDPAyS-R9wu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export

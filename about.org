@@ -1,5 +1,5 @@
 #+TITLE:  Freelance developer
-#+DATE: <2020-05-12 Tue 17:34>
+#+DATE: <2024-02-12 Mon 18:19>
 #+HTML_HEAD: <link type="text/css" href="/styles/syntax-highlight.css" rel="stylesheet"/>
 #+HTML_HEAD: <link type="text/css" href="/styles/layout.css" rel="stylesheet"/>
 #+HTML_HEAD: <script type="text/javascript" src="/src/post.js"></script>
@@ -14,5 +14,4 @@ either on a hourly basis or on task-by-task basis.  I am familiar with
 Python, JavasScript, SQL, C, Clojure, Angular, Vue, Java, Scala, OLAP,
 ETL.  I have intensive experience with both MySQL and PostgreSQL.
 
-The price is open to negotiation.  My contact info can be found at
-[[https://github.com/LeeiFrankJaw/Resumes/raw/master/plain/cv.pdf][here]].
+My contact info can be found at [[https://github.com/LeeiFrankJaw/Resumes/raw/master/plain/cv.pdf][here]].
