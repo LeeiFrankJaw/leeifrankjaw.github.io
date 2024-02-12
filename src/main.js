@@ -196,15 +196,15 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
-                "name": "weiss/",
-                "title": "Sylvius Leopold Weiss",
-                "author_date": "2024-02-12T18:32:00+08:00"
+                "name": "anon/",
+                "title": "Anonymous",
+                "author_date": "2024-02-12T23:54:00+08:00"
             },
             {
                 "type": "file",
-                "name": "anon/",
-                "title": "Anonymous",
-                "author_date": "2024-02-12T17:56:00+08:00"
+                "name": "weiss/",
+                "title": "Sylvius Leopold Weiss",
+                "author_date": "2024-02-12T18:32:00+08:00"
             },
             {
                 "type": "file",
