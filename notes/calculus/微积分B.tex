@@ -1,0 +1,494 @@
+\documentclass[a4paper,punct=CCT]{ctexbook}
+
+\title{微积分B}
+\author{赵磊}
+
+\input{preamble-all}
+
+\newcommand*{\mreason}[1]{#1}
+\newcommand*{\ex}[2]{\textbf{例#1：}#2}
+\newcommand*{\disp}[1]{\( \displaystyle #1 \)}
+\newcommand*{\exds}[2]{\ex{#1}\disp{#2}}
+
+\usepackage{cancel}
+
+% \usepackage[lite,subscriptcorrection,nofontinfo]{mtpro2}
+\usepackage{fontspec}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Palatino Linotype}
+%\usepackage[integrals]{wasysym}
+% \usepackage{fontawesome}
+
+% \xeCJKsetup{CJKecglue=\,}
+% \ltjsetparameter{xkanjiskip={0.13\zw plus 1pt minus 1pt}}
+\setCJKmainfont{Songti SC}[
+  BoldFont = * Black,
+  ItalicFont = * Bold
+]
+
+\usepackage[math-style=TeX]{unicode-math}
+\setmathfont{TeX Gyre Pagella Math}
+
+\usepackage{microtype}
+
+\newif\ifshowsol
+\newif\ifshowex
+% \showsoltrue
+\showextrue
+
+\let\reason\text
+
+\AtBeginDocument{%
+  % \renewcommand{\perp}{\mathrel{\bot}}
+  \let\leq\leqslant
+  \let\le\leq
+  \let\geq\geqslant
+  \let\ge\geq}
+
+\begin{document}
+\frontmatter
+
+\maketitle
+\thispagestyle{empty}
+% \cleardoublepage
+
+\chapter*{前言}
+
+这是我在首期“乘风计划”中《微积分B》课程中做的学习笔记.
+
+\clearpage
+\thispagestyle{empty}
+
+\mainmatter
+
+\part{极限理论与一元函数}
+
+\setcounter{chapter}{5}
+
+\chapter{原函数与不定积分}
+
+\section{概念与性质}
+
+\section{换元积分法}
+
+\subsection{第一换元法}
+
+设$ \int f(u) \, dx = F(u) + C $且$\varphi(x) \in C^1$,
+则$ \int f(\varphi(x)) \varphi'(x) \, dx = F(\varphi(x)) +C $.
+
+\textbf{证明：}$ (\text{左边})' = f(\varphi(x)) \varphi'(x) = (\text{右边})' $. \qed
+
+在实际使用中, 换元法体现了莱布尼茨微分记号的优越性. 将
+\begin{align*}
+  \varphi'(x) \, dx
+  & = d\varphi(x) \\
+  \intertext{代入原式, 得}
+  \int f(\varphi(x)) \varphi'(x) \, dx
+  & = \int f(\varphi(x)) \, d\varphi(x)
+    \intertext{用$ u $代替$ \varphi(x) $}
+  & = \int f(u) \, du \\
+  & = F(u) + C \\
+  & = F(\varphi(x)) + C.
+\end{align*}
+
+\exds{1}{ \int x \sin(x^2) \, dx. }
+
+将$x \dx = \frac12 \diff(x^2)$代入得
+\begin{align*}
+  \int x \sin(x^2) \, dx
+  &= \frac{1}{2} \int \sin(x^2) \, d(x^2) \\
+  \intertext{用$u$代替$x^2$}
+  &= \frac{1}{2} \int \sin u \, du \\
+  &= -\frac{1}{2} \cos(u) + C \\
+  &= -\frac{1}{2} \cos(x^2) + C.
+\end{align*}
+
+\exds{2}{ \int \cot x \, dx. }
+\begin{align*}
+  \text{原式}
+  &= \int \frac{\cos x}{\sin x} \, dx
+  && \mreason{\cot x = \frac{\cos x}{\sin x} }\\
+  &= \int \frac{1}{\sin x} \, d(\sin x)
+  && \mreason{ d\sin x = \cos x \, dx } \\
+  &= \int \frac{du}{u}
+  && \mreason{ u = \sin x } \\
+  &= \ln \abs{u} + C
+  && \mreason{ d\ln \abs{u} = \frac{1}{u} \, du } \\
+  &= \ln \abs{\sin x} + C.
+  && \mreason{ u = \sin x }
+\end{align*}
+
+\exds{3}{ \int \frac{dx}{a^2 + x^2} \qquad (a \ne 0). }
+\begin{align*}
+  \text{原式} &= \frac{1}{a^2} \int \frac{dx}{1+\paren*{\frac{x}{a}}^2}
+  && \reason{因为$a \ne 0$, 提取因子$\frac{1}{a^2}$} \\
+              &= \frac{1}{a^2} \int \frac{d(au)}{1+u^2}
+  && \mreason{ u = \frac{x}{a} } \\
+              &= \frac{1}{a} \int \frac{du}{1+u^2}
+  && \mreason{ d(au) = a \, du } \\
+              &= \frac{1}{a}\arctan u + C
+  && \mreason{ d\arctan u = \frac{1}{1+u^2} \, du } \\
+              &= \frac{1}{a}\arctan \frac{x}{a} + C.
+  && \mreason{ u = \frac{x}{a} }
+\end{align*}
+
+\exds{4}{ \int \frac{dx}{\sqrt{a^2 - x^2}} \qquad (a > 0). }
+\begin{align*}
+  \text{原式} &= \frac{1}{a} \int \frac{dx}{\sqrt{1-\paren*{\frac{x}{a}}^2}}
+  && \reason{因为$a > 0$, 提取因子$\frac{1}{a}$} \\
+              &= \frac{1}{a} \int \frac{d(au)}{\sqrt{1-u^2}}
+  && \mreason{ u = \frac{x}{a} } \\
+              &= \int \frac{du}{\sqrt{1-u^2}}
+  && \mreason{ d(au) = a \, du } \\
+              &= \arcsin u + C
+  && \mreason{ d\arcsin u = \frac{1}{\sqrt{1-u^2}} \, du } \\
+              &= \arcsin \frac{x}{a} + C.
+  && \mreason{ u = \frac{x}{a} }
+\end{align*}
+
+\subsection{第二换元法}
+
+设$ f(x) $为连续函数, $ x = \varphi(t) $连续可导且有反函数, 则
+\[ \int f(x) \, dx = \int f(\varphi(t)) \varphi'(t) \, dt. \]
+
+若右边的原函数可求得, 记\disp{ G(t) = \int f(\varphi(t)) \varphi'(t) \, dt }, 则
+\[ \int f(x) \, dx = G(\varphi^{-1}(x)) + C. \]
+
+\exds{1}{ \int \sqrt{a^2 - x^2} \, dx. }
+\begin{align*}
+  \intertext{假设$ a > 0 $, 则$ -a \le x \le a$}
+  \text{原式} &= \int a(\sqrt{1-\sin^2 t}) \, d(a\sin t)
+  && \mreason{x = a \sin t, \  t \in [-\frac{\pi}{2}, \frac{\pi}{2}] } \\
+              &= a^2 \int \cos^2 t \, dt
+  && \mreason{ \cos t = \sqrt{1-\sin^2 t},\ d(a\sin t) = a\cos t \, dt } \\
+              &= a^2 \int \frac{1+\cos 2t}{2} \, dt
+  && \mreason{ \cos^2 t = \frac{1+\cos 2t}{2} } \\
+              &= \frac{a^2}{2} t + \frac{\sin 2t}{4} + C
+  && \mreason{ d\frac{t}{2} = \frac{1}{2} \, dt,\ d\frac{\sin 2t}{4} = \frac{\cos 2t}{2} \, dt } \\
+              &= \frac{a^2}{2} \arcsin \frac{x}{a} + \frac{ \sin(2\arcsin\frac{x}{a})}{2} + C.
+  && \mreason{ t = \arcsin\frac{x}{a} }
+\end{align*}
+
+\exds{2}{ \int \frac{dx}{\sqrt{x^2 - a^2}}. }
+
+假设$a>0$, 则$x>a$或$x<-a$
+\begin{align*}
+  \text{原式} &= \int \frac{dx}{a \sqrt{\sec^2 t - 1}}
+  && \mreason{ x = a\sec t, \  t \in (0, \frac{\pi}{2}) } \\
+              &= \int \frac{ \cancel{a \tan t} \sec t }{\cancel{a \tan t}} \, dt
+  && \mreason{ d(a\sec t) = a \sec t \tan t \, dt } \\
+              &= \int \frac{dt}{\cos t}
+  && \mreason{ \sec t = \frac{1}{\cos t} } \\
+              &= \int \frac{\cos t \, dt}{\cos^2 t}
+  && \reason{分子分母同乘以$\cos t$} \\
+              &= \int \frac{d\sin t}{1 - \sin^2 t}
+  && \mreason{ d\sin t = \cos t \, dt, \  \cos^2 t = 1 - \sin^2 t} \\
+              &= \int \frac{du}{1-u^2}
+  && \mreason{ u = \sin t } \\
+              &= \frac{1}{2}\paren*{\int \frac{du}{1-u} + \int \frac{du}{1+u} }
+  && \mreason{ \frac{1}{1-u^2} = \frac{1}{2}\paren*{\frac{1}{1-u} + \frac{1}{1+u}} } \\
+              &= \frac{1}{2}(\ln \abs{1+u} - \ln \abs{1-u} + C)
+  && \mreason{ d\ln \abs{1+u} = \frac{1}{1+u},\ d\ln \abs{1-u} = -\frac{1}{1-u} } \\
+              &= \frac{1}{2} \ln \abs*{\frac{1+\sin t}{1 - \sin t}} + C
+  && \reason{对数的性质, \(u = \sin t\)} \\
+              &= \frac{1}{2} \ln \abs*{ \frac{1 + \sqrt{1-\paren*{\frac{a}{x}}^2}}
+                {1 - \sqrt{1-\paren*{\frac{a}{x}}^2}} } + C
+  && \mreason{ \sin^2 t = 1 - \paren*{\frac{a}{x}}^2} \\
+              &= \frac{1}{2} \ln \abs*{ \frac{\paren*{1 + \sqrt{1-\paren*{\frac{a}{x}}^2}}^2}
+                {\paren*{\frac{a}{x}}^2} } +C
+  && \reason{分母有理化} \\
+              &= \ln \paren[\Big]{x + \sqrt{x^2-a^2}} + C.
+  && \reason{对数的性质}
+\end{align*}
+
+\exds{3}{ \int \frac{dx}{x^2 \sqrt{x^2+1}}. }
+\begin{align*}
+  \text{原式} &= \int \frac{d\tan t}{\tan^2 t \sqrt{\tan^2 t + 1}}
+  && \reason{$x = \tan t$,
+     因为$x \ne 0$,
+     所以$t \in (-\frac{\pi}{2},\frac{\pi}{2})\setminus\{0\}$} \\
+              &= \int \frac{\cancel{\sec t} \sec t \, dt}{\tan^2 t \,\cancel{\sec t}}
+  && \mreason{ \sec^2 t - \tan^2 t = 1 } \\
+              &= \int \frac{\cos t \, dt}{\sin^2 t}
+  && \mreason{ \sec t = \frac{1}{\cos t},\  \tan t = \frac{\sin t}{\cos t} } \\
+              &= \int \frac{d\sin t}{\sin^2 t}
+  && \mreason{ d\sin t = \cos t \, dt } \\
+              &= -\frac{1}{\sin t} + C
+  && \mreason{ \int u^p \, du = \frac{u^{p+1}}{p+1} + C } \\
+              &= -\frac{\sqrt{1+x^2}}{x} + C.
+  && \frac{1}{\sin t} = \frac{\sqrt{1+x^2}}{x}
+\end{align*}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.6.2.E}
+\subsection*{练习}
+
+\begin{enumerate}
+\item 若\(f(x)\)的导函数是\(\sin x\), 求\(f(x)\)的原函数.
+
+  \ifshowsol
+  这题相当于是求函数\(\sin x\)的原函数的原函数, 所以有
+  \[
+    \int \paren*{\int \sin x \dx} \dx = \int \paren[\big]{-\cos x + C_1} \dx = -\sin x + C_1 x + C_2.
+  \]
+  \fi
+
+\item 已知\(f(x)\)的一个原函数是\(\sin x\), \(g(x)\)的一个原函数是\(x^2\), 求复函数\(f(g(x))\)的原函数.
+
+  \ifshowsol
+  因为
+  \[
+    f(x) = \ddx \sin x = \cos x, \quad g(x) = \ddx x^2 = 2x,
+  \]
+  所以
+  \begin{align*}
+    \int f(g(x)) \dx
+    &= \int \cos 2x \dx \\
+    &= \frac12 \int \cos t \dt && \mreason{x = t/2} \\
+    &= \frac12 \sin t + C = \frac12 \sin 2x + C.
+  \end{align*}
+  \fi
+
+\item \disp{\int e^{-\abs{x}} \dx}.
+
+  \ifshowsol
+  \begin{align*}
+    \int e^{-\abs{x}} \dx
+    &=
+      \begin{cases}
+        \int e^{-x} \dx, & x \ge 0, \\
+        \int e^x \dx, & x < 0,
+      \end{cases} \\
+    &=
+      \begin{cases}
+        - \int e^{t} \dt, & x \ge 0, \qquad \mreason{x = -t} \\
+        e^x + C_2, & x < 0,
+      \end{cases} \\
+    &=
+      \begin{cases}
+        -e^t + C_1, & x \ge 0, \\
+        e^x + C_2, & x < 0,
+      \end{cases} \\
+    &=
+      \begin{cases}
+        -e^{-x} + C_1, & x \ge 0, \qquad \mreason{t = -x} \\
+        e^x + C_2, & x < 0,
+      \end{cases} \\
+    &= C +
+      \begin{cases}
+        -e^{-x} + 2, & x \ge 0, \\
+        e^x, & x <0.
+      \end{cases} \quad \reason{\(-1 + C_1 = 1 + C_2\), 取\(C_2 = 0\)}
+  \end{align*}
+  \fi
+
+\item 已知曲线上任一点的二阶导数\(y'' = 6x\), 且在曲线上点\((0, -2)\)处的切线为\(2x - 3y = 6\), 求这条曲线的方程.
+
+  \ifshowsol
+  将切线的方程化为点斜式, 得到\(y = 2x/3 - 2\), 所以\(y'\big\vert_{x=0} = 2/3\).  有
+  \[
+    y' = \int y'' \dx = \int 6x \dx = 3x^2 + c_1,
+  \]
+  所以\(c_1 = 2/3\). 又有
+  \[
+    y = \int y' \dx = \int \paren[\Big]{3x^2 + \frac23} \dx = x^3 + \frac23 x + c_2,
+  \]
+  所以\(c_2 = -2\).  这条曲线的方程是
+  \[
+    y = x^3 + \frac23 x - 2.
+  \]
+  \fi
+
+\item \disp{\int \frac{\ln x}{x^2} \dx}.
+
+  \ifshowsol
+  最好的办法是用\(x = e^t\)换元后用分部积分法, 可惜这里还没学到.  有
+  \begin{align*}
+    \int \frac{\ln x}{x^2} \dx
+    &= \int t e^{-t} \dt
+    && \mreason{x = e^t} \\
+    &= - \int t \diff e^{-t} \\
+    &= - \paren[\Big]{t e^{-t} - \int e^{-t} \dt} \\
+    &= - t e^{-t} - e^{-t} + C \\
+    &= - \frac{\ln x}{x} - \frac1x + C.
+  \end{align*}
+  \fi
+
+\item 设\(f(x) = e^{-x}\), 求\disp{\int \frac{f'(\ln x)}{x} \dx}.
+
+  \ifshowsol
+  使用第一换元法, 有
+  \begin{equation*}
+    \int \frac{f'(\ln x)}{x} \dx
+    = \int f'(\ln x) \diff (\ln x)
+    = f(\ln x) = \frac1x + C.
+  \end{equation*}
+
+  也可以直接求导\(f'(x) = - e^{-x}\), 然后直接代入, 有
+  \begin{equation*}
+    \int \frac{f'(\ln x)}{x} \dx
+    = - \int \frac{1}{x^2} \dx
+    = \frac1x + C.
+  \end{equation*}
+  \fi
+
+\item 若\disp{\int f(x) \dx = x^2 + C}, 求\disp{\int x \, f(1-x^2) \dx}.
+
+  \ifshowsol
+  使用第一换元法, 有
+  \begin{align*}
+    \int x \, f(1-x^2) \dx
+    = - \frac12 \int f(1-x^2) \diff (1-x^2)
+    = - \frac12 \paren[\big]{1-x^2}^2 + C.
+  \end{align*}
+
+  或者通过求导得到
+  \[
+    f(x) = \ddx \int f(x) \dx = \ddx (x^2 + C) = 2x,
+  \]
+  所以
+  \[
+    \int x \, f(1-x^2) \dx
+    = 2 \int x (1-x^2) \dx
+    = x^2 - \frac{x^4}{2} + C.
+  \]
+
+  上面两种方法得到的答案形式不一样, 但实际上是等价的, 只要把第一个答案中外部的平方展开, 把产生的常数项吸收到后面的任意常数\(C\)中, 就是第二个答案中的形式.
+  \fi
+
+\item \disp{\int \frac{x}{(1-x)^3} \dx}.
+
+  \ifshowsol
+  尝试使用\(u = 1/(1-x)^2\)和\(t = 1/(1-x)\)来做换元, 观察到
+  \[
+    \du = \frac{2}{(1-x)^3} \dx
+    \quad \text{和} \quad
+    \dt = \frac{1}{(1-x)^2} \dx,
+  \]
+  所以有
+  \begin{align*}
+    \int \frac{x}{(1-x)^3} \dx
+    &= \int \paren[\bigg]{\frac{x-1}{(1-x)^3} + \frac{1}{(1-x)^3}} \dx \\
+    &= - \int \frac{1}{(1-x)^2} \dx + \int \frac{1}{(1-x)^3} \dx \\
+    &= - \int \dt + \frac12 \int \du \\
+    &= - t + \frac u2 + C \\
+    &= - \frac1{1-x} + \frac1{2 (1-x)^2} + C.
+  \end{align*}
+  \fi
+
+\item \disp{\int \frac{\sin x \cos x}{1 + \sin^4 x} \dx}.
+
+  \ifshowsol
+  使用\(u = \sin x\)和\(t = u^2\)来做换元, 就有
+  \begin{align*}
+    \int \frac{\sin x \cos x}{1 + \sin^4 x} \dx
+    &= \int \frac{u}{1+u^4} \du
+    && \mreason{\du = \cos x \dx} \\
+    &= \frac12 \int \frac1{1+t^2} \dt
+    && \mreason{\dt = 2u \du} \\
+    &= \frac12 \arctan t + C \\
+    &= \frac12 \arctan \sin^2 x + C
+    && \mreason{t = u^2,\ u = \sin x}
+  \end{align*}
+  \fi
+
+\item \disp{\int \paren[\big]{2^x + x^2} \dx}.
+
+  \ifshowsol
+  \[
+    \int \paren[\big]{2^x + x^2} \dx
+    = \int 2^x \dx + \int x^2 \dx
+    = \frac{2^x}{\ln 2} + \frac{x^3}3 + C.
+  \]
+  \fi
+\end{enumerate}
+\fi
+
+\section{分部积分法}
+
+若$u(x)$, $v(x)$连续可导, 则$[u(x) v(x)]' = u'(x)v(x) + u(x)v'(x)$, 就有
+\[
+  \int u(x) v'(x) \, dx = u(x) v(x) - \int v(x) u'(x) \, dx
+\]
+或者
+\[
+  \underset{\text{难}}{\underline{\int u(x) \, dv(x)}} =
+  u(x) v(x) - \underset{\text{易}}{\underline{\int v(x) \, du(x)}}.
+\]
+
+这种方法适用于函数本身比较难, 但是其导函数比较简单. 这样的函数$ u(x) $一般有
+\[
+  \begin{matrix}
+    \ln x, & \arctan x, & \arcsin x, & \text{函数复杂, 导数简单,} \\
+    e^x, & \sin x, & \cos x, & \text{函数导数, 难度相同.}
+  \end{matrix}
+\]
+
+\exds{1}{\int \ln x \, dx .}
+\begin{align*}
+  \int \underset{u(x)}{\underline{\ln x}} \, \underset{dv(x)}{\underline{dx}}
+  &= x \ln x - \int \underset{v(x)}{\underline{x}} \, \underset{du(x)}{\underline{d\ln x}}
+  && \reason{分部积分法} \\
+  &= x \ln x - \int dx
+  && \mreason{d\ln x = \frac{1}{x} \, dx} \\
+  &= x \ln x - x + C .
+  && \mreason{dx = dx}
+\end{align*}
+
+\exds{2}{\int x \arctan x \, dx .}
+\begin{align*}
+  \int x \, \underset{u(x)}{\underline{\arctan x}} \, dx
+  &= \int \arctan x \, d\frac{x^2}{2}
+  && \mreason{d\frac{x^2}{2} = x \, dx} \\
+  &= \frac{x^2}{2} \arctan x - \int \frac{x^2}{2} \, d(\arctan x)
+  && \reason{分部积分法} \\
+  &= \frac{x^2}{2} \arctan x - \int \frac{x^2}{2(1+x^2)} \, dx
+  && \mreason{d(\arctan x) = \frac{1}{1+x^2}} \\
+  &= \frac{x^2}{2} \arctan x - \frac{1}{2} \int \paren[\bigg]{1 - \frac{1}{1+x^2}} \, dx
+  && \mreason{\frac{x^2}{1+x^2} = 1 - \frac{1}{1+x^2}} \\
+  &= \frac{1}{2} \paren[\bigg]{x^2 \arctan x - \int dx + \int \frac{dx}{1+x^2}}
+  && \reason{积分的加法法则} \\
+  &= \frac{1}{2} \brkt[\big]{(x^2+1) \arctan x - x} + C .
+  && \mreason{dx = dx,\, d(\arctan x) = \frac{1}{1+x^2}}
+\end{align*}
+
+\exds{3}{\int x^2 \, e^x \dx.}
+\begin{align*}
+  \text{原式}
+  &= \int x^2 \diff e^x \\
+  &= x^2 e^x - \int e^x \, d(x^2)
+  && \reason{分部积分法} \\
+  &= x^2 e^x - 2\int x \, de^x \\
+  &= x^2 e^x - 2\paren[\Big]{x e^x - \int e^x \, dx}
+  && \reason{分部积分法} \\
+  &= (x^2 - 2x + 2) e^x + C.
+\end{align*}
+
+\exds{4}{\int x \sin(2x) \, dx.}
+\begin{align*}
+  \text{原式}
+  &= \frac{1}{2} \int x \, d[-\cos(2x)] \\
+  &= \frac{1}{2} \paren*{\int \cos(2x) \, dx - x \cos(2x)}
+  && \reason{分部积分法} \\
+  &= \frac{1}{2} \paren[\bigg]{\frac{1}{2} \sin(2x) - x \cos(2x)} + C.
+\end{align*}
+
+\exds{5}{\int e^x \sin x \, dx.}
+\begin{align*}
+  -\int e^x \, d\cos x
+  &= \text{原式}
+    = \int \sin x \, de^x \\
+  - e^x \cos x + \int \cos x \, de^x
+  &= \text{原式}
+    = e^x \sin x - \int e^x \, d\sin x
+  && \reason{分部积分法} \\
+  \intertext{因为$\int \cos x \, de^x = \int e^x \cos x \, dx = \int e^x \, d\sin x$, 所以}
+  \int e^x \cos x \, dx
+  &= \frac{\sin x + \cos x}{2} e^x + C, \\
+  \text{原式}
+  &= e^x \sin x - \frac{\sin x + \cos x}{2} e^x + C \\
+  &= \frac{\sin x - \cos x}{2} e^x + C.
+\end{align*}
+
+\end{document}
