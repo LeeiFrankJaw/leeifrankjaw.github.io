@@ -1,0 +1,92 @@
+\documentclass[a4paper,punct=CCT]{ctexbook}
+
+\title{自考教材02325笔记}
+\author{赵磊}
+
+\input{preamble-all}
+
+% \usepackage[lite,subscriptcorrection,nofontinfo]{mtpro2}
+\usepackage{fontspec}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Palatino Linotype}
+%\usepackage[integrals]{wasysym}
+% \usepackage{fontawesome}
+
+% \xeCJKsetup{CJKecglue=\,}
+% \ltjsetparameter{xkanjiskip={0.13\zw plus 1pt minus 1pt}}
+\setCJKmainfont{Songti SC}[
+  BoldFont = * Black,
+  ItalicFont = * Bold
+]
+
+\usepackage[math-style=TeX]{unicode-math}
+\setmathfont{TeX Gyre Pagella Math}
+
+\usepackage{microtype}
+
+\begin{document}
+\frontmatter
+
+\maketitle
+\thispagestyle{empty}
+
+\mainmatter
+
+\chapter{概论}
+
+\chapter{数据表示、寻址方式与指令系统}
+
+\subpdfbookmark{习题}{C2.E}
+\section*{习题}
+
+\begin{enumerate}
+  \setcounter{enumi}{3}
+\item 设某计算机阶值6位、尾数48位，阶符和数符不在其内，当尾数分别以2、8、16为基时，在非负阶、正尾数、规格化情况下，求出其最小阶、最大阶、阶的个数、最小尾数值、最大尾数值、可表示的最小值和最大值及可表示数的个数。
+
+  最小阶、最大阶、阶的个数分别为0、63、64，其余如下表.
+
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c}
+      基 & 2 & 8 & 16 \\
+      \hline
+      最小尾数值 & \(1/2\) & \(1/8\) & \(1/16\) \\
+      \hline
+      最大尾数值 & \(1 - 2^{-48}\) & \(1- 8^{-16}\) & \(1 - 16^{-12}\) \\
+      \hline
+      可表示的最小值 & \(1/2\) & \(1/8\) & \(1/16\) \\
+      \hline
+      可表示的最大值 & \(2^{63} - 2^{15}\) & \(8^{63} - 8^{47}\) & \(16^{63} - 16^{51}\) \\
+      \hline
+      可表示数的个数 & \(2^6 \cdot 2^{47}\) & \(2^6 \cdot (8^{16} - 8^{15})\) & \(2^6 \cdot (16^{12} - 16^{11})\)
+    \end{tabular}
+    \caption{尾数分别以2、8、16为基}
+  \end{table}
+
+\item 浮点数系统使用的阶基\(r_p = 2\), 阶值位数\(p = 2\), 尾数基值\(r_m = 10\), 以\(r_m\)为基的尾数位数\(m' = 1\)。
+  \begin{enumerate}
+  \item 试计算在非负阶、正尾数、规格化情况下的最小尾数值、最大尾数值、最大阶数值、可表示的最小值和最大值及可表示数的个数。
+
+    分别为\(1/10\)、\(9/10\)、\(3\)、\(1/10\)、\(900\)和\(36\)。
+
+  \item 对于\(r_p = 2\)，\(p = 2\)，\(r_m = 4\)，\(m' = 2\)的情况，重复以上计算。
+
+    分别为\(1/4\)、\(15/16\)、\(3\)、\(1/4\)、\(60\)和\(48\)。
+  \end{enumerate}
+  
+\item 由4位数（其中最低位为下溢处理的附加位）经ROM查表舍入法，下溢处理成3位结果，设计使下溢处理平均误差接近于0的ROM表，列出ROM编码表的地址与内容的对应关系。
+
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+      地址 & 0000 & 0001 & 0010 & 0011 & 0100 & 0101 & 0110 & 0111 & 1000 & 1001 & 1010 & 1011 & 1100 & 1101 & 1110 & 1111 \\
+      \hline
+      内容 & 000 & 001 & 001 & 010 & 010 & 011 & 011 & 100 & 100 & 101 & 101 & 110 & 110 & 111 & 111 & 111
+    \end{tabular}
+    \caption{ROM表}
+  \end{table}
+\end{enumerate}
+
+\end{document}
