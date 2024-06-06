@@ -16,6 +16,8 @@
 \newtheoremstyle{break}{}{}{\itshape}{}{\bfseries}{}{\newline}{}
 \theoremstyle{break}
 \newtheorem*{theorem*}{定理}
+\newtheorem*{definition*}{定义}
+\newtheorem*{axiom*}{公理}
 
 \usepackage{cancel}
 \usepackage{systeme}
@@ -57,6 +59,8 @@
 }
 \makeatother
 
+\newenvironment{example}[1][]{\noindent\textbf{例#1：}}{}
+
 \let\reason\text
 
 \AtBeginDocument{%
@@ -88,7 +92,112 @@
 
 \section{实数集的界与确界}
 
+\begin{definition*}
+  设\(A\)是一个非空实数集.  若存在\(M > 0\), 使得对任意的\(x \in A\), 都有\(\abs{x} \le M\), 则称实数集\(A\)有界, 称\(M\)为\(A\)的一个界; 若存在\(M_1 \in \R\), 使得对任意的\(x \in A\), 都有\(x \le M_1\), 则称实数集\(A\)有上界, 称\(M_1\)为\(A\)的一个上界; 下界的定义类似.
+\end{definition*}
+
+% \pskip
+\begin{theorem*}
+  实数集有界的充分必要条件是其既有上界, 又有下界.
+\end{theorem*}
+
+\begin{proof}
+  只证充分性.  设\(M_1, M_2\)分别为实数集的上下界, 取\(M = \max\brce{\abs{M_1}, \abs{M_2}}\), 则\(M\)就是该实数集的一个界.
+\end{proof}
+
+\begin{example}
+  证明正整数集\(\Z^+\)是无界集.
+\end{example}
+
+\begin{proof}
+  对于任意的\(M > 0\), 取\(n_0 = \floor M + 1\), 都有\(n_0 \in \Z^+\)且\(n_0 > M\).
+\end{proof}
+
+\begin{example}
+  证明\(\brce{n \sin \frac{n\pi}2}\)是无界集.
+\end{example}
+
+\begin{proof}
+  对于所有的\(M > 0\), 取\(n_0 = 2 \floor M + 1\), 那么就有
+  \[
+    \abs[\Big]{n_0 \sin \frac{n_0\pi}2} = \abs[\Big]{(-1)^{\floor M} n_0} = n_0 = 2 \floor M + 1 > M. \qedhere
+  \]
+\end{proof}
+
+\begin{definition*}
+  实数集\(A\)的最小上界称作上确界, 记作\(\sup A\); 它的最大下界称作下确界, 记作\(\inf A\).
+\end{definition*}
+
+\begin{definition*}
+  对于实数集\(A\), 如果实数\(M\)满足：\enumparen{1} 对于任意的\(x \in A\), 都有\(x \le M \); \enumparen{2} 对于任意的\(\varepsilon > 0\), 都存在\(x \in A\)使得\(x > M - \varepsilon\), 那么就称\(M\)为\(A\)的上确界.  下确界的定义类似.
+\end{definition*}
+
+\begin{example}
+  证明\(\inf\brce[\big]{\frac1n} = 0\).
+\end{example}
+
+\begin{proof}
+  取\(x = \floor{\frac1\varepsilon}\)即可.
+\end{proof}
+
+\begin{axiom*}[确界存在公理]
+  若非空实数集\(A\)有上界, 则其在实数范围内上有上确界; 若有下界, 则在实数范围内有下确界.
+\end{axiom*}
+
+\subsection*{思考}
+
+设\(E \subset R\)为非空实数集, 上确界\(\sup E\)和最大值\(\max E\)有什么和联系区别？下确界\(\inf E\)和最小值\(\min E\)呢？
+
 \section{函数的概念}
+
+\begin{definition*}
+  设\(D\)是一个非空实数集, \(f\)是\(D\)上的一个对应关系.  若对任意的\(x \in D\), 都存在唯一的实数\(y\)通过\(f\)与\(x\)对应, 则称\(f\)是定义在\(D\)上的一个函数, 记作\(y = f(x),\ x \in D\).
+\end{definition*}
+
+函数的记号是欧拉的, 现代定义最早是由狄利克雷提出的.
+
+\begin{definition*}
+  设函数\(f\)在\(D\)上有定义, 称点集\(\brce[\big]{(x,y) \mid y = f(x),\ x \in D}\)为\(f\)的图形.
+\end{definition*}
+
+\begin{definition*}[狄利克雷函数]
+  \[
+    D(x) =
+    \begin{cases}
+      1, & x \in \Q, \\
+      -1, & x \in \R \setminus \Q.
+    \end{cases}
+  \]
+\end{definition*}
+
+\begin{definition*}[阶跃函数]
+  \[
+    D(x) =
+    \begin{cases}
+      a, & x \ge x_0, \\
+      b, & x < x_0.
+    \end{cases}
+  \]
+\end{definition*}
+
+\begin{definition*}[符号函数]
+  \[
+    \sgn(x) =
+    \begin{cases}
+      1, & x > 0, \\
+      0, & x = 0, \\
+      -1, & x < 0.
+    \end{cases}
+  \]
+\end{definition*}
+
+\begin{definition*}[分段函数]
+  在定义域上不能由一个统一的数学表达式表示, 但在定义域的不同范围上能用不同的数学表达式给出的函数称为分段函数.
+\end{definition*}
+
+\begin{definition*}[隐函数]
+  无法或者不方便显式地来定义, 而是使用代数关系（一般无法写出解析解形式）来确定的函数.
+\end{definition*}
 
 \section{函数的运算}
 
