@@ -32,6 +32,10 @@
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterX{\brce}[1]{\lbrace}{\rbrace}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiterX{\parenbrkt}[1]{\lparen}{\rbrack}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiterX{\brktparen}[1]{\lbrack}{\rparen}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \newcommand*{\unit}[1]{\,\mathrm{#1}}
 \newcommand*{\DeclareUnit}[1]{\expandafter\def\csname#1\endcsname{\unit{#1}}}
 \DeclareUnit{cm}
@@ -78,6 +82,8 @@
 \DeclareMathOperator{\arcsinh}{arcsinh}
 \DeclareMathOperator{\arctanh}{arctanh}
 \DeclareMathOperator{\arccoth}{arccoth}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\atantwo}{atan2}
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\arcsech}{arcsech}
 \DeclareMathOperator{\sgn}{sgn}
@@ -85,6 +91,7 @@
 \DeclareMathOperator{\Ber}{Bernoulli}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\ran}{ran}
 \def\argmax{\qopname\relax m{arg\,max}}
 \DeclarePairedDelimiterXPP{\Eb}[1]{\E}{\lbrack}{\rbrack}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
