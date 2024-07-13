@@ -51,7 +51,6 @@
 % \newcommand*{\Rm}{(-\infty,0)}
 \newcommand*{\deduce}{\mathrel{\Downarrow}}
 % \newcommand*{\abs}[1]{\left\lvert #1 \right\rvert}
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 % \newcommand*{\ceil}[1]{\left\lceil#1\right\rceil}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
@@ -65,8 +64,9 @@
 \DeclareText{otherwise}
 \newcommand*{\tfor}{\text{for }}
 \newcommand*{\qfor}{\txt{for}}
+\let\reason\text
 
-\newcommand*{\enumparen}[1]{(\makebox[0.6em][c]{#1})}
+\newcommand*{\enumparen}[1]{\textnormal{(}\makebox[0.6em][c]{#1}\textnormal{)}}
 \renewcommand{\labelenumii}{\enumparen{\theenumii}}
 \newcommand*{\upstar}{\textsuperscript{\normalfont\textasteriskcentered}}%
 \makeatletter
@@ -99,7 +99,13 @@
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterXPP{\Covp}[1]{\Cov}{\lparen}{\rparen}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
-\DeclarePairedDelimiterXPP{\expp}[1]{\exp}{\lbrace}{\rbrace}{}{#1}
+\DeclarePairedDelimiterXPP{\expb}[1]{\exp}{\lbrace}{\rbrace}{}{#1}
+\DeclarePairedDelimiterXPP{\maxb}[1]{\max}{\lbrace}{\rbrace}{}{#1}
+\DeclarePairedDelimiterXPP{\lnp}[1]{\ln}{\lparen}{\rparen}{}{#1}
+\DeclarePairedDelimiterXPP{\Set}[1]{\mathop{}}{\lbrace}{\rbrace}{}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\let\Seq\Set
+\DeclarePairedDelimiterXPP{\abs}[1]{\mathop{}}{\lvert}{\rvert}{}{#1}
 \newcommand*{\Fn}[1]{\mathop{\relax #1}\nolimits}
 \newcommand*{\fn}[1]{\mathop{\relax\kern0pt #1}\nolimits}
 \newcommand*{\gammaf}{\Fn{\Gamma}}

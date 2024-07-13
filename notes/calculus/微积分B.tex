@@ -13,6 +13,10 @@
 \renewcommand{\arraystretch}{1.8}
 \newcommand*{\hangpar}[2]{\hangindent=1.2cm \textbf{#1}\\[6pt]#2}
 \newcommand*{\veq}{\ensuremath{\mathrel{\:\rotatebox{90}{=}}}}
+\newcommand*{\period}{\textnormal{\bfseries.}}
+\newcommand*{\comma}{\textnormal{,}}
+\newcommand*{\scolon}{\textnormal{;}}
+\renewcommand*{\enumparen}[1]{（\makebox[0.6em][c]{\normalfont#1}）}
 \newtheoremstyle{break}{}{}{\itshape}{}{\bfseries}{}{\newline}{}
 \theoremstyle{break}
 \newtheorem*{theorem*}{定理}
@@ -54,12 +58,16 @@
 \showsoltrue
 \showextrue
 
+% \renewcommand*{\proofname}{证}
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
   \pushQED{\qed}%
   \normalfont \topsep6\p@\@plus6\p@\relax
   \trivlist
   \item[]\ignorespaces
+  % \item[\hskip\labelsep
+  %   \itshape
+  %   #1\@addpunct{：}]\ignorespaces
 }{%
   \popQED\endtrivlist\@endpefalse
 }
@@ -67,9 +75,8 @@
 
 \newenvironment{example}[1][]{\noindent\textbf{例#1：}}{}
 
-\let\reason\text
-
 \AtBeginDocument{%
+  % \DeclareEmphSequence{\bfseries}
   % \renewcommand{\perp}{\mathrel{\bot}}
   \let\leq\leqslant
   \let\le\leq
@@ -99,12 +106,12 @@
 \section{实数集的界与确界}
 
 \begin{definition*}
-  设\(A\)是一个非空实数集.  若存在\(M > 0\), 使得对任意的\(x \in A\), 都有\(\abs{x} \le M\), 则称实数集\(A\)有界, 称\(M\)为\(A\)的一个界; 若存在\(M_1 \in \R\), 使得对任意的\(x \in A\), 都有\(x \le M_1\), 则称实数集\(A\)有上界, 称\(M_1\)为\(A\)的一个上界; 下界的定义类似.
+  设\(A\)是一个非空实数集\period 若存在\(M > 0\)\comma 使得对任意的\(x \in A\)\comma 都有\(\abs{x} \le M\)\comma 则称实数集\(A\)有界\comma 称\(M\)为\(A\)的一个界\scolon 若存在\(M_1 \in \R\)\comma 使得对任意的\(x \in A\)\comma 都有\(x \le M_1\)\comma 则称实数集\(A\)有上界\comma 称\(M_1\)为\(A\)的一个上界\scolon 下界的定义类似\period
 \end{definition*}
 
 % \pskip
 \begin{theorem*}
-  实数集有界的充分必要条件是其既有上界, 又有下界.
+  实数集有界的充分必要条件是其既有上界\comma 又有下界\period
 \end{theorem*}
 
 \begin{proof}
@@ -131,24 +138,25 @@
 \end{proof}
 
 \begin{definition*}
-  实数集\(A\)的最小上界称作上确界, 记作\(\sup A\); 它的最大下界称作下确界, 记作\(\inf A\).
+  实数集\(A\)的最小上界称作上确界\footnote{上（下）确界的概念最早可以追溯到Roger Paman.}\comma 记作\(\sup A\)\scolon 它的最大下界称作下确界\comma 记作\(\inf A\)\period
 \end{definition*}
 
 \begin{definition*}
-  对于实数集\(A\), 如果实数\(M\)满足：\enumparen{1} 对于任意的\(x \in A\), 都有\(x \le M \); \enumparen{2} 对于任意的\(\varepsilon > 0\), 都存在\(x \in A\)使得\(x > M - \varepsilon\), 那么就称\(M\)为\(A\)的上确界.  下确界的定义类似.
+  对于实数集\(A\)\comma 如果实数\(M\)满足：\enumparen{1}对于任意的\(x \in A\)\comma 都有\(x \le M \)\scolon{} \enumparen{2}对于任意的\(ε > 0\)\comma 都存在\(x \in A\)使得\(x > M - ε\)\comma 那么就称\(M\)为\(A\)的上确界\period  下确界的定义类似\period
 \end{definition*}
 
 \begin{example}
-  证明\(\inf\brce[\big]{\frac1n} = 0\).
+  证明\(\inf\Seq[\big]{\frac1n} = 0\).
 \end{example}
 
 \begin{proof}
-  取\(x = \floor{\frac1\varepsilon}\)即可.
+  取\(x = 1/\paren[\big]{\floor{\frac1ε}+1}\)即可.
 \end{proof}
 
 \begin{axiom*}[确界存在公理]
-  若非空实数集\(A\)有上界, 则其在实数范围内上有上确界; 若有下界, 则在实数范围内有下确界.
+  若非空实数集\(A\)有上界\comma 则其在实数范围内上有上确界\scolon 若有下界\comma 则在实数范围内有下确界\period
 \end{axiom*}
+\pagebreak
 
 \subpdfbookmark{思考}{B1.1.1.P}
 \subsection*{思考}
@@ -244,7 +252,7 @@
 \item 设\(A,\ B\)为\(\R^+\)中的非空有界集, 定义数集\(P = \brce{x \mid x = a + b, a \in A, b \in B}, Q = \brce{x \mid x = a - b, a \in A, b \in B}\), 则下列四个等式
   \begin{align*}
     \sup P &= \sup A + \sup B & \inf P &= \inf A + \inf B \\
-    \sup P &= \sup A - \sup B & \inf Q &= \inf A - \inf B
+    \sup Q &= \sup A - \sup B & \inf Q &= \inf A - \inf B
   \end{align*}
   正确的等式个数是
   \ifshowsol
@@ -253,19 +261,23 @@
   \uline{\makebox[4em]{}}%
   \fi
   个.
+
+  \ifshowsol
+  前两个等式是正确的, 后两个改成\(\sup Q = \sup A - \inf B\)和\(\inf Q = \inf A - \sup B\)就正确了.
+  \fi
 \end{enumerate}
 \fi
 
 \section{函数的概念}
 
 \begin{definition*}
-  设\(D\)是一个非空实数集, \(f\)是\(D\)上的一个对应关系.  若对任意的\(x \in D\), 都存在唯一的实数\(y\)通过\(f\)与\(x\)对应, 则称\(f\)是定义在\(D\)上的一个函数, 记作\(y = f(x),\ x \in D\).
+  设\(D\)是一个非空实数集\,\comma\; \(f\)是\(D\)上的一个对应关系\period  若对任意的\(x \in D\)\comma 都存在唯一的实数\(y\)通过\(f\)与\(x\)对应\,\comma 则称\(f\)是定义在\(D\)上的一个函数\,\comma 记作\(y = f(x),\ x \in D\)\period
 \end{definition*}
 
 函数的记号是欧拉的, 现代定义最早是由狄利克雷提出的.
 
 \begin{definition*}
-  设函数\(f\)在\(D\)上有定义, 称点集\(\brce[\big]{(x,y) \mid y = f(x),\ x \in D}\)为\(f\)的图形.
+  设函数\(f\)在\(D\)上有定义\comma 称点集\(\brce[\big]{(x,y) \mid y = f(x),\ x \in D}\)为\(f\)的图形\period
 \end{definition*}
 
 \begin{definition*}[狄利克雷函数]
@@ -300,11 +312,11 @@
 \end{definition*}
 
 \begin{definition*}[分段函数]
-  在定义域上不能由一个统一的数学表达式表示, 但在定义域的不同范围上能用不同的数学表达式给出的函数称为分段函数.
+  在定义域上不能由一个统一的数学表达式表示\,\comma 但在定义域的不同范围上能用不同的数学表达式给出的函数称为分段函数\period
 \end{definition*}
 
 \begin{definition*}[隐函数]
-  无法或者不方便显式地来定义, 而是使用代数关系（一般无法写出解析解形式）来确定的函数.
+  无法或者不方便显式地来定义\,\comma 而是使用代数关系（一般无法写出解析解形式）来确定的函数\period
 \end{definition*}
 
 \begin{example}
@@ -506,12 +518,12 @@
 \section{函数的运算}
 
 \begin{definition*}
-  设函数\(f(x)\)和\(g(x)\)的定义域分别为\(D_1\)和\(D_2\), 且\(D = D_1 \cap D_2\)非空.  定义函数的四则运算为
+  设函数\(f(x)\)和\(g(x)\)的定义域分别为\(D_1\)和\(D_2\)\comma 且\(D = D_1 \cap D_2\)非空\period\;  定义函数的四则运算为
   \begin{enumerate}
-    \renewcommand{\labelenumi}{(\arabic{enumi})}
+    \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
   \item 加减法\((\,f \pm g)(x) = f(x) \pm g(x),\ x \in D\);
   \item 乘法\((\,fg)(x) = f(x) \, g(x),\ x \in D\);
-  \item 除法\((\,f/g)(x) = f(x) / g(x)\ (\,g(x) \ne 0),\ x \in D\).
+  \item 除法\((\,f/g)(x) = f(x) / g(x)\ (\,g(x) \ne 0),\ x \in D\)\period
   \end{enumerate}
 \end{definition*}
 
@@ -521,7 +533,7 @@
 \end{example}
 
 \begin{definition*}
-  设\(g\colon D_g \to Z_g,\ f\colon D_f \to Z_f\)且\(Z_g \subset D_f\), 那么对于任意的\(x \in D_g\), 函数值\(f\paren{g(x)}\)都是有意义的.  定义函数\(f\)和\(g\)的复合为
+  设\(g\colon D_g \to Z_g,\ f\colon D_f \to Z_f\)且\(Z_g \subset D_f\)\,\comma 那么对于任意的\(x \in D_g\)\comma 函数值\(\,f\paren{g(x)}\)都是有意义的\period  定义函数\(\,f\)和\(g\)的复合为
   \[
     \begin{split}
       f \circ g\colon & D_g \to Z_f \\
@@ -547,17 +559,17 @@
 \end{example}
 
 \begin{definition*}
-  设\(f\colon D \to Z_f\), \(g\)是一对应关系.  若对任意的\(y \in Z_f\), 通过\(g\)找到唯一的\(x \in D\), 使得\(y = f(x)\), 则称\(g\)是\(f\)的反函数, 记作\(f^{-1}\).
+  设函数\(f\colon D \to Z_f\)和一对应关系\(g\)\period  若对任意的\(y \in Z_f\)\,\comma 通过\(g\)找到唯一的\(x \in D\)\comma 使得\(y = f(x)\)\comma 则称\(g\)是\(f\)的反函数\,\comma 记作\(f^{-1}\)\period
 \end{definition*}
 
 易知\(f(\,f^{-1}(x)) = f^{-1}(\,f(x)) = x\).
 
 \begin{theorem*}
-  函数\(y = f(x)\)与其反函数\(y = f^{-1}(x)\)的图像关于直线\(y = x\)对称.
+  函数\(y = f(x)\)与其反函数\(y = f^{-1}(x)\)的图像关于直线\(y = x\)对称\period
 \end{theorem*}
 
 \begin{theorem*}
-  反函数存在的充分必要条件是这个函数是一一对应的.
+  反函数存在的充分必要条件是这个函数是一一对应的\period
 \end{theorem*}
 
 \begin{example}
@@ -577,11 +589,11 @@
 \begin{definition*}
   反三角函数
   \begin{enumerate}
-    \renewcommand{\labelenumi}{(\arabic{enumi})}
-  \item 反正弦函数\(y = \arcsin x\), 定义域\(\brkt{-1, 1}\), 值域\(\brkt{-\frac\pi2, \frac\pi2}\);
-  \item 反余弦函数\(y = \arccos x\), 定义域\(\brkt{-1, 1}\), 值域\(\brkt{0, \pi}\);
-  \item 反正切函数\(y = \arcsin x\), 定义域\(\brkt{-\infty, +\infty}\), 值域\(\brkt{-\frac\pi2, \frac\pi2}\);
-  \item 反余切函数\(y = \arccos x\), 定义域\(\brkt{-\infty, +\infty}\), 值域\(\brkt{0, \pi}\).
+    \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
+  \item 反正弦函数\(y = \arcsin x\)\comma 定义域\(\brkt{-1, 1}\)\comma 值域\(\brkt{-\frac\pi2, \frac\pi2}\)\scolon
+  \item 反余弦函数\(y = \arccos x\)\comma 定义域\(\brkt{-1, 1}\)\comma 值域\(\brkt{0, \pi}\)\scolon
+  \item 反正切函数\(y = \arcsin x\)\comma 定义域\(\brkt{-\infty, +\infty}\)\comma 值域\(\brkt{-\frac\pi2, \frac\pi2}\)\scolon
+  \item 反余切函数\(y = \arccos x\)\comma 定义域\(\brkt{-\infty, +\infty}\)\comma 值域\(\brkt{0, \pi}\)\period
   \end{enumerate}
   其中我们限制值域的范围叫做反三角函数的主值范围.
 \end{definition*}
@@ -751,7 +763,7 @@
 \section{函数的初等性质}
 
 \begin{definition*}
-  设函数\(f\colon D \to Z_f\).  若\(\ran f \subset Z_f\)是有界集, 则称\(f\)是有界函数, \(\ran f\)的界就是\(f\)在\(D\)上的界.
+  设函数\(f\colon D \to Z_f\)\,\period  若\(\ran f \subset Z_f\)是有界集\,\comma 则称\(f\)是有界函数\,\comma{} \(\ran f\)的界就是\(f\)在\(D\)上的界\period
 \end{definition*}
 
 \begin{example}
@@ -763,12 +775,12 @@
 \end{example}
 
 \begin{definition*}
-  设函数\(f\)的定义域关于原点对称.  对于定义域上的任意\(x\), 函数\(f\)都满足\(f(-x) = -f(x)\), 这时\(f\)叫做奇函数.  对于定义域上的任意\(x\), 函数\(f\)都满足\(f(-x) = f(x)\), 这时\(f\)叫做偶函数.
+  设函数\(f\)的定义域关于原点对称\period  对于定义域上的任意\(x\)\comma 函数\(f\)都满足\(f(-x) = -f(x)\)\comma 这时\(f\)叫做奇函数\period  对于定义域上的任意\(x\)\comma 函数\(f\)都满足\(f(-x) = f(x)\)\comma 这时\(f\)叫做偶函数\period
 \end{definition*}
 
 \hypertarget{T:evenodd}{}
 \begin{theorem*}
-  若一个函数的定义域对于原点对称, 则这个函数可以唯一地分解成一个奇函数和一个偶函数的和的形式.
+  若一个函数的定义域对于原点对称\comma 则这个函数可以唯一地分解成一个奇函数和一个偶函数的和的形式\,\period
 
   \begin{proof}
     设函数\(f\)的定义域关于原点对称.  易证\(\dfrac{f(x)+f(-x)}{2}\)是偶函数、\(\dfrac{f(x)-f(-x)}{2}\)是奇函数且
@@ -807,7 +819,7 @@
 \end{example}
 
 \begin{definition*}
-  设\(f\)是一个定义在\(\R\)上的函数.  若存在正数\(T\)使得\(f(x+T) = f(x)\)恒成立, 这时我们称\(f\)为周期函数.
+  设\(\,f\)是一个定义在\(\R\)上的函数\period  若存在正数\(T\)使得\(f(x+T) = f(x)\)恒成立\,\comma 这时我们称\(f\)为周期函数\period
 \end{definition*}
 
 通常我们提到函数的周期, 是指函数的最小正周期, 如果存在的话.  并不是每个周期函数都有最小正周期的, 比方说常函数和狄利克雷函数.
@@ -819,12 +831,12 @@
 \end{example}
 
 \begin{definition*}
-  对于任意的\(x_1 < x_2 \in D\)都有\(f(x_1) < f(x_2)\)成立\,, 则称\(f\)单调递增（单增）.  对于任意的\(x_1 < x_2 \in D\)都有\(f(x_1) > f(x_2)\)成立\,, 则称\(f\)单调递减（单减）.
+  对于任意的\(x_1 < x_2 \in D\)都有\(\,f(x_1) < f(x_2)\)成立\,\comma 则称\(f\)单调递增（单增）\period\;  对于任意的\(x_1 < x_2 \in D\)都有\(\,f(x_1) > f(x_2)\)成立\,\comma 则称\(f\)单调递减（单减）\period
 \end{definition*}
 
 \begin{theorem*}
-  函数\(f\)单增的充要条件是：对于任意的\(x_1, x_2 \in D\), 当\(x_1 \ne x_2\)时, 都有\(\paren{x_1 - x_2}\paren[\big]{\,f(x_1) - f(x_2)} > 0\).
-  函数\(f\)单减的充要条件是：对于任意的\(x_1, x_2 \in D\), 当\(x_1 \ne x_2\)时, 都有\(\paren{x_1 - x_2}\paren[\big]{\,f(x_1) - f(x_2)} < 0\).
+  函数\(\,f\)单增的充要条件是：对于任意的\(x_1, x_2 \in D\)\comma 当\(x_1 \ne x_2\)时\comma 都有\(\paren{x_1 - x_2}\paren[\big]{\,f(x_1) - f(x_2)} > 0\)\period
+  函数\(\,f\)单减的充要条件是：对于任意的\(x_1, x_2 \in D\)\comma 当\(x_1 \ne x_2\)时\comma 都有\(\paren{x_1 - x_2}\paren[\big]{\,f(x_1) - f(x_2)} < 0\)\period
 \end{theorem*}
 
 \begin{example}
@@ -845,15 +857,15 @@
 \end{example}
 
 \begin{definition*}
-  设函数\(f\)是在\(\paren{a,b}\)上有定义.  对任意的\(x_1, x_2 \in \paren{a,b}\)和\(\alpha \in \paren{0,1}\), 当\(x_1 \ne x_2\)时都有
+  设函数\(f\)是在\(\paren{a,b}\)上有定义\period  若对任意的\(x_1, x_2 \in \paren{a,b}\)和\(\alpha \in \paren{0,1}\)\comma 当\(x_1 \ne x_2\)时都有
   \[
-    f\,\paren[\big]{\alpha x_1 + (1-\alpha) x_2} < \alpha\,f(x_1) + (1-\alpha)\,f(x_2).
+    f\,\paren[\big]{\alpha x_1 + (1-\alpha) x_2} < \alpha\,f(x_1) + (1-\alpha)\,f(x_2),
   \]
-  这时我们称\(f\)在\(\paren{a,b}\)上是下凸的.  对任意的\(x_1, x_2 \in \paren{a,b}\)和\(\alpha \in \paren{0,1}\), 当\(x_1 \ne x_2\)时都有
+  则称\(f\)在\(\paren{a,b}\)上是下凸的\period  若对任意的\(x_1, x_2 \in \paren{a,b}\)和\(\alpha \in \paren{0,1}\)\comma 当\(x_1 \ne x_2\)时都有
   \[
-    f\,\paren[\big]{\alpha x_1 + (1-\alpha) x_2} > \alpha\,f(x_1) + (1-\alpha)\,f(x_2).
+    f\,\paren[\big]{\alpha x_1 + (1-\alpha) x_2} > \alpha\,f(x_1) + (1-\alpha)\,f(x_2),
   \]
-  这时我们称\(f\)在\(\paren{a,b}\)上是上凸的.
+  则称\(f\)在\(\paren{a,b}\)上是上凸的\period
 \end{definition*}
 
 \begin{example}
@@ -1088,11 +1100,11 @@
 \section{初等函数}
 
 \begin{definition*}
-  常函数、幂函数、指数函数、对数函数、三角函数、反三角函数\,, 这六类函数叫做基本初等函数.
+  常函数、幂函数、指数函数、对数函数、三角函数、反三角函数\,\comma 这六类函数叫做基本初等函数\period
 \end{definition*}
 
 \begin{definition*}
-  由基本初等函数经过有限次四则运算或函数复合得到的函数叫做初等函数.\footnote{初等函数的概念最早是由法国数学家Joseph Liouville在讨论不定积分的代数解时引入的.}
+  由基本初等函数经过有限次四则运算或函数复合得到的函数叫做初等函数\period\footnote{初等函数的概念最早是由法国数学家Joseph Liouville在讨论不定积分的代数解时引入的.}
 \end{definition*}
 
 常见的非初等函数有：分段函数、隐函数、参数方程确定的函数、变限定积分函数、参变量积分函数、函数项级数的和函数.
@@ -1107,7 +1119,9 @@
     \tanh x \coloneq \frac{\sinh x}{\cosh x}.
   \]
 \end{definition*}
+\ifshowsol
 \pagebreak
+\fi
 
 关于双曲函数常见的关系式有：
 \begin{gather*}
@@ -1229,6 +1243,9 @@
   参见反双曲函数的\hyperlink{D:inversehyper}{定义}.
   \fi
 \end{enumerate}
+\unless\ifshowsol
+\pagebreak
+\fi
 
 \ifshowex
 \currentpdfbookmark{练习}{B1.1.5.E}
@@ -1323,12 +1340,12 @@
 \section{极坐标方程与参数方程表示的几种曲线}
 
 \begin{definition*}
-  平面上任意一点\,, 除了可以用直角坐标系来表示, 也可由极坐标系来表示.  极坐标由半径坐标\(r\)和角坐标\(\theta\)构成\,, 它们和直角坐标的关系可以用等式
+  平面上任意一点\,\comma 除了可以用直角坐标系来表示\comma 也可由极坐标系来表示\period  极坐标由半径坐标\(r\)和角坐标\(\theta\)构成\,\comma 它们和直角坐标的关系可以用等式
   \[
     x = r \cos\theta \quad \text{和} \quad y = r \sin \theta
   \]
-  来确定.\footnote{极坐标的概念最早可以追溯到古希腊, 文艺复兴以来通过类似极坐标变换的方法来求阿基米德螺线面积的方法, 最早可以追溯到Cavalieri和Gregory of St.~Vincent.}\textsuperscript{,}\footnote{有些人也会用\(\rho\)来表示半径坐标, 用\(\phi,\ \varphi\)或\(t\)来表示角坐标.  角坐标又叫作极角.}
-  其中\(r\)表示点到原点的半径距离, \(\theta\)表示点到\(x\)轴正方向上逆时针的角度.
+  来确定\period\footnote{极坐标的概念最早可以追溯到古希腊, 文艺复兴以来通过类似极坐标变换的方法来求阿基米德螺线面积的方法, 最早可以追溯到Cavalieri和Gregory of St.~Vincent.}\textsuperscript{\comma}\footnote{有些人也会用\(\rho\)来表示半径坐标, 用\(\phi,\ \varphi\)或\(t\)来表示角坐标.  角坐标又叫作极角.}
+  其中\(r\)表示点到原点的半径距离\comma{} \(\theta\)表示点到\(x\)轴正方向上逆时针的角度\period
 \end{definition*}
 
 一般来说\,, 如果不加任何限制, 平面上一点的极坐标不唯一.  可以通过
@@ -1342,8 +1359,11 @@
   \[
     r = a
   \]
-  其中\(a\)为圆的半径.
+  其中\(a\)为圆的半径\period
 \end{definition*}
+\ifshowsol
+\pagebreak
+\fi
 
 \begin{definition*}
   心形线\footnote{心形线的概念最早是由Ole Rømer于1674年在研究齿轮轮齿的最优形状时提出来的.}（cardioid）的极坐标方程是
@@ -1380,7 +1400,7 @@
   \[
     r^2 = a^2 \cos 2\theta, \quad a = \sqrt2\,c.
   \]
-  其中\(c\)是焦点到原点的距离, \(a\)是双纽线的半宽度.
+  其中\(c\)是焦点到原点的距离\comma{} \(a\)是双纽线的半宽度\period
 \end{definition*}
 
 \begin{figure}[H]
@@ -1431,6 +1451,9 @@
     x = a (t - \sin t), \quad y = a (1 - \cos t).
   \]
 \end{definition*}
+\unless\ifshowsol
+\newpage
+\fi
 
 \begin{figure}[H]
   \centering
@@ -1462,7 +1485,9 @@
     \right.
   \]
 \end{definition*}
+\ifshowsol
 \pagebreak
+\fi
 
 莱布尼茨1715年给出了这个曲线的标准方程\(x^{2/3} + y^{2/3} = a^{2/3}\).
 
@@ -1491,8 +1516,145 @@
 \section{数列极限的概念与性质}
 
 \begin{definition*}
-  将一些数编好号后, 按其编号从小到大排成一列\,, 称为数列\,, 记作\(a_1, a_2, \dots, a_n, \dots\)或\(\brce{a_n}\).
+  将一些数编好号后\comma 按其编号从小到大排成一列\,\comma 称为数列\,\comma 记作\(a_1, a_2, \dots, a_n, \dots\)或\(\brce{a_n}\)\period
 \end{definition*}
+
+\begin{definition*}
+  在数列\(\brce{a_n}\)中取出某些项后\comma 按原来的顺序排成一个新的数列\,\comma 则称此数列为原数列\(\brce{a_n}\)的一个子列\,\comma 记作\(\brce{a_{n_k}}\)\comma 其中\(n_k \ge k,\ n_{k+1} > n_k\).
+\end{definition*}
+
+\begin{definition*}
+  设\(\Seq{a_n}\)是一个数列\,\comma{} \(A\)是一个常数\period  若对于任意的\(ε > 0\)\comma 总存在正整数\(N > 0\)\comma 使得当\(n > N\)时都有\(\abs*{\,a_n - A\,} < ε\)成立\,\comma 则称\(A\)是数列\(\brce{a_n}\)的极限\,\comma 记作\(\displaystyle \lim_{n\to\infty} a_n = A\).
+\end{definition*}
+
+可以用形式化的符号来表示上述定义, 即
+\[
+  \lim_{n\to\infty} a_n = A \iff
+  \paren[\big]{\forall ε>0}
+  \paren[\big]{\exists N > 0}
+  \paren[\big]{\forall n > N}
+  \paren[\big]{\abs*{a_n - A} < ε}.
+\]
+它的否定形式就是
+\[
+  \lim_{n\to\infty} a_n \ne A \iff
+  \paren[\big]{\exists ε>0}
+  \paren[\big]{\forall N > 0}
+  \paren[\big]{\exists n > N}
+  \paren[\big]{\abs*{a_n - A} \ge ε}.
+\]
+
+\begin{example}
+  \(\displaystyle \lim_{n\to\infty} \paren[\Big]{1+\frac1n} = 1\).
+  \begin{proof}
+    取\(N = \ceil{\frac1ε}\)即可.
+  \end{proof}
+\end{example}
+
+\begin{example}
+  \(\displaystyle \lim_{n\to\infty} q^n = 0\ (\abs{q} < 1)\).
+  \begin{proof}
+    取\(N = \maxb*{1,\ceil*{\ln ε /\! \ln\abs q}}\)即可.
+  \end{proof}
+\end{example}
+
+\begin{example}
+  \(\displaystyle \lim_{n\to\infty} a^{1/n} = 1\ (a > 1)\).
+  \begin{proof}
+    取\(N = \ceil*{\ln a /\! \lnp{1+ε}}\)即可.
+  \end{proof}
+  \begin{proof}
+    第二种方法就是把\(a^{1/n}\)分解成一个常数与一个无穷小量和的形式.  因为\(a > 1\), 所以\(a^{1/n} > 1\).  令\(ε_n = a^{1/n} - 1\), 就有
+    \begin{align*}
+      a^{1/n}
+      &= 1 + ε_n
+      && \reason{移项} \\
+      a
+      &= (1 + ε_n)^n
+      && \reason{取\(n\)次幂} \\
+      &= 1 + nε_n + \sum_{k=2}^n \binom{n}{k} nε_n^k
+      && \reason{二项式定理} \\
+      &> nε_n.
+    \end{align*}
+    因此
+    \begin{equation*}
+      \paren[\big]{\forall ε>0}
+      \paren[\big]{\exists N = \ceil[\Big]{\frac aε} > 0}
+      \paren[\big]{\forall n > N}
+      \paren[\big]{\abs[\big]{a^{1/n} - 1} = ε_n < \frac an < ε}.
+      \qedhere
+    \end{equation*}
+  \end{proof}
+\end{example}
+
+\begin{example}
+  若\(\displaystyle \lim_{n\to\infty} a_n = A\), 则\(\displaystyle \lim_{n\to\infty} \abs{a_n} = \abs A\).
+  \begin{proof}
+    因为\(\displaystyle \lim_{n\to\infty} a_n = A\), 所以
+    \begin{equation*}
+      \paren[\big]{\forall ε>0}
+      \paren[\big]{\exists N > 0}
+      \paren[\big]{\forall n > N}
+      \paren[\big]{\abs[\big]{a_n - A} = ε_n < \frac an < ε}.
+    \end{equation*}
+    由反三角不等式
+    \begin{equation*}
+      \abs*{\abs{a_n} - \abs A} \le \abs{a_n - A}
+    \end{equation*}
+    可知, 取同样的\(N\)即可.
+  \end{proof}
+\end{example}
+
+\begin{example}
+  若\(\displaystyle \lim_{n\to\infty} a_n = A\), 则\(\displaystyle \lim_{n\to\infty} \frac{a_1 + a_2 + \dots + a_n}{n} = A\).
+  \begin{proof}
+    对于任意的\(ε > 0\), 因为\(\displaystyle \lim_{n\to\infty} a_n = A\), 所以存在\(N_0\), 使得当\(n > N_0\)时都有
+    \begin{align*}
+      \abs[\bigg]{\frac{a_1 + a_2 + \dots + a_n}{n} - A}
+      &= \abs[\bigg]{\frac{a_1 + a_2 + \dots + a_n - nA}{n}} \\
+      &= \abs[\bigg]{\frac{(a_1-A) + (a_2-A) + \dots + (a_n-A)}{n}} \\
+      &\le \frac{\abs{a_1-A} + \abs{a_2-A} + \dots + \abs{a_n-A}}{n} \\
+      &= \frac{\abs{a_1-A} + \dots + \abs{a_{N_0}-A}}{n}
+        + \frac{\abs{a_{N_0+1}-A} + \dots + \abs{a_n-A}}{n} \\
+      &< \frac{N_0 \maxb{a_1-A,\dots,a_{N_0}-A}}{n} + \frac{(n-N_0)ε}{n} \\
+      &< \frac{N_0 \maxb{a_1-A,\dots,a_{N_0}-A}}{n} + ε.
+    \end{align*}
+    此时, 取\(N = \maxb[\Big]{N_0,\ceil[\Big]{\frac{N_0 \maxb{a_1-A,\dots,a_{N_0}-A}}{ε}}}\), 当\(n > N\)时都有
+    \begin{equation*}
+      \abs*{\frac{a_1 + a_2 + \dots + a_n}{n} - A}
+      < 2ε. \qedhere
+    \end{equation*}
+  \end{proof}
+\end{example}
+
+\begin{theorem*}
+  若极限\(\displaystyle \lim_{n\to\infty} a_n\)存在\,\comma 则其值唯一\period
+
+  \begin{proof}
+    假设\(A_1\)和\(A_2\)都是数列\(\Seq{a_n}\)的极限且\(A_1 \ne A_2\).  那么对于任意的\(ε > 0\), 就可以找到正整数\(N_1\)和\(N_2\), 当\(n > N_1\)时都有\(\abs{a_n - A_1} < ε\), 当\(n > N_2\)时都有\(\abs{a_n - A_2} < ε\).  这时, 取\(N = \maxb{N_1,N_2}\), 当\(n > N\)时都有
+    \begin{gather*}
+      2\abs[\bigg]{a_n - \frac{A_1+A_2}{2}} = \abs[\big]{2a_n - (A_1+A_2)} \le \abs[\big]{a_n - A_1} + \abs[\big]{a_n - A_2} < 2ε, \\
+      \intertext{即}
+      \abs[\bigg]{a_n - \frac{A_1+A_2}{2}} < ε.
+    \end{gather*}
+    这就说明\(\frac{A_1+A_2}{2}\)也是数列\(a_n\)的一个极限.  那么对于任意的\(0 < ε \le \frac{\abs{A_1-A_2}}{2}\), 也能找到这样的正整数\(N\)使得当\(n > N\)时上述几个不等式都成立.  但是这是不可能的, 因为不论\(a_n\)多大, 到\(A_1\)和\(A_2\)的距离, 其中之一必然大于\(ε\).  因此, \(A_1 = A_2\).
+  \end{proof}
+\end{theorem*}
+
+\begin{theorem*}
+  若数列\(\Seq{a_n}\)收敛\,\comma 则其有界\period
+  \begin{proof}
+    假设数列\(\Seq{a_n}\)收敛于\(A\).  任取一个\(ε > 0\), 则存在正整数\(N\)使得当\(n > N\)时都有\(\abs{a_n - A} < ε\), 即
+    \begin{equation*}
+      A - ε < a_n < A + ε
+    \end{equation*}
+    此时, \(\maxb{\abs{A+ε},\abs{A-ε}, \abs{a_1}, \dots, \abs{a_N}}\)就是数列\(\Seq{a_n}\)的一个界.
+  \end{proof}
+\end{theorem*}
+
+\begin{theorem*}
+  若\(\displaystyle \lim_{n\to\infty} a_n = A\)且\(A > 0\)\comma 则存在\(N > 0\)使得当\(n > N\)时都有\(a_n > 0\)\scolon 若
+\end{theorem*}
 
 \setcounter{chapter}{5}
 
