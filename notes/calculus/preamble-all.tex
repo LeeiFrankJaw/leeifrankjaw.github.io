@@ -78,6 +78,8 @@
     \@ifnextchar[\@item{\@item[\@itemlabel]}}}
 \makeatother
 
+\let\sin\relax
+\DeclareMathOperator{\sin}{\smash{sin}}
 \DeclareMathOperator{\arccosh}{arccosh}
 \DeclareMathOperator{\arcsinh}{arcsinh}
 \DeclareMathOperator{\arctanh}{arctanh}
@@ -101,15 +103,23 @@
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterXPP{\expb}[1]{\exp}{\lbrace}{\rbrace}{}{#1}
 \DeclarePairedDelimiterXPP{\maxb}[1]{\max}{\lbrace}{\rbrace}{}{#1}
+\DeclarePairedDelimiterXPP{\minb}[1]{\min}{\lbrace}{\rbrace}{}{#1}
 \DeclarePairedDelimiterXPP{\lnp}[1]{\ln}{\lparen}{\rparen}{}{#1}
 \DeclarePairedDelimiterXPP{\Set}[1]{\mathop{}}{\lbrace}{\rbrace}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \let\Seq\Set
 \DeclarePairedDelimiterXPP{\abs}[1]{\mathop{}}{\lvert}{\rvert}{}{#1}
+\let\card\abs
+\DeclarePairedDelimiterXPP{\sinp}[1]{\sin}{\lparen}{\rparen}{}{#1}
+\DeclarePairedDelimiterXPP{\cosp}[1]{\cos}{\lparen}{\rparen}{}{#1}
 \newcommand*{\Fn}[1]{\mathop{\relax #1}\nolimits}
 \newcommand*{\fn}[1]{\mathop{\relax\kern0pt #1}\nolimits}
 \newcommand*{\gammaf}{\Fn{\Gamma}}
 \renewcommand*{\Pr}{\Fn{P}}
+\newcommand*{\littleo}{\Fn{o}}
+\DeclarePairedDelimiterXPP{\littleop}[1]{\littleo}{\lparen}{\rparen}{}{#1}
+\newcommand*{\bigO}{\Fn{O}}
+\DeclarePairedDelimiterXPP{\bigOp}[1]{\bigO}{\lparen}{\rparen}{}{#1}
 \DeclarePairedDelimiterXPP{\Prp}[1]{\Pr}{\lparen}{\rparen}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \newcommand*{\pnorm}{\Fn{\Phi}}
