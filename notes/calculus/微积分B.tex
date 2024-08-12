@@ -16,7 +16,10 @@
 \renewcommand*{\enumparen}[1]{（\makebox[0.6em][c]{\normalfont#1}）}
 \DeclareEmphSequence{\bfseries}
 \renewcommand*{\tand}{\textop{且}}
+\renewcommand*{\tor}{\textop{或}}
 \renewcommand*{\otherwise}{\text{其他}}
+\renewcommand*{\iand}{\intertext{和}}
+\renewcommand*{\siand}{\shortintertext{和}}
 \makeatletter
 \newtheoremstyle{plain}{3pt}{3pt}{\itshape}{}{\bfseries}{}{.5em}{%
   \thmname{#1}\thmnumber{\@ifnotempty{#1}{ }\@upn{#2}}%
@@ -32,9 +35,12 @@
 \makeatother
 \newtheorem{theorem}{定理}
 \newtheorem*{theorem*}{定理}
+\newtheorem{corollary}{推论}
+\newtheorem*{corollary*}{推论}
 \theoremstyle{definition}
 \newtheorem{definition}{定义}
 \newtheorem*{definition*}{定义}
+\newtheorem{axiom}{公理}
 \newtheorem*{axiom*}{公理}
 \newtheorem{example}{例}
 \newtheorem*{example*}{例}
@@ -45,7 +51,7 @@
 \usepackage{systeme}
 \usepackage{caption}
 \usepackage[normalem]{ulem}
-\usepackage[perpage]{footmisc}
+% \usepackage[perpage]{footmisc}
 \usepackage{enumitem}
 
 \usepackage{tikz}
@@ -100,7 +106,6 @@
 % \newenvironment{example}[1][]{\noindent\textbf{例#1：}}{}
 
 \AtBeginDocument{%
-  % \DeclareEmphSequence{\bfseries}
   % \renewcommand{\perp}{\mathrel{\bot}}
   \let\leq\leqslant
   \let\le\leq
@@ -129,9 +134,10 @@
 
 \section{实数集的界与确界}
 
-\begin{definition*}
-  设\(A\)是一个非空实数集．若存在\(M > 0\)，使得对任意的\(x \in A\)，都有\(\abs{x} \le M\)，则称实数集\(A\)有界，称\(M\)为\(A\)的一个界; 若存在\(M_1 \in \R\)，使得对任意的\(x \in A\)，都有\(x \le M_1\)，则称实数集\(A\)有上界，称\(M_1\)为\(A\)的一个上界; 下界的定义类似．
-\end{definition*}
+\begin{definition}
+  \label{defn:bnd}
+  设\(A\)是一个非空实数集．若存在\(M > 0\)，使得对任意的\(x \in A\)，都有\(\abs{x} \le M\)，则称实数集\(A\)有界，称\(M\)为\(A\)的一个界；若存在\(M_1 \in \R\)，使得对任意的\(x \in A\)，都有\(x \le M_1\)，则称实数集\(A\)有上界，称\(M_1\)为\(A\)的一个上界；下界的定义类似．
+\end{definition}
 
 % \pskip
 \begin{theorem*}
@@ -163,12 +169,13 @@
 \end{example*}
 
 \begin{definition*}
-  实数集\(A\)的最小上界称作上确界\footnote{上（下）确界的概念最早可以追溯到Roger Paman．}，记作\(\sup A\); 它的最大下界称作下确界，记作\(\inf A\)．
+  实数集\(A\)的最小上界称作上确界\footnote{上（下）确界的概念最早可以追溯到Roger Paman．}，记作\(\sup A\)；它的最大下界称作下确界，记作\(\inf A\)．
 \end{definition*}
 
-\begin{definition*}
-  对于实数集\(A\)，如果实数\(M\)满足：\enumparen{1}对于任意的\(x \in A\)，都有\(x \le M \); \enumparen{2}对于任意的\(ε > 0\)，都存在\(x \in A\)使得\(x > M - ε\); 那么就称\(M\)为\(A\)的上确界．下确界的定义类似．
-\end{definition*}
+\begin{definition}
+  \label{defn:supinf}
+  对于实数集\(A\)，如果实数\(M\)满足：\enumparen{1}对于任意的\(x \in A\)，都有\(x \le M \)；\enumparen{2}对于任意的\(ε > 0\)，都存在\(x \in A\)使得\(x > M - ε\)；那么就称\(M\)为\(A\)的上确界．下确界的定义类似．
+\end{definition}
 
 \begin{example*}
   证明\(\inf\Seq[\big]{\frac1n} = 0\)．
@@ -178,9 +185,10 @@
   \end{proof}
 \end{example*}
 
-\begin{axiom*}[确界存在公理]
-  若非空实数集\(A\)有上界，则其在实数范围内上有上确界; 若有下界，则在实数范围内有下确界．
-\end{axiom*}
+\begin{axiom}[确界存在公理]
+  \label{ax:lubglb}
+  若非空实数集\(A\)有上界，则其在实数范围内上有上确界；若有下界，则在实数范围内有下确界．
+\end{axiom}
 
 \subpdfbookmark{思考}{B1.1.1.P}
 \subsection*{思考}
@@ -316,7 +324,8 @@
   \]
 \end{definition}
 
-\begin{definition*}[阶跃函数]
+\begin{definition}[阶跃函数]
+  \label{defn:heaviside}
   \[
     \Fn H(x) =
     \begin{cases}
@@ -324,7 +333,7 @@
       0, & x < 0.
     \end{cases}
   \]
-\end{definition*}
+\end{definition}
 
 \begin{definition*}[符号函数]
   \[
@@ -350,7 +359,7 @@
 \end{example*}
 
 \begin{example*}
-  易知函数\(y = x + \frac12 \sin x\)是单调递增函数，那么由这个函数确定的反函数\(x = x(y)\)也是一个隐函数．
+  易知函数\(y = x + \frac12 \sin x\)是单调递增函数，那么由这个函数确定的反函数\(x = x(y)\)也是一个隐函数\footnote{反函数和单调函数的定义见于第\ref{sec:funcops}节和第\ref{sec:funcprops}节．}．
 \end{example*}
 
 \begin{example*}
@@ -541,9 +550,10 @@
 \end{enumerate}
 \fi
 
-\section{函数的运算}
+\section{函数的运算\label{sec:funcops}}
 
-\begin{definition*}
+\begin{definition}
+  \label{defn:func4ops}
   设函数\(f(x)\)和\(g(x)\)的定义域分别为\(D_1\)和\(D_2\)，且\(D = D_1 \cap D_2\)非空．定义函数的四则运算为
   \begin{enumerate}
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
@@ -551,7 +561,7 @@
   \item 乘法\((\,fg)(x) = f(x) \, g(x),\ x \in D\);
   \item 除法\((\,f/g)(x) = f(x) / g(x)\ (\,g(x) \ne 0),\ x \in D\)．
   \end{enumerate}
-\end{definition*}
+\end{definition}
 
 \begin{example*}
   设\(f(x) = x + \sqrt x,\ g(x) = x - \sqrt x\)．
@@ -586,9 +596,10 @@
   设函数\(y = \arcsin u\)和\(u = 2+x^2\)．它们无法做这样的复合运算\(y = \arcsin(2+x^2)\)．
 \end{example*}
 
-\begin{definition*}
+\begin{definition}
+  \label{defn:funcinv}
   设函数\(f\colon D \to Z_f\)和一对应关系\(g\)．若对任意的\(y \in Z_f\)，通过\(g\)找到唯一的\(x \in D\)，使得\(y = f(x)\)，则称\(g\)是\(f\)的反函数，记作\(f^{-1}\)．
-\end{definition*}
+\end{definition}
 
 易知\(f(\,f^{-1}(x)) = f^{-1}(\,f(x)) = x\)．
 
@@ -790,7 +801,7 @@
 \end{enumerate}
 \fi
 
-\section{函数的初等性质}
+\section{函数的初等性质\label{sec:funcprops}}
 
 \begin{definition*}
   设函数\(f\colon D \to Z_f\)\,．若\(\ran f \subset Z_f\)是有界集，则称\(f\)是有界函数，\(\ran f\)的界就是\(f\)在\(D\)上的界．
@@ -866,9 +877,10 @@
   \end{remark}
 \end{example*}
 
-\begin{definition*}
+\begin{definition}
+  \label{defn:funcmono}
   对于任意的\(x_1 < x_2 \in D\)都有\(\,f(x_1) < f(x_2)\)成立，则称\(f\)单调递增（单增）．对于任意的\(x_1 < x_2 \in D\)都有\(\,f(x_1) > f(x_2)\)成立，则称\(f\)单调递减（单减）．
-\end{definition*}
+\end{definition}
 
 \begin{theorem*}
   函数\(\,f\)单增的充要条件是：对于任意的\(x_1, x_2 \in D\)，当\(x_1 \ne x_2\)时，都有\(\paren[\big]{x_1 - x_2}\paren[\big]{\,f(x_1) - f(x_2)} > 0\)．
@@ -937,7 +949,7 @@
     \[
       f\,\paren[\big]{a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2} = a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2).
     \]
-    那么就可以在这三个点围成的三角形里面找到一个点\(D\)使得它的横坐标是\(\alpha x_1 + \beta x_2\)．(这样的点有无数个.)  选择一组满足\(a+b+c=1\)的正数\(a, b, c\)使得\(a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2 = \alpha x_1 + \beta x_2 \)，也就是
+    那么就可以在这三个点围成的三角形里面找到一个点\(D\)使得它的横坐标是\(\alpha x_1 + \beta x_2\)（这样的点有无数个）．选择一组满足\(a+b+c=1\)的正数\(a, b, c\)使得\(a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2 = \alpha x_1 + \beta x_2 \)，也就是
     \[
       D\colon \paren[\big]{\alpha x_1 + \beta x_2, a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2)}.
     \]
@@ -1139,8 +1151,10 @@
   常函数、幂函数、指数函数、对数函数、三角函数、反三角函数，这六类函数叫做基本初等函数．
 \end{definition*}
 
+% http://projecteuclid.org/euclid.pjm/1102991609
+% https://muleshko.faculty.unlv.edu/handouts/Elementary%20Functions%20(1).pdf
 \begin{definition*}
-  由基本初等函数经过有限次四则运算或函数复合得到的函数叫做初等函数.\footnote{初等函数的概念最早是由法国数学家Joseph Liouville在讨论不定积分的代数解时引入的．}
+  由基本初等函数经过有限次四则运算或函数复合得到的函数叫做初等函数\footnote{初等函数的概念最早是由法国数学家Joseph Liouville在讨论不定积分的代数解时引入的．}．
 \end{definition*}
 
 \begin{remark}
@@ -1173,6 +1187,8 @@
 \begin{remark}
   双曲线的一个分支可以用含双曲函数的参数方程来表示：
   \[
+    \setlength{\abovedisplayskip}{.8ex}
+    \setlength{\belowdisplayskip}{.8ex}
     x = a \cosh t,
     \quad
     y = b \sinh t.
@@ -1335,7 +1351,7 @@
   \end{itemize}
 
   \ifshowsol
-  选项A和C都可以通过举反例来证伪，比方说\(f(x) = \arccot x\)证伪了A，\(f(x) = -\pi + \arccot x\)证伪了C．对于B和D，可以根据\(a + b \le 0\)的性质来说明．两个数的和非正，这就说明至少其中有一个数非正．当另外一个数也是非正的时候，易证D成立．当另外一个数是正数的时候，不失一般地，不妨假设\(a \le 0 < b\)，那么有\(a \le -b < 0 < b \le -a\). 所以有
+  选项A和C都可以通过举反例来证伪，比方说\(f(x) = \arccot x\)证伪了A，\(f(x) = -\pi + \arccot x\)证伪了C．对于B和D，可以根据\(a + b \le 0\)的性质来说明．两个数的和非正，这就说明至少其中有一个数非正．当另外一个数也是非正的时候，易证D成立．当另外一个数是正数的时候，不失一般地，不妨假设\(a \le 0 < b\)，那么有\(a \le -b < 0 < b \le -a\)．所以有
   \[
     f(a) \ge f(-b) > f(b) \ge f(-a).
   \]
@@ -1382,7 +1398,7 @@
   \[
     x = r \cos\theta \quad \text{和} \quad y = r \sin \theta
   \]
-  来确定.\footnote{极坐标的概念最早可以追溯到古希腊，文艺复兴以来通过类似极坐标变换的方法来求阿基米德螺线面积的方法，最早可以追溯到Cavalieri和Gregory of St.~Vincent．}\textsuperscript{,}\footnote{有些人也会用\(\rho\)来表示半径坐标，用\(\phi,\ \varphi\)或\(t\)来表示角坐标．角坐标又叫作极角．}
+  来确定\footnote{极坐标的概念最早可以追溯到古希腊，文艺复兴以来通过类似极坐标变换的方法来求阿基米德螺线面积的方法，最早可以追溯到Cavalieri和Gregory of St.~Vincent．}\textsuperscript{,}\footnote{有些人也会用\(\rho\)来表示半径坐标，用\(\phi,\ \varphi\)或\(t\)来表示角坐标．角坐标又叫作极角．}．
   其中\(r\)表示点到原点的半径距离，\(\theta\)表示点到\(x\)轴正方向上逆时针的角度．
 \end{definition*}
 
@@ -1470,11 +1486,11 @@
     \setlength{\belowdisplayskip}{.8ex}
     x = at \cos t, \quad y = at \sin t.
   \]
-\end{definition*}
 
-\begin{remark}
-  实际上，它的极坐标方程更为简洁\(r = a \theta\)．
-\end{remark}
+  \begin{remark}
+    实际上，它的极坐标方程更为简洁\(r = a \theta\)．
+  \end{remark}
+\end{definition*}
 
 \begin{figure}[H]
   \centering
@@ -1489,7 +1505,7 @@
 \end{figure}
 
 \begin{definition*}
-  摆线\footnote{旋轮线的概念是由Charles de Bovelles于1501年在做化圆为方的时候提出来的．伽利略最早严肃地研究了这种曲线. 笛卡尔、费马、帕斯卡、惠更斯、莱布尼茨、伯努利兄弟等17世纪的数学大师们都研究过这种曲线，还由此生出种种龃龉．}（又称旋轮线、圆滚线）（cycloid）的参数方程是
+  摆线\footnote{旋轮线的概念是由Charles de Bovelles于1501年在做化圆为方的时候提出来的．伽利略最早严肃地研究了这种曲线．笛卡尔、费马、帕斯卡、惠更斯、莱布尼茨、伯努利兄弟等17世纪的数学大师们都研究过这种曲线，还由此生出种种龃龉．}（又称旋轮线、圆滚线）（cycloid）的参数方程是
   \[
     \setlength{\abovedisplayskip}{.8ex}
     x = a (t - \sin t), \quad y = a (1 - \cos t).
@@ -1582,7 +1598,7 @@
       \paren[\big]{\forall N > 0}
       \paren[\big]{\exists n > N}
       \paren[\big]{\abs[\big]{a_n - A} \ge ε}.
-    \]    
+    \]
   \end{remark}
 \end{definition*}
 
@@ -2095,7 +2111,7 @@
 
 \begin{example}
   \label{eg:factexp}
-  求\(\displaystyle \lim_{n\to\infty} \frac{a^n}{n!}\).\rule[-2ex]{0ex}{0ex}
+  求\(\displaystyle \lim_{n\to\infty} \frac{a^n}{n!}\)．\rule[-2ex]{0ex}{0ex}
 
   \begin{remark}
     当\(a = 0\)时，极限显然是零．当\(a \ne 0\)时，我们构造数列\(a_n\)和\(c_n\)使得\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．令\(n_a = \ceil{\abs a},\ C_a = \frac{a^{n_a}}{n_a!}\)，构造数列
@@ -2120,7 +2136,7 @@
         0, & \text{\(n\)是奇数时},
       \end{cases}
     \end{equation*}
-    就有\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．综上所述，\(\displaystyle \lim_{n\to\infty} \frac{a^n}{n!} = 0\).\rule[-2ex]{0ex}{0ex}
+    就有\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．综上所述，\(\displaystyle \lim_{n\to\infty} \frac{a^n}{n!} = 0\)．\rule[-2ex]{0ex}{0ex}
 
     上面是为了直接套用夹逼定理的形式，实际上一种常见的方法是：欲证\(\lim\limits_{n\to\infty} a_n = A\)，只需证明\(0 \le \abs*{a_n - A} \le b_n\)且\(\lim\limits_{n\to\infty} b_n = 0\)即可．
   \end{remark}
@@ -2142,7 +2158,7 @@
       = \frac{1}{n^2} \cdot \frac{n(n+1)}{2}
       = \frac{1 + 1/n}{2},
     \end{equation*}
-    易知\(\displaystyle a_n \le \sum\limits_{k=1}^n \frac{k}{n^2+k} \le c_n\)且\(\displaystyle \lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = \frac12\).\rule[-3ex]{0ex}{0ex}
+    易知\(\displaystyle a_n \le \sum\limits_{k=1}^n \frac{k}{n^2+k} \le c_n\)且\(\displaystyle \lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = \frac12\)．\rule[-3ex]{0ex}{0ex}
   \end{remark}
 \end{example*}
 
@@ -2192,7 +2208,7 @@
 \end{theorem}
 
 \begin{example*}
-  令\(\displaystyle a_n = 1 + \frac12 + \dots + \frac1n - \ln n\)．证明数列\(\Seq{a_n}\)的极限存在.\rule{0ex}{3.5ex}
+  令\(\displaystyle a_n = 1 + \frac12 + \dots + \frac1n - \ln n\)．证明数列\(\Seq{a_n}\)的极限存在．\rule{0ex}{3.5ex}
 
   \begin{proof}
     当\(x > 0\)时，有
@@ -2357,7 +2373,7 @@
     \else
   \item
     \fi
-    若对所有的\(p \in \N^+\)都有\(\lim\limits_{n\to\infty} \abs*{a_{n+p}-a_n} = 0\)，则数列\(\Seq{a_n}\)是柯西数列. % report
+    若对所有的\(p \in \N^+\)都有\(\lim\limits_{n\to\infty} \abs*{a_{n+p}-a_n} = 0\)，则数列\(\Seq{a_n}\)是柯西数列． % report
   \item 极限\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac{\sin k}{2^k}\)存在
   \item 若\(\displaystyle \lim_{n\to\infty} \abs[\bigg]{\frac{a_{n+1}}{a_n}} = q < 1\)，则\(\lim\limits_{n\to\infty} a_n = 0\)
   \end{itemize}
@@ -2405,7 +2421,7 @@
   数列\(\Seq{a_n}\)收敛的充分必要条件是它的所有子列都收敛．
 
   \begin{remark}
-    易证必要性; 至于充分性，可以先证明所有子列都收敛于同一个数，然后通过反证法得到．
+    易证必要性；至于充分性，可以先证明所有子列都收敛于同一个数，然后通过反证法得到．
   \end{remark}
 \end{theorem*}
 
@@ -2438,19 +2454,19 @@
   \end{remark}
 \end{example*}
 
-\begin{theorem*}[Bolzano--Weierstrass定理]
+\begin{theorem}[Bolzano--Weierstrass定理]
+  \label{thm:bw}
   若数列\(\Seq{a_n}\)有界，则存在子列\(\Seq{a_{n_k}}\)收敛．
 
   % TODO: Complete the proof
   \begin{remark}
     还是可以通过二分法构造区间套来证明此定理的．
   \end{remark}
-\end{theorem*}
+\end{theorem}
 
 \begin{example*}
   数列\(\Seq{a_n}\)和\(\Seq{b_n}\)都是有界的，可以找到一个共同的下标集\(\Set{n_k}\)使得子列\(\Seq{a_{n_k}}\)和\(\Seq{b_{n_k}}\)都收敛．
 
-  % \noparasp
   \begin{proof}
     由上述定理可知，能找到一个下标集\(\Set{\bar n_k}\)使得子列\(\Seq{a_{\bar n_k}}\)收敛．再对有界子列\(\Seq{b_{\bar n_k}}\)使用一次这个定理，就能得到一个下标集\(\Set{n_k}\)使得子列\(\Seq{a_{n_k}}\)和\(\Seq{b_{n_k}}\)都收敛．
   \end{proof}
@@ -2497,7 +2513,7 @@
   数列收敛的充分必要条件是它为柯西列．
 
   \begin{proof}
-    易证必要性，用一次三角不等式即可．下面证明一下充分性．易从柯西列的定义推出柯西列一定是有界列．根据Bolzano--Weierstrass定理，有界列必有收敛子列， 将这个子列记为\(\Seq{a_{n_k}}\)，其极限记为\(A\)．那么对于任意的\(ε > 0\)，都存在一个正整数\(K\)使得当\(k > K\)时都有\(\abs[\big]{a_{n_k} - A} < ε\)，也存在一个正整数\(N_0\)使得当\(n > N_0,\ m > N_0\)时都有\(\abs*{a_n - a_m} < ε\)．取\(N = 1 + \maxb*{K, N_0}\)，当\(n > N\)时就有
+    易证必要性，用一次三角不等式即可．下面证明一下充分性．易从柯西列的定义推出柯西列一定是有界列．根据定理\ref{thm:bw}，有界列必有收敛子列， 将这个子列记为\(\Seq{a_{n_k}}\)，其极限记为\(A\)．那么对于任意的\(ε > 0\)，都存在一个正整数\(K\)使得当\(k > K\)时都有\(\abs[\big]{a_{n_k} - A} < ε\)，也存在一个正整数\(N_0\)使得当\(n > N_0,\ m > N_0\)时都有\(\abs*{a_n - a_m} < ε\)．取\(N = 1 + \maxb*{K, N_0}\)，当\(n > N\)时就有
     \begin{equation*}
       \abs[\Big]{a_n - A}
       \le \abs[\Big]{a_n - a_{n_N}} + \abs[\Big]{a_{n_N} - A}
@@ -2642,7 +2658,11 @@
 \section{函数极限的概念与性质}
 
 \begin{definition*}
-  函数\(f\)在点\(x_0\)附近\footnote{在点\(x_0\)附近是指在这个点某个去心邻域上，也就是说在集合\(\paren{x_0 - δ, x_0 + δ} \setminus \Set{x_0}\)上，其中\(δ\)是某个正数．}有定义，\(A\)是某个常数．对于任意的\(ε > 0\)，存在\(δ > 0\)使得当\(0 < \abs*{x-x_0} < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)趋向于\(x_0\)时的极限，记作\(\lim_{n\to\infty} f(x) = A\)．
+  函数\(f\)在点\(x_0\)附近\footnote{在点\(x_0\)附近是指在这个点某个去心邻域上，也就是说在集合\(\paren{x_0 - δ, x_0 + δ} \setminus \Set{x_0}\)上，其中\(δ\)是某个正数．}有定义，\(A\)是某个常数．对于任意的\(ε > 0\)，存在\(δ > 0\)使得当\(0 < \abs*{x-x_0} < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)趋向于\(x_0\)时的极限，记作
+  \begin{equation*}
+    \setlength{\abovedisplayskip}{.5ex}
+    \lim_{x \to x_0}\,f(x) = A.
+  \end{equation*}
 \end{definition*}
 
 \begin{example*}
@@ -2682,13 +2702,14 @@
   对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(0 < x - x_0 < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)从右侧趋向于\(x_0\)的极限，简称右极限，记作\(\lim_{x \to x_0^+} f(x) = A\)或\(f(x_0+0) = A\)．
 \end{definition*}
 
-\begin{theorem*}
+\begin{theorem}
+  \label{thm:limfuncsided}
   函数极限存在的充分必要条件是它的左极限和右极限都存在且相等．
 
   \begin{proof}
     易证必要性．关于充分性，只需取\(δ = \minb{δ_1, δ_2}\)即可，其中\(δ_1\)和\(δ_2\)分别是左右极限所取的德尔塔．
   \end{proof}
-\end{theorem*}
+\end{theorem}
 
 \begin{example*}
   函数
@@ -2696,18 +2717,18 @@
     f(x) =
     \begin{cases}
       x+1, & x \ge 0, \\
-      x-1, & x < 0,
+      x-1, & x < 0
     \end{cases}
   \end{equation*}
   在\(x = 0\)处的极限不存在．
 \end{example*}
 
 \begin{example*}
-  函数\(f(x) = \arctan\dfrac1x\)在\(x = 0\)处的极限不存在.\rule[-2ex]{0ex}{5.5ex}
+  函数\(f(x) = \arctan\dfrac1x\)在\(x = 0\)处的极限不存在．\rule[-2ex]{0ex}{5.5ex}
 \end{example*}
 
 \begin{example*}
-  函数\(f(x) = \dfrac{x}{\abs x + 1}\)在无穷处的极限不存在.\rule[-2ex]{0ex}{0ex}
+  函数\(f(x) = \dfrac{x}{\abs x + 1}\)在无穷处的极限不存在．\rule[-2ex]{0ex}{0ex}
 \end{example*}
 
 \begin{theorem*}[唯一性]
@@ -2726,7 +2747,7 @@
 % https://zbmath.org/46.0295.04
 \begin{theorem}
   \label{thm:limequiv}
-  函数\(f\)在\(x \to x_0\)时收敛于\(A\)的充分必要条件是：对于任意的非\(x_0\)数列\(\Seq{x_n}\)，当它收敛于\(x_0\)时，就一定有数列\(\Seq{\,f(x_n)}\)收敛于\(A\)．
+  函数\(f\)在\(x \to x_0\)时收敛于\(A\)的充分必要条件\footnote{这个条件又叫作极限的Heine定义．}是：对于任意的非\(x_0\)数列\(\Seq{x_n}\)，当它收敛于\(x_0\)时，就一定有数列\(\Seq{\,f(x_n)}\)收敛于\(A\)．
 
   \begin{proof}
     易证必要性．关于必要性，可以通过反证法证明．假设函数\(f\)在\(x \to x_0\)时不收敛于\(A\)，则能构造一个数列\(\Seq{x_n}\)使得它收敛于\(x_0\)但是数列\(\Seq{\,f(x_n)}\)不收敛于\(A\)．
@@ -2762,9 +2783,9 @@
   \begin{equation*}
     f(x) =
     \begin{cases}
-      \frac1q, & \text{\(x = \frac pq\)，其中\(p \in \Z\)与\(q \in \N^+ \)互质}, \\
+      \frac1q, & \text{\(x = \frac pq\)，其中\(p \in \Z\)与\(q \in \N^+ \)互质，} \\
       1, & x = 0, \\
-      0, & \text{其他}
+      0, & \otherwise
     \end{cases}
   \end{equation*}
   在\(x \to x_0\)时收敛于\(0\)．
@@ -2994,6 +3015,7 @@
 
 \section{函数极限的运算}
 
+% TODO: Expatiate on tending to infinity
 \begin{theorem}[函数极限的四则运算]
   \label{thm:limfunc4ops}
   若\(\lim_{x \to x_0} \,f(x) = A,\ \lim_{x \to x_0} \,g(x) = B\)，则
@@ -3010,7 +3032,7 @@
 \end{theorem}
 
 \begin{example*}
-  求\(\!\lim\limits_{x\to+\infty} \dfrac{5a^x - 3b^x}{5a^x + 3b^x}\ (a > 0,\ b > 0)\).\rule{0ex}{4ex}
+  求\(\!\lim\limits_{x\to+\infty} \dfrac{5a^x - 3b^x}{5a^x + 3b^x}\ (a > 0,\ b > 0)\)．\rule{0ex}{4ex}
 
   \begin{remark}
     当\(a = b\)时，有\(\lim_{x\to+\infty} \frac{5a^x - 3b^x}{5a^x + 3b^x} = \lim_{x\to+\infty} \frac{5a^x - 3a^x}{5a^x + 3a^x} = \frac14\)．当\(a > b\)时，有
@@ -3082,12 +3104,13 @@
         0, & x = 0.
       \end{cases}
     \end{equation*}
-    函数的极限在某点处的极限和它在这点的取值无关，狄利克雷函数在实轴上处处极限不存在，因此该复合函数在原点自然也不存在. 误用上述定理的原因是：函数\(g\)在原点附近总是能取到\(0\)，由于无理数是稠密的．
+    函数的极限在某点处的极限和它在这点的取值无关，狄利克雷函数在实轴上处处极限不存在，因此该复合函数在原点自然也不存在．误用上述定理的原因是：函数\(g\)在原点附近总是能取到\(0\)，由于无理数是稠密的．
   \end{remark}
 \end{example*}
 
-\begin{example*}
-  设在同一个极限过程中，函数\(f\)的极限是正数\(A\)，函数\(g\)的极限是\(B\)．证明\(\,f(x)^{g(x)}\)的极限是\(A^B\)．
+\begin{theorem}
+  \label{thm:limfuncpowexp}
+  在同一个极限过程中，若函数\(f\)的极限是正数\(A\)且函数\(g\!\)的极限是\(B\)，则函数\(\,f^g\!\)的极限是\(A^B\)．
 
   \begin{proof}
     运用两次定理\ref{thm:limfunccomp}和一次定理\ref{thm:limfunc4ops}，有
@@ -3100,9 +3123,9 @@
         = \expb[\Big]{B \ln {}\smashoperator{\lim_{x \to x_0\!}} \,f(x)} \\
       &= \expb[\big]{B \ln A} = \expb[\big]{\ln A^B} = A^B.
     \end{align*}
-    注意，在使用定理\ref{thm:limfunccomp}的时候，用到了指数函数和对数函数都是连续函数的事实．
+    注意，在使用定理\ref{thm:limfunccomp}的时候，用到了指数函数和对数函数都是连续函数（见\hyperref[chap:cont]{下章}）的事实．
   \end{proof}
-\end{example*}
+\end{theorem}
 
 \begin{theorem}[函数极限的夹逼定理]
   \label{thm:funcsqueeze}
@@ -3131,7 +3154,7 @@
       \le
       \frac{\floor{1/x}}{\floor{1/x}+1} \Fn H(-x) + \Fn H(x),
     \end{equation*}
-    其中\(\Fn H\)为阶跃函数．所以，\(\lim\limits_{x\to0} x \floor[\bigg]{\dfrac1x} = 1\)．
+    其中\(\Fn H\)为阶跃函数（定义\ref{defn:heaviside}）．所以，\(\lim\limits_{x\to0} x \floor[\bigg]{\dfrac1x} = 1\)．
   \end{remark}
 \end{example*}
 
@@ -3183,9 +3206,8 @@
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to1} \dfrac{\sinp{1-x}}{\sqrt x - 1}\).\rule{0ex}{3.5ex}
+  求\(\lim\limits_{x\to1} \dfrac{\sinp{1-x}}{\sqrt x - 1}\)．\rule{0ex}{3.5ex}
 
-  % \noparasp
   \begin{equation*}
     \lim_{x\to1} \frac{\sinp{1-x}}{\sqrt x - 1}
     = \lim_{x\to1} \frac{-\paren{\sqrt x + 1} \sinp{x-1}}{x - 1}
@@ -3194,7 +3216,7 @@
 \end{example*}
 
 \begin{example*}
-  求\(\;\smashoperator[l]{\lim\limits_{x\to\pi/2}} \dfrac{\cos x}{\pi/2 - x}\).\rule{0ex}{3.5ex}
+  求\(\;\smashoperator[l]{\lim\limits_{x\to\pi/2}} \dfrac{\cos x}{\pi/2 - x}\)．\rule{0ex}{3.5ex}
 
   \begin{equation*}
     \lim_{x\to\pi/2} \frac{\cos x}{\pi/2 - x}
@@ -3213,7 +3235,7 @@
 \end{theorem*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{\ln(1+x)}{x} = 1\).\rule{0ex}{3.5ex}
+  求\(\lim\limits_{x\to0} \dfrac{\ln(1+x)}{x} = 1\)．\rule{0ex}{3.5ex}
 
   \begin{remark}
     令\(t = 1/x\)，有
@@ -3334,7 +3356,7 @@
     \lim_{\,x\to0^+} \,f(x)
     = {}\smashoperator[l]{\lim_{\,x\to0^+}} \paren[\bigg]{\frac{2/e^{1/x} + 1}{1/e^{1/x} + e^{3/x}} + \frac{\sin x}{x}}
     = 1
-    \shortintertext{和}
+    \siand
     \lim_{\,x\to0^-} \,f(x)
     = {}\smashoperator[l]{\lim_{\,x\to0^-}} \paren[\bigg]{\frac{2+e^{1/x}}{1+e^{4/x}} - \frac{\sin x}{x}}
     = 1.
@@ -3421,7 +3443,8 @@
       0, & x = 0
     \end{dcases}
     \txt{且}
-    g(t) = t \sin\frac1t，
+    g(t) = t \sin\frac1t,
+    \qquad
   \end{equation*}
   则\(\lim\limits_{t\to0} \,f\,\paren*{g(t)}\)\uline{\makebox[6em]{}}．
   \begin{itemize}
@@ -3499,11 +3522,11 @@
   \begin{enumerate}[topsep=3pt,itemsep=0ex]
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
   \item 若\(f/g\)收敛于某个非零常数，则称\(f\)和\(g\)是\emph{同阶无穷小量}；特别地，若此常数是\(1\)，则称\(f\)和\(g\)是\emph{等价无穷小量}，记作\(f \sim g\)；
-  \item 若\(f/g\)也是无穷小量，则称\(f\)是\(g\)的\textbf{高阶无穷小量}\footnote{关于小o和大O关系，最常见的定义，除了还要求\(g\)是一个正函数之外，其实并不关心\(f\)和\(g\)是否收敛或者为无穷大量，只要它们的商满足条件即可．若\(f\)是\(g\)的高阶无穷小量，则一定满足\(f = \littleo(\abs{g})\); 反之不然\,．这里的小o和大O记号，其实表达的是一个函数的集合，更严谨的用法应该是\(f \in \littleop g\)和\(f \in \bigOp g\)．}，称\(g\)是\(f\)的\emph{低阶无穷小量}，记作\(f= \littleo(g)\)；特别地，若\(f/g^n\)收敛于某个非零常数，则称\(f\)是\(g\)的\(n\)阶无穷小量．
+  \item 若\(f/g\)也是无穷小量，则称\(f\)是\(g\)的\emph{高阶无穷小量}\footnote{关于小o和大O关系，最常见的定义，除了还要求\(g\)是一个正函数之外，其实并不关心\(f\)和\(g\)是否收敛或者为无穷大量，只要它们的商满足条件即可．若\(f\)是\(g\)的高阶无穷小量，则一定满足\(f = \littleo(\abs{g})\)；反之不然\,．这里的小o和大O记号，其实表达的是一个函数的集合，更严谨的用法应该是\(f \in \littleop g\)和\(f \in \bigOp g\)．}，称\(g\)是\(f\)的\emph{低阶无穷小量}，记作\(f= \littleo(g)\)；特别地，若\(f/g^n\)收敛于某个非零常数，则称\(f\)是\(g\)的\(n\)阶无穷小量．
   \end{enumerate}
 
   \begin{remark}
-    我们简称函数\(x-x_0\)在点\(x_0\)处和函数\(1/x\)在无穷处的\(k\)阶无穷小量为\(k\)阶无穷小量．也就是说，函数\(f\)在点\(x_0\)处是\(k\)阶无穷小量，当且仅当\(0 < \abs[\Big]{\lim\limits_{\,x \to x_0\!} \frac{f(x)}{(x-x_0)^k}} < +\infty\); 函数\(f\)在无穷处是\(k\)阶无穷小量，当且仅当\(0 < \abs[\Big]{\lim\limits_{x\to\infty} x^k\,f(x)} < +\infty\)．
+    我们简称函数\(x-x_0\)在点\(x_0\)处和函数\(1/x\)在无穷处的\(k\)阶无穷小量为\(k\)阶无穷小量．也就是说，函数\(f\)在点\(x_0\)处是\(k\)阶无穷小量，当且仅当\(0 < \abs[\Big]{\lim\limits_{\,x \to x_0\!} \frac{f(x)}{(x-x_0)^k}} < +\infty\)；函数\(f\)在无穷处是\(k\)阶无穷小量，当且仅当\(0 < \abs[\Big]{\lim\limits_{x\to\infty} x^k\,f(x)} < +\infty\)．
   \end{remark}
 \end{definition*}
 
@@ -3546,7 +3569,7 @@
 \end{theorem*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{\tan x - \sin x}{x^3}\).\rule[-2ex]{0ex}{0ex}
+  求\(\lim\limits_{x\to0} \dfrac{\tan x - \sin x}{x^3}\)．\rule[-2ex]{0ex}{0ex}
 
   \begin{remark}
     稍作变形，有
@@ -3559,7 +3582,7 @@
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{e^{1-\cos x}-1}{x^2}\).\rule[-2ex]{0ex}{3.5ex}
+  求\(\lim\limits_{x\to0} \dfrac{e^{1-\cos x}-1}{x^2}\)．\rule[-2ex]{0ex}{3.5ex}
 
   \begin{remark}
     使用等价无穷小量替换和复合法则，有
@@ -3572,7 +3595,7 @@
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{\ln(1+ax^m)}{1-\cos(1-\cos x)}\ (a \ne 0, m > 0)\).\rule[-2ex]{0ex}{3.5ex}
+  求\(\lim\limits_{x\to0} \dfrac{\ln(1+ax^m)}{1-\cos(1-\cos x)}\ (a \ne 0, m > 0)\)．\rule[-2ex]{0ex}{3.5ex}
 
   \begin{remark}
     使用等价无穷小量替换和复合法则，有
@@ -3596,14 +3619,14 @@
 \begin{enumerate}
 \item 两个无穷小量之和是不是无穷小量？两个无穷大量之和是不是无穷大量？
 
-  \ifshowsol
+  \ifshowsolp
   是．不是．前者可由极限的加法法则得出．后者可以构造反例，函数\(f(x) = x,\ g(x) = -x\)．这里的\(f\)和\(g\)在无穷处都是无穷大量，但是\(f+g\)是常函数．
   \fi
 
 \item 任意两个无穷小量是否都可以比阶？试举例说明．
 
-  \ifshowsol
-  不一定. 例如，函数\(x \sin\frac1x\)和\(x\)在原点处都是无穷小量，但是它们的商发散．
+  \ifshowsolp
+  不一定．例如，函数\(x \sin\frac1x\)和\(x\)在原点处都是无穷小量，但是它们的商发散．
   \fi
 \end{enumerate}
 
@@ -3764,17 +3787,20 @@
 \end{enumerate}
 \fi
 
-\chapter{连续函数}
+\chapter{连续函数\label{chap:cont}}
 
-\begin{definition*}
+\section{连续函数的概念与性质}
+
+\begin{definition}
+  \label{defn:cont}
   若\(\lim\limits_{x\to x_0} f(x) = f(x_0)\)，则称函数\(f\)在点\(x_0\)处连续，点\(x_0\)为函数\(f\)的连续点．
-\end{definition*}
+\end{definition}
 
 \begin{example*}
   函数\(f(x) = x \Fn D(x)\)．
 
   \begin{remark}
-    易知此函数在\(x \ne 0\)处的极限都不存在，因而都不连续\,; 它在原点的极限存在且等于函数值，因而在此处连续．
+    易知此函数在\(x \ne 0\)处的极限都不存在，因而都不连续；它在原点处的极限存在且等于函数值，因而在此处连续．
   \end{remark}
 \end{example*}
 
@@ -3783,15 +3809,29 @@
 \end{theorem*}
 
 \begin{definition*}
-  若\(\lim\limits_{x\to x_0^-} \,f(x) = f(x_0)\)，则称函数\(f\)在点\(x_0\)处左连续\,; 若\(\lim\limits_{x\to x_0^+} \,f(x) = f(x_0)\)，则称函数\(f\)在点\(x_0\)处右连续．
+  若\(\lim\limits_{x\to x_0^-} \,f(x) = f(x_0)\)，则称函数\(f\)在点\(x_0\)处左连续；若\(\lim\limits_{x\to x_0^+} \,f(x) = f(x_0)\)，则称函数\(f\)在点\(x_0\)处右连续．
 \end{definition*}
 
-\begin{theorem*}
-  函数\(f\)在点\(x_0\)处连续的充分必要条件是它在此处既左连续又右连续．
-\end{theorem*}
+\begin{theorem}
+  \label{thm:contsided}
+  函数\(f\)在点\(x_0\)处连续的充分必要条件是它在此处左连续且右连续．
+
+  \begin{proof}
+    使用上述定义和定理\ref{thm:limfuncsided}即可得证．
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}
+  \label{thm:contequiv}
+  函数\(f\)在点\( x_0\)处连续的充分必要条件是：对于任意的数列\(\Seq{x_n}\)，当它收敛于\(x_0\)时，就一定有数列\(\Seq{\,f(x_n)}\)收敛于\(f(x_0)\)．
+
+  \begin{proof}
+    应用定义\ref{defn:cont}和定理\ref{thm:limequiv}即可得证．
+  \end{proof}
+\end{theorem}
 
 \begin{remark}
-  当函数\(f\)在开区间\((a,b)\)上的每一点都连续时，我们记作\(f \in C(a, b)\)．同理，在闭区间或者半开半闭区间上，当它在除去端点的每一点都连续，在闭的左端点右连续，在闭的右端点左连续时，也有类似的记号．此时，我们简称函数\(f\)在此区间上连续．
+  当函数\(f\)在开区间\((a,b)\)上的每一点都连续时，我们记作\(f \in C(a, b)\)．类似地，在闭区间或者半开半闭区间上，当它在除去端点的每一点都连续，在闭的左端点右连续，在闭的右端点左连续时，也有类似的记号．此时，我们简称函数\(f\)在此区间上连续．
 \end{remark}
 
 \begin{example*}
@@ -3811,7 +3851,8 @@
   \end{proof}
 \end{example*}
 
-\begin{example*}
+\begin{theorem}
+  \label{thm:contsin}
   证明函数\(f(x) = \sin x\)在\(\R\)上连续．
 
   \begin{proof}
@@ -3828,31 +3869,139 @@
       \qedhere
     \end{align*}
   \end{proof}
-\end{example*}
+\end{theorem}
 
+% https://en.wikipedia.org/wiki/Classification_of_discontinuities
 \begin{definition*}
-  点\(x_0\)是函数\(f\)的一个间断点．当它在此处的左极限和右极限均存在时，我们把这样的间断点叫作\emph{第一类间断点}．当它在此处的单侧极限至少有一个不存在时，我们把这样的间断点叫作\emph{第二类间断点}．对于第一类间断点，当它的单侧极限相等时，我们把这样的间断点叫作\emph{可去间断点}\,; 否则，叫作\emph{跳跃间断点}．
+  点\(x_0\)是函数\(f\)的一个间断点．当它在此处的左极限和右极限均存在时，我们把这样的间断点叫作\emph{第一类间断点}．当它在此处的单侧极限至少有一个不存在时，我们把这样的间断点叫作\emph{第二类间断点}．对于第一类间断点，当它的单侧极限相等时，我们把这样的间断点叫作\emph{可去间断点}；否则，叫作\emph{跳跃间断点}．
 \end{definition*}
 
-\begin{theorem*}[Bolzano定理]
+\begin{theorem}[Bolzano定理]
+  \label{thm:bolzano}
   若函数\(f\)在闭区间\(\brkt{a,b}\)上连续且\(f(a)\,f(b) < 0\)，则存在\(ξ \in \paren{a,b}\)使得\(f(ξ) = 0\)．
 
+  % TODO: Complete the proof
   \begin{proof}
     根据二分法来构造区间套即可得证．
   \end{proof}
+\end{theorem}
+
+\begin{example*}
+  试讨论方程\(2^x + x = 0\)在开区间\(\paren{-1,0}\)上解的个数。
+
+  \begin{remark}
+    令\(f(x) = 2^x + x\)，则该方程在此区间上解的个数就等于函数\(f\)在此区间上零点的个数．因为\(f(-1) = -1/2\)且\(f(0) = 1\)，所以\(f\)在此区间上至少有一个零点．又因为\(f\)严格单调递增，所以它在此区间上只有一个零点，即原方程在此区间上只有一个解．
+  \end{remark}
+\end{example*}
+
+% https://mathworld.wolfram.com/FixedPointTheorem.html
+% https://en.wikipedia.org/wiki/Brouwer_fixed-point_theorem
+\begin{corollary*}[不动点定理]
+  若函数\(f\)在闭区间\(\brkt{a,b}\)上连续且有\(f(a) > a\)和\(f(b) < b\)，则存在一点\(ξ\)使得\(f(ξ) = ξ\)．
+
+  \begin{proof}
+    构造函数\(\Fn F(x) = f(x) - x\)．因为函数\(\Fn F(x)\)在\(\brkt{a,b}\)上也连续且有\(\Fn F(a) > 0\)和\(\Fn F(b) < 0\)，所以存在\(ξ\)使得\(\Fn F(ξ) = 0\)，即\(f(ξ) = ξ\)．
+  \end{proof}
+\end{corollary*}
+
+% https://mathworld.wolfram.com/IntermediateValueTheorem.html
+% https://en.wikipedia.org/wiki/Intermediate_value_theorem
+\begin{corollary}[介值定理]
+  \label{cor:ivt}
+  若函数\(f\)在\(\brkt{a,b}\)上连续，则函数\(f\)在\(\paren{a,b}\)上可以取到\(f(a)\!\)和\(f(b)\)之间（不含）的所有数\footnote{英文叫作intermediate value theorem，简称为IVT．}．
+
+  \begin{proof}
+    当\(f(a) = f(b)\)时，此定理空虚地为真．不失一般地，假设\(f(a) < f(b)\)．对于任意的\(μ \in \paren[\big]{\,f(a), f(b)}\)，构造函数\(\Fn F(x) = f(x) - μ\)，那么根据定理\ref{thm:bolzano}，存在\(ξ \in \paren{a,b}\)使得\(\Fn F(ξ) = 0\)，即\(f(ξ) = μ\)．由于\(μ\)的任意性，此定理得证．
+  \end{proof}
+\end{corollary}
+
+\begin{corollary*}
+  若函数\(f\)在\(\R\)上连续且有界，则函数\(f\)能取到所有在上下确界之间的数（不含）．
+
+  \begin{proof}
+    当\(\inf\,f = \sup\,f\)时，此定理空虚地为真．当\(\inf\,f < \sup\,f\)时，对于任意的\(μ \in \paren{\inf\,f, \sup\,f\,}\)，根据确界的定义，存在\(f(x_1) \in \paren{\inf\,f,\,μ}\)和\(f(x_2) \in \paren{μ,\,\sup\,f}\)，又根据推论\ref{cor:ivt}，存在\(ξ\)位于\(x_1\)和\(x_2\)之间（不含）使得\(f(ξ) = μ\)．由于\(μ\)的任意性，此定理得证．
+  \end{proof}
+\end{corollary*}
+
+% TODO: Add the example of area of line sliding through a triangle
+
+\begin{theorem}[连续函数的四则运算]
+  \label{thm:cont4ops}
+  若函数\(f, g\)在点\(x_0\)处都连续，则函数\(f \pm g,\ fg,\ f/g\ (g(x_0) \ne 0)\)在此处也都连续．
+
+  \begin{proof}
+    使用定义\ref{defn:func4ops}和定理\ref{thm:limfunc4ops}即可得证．
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}[复合函数的连续性]
+  \label{thm:contcomp}
+  若函数\(g\)在点\(x_0\)处连续且函数\(f\)在点\(u_0 = g(x_0)\)处连续，则复合函数\(f \circ g\)在点\(x_0\)处连续．
+
+  \begin{proof}
+    因为函数\(f\)在点\(u_0\)处连续，所以对于任意的\(ε > 0\)都存在\(δ_1 > 0\)使得当\(\abs*{u - u_0} < δ_1\)时都有\(\abs*{\,f(u)-f(u_0)} < ε\)．又因为函数\(g\)在点\(x_0\)处连续，所以存在\(δ > 0\)使得当\(\abs*{x - x_0} < δ\)时都有\(\abs*{\,g(x) - g(x_0)} = \abs*{\,g(x) - u_0} < δ_1\)，从而\(\abs*{\,f(g(x)) - f(u_0)} = \abs*{\,f(g(x)) - f(g(x_0))} < ε\)．
+  \end{proof}
+\end{theorem}
+
+\begin{theorem*}
+  若函数\(f\)和\(g\)在点\(x_0\)处连续且\(f(x_0) > 0\)，则函数\(\,f^g\!\)在此处也连续．
+
+  \begin{proof}
+    仿照定理\ref{thm:limfuncpowexp}，使用两次定理\ref{thm:contcomp}和一次定理\ref{thm:cont4ops}即可得证．
+  \end{proof}
 \end{theorem*}
+
+\begin{theorem*}
+  若函数\(f\)在某个闭（开）区间上严格单调连续，则其反函数\(f^{-1}\negthickspace\)也在某个闭（开）区间上严格同向单调连续．
+
+  \begin{proof}
+    对于闭区间的情况，使用定义\ref{defn:funcmono}、推论\ref{cor:ivt}和定义\ref{defn:funcinv}即可得证．对于开区间的情况，还要再用上公理\ref{ax:lubglb}、定义\ref{defn:supinf}和\ref{defn:bnd}．
+  \end{proof}
+\end{theorem*}
+
+\begin{theorem*}
+  初等函数在定义域内（除去孤立点）连续．
+\end{theorem*}
+
+\begin{example*}
+  讨论函数\(f(x) = \sqrt{x(x-1)} + \sqrt x\)在其自然定义域上的连续性．
+
+  \begin{remark}
+    它的自然定义域是\(\Set{0} \cup \brktparen{1, +∞}\)．显然地，它在\(\paren{1, +∞}\)上的每一点处都连续，在点\(1\)处右连续，在原点处（孤立点）不连续．
+  \end{remark}
+\end{example*}
 
 \subpdfbookmark{思考}{B1.3.1.P}
 \subsection*{思考}
 
 \begin{enumerate}
 \item 函数在一点连续与单侧连续之间有什么关系？
+
+  \ifshowsolp
+  参见定理\ref{thm:contsided}．
+  \fi
+
 \item 函数在一点连续能否推出函数在此点附近也连续？
+
+  \ifshowsolp
+  不能．
+  \fi
+
 \item 基本初等函数在其定义域内是连续的，这个结论是如何得到的？
+
+  \ifshowsolp
+  其实这要把基本初等函数分成两类来看：一类是超越函数（transcedental functions）、另一类是代数函数（algebraic functions）．代数函数基本上可以由实数公理推出来．超越函数中的指数函数可以定义成
+  \begin{equation*}
+    \exp x \coloneq \lim_{n\to\infty} \paren*{1 + \frac xn}^n,
+  \end{equation*}
+  然后通过讨论这个数列的单调性和有界性论证它总是收敛的，并且研究出它的很多性质满足我们中学学过的指数运算法则．由这些结论，我们可以证明指数函数是连续的．再由此定义对数函数为指数函数的反函数，得到它的一系列性质．这样，对于超越的幂函数，例如\(x^π\)，就可以变形成\(\expb{π \ln x}\)，再由定理\ref{thm:contcomp}和定理\ref{thm:cont4ops}得出其连续性．
+
+  对于超越函数中的三角函数，正弦函数的连续性已经由定理\ref{thm:contsin}给出，余弦函数的连续性可由\(\cos x = \sinp{π/2-x}\)再加上定理\ref{thm:contcomp}得出．剩下的三角函数，对正弦函数和余弦函数使用定理\ref{thm:cont4ops}即可得到它们的连续性．
+  \fi
 \end{enumerate}
 
 \ifshowex
-\currentpdfbookmark{练习}{B1.2.6.E}
+\currentpdfbookmark{练习}{B1.3.1.E}
 \subsection*{练习}
 
 \begin{enumerate}
@@ -3878,6 +4027,10 @@
   \item 连续点
   \end{itemize}
 
+  \ifshowsol
+  函数\(f\)在原点处的左右极限分别是\(-1\)和\(1\)．
+  \fi
+
 \item 令\(f(x) = 1\Big/\paren[\Big]{\expb[\Big]{\frac{x}{x-1}} - 1}\)，则\uline{\makebox[10em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
@@ -3892,17 +4045,29 @@
     原点是第二类间断点，点\(1\)是第一类间断点
   \end{itemize}
 
+  \ifshowsol
+  函数\(f\)在原点处的左右极限分别是\(+\infty\)和\(-\infty\)，在点\(1\)处的左右极限分别是\(-1\)和\(0\)．
+  \fi
+
 \item 求函数
   \begin{equation*}
     f(x) = \frac{(e^x+x) \tan x}{x (e^{1/x}-e)}
   \end{equation*}
   在\(\brkt{-π,π}\)上的第一类间断点．
 
+  \ifshowsol
+  函数\(f\)在此区间上有\(4\)个间断点，分别是\(-π/2,\ 0,\ 1,\ π/2\)．它在这\(4\)个间断点处的左右极限分别是\(-\infty\)和\(+\infty\)、\(-e^{-1}\)和\(0\)、\(+\infty\)和\(-\infty\)、\(-\infty\)和\(+\infty\)．所以原点是函数\(f\)的跳跃间断点．
+  \fi
+
 \item 求函数
   \begin{equation*}
     f(x) = (1+x)^{x/\!\tanp{x-π/4}}
   \end{equation*}
   在\(\paren{0,2π}\)上的第二类间断点．
+
+  \ifshowsol
+  函数\(f\)在此区间上有\(4\)个间断点，分别是\(π/4,\ 3π/4,\ 5π/4,\ 7π/4\)．它在这\(4\)个间断点处的左右极限分别是\(0\)和\(+\infty\)、\(1\)和\(1\)、\(0\)和\(+\infty\)、\(1\)和\(1\)．所以点\(π/4\)和\(5π/4\)是函数\(f\)的无穷间断点．
+  \fi
 
 \item 原点是函数\(f(x) = \cos^2 \frac1x\)的\uline{\makebox[6em]{}}．
   \begin{itemize}
@@ -3932,6 +4097,20 @@
   \item 点\(1\)和点\(-1\)均为跳跃间断点
   \end{itemize}
 
+  \ifshowsol
+  实际上，有
+  \begin{equation*}
+    f(x) =
+    \begin{dcases}
+      1, & \abs{x} > 1, \\
+      0, & x = -1, \\
+      2, & x = 1, \\
+      \frac1x, & \abs{x} < 1 \tand x \ne 0.
+    \end{dcases}
+  \end{equation*}
+  所以点\(-1, 0, 1\)分别是函数\(f\)的跳跃间断点、第二类间断点、可去间断点．
+  \fi
+
 \item 原点是函数\uline{\makebox[6em]{}}的可去间断点．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
@@ -3960,9 +4139,152 @@
   \item \(f(x) = \sgnp x\)
   \end{itemize}
 
+  \ifshowsol
+  原点分别是选项A、B中函数的第二类间断点、选项C中函数的可去间断点、选项D中的跳跃间断点．
+  \fi
+
 \item 下列说法中，错误的是\uline{\makebox[10em]{}}．
-\item 函数\uline{\makebox[10em]{}}在原点连续．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item 如果函数\(f\)在点\(a\)处连续，那么函数\(\abs*{\,f\,}\)也在点\(a\)处连续
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    如果函数\(\abs*{\,f\,}\)在点\(a\)处连续，那么函数\(f\)也在点\(a\)处连续
+  \item 如果函数\(f\)在点\(a\)处连续，那么函数\(f^3\negthickspace\)也在点\(a\)处连续
+  \item 如果函数\(f^3\negthickspace\)在点\(a\)处连续，那么函数\(f\)也在点\(a\)处连续
+  \end{itemize}
+
+  \ifshowsol
+  由于反三角不等式，选项A成立；由于定理\ref{thm:contcomp}，选项C和D成立．选项B的一个反例是函数\(2\fn H - 1\)，其中\(H\)是阶跃函数（定义\ref{defn:heaviside}）．
+  \fi
+
+\item 函数\uline{\makebox[10em]{}}在原点处连续．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    \begin{math}
+      f(x) =
+      \begin{dcases}
+        e^{-1/x^2}, & x \ne 0, \\
+        0, & x = 0
+      \end{dcases}
+    \end{math}
+  \item \(f(x) = \floor x\)
+  \item \(f(x) = \sgnp{\sin x}\)
+  \item
+    \begin{math}
+      f(x) =
+      \begin{dcases}
+        \frac{\sin x}{\abs x}, & x \ne 0, \\
+        1, & x = 0
+      \end{dcases}
+    \end{math}\rule{0ex}{5ex}
+  \end{itemize}
+
+  \ifshowsol
+  原点是选项B、C、D中函数的跳跃间断点．选项A中的函数在原点处的左右极限都是\(0\)且等于此处的函数值，因此连续．
+  \fi
+
 \item 若函数\(f\)和\(g\)在点\(x_0\)处均不连续，则\uline{\makebox[10em]{}}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item 函数\(f+g\)在点\(x_0\)处不连续
+  \item 函数\(f/g\)在点\(x_0\)处不连续
+  \item 函数\(fg\)在点\(x_0\)处不连续
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    函数\(f+g,\ f/g,\ fg\)都可能在点\(x_0\)处连续
+  \end{itemize}
+
+  \ifshowsol
+  令\(f(x) = \Fn H(x),\ g(x) = 1-\Fn H(x)\)，则\(f + g = 1,\ fg = 0\)，因此选项A和C不正确．令
+  \begin{equation*}
+    f(x) = g(x) = \frac{1}{x \Fn H(x) + \Fn H(-x)},
+  \end{equation*}
+  则\(f/g = 1\)，因此选项B不正确．
+  \fi
+\end{enumerate}
+\fi
+
+\section{闭区间上连续函数的性质}
+
+\begin{theorem}
+  \label{thm:contclsintvbnd}
+  闭区间上的连续函数是有界函数．
+
+  \begin{proof}
+    运用反证法．构造一个有界数列\(\Seq{x_n}\)使得数列\(\Seq{\,f(x_n)}\)是无界的．再使用定理\ref{thm:bw}找到一个收敛于\(L\)的子列\(\Seq{x_{n_k}}\)．又因为函数\(f\)是连续的，所以数列\(\Seq{\,f(x_{n_k})}\)收敛于\(f(L)\)．这与数列\(\Seq{\,f(x_n)}\)的结论是矛盾的．
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}[最值定理]
+  \label{thm:evt}
+  闭区间上的连续函数能取到最大值和最小值\footnote{英文叫作extreme value theorem，简称EVT．}．
+
+  \begin{proof}
+    使用定理\ref{thm:contclsintvbnd}和公理\ref{ax:lubglb}可以得到上确界\(M = \sup\,f\)．令\(ε_0 = \abs*{M - \maxb{a, b}}\)，其中\(a,b\)分别为闭区间的端点．若\(ε_0 = 0\)，则说明区间的端点之一就是最大值．否则，令\(ε_n = ε_0/2^n\)．根据定义\ref{defn:supinf}，则能找到一个有界数列\(\Seq{x_n}\)使得\(M \ge f(x_n) > M - ε_n\)对于所有的正整数\(n\)都成立．数列\(\Seq{\,f(x_n)}\)收敛于\(M\)．使用定理\ref{thm:bw}，找到一个收敛于\(L\)的子列\(\Seq{x_{n_k}}\)．又因为函数\(f\)连续，使用定理\ref{thm:contequiv}即可得到\(f(L) = M\)．类似地，可以证明函数\(f\)能取到最小值．
+  \end{proof}
+\end{theorem}
+
+% TODO: Add the example of area under a line sliding up through a curve
+
+% https://proofwiki.org/wiki/Continuous_Image_of_Closed_Interval_is_Closed_Interval
+% https://en.wikipedia.org/wiki/Intermediate_value_theorem
+\begin{theorem*}
+  闭区间上的连续函数，其像集也是闭区间．
+
+  \begin{proof}
+    应用定理\ref{thm:evt}和推论\ref{cor:ivt}即可得证．
+  \end{proof}
+\end{theorem*}
+
+\subpdfbookmark{思考}{B1.3.2.P}
+\subsection*{思考}
+
+\begin{enumerate}
+\item 在最值定理中，若将闭区间改成开区间，则结论不再成立．请举例说明．
+
+  \ifshowsolp
+  其实对于定义在开区间\(\paren{0,1}\)上的恒等函数\(f(x) = x\)这样的简单函数，既取不到最小值，又取不到最大值．更不用说像定义在开区间上的\(\paren{-π/2,π/2}\)上的正切函数\(f(x) = \tan x\)和定义在开区间\(\paren{-∞,+∞}\)上的反正切函数\(f(x) = \arctan x\)了．
+  \fi
+
+\item 函数\(\,f(x) = x^{2m} + x^{2m-1} + \dots + x - 1\)和\(g(x) = x^{2m} + x^{2m-1} + \dots + x + 1\)在\(\R\)上是否存在零点？
+
+  \ifshowsolp
+  此处假定\(m \ge 1\)．函数\(f\)在\(\R\)上显然是有零点的；因为\(f(0) = -1\)且\(f(1) = 2m-1 > 0\)，由定理\ref{thm:bolzano}可知它在\(\paren{-1,1}\)上至少有一个零点．函数\(f\)在\(\R\)上不存在零点，原因如下．有
+  \begin{align*}
+    g(x)
+    &=
+      \begin{dcases}
+        1 + \sum_{k = 1}^{\smash{2m}} x^k, & x \ne 1, \\
+        2m+1, & x = 1,
+      \end{dcases} \\
+    &=
+      \begin{dcases}
+        \frac{1-x^{2m+1}\negthickspace}{1-x}, & x \ne 1, \\
+        2m+1, & x = 1.
+      \end{dcases}
+  \end{align*}
+  可见函数\(g\)在\(\R\)上都是正数，因此无零点．
+  \fi
+\end{enumerate}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.3.1.E}
+\subsection*{练习}
+
+\begin{enumerate}
+\item 下列说法中，正确的是\uline{\makebox[10em]{}}．
 \end{enumerate}
 \fi
 
