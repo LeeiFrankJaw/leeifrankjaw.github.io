@@ -20,6 +20,7 @@
 \renewcommand*{\otherwise}{\text{其他}}
 \renewcommand*{\iand}{\intertext{和}}
 \renewcommand*{\siand}{\shortintertext{和}}
+% \newcommand*{\f}{\ensuremath{\mkern2mu f \mskip 2mu minus 2mu}}
 \makeatletter
 \newtheoremstyle{plain}{3pt}{3pt}{\itshape}{}{\bfseries}{}{.5em}{%
   \thmname{#1}\thmnumber{\@ifnotempty{#1}{ }\@upn{#2}}%
@@ -31,7 +32,8 @@
   \thmnote{ {\the\thm@notefont（#3）}}%
   % \@ifnotempty{#3}{\thm@headsep=.75ex}
 }
-\newtheoremstyle{remark}{3pt}{3pt}{}{}{}{\ignorespaces}{\z@}{\noindent\ignorespaces}
+\newtheoremstyle{remark}{3pt}{3pt}{}{}{\bfseries}{\ignorespaces}{\z@}{%
+  \noindent\@ifnotempty{#3}{\thmname{#3}\hskip.5em}\ignorespaces}
 \makeatother
 \newtheorem{theorem}{定理}
 \newtheorem*{theorem*}{定理}
@@ -622,10 +624,10 @@
       y &= \frac{e^x - e^{-x}}{2} && \reason{原式} \\
       2y &= e^x - e^{-x} && \reason{同乘以\(2\)} \\
       0 &= \paren{e^{x}}^2- 2y\,e^x - 1 && \reason{同乘以\(e^x\)并移项} \\
-      e^x &= y + \sqrt{y^2 + 1} && \reason{关于\(e^x\)解方程} \\
-      x &= \ln\paren[\big]{y + \sqrt{y^2 + 1}}. && \reason{取对数}
+      e^x &= y + \sqrt{\smash{y^2} + 1} && \reason{关于\(e^x\)解方程} \\
+      x &= \ln\paren[\big]{y + \sqrt{\smash{y^2} + 1}}. && \reason{取对数}
     \end{align*}
-    所以反函数是\(y = \arcsinh x = \ln\paren[\big]{x + \sqrt{x^2 + 1}}\)．
+    所以反函数是\(y = \arcsinh x = \ln\paren[\big]{x + \sqrt{\smash{x^2} + 1}}\)．
   \end{remark}
 \end{example*}
 
@@ -680,7 +682,8 @@
 
 \item 设\(f(x) = \cos x,\ f(\varphi(x)) = 1 - x^2\)，则\(\varphi(x)\)的定义域是
   \ifshowsol
-  \uline{\makebox[6em]{\(\brkt[\big]{-\sqrt2, \sqrt2}\)}}．
+  {\setlength{\ULdepth}{.8ex}%
+    \uline{\makebox[6em]{\(\brkt[\big]{-\sqrt2, \sqrt2}\)}}}．
   \else
   \uline{\makebox[6em]{}}．
   \fi
@@ -701,7 +704,8 @@
 
 \item 函数\(y = e^{3x-1},\ x \in \brktparen{0, +\infty}\)的反函数为
   \ifshowsol
-  \uline{\makebox[15em]{\(y = (1 + \ln x)/3,\ x \in \brktparen{e^{-1}, +\infty}\)}}．
+  {\setlength{\ULdepth}{.85ex}%
+    \uline{\makebox[15em]{\(y = (1 + \ln x)/3,\ x \in \brktparen{e^{-1}, +\infty}\)}}}．
   \else
   \uline{\makebox[15em]{}}．
   \fi
@@ -731,7 +735,8 @@
 
 \item 已知\(f(\sin x) = 2 \ln \cos x + x\)，则\(f(x) =\)
   \ifshowsol
-  \uline{\makebox[20em]{\(f(x) = \ln(1-x^2) + 2k\pi + \arcsin x,\ k \in \Z\)}}．
+  {\setlength{\ULdepth}{.88ex}%
+    \uline{\makebox[20em]{\(f(x) = \ln(1-x^2) + 2k\pi + \arcsin x,\ k \in \Z\)}}}．
   \else
   \uline{\makebox[20em]{}}．
   \fi
@@ -872,7 +877,7 @@
 \end{definition*}
 
 \begin{example*}
-  设函数\(f\)的周期是\(2\)且\(g(x) = f\,\paren[\Big]{\dfrac{x+1}{2}}\)．试问函数\(g\)是否为周期函数？如果是，它的周期是多少？\rule{0ex}{3.5ex}
+  设函数\(f\)的周期是\(2\)且\(g(x) = f\,\paren[\Big]{\dfrac{x+1}{2}}\)．试问函数\(g\)是否为周期函数？如果是，它的周期是多少？
 
   \begin{remark}
     函数\(g\)的周期是\(4\)．
@@ -1362,7 +1367,8 @@
 
 \item 曲线\(y = \frac{2^x-2^{-x}}{2^x+2^{-x}}\)与曲线\(y = f(x)\)的图像关于直线\(y = x\)对称．求\(f(x) =\)
   \ifshowsol
-  {\setlength{\ULdepth}{1.5ex}\uline{\makebox[6em]{\(\frac12 \log_2\frac{1+x}{1-x}\)}}}．
+  {\setlength{\ULdepth}{1.15ex}%
+    \uline{\makebox[6em]{\(\frac12 \log_2\frac{1+x}{1-x}\)}}}．
   \else
   \uline{\makebox[6em]{}}．
   \fi
@@ -2707,9 +2713,23 @@
 \end{example*}
 
 \begin{definition*}[单侧极限]
-  对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(0 < x_0 - x < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)从左侧趋向于\(x_0\)的极限，简称左极限，记作\(\lim_{x \to x_0^-} f(x) = A\)或\(f(x_0-0) = A\)．
+  对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(0 < x_0 - x < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)从左侧趋向于\(x_0\)的极限，简称左极限，记作
+  \begin{equation*}
+    \lim_{x \to x_0^-} f(x) = A,
+    \quad
+    f_-(x_0) = A
+    \txt{或}
+    f(x_0-0) = A.
+  \end{equation*}
 
-  对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(0 < x - x_0 < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)从右侧趋向于\(x_0\)的极限，简称右极限，记作\(\lim_{x \to x_0^+} f(x) = A\)或\(f(x_0+0) = A\)．
+  对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(0 < x - x_0 < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)从右侧趋向于\(x_0\)的极限，简称右极限，记作
+  \begin{equation*}
+    \lim_{x \to x_0^+} f(x) = A,
+    \quad
+    f_+(x_0) = A
+    \txt{或}
+    f(x_0+0) = A.
+  \end{equation*}
 \end{definition*}
 
 \begin{theorem}
@@ -2749,9 +2769,10 @@
   若函数\(f\)在\(x \to x_0\)时的极限存在，则其在\(x_0\)附近有界．
 \end{theorem*}
 
-\begin{theorem*}[保号性]
+\begin{theorem}[保号性]
+  \label{thm:limfuncsgnprsv}
   若函数\(f\)在\(x \to x_0\)时收敛于某个非零数\(A\)，则其在\(x_0\)附近拥有与\(A\)相同的正负号．
-\end{theorem*}
+\end{theorem}
 
 % https://gallica.bnf.fr/ark:/12148/bpt6k3116z/f688.item
 % https://zbmath.org/46.0295.04
@@ -3494,7 +3515,6 @@
   \fi
 
 \item 求\(\lim\limits_{x\to1} \dfrac{\sinp{x-1}}{\sqrt x - 1}\)．
-
   \ifshowsol
   \begin{equation*}
     \lim_{x\to1} \frac{\sinp{x-1}}{\sqrt x - 1}
@@ -3819,12 +3839,32 @@
   \end{remark}
 \end{example*}
 
-\begin{theorem*}
+\begin{theorem}
+  \label{thm:contequivdefn}
   函数\(f\)在点\(x_0\)处连续的充分必要条件是：\(\lim\limits_{\fwdf x \to 0} \fwdf\,f(x_0) = 0\)，其中\(\fwdf x = x - x_0,\ \fwdf\,f(x_0) = f(x_0+\fwdf x) - f(x_0)\)．
-\end{theorem*}
+
+  \begin{proof}
+    先证必要性．根据定理~\ref{thm:limfunccomp}和~\ref{thm:limfunc4ops}，有
+    \begin{equation*}
+      \lim_{\fwdf x \to 0} \paren*{\,f(x_0 + \fwdf x) - f(x_0)}
+      = \lim_{x\to x_0} \paren*{\,f(x) - f(x_0)}
+      = 0.
+    \end{equation*}
+    再证充分性．根据定理~\ref{thm:limfunccomp}和~\ref{thm:limfunc4ops}，有
+    \begin{equation*}
+      \begin{split}
+        \lim_{x\to x_0} f(x)
+        &= \lim_{x\to x_0} \paren*{\,f(x_0 + x - x_0) - f(x_0) + f(x_0)} \\
+        &= \lim_{\fwdf x \to 0} \paren*{\,f(x_0 + \fwdf x) - f(x_0) + f(x_0)} \\
+        &= \lim_{\fwdf x \to 0} \paren*{\fwdf\,f(x_0) + f(x_0)} = f(x_0).
+        \qedhere
+      \end{split}
+    \end{equation*}
+  \end{proof}
+\end{theorem}
 
 \begin{definition*}
-  若\(\lim\limits_{x\to x_0^-} \,f(x) = f(x_0)\)，则称函数\(f\)在点\(x_0\)处左连续；若\(\lim\limits_{x\to x_0^+} \,f(x) = f(x_0)\)，则称函数\(f\)在点\(x_0\)处右连续．
+  若\(\lim\limits_{x\to x_0^-}\,f(x) = f(x_0)\)，则称函数\(f\)在点\(x_0\)处左连续；若\(\lim\limits_{x\to x_0^+} \,f(x) = f(x_0)\)，则称函数\(f\)在点\(x_0\)处右连续．
 \end{definition*}
 
 \begin{theorem}
@@ -4831,7 +4871,7 @@
   \ifshowsol
   由定理~\ref{thm:unicontbothlim}可知，选项~A中的函数在此区间上是一致连续的．由定理~\ref{thm:unicontbndintvbnd}可知，选项~B和~D中的函数并不一致收敛．选项~C见例~\ref{eg:uniconttoposine}．
   \fi
-  
+
 \item 函数\uline{\hspace{10em}}在区间\(\brkt{0,1}\)上不是一致连续的．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
@@ -4851,7 +4891,7 @@
         1, & x = 0
       \end{cases}
     \end{math}
-  \item 
+  \item
     \begin{math}
       f(x) =
       \begin{cases}
@@ -4876,7 +4916,7 @@
   \ifshowsol
   由定理~\ref{thm:hc}可知，前三个选项中的函数是一致连续的．关于选项~D中的函数，令\(1/x = 2\,k\pi\)，当\(k\)足够大时，自然能使\(\abs{x-0}\)小于任意的\(\delta\)，然而\(\abs*{\,f(x) - f(0)} = 1\)．因此它不是一致连续的．实际上，如果修改定义，让此函数在原点处的值为零，同样可由定理~\ref{thm:hc}得到一致连续性．
   \fi
-  
+
 \item 关于函数\(\lnp{1+x}\)的连续性，下列说法中，错误的是\uline{\hspace{10em}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
@@ -4898,7 +4938,7 @@
   \end{equation*}
   取\(\delta = \varepsilon\)，则当\(0 \le \fwdf x < \delta\)时，自然有\(\,f(x+\fwdf x) - f(x) < \delta = \varepsilon\)．因此它在区间\(\brktparen{1,+\infty}\)上是一致连续的．
   \fi
-  
+
 \item 已知函数\(f\)和\(g\)在区间\(\brkt{a,b}\)上连续．下列说法中，错误的是\uline{\hspace{8em}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
@@ -4923,6 +4963,969 @@
 \fi
 
 \chapter{导数与微分}
+
+\section{导数与微分的概念}
+
+% https://math.libretexts.org/@go/page/116560#Notations_for_the_Derivative
+% https://www.jstor.org/stable/1967725
+\begin{definition*}
+  \label{defn:deriv}
+  设函数\(y = f(x)\)在点\(x_0\)处及其附近有定义．若极限
+  \begin{equation*}
+    \lim_{\fwdf x \to 0} \frac{f(x_0+\fwdf x) - f(x_0)}{\fwdf x}
+  \end{equation*}
+  存在，则称函数\(f\)在点\(x_0\)处可导，称此极限为函数\(f\)在此处的导数，记作
+  \begin{equation*}
+    f'(x_0),
+    \quad
+    \left.\dd[f]x\right\vert_{\mathrlap{x_0}},
+    \quad
+    \dd[f]x(x_0),
+    \quad
+    \dot y(x_0)
+    \txt{或}
+    (\Fn Df)(x_0).
+  \end{equation*}
+  我们把所有可导点与其导数的对应关系叫作导函数，也简称成导数，记作
+  \begin{equation*}
+    f', \quad \dd[f]x, \quad \dot y \txt{或} \!\Fn Df.
+  \end{equation*}
+\end{definition*}
+
+\begin{example*}
+  试讨论函数\(f(x) = x^2 \Fn D(x)\)在\(\R\)上的可导性．
+
+  \begin{remark}
+    此函数除了在原点处可导之外，在其他处皆不可导．对于任意的\(x_0 \ne 0\)，分别由无理数和有理数的方式趋向于\(x_0\)，易知导数定义中的极限必有一种方式使其为无穷大量．只有当\(x = x_0\)时，无论由什么方式趋向于\(x_0\)，导数定义中极限都收敛且等于零．
+  \end{remark}
+\end{example*}
+
+\begin{example*}
+  常函数的导数都是零．
+\end{example*}
+
+\begin{example*}
+  求函数\(f(x) = x^n\)的导函数．
+
+  \begin{remark}
+    令\(\fwdf\,f(x) = f(x+\fwdf x) - f(x) = \paren{x+\fwdf x}^n - x^n = \fwdf x \sum_{k=1}^n \paren{x+\fwdf x}^{n-k}\,x^{k-1}\)，所以有
+    \begin{equation*}
+      f'(x)
+      = \lim_{\fwdf x \to 0} \frac{\fwdf\,f(x)}{\fwdf x}
+      = \lim_{\fwdf x \to 0} \sum_{k=1}^n \paren{x+\fwdf x}^{n-k}\,x^{k-1}
+      = nx^{n-1}.
+    \end{equation*}
+  \end{remark}
+\end{example*}
+
+\begin{example*}
+  求指数函数\(f(x) = e^x\)的导函数．
+  \begin{equation*}
+    f'(x)
+    = \lim_{\fwdf x \to 0} \frac{e^{x+\fwdf x} - e^x}{\fwdf x}
+    = \lim_{\fwdf x \to 0} e^x \cdot \frac{e^{\fwdf x} - 1}{\fwdf x}
+    = e^x \lim_{\fwdf x \to 0} \frac{e^{\fwdf x} - 1}{\fwdf x}
+    = e^x.
+    \rule[-3.5ex]{0ex}{0ex}
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求函数\(f(x) = a^x\)的导函数，其中\(a > 0\)且\(a \ne 1\)．
+  \begin{equation*}
+    f'(x)
+    = \lim_{\fwdf x \to 0} \frac{a^{x+\fwdf x} - a^x}{\fwdf x}
+    = \lim_{\fwdf x \to 0} a^x \cdot \frac{a^{\fwdf x} - 1}{\fwdf x}
+    = a^x \lim_{\fwdf x \to 0} \frac{a^{\fwdf x} - 1}{\fwdf x}
+    = a^x \ln a.
+    \rule[-3.5ex]{0ex}{0ex}
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求函数\(f(x) = \ln x\)的导函数．
+  \begin{equation*}
+    f'(x)
+    = \lim_{\fwdf x \to 0} \frac{\lnp{x+\fwdf x}- \lnp x}{\fwdf x}
+    = \lim_{\fwdf x \to 0} \frac1x \cdot \frac{\lnp{1+\fwdf x/x}}{\fwdf x/x}
+    = \frac1x \lim_{\fwdf x \to 0} \frac{\lnp{1+\fwdf x/x}}{\fwdf x/x}
+    = \frac1x.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求正弦函数的导函数．
+  \begin{align*}
+    \sin'x
+    &= \lim_{\fwdf x \to 0} \frac{\sinp{x+\fwdf x}- \sin x}{\fwdf x} \\
+    &= \lim_{\fwdf x \to 0} \frac{2 \cosp{x+\fwdf x/2} \sinp{\fwdf x/2}}{\fwdf x} \\
+    &= \lim_{\fwdf x \to 0} \cosp{x+\fwdf x/2} \cdot \frac{\sinp{\fwdf x/2}}{\fwdf x/2} \\
+    &= \cos x.
+  \end{align*}
+\end{example*}
+
+\begin{example*}
+  若函数\(f\)在点\(a\)处的导数大于零，则存在\(\delta > 0\)使得：当\(a < x < a+\delta\)时都有\(f(x) > f(a)\)；当\(a-\delta < x < a\)时都有\(f(x) < f(a)\)．
+
+  \begin{proof}
+    令\(\fwdf x = x - a\)．由定理~\ref{thm:limfuncsgnprsv}可知，存在\(\delta > 0\)使得当\(0 < \abs{\fwdf x} < \delta\)时都有\(\fwdf\,f(a)/\!\fwdf x > 0\)．所以当\(\fwdf x > 0\)时，有
+    \begin{equation*}
+      \fwdf\,f(a) = f(a+\fwdf x) - f(a) > 0
+      \iff
+      f(a+\fwdf x) = f(x) > f(a).
+    \end{equation*}
+    同理，当\(\fwdf x < 0\)时，有\(f(x) < f(a)\)．
+  \end{proof}
+\end{example*}
+
+% https://www.mathcounterexamples.net/a-function-whose-derivative-at-0-is-one-but-which-is-not-increasing-near-0/
+% https://math.stackexchange.com/q/2768994/147999
+\begin{example*}
+  函数\(f\)在点\(a\)处的导数大于零，不能保证一定存在\(a\)的一个邻域使得函数\(f\)在此邻域上单调递增．
+
+  \begin{remark}
+    这里提供两个的反例
+    \begin{equation*}
+      f(x) =
+      \begin{cases}
+        x + 2 x^2 \sin\frac1x, & x \ne 0, \\
+        0, & x = 0,
+      \end{cases}
+      \qquad
+      g(x) =
+      \begin{cases}
+        x, & x \in \Q, \\
+        \sin x, & x \notin \Q.
+      \end{cases}
+    \end{equation*}
+    根据导数的定义，有\(f'(0) = g'(0) = 1\)，但显然它们在原点附近都不单调递增．
+  \end{remark}
+\end{example*}
+
+\begin{definition*}
+  设函数\(f\)在点\(x_0\)处及其右侧附近有定义．若极限
+  \begin{equation*}
+    \lim_{\fwdf x \to 0^+} \frac{\fwdf\,f(x_0)}{\fwdf x}
+  \end{equation*}
+  存在，则称函数\(f\)在点\(x_0\)处右可导，称此单侧极限为函数\(f\)在此处的右导数，记作\(f'_+(x_0)\)．左导数也有类似的定义和记号．
+\end{definition*}
+
+\begin{theorem}
+  \label{thm:derivsided}
+  函数在某处可导的充分必要条件是它在其处的左右导数皆存在且相等．
+
+  \begin{proof}
+    应用定理~\ref{thm:limfuncsided}即可得证．
+  \end{proof}
+\end{theorem}
+
+\begin{example*}
+  试讨论函数
+  \begin{equation*}
+    f(x) =
+    \begin{cases}
+      \sqrt x, & x \in \brkt{0,1}, \\
+      x, & x > 1
+    \end{cases}
+  \end{equation*}
+  在点\(1\)处的可导性．
+
+  \begin{remark}
+    显然有\(f'_+(1) = 1\)，剩下就看左导数是否存在且相等即可．有
+    \begin{equation*}
+      f'_-(1)
+      = \lim_{\fwdf x \to 0^-} \frac{\sqrt{1+\fwdf x} - 1}{\fwdf x}
+      = \lim_{\fwdf x \to 0^-} \frac{\fwdf x}{\raisebox{-.1ex}{$\fwdf x$}\,\paren[\big]{\raisebox{-.1ex}{$\sqrt{1+\fwdf x} + 1$}}}
+      = \frac12.
+    \end{equation*}
+    所以它在点\(1\)处不可导．
+  \end{remark}
+\end{example*}
+
+\begin{theorem}
+  \label{thm:deriv2cont}
+  可导蕴含连续．
+
+  \begin{proof}
+    使用反证法．假设函数\(f\)在点\(x_0\)处不连续，那么存在\(\varepsilon_0 > 0\)使得：对于任意的\(\delta > 0\)都存在\(\fwdf x_\delta\)满足\(0 < \abs*{\fwdf x_\delta} < \delta\)且\(\abs*{\fwdf\,f_\delta(x_0)} \ge \varepsilon_0\)．这时，令\(1/\delta_0 = 1 + \abs*{\,f'(x_0)}/\varepsilon_0\)，则存在\(\fwdf x\)满足\(0 < \abs*{\fwdf x} < \delta_0\)且
+    \begin{equation*}
+      \abs*{\frac{\fwdf\,f(x_0)}{\fwdf x} - f'(x_0)}
+      \ge \abs*{\frac{\fwdf\,f(x_0)}{\fwdf x}} - \abs*{\,f'(x_0)}
+      \ge \frac{\varepsilon_0}{\abs*{\fwdf x}} - \abs*{\,f'(x_0)}
+      > \varepsilon_0.
+    \end{equation*}
+    显然，对于任意的\(\delta > 0\)，也能找到对应的\(\fwdf x\)使得上述不等式成立．所以函数\(f\)在点\(x_0\)处不可导，自相矛盾．
+  \end{proof}
+  \begin{proof}
+    根据定理~\ref{thm:limfunc4ops}和~\ref{thm:contequivdefn}，有
+    \begin{equation*}
+      \lim_{\fwdf x \to 0} \fwdf\,f(x_0)
+      = \lim_{\fwdf x \to 0} \frac{\fwdf\,f(x_0)}{\fwdf x} \cdot \fwdf x
+      = f'(x_0) \cdot 0 = 0. \rule[-2.5ex]{0ex}{0ex}
+      \qedhere
+    \end{equation*}
+  \end{proof}
+\end{theorem}
+
+\begin{example*}
+  常数\(a\)和\(b\)取什么值时，可以使得函数
+  \begin{equation*}
+    f(x) =
+    \begin{cases}
+      x^2, & x \ge 0, \\
+      ax+b, & x < 0
+    \end{cases}
+  \end{equation*}
+  在原点处可导？
+
+  \begin{remark}
+    显然有\(f'_-(0) = a\)和\(f'_+(0) = 0\)．根据定理~\ref{thm:derivsided}，有\(a = 0\)．又因为\(f_-(0) = b,\ f_+(0) = f(0) = 0\)，根据定理~\ref{thm:deriv2cont}，有\(b = 0\)．
+  \end{remark}
+\end{example*}
+
+\begin{remark}[导数的几何意义]
+  \label{rem:derivgeom}
+  \leavevmode
+  \begin{enumerate}
+  \item 切线方程：曲线\(y = f(x)\)在\(\paren*{x_0, y_0}\)处的切线方程为
+    \begin{equation*}
+      y = x\,f'(x_0) + y_0 - x_0\,f'(x_0).
+    \end{equation*}
+  \item 法线方程：曲线\(y = f(x)\)在\(\paren*{x_0, y_0}\)处的法线方程为
+    \begin{equation*}
+      y = - \frac{x}{f'(x_0)} + y_0 + \frac{x_0}{f'(x_0)}.
+    \end{equation*}
+  \end{enumerate}
+\end{remark}
+
+\begin{example*}
+  求曲线\(y = \ln x\)过原点的切线方程．
+
+  \begin{remark}
+    假设此切线是函数\(\ln x\)在点\(x_0\)处的切线，则
+    \begin{equation*}
+      y_0 - x_0 \ln'x_0 = \ln x_0 - 1 = 0
+      \iff
+      x_0 = e.
+    \end{equation*}
+    所以此切线的方程是\(y = x/e\)．
+  \end{remark}
+\end{example*}
+
+\begin{example*}
+  设曲线\(y = f(x)\)与曲线\(y = \ln x\)在\(x = 1\)处相切．求\(f(1)\)和\(f'(1)\)．
+
+  \begin{remark}
+    自然有\(f(1) = \ln 1 = 0\)和\(f'(1) = \ln' 1 = 1\)．
+  \end{remark}
+\end{example*}
+
+% https://en.wikipedia.org/wiki/Differential_of_a_function
+% https://math.stackexchange.com/q/23902/147999
+\begin{definition*}
+  \label{defn:diff}
+  设函数\(f\)在点\(x_0\)处及其附近有定义．若存在一个线性函数\(A \fwdf x\)使得当\(\fwdf x \to 0\)时有
+  \begin{equation*}
+    \fwdf\,f(x_0) = A \fwdf x + \littleop{\fwdf x},
+  \end{equation*}
+  则称函数\(f\)在点\(x_0\)处可微，称\(A \fwdf x\)为函数\(f\)在点\(x_0\)处的微分，记作\(\diff f\,\smash{\Big\vert_{\mathrlap{x_0}}\,} = A \fwdf x\)．
+\end{definition*}
+
+\begin{example*}
+  请用定义来求函数\(f(x) = x^3\)的微分．
+
+  \begin{remark}
+    因为
+    \begin{equation*}
+      \fwdf\,f(x)
+      = (x+\fwdf x)^3 - x^3
+      = 3x^2 \fwdf x + 3x \fwdf x^2 + \fwdf x^3
+      = 3x^2 \fwdf x + \littleop{\fwdf x},
+    \end{equation*}
+    所以函数\(f\)的微分是\(3x^2 \fwdf x\)．
+  \end{remark}
+\end{example*}
+
+\begin{theorem}
+  \label{thm:diffequivderiv}
+  可微的充分必要条件是可导．
+
+  \begin{proof}
+    易证必要性．下面来证明一下充分性．因为
+    \begin{equation*}
+      \lim_{\fwdf x \to 0} \frac{\fwdf\,f(x_0) - \,f'(x_0) \fwdf x}{\fwdf x} = 0,
+    \end{equation*}
+    所以\(\fwdf\,f(x_0) - \,f'(x_0) \fwdf x = \littleop{\fwdf x} \implies \fwdf\,f(x_0) = \,f'(x_0) \fwdf x + \littleop{\fwdf x}\)．
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  显然地，恒等函数\(\,f(x) = x\)的微分是\(1 \cdot \fdx\)，即\(\dx = \fdx\)．所以我们今后一般用\(\dy = y' \dx\)来表示函数\(y = f(x)\)微分．
+\end{remark}
+
+% https://doi.org/10.1016/B978-0-08-013473-4.50008-6 (167)
+% TODO: Interpret geometrically the differential
+
+\subpdfbookmark{思考}{B1.4.1.P}
+\subsection*{思考}
+
+\begin{enumerate}
+\item 连续与可导都是函数在一点的性质，请说明它们之间的相互关系．
+
+  \ifshowsolp
+  可导一定连续，连续未必可导（定理~\ref{thm:deriv2cont}）．
+  \fi
+
+\item 导数与左右导数是什么关系？请举出左右导数都存在但不相等的例子．
+
+  \ifshowsolp
+  见定理~\ref{thm:derivsided}．一个简单的例子就是绝对值函数\(\abs x\)．
+  \fi
+
+\item 请说明函数\(f\)在点\(x_0\)处可导与曲线\(y = f(x)\)在点\(\paren[\big]{x_0, \,f(x_0)}\)处的切线存在性之间的关系．
+
+  \ifshowsolp
+  可导则切线一定存在，切线存在未必可导．例如函数\(\!\sqrt[\leftroot{-2}\uproot{2}3] x\)在原点处的切线存在但不可导．
+  \fi
+\end{enumerate}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.4.1.E}
+\subsection*{练习}
+
+\begin{enumerate}
+\item 下列关于导数的说法中，错误的是\uline{\hspace{10em}}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item 可导函数一定连续
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    连续函数一定可导
+  \item 可导偶函数的导函数为奇函数
+  \item 可导奇函数的导函数为偶函数
+  \end{itemize}
+
+  \ifshowsol
+  下面来说明一下后两个选项．设函数\(f\)为偶函数，则
+  \begin{equation*}
+    \begin{split}
+      f'(-x)
+      &= \lim_{\fdx \to 0} \frac{\fwdf\,f(-x)}{\fdx}
+      = \lim_{\fdx \to 0} \frac{\,f(\fdx-x) - \,f(-x)}{\fdx} \\
+      &= \lim_{\fdx \to 0} \frac{\,f(x-\fdx) - \,f(x)}{\fdx}
+      = \lim_{h \to 0} \frac{\,f(x+h) - \,f(x)}{-h} \\
+      &= - \,f'(x).
+    \end{split}
+  \end{equation*}
+  设函数\(f\)为奇函数，则
+  \begin{equation*}
+    \begin{split}
+      f'(-x)
+      &= \lim_{\fdx \to 0} \frac{\fwdf\,f(-x)}{\fdx}
+      = \lim_{\fdx \to 0} \frac{\,f(\fdx-x) - \,f(-x)}{\fdx} \\
+      &= \lim_{\fdx \to 0} \frac{\,f(x) - \,f(x-\fdx)}{\fdx}
+      = \lim_{h \to 0} \frac{\,f(x) - \,f(x+h)}{-h} \\
+      &= \,f'(x).
+    \end{split}
+  \end{equation*}
+  \fi
+
+\item 函数
+  \begin{equation*}
+    f(x) =
+    \begin{cases}
+      \frac23 x^3, & x \le 1, \\
+      x^2, & x > 1
+    \end{cases}
+  \end{equation*}
+  在点\(1\)处的\uline{\hspace{10em}}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item 左右导数都存在
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    左导数存在，右导数不存在
+  \item 左导数不存在，右导数存在
+  \item 左右导数都不存在
+  \end{itemize}
+
+  \ifshowsol
+  函数\(f\)显然在此处左连续，所以有\(f'_-(1) = \paren[\big]{\frac23 x^3}'\big\vert_1 = 2x^2\big\vert_1 = 2\)．又因为\(f(1) = 2/3 \ne 1 = f_-(1)\)，函数\(f\)显然不是右连续的，因此也不是右可导的．
+  \fi
+
+\item 函数\(\,f(x) = \abs{\sin x}\)在原点处\uline{\hspace{8em}}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item 既不可导，又不连续
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    连续，但不可导
+  \item 可导，但不连续
+  \item 连续且可导
+  \end{itemize}
+
+  \ifshowsol
+  因为\(f_-(0) = -\sin_-0 = 0 = \sin_+0 = f_+(0)\)且\(f(0) = 0\)，所以它在原点处连续．又因为~\(f'_-(0) = -\sin'_-0 = -1 \ne 1 = \sin'_+0 = f'_+(0)\)，所以它在原点处不可导．
+  \fi
+
+\item 函数
+  \begin{equation*}
+    f(x) =
+    \begin{cases}
+      x^2 \sin\frac1x, & x \ne 0, \\
+      0, & x = 0
+    \end{cases}
+  \end{equation*}
+  在原点处\uline{\hspace{8em}}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item 既不可导，也不连续
+  \item 连续，但不可导
+  \item 可导，但不连续
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    连续且可导
+  \end{itemize}
+
+  \ifshowsol
+  根据定理~\ref{thm:deriv2cont}，可导则连续．又有
+  \begin{equation*}
+    f'(0)
+    = \lim_{\fdx\to0} \frac{\fwdf\,f(0)}{\fdx}
+    = \lim_{\fdx\to0} \frac{\,f(\fdx)}{\fdx}
+    = \lim_{\fdx\to0} \frac{\fdx^2 \sin\frac1\fdx}{\fdx}
+    = \lim_{\fdx\to0} \fdx \sin\frac1\fdx
+    = 0.
+  \end{equation*}
+  \fi
+
+\item 函数
+  \begin{equation*}
+    f(x) =
+    \begin{cases}
+      x, & x < 0, \\
+      \lnp{1+x}, & x \ge 0
+    \end{cases}
+  \end{equation*}
+  在原点处\uline{\hspace{8em}}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item 既不可导，也不连续
+  \item 连续，但不可导
+  \item 可导，但不连续
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    连续且可导
+  \end{itemize}
+
+\item 若函数\(g\)是有界函数，函数
+  \begin{equation*}
+    f(x) =
+    \begin{dcases}
+      \frac{1 - \cos x}{\sqrt x}, & x > 0, \\
+      x^2 g(x), & x \le 0
+    \end{dcases}
+  \end{equation*}
+  在原点处\uline{\hspace{8em}}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item 极限不存在
+  \item 极限存在，但不连续
+  \item 连续，但不可导
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    可导
+  \end{itemize}
+
+  \ifshowsol
+  因为\(\,f(0) = 0\)，所以\(\,f'(0) = \!\lim\limits_{\fdx\to0} f(\fdx)/\!\fdx\)．又因为
+  \begin{gather*}
+    \lim_{\fdx\to0^-}\negthickspace\frac{\,f(\fdx)}{\fdx}
+    = \negthickspace\lim_{\fdx\to0^-}\negthickspace\frac{\fdx^2 g(\fdx)}{\fdx}
+    = \negthickspace\lim_{\fdx\to0^-}\negthickspace\fdx\,g(\fdx)
+    = 0 \\
+    \siand
+    \lim_{\fdx\to0^+}\negthickspace\frac{\,f(\fdx)}{\fdx}
+    = \negthickspace\lim_{\fdx\to0^+}\negthickspace\frac{1-\cosp\fdx}{\fdx^{1.5}}
+    = \negthickspace\lim_{\fdx\to0^+}\negthickspace\frac{\!\sqrt{\scriptstyle\fdx}\,}{2}
+    = 0,
+  \end{gather*}
+  所以\(\,f'(0) = 0\)．
+  \fi
+
+\item 设\(\Fn F(x) = \,f(x) \paren[\big]{1+\abs{\sin x}}\)．若函数\(f\)可导，则\(\,f(0) = 0\)是函数\(\Fn F\)在原点处可导的\uline{\hfill}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    充分必要条件
+  \item 充分不必要条件
+  \item 必要不充分条件
+  \item 既不充分又不必要条件
+  \end{itemize}
+
+  \ifshowsol
+  \begin{proof}
+    注意到\(\Fn F(0) = \,f(0)\)．有
+    \begin{equation}
+      \begin{split}
+        \Fn F'(0)
+        &= \lim_{\fdx\to0} \frac{\fwdf F(0)}{\fdx}
+        = \lim_{\fdx\to0} \frac{\,f(\fdx)\paren[\big]{1+\abs{\sin\fdx}} - f(0)}{\fdx} \\
+        &= \lim_{\fdx\to0} \paren[\bigg]{
+          \frac{\,f(\fdx) - f(0)}{\fdx}
+          + f(\fdx) \frac{\abs{\sin\fdx}}{\fdx}}.
+      \end{split}
+      \label{eq:B1.4.1.E7}
+    \end{equation}
+    假设\(f(0) = 0\)．因为函数\(f\)可导，所以连续，即\(\lim_{\fdx\to0} \,f(\fdx) = f(0) = 0\)．式~\eqref{eq:B1.4.1.E7}就变成\(F'(0) = f'(0)\)．充分性得证．假设\(f(0) \ne 0\)．那么式~\eqref{eq:B1.4.1.E7}中的\(\fdx\)从左右两个方向趋向于零，就会得到不相等的左右极限，即函数\(F\)在原点处不可导．必要性得证．
+  \end{proof}
+  \fi
+
+\item 若函数\(f\)在原点处连续且\(\lim\limits_{h\to0} \frac{\,f(h^2)}{h^2} = 1\)，则\uline{\hspace{8em}}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item \(f(0) = 0\)且\(\,f'_-(0)\)存在
+  \item \(f(0) = 1\)且\(\,f'_-(0)\)存在
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    \(f(0) = 0\)且\(\,f'_+(0)\)存在
+  \item \(f(0) = 1\)且\(\,f'_+(0)\)存在
+  \end{itemize}
+
+  \ifshowsol
+  注意到
+  \begin{equation}
+    \lim_{h\to0} \frac{\,f(h^2)}{h^2} = \!\lim_{\,x\to0^+\!} \!\frac{\,f(x)}{x} = 1.
+    \label{eq:B1.4.1.E8}
+  \end{equation}
+  因为函数连续，所以\(\!\lim\limits_{x\to0^+} f(x) = \,f(0)\)．如果\(\,f(0) \ne 0\)，那么式~\eqref{eq:B1.4.1.E8}中的极限发散．自相矛盾，所以~\(\,f(0) = 0\)．从而有
+  \begin{equation*}
+    f'_+(0)
+    = \!\lim_{\,x\to0^+\!} \!\frac{\,f(x)}{x} = 1.
+  \end{equation*}
+  \fi
+
+\item 若函数\(f\)在点\(x_0\)处可导，则
+  \begin{math}
+    \lim\limits_{h\to0} \frac{\,f(x_0-h) - \,f(x_0)}{h} =
+  \end{math}
+  \ifshowsol
+  {\setlength{\ULdepth}{.9ex}%
+    \uline{\makebox[6em]{\(-\,f'(x_0)\)}}}．
+
+  根据定理~\ref{thm:limfunccomp}，有
+  \begin{equation*}
+    \lim_{h\to0} \frac{\,f(x_0-h) - \,f(x_0)}{h}
+    = - \lim_{h\to0} \frac{\,f(x_0-h) - \,f(x_0)}{-h}
+    = - \lim_{\fdx\to0} \frac{\,f(x_0+\fdx) - \,f(x_0)}{\fdx}
+    = - \,f'(x_0).
+  \end{equation*}
+  \else
+  \uline{\hspace{6em}}．
+  \fi
+
+\item 若函数\(f\)在点\(a\)处及其附近有定义，则\(f\)在点\(a\)处可导的充分必要条件是\uline{\hfill}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item \(\lim\limits_{h\to0} h\paren[\big]{\,f(a+1/h) - \,f(a)}\)存在
+  \item \(\lim\limits_{h\to0} \frac{\,f(a+2h) - \,f(a+h)}{h}\)存在
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    \(\lim\limits_{h\to0} \frac{\,f(a) - \,f(a-h)}{h}\)存在
+  \item \(\lim\limits_{h\to0} \frac{\,f(a+h) - \,f(a-h)}{h}\)存在
+  \end{itemize}
+
+  \ifshowsol
+  令\(\,f(x) = \abs x,\ a = 0\)．这就是选项~B和~D的共同反例．实际上，选项~B和~D只是必要不充分条件．选项~A即不充分也不必要．函数\(\arctan\abs x\)说明了不充分性，函数\(x^2\)说明了不必要性．关于选项~C，有
+  \begin{equation*}
+    \lim_{h\to0} \frac{\,f(a) - \,f(a-h)}{h}
+    = \lim_{h\to0} \frac{\,f(a-h) - \,f(a)}{-h}
+    = \lim_{\fdx\to0} \frac{\,f(a+\fdx) - \,f(a)}{\fdx}
+    = \,f'(a).
+  \end{equation*}
+  \fi
+
+\item 周期函数\(f\)在\(\R\)上可导，周期为\(3\)．若\(\lim\limits_{x\to0} \frac{\,f(1-x)-\,f(1)}{2x} = -1\)，则曲线\(y = f(x)\)在点\(\paren[\big]{4, \,f(4)}\)处的切线斜率为
+  \ifshowsol
+  \uline{\makebox[4em]{\(2\)}}．
+
+  实际上，有
+  \begin{equation*}
+    f'(1)
+    = \!\lim_{\fdx\to0} \!\frac{\,f(1+\fdx) - \,f(1)}{\fdx}
+    = \lim_{x\to0} \frac{\,f(1-x) - \,f(1)}{-x}
+    = -2 \lim_{x\to0} \frac{\,f(1-x)-\,f(1)}{2x}
+    = 2.
+  \end{equation*}
+  从而\(\,f'(4) = \,f'(1) = 2\)．
+  \else
+  \uline{\hspace{4em}}．
+  \fi
+
+\item 求曲线\(y = 1/x\)在点\(\paren{2,1/2}\)处的切线方程．
+
+  \ifshowsol
+  因为\(\,f'(2) = -1/4\)，自然有
+  \begin{equation*}
+    y = \frac12 - \frac14 \paren{x-2}.
+  \end{equation*}
+  \fi
+
+\item 求曲线\(y = 1/x\)在点\(\paren{2,1/2}\)处的法线方程．
+
+  \ifshowsol
+  因为\(\,f'(2) = -1/4\)，自然有
+  \begin{equation*}
+    y = \frac12 + 4(x-2).
+  \end{equation*}
+  \fi
+
+\item 设函数\(f\)在点\(x_0\)处可导，\(\fdy = \,f(x_0+h) - \,f(x_0)\)，\(\dy\)为\(\,f\)在\(x_0\)处的微分．当\(h \to 0\)时，必有\uline{\hspace*{6em}}．
+  \begin{itemize}
+    \renewcommand{\labelitemi}{\faCircleThin}
+  \item \(\dy\)是\(h\)的同阶无穷小量
+  \item \(\fdy - \dy\)是\(h\)的同阶无穷小量
+  \item \(\dy\)是\(h\)的高阶无穷小量
+    \ifshowsol
+  \item[\faCircle]
+    \else
+  \item
+    \fi
+    \(\fdy - \dy\)是\(h\)的高阶无穷小量
+  \end{itemize}
+
+  \ifshowsol
+  若\(\,f'(x_0) \ne 0\)，则\(\dy\)是\(h\)的高阶无穷小量；若\(\,f'(x_0) = 0\)，则\(\dy\)是\(h\)的同阶无穷小量．因此，选项~A和~C都不对．
+  \fi
+
+\item 设函数\(f\)在点\(x_0\)处可导，当自变量由\(x_0\)增至\(x_0+\fdy\)时记函数\(f\)的增量为\(\fdy\)，\(\dy\)为\(f\)在\(x_0\)处的微分．求\(\!\lim\limits_{\fdx\to0} \!\frac{\fdy - \dy}{\fdx}\)．
+
+  \ifshowsol
+  显然等于零．
+  \fi
+\end{enumerate}
+\fi
+
+\section{导数与微分的运算}
+
+\begin{theorem*}
+  \label{thm:deriv4ops}
+  若函数\(f\)和\(g\)均可导，则有：
+  \begin{enumerate}
+    \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
+  \item \(\paren{\,f \pm \,g}' = \,f' \pm \,g'\)；
+  \item \(\paren{\,fg}' = \,f'g + \,fg'\)；
+  \item \(\paren{\,f/g}' = \frac{\,f'g - \,fg'\!}{g^2} = \frac{\,f'\!}{g} - \frac{\,fg'\!}{g^2}\)，当定义域在\(\Set{x \mid g(x) \ne 0}\)上时．
+  \end{enumerate}
+  % TODO: Complete the proof
+\end{theorem*}
+
+\begin{example*}
+  求正切函数\(\tan x\)的导函数．
+  \begin{equation*}
+    \paren{\tan x}'
+    = \paren*{\frac{\sin x}{\cos x}}'
+    = \frac{\sin' x \cos x - \sin x \cos' x}{\cos^2 x}
+    = \frac{\cos^2 x + \sin^2 x}{\cos^2 x}
+    = \frac{1}{\cos^2 x}
+    = \sec^2 x.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求余切函数\(\cot x\)的导函数．
+  \begin{equation*}
+    \paren{\cot x}'
+    = \paren*{\frac{\cos x}{\sin x}}'
+    = \frac{\cos' x \sin x - \cos x \sin' x}{\sin^2 x}
+    = \frac{-\sin^2 x - \cos^2 x}{\sin^2 x}
+    = -\frac{1}{\sin^2 x}
+    = -\csc^2 x.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求正割函数\(\sec x\)的导函数．
+  \begin{equation*}
+    \paren{\sec x}'
+    = \paren[\bigg]{\frac{1}{\cos x}}'
+    = -\frac{\cos' x}{\cos^2 x}
+    = \frac{\sin x}{\cos^2 x}
+    = \sec x \tan x.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求余割函数\(\csc x\)的导函数．
+  \begin{equation*}
+    \paren{\csc x}'
+    = \paren*{\frac{1}{\sin x}}'
+    = -\frac{\sin' x}{\sin^2 x}
+    = -\frac{\cos x}{\sin^2 x}
+    = -\csc x \cot x.
+  \end{equation*}
+\end{example*}
+
+% https://qr.ae/p2rr3G
+% https://en.wikipedia.org/wiki/Vieta%27s_formulas
+\begin{example*}
+  求函数
+  \begin{equation*}
+    f(x) = \prod_{k=0}^n \paren{x + k}
+  \end{equation*}
+  在原点处的导数．
+
+  \begin{remark}
+    展开后，只需关注最低次项即可．有
+    \begin{gather*}
+      f(x) = \sum_{k=1}^{n+1} c_k\,x^k,
+      \shortintertext{从而}
+      f'(x) = c_1 + \sum_{k=2}^{n+1} c_k\,kx^{k-1}.
+    \end{gather*}
+    所以有\(\,f'(0) = c_1 = n!\)．
+  \end{remark}
+\end{example*}
+
+\begin{theorem}[复合函数的导数]
+  \label{thm:derivcomp}
+  若函数\(f\)和\(g\)都可导，则\(\paren*{\,f\mkern1mu \circ g}' = \paren*{\,f'\mkern-4mu \circ g}\,g'\)．
+
+  \begin{proof}
+    根据定理~\ref{thm:diffequivderiv}，只需证明\(\diff\paren*{\,f\mkern1mu \circ g} =  \paren{\,f'\mkern-4mu \circ g}\,g' \dx\)即可．令\(u = g(x)\)，有
+    \begin{align}
+      \fwdf\,f(u)
+      &= f'(u) \fdu + \littleop{\fdu},
+        \label{eq:derivcomp1} \\
+      \fdu
+      &= g'(x) \fdx + \littleop{\fdx}.
+        \label{eq:derivcomp2}
+    \end{align}
+    把式~\eqref{eq:derivcomp2}代入式~\eqref{eq:derivcomp1}就得到
+    \begin{equation*}
+      \begin{split}
+        \fwdf\paren{\,f\mkern1mu \circ g}(x)
+        % &= \paren{\,f\mkern1mu \circ g}(x+\fdx) - \paren{\,f\mkern1mu \circ g}(x) \\
+        % &= f\mkern2mu\paren*{\mkern1mu g(x) + \fdu} - \,f\mkern2mu\paren*{\mkern1mu g(x)} \\
+        &= \fwdf\,f(u) \\
+        &= f'(u) \fdu + \littleop{1} \fdu \\
+        &= f'\paren*{\mkern1mu g(x)}\,g'(x) \fdx + f'\paren*{\mkern1mu g(x)} \littleop{\fdx} \\
+        &\qquad + \littleop{1}\,g'(x) \fdx + \littleop{1} \littleop{\fdx} \\
+        % &= f'\paren*{\mkern1mu g(x)}\,g'(x) \fdx + \littleop{\fdx} \\
+        &= \paren*{(\,f'\mkern-4mu \circ g)\,g'}(x) \fdx + \littleop{\fdx}.
+        \qedhere
+      \end{split}
+    \end{equation*}
+  \end{proof}
+  \begin{proof}
+    令\(u = g(x)\)．当函数\(g\)在点\(x\)处存在一个去心邻域使得它在此邻域上都不等于\(g(x)\)时，自然有
+    \begin{equation*}
+      \lim_{\fdx\to0} \frac{\Fn\Delta\paren{\,f\mkern1mu \circ g}(x)}{\fdx}
+      = \lim_{\fdx\to0} \frac{\Fn\Delta\paren{\,f\mkern1mu \circ g}(x)}{\fwdf g(x)}
+      \cdot \frac{\fwdf g(x)}{\fdx}
+      = \lim_{\fdu\to0}\frac{\fwdf\,f(u)}{\fdu} \lim_{\fdx\to0} \frac{\fwdf g(x)}{\fdx}
+      = \paren*{(\,f'\mkern-4mu \circ g)\,g'}(x).
+    \end{equation*}
+    当函数\(g\)在点\(x\)处不存在一个去心邻域使得它在此邻域上都不等于\(g(x)\)时，能推出\(g'(x) = 0\)．再由定理~\ref{thm:limequiv}和~\ref{thm:seqcvgsubseq}可知，\(\paren{\,f\mkern1mu \circ g}'(x) = 0 = f'\paren*{\mkern1mu g(x)}\,g'(x) = \paren*{(\,f'\mkern-4mu \circ g)\,g'}(x)\)．
+  \end{proof}
+\end{theorem}
+
+\begin{example*}
+  求幂函数\(f(x) = x^a\)的导函数，其中\(a\)是任意非零实数．
+  \begin{equation*}
+    f'(x)
+    = \paren{x^a}'
+    = \paren{\exp\ln x^a}'
+    = \paren[\big]{\expb{a \ln x}}'
+    = \expb{a \ln x} \cdot \frac{a}{x}
+    = x^a \cdot \frac ax
+    = ax^{a-1}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求双曲正弦函数的导函数．
+  \begin{equation*}
+    \sinh' x
+    = \paren[\bigg]{\frac{e^x - e^{-x}}{2}}'
+    = \frac{e^x + e^{-x}}{2}
+    = \cosh x.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求双曲余弦函数的导函数．
+  \begin{equation*}
+    \cosh' x
+    = \paren[\bigg]{\frac{e^x+e^{-x}}{2}}'
+    = \frac{e^x - e^{-x}}{2}
+    = \sinh x.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  用链式法则求反双曲正弦函数的导函数．
+  \begin{equation*}
+    \arcsinh' x
+    = \paren[\Big]{\ln\paren[\big]{x + \sqrt{\smash{x^2} + 1}}}'
+    = \frac{1}{x + \sqrt{\smash{x^2} + 1}} \paren[\Bigg]{1 + \frac{2x}{2\sqrt{x^2 + 1}}}
+    = \frac{1}{\negthickspace\sqrt{x^2 + 1}}.
+  \end{equation*}
+\end{example*}
+
+% https://doi.org/10.1016/B978-0-08-013473-4.50008-6 (170)
+\begin{theorem*}[一阶微分形式的不变性]
+  一阶微分的形式具有不变性．
+
+  \begin{proof}
+    应用定理~\ref{thm:diffequivderiv}和~\ref{thm:derivcomp}即可得证．
+  \end{proof}
+\end{theorem*}
+
+\begin{theorem*}
+  若函数\(f\)在点\(x_0\)处可导且\(f'(x_0) \ne 0\)，则其反函数\(\,f^{-1}\)在点\(f(x_0)\)处可导且
+  \begin{equation*}
+    \dd[f^{-1}]y \Bigg\vert_{\,f(x_0)} \mkern-11mu = \frac1{\,f'(x_0)}.
+  \end{equation*}
+
+  \begin{proof}
+    令\(x = f^{-1}(y)\)．根据定义~\ref{defn:funcinv}和定理~\ref{thm:limfunccomp}和~\ref{thm:deriv2cont}，有
+    \begin{equation*}
+      \begin{split}
+        \dd[f^{-1}]y \Bigg\vert_{\,f(x_0)} \mkern-11mu
+        &= \lim_{\,y\to y_0\!} \frac{\,f^{-1}(y) - \,f^{-1}(y_0)}{y - y_0}
+        = \lim_{\,y\to y_0\!} \frac{\,f^{-1}(y) - \,f^{-1}(y_0)}{\,f\paren[\big]{\,f^{-1}(y)} - \,f\paren[\big]{\,f^{-1}(y_0)}} \\
+        &= \lim_{\,x\to x_0\!} \frac{x - x_0}{\,f(x) - \,f(x_0)}
+        = \frac{1}{\,f'(x_0)}.
+        \qedhere
+      \end{split}
+    \end{equation*}
+  \end{proof}
+\end{theorem*}
+
+\begin{example*}
+  求反正弦函数的导函数．
+  \begin{equation*}
+    \arcsin'x
+    = \frac1{\sin'\arcsin x}
+    = \frac1{\cos\arcsin x}
+    = \frac1{\negthickspace\sqrt{1 - \sin^2\arcsin x}}
+    = \frac1{\negthickspace\sqrt{1 - x^2}}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求反正切函数的导函数．
+  \begin{equation*}
+    \arctan'x
+    = \frac1{\tan'\arctan x}
+    = \frac1{\sec^2\arctan x}
+    = \frac1{1 + \tan^2\arctan x}
+    = \frac1{1 + x^2}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求反余弦函数的导函数．
+  \begin{equation*}
+    \arccos'x
+    = \frac1{\cos'\arccos x}
+    = - \frac1{\sin\arccos x}
+    = - \frac1{\negthickspace\sqrt{1 - \cos^2\arccos x}}
+    = - \frac1{\negthickspace\sqrt{1 - x^2}}.
+  \end{equation*}
+\end{example*}
+
+\subpdfbookmark{思考}{B1.4.2.P}
+\subsection*{思考}
+
+\begin{enumerate}
+\item 函数\(f\)与其反函数\(f^{-1}\)的导数在每一点处的乘积等于\(1\)．这个结论对吗？
+
+  \ifshowsolp
+  不对．函数\(f(x) = x^3\!\)与其反函数\(f^{-1}(x) = \sqrt[\leftroot{-2}\uproot{2}3]x\)在点\(2\)处的导数分别是\(12\)和\(\sqrt[\leftroot{-2}\uproot{2}3]{2}\big/{6}\)，显然它们的乘积\(2\sqrt[\leftroot{-2}\uproot{2}3]2 > 1\)．
+  \fi
+
+\item 在复合函数的求导法则\(\paren{\,f\mkern1mu \circ g}' = \paren{\,f'\mkern-4mu \circ g}\,g'\)中，\(\paren{\,f\mkern1mu \circ g}'\)与\(f'\mkern-4mu \circ g\)的含义有什么不同？若令\(u = g(x)\)，能得到\(\,f'(u) = f'(u)\,u'\)吗？
+
+  \ifshowsolp
+  前者是先复合再求导，后者是先求导再复合．不能．
+  \fi
+\end{enumerate}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.4.2.E}
+\subsection*{练习}
+
+\begin{enumerate}
+\item 设曲线\(y = x^3 + ax\)与曲线\(y = bx^2 + c\)在点\(\paren{-1,0}\)处相切．求常数\(a,\ b,\ c\)．
+
+  \ifshowsol
+  解方程组
+  \begin{equation*}
+    \left\{
+      \begin{aligned}
+        -1 - a &= 0 \\
+        b + c &= 0 \\
+        3 + a &= -2b
+      \end{aligned}
+    \right.
+  \end{equation*}
+  得到\(a = b = -1,\ c = 1\)．
+  \fi
+
+\item 求函数\(\ln\ln x\)的导函数．
+  \ifshowsol
+  \begin{equation*}
+    (\ln\ln x)'
+    = \frac{\ln' x}{\ln x}
+    = \frac{1}{x \ln x}.
+  \end{equation*}
+  \fi
+\end{enumerate}
+\fi
+
+\section{几种特殊函数的求导法、高阶导数}
+
+\subpdfbookmark{思考}{B1.4.3.P}
+\subsection*{思考}
+
+\begin{enumerate}
+\item 把函数的二阶微分定义成．一阶微分具有形式不变性，二阶微分是否也有形式不变性？
+\item 由参数方程\(x = \varphi(t),\ y = \psi(t)\)确定的函数\(y = y(x)\)的求导公式\(\dy/\!\dx = \psi'(t)/\varphi'(t)\)是如何确定的？如何求二阶导数\(\diff^2y/\!\dx^2\)和三阶导数\(\diff^3y/\!\dx^3\)？
+\end{enumerate}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.4.3.E}
+\subsection*{练习}
+\fi
 
 \chapter{导数应用}
 
