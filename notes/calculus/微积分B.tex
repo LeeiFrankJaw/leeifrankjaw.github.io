@@ -247,7 +247,11 @@
     \fi
   \end{itemize}
 
-\item 若\(A, B\)为\(\R\)中的非空有界集，记\(M_1 = \inf\paren{A \cup B},\ M_2 = \min\brce{\inf A, \inf B},\ N_1 = \sup\paren{A \cup B},\ N_2 = \max\brce{\sup A, \sup B}\)，则\uline{\makebox[4em]{}}．
+\item 若\(A, B\)为\(\R\)中的非空有界集，记
+  \begin{equation*}
+    M_1 = \inf\paren{A \cup B},\ M_2 = \min\brce{\inf A, \inf B},\ N_1 = \sup\paren{A \cup B},\ N_2 = \max\brce{\sup A, \sup B},
+  \end{equation*}
+  则\uline{\hspace{8em}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(M_1 < M_2,\ N_1 > N_2\)
@@ -260,7 +264,11 @@
     \fi
   \end{itemize}
 
-\item 若\(A, B\)为\(\R\)中的两个不同非空有界集，且\(A \cap B\)非空，记\(M_1 = \inf(A \cap B),\ M_2 = \max\brce{\inf A, \inf B},\ N_1 = \sup(A \cap B),\ N_2 = \min\brce{\sup A, \sup B}\)，则\uline{\makebox[4em]{}}．
+\item 若\(A, B\)为\(\R\)中的两个不同非空有界集，且\(A \cap B\)非空，记
+  \begin{equation*}
+    M_1 = \inf(A \cap B),\ M_2 = \max\brce{\inf A, \inf B},\ N_1 = \sup(A \cap B),\ N_2 = \min\brce{\sup A, \sup B},
+  \end{equation*}
+  则\uline{\hspace{8em}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
@@ -689,7 +697,7 @@
   \fi
 
 \item 下列各对函数\(y = f(u), u = g(x)\)中，可以复合成复合函数\(y = f(g(x))\)的是
-  \uline{\makebox[10em]{}}．
+  \uline{\hfill}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
@@ -890,8 +898,14 @@
 \end{definition}
 
 \begin{theorem*}
-  函数\(\,f\)单增的充要条件是：对于任意的\(x_1, x_2 \in D\)，当\(x_1 \ne x_2\)时，都有\(\paren[\big]{x_1 - x_2}\paren[\big]{\,f(x_1) - f(x_2)} > 0\)．
-  函数\(\,f\)单减的充要条件是：对于任意的\(x_1, x_2 \in D\)，当\(x_1 \ne x_2\)时，都有\(\paren[\big]{x_1 - x_2}\paren[\big]{\,f(x_1) - f(x_2)} < 0\)．
+  函数\(\,f\)单增的充要条件是：对于任意的\(x_1, x_2 \in D\)，当\(x_1 \ne x_2\)时，都有
+  \begin{equation*}
+    \paren[\big]{x_1 - x_2}\paren[\big]{\,f(x_1) - f(x_2)} > 0.
+  \end{equation*}
+  函数\(\,f\)单减的充要条件是：对于任意的\(x_1, x_2 \in D\)，当\(x_1 \ne x_2\)时，都有
+  \begin{equation*}
+    \paren[\big]{x_1 - x_2}\paren[\big]{\,f(x_1) - f(x_2)} < 0.
+  \end{equation*}
 \end{theorem*}
 
 \begin{example*}
@@ -3504,14 +3518,16 @@
   \ifshowsol
   略作变形，有
   \begin{equation*}
-    \lim_{\,x\to0^+\!} \paren{\cos\sqrt x}^{\pi/x}
-    = \lim_{\,x\to0^+\!} \expb[\bigg]{\frac{\pi \ln\cos\sqrt x}{x}}
-    = \lim_{\,x\to0^+\!} \expb[\bigg]{
-      \frac{\pi \lnp{1 + \cos\sqrt x - 1}}{\cos\sqrt x - 1}
-      \cdot
-      \frac{\cos\sqrt x - 1}{x}}
-    = e^{-\pi/2}.
-  \end{equation*}
+    \begin{split}
+      \lim_{\,x\to0^+\!} \paren{\cos\sqrt x}^{\pi/x}
+      &= \lim_{\,x\to0^+\!} \expb[\bigg]{\frac{\pi \ln\cos\sqrt x}{x}}
+      = \lim_{\,x\to0^+\!} \expb[\bigg]{
+        \frac{\pi \lnp{1 + \cos\sqrt x - 1}}{\cos\sqrt x - 1}
+        \cdot
+        \frac{\cos\sqrt x - 1}{x}} \\
+      &= e^{-\pi/2}.
+    \end{split}
+  \end{equation*}j
   \fi
 
 \item 求\(\lim\limits_{x\to1} \dfrac{\sinp{x-1}}{\sqrt x - 1}\)．
@@ -3967,7 +3983,7 @@
   若函数\(f\)在\(\brkt{a,b}\)上连续，则函数\(f\)在\(\paren{a,b}\)上可以取到\(f(a)\!\)和\(f(b)\)之间（不含）的所有数\footnote{英文叫作intermediate value theorem，简称为IVT．}．
 
   \begin{proof}
-    当\(f(a) = f(b)\)时，此定理空虚地为真．不失一般地，假设\(f(a) < f(b)\)．对于任意的\(μ \in \paren[\big]{\,f(a), f(b)}\)，构造函数\(\Fn F(x) = f(x) - μ\)，那么根据定理~\ref{thm:bolzano}，存在\(ξ \in \paren{a,b}\)使得\(\Fn F(ξ) = 0\)，即\(f(ξ) = μ\)．由于\(μ\)的任意性，此定理得证．
+    当\(\,f(a) = \,f(b)\)时，此定理空虚地为真．不失一般地，假设\(\,f(a) < \,f(b)\)．对于任意的\(μ \in \paren[\big]{\,f(a), f(b)}\)，构造函数\(\Fn F(x) = f(x) - μ\)，那么根据定理~\ref{thm:bolzano}，存在\(ξ \in \paren{a,b}\)使得\(\Fn F(ξ) = 0\)，即\(f(ξ) = μ\)．由于\(μ\)的任意性，此定理得证．
   \end{proof}
 \end{corollary}
 
@@ -5909,6 +5925,116 @@
     = \frac{1}{x \ln x}.
   \end{equation*}
   \fi
+
+\item 求函数\(2\cos3x\)的导函数．
+  \ifshowsol
+  \begin{equation*}
+    (2\cos3x)' = 2(\cos3x)' = 2(-\sin3x)(3x)' = -6\sin3x.
+  \end{equation*}
+  \fi
+
+\item 设函数\(f\)可导．求函数\(f\mkern1mu \circ f\mkern1mu \circ f\)的导函数．
+  \ifshowsol
+  \begin{equation*}
+    (\,f\mkern1mu \circ f\mkern1mu \circ f)'
+    = (\,f'\mkern-4mu \circ f\mkern1mu \circ f) (\,f\mkern1mu \circ f)'
+    = (\,f'\mkern-4mu \circ f\mkern1mu \circ f) (\,f'\mkern-4mu \circ f) \,f'.
+  \end{equation*}
+  \fi
+
+\item 求函数\(\dfrac{\arcsin x}{x}\)的导函数．
+  \ifshowsol
+  \begin{equation*}
+    \paren[\bigg]{\frac{\arcsin x}{x}}'
+    = \frac{x\big/\!\sqrt{1-\smash{x^2}} - \arcsin x}{x^2}
+    = \frac{1}{x \sqrt{1-\smash{x^2}}} - \frac{\arcsin x}{x^2}
+  \end{equation*}
+  \fi
+
+\item 求函数\(1/\!\ln x\)的导函数．
+  \ifshowsol
+  \begin{equation*}
+    \paren[\bigg]{\frac1{\ln x}}'
+    = - \frac{\ln'x}{\operatorname{ln^2} x}
+    = - \frac{1}{x \operatorname{ln^2} x}.
+  \end{equation*}
+  \fi
+
+\item 求函数\(\ln\sin x\)的微分．
+  \ifshowsol
+  \begin{equation*}
+    \diff(\ln\sin x)
+    = \frac1{\sin x} \diff(\sin x)
+    = \frac{\cos x}{\sin x} \dx
+    = \cot x \dx
+  \end{equation*}
+  \fi
+
+\item 求函数\(\operatorname{ln^3} x^2\)的微分．
+  \ifshowsol
+  \begin{equation*}
+    \diff\paren{\operatorname{ln^3} x^2}
+    = 3\operatorname{ln^2} x^2 \diff\paren{\ln x^2}
+    = 3\operatorname{ln^2} x^2 \cdot \frac1{x^2} \diff\paren{x^2}
+    = 3\operatorname{ln^2} x^2 \cdot \frac1{x^2} \cdot 2x \dx
+    = \frac{6 \operatorname{ln^2} x^2}{x} \dx.
+  \end{equation*}
+  \fi
+
+\item 设函数\(\,f(x) = -2x^2\)且\(\,f'(a) = 4\)．求常数\(a\)．
+
+  \ifshowsol
+  因为\(f'(x) = -4x\)，所以\(f'(a) = -4\,a = 4\)，即\(a = -1\)．
+  \fi
+
+\item 函数\(f\)满足\(y = f\,\paren[\Big]{\frac{x+1}{x-1}} \)和\(\,f'(x) = \arctan\sqrt x\)．求\(\dydx\bigg\vert_{2}\)．
+  \ifshowsol
+  \begin{equation*}
+    \dydx\bigg\vert_{2}
+    = f'(3) \cdot \paren[\bigg]{\frac{x+1}{x-1}}'\bigg\vert_{2}
+    = \arctan\sqrt3 \cdot \paren[\bigg]{-\frac{2}{(x-1)^2}} \bigg\vert_{2}
+    = - \frac23 \pi.
+  \end{equation*}
+  \fi
+
+\item 设函数\(\,f(x) = \prod\limits_{k=1}^n \paren{e^{kx}-k}\)，其中\(n\)是正整数．求\(\,f'(0)\)．
+
+  下面给出两种方法．
+  \begin{remark}[方法一]
+    因为\(\,f(0) = 0\)，所以有
+    \begin{equation*}
+      \begin{split}
+        f'(0)
+        &= \lim_{\fdx \to 0} \frac{\,f(\fdx)}{\fdx}
+        = \lim_{\fdx \to 0} \frac{e^x-1}{\fdx} \prod_{k=2}^n \paren{e^{k\fdx}-k} \\
+        &= \prod_{k=2}^n \paren{1-k}
+        = (-1)^{n-1} \prod_{k=1}^{n-1} \paren{k} \\
+        &= (-1)^{n-1} (n-1)!\,.
+      \end{split}
+    \end{equation*}
+  \end{remark}
+  \begin{remark}[方法二]
+    这是对乘积形式的式子常见的处理技巧．因为
+    \begin{equation*}
+      \begin{split}
+        f'(x)
+        &= f(x) \,\ddx \ln\,f(x) \\
+        &= f(x) \,\ddx \ln\prod_{k=1}^n \paren{e^{kx}-k} \\
+        &= f(x) \,\ddx \sum_{k=1}^n \lnp{e^{kx}-k} \\
+        &= f(x) \sum_{k=1}^n \ddx \lnp{e^{kx}-k} \\
+        &= f(x) \sum_{k=1}^n \frac{ke^{kx}}{e^{kx}-k} \\
+        &= \sum_{k=1}^n ke^{kx} \,\smashoperator{\prod_{\substack{1 \le j \le n \\ j \ne k}}}
+        \,\paren{e^{jx}-j}.
+      \end{split}
+    \end{equation*}
+    所以有
+    \begin{equation*}
+      f'(0)
+      = \sum_{k=1}^n \prod_{\substack{1 \le j \le n \\ j \ne k}} \!\paren{1-j}
+      = \,\smashoperator{\prod_{\substack{1 \le j \le n \\ j \ne 1}}} \,\paren{1-j}
+      = (-1)^{n-1} (n-1)!\,.
+    \end{equation*}
+  \end{remark}
 \end{enumerate}
 \fi
 
@@ -6377,7 +6503,6 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
   \fi
 
 \item \disp{\int e^{-\abs{x}} \dx}.
-
   \ifshowsol
   \begin{align*}
     \int e^{-\abs{x}} \dx
@@ -6705,11 +6830,12 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
     + \paren{Bx+C}\paren{x-2}\paren{x^2+1}
     + \paren{Dx+E}\paren{x-2}}{%
     (x-2)\paren{x^2+1}^2} \\
-  &= \frac{\paren{A + B} x^4
+  &= \frac{
+    \splitfrac{\paren{A + B} x^4
     + \paren{-2B + C} x^3
-    + \paren{2A + B - 2C + D}x^2
+    + \paren{2A + B - 2C + D}x^2}{%
     + \paren{-2B + C - 2D + E} x
-    + \paren{A - 2C - 2E}}{%
+    + \paren{A - 2C - 2E}}}{%
     (x-2)\paren{x^2+1}^2}.
 \end{align*}
 写成方程组的形式
