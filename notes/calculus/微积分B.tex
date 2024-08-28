@@ -5203,11 +5203,11 @@
   \label{rem:derivgeom}
   \leavevmode
   \begin{enumerate}
-  \item 切线方程：曲线\(y = f(x)\)在\(\paren*{x_0, y_0}\)处的切线方程为
+  \item 切线方程：曲线\(y = f(x)\)在点\(\paren{x_0, \,y_0}\)处的切线方程为
     \begin{equation*}
       y = x\,f'(x_0) + y_0 - x_0\,f'(x_0).
     \end{equation*}
-  \item 法线方程：曲线\(y = f(x)\)在\(\paren*{x_0, y_0}\)处的法线方程为
+  \item 法线方程：曲线\(y = f(x)\)在点\(\paren{x_0, \,y_0}\)处的法线方程为
     \begin{equation*}
       y = - \frac{x}{f'(x_0)} + y_0 + \frac{x_0}{f'(x_0)}.
     \end{equation*}
@@ -5825,7 +5825,8 @@
   \end{proof}
 \end{theorem*}
 
-\begin{theorem*}
+\begin{theorem}
+  \label{thm:derivinv}
   若函数\(f\)在点\(x_0\)处可导且\(f'(x_0) \ne 0\)，则其反函数\(\,f^{-1}\)在点\(f(x_0)\)处可导且
   \begin{equation*}
     \dd[f^{-1}]y \Bigg\vert_{\,f(x_0)} \mkern-11mu = \frac1{\,f'(x_0)}.
@@ -5844,7 +5845,7 @@
       \end{split}
     \end{equation*}
   \end{proof}
-\end{theorem*}
+\end{theorem}
 
 \begin{example*}
   求反正弦函数的导函数．
@@ -5990,9 +5991,9 @@
 \item 函数\(f\)满足\(y = f\,\paren[\Big]{\frac{x+1}{x-1}} \)和\(\,f'(x) = \arctan\sqrt x\)．求\(\dydx\bigg\vert_{2}\)．
   \ifshowsol
   \begin{equation*}
-    \dydx\bigg\vert_{2}
-    = f'(3) \cdot \paren[\bigg]{\frac{x+1}{x-1}}'\bigg\vert_{2}
-    = \arctan\sqrt3 \cdot \paren[\bigg]{-\frac{2}{(x-1)^2}} \bigg\vert_{2}
+    \dydx\Bigg\vert_{2}
+    = f'(3) \cdot \paren[\bigg]{\frac{x+1}{x-1}}'\Bigg\vert_{2}
+    = \arctan\sqrt3 \cdot \paren[\bigg]{-\frac{2}{(x-1)^2}} \Bigg\vert_{2}
     = - \frac23 \pi.
   \end{equation*}
   \fi
@@ -6040,20 +6041,494 @@
 
 \section{几种特殊函数的求导法、高阶导数}
 
+\begin{theorem*}
+  设有方程\(f(x,y) = 0\)．把\(x\)看成自变量，把\(y\)看成因变量，则由此方程确定的函数\(y\)在点\(\paren{x_0, \,y_0}\)处关于\(x\)的导数满足
+  \begin{equation*}
+    \diff f(x,y) = \pdpdx\,f(x,y) \dx + \pdpdy\,f(x,y) \dy.
+  \end{equation*}
+\end{theorem*}
+
+\begin{example*}
+  设\(y\)是\(x\)由方程\(x = y + \varepsilon \sin y\)确定的一个函数，其中\(0 < \varepsilon < 1\)．求\(y'\)．
+
+  \begin{remark}
+    因为
+    \begin{equation*}
+      \dx
+      = \diff(y + \varepsilon \sin y)
+      = \dy + \varepsilon \cos y \dy
+      = (1 + \varepsilon \cos y) \dy,
+    \end{equation*}
+    所以
+    \begin{equation*}
+      \dydx = \frac1{1 + \varepsilon \cos y}.
+    \end{equation*}
+  \end{remark}
+\end{example*}
+
+\begin{example*}
+  设\(y\)是\(x\)由\(e^{xy} + \tan xy = y\)确定的一个函数．求\(y'(0)\)．
+
+  \begin{remark}
+    当\(x = 0\)时，有
+    \begin{math}
+      e^0 + \tan 0 = 1 = y.
+    \end{math}
+    又因为
+    \begin{gather*}
+      \begin{split}
+        \dy
+        &= \diff(e^{xy} + \tan xy) \\
+        &= e^{xy} \paren{y \dx + x \dy} + \paren{y \dx + x \dy} \sec^2xy \\
+        &= \paren{y \dx + x \dy} \paren{e^{xy} + \sec^2xy},
+      \end{split}
+      \shortintertext{所以}
+      \dydx = \paren[\bigg]{y + x \dydx} \paren{e^{xy} + \sec^2xy}, \\
+      \shortintertext{从而}
+      \dydx\Bigg\vert_{\substack{x = 0 \\ y = 1}} \mkern-11mu
+      = (1 + 0)(e^0 + \sec^2 0)
+      = 2.
+    \end{gather*}
+  \end{remark}
+\end{example*}
+
+% https://mathcurve.com/courbes2d.gb/foliumdedescartes/foliumdedescartes.shtml
+% https://mathworld.wolfram.com/FoliumofDescartes.html
+% https://en.wikipedia.org/wiki/Folium_of_Descartes
+\begin{example*}
+  求曲线\(x^3 + y^3 = 9xy\)在点\(\paren{2,4}\)处的切线方程和法线方程．
+
+  \begin{remark}
+    因为
+    \begin{equation*}
+      \diff(x^3+y^3)
+      = 3x^2 \dx + 3y^2 \dy
+      = 9(y \dx + x \dy)
+      = \diff(9xy),
+    \end{equation*}
+    所以当\(x = 2,\ y = 4\)时就有
+    \begin{gather*}
+      12\dx + 48\dy
+      = 9(4\dx + 2\dy)
+      = 36\dx + 18\dy
+      \shortintertext{即}
+      \dydx\Bigg\vert_{\substack{x = 2 \\ y = 4}} \mkern-10mu
+      = \frac{36-12}{48-18}
+      = \frac{4}{5}.
+    \end{gather*}
+    因此，这条曲线在此处的切线方程和法线方程分别是
+    \begin{equation*}
+      y =  \frac45 x + \frac{12}{5}
+      \txt{和}
+      y = - \frac54 x + \frac{13}{2}.
+    \end{equation*}
+  \end{remark}
+\end{example*}
+
+\begin{theorem*}[参数方程的求导法]
+  设参数方程
+  \begin{equation*}
+    x = x(t), \quad
+    y = y(t).
+  \end{equation*}
+  若函数\(\fdx\)在点\(t_0\)处连续且在此处附近异号，则
+  \begin{equation*}
+    \dydx\Bigg\vert_{t=t_0} \mkern-15mu
+    = \lim_{t\to t_0} \frac{\fdy(t)}{\fdx(t)}.
+  \end{equation*}
+  特别地，若函数\(x\)在点\(t_0\)处可导且\(x'(t_0) \ne 0\)，则\(y\)在点\(t = t_0\)处关于\(x\)的导数是
+  \begin{equation*}
+    \dydx\Bigg\vert_{t=t_0} \mkern-15mu
+    = \frac{\dy/\!\dt}{\dx/\!\dt}\Bigg\vert_{t=t_0} \mkern-22mu.
+  \end{equation*}
+  % TODO: Add proof
+\end{theorem*}
+
+\begin{example*}
+  求曲线\(r = 1 + \cos\theta\)在\(\theta = \pi/4\)处的切线方程．
+
+  \begin{remark}
+    因为\(x = r \cos\theta = \cos\theta + \cos^2\theta\)和\(y = \sin\theta + \cos\theta \sin\theta\)，所以有
+    \begin{equation*}
+      \dydx
+      = \frac{\dy/\!\dtheta}{\dx/\!\dtheta}
+      = \frac{\cos\theta + \cos2\theta}{-\sin\theta - \sin2\theta}
+      = - \frac{\cos\theta + \cos2\theta}{\sin\theta + \sin2\theta}.
+    \end{equation*}
+    因此，当\(\theta = \pi/4\)时有
+    \begin{equation*}
+      \dydx\Bigg\vert_{\theta=\frac\pi4} \mkern-11mu
+      = - \frac{1/{\scriptstyle\sqrt2}}{1/{\scriptstyle\sqrt2} + 1}
+      = - \frac{1}{1 + {\scriptstyle\sqrt2}}
+      = 1 - \sqrt2.
+    \end{equation*}
+  \end{remark}
+\end{example*}
+
+\begin{example*}
+  设参数方程\(x = 2t + \abs t,\ y = 5t^2 + 3t\abs t\)．求\(y\)在点\(t = 0\)处关于\(x\)的导数．
+  \begin{equation*}
+    \dydx\Bigg\vert_{t=0} \mkern-11mu
+    = \frac{\dy/\!\dt}{\dx/\!\dt} \Bigg\vert_{t=0} \mkern-11mu
+    = \lim_{t\to0} \frac{5t^2 + 3t\abs t}{2t + \abs t}
+    = 0.
+  \end{equation*}
+\end{example*}
+
+\begin{theorem*}[对数求导法]
+  函数\(f\)在非零点处满足
+  \begin{equation*}
+    f'(x) = f(x) \,\ddx \ln\,f(x).
+  \end{equation*}
+\end{theorem*}
+
+\begin{example*}
+  求函数\(\,f(x) = x^{x^2}\)的导函数．
+  \begin{equation*}
+    f'(x)
+    = f(x) \,\ddx \ln\,f(x)
+    = x^{x^2} \paren{2x\ln x + x}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求函数
+  \begin{equation*}
+    f(x) = \frac{\prod\limits_{k=1}^n g_k(x)}{\prod\limits_{k=1}^n h_k(x)}
+  \end{equation*}
+  的导函数．
+  \begin{equation*}
+    f'(x)
+    = f(x) \,\ddx \ln\,f(x)
+    = \paren[\Bigg]{\prod_{k=1}^n \frac{\ g_k(x)}{h_k(x)}}
+    \paren[\Bigg]{\sum_{k=1}^n \paren[\bigg]{\frac{g_k'(x)}{g_k(x)} - \frac{h_k'(x)}{h_k(x)}}}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求函数\(f(x) = \sqrt{\frac{(x-1)(x-2)}{(x-3)(x-4)}}\)的导函数．
+  \begin{remark}
+    当\(x \in \paren{-\infty,1} \cup \paren{2,3} \cup \paren{4,+\infty}\)时，有
+    \begin{equation*}
+      f'(x)
+      = f(x) \,\ddx \ln\,f(x)
+      = \frac12
+      \sqrt{\frac{(x-1)(x-2)}{(x-3)(x-4)}}
+      \paren*{\frac1{x-1} + \frac1{x-2} - \frac1{x-3} - \frac1{x-4}}.
+    \end{equation*}
+  \end{remark}
+\end{example*}
+
+\begin{definition*}[高阶导数]
+  \label{defn:derivhio}
+  令\(\,f^{(0)} = \dd[^0f]{x^0} = f\)．当\(n > 1\)时，令
+  \begin{equation*}
+    f^{(n)} = \paren[\big]{\,f^{(n-1)}}'
+    \txt{和}
+    \dd[^nf]{x^n} = \ddx \dd[^{n-1}f]{x^{n-1}\negthickspace}.
+  \end{equation*}
+  我们把\(\,f^{(n)}\)称为\(n\)阶导数，把大于一阶的导数称为高阶导数．
+\end{definition*}
+
+\begin{theorem*}[莱布尼茨公式]
+  \begin{equation*}
+    (\,fg)^{(n)} = \sum_{k=0}^n \binom nk \,f^{(n-k)} g^{(k)}.
+  \end{equation*}
+\end{theorem*}
+
+\begin{example*}
+  求函数\(\,f(x) = a^x\)的\(n\)阶导函数．
+  \begin{equation*}
+    f^{(n)}(x) = a^x \ln^n a.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求函数\(\,f(x) = \frac1{1+x}\)的\(n\)阶导函数．
+  \begin{equation*}
+    f^{(n)}(x) = (-1)^n \frac{n!}{(1+x)^{n+1}}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求函数\(\,f(x) = \lnp{1+x}\)的\(n\)阶导函数．
+  \begin{equation*}
+    f^{(n)}(x) = (-1)^{n-1} \frac{(n-1)!}{(1+x)^n}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求正弦函数的\(n\)阶导函数．
+  \begin{equation*}
+    \sin^{(n)}x = \sinp{x + {n\pi}/{2}}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求余弦函数的\(n\)阶导函数．
+  \begin{equation*}
+    \cos^{(n)}x = \cosp{x + {n\pi}/{2}}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求函数\(y = \frac{x}{1+x^2}\)的\(n\)阶导函数．
+
+  \begin{remark}
+    因为\(x = (1+x^2)\,y\)，所以有
+    \begin{gather*}
+      \begin{split}
+        \dd[^n]{x^n} (1+x^2)\,y
+        &= \sum_{k=0}^n \binom nk (1+x^2)^{(n-k)} y^{(k)} \\
+        &= n(n-1)y^{(n-2)} + 2nxy^{(n-1)} + (1+x^2)\,y^{(n)} \\
+        &=
+        \begin{cases}
+          1, & n = 1, \\
+          0, & n > 1,
+        \end{cases}
+      \end{split}
+      \shortintertext{即}
+      y^{(n)} =
+      \begin{cases}
+        \frac{1 - 2xy}{1+x^2}, & n = 1, \\
+        - \frac1{1+x^2}\paren[\big]{n(n-1)y^{(n-2)} + 2nxy^{(n-1)}}, & n > 1.
+      \end{cases}
+    \end{gather*}
+  \end{remark}
+\end{example*}
+
+\begin{example*}
+  求函数\(y = \frac1{(1+x)(2+3x)}\)的\(n\)阶导函数．
+
+  \begin{remark}
+    因为
+    \begin{gather*}
+      y = \frac1{(1+x)(2+3x)} = \frac{3}{2+3x} - \frac1{1+x}, \\
+      \shortintertext{所以}
+      y^{(n)} = (-1)^n \frac{3^{n+1}n!}{(2+3x)^{n+1}} - (-1)^n \frac{n!}{(1+x)^{n+1}}.
+    \end{gather*}
+  \end{remark}
+\end{example*}
+
+\begin{example*}
+  求函数\(y = x^2 \sin x\)的\(n\)阶导函数．
+  \begin{equation*}
+    \begin{split}
+      \dd[^n]{x^n} x^2 \sin x
+      &= \sum_{k=0}^n \binom nk (x^2)^{(n-k)} \sin^{(k)}x \\
+      &= n(n-1) \sinp[\Big]{x+(n-2)\frac{\pi}{2}}
+      + 2nx \sinp[\Big]{x+(n-1)\frac{\pi}{2}}
+      + x^2 \sinp[\Big]{x+\frac{n\pi}{2}}.
+    \end{split}
+  \end{equation*}
+\end{example*}
+
 \subpdfbookmark{思考}{B1.4.3.P}
 \subsection*{思考}
 
 \begin{enumerate}
-\item 把函数的二阶微分定义成．一阶微分具有形式不变性，二阶微分是否也有形式不变性？
+\item 把函数\(y = \,f(x)\)的二阶微分定义成\(\diff^2y = \,f^{(2)}(x) \dx^2\)．一阶微分具有形式不变性，二阶微分是否也有形式不变性？
+
+  \ifshowsolp
+  没有．令\(y = \,f(u),\ u = g(x)\)，有
+  \begin{gather*}
+    \diff_u^2 y
+    = f^{(2)}(u) \du^2
+    = f^{(2)}\paren[\big]{g(x)} \paren[\big]{g'(x)}^2 \dx^2, \\
+    \diff_x^2 y
+    = \paren[\Big]{\,f^{(2)}\paren[\big]{g(x)} \paren[\big]{g'(x)}^2 + f'\paren[\big]{g(x)}\,g^{(2)}(x)} \dx^2.
+  \end{gather*}
+  \fi
+
 \item 由参数方程\(x = \varphi(t),\ y = \psi(t)\)确定的函数\(y = y(x)\)的求导公式\(\dy/\!\dx = \psi'(t)/\varphi'(t)\)是如何确定的？如何求二阶导数\(\diff^2y/\!\dx^2\)和三阶导数\(\diff^3y/\!\dx^3\)？
+
+  \ifshowsolp
+  确定的方式多种多样，最简单的方式就是把\(t\)看成\(x\)的函数，然后根据定理~\ref{thm:derivcomp}和~\ref{thm:derivinv}就能得到．使用同样的方法，能得到
+  \begin{gather*}
+    \dd[^2y]{x^2}
+    = \ddt \frac{\psi'}{\varphi'} \cdot \dd[t]x
+    = \frac{\psi^{(2)}}{\paren{\varphi'}^2}
+    - \frac{\psi'\varphi^{(2)}}{\paren{\varphi'}^3}, \\
+    \siand
+    \begin{split}
+      \ddn[y]x3
+      &= \ddt \paren[\Bigg]{\frac{\psi^{(2)}}{\paren{\varphi'}^2}
+        - \frac{\psi'\varphi^{(2)}}{\paren{\varphi'}^3}} \cdot \dd[t]x \\
+      &= \frac{\psi^{(3)}}{(\varphi')^3}
+      - \frac{\psi^{(2)}\varphi^{(2)}
+        + \psi'\varphi^{(3)}
+        + 2\psi^{(2)}\varphi^{(2)}}{(\varphi')^4}
+      + \frac{3\psi'(\varphi^{(2)})^2}{(\varphi')^5}.
+    \end{split}
+  \end{gather*}
+  \fi
 \end{enumerate}
 
 \ifshowex
 \currentpdfbookmark{练习}{B1.4.3.E}
 \subsection*{练习}
+
+\begin{enumerate}
+\item 设\(x\)的函数\(y\)由方程\(e^{x+y} = xy + 1\)确定．求\(\dy\)．
+  \ifshowsol
+  \begin{equation*}
+    e^{x+y} \dx + e^{x+y} \dy
+    = y \dx + x \dy
+    \implies
+    \dy = \frac{y-e^{x+y}}{e^{x+y}-x} \dx.
+  \end{equation*}
+  \fi
+
+\item 设函数\(f\)二阶可导且\(y = \,f(x^2)\)．求\(y^{(2)}\)．
+  \ifshowsol
+  \begin{equation*}
+    y^{(2)}
+    = \paren[\big]{\,f'(x^2) \cdot 2x}'
+    = 2\,f'(x^2) + 4x^2\,f^{(2)}(x^2).
+  \end{equation*}
+  \fi
+
+\item 设参数方程\(x = a \cos t,\ y = b \sin t\)．求\(\ddn[y]x2\)．
+  \ifshowsol
+  \begin{gather*}
+    \dydx = - \frac{b \cos t}{a \sin t}, \\[1ex]
+    \ddn[y]x2
+    = - \ddt \frac{b \cos t}{a \sin t} \cdot \dd[t]x
+    = - \frac{b}{a^2 \sin t} - \frac{b \cos^2 t}{a^2 \sin^3 t}
+    = - \frac{b}{a^2} \csc^3 t.
+  \end{gather*}
+  \fi
+
+\item 设参数方程\(x = \sin t,\ y = t \sin t + \cos t\)．求\(\ddn[y]x2 \bigg\vert_{t=\frac\pi4}\mkern-24mu\)．
+  \ifshowsol
+  \begin{equation*}
+    \dydx = \frac{\sin t + t \cos t - \sin t}{\cos t} = t,
+    \quad
+    \ddn[y]x2 = \ddt t \cdot \dd[t]x = \sec t,
+    \quad
+    \ddn[y]x2 \Bigg\vert_{t=\frac\pi4} \mkern-11mu = \sqrt2.
+  \end{equation*}
+  \fi
+
+\item 设\(x\)的函数\(y\)由方程\(y - 2x = (x-y) \lnp{x-y}\)确定．求\(\ddn[y]x2\)．
+  \ifshowsol
+  \begin{gather*}
+    -2\dx + \dy
+    = \paren[\big]{\ln(x-y) + 1} \dx - \paren[\big]{\ln(x-y) + 1} \dy, \\[1ex]
+    \dydx = \frac{\ln(x-y)+3}{\ln(x-y)+2} = 1 + \frac{1}{\ln(x-y)+2}, \\[1ex]
+    \ddn[y]x2
+    = - \frac{1-y'}{(x-y)\paren[\big]{\ln(x-y)+2}{}^2}
+    = \frac{1}{(x-y)\paren[\big]{\ln(x-y)+2}{}^3}.
+  \end{gather*}
+  \fi
+
+\item 设\(x\)的函数\(y\)由方程\(xy + e^y = x + 1\)确定．求\(\dy\Big\vert_{x=0}\)和\(\ddn[y]x2\bigg\vert_{x=0}\mkern-22mu\)．
+  \ifshowsol
+  \begingroup
+  \addtolength{\jot}{1ex}
+  \begin{gather*}
+    y \dx + x \dy + e^y \dy = \dx, \\
+    \dydx = \frac{1-y}{x+e^y}, \\
+    \dy\Big\vert_{x=0} = \dy\Big\vert_{\substack{x=0 \\ y =0}} = \dx, \\
+    \ddn[y]x2 = \frac{-y'}{x+e^y} - \frac{(1-y)(1+e^yy')}{(x+e^y)^2}, \\
+    \ddn[y]x2\Bigg\vert_{x=0}
+    = \ddn[y]x2\Bigg\vert_{\substack{x=0 \\ y =0}}
+    = -1 - 2 = -3.
+  \end{gather*}
+  \endgroup
+  \fi
+
+\item 求函数\(\,f(x) = x \sin 2x\)的\(5\)阶导函数．
+  \ifshowsol
+  \begin{equation*}
+    f^{(5)}(x)
+    = 5 \,\ddn x4 \sin 2x + x \,\ddn x5 \sin 2x
+    = 16 (5\sin 2x + 2x \cos 2x).
+  \end{equation*}
+  \fi
+
+\item 求函数\(\,f(x) = x^{\sin x}\)的导函数．
+  \ifshowsol
+  \begin{equation*}
+    f'(x)
+    = f(x) \,\ddx \ln\,f(x)
+    = x^{\sin x} \,\ddx \sin x \ln x
+    = x^{\sin x} \paren[\Big]{\cos x \ln x + \frac{\sin x}{x}}.
+  \end{equation*}
+  \fi
+
+\item 求函数\(\,f(x) = x^x\)的导函数．
+  \ifshowsol
+  \begin{equation*}
+    f'(x)
+    = f(x) \,\ddx \ln\,f(x)
+    = x^x \paren{\ln x + 1}.
+  \end{equation*}
+  \fi
+
+\item 设\(x\)的函数\(y\)由方程\(x^2 + x^2y^2 + y^2 = 3\)确定．求\(\dy/\!\dx\)．
+  \ifshowsol
+  \begin{gather*}
+    2x \dx + 2xy^2 \dx + 2x^2y \dy + 2y \dy = 0, \\
+    \dydx = - \frac{2x+2xy^2}{2x^2y+2y} = - \frac{x(1+y^2)}{(x^2+1)y}.
+  \end{gather*}
+  \fi
+\end{enumerate}
 \fi
 
 \chapter{导数应用}
+
+\section{微分中值定理}
+
+
+
+\subpdfbookmark{思考}{B1.5.1.P}
+\subsection*{思考}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.5.1.E}
+\subsection*{练习}
+\fi
+
+\section{L'Hôpital法则}
+
+\subpdfbookmark{思考}{B1.5.2.P}
+\subsection*{思考}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.5.2.E}
+\subsection*{练习}
+\fi
+
+\section{函数的单调性与极值}
+
+\subpdfbookmark{思考}{B1.5.3.P}
+\subsection*{思考}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.5.3.E}
+\subsection*{练习}
+\fi
+
+\section{函数的凸性与拐点}
+
+\subpdfbookmark{思考}{B1.5.4.P}
+\subsection*{思考}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.5.4.E}
+\subsection*{练习}
+\fi
+
+\section{Taylor公式}
+
+\subpdfbookmark{思考}{B1.5.5.P}
+\subsection*{思考}
+
+\ifshowex
+\currentpdfbookmark{练习}{B1.5.5.E}
+\subsection*{练习}
+\fi
 
 \chapter{原函数与不定积分}
 
