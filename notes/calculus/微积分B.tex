@@ -281,7 +281,7 @@
   \item \(M_1 = M_2,\ N_1 = N_2\)
   \end{itemize}
 
-\item \label{B1.1.1.E.9}若\(a, b \in \R\)，则\(\max\brce{a, b}\)和\(\min\brce{a, b}\)分别是\uline{\makebox[4em]{}}．
+\item \label{B1.1.1.E9}若\(a, b \in \R\)，则\(\max\brce{a, b}\)和\(\min\brce{a, b}\)分别是\uline{\makebox[4em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
@@ -1831,13 +1831,14 @@
   \end{proof}
 \end{example*}
 
-\begin{example*}
+\begin{theorem}
+  \label{thm:sequnbndsubinf}
   无界数列存在为无穷大量的子列．
 
   \begin{proof}
     设数列\(\Seq{a_n}\)无界．证明分为两步，首先构造一个子列\(\Seq{a_{n_k}}\)，然后说明这个子列是无穷大量．子列的构造过程是递推的．因为数列无界，所以能找到一个\(n_1\)使得\(\abs[\big]{a_{n_1}} > 1\)．假设子列的前\(k\)项都已经构造好了．因为数列无界，所以能找到一个\(n_{k+1} > n_k\)使得\(\abs[\big]{a_{n_{k+1}}} > k+1\)．如果不是这样，\(\maxb*{\abs[\big]{a_1}, \abs[\big]{a_2}, \dots, \abs[\big]{a_{n_k}}, k+1}\)就是原数列的一个界，矛盾．子列构造完毕．下面证明这个子列是无穷大量．对于任意的\(M > 0\)都能找到一个\(K = \ceil{M}\)使得当\(k > K\)时都有\(\abs[\big]{a_{n_k}} > k > K \ge M\)．
   \end{proof}
-\end{example*}
+\end{theorem}
 
 \subpdfbookmark{思考}{B1.2.1.P}
 \subsection*{思考}
@@ -4295,7 +4296,7 @@
   闭区间上的连续函数是有界函数．
 
   \begin{proof}
-    运用反证法．构造一个有界数列\(\Seq{x_n}\)使得数列\(\Seq{\,f(x_n)}\)是无界的．再使用定理~\ref{thm:bw}找到一个收敛于\(L\)的子列\(\Seq{x_{n_k}}\)．又因为函数\(f\)是连续的，所以数列\(\Seq{\,f(x_{n_k})}\)收敛于\(f(L)\)．这与数列\(\Seq{\,f(x_n)}\)的结论是矛盾的．
+    运用反证法．构造一个有界数列\(\Seq{x_n}\)使得数列\(\Seq{\,f(x_n)}\)是无界的．再使用定理~\ref{thm:sequnbndsubinf}和~\ref{thm:bw}找到一个收敛于\(L\)的子列\(\Seq{x_{n_k}}\)使得数列\(\Seq{\,f(x_{n_k})}\)为无穷大量．又因为函数\(f\)是连续的，所以数列\(\Seq{\,f(x_{n_k})}\)收敛于\(f(L)\)，这是矛盾的．
   \end{proof}
 \end{theorem}
 
@@ -4970,7 +4971,7 @@
   \end{itemize}
 
   \ifshowsol
-  令\(f(x) = x,\ g(x) = x^2\)，则选项~D中的函数\(\sgnp[\big]{\,f(x)\,g(x)} = \sgnp{x^3} = \sgnp{x}\)在原点处间断，自然也就不是一致连续的．因为\(\brkt{a,b}\)是个闭区间，所以根据定理~\ref{thm:hc}，只要证明前三个选项中的函数是连续的，就能说明它们也是一致连续的．选项~C中的函数使用定理~\ref{thm:cont4ops}即可．前两个选项中的函数，利用练习~\ref{B1.1.1.E}题~\ref{B1.1.1.E.9}中的公式，再加上定理~\ref{thm:cont4ops}，只需证明：若函数\(f\)连续，则函数\(\abs*{\,f\,}\)也连续．对于任意的\(\varepsilon > 0\)，因为函数\(f\)在点\(x_0\)处连续，所以存在\(\delta > 0\)使得当\(\abs{x-x_0} < \delta\)时就有
+  令\(f(x) = x,\ g(x) = x^2\)，则选项~D中的函数\(\sgnp[\big]{\,f(x)\,g(x)} = \sgnp{x^3} = \sgnp{x}\)在原点处间断，自然也就不是一致连续的．因为\(\brkt{a,b}\)是个闭区间，所以根据定理~\ref{thm:hc}，只要证明前三个选项中的函数是连续的，就能说明它们也是一致连续的．选项~C中的函数使用定理~\ref{thm:cont4ops}即可．前两个选项中的函数，利用练习~\ref{B1.1.1.E}题~\ref{B1.1.1.E9}中的公式，再加上定理~\ref{thm:cont4ops}，只需证明：若函数\(f\)连续，则函数\(\abs*{\,f\,}\)也连续．对于任意的\(\varepsilon > 0\)，因为函数\(f\)在点\(x_0\)处连续，所以存在\(\delta > 0\)使得当\(\abs{x-x_0} < \delta\)时就有
   \begin{equation*}
     \abs[\Big]{\abs*{\,f(x)} - \abs*{\,f(x_0)}} \le \abs*{\,f(x) - f(x_0)} < \varepsilon.
   \end{equation*}
@@ -5308,6 +5309,7 @@
 \ifshowex
 \currentpdfbookmark{练习}{B1.4.1.E}
 \subsection*{练习}
+\label{B1.4.1.E}
 
 \begin{enumerate}
 \item 下列关于导数的说法中，错误的是\uline{\hspace{10em}}．
@@ -5393,7 +5395,7 @@
   因为\(f_-(0) = -\sin_-0 = 0 = \sin_+0 = f_+(0)\)且\(f(0) = 0\)，所以它在原点处连续．又因为~\(f'_-(0) = -\sin'_-0 = -1 \ne 1 = \sin'_+0 = f'_+(0)\)，所以它在原点处不可导．
   \fi
 
-\item 函数
+\item \label{B1.4.1.E4}函数
   \begin{equation*}
     f(x) =
     \begin{cases}
@@ -6480,17 +6482,157 @@
 
 \section{微分中值定理}
 
+\begin{definition*}
+  \label{defn:extrema}
+  存在点\(x_0\)的一个\(\delta\)邻域\(V_\delta(x_0)\)使得当\(x \in V_\delta(x_0)\)时都有\(f(x) \le f(x_0)\)．这时，我们把点\(x_0\)称为函数\(f\)的一个极大值点，把\(f(x_0)\)称为函数\(f\)的一个极大值．极小值点和极小值也有类似的定义．
 
+  极大值和极小值统称为极值，极大值点和极小值点统称为极值点．
+\end{definition*}
+
+
+\begin{definition*}
+  \label{defn:stationary}
+  若函数\(f\)在点\(x_0\)处的导数为零，则称点\(x_0\)为函数\(f\)的一个驻点．
+\end{definition*}
+
+% https://digitalcommons.ursinus.edu/triumphs_calculus/11/
+\begin{theorem}[费马驻点定理]
+  \label{thm:fermat}
+  函数在极值点处若可导则导数为零（可导的极值点必为驻点）．
+\end{theorem}
+
+% https://doi.org/10.4169/000298910x476086
+% https://doi.org/10.2307/4145046
+% https://en.wikipedia.org/wiki/Darboux's_theorem_(analysis)
+\begin{corollary}[达布定理]
+  \label{cor:darboux}
+  导函数满足介值性质．
+\end{corollary}
+
+\begin{corollary}[罗尔定理]
+  \label{cor:rolle}
+  若函数\(f\)在闭区间\(\brkt{a,b}\)上连续，在开区间\(\paren{a,b}\)上可导且\(\,f(a) = f(b)\)，则存在~\(x_0 \in \paren{a,b}\)满足\(\,f'(x_0) = 0\)．
+\end{corollary}
+
+\begin{theorem*}[广义罗尔定理]
+  \label{thm:genrolle}
+  若函数\(f\)在广义开区间\(\paren{a,b}\)上可导且极限\(\!\lim\limits_{x\to a^+\!} \,f(x) = \lim\limits_{x\to b^-\!} \,f(x)\)存在，则存在\(x_0 \in \paren{a,b}\)满足\(\,f'(x_0) = 0\)．
+\end{theorem*}
+
+\begin{example*}
+  证明方程\(x^5+x-1 = 0\)只有一个实根．
+
+  \begin{proof}
+    先证明存在实根．令\(\,f(x) = x^5+x-1\)．因为\(\,f(0)\,f(1) = -1 < 0\)，所以由定理~\ref{thm:bolzano}可知函数在区间\(\paren{a,b}\)上存在零点．再证至多存在一个实根．假设有两个实根\(x_1\)和\(x_2\)，即\(\,f(x_1) = f(x_2) = 0\)．由推论~\ref{cor:rolle}可知，存在\(x_0 \in \paren{x_1, x_2}\)满足\(\,f'(x_0) = 0\)．这是不可能的，因为对于任意的\(x \in \R\)都有~\(\,f'(x) = 5x^4 + 1 > 0\)．
+  \end{proof}
+\end{example*}
+
+\begin{theorem}
+  \label{thm:polymaxnzero}
+  \(n\)次多项式函数至多能有\(n\)个零点．
+
+  \begin{proof}
+    令\(n\)次多项式\(P_n(x) = \!\sum\limits_{k=0}^n c_k x^k\)．假设\(P_n\)有\(n+1\)个零点，由推论~\ref{cor:rolle}可知，\(P_n'\)至少有\(n\)个零点，\(P_n^{(2)}\)至少有\(n-1\)个零点，依此类推，\(P_n^{(n)}\)至少有一个零点，但是又有\(P_n^{(n)}(x) = n!\,c_n \ne 0\)．
+  \end{proof}
+\end{theorem}
+
+% https://en.wikipedia.org/wiki/Rodrigues%27_formula
+% https://en.wikipedia.org/wiki/Legendre_polynomials
+\begin{example*}[勒让德多项式]
+  证明多项式
+  \begin{equation*}
+    P_n(x) = \frac1{2^nn!} \ddn xn \paren{x^2-1}^n
+  \end{equation*}
+  在区间\(\brkt{-1,1}\)上恰有\(n\)个零点．
+
+  \begin{proof}
+    多项式\(\paren{x^2-1}^n\)显然恰有\(2\)个零点，分别为\(-1\)和\(1\)．由推论~\ref{cor:rolle}可知，多项式
+    \begin{equation*}
+      \ddx \paren{x^2-1}^n = n(x^2-1)^{n-1} \paren{2x}
+    \end{equation*}
+    在区间\(\paren{-1,1}\)上存在一个零点．又因为\(-1\)和\(1\)还是它的两个零点，所以它至少有\(3\)个零点．同理，对于任意的\(0 \le k < n\)，都有
+    \begin{equation*}
+      \ddn xk (x^2-1)^n = \frac{n!}{(n-k)!}(x^2-1)^{n-k} (2x)^k + \sum_j c_j (x^2-1)^{a_j} x^{b_j},
+    \end{equation*}
+    其中\(a_j > n-k\)．因此，\(-1\)和\(1\)都是它们的零点．又由推论~\ref{cor:rolle}可知，多项式
+    \begin{equation*}
+      \ddn xk (x^2-1)^n
+    \end{equation*}
+    在区间\(\paren{-1,1}\)上至少有\(k\)个零点，再加上\(-1\)和\(1\)，一共至少有\(k+2\)个零点．所以多项式
+    \begin{equation*}
+      \ddn x{n-1} (x^2-1)^n
+    \end{equation*}
+    至少有\(n+1\)个零点．再使用一次推论~\ref{cor:rolle}，就能得到多项式
+    \begin{equation*}
+      \ddn xn (x^2-1)^n
+    \end{equation*}
+    至少有\(n\)个零点．又因为定理~\ref{thm:polymaxnzero}，所以它恰有\(n\)个零点．因此，勒让德多项式\(P_n\)也恰有\(n\)个零点．
+  \end{proof}
+\end{example*}
+
+\begin{example*}
+  设函数\(f\)在闭区间\(\brkt{a,b}\)上二阶可导且\(\,f(a) = f(b) = 0\)．请证明
+  \begin{enumerate}
+    \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
+  \item 存在\(x_0 \in \paren{a,b}\)满足\(\,f(x_0) + \,f'(x_0) = 0\)；
+  \item 若\(\,f'(a)\,f'(b) > 0\)，则存在\(x_1 \in \paren{a,b}\)满足\(\,f^{(2)}(x_1) = 0\)；
+  \item 存在\(x_2 \in \paren{a,b}\)满足\(\,f\dprime(x_2) + 2\,f'(x_2) + \,f(x_2) = 0\)．
+  \end{enumerate}
+
+  \begin{proof}
+    构造函数\(\Fn F(x) = e^x\,f(x)\)．自然有\(\Fn F(a) = \Fn F(b) = 0\)．根据推论~\ref{cor:rolle}，存在\(x_0 \in \paren{a,b}\)使得
+    \begin{equation*}
+      F'(x_0) = e^{x_0}\paren[\big]{\,f(x_0) + f'(x_0)} = 0.
+    \end{equation*}
+    因为\(e^{x_0}\)自然不会等于零，所以有\(\,f(x_0) + \,f'(x_0) = 0\)．命题\enumparen{1}得证．
+
+    不失一般地，假设\(\,f'(a)\)和\(\,f'(b)\)都是正数．因为\(\,f(a) = \,f(b) = 0 \)，所以根据推论~\ref{cor:rolle}可知，存在~\(x_2 \in \paren{a,b}\)满足\(\,f'(x_2) = 0\)．又因为函数\(\,f'\!\)是导函数，所以由推论~\ref{cor:darboux}可知，函数\(\,f'\!\)满足介值性质．从而存在\(x_3 \in \paren{a, x_2}\)和\(x_4 \in \paren{x_2, b}\)满足
+    \begin{equation*}
+      0 < f'(x_3) = f'(x_4) < \minb[\big]{\,f'(a), \,f'(b)}.
+    \end{equation*}
+    再使用一次推论~\ref{cor:rolle}即可证明\enumparen{2}．
+  \end{proof}
+\end{example*}
+
+\begin{theorem*}[拉格朗日中值定理]
+  \label{cor:lmvt}
+  ...
+\end{theorem*}
+
+\begin{theorem*}[柯西中值定理]
+  \label{thm:cmvt}
+  ...
+\end{theorem*}
 
 \subpdfbookmark{思考}{B1.5.1.P}
 \subsection*{思考}
+
+\begin{enumerate}
+\item 有人说：因为当函数\(f\)在区间\(\brkt{a,b}\)上可导时，其导函数\(f'\)在\(\brkt{a,b}\)上具有介值性质，所以\(f'\)在\(\brkt{a,b}\)上连续．你是否认可此人的说法？
+
+  \ifshowsolp
+  不认可．练习~\ref{B1.4.1.E}题~\ref{B1.4.1.E4}中的函数就是一个反例．
+  \fi
+
+\item 考察拉格朗日中值定理中的\(\,f(x) - f(x_0) = f'(\xi)(x - x_0)\)．如果\(x_0\)固定，那么当\(x\)变化时\(\xi\)和\(x\)有什么关系？点\(\xi\)能否表示为\(x\)的函数？
+
+  \ifshowsolp
+  点\(\xi\)一定坐落在\(x_0\)与\(x\)之间．可以，但这个函数并不唯一，只能表示至少存在一个这样的函数．举个极端点的例子，对于恒等函数\(\,f(x) = x\)来说，任意的\(\minb{x_0, x} \le \xi \le \maxb{x_0, x}\)都能是某个这样函数的函数值．
+  \fi
+
+\item 拉格朗日中值定理和柯西中值定理的几何意义是什么？在证明这两个定理的过程中我们是如何构造辅助函数的？能否构造其他辅助函数？
+
+  \ifshowsolp
+  d
+  \fi
+\end{enumerate}
 
 \ifshowex
 \currentpdfbookmark{练习}{B1.5.1.E}
 \subsection*{练习}
 \fi
 
-\section{L'Hôpital法则}
+\section{洛必达法则}
 
 \subpdfbookmark{思考}{B1.5.2.P}
 \subsection*{思考}
@@ -6520,7 +6662,7 @@
 \subsection*{练习}
 \fi
 
-\section{Taylor公式}
+\section{泰勒公式}
 
 \subpdfbookmark{思考}{B1.5.5.P}
 \subsection*{思考}
@@ -7009,12 +7151,12 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
   \end{align*}
   \fi
 
-\item 已知曲线上任一点的二阶导数\(y'' = 6x\), 且在曲线上点\((0, -2)\)处的切线为\(2x - 3y = 6\), 求这条曲线的方程.
+\item 已知曲线上任一点的二阶导数\(y\dprime = 6x\), 且在曲线上点\((0, -2)\)处的切线为\(2x - 3y = 6\), 求这条曲线的方程.
 
   \ifshowsol
   将切线的方程化为点斜式, 得到\(y = 2x/3 - 2\), 所以\(y'\big\vert_{x=0} = 2/3\)．有
   \[
-    y' = \int y'' \dx = \int 6x \dx = 3x^2 + c_1,
+    y' = \int y\dprime \dx = \int 6x \dx = 3x^2 + c_1,
   \]
   所以\(c_1 = 2/3\). 又有
   \[
