@@ -1,0 +1,141 @@
+\documentclass[a4paper]{amsbook}
+
+\input{preamble-all}
+
+\title{Basics and Arithmetic of the Real Numbers}
+\author{\textsc{Otto Stolz}}
+
+\hypersetup{%
+  pdfsubject={Real Analysis}}
+
+\newtheorem*{theorem*}{Theorem}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage{enumitem}
+
+\usepackage{fontspec}
+
+\setmainfont{Palatino Linotype}[Ligatures=TeX,Numbers=OldStyle]
+
+\usepackage[euler-digits,euler-hat-accent]{eulervm}
+
+\DeclareSymbolFont{greekletters}{OML}{cmr}{m}{it}
+\DeclareMathSymbol{\varrho}{\mathalpha}{greekletters}{"25}
+
+\usepackage{microtype}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+\mainmatter
+
+\begin{theorem*}
+  \leavevmode
+  \begin{enumerate}[label=\enumparen{\arabic*}]
+  \item Let \(n\) be a whole positive number that grows without limit.  If the unique function \(\varphi(n)\) grows (decreases) continuously with \(n\) from a value \(n = n_1\), and thus has a limit at \(\lim = +\infty\) according to No. 6, which is supposed to be infinite; then it follows from the existence of the limit
+    \begin{equation*}
+      \lim_{n=+\infty} \frac{f(n+1)-f(n)}{\varphi(n+1)-\varphi(n)} = K,
+    \end{equation*}
+    where \(f(n)\) also means a unique function of \(n\), that there is also a limit for the fraction \(f(n):\varphi(n)\) at \(\lim n = +\infty\), namely that it is equal to \(K\).
+
+  \item The same theorem applies if the unique functions \(f(n), \varphi(n)\) each have the limit \(0\) for \(\lim n = +\infty\) and \(\varphi(n)\) grows (decreases) continuously with \(n\) from \(n = n_1\).
+  \end{enumerate}
+
+  \begin{proof}
+    For the proof, it is sufficient to assume that \(\varphi(n)\) increases continuously with \(n\) and that \(K\) does not have the sign \(-\). Then two cases can be distinguished for the first theorem, to which we restrict the following development.
+    \begin{enumerate}[label=\alph*)]
+    \item \label{item:1} \(K \geqq 0\).  According to the assumption, for every number \(\varepsilon > 0\) there belongs a number G such that
+      \begin{equation*}
+        \abs*{\frac{f(n+1)-f(n)}{\varphi(n+1)-\varphi(n)} - K} < \varepsilon
+        \hspace{1.5em}
+        n > G.
+      \end{equation*}
+      From this we conclude that, since \(\varphi(m + 1) > \varphi(n)\),
+      \begin{equation*}
+        (K-\varepsilon)\brkt{\varphi(n+1)-\varphi(n)}
+        < f(n+1)-f(n)
+        < (K+\varepsilon)\brkt{\varphi(n+1)-\varphi(n)}.
+      \end{equation*}
+      Now let \(m\) be a certain integer \(> G\), so that in this relation we can set \(n = m, m+1, \dots, m+r-1\) one after the other. If we add the \(r\) inequalities obtained in this way, we get
+      \begin{gather*}
+        (K-\varepsilon)\brkt{\varphi(m+r)-\varphi(m)}
+        < f(m+r)-f(m)
+        < (K+\varepsilon)\brkt{\varphi(m+r)-\varphi(m)} \\
+        \iand
+        -\varepsilon \brkt{\varphi(m+r)-\varphi(m)}
+        < f(m+r)-f(m) - K \brkt{\varphi(m+r)-\varphi(m)}
+        < \varepsilon \brkt{\varphi(m+r)-\varphi(m)}.
+      \end{gather*}
+      Since \(\varphi(m)\) and \(\varphi(m+r)\) can be assumed to be positive, we also find:
+      \begin{gather*}
+        -\varepsilon \varphi(m+r)
+        < f(m+r)-f(m) - K \brkt{\varphi(m+r)-\varphi(m)}
+        < \varepsilon \varphi(m+r), \\
+        -\varepsilon
+        < \frac{f(m+r)}{\varphi(m+r)} - K
+        - \frac{f(m) - K \varphi(m)}{\varphi(m+r)}
+        < \varepsilon.
+      \end{gather*}
+      However large the number \(m\) may be; then, because \(\lim\varphi(n) = +\infty\) we can find a number \(\varrho > 0\) such that
+      \begin{equation}
+        \label{eq:a}
+        \frac{\abs{f(m) - K \varphi(m)}}{\varphi(m+r)} < \varepsilon
+        \qfor
+        r > \varrho.
+      \end{equation}
+      We therefore have
+      \begin{equation}
+        \label{eq:b}
+        \abs*{\frac{f(m+r)}{\varphi(m+r)} - K} < 2\varepsilon
+      \end{equation}
+      or \(\abs{f(n):\varphi(n) — K} < 2\varepsilon\) for all \(n > m+\varrho\).  Now then, the number \(2\varepsilon\), which can be any positive number, indeed corresponds to the number \(m+\varrho\), since \(m\) results from \(\varepsilon\) initially and after \(m\) the number \(\varrho\) from \(\varepsilon\).  Thus we have
+      \begin{equation*}
+        \lim f(n):\varphi(n) = K
+      \end{equation*}
+      for \(\lim n = +\infty\).
+    \item \(K = +\infty\).  Let \(0 < H < H'\).  According to the assumption, for \(H' > 0\) there should be a number~\(G'\) such that for \(n>G'\)
+      \begin{equation*}
+        f(n+1) - f(n) > H' \Seq{\varphi(n+1)-\varphi(n)},
+      \end{equation*}
+      from which we find as above---\(m > G'\)---
+      \begin{gather}
+        \label{eq:c}
+        f(m+r) - f(m) > H' \Seq{\varphi(m+r)-\varphi(m)}, \\
+        \frac{f(m+r)}{\varphi(m+r)}
+        > H' + \frac{f(m)-H'\varphi(m)}{\varphi(m+r)}.
+        \nonumber
+      \end{gather}
+      Now a number \(\varrho > 0\) can be specified such that
+      \begin{equation*}
+        r > \varrho
+        \hspace{1.5em}
+        \abs{f(m) - H' \varphi(m)}:\varphi(m+r) < H' - H;
+      \end{equation*}
+      therefore, for all \(n > m + \varrho\)
+      \begin{equation*}
+        \frac{f(n)}{\varphi(n)} > H' - (H' - H) = H
+        \txt{i.e.}
+        \lim\frac{f(n)}{\varphi(n)} = +\infty.
+      \end{equation*}
+      At the same time, we can see from~\eqref{eq:c} that \(\lim f(n) = +\infty\), so that we could also conclude as follows: According to theorem~\ref{item:1},
+      \begin{equation*}
+        \lim\Seq{\varphi(n):f(n)} = 0,
+      \end{equation*}
+      therefore, since \(\varphi(n):f(n) > 0\),
+      \begin{equation*}
+        \lim\Seq{f(n):\varphi(n)} = +\infty.
+        \qedhere
+      \end{equation*}
+    \end{enumerate}
+  \end{proof}
+  \begin{remark}
+    The above theorems can be extended to the case that the independent variable grows continuously over all limits.
+  \end{remark}
+\end{theorem*}
+\end{document}
+
+% Local Variables:
+% TeX-engine: luatex
+% End:
