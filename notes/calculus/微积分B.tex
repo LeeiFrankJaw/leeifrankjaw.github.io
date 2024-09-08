@@ -1,9 +1,9 @@
 \documentclass[a4paper,punct=CCT]{ctexbook}
 
+\input{preamble-all}
+
 \title{微积分B}
 \author{赵磊}
-
-\input{preamble-all}
 
 \newcommand*{\mreason}[1]{#1}
 \newcommand*{\ex}[2]{\textbf{例#1：}#2}
@@ -118,7 +118,7 @@
 
 \begin{document}
 \frontmatter
-
+\currentpdfbookmark{标题页}{title}
 \maketitle
 \thispagestyle{empty}
 % \cleardoublepage
@@ -6885,19 +6885,34 @@
 
 \section{洛必达法则}
 
+% https://archive.org/details/infinimentpetits1716lhos00uoft/page/145/mode/1up
+% https://www.jstor.org/stable/2322330
+% https://www.jstor.org/stable/3609821
+% https://mathworld.wolfram.com/LHospitalsRule.html
+% Baby Rudin (109)
+% https://doi.org/10.1016/B978-0-08-013473-4.50010-4 (221)
 \begin{theorem*}
   \label{thm:lhospital}
-  若函数\(\,f\mkern2mu\)和\(\mkern1mu g\)满足
+  设函数\(\,f\mkern2mu\)和\(\mkern1mu g\)满足：
   \begin{enumerate}
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
-  \item d
+  \item 在广义点\(x_0\)附近可导且导数非零；
+  \item \(\!\lim\limits_{x\to x_0\!} f(x) = \!\lim\limits_{x\to x_0\!} g(x) = 0\)或者\(\!\lim\limits_{x\to x_0\!} g(x) = +\infty\)．
   \end{enumerate}
+  若
+  \begin{equation*}
+    \lim_{x\to x_0} \frac{\,f'(x)}{g'(x)} = K,
+  \end{equation*}
   则
   \begin{equation*}
     \lim_{x\to x_0} \frac{\,f(x)}{g(x)}
-    = \lim_{x\to x_0} \frac{\,f'(x)}{g'(x)}.
+    = K.
   \end{equation*}
 \end{theorem*}
+
+\begin{example*}
+  求\(\lim\limits_{x\to0} \frac{x-x\cos x}{x - \sin x}\)．
+\end{example*}
 
 \subpdfbookmark{思考}{B1.5.2.P}
 \subsection*{思考}
