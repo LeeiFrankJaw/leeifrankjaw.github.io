@@ -404,7 +404,11 @@
 
 \section{洛必达法则}
 
+% https://doi.org/10.1007/BF02086277
+% https://eudml.org/doc/156872
+% https://gallica.bnf.fr/ark:/12148/bpt6k205444w/f171.item
 % https://archive.org/details/infinimentpetits1716lhos00uoft/page/145/mode/1up
+% https://archive.org/details/vorlesungenbera01stolgoog/page/n180/mode/1up
 % https://www.jstor.org/stable/2322330
 % https://www.jstor.org/stable/3609821
 % https://mathworld.wolfram.com/LHospitalsRule.html
@@ -430,15 +434,290 @@
 \end{theorem*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \frac{x-x\cos x}{x - \sin x}\)．
+  求\(\lim\limits_{x\to0} \dfrac{x-x\cos x}{x - \sin x}\)．
+  \begin{equation*}
+    \lim_{x\to0} \frac{x-x\cos x}{x - \sin x}
+    = \lim_{x\to0} \frac{1 - \cos x + x \sin x}{1 - \cos x}
+    = 3.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求\(\lim\limits_{x\to0} \dfrac{e^x\!-e^{-x}\!-2x}{x-\sin x}\)．
+  \begin{gather*}
+    \lim_{x\to0} \frac{e^x\!-e^{-x}\!-2x}{x-\sin x}
+    = \lim_{x\to0} \frac{e^x\!+e^{-x}\!-2}{1-\cos x}
+    = \lim_{x\to0} \frac{(e^x\!-1)^2}{e^x\,x^2\!/2}
+    = \lim_{x\to0} \frac{2x^2}{e^xx^2}
+    = 2  \\
+    \shortintertext{或者}
+    2 \lim_{x\to0} \frac{\sinh x-x}{x-\sin x}
+    = 2 \lim_{x\to0} \frac{\cosh x-1}{1-\cos x}
+    = 2 \lim_{x\to0} \frac{\sinh x}{\sin x}
+    = 2 \lim_{x\to0} \frac{\cosh x}{\cos x}
+    = 2.
+  \end{gather*}
+\end{example*}
+
+\begin{example}
+  \label{eg:lhospital00ce}
+  求\(\lim\limits_{x\to0} \dfrac{x^2 \sin\frac1x}{\sin x}\)．
+
+  \begin{remark}
+    此例洛必达法则不适用．直接求极限，有
+    \begin{equation*}
+      \lim_{x\to0} \frac{x^2 \sin\frac1x}{\sin x}
+      = \lim_{x\to0} \frac{x}{\sin x} \cdot x \sin\frac1x
+      = 0.
+    \end{equation*}
+  \end{remark}
+\end{example}
+
+\begin{example*}
+  求\(\!\lim\limits_{x\to+\infty\!} \!\dfrac{\pi/2 - \arctan x}{1/x}\)．
+  \begin{equation*}
+    \lim_{x\to+\infty\!} \!\frac{\pi/2 - \arctan x}{1/x}
+    = \lim_{x\to+\infty} \frac{x^2}{1+x^2}
+    = 1.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求\(\!\lim\limits_{x\to0^+\!} \dfrac{\ln x}{1/x}\)．
+  \begin{equation*}
+    \lim_{x\to0^+\!} \frac{\ln x}{1/x}
+    = \lim_{x\to0^+\!} \frac{1/x}{-1/x^2}
+    = 0.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  设\(a > 1\)．求\(\!\lim\limits_{x\to+\infty\!} \dfrac{\,x^2}{a^x}\)．
+  \begin{equation*}
+    \lim_{x\to+\infty\!} \frac{\,x^2}{a^x}
+    = \lim_{x\to+\infty\!} \frac{2x}{a^x \ln a}
+    = \lim_{x\to+\infty\!} \frac{2}{a^x \operatorname{ln^2} a}
+    = 0.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  设\(a > 0\)．求\(\!\lim\limits_{x\to+\infty\!} \dfrac{\ln x}{\,x^a}\)．
+  \begin{equation*}
+    \lim_{x\to+\infty\!} \frac{\ln x}{\,x^a}
+    = \lim_{x\to+\infty\!} \frac{x^{-1}}{ax^{a-1}}
+    = 0.
+  \end{equation*}
+\end{example*}
+
+\begin{example}
+  \label{eg:lhospitalinfinfce}
+  求\(\!\lim\limits_{x\to+\infty\!} \!\dfrac{x+\sin x}{x}\)．
+
+  \begin{remark}
+    此例洛必达法则不适用．直接求极限，有
+    \begin{equation*}
+      \lim_{x\to+\infty\!} \!\frac{x+\sin x}{x} = \lim_{x\to+\infty\!} \paren*{1 + \frac{\sin x}{x}} = 1.
+    \end{equation*}
+  \end{remark}
+\end{example}
+
+\begin{example*}
+  求\(\!\lim\limits_{x\to0^+} \!x \ln x\)．
+  \begin{equation*}
+    \lim_{x\to0^+} \!x \ln x
+    = \lim_{x\to0^+\!} \frac{\ln x}{1/x}
+    = 0.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求\(\lim\limits_{x\to1}{}\paren[\bigg]{\dfrac{x}{x-1} - \dfrac1{\ln x}}\)．
+  \begin{equation*}
+    \lim_{x\to1}{}\paren[\bigg]{\dfrac{x}{x-1} - \dfrac1{\ln x}}
+    = \lim_{x\to1} \frac{x \ln x - x + 1}{(x-1) \ln x}
+    = \lim_{x\to1} \frac{x \ln x - x + 1}{(x-1)^2}
+    = \lim_{x\to1} \frac{\ln x + 1 - 1}{2(x-1)}
+    = \frac12.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求\(\!\lim\limits_{x\to0^+\!} x^x\)．
+  \begin{equation*}
+    \lim_{x\to0^+\!} x^x
+    = \exp \lim_{x\to0^+\!} x \ln x
+    = e^0 = 1.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求\(\lim\limits_{x\to0} {}(\cos x)^{1/\!\sin^2 x}\)．
+  \begin{equation*}
+    \lim_{x\to0} {}(\cos x)^{1/\!\sin^2 x}
+    = \exp \lim_{x\to0} \frac{\ln \cos x}{\sin^2 x}
+    = \exp \lim_{t\to1^-\!} \frac{\ln t}{1-t^2}
+    = \frac1{\!\sqrt e\,}.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  求\(\!\lim\limits_{x\to+\infty\!} x^{1/x}\)．
+  \begin{equation*}
+    \lim_{x\to+\infty\!} x^{1/x}
+    = \exp \!\lim_{x\to+\infty\!} \!\frac{\ln x}{x}
+    = e^0 = 1.
+  \end{equation*}
+\end{example*}
+
+\begin{example*}
+  设函数\(\,f(x) = e^x + ax^2 + bx + c\)与函数\(g(x) = x - \sin x\)在\(x \to 0\)时是等价无穷小量．求\(a,b,c\)．
+
+  \begin{remark}
+    因为当\(x \to 0\)时有\(\,f(x) \to 1 + c,\ g(x) \to 0,\ f(x)/g(x) \to 1\)，所以\(1 + c = 0 \implies c = -1\)．又因为
+    \begin{equation*}
+      \lim_{x\to0} \frac{\,f'(x)}{g'(x)}
+      = \lim_{x\to0} \frac{e^x + 2ax + b}{1-\cos x}
+      = K,
+    \end{equation*}
+    当\(1 + b \ne 0\)时有\(K = \pm\infty\)，所以\(b = -1\)．同理可得\(2a = -1 \implies a = -1/2\)．
+  \end{remark}
 \end{example*}
 
 \subpdfbookmark{思考}{B1.5.2.P}
 \subsection*{思考}
 
+\begin{enumerate}
+\item 对于\(\frac00\)或\(\frac\infty\infty\)型不定式，如果极限\(\lim\frac{\,f'}{g'}\)既不存在也不趋向于无穷大，那么\(\lim\frac{\,f}{g}\)是否一定不存在？
+
+  \ifshowsolp
+  未必一定不存在．例~\ref{eg:lhospital00ce}和~\ref{eg:lhospitalinfinfce}分别是\(\frac00\)和\(\frac\infty\infty\)型不定式的此类反例．
+  \fi
+
+\item 能否利用\(\lim\limits_{x\to0} \frac{-\sin x}{1} = 0\)来求\(\lim\limits_{x\to0} \frac{\cos x}{x}\)的值？
+
+  \ifshowsolp
+  不能，因为\(\lim\limits_{x\to0} \frac{\cos x}{x}\)是\(\frac10\)型的，既不是\(\frac00\)型的也不是\(\frac\infty\infty\)型的．
+  \fi
+
+\item 能否利用\(\lim\limits_{x\to0} \frac{\sin x}{x} = \lim\limits_{x\to0} \frac{\cos x}{1} = 1\)来求重要极限\(\lim\limits_{x\to0} \frac{\sin x}{x}\)的值？
+
+  \ifshowsolp
+  作为求值技巧，可以．作为证明，不可以；因为存在循环论证，即求三角函数的导函数时用到了此重要极限．
+  \fi
+\end{enumerate}
+
 \ifshowex
 \currentpdfbookmark{练习}{B1.5.2.E}
 \subsection*{练习}
+
+\begin{enumerate}
+\item 求\(\lim\limits_{x\to0} \dfrac{e^x\!-1}{\sin x}\)．
+  \ifshowsol
+  \begin{equation*}
+    \lim_{x\to0} \frac{e^x\!-1}{\sin x}
+    = \lim_{x\to0} \frac{e^x}{\cos x}
+    = 1.
+  \end{equation*}
+  \fi
+
+\item 求\(\!\lim\limits_{x\to0^+\!} x^{\sin x}\)．
+  \ifshowsol
+  \begin{equation*}
+    \lim_{x\to0^+\!} x^{\sin x}
+    = \exp \lim_{x\to0^+\!} \sin x \ln x
+    = e^0 = 1.
+  \end{equation*}
+  \fi
+
+\item 求\(\lim\limits_{x\to0} {}\paren[\bigg]{\dfrac1x - \dfrac1{e^x\!-1}}\)．
+  \ifshowsol
+  \begin{equation*}
+    \lim_{x\to0} {}\paren[\bigg]{\frac1x - \frac1{e^x\!-1}}
+    = \lim_{x\to0} \frac{e^x\!-1-x}{x \paren{e^x\!-1}}
+    = \lim_{x\to0} \frac{e^x\!-1}{e^x\!-1 + xe^x}
+    = \lim_{x\to0} \frac{e^x}{2e^x + xe^x}
+    = \frac12.
+  \end{equation*}
+  \fi
+
+\item 求\(\lim\limits_{x\to0} \dfrac{(1+x)^{1/x}\!-e}{x}\)．
+  \ifshowsol
+  \begin{equation*}
+    \begin{split}
+      \lim_{x\to0} \frac{(1+x)^{1/x}\!-e}{x}
+      &= \lim_{x\to0} \frac{(1+x)^{1/x}}{1} \cdot \frac{x/(1+x) - \ln(1+x)}{x^2} \\
+      &= e \lim_{x\to0} \frac{1/(1+x)^2 - 1/(1+x)}{2x} \\
+      &= e \lim_{x\to0} \frac{-2/(1+x)^3 + 1/(1+x)^2}{2} \\
+      &= - \frac e2.
+    \end{split}
+  \end{equation*}
+  \fi
+
+\item 设函数\(\,f(x) = x - \sin ax\)与函数\(g(x) = x^2 \lnp{1-bx}\)在\(x \to 0\)时是等价无穷小量．求\(a,b\)．
+
+  \ifshowsol
+  首先，当\(b = 0\)时，函数\(g\)退化成恒零函数，从而不能和函数\(f\)是等价无穷小量．因此，\(b \ne 0\)．又因为
+  \begin{equation*}
+    \lim_{x\to0} \frac{\,f'(x)}{g'(x)}
+    = \lim_{x\to0} \frac{1-a\cos ax}{2x\ln(1-bx) - bx^2\!/(1-bx)}
+    = K,
+  \end{equation*}
+  当\(1-a \ne 0\)时有\(K = \pm\infty\)，所以\(a = 1\)．因为\(\lim\limits_{x\to0}\,f\dpr(x) = \lim\limits_{x\to0} \sin x = 0\)和
+  \begin{equation*}
+    \lim_{x\to0} g\dpr(x)
+    = \lim_{x\to0} {}\brce[\bigg]{2\ln(1-bx) - \frac{4bx}{1-bx} - \frac{b^2x^2}{(1-bx)^2}}
+    = 0,
+  \end{equation*}
+  所以还需再用一次洛必达法则．有
+  \begin{equation*}
+    \lim_{x\to0} \frac{\,f\trpr(x)}{g\trpr(x)}
+    = -\frac{1}{6b} = 1
+    \implies
+    b = -\frac16.
+  \end{equation*}
+  \fi
+
+\item 求\(\lim\limits_{x\to0} \dfrac{\sin\sin x - \sin x}{x^3}\)．
+  \ifshowsol
+  \begin{equation*}
+    \begin{split}
+      \lim_{x\to0} \frac{\sin\sin x - \sin x}{x^3}
+      &= \lim_{x\to0} \frac{\cos x \cos\sin x - \cos x}{3x^2} \\
+      &= - \lim_{x\to0} \frac{(1 - \cos\sin x) \cos x}{3\sin^2 x} \\
+      &= - \lim_{t\to0} \frac{\paren{1 - \cos t} \sqrt{1-t^2}}{3t^2} \\
+      &= - \frac16.
+    \end{split}
+  \end{equation*}
+  \fi
+  
+\item 求\(\lim\limits_{x\to0} {}\paren[\bigg]{\dfrac{\ln(1+x)}{x}}^{\frac1{e^x-1}}\)．
+  \ifshowsol
+  \begin{equation*}
+    \begin{split}
+      \lim_{x\to0} \paren[\bigg]{\frac{\ln(1+x)}{x}}^{\frac1{e^x-1}}
+      &= \exp \lim_{x\to0} \frac{\ln\frac{\ln(1+x)}{x}}{e^x-1} \\
+      &= \exp \lim_{x\to0} \frac{x/\ln(1+x)}{e^x} \cdot \frac{x/(1+x)-\ln(1+x)}{x^2} \\
+      &= \exp \lim_{x\to0} \frac{1/(1+x)^2 - 1/(1+x)}{2x} \\
+      &= \exp \lim_{x\to0} \frac{-2/(1+x)^3 + 1/(1+x)^2}{2} \\
+      &= \frac1{\!\sqrt e\,}.
+    \end{split}
+  \end{equation*}
+  \fi
+  
+\item 设\(\lim\limits_{x\to0} {}\brce[\bigg]{\dfrac1x - \paren[\bigg]{\dfrac1x - a} e^x} = 1\)．求\(a\)．
+
+  \ifshowsol
+  因为
+  \begin{equation*}
+    \lim_{x\to0} {}\brce[\bigg]{\frac1x - \paren[\bigg]{\frac1x - a} e^x}
+    = \lim_{x\to0} \frac{1-(1-ax)e^x}{x}
+    =  \lim_{x\to0} \frac{e^x(a+ax-1)}{1}
+    = a-1 = 1,
+  \end{equation*}
+  所以\(a = 2\)．
+  \fi
+\end{enumerate}
 \fi
 
 \section{函数的单调性与极值}
@@ -470,3 +749,8 @@
 \currentpdfbookmark{练习}{B1.5.5.E}
 \subsection*{练习}
 \fi
+
+% Local Variables:
+% TeX-engine: luatex
+% TeX-master: "微积分B"
+% End:
