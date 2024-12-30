@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     img.width = 88;
     img.height = 31;
     a.protocol = "https:";
+    a.href = a.href.replace('referer', window.location);
     a.replaceChild(img, a.firstChild);
     var anchors = document.getElementsByTagName("a");
     for (var i = 0; i < anchors.length; i++) {
