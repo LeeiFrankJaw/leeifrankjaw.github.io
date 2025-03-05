@@ -47,6 +47,7 @@ CGArp = { \omit Fingering \CGArpFinger \undo \omit Fingering }
 ECadentialSixFour = { \AmEArp \EArp }
 GCadentialSixFour = { \CGArpFinger \GSevenArpFinger }
 
+% \new TabStaff \transpose c' c
 \relative {
   \set Staff.instrumentName = "Moderato."
   \omit TupletNumber
