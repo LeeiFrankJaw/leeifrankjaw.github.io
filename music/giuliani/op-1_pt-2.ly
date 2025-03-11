@@ -5,17 +5,29 @@
 thirdsAI = \relative { a16 c-1 }
 thirdsAII = \relative { a8-2 }
 
+thirdsAtwoI = \relative { a,16 c-2 }
+thirdsAtwoII = \relative { a,8-4 }
+
 thirdsGI = \relative { g16 b-0 }
 thirdsGII = \relative { g8-0 }
+
+thirdsgsI = \relative { gs'16\2 b-1 }
+thirdsgsII = \relative { gs'8\2-2 }
+
+thirdsGstwoI = \relative { gs,16 b-1 }
+thirdsGstwoII = \relative { gs,8-3 }
 
 thirdsFtwoI = \relative { f16 a-2 }
 thirdsFtwoII = \relative { f8-3 }
 
 thirdsdI = \relative { d'16 f-1 }
 thirdsdII = \relative { d'8-3 }
+thirdsdtwoI = \relative { d'16 fs-1 }
 
 thirdseI = \relative { e'16\2 g-2 }
 thirdseII = \relative { e'8\2-4 }
+
+thirdsesI = \relative { es'16\2 gs-1 }
 
 thirdscI = \relative { c'16 e-0 }
 thirdscII = \relative { c'8-1 }
@@ -29,17 +41,30 @@ thirdsfII = \relative { f'8\2-4 }
 thirdsGsI = \relative { gs16 b-0 }
 thirdsGsII = \relative { gs8-1 }
 
+thirdsEI = \relative { e16 g-0 }
+thirdsEII = \relative { e8-1 }
 thirdsEtwoI = \relative { e16 gs-1 }
-thirdsEII = \relative { e8-2 }
+thirdsEtwoII = \relative { e8-2 }
 
 thirdsDI = \relative { d16\5 f-2 }
 thirdsDII = \relative { d8\5-4 }
+
+thirdsDtwoI = \relative { d16\5 fs-3 }
 
 thirdsCI = \relative { c16 e-1 }
 thirdsCII = \relative { c8-2 }
 
 thirdsBtwoI = \relative { b,16 d-0 }
 thirdsBtwoII = \relative { b,8-1 }
+
+thirdsFsI = \relative { fs16 a-1 }
+thirdsFsII = \relative { fs8-3 }
+
+thirdsfsI = \relative { fs'16\2 a-2 }
+thirdsfsII = \relative { fs'8\2-4 }
+
+thirdscsI = \relative { cs'16 e-0 }
+thirdscsII = \relative { cs'8-2 }
 
 % Third interval groups
 thirdsCBCDI = \relative {
@@ -64,8 +89,8 @@ thirdsGFsII = \relative { g8-0 fs-4 }
 thirdsBAsI = \relative { b16\3 d-3 as cs-2 }
 thirdsBAsII = \relative { b8\3-4 as-3 }
 
-thirdsBCsI = \relative { b16\3 d-3 cs e-0 }
-thirdsBCsII = \relative { b8\3-4 cs-2 }
+thirdsBcsI = { \thirdsBI \thirdscsI }
+thirdsBcsII = { \thirdsBII \thirdscsII }
 
 thirdsdcI = \relative { d'16 f!-1 c e-0 }
 thirdsdcII = \relative { d'8-3 c-1 }
@@ -73,11 +98,18 @@ thirdsdcII = \relative { d'8-3 c-1 }
 thirdsBAI = \relative { b16\3 d-3 a c-1 }
 thirdsBAII = \relative { b8\3-4 a-2 }
 
-thirdsGFI = \relative { g16 b-0 f a-2 }
+thirdsGFI = \relative {
+  g16 b-0
+  \accidentalStyle forget
+  f
+  \accidentalStyle modern
+  a-2
+}
 thirdsGFII = \relative { g8-0 f-3 }
 
 thirdsEDI = \relative { e16 g-0 d\5 f-2 }
 thirdsEDII = \relative { e8-2 d\5-4 }
+thirdsEDtwoII = \relative { e8-1 d\5-4 }
 
 thirdsGFtwoI = \relative { g16\4 bf-2 f a-1 }
 thirdsGFtwoII = \relative { g8\4-4 f-2 }
@@ -103,7 +135,7 @@ thirdsECsII = \relative { e8-1 cs-3 }
 thirdsDCI = \relative { d16\5 f-2 c e-1 }
 thirdsDCII = \relative { d8\5-4 c-2 }
 
-thirdsBAtwoI = \relative { b,16 d-0 a\6 c-2 }
+thirdsBAtwoI = \relative { b,!16 d-0 a\6 c-2 }
 thirdsBAtwoII = \relative { b,8-1 a\6-4 }
 
 thirdsGArpI = \relative { g,16 b-1 g' b-0 }
@@ -145,7 +177,7 @@ thirds = \relative {
       \thirdsGFsI
       \thirdsGAI
       \thirdsBAsI
-      \thirdsBCsI
+      \thirdsBcsI
       \thirdsdcI
       \thirdsBAI
       \thirdsGFI
@@ -181,6 +213,18 @@ thirds = \relative {
       \thirdsGsI \thirdsFtwoI
       \thirdsEtwoI \thirdsDI
       \thirdsCI \thirdsBtwoI
+      \thirdsAtwoI \thirdsGstwoI
+      \thirdsAtwoI \thirdsBtwoI
+      \thirdsCI \thirdsAtwoI
+      \thirdsBtwoI \thirdsGstwoI
+      \thirdsAtwoI \thirdsAI
+      \thirdscI \thirdsBI
+      \thirdsAI \thirdsGI
+      \thirdsFsI \thirdsEI
+      \thirdsDtwoI \thirdscsI
+      \thirdsdtwoI \thirdseI
+      \thirdsfsI \thirdsesI
+      \thirdsfsI \thirdsgsI
     }
     \\
     {
@@ -195,7 +239,7 @@ thirds = \relative {
       \thirdsGFsII
       \thirdsGAII
       \thirdsBAsII
-      \thirdsBCsII
+      \thirdsBcsII
       \thirdsdcII
       \thirdsBAII
       \thirdsGFII
@@ -203,7 +247,7 @@ thirds = \relative {
       \thirdsCBCDII
       \thirdsEFII
       \thirdsGFtwoII
-      \thirdsEDII
+      \thirdsEDtwoII
       \thirdsCsDII
       \thirdsEGII
       \thirdsFEII
@@ -229,39 +273,69 @@ thirds = \relative {
       \thirdsdII \thirdscII
       \thirdsBAII
       \thirdsGsII \thirdsFtwoII
-      \thirdsEII \thirdsDII
+      \thirdsEtwoII \thirdsDII
       \thirdsCII \thirdsBtwoII
+      \thirdsAtwoII \thirdsGstwoII
+      \thirdsAtwoII \thirdsBtwoII
+      \thirdsCII \thirdsAtwoII
+      \thirdsBtwoII \thirdsGstwoII
+      \thirdsAtwoII \thirdsAII
+      \thirdscII \thirdsBII
+      \thirdsAII g!8-0
+      \thirdsFsII \thirdsEII
+      \thirdsDII cs8-1
+      d-2 \thirdseII
+      \thirdsfsII es-3
+      \thirdsfsII \thirdsgsII
     }
     \\
     {
-      s8^\markup \raise #.5 \center-align "II"
+      s8^\markup \raise #.5 \center-align "Ⅱ"
       \repeat unfold 14 { s \noBreak }
-      s^\markup \raise #1.5 \halign #-1.5 "I" \noBreak
+      s^\markup \raise #1.5 \halign #-1.5 "Ⅰ" \noBreak
       \repeat unfold 7 { s \noBreak }
       s
       \repeat unfold 7 { s }
-      s^\markup "II" \noBreak
+      s^\markup "Ⅱ" \noBreak
       \repeat unfold 15 { s \noBreak }
       s
       \repeat unfold 18 { s \noBreak }
-      s^\markup "I"
+      s^\markup "Ⅰ"
       \repeat unfold 4 { s \noBreak }
-      s^\markup "II"
-      s^\markup "I"
+      s^\markup "Ⅱ"
+      s^\markup "Ⅰ"
       \repeat unfold 8 { s \noBreak }
-      s^\markup "II"
+      s^\markup "Ⅱ"
       \repeat unfold 3 { s \noBreak }
-      s^\markup "III"
-      s^\markup "I"
+      s^\markup \halign #-.5 "Ⅲ"
+      s^\markup "Ⅰ"
       \repeat unfold 6 { s \noBreak }
-      s^\markup "II"
+      s^\markup "Ⅱ"
       s \noBreak
       s
-      \repeat unfold 23 { s \noBreak }
+      \repeat unfold 9 { s \noBreak }
+      s^\markup "Ⅰ"
+      \repeat unfold 4 { s \noBreak }
+      s^\markup "Ⅱ"
+      \repeat unfold 5 { s \noBreak }
+      s^\markup \halign #-.7 "Ⅳ"
+      \repeat unfold 2 { s \noBreak }
+      s^\markup \halign #-.55  "Ⅶ"
+      \repeat unfold 2 { s }
+      s^\markup "Ⅴ"
+      s^\markup "Ⅱ"
       s
-      \repeat unfold 23 { s \noBreak }
+      s^\markup "Ⅰ"
+      \repeat unfold 3 { s \noBreak }
+      s^\markup "Ⅱ"
+      s^\markup "Ⅰ"
+      \repeat unfold 12 { s \noBreak }
       s
-      \repeat unfold 40 { s \noBreak }
+      s
+      s^\markup "Ⅱ"
+      \repeat unfold 19 { s \noBreak }
+      s^\markup "Ⅰ"
+      \repeat unfold 18 { s \noBreak }
     }
   >>
 }
