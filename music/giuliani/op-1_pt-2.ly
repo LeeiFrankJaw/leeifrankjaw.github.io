@@ -1,6 +1,12 @@
 \version "2.24.3"
 \language "english"
 
+arpeggioPS = #"
+  -.75 -3.75 moveto
+  3.25 1.75 rlineto
+  stroke
+"
+
 % Basic third intervals
 thirdsAI = \relative { a16 c-1 }
 thirdsAII = \relative { a8-2 }
@@ -254,7 +260,11 @@ thirds = \relative {
       \thirdsEFI
       \thirdsGAI
       \thirdsBI \thirdscI
-      \relative { f'4-1 r g2 }
+      \relative {
+        f'4-1 r
+        \set fingeringOrientations = #'(left)
+        <g-4>2
+      }
     }
     \\
     {
@@ -342,9 +352,13 @@ thirds = \relative {
       \thirdsGAII
       \thirdsBII \thirdscII
       \relative {
-        d'4-3 b4\rest <g, g' b>2
+        % \override NoteColumn.show-horizontal-skylines = ##t
+        d'4-3 b4\rest
+        \override NoteHead.extra-spacing-width = #'(-2 . 0)
         \set fingeringOrientations = #'(left)
-        <c-3 e-2 g-0 c-1 e-0>1\arpeggio
+        <g,-3 g'-0 b-0>2
+        \once \override Fingering.padding = #.75
+        <c-3 e-2 g-0 c-1 e-0>1^\markup \postscript #arpeggioPS
       }
       \bar "|."
     }
