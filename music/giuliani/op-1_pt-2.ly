@@ -17,12 +17,15 @@ thirdsgsII = \relative { gs'8\2-2 }
 thirdsGstwoI = \relative { gs,16 b-1 }
 thirdsGstwoII = \relative { gs,8-3 }
 
+thirdsFI = \relative { f16 a-1 }
+thirdsFII = \relative { f8-2 }
 thirdsFtwoI = \relative { f16 a-2 }
 thirdsFtwoII = \relative { f8-3 }
 
 thirdsdI = \relative { d'16 f-1 }
 thirdsdII = \relative { d'8-3 }
 thirdsdtwoI = \relative { d'16 fs-1 }
+thirdsdtwoII = \relative { d'8-2 }
 
 thirdseI = \relative { e'16\2 g-2 }
 thirdseII = \relative { e'8\2-4 }
@@ -59,6 +62,8 @@ thirdsBtwoII = \relative { b,8-1 }
 
 thirdsFsI = \relative { fs16 a-1 }
 thirdsFsII = \relative { fs8-3 }
+thirdsFstwoI = \relative { fs16 a-2 }
+thirdsFstwoII = \relative { fs8-4 }
 
 thirdsfsI = \relative { fs'16\2 a-2 }
 thirdsfsII = \relative { fs'8\2-4 }
@@ -225,6 +230,31 @@ thirds = \relative {
       \thirdsdtwoI \thirdseI
       \thirdsfsI \thirdsesI
       \thirdsfsI \thirdsgsI
+      \relative { a'16 c!-2 g b-1 }
+      \relative { fs'16 a-1 } \thirdseI
+      \thirdsdtwoI \thirdscI
+      \thirdsBAI
+      \thirdsEmGI
+      \thirdscI \thirdsAI
+      \thirdsBI \thirdsGI
+      \thirdsAI \thirdsFstwoI
+      \thirdsGI \thirdsBI
+      \thirdsAI \thirdsFstwoI
+      \thirdsGI \thirdsBI
+      \thirdsAI \thirdsFstwoI
+      \thirdsGI \thirdsEI
+      \thirdsFI \thirdsDI
+      \thirdsEI \thirdsCI
+      \thirdsDI \thirdsBtwoI
+      \thirdsCI \thirdsEI
+      \thirdsDI \thirdsBtwoI
+      \thirdsCI \thirdsEI
+      \thirdsDI \thirdsBtwoI
+      \thirdsCI \thirdsDI
+      \thirdsEFI
+      \thirdsGAI
+      \thirdsBI \thirdscI
+      \relative { f'4-1 r g2 }
     }
     \\
     {
@@ -284,9 +314,39 @@ thirds = \relative {
       \thirdsAII g!8-0
       \thirdsFsII \thirdsEII
       \thirdsDII cs8-1
-      d-2 \thirdseII
+      \thirdsdtwoII \thirdseII
       \thirdsfsII es-3
       \thirdsfsII \thirdsgsII
+      \relative { a'8\2-4 g-2 }
+      \relative { fs'8-3 } \thirdseII
+      \thirdsdtwoII \accidentalStyle forget \thirdscII \accidentalStyle modern
+      \thirdsBAII
+      \thirdsEmGII
+      \thirdscII \thirdsAII
+      \thirdsBII \thirdsGII
+      \thirdsAII \thirdsFstwoII
+      \thirdsGII \thirdsBII
+      \thirdsAII \thirdsFstwoII
+      \thirdsGII \thirdsBII
+      \thirdsAII \thirdsFstwoII
+      \thirdsGII \thirdsEII
+      \thirdsFII \thirdsDII
+      \thirdsEII \thirdsCII
+      \thirdsDII \thirdsBtwoII
+      \thirdsCII \thirdsEII
+      \thirdsDII \thirdsBtwoII
+      \thirdsCII \thirdsEII
+      \thirdsDII \thirdsBtwoII
+      \thirdsCII \thirdsDII
+      \thirdsEFII
+      \thirdsGAII
+      \thirdsBII \thirdscII
+      \relative {
+        d'4-3 b4\rest <g, g' b>2
+        \set fingeringOrientations = #'(left)
+        <c-3 e-2 g-0 c-1 e-0>1\arpeggio
+      }
+      \bar "|."
     }
     \\
     {
@@ -336,6 +396,11 @@ thirds = \relative {
       \repeat unfold 19 { s \noBreak }
       s^\markup "Ⅰ"
       \repeat unfold 18 { s \noBreak }
+    }
+    \\
+    {
+      \repeat unfold 21 { s1 }
+      s4 c,2\rest
     }
   >>
 }
