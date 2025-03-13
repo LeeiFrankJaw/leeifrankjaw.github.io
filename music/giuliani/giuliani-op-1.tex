@@ -2,6 +2,11 @@
 
 \newcommand*{\titleContent}{Studio per la chitarra, op. 1}
 
+\usepackage[hmargin=.75in,vmargin=.75in]{geometry}
+\usepackage{lyluatex}
+
+\def\betweenLilyPondSystem#1{\linebreak\vskip.5ex plus .25ex minus .25ex}
+
 \begin{document}
 
 \thispagestyle{empty}
@@ -41,12 +46,16 @@ più praticati per l'andamento della mano sinistra.  P. 13.
 
 \section*{Spiegazione}
 
+\clearpage
 \section*{Seconda parte.}
 
 Esempio primo.
 
 Per il portamento della mano sinistra.  Salti di terza in C maggiore sino alla settima posizione.  In tutti questi esempj della seconda parte i bassi, cioè quelle note che hanno la coda al di sotto, si toccano col pollice, e le altre di sopra coll' indice della mano destra.
 
+\lilypondfile[indent=25pt]{op-1_pt-2.ly}
+
+\clearpage
 \section*{Terza parte.}
 
 Esempio primo.
@@ -59,4 +68,5 @@ Le tenuta del tuono si forma colla pressione del dito sulla corda durante il val
 
 % Local Variables:
 % TeX-engine: luatex
+% TeX-command-extra-options: "--shell-escape"
 % End:
