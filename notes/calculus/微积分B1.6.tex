@@ -67,22 +67,22 @@ $ f(x) $在$ \mathbb{R} $上的一个原函数，因为$ f(x) = F'(x) $．
 \textbf{问题I：}什么样的$f(x)$在$(a,b)$上存在原函数？
 
 \textbf{答：}\parbox[t]{5in}{
-(1) $ f \in C(a,b) $，则$ f $在$(a,b)$内一定存在原函数.（下一章，即第7章）\\
-(2) $f$在$(a,b)$不连续，是否还有可能存在原函数？}
+  (1) $ f \in C(a,b) $，则$ f $在$(a,b)$内一定存在原函数.（下一章，即第7章）\\
+  (2) $f$在$(a,b)$不连续，是否还有可能存在原函数？}
 
 \hypertarget{eg:discontI}{}
 \textbf{反例}
 \begin{gather*}
-	f(x) =
-	\begin{cases}
-		2x \sin \frac{1}{x} - \cos \frac{1}{x}, & x \ne 0 \\
-		0, & x = 0
-	\end{cases} \\
-	F(x) =
-	\begin{cases}
-		x^2 \sin \frac{1}{x}, & x \ne 0 \\
-		0, & x = 0
-	\end{cases}
+  f(x) =
+  \begin{cases}
+    2x \sin \frac{1}{x} - \cos \frac{1}{x}, & x \ne 0 \\
+    0, & x = 0
+  \end{cases} \\
+  F(x) =
+  \begin{cases}
+    x^2 \sin \frac{1}{x}, & x \ne 0 \\
+    0, & x = 0
+  \end{cases}
 \end{gather*}
 $F(x)$在$\mathbb{R}$上是可导函数, 所以有$F'(x) = f(x)$, \ $x \in \mathbb{R}$．
 
@@ -91,25 +91,25 @@ $F(x)$在$\mathbb{R}$上是可导函数, 所以有$F'(x) = f(x)$, \ $x \in \math
 \textbf{答：}要回答这个问题, 我们要先回顾一下微分学中学过的Darboux定理.
 
 \hangpar{Darboux定理：}{
-若$F(x)$在$[a,b]$上可导(在$a$点右导数存在, 在b点左导数存在)且$F'(a) = \alpha$,
-$F'(b) = \beta$, $\alpha \ne \beta$, 则对于任何介于$\alpha$, $\beta$的实数$\eta$,
-存在$\xi \in (a,b) $使得$F'(\xi) = \eta$. (导数的介值定理) }
+  若$F(x)$在$[a,b]$上可导(在$a$点右导数存在, 在b点左导数存在)且$F'(a) = \alpha$,
+  $F'(b) = \beta$, $\alpha \ne \beta$, 则对于任何介于$\alpha$, $\beta$的实数$\eta$,
+  存在$\xi \in (a,b) $使得$F'(\xi) = \eta$. (导数的介值定理) }
 
 Darboux定理的逆否命题就说明：不满足介值性质的函数没有原函数.
 
 \textbf{例：}若$f(x)$在$(a,b)$上有第一类间断点, 则$f(x)$在$(a,b)$不满足介值定理,
 从而在$(a,b)$上没有原函数.
 \[f(x) = \begin{cases}
-    1, & x \ge 0 \\
-    -1, & x < 0
-  \end{cases}\]
+  1, & x \ge 0 \\
+  -1, & x < 0
+\end{cases}\]
 $x = 0$是第一类间断点, $f(x)$在$(a,b)\ (a<0, b>0)$上没有原函数.
 
 \textbf{例：}
 \[f(x) = \begin{cases}
-    2x \sin \frac{1}{x} - \cos \frac{1}{x} + 2, & x \ne 0 \\
-    -2, & x = 0
-  \end{cases}\]
+  2x \sin \frac{1}{x} - \cos \frac{1}{x} + 2, & x \ne 0 \\
+  -2, & x = 0
+\end{cases}\]
 $x=0$是第二类间断点, $f(x)$在$(a,b)\ (a<0, b>0)$上不存在原函数. (cf.~\hyperlink{eg:discontI}{反例})
 
 \textbf{问题III：}若$f(x)$在$(a,b)$上有原函数, 有几个原函数？
@@ -134,17 +134,17 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
 \textbf{定义：}我们把原函数族称为$f(x)$的不定积分. 记作
 \[\{F(x)+C\} = \int f(x) \,dx.\]
 \begin{alignat*}{3}
-	F&(x) &&\xrightarrow{\text{求导}} &&f(x) \; \text{导函数} \\
-	F(x) &+ C &&\xleftarrow[\text{不定积分}]{} &&f(x) \\
-	&\veq \\
-	\int f(&x) \, dx && &&\text{互为逆过程}
+  F&(x) &&\xrightarrow{\text{求导}} &&f(x) \; \text{导函数} \\
+  F(x) &+ C &&\xleftarrow[\text{不定积分}]{} &&f(x) \\
+   &\veq \\
+  \int f(&x) \, dx && &&\text{互为逆过程}
 \end{alignat*}
 
 通过上面的原函数表, 给每一个函数加上一个$C$, 就可以构成不定积分表.
 
 \hangpar{不定积分的性质}{
-(1) 若$f,g \in R[a,b]$, 则$\int [f(x)+g(x)] \,dx = \int f(x) \,dx + \int g(x) \,dx$\,; \\
-(2) 若$f \in R[a,b]$, $\lambda \in \mathbb{R}$, 则$\int [\lambda f(x)] \,dx = \lambda \int f(x) \,dx$．}
+  (1) 若$f,g \in R[a,b]$, 则$\int [f(x)+g(x)] \,dx = \int f(x) \,dx + \int g(x) \,dx$\,; \\
+  (2) 若$f \in R[a,b]$, $\lambda \in \mathbb{R}$, 则$\int [\lambda f(x)] \,dx = \lambda \int f(x) \,dx$．}
 
 \begin{proof}
   \textbf{对(1)的证明：}
@@ -180,7 +180,7 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
 
 性质(1)叫做加法法则, 性质(2)叫做数乘法则, 同时使用这两个法则得到:
 \[ \int [\lambda f(x) + \mu g(x)] \,dx = \int \lambda f(x) \,dx + \int \mu g(x) \,dx
-= \lambda \int f(x) \,dx + \mu \int g(x) \,dx. \]
+  = \lambda \int f(x) \,dx + \mu \int g(x) \,dx. \]
 
 所谓的减法法则, 可以看成上式的特例:
 \[ \int [f(x) - g(x)] \,dx = \int f(x) \,dx - \int g(x) \,dx \quad (\lambda = 1, \mu = -1). \]
@@ -423,178 +423,178 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
 \item 若\(f(x)\)的导函数是\(\sin x\), 求\(f(x)\)的原函数.
 
   \ifshowsol
-  这题相当于是求函数\(\sin x\)的原函数的原函数, 所以有
-  \[
-    \int \paren*{\int \sin x \dx} \dx = \int \paren[\big]{-\cos x + C_1} \dx = -\sin x + C_1 x + C_2.
-  \]
+    这题相当于是求函数\(\sin x\)的原函数的原函数, 所以有
+    \[
+      \int \paren*{\int \sin x \dx} \dx = \int \paren[\big]{-\cos x + C_1} \dx = -\sin x + C_1 x + C_2.
+    \]
   \fi
 
 \item 已知\(f(x)\)的一个原函数是\(\sin x\), \(g(x)\)的一个原函数是\(x^2\), 求复函数\(f(g(x))\)的原函数.
 
   \ifshowsol
-  因为
-  \[
-    f(x) = \ddx \sin x = \cos x, \quad g(x) = \ddx x^2 = 2x,
-  \]
-  所以
-  \begin{align*}
-    \int f(g(x)) \dx
-    &= \int \cos 2x \dx \\
-    &= \frac12 \int \cos t \dt && \mreason{x = t/2} \\
-    &= \frac12 \sin t + C = \frac12 \sin 2x + C.
-  \end{align*}
+    因为
+    \[
+      f(x) = \ddx \sin x = \cos x, \quad g(x) = \ddx x^2 = 2x,
+    \]
+    所以
+    \begin{align*}
+      \int f(g(x)) \dx
+      &= \int \cos 2x \dx \\
+      &= \frac12 \int \cos t \dt && \mreason{x = t/2} \\
+      &= \frac12 \sin t + C = \frac12 \sin 2x + C.
+    \end{align*}
   \fi
 
 \item \disp{\int e^{-\abs{x}} \dx}.
   \ifshowsol
-  \begin{align*}
-    \int e^{-\abs{x}} \dx
-    &=
-      \begin{cases}
-        \int e^{-x} \dx, & x \ge 0, \\
-        \int e^x \dx, & x < 0,
-      \end{cases} \\
-    &=
-      \begin{cases}
-        - \int e^{t} \dt, & x \ge 0, \qquad \mreason{x = -t} \\
-        e^x + C_2, & x < 0,
-      \end{cases} \\
-    &=
-      \begin{cases}
-        -e^t + C_1, & x \ge 0, \\
-        e^x + C_2, & x < 0,
-      \end{cases} \\
-    &=
-      \begin{cases}
-        -e^{-x} + C_1, & x \ge 0, \qquad \mreason{t = -x} \\
-        e^x + C_2, & x < 0,
-      \end{cases} \\
-    &= C +
-      \begin{cases}
-        -e^{-x} + 2, & x \ge 0, \\
-        e^x, & x <0.
-      \end{cases} \quad \reason{\(-1 + C_1 = 1 + C_2\), 取\(C_2 = 0\)}
-  \end{align*}
+    \begin{align*}
+      \int e^{-\abs{x}} \dx
+      &=
+        \begin{cases}
+          \int e^{-x} \dx, & x \ge 0, \\
+          \int e^x \dx, & x < 0,
+        \end{cases} \\
+      &=
+        \begin{cases}
+          - \int e^{t} \dt, & x \ge 0, \qquad \mreason{x = -t} \\
+          e^x + C_2, & x < 0,
+        \end{cases} \\
+      &=
+        \begin{cases}
+          -e^t + C_1, & x \ge 0, \\
+          e^x + C_2, & x < 0,
+        \end{cases} \\
+      &=
+        \begin{cases}
+          -e^{-x} + C_1, & x \ge 0, \qquad \mreason{t = -x} \\
+          e^x + C_2, & x < 0,
+        \end{cases} \\
+      &= C +
+        \begin{cases}
+          -e^{-x} + 2, & x \ge 0, \\
+          e^x, & x <0.
+        \end{cases} \quad \reason{\(-1 + C_1 = 1 + C_2\), 取\(C_2 = 0\)}
+    \end{align*}
   \fi
 
 \item 已知曲线上任一点的二阶导数\(y\dpr = 6x\), 且在曲线上点\((0, -2)\)处的切线为\(2x - 3y = 6\), 求这条曲线的方程.
 
   \ifshowsol
-  将切线的方程化为点斜式, 得到\(y = 2x/3 - 2\), 所以\(y'\big\vert_{x=0} = 2/3\)．有
-  \[
-    y' = \int y\dpr \dx = \int 6x \dx = 3x^2 + c_1,
-  \]
-  所以\(c_1 = 2/3\). 又有
-  \[
-    y = \int y' \dx = \int \paren[\Big]{3x^2 + \frac23} \dx = x^3 + \frac23 x + c_2,
-  \]
-  所以\(c_2 = -2\)．这条曲线的方程是
-  \[
-    y = x^3 + \frac23 x - 2.
-  \]
+    将切线的方程化为点斜式, 得到\(y = 2x/3 - 2\), 所以\(y'\big\vert_{x=0} = 2/3\)．有
+    \[
+      y' = \int y\dpr \dx = \int 6x \dx = 3x^2 + c_1,
+    \]
+    所以\(c_1 = 2/3\). 又有
+    \[
+      y = \int y' \dx = \int \paren[\Big]{3x^2 + \frac23} \dx = x^3 + \frac23 x + c_2,
+    \]
+    所以\(c_2 = -2\)．这条曲线的方程是
+    \[
+      y = x^3 + \frac23 x - 2.
+    \]
   \fi
 
 \item \disp{\int \frac{\ln x}{x^2} \dx}.
 
   \ifshowsol
-  最好的办法是用\(x = e^t\)换元后用分部积分法, 可惜这里还没学到．有
-  \begin{align*}
-    \int \frac{\ln x}{x^2} \dx
-    &= \int t e^{-t} \dt
-    && \mreason{x = e^t} \\
-    &= - \int t \diff e^{-t} \\
-    &= - \paren[\Big]{t e^{-t} - \int e^{-t} \dt} \\
-    &= - t e^{-t} - e^{-t} + C \\
-    &= - \frac{\ln x}{x} - \frac1x + C.
-  \end{align*}
+    最好的办法是用\(x = e^t\)换元后用分部积分法, 可惜这里还没学到．有
+    \begin{align*}
+      \int \frac{\ln x}{x^2} \dx
+      &= \int t e^{-t} \dt
+      && \mreason{x = e^t} \\
+      &= - \int t \diff e^{-t} \\
+      &= - \paren[\Big]{t e^{-t} - \int e^{-t} \dt} \\
+      &= - t e^{-t} - e^{-t} + C \\
+      &= - \frac{\ln x}{x} - \frac1x + C.
+    \end{align*}
   \fi
 
 \item 设\(f(x) = e^{-x}\), 求\disp{\int \frac{f'(\ln x)}{x} \dx}.
 
   \ifshowsol
-  使用第一换元法, 有
-  \begin{equation*}
-    \int \frac{f'(\ln x)}{x} \dx
-    = \int f'(\ln x) \diff (\ln x)
-    = f(\ln x) = \frac1x + C.
-  \end{equation*}
+    使用第一换元法, 有
+    \begin{equation*}
+      \int \frac{f'(\ln x)}{x} \dx
+      = \int f'(\ln x) \diff (\ln x)
+      = f(\ln x) = \frac1x + C.
+    \end{equation*}
 
-  也可以直接求导\(f'(x) = - e^{-x}\), 然后直接代入, 有
-  \begin{equation*}
-    \int \frac{f'(\ln x)}{x} \dx
-    = - \int \frac{1}{x^2} \dx
-    = \frac1x + C.
-  \end{equation*}
+    也可以直接求导\(f'(x) = - e^{-x}\), 然后直接代入, 有
+    \begin{equation*}
+      \int \frac{f'(\ln x)}{x} \dx
+      = - \int \frac{1}{x^2} \dx
+      = \frac1x + C.
+    \end{equation*}
   \fi
 
 \item 若\disp{\int f(x) \dx = x^2 + C}, 求\disp{\int x \, f(1-x^2) \dx}.
 
   \ifshowsol
-  使用第一换元法, 有
-  \begin{align*}
-    \int x \, f(1-x^2) \dx
-    = - \frac12 \int f(1-x^2) \diff (1-x^2)
-    = - \frac12 \paren[\big]{1-x^2}^2 + C.
-  \end{align*}
+    使用第一换元法, 有
+    \begin{align*}
+      \int x \, f(1-x^2) \dx
+      = - \frac12 \int f(1-x^2) \diff (1-x^2)
+      = - \frac12 \paren[\big]{1-x^2}^2 + C.
+    \end{align*}
 
-  或者通过求导得到
-  \[
-    f(x) = \ddx \int f(x) \dx = \ddx (x^2 + C) = 2x,
-  \]
-  所以
-  \[
-    \int x \, f(1-x^2) \dx
-    = 2 \int x (1-x^2) \dx
-    = x^2 - \frac{x^4}{2} + C.
-  \]
+    或者通过求导得到
+    \[
+      f(x) = \ddx \int f(x) \dx = \ddx (x^2 + C) = 2x,
+    \]
+    所以
+    \[
+      \int x \, f(1-x^2) \dx
+      = 2 \int x (1-x^2) \dx
+      = x^2 - \frac{x^4}{2} + C.
+    \]
 
-  上面两种方法得到的答案形式不一样, 但实际上是等价的, 只要把第一个答案中外部的平方展开, 把产生的常数项吸收到后面的任意常数\(C\)中, 就是第二个答案中的形式.
+    上面两种方法得到的答案形式不一样, 但实际上是等价的, 只要把第一个答案中外部的平方展开, 把产生的常数项吸收到后面的任意常数\(C\)中, 就是第二个答案中的形式.
   \fi
 
 \item \disp{\int \frac{x}{(1-x)^3} \dx}.
 
   \ifshowsol
-  尝试使用\(u = 1/(1-x)^2\)和\(t = 1/(1-x)\)来做换元, 观察到
-  \[
-    \du = \frac{2}{(1-x)^3} \dx
-    \quad \text{和} \quad
-    \dt = \frac{1}{(1-x)^2} \dx,
-  \]
-  所以有
-  \begin{align*}
-    \int \frac{x}{(1-x)^3} \dx
-    &= \int \paren[\bigg]{\frac{x-1}{(1-x)^3} + \frac{1}{(1-x)^3}} \dx \\
-    &= - \int \frac{1}{(1-x)^2} \dx + \int \frac{1}{(1-x)^3} \dx \\
-    &= - \int \dt + \frac12 \int \du \\
-    &= - t + \frac u2 + C \\
-    &= - \frac1{1-x} + \frac1{2 (1-x)^2} + C.
-  \end{align*}
+    尝试使用\(u = 1/(1-x)^2\)和\(t = 1/(1-x)\)来做换元, 观察到
+    \[
+      \du = \frac{2}{(1-x)^3} \dx
+      \quad \text{和} \quad
+      \dt = \frac{1}{(1-x)^2} \dx,
+    \]
+    所以有
+    \begin{align*}
+      \int \frac{x}{(1-x)^3} \dx
+      &= \int \paren[\bigg]{\frac{x-1}{(1-x)^3} + \frac{1}{(1-x)^3}} \dx \\
+      &= - \int \frac{1}{(1-x)^2} \dx + \int \frac{1}{(1-x)^3} \dx \\
+      &= - \int \dt + \frac12 \int \du \\
+      &= - t + \frac u2 + C \\
+      &= - \frac1{1-x} + \frac1{2 (1-x)^2} + C.
+    \end{align*}
   \fi
 
 \item \disp{\int \frac{\sin x \cos x}{1 + \sin^4 x} \dx}.
 
   \ifshowsol
-  使用\(u = \sin x\)和\(t = u^2\)来做换元, 就有
-  \begin{align*}
-    \int \frac{\sin x \cos x}{1 + \sin^4 x} \dx
-    &= \int \frac{u}{1+u^4} \du
-    && \mreason{\du = \cos x \dx} \\
-    &= \frac12 \int \frac1{1+t^2} \dt
-    && \mreason{\dt = 2u \du} \\
-    &= \frac12 \arctan t + C \\
-    &= \frac12 \arctan \sin^2 x + C
-    && \mreason{t = u^2,\ u = \sin x}
-  \end{align*}
+    使用\(u = \sin x\)和\(t = u^2\)来做换元, 就有
+    \begin{align*}
+      \int \frac{\sin x \cos x}{1 + \sin^4 x} \dx
+      &= \int \frac{u}{1+u^4} \du
+      && \mreason{\du = \cos x \dx} \\
+      &= \frac12 \int \frac1{1+t^2} \dt
+      && \mreason{\dt = 2u \du} \\
+      &= \frac12 \arctan t + C \\
+      &= \frac12 \arctan \sin^2 x + C
+      && \mreason{t = u^2,\ u = \sin x}
+    \end{align*}
   \fi
 
 \item \disp{\int \paren[\big]{2^x + x^2} \dx}.
 
   \ifshowsol
-  \[
-    \int \paren[\big]{2^x + x^2} \dx
-    = \int 2^x \dx + \int x^2 \dx
-    = \frac{2^x}{\ln 2} + \frac{x^3}3 + C.
-  \]
+    \[
+      \int \paren[\big]{2^x + x^2} \dx
+      = \int 2^x \dx + \int x^2 \dx
+      = \frac{2^x}{\ln 2} + \frac{x^3}3 + C.
+    \]
   \fi
 \end{enumerate}
 \fi
@@ -896,96 +896,96 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
 
 \begin{enumerate}
   \ifshowsol
-  \setlength{\itemsep}{10pt plus 4pt minus 4pt}
-  \setlength{\abovedisplayskip}{5pt plus 2pt minus 5pt}
-  \setlength{\belowdisplayskip}{10pt plus 3pt minus 2pt}
+    \setlength{\itemsep}{10pt plus 4pt minus 4pt}
+    \setlength{\abovedisplayskip}{5pt plus 2pt minus 5pt}
+    \setlength{\belowdisplayskip}{10pt plus 3pt minus 2pt}
   \fi
 \item 设\(\displaystyle J_k = \int \frac{\dx}{\brkt{(x+a)^2 + b^2}^k}\), 求\(J_k\)的递推表达式.
 
   \ifshowsol
-  因为
-  \[
-    J_k
-    = \int \frac{\dx}{\brkt{(x+a)^2 + b^2}^k}
-    = \int \frac{\diff(x+a)}{\brkt{(x+a)^2 + b^2}^k}
-    = \int \frac{\du}{\paren{u^2 + b^2}^k}
-    = I_{k,b^2}(u)
-    = I_{k,b^2}(x+a),
-  \]
-  所以
-  \begin{equation*}
-    \begin{split}
-      J_{k+1}
-      = I_{k+1,b^2}(x+a)
-      &= \frac{1}{2kb^2} \brce[\bigg]{(2k-1) I_{k,b^2}(x+a) + \frac{x+a}{\brkt{(x+a)^2 + b^2}^k}} \\
-      &= \frac{1}{2kb^2} \brce[\bigg]{(2k-1) J_k + \frac{x+a}{\brkt{(x+a)^2 + b^2}^k}}.
-    \end{split}
-  \end{equation*}
+    因为
+    \[
+      J_k
+      = \int \frac{\dx}{\brkt{(x+a)^2 + b^2}^k}
+      = \int \frac{\diff(x+a)}{\brkt{(x+a)^2 + b^2}^k}
+      = \int \frac{\du}{\paren{u^2 + b^2}^k}
+      = I_{k,b^2}(u)
+      = I_{k,b^2}(x+a),
+    \]
+    所以
+    \begin{equation*}
+      \begin{split}
+        J_{k+1}
+        = I_{k+1,b^2}(x+a)
+        &= \frac{1}{2kb^2} \brce[\bigg]{(2k-1) I_{k,b^2}(x+a) + \frac{x+a}{\brkt{(x+a)^2 + b^2}^k}} \\
+        &= \frac{1}{2kb^2} \brce[\bigg]{(2k-1) J_k + \frac{x+a}{\brkt{(x+a)^2 + b^2}^k}}.
+      \end{split}
+    \end{equation*}
   \fi
 
 \item \(\displaystyle \int \frac{\dx}{(x+a)^2 + b^2} \quad (b \ne 0)\).
 
   \ifshowsol
-  \[
-    \int \frac{\dx}{(x+a)^2 + b^2}
-    = \int \frac{\diff(x+a)}{(x+a)^2 + b^2}
-    = \int \frac{\du}{u^2 + b^2}
-    = \frac1b \arctan \frac ub + C
-    = \frac1b \arctan \frac{x+a}b + C.
-  \]
+    \[
+      \int \frac{\dx}{(x+a)^2 + b^2}
+      = \int \frac{\diff(x+a)}{(x+a)^2 + b^2}
+      = \int \frac{\du}{u^2 + b^2}
+      = \frac1b \arctan \frac ub + C
+      = \frac1b \arctan \frac{x+a}b + C.
+    \]
   \fi
 
 \item \(\displaystyle \int \frac{\dx}{1-x^2}\).
 
   \ifshowsol
-  \[
-    \int \frac{\dx}{1-x^2}
-    = \arctanh x + C
-    = \frac12 \ln\frac{1+x}{1-x} + C.
-  \]
+    \[
+      \int \frac{\dx}{1-x^2}
+      = \arctanh x + C
+      = \frac12 \ln\frac{1+x}{1-x} + C.
+    \]
   \fi
 
 \item \(\displaystyle \int \frac{t+4}{t^2 + 5t -6} \dt\).
 
   \ifshowsol
-  \[
-    \begin{split}
-      \int \frac{t+4}{t^2 + 5t -6} \dt
-      &= \int \frac{t+4}{(t-1)(t+6)} \dt
-      = \frac57 \int \frac{\dt}{t-1} + \frac27 \int \frac{\dt}{t+6} \\
-      &= \frac57 \ln\abs[\big]{t-1} + \frac27 \ln\abs[\big]{t+6} + C
-      = \frac17 \ln\abs[\big]{(t-1)^5 (t+6)^2} + C.
-    \end{split}
-  \]
+    \[
+      \begin{split}
+        \int \frac{t+4}{t^2 + 5t -6} \dt
+        &= \int \frac{t+4}{(t-1)(t+6)} \dt
+          = \frac57 \int \frac{\dt}{t-1} + \frac27 \int \frac{\dt}{t+6} \\
+        &= \frac57 \ln\abs[\big]{t-1} + \frac27 \ln\abs[\big]{t+6} + C
+          = \frac17 \ln\abs[\big]{(t-1)^5 (t+6)^2} + C.
+      \end{split}
+    \]
   \fi
 
 \item \(\displaystyle \int \frac{2x^2+2x+13}{(x-2)(x^2+1)^2} \dx\).
 
   \ifshowsol
-  \pskip
-  这题就是~\ref{6.4.3}的例2.
-  \pskip
+    \pskip
+    这题就是~\ref{6.4.3}的例2.
+    \pskip
   \fi
 
 \item \(\displaystyle \int \frac{\dx}{x^4+1}\).
 
   \ifshowsol
-  \[
-    \begin{split}
-      \int \frac{\dx}{x^4+1}
-      &= \int \frac{\dx}{(x^2+1)^2 - 2x^2}
-      = \int \frac{\dx}{(x^2+{\scriptstyle\sqrt2}\,x+1)(x^2-{\scriptstyle\sqrt2}\,x+1)} \\
-      &= \frac14 \int \paren[\bigg]{\frac{{\scriptstyle\sqrt2}\,x+2}{x^2+{\scriptstyle\sqrt2}\,x+1} - \frac{{\scriptstyle\sqrt2}\,x-2}{x^2+{\scriptstyle\sqrt2}\,x+1}} \dx \\
-      &= \frac{\scriptstyle\sqrt2\,}{8} \int \frac{2x+{\scriptstyle\sqrt2}}{x^2+{\scriptstyle\sqrt2}\,x+1} \dx + \frac14 \int \frac{\dx}{x^2+{\scriptstyle\sqrt2}\,x+1} \\
-      &\qquad - \frac{\scriptstyle\sqrt2\,}{8} \int \frac{2x-{\scriptstyle\sqrt2}}{x^2-{\scriptstyle\sqrt2}\,x+1} \dx + \frac14 \int \frac{\dx}{x^2-{\scriptstyle\sqrt2}\,x+1} \\
-      &= \frac{\scriptstyle\sqrt2\,}{8} \ln\paren[\bigg]{\frac{x^2+{\scriptstyle\sqrt2}\,x+1}{x^2-{\scriptstyle\sqrt2}\,x+1}} + \frac14 \int \frac{\dx}{(x+{\scriptstyle\sqrt2}/2)^2 + 1/2} \\
-      &\qquad + \frac14 \int \frac{\dx}{(x-{\scriptstyle\sqrt2}/2)^2 + 1/2} \\
-      &= \frac{\scriptstyle\sqrt2\,}{8} \ln\paren[\bigg]{\frac{x^2+{\scriptstyle\sqrt2}\,x+1}{x^2-{\scriptstyle\sqrt2}\,x+1}} + \frac{\scriptstyle\sqrt2\,}4 \int \frac{\diff({\scriptstyle\sqrt2}\,x+1)}{({\scriptstyle\sqrt2}\,x+1)^2 + 1} \\
-      &\qquad + \frac{\scriptstyle\sqrt2\,}4 \int \frac{\diff({\scriptstyle\sqrt2}\,x-1)}{({\scriptstyle\sqrt2}\,x-1)^2 + 1} \\
-      &= \frac{\scriptstyle\sqrt2\,}{8} \ln\paren[\bigg]{\frac{x^2+{\scriptstyle\sqrt2}\,x+1}{x^2-{\scriptstyle\sqrt2}\,x+1}} + \frac{\scriptstyle\sqrt2\,}4 \brkt*{\arctan({\scriptstyle\sqrt2}\,x+1) + \arctan({\scriptstyle\sqrt2}\,x-1)} + C \\
-      &= \frac{\scriptstyle\sqrt2\,}{8} \ln\paren[\bigg]{\frac{x^2+{\scriptstyle\sqrt2}\,x+1}{x^2-{\scriptstyle\sqrt2}\,x+1}} + \frac{\scriptstyle\sqrt2\,}4 \arctan\frac{{\scriptstyle\sqrt2}\,x}{1-x^2} + C.
-    \end{split}
-  \]
+    \[
+      \begin{split}
+        \int \frac{\dx}{x^4+1}
+        &= \int \frac{\dx}{(x^2+1)^2 - 2x^2}
+          = \int \frac{\dx}{(x^2+{\scriptstyle\sqrt2}\,x+1)(x^2-{\scriptstyle\sqrt2}\,x+1)} \\
+        &= \frac14 \int \paren[\bigg]{\frac{{\scriptstyle\sqrt2}\,x+2}{x^2+{\scriptstyle\sqrt2}\,x+1} - \frac{{\scriptstyle\sqrt2}\,x-2}{x^2+{\scriptstyle\sqrt2}\,x+1}} \dx \\
+        &= \frac{\scriptstyle\sqrt2\,}{8} \int \frac{2x+{\scriptstyle\sqrt2}}{x^2+{\scriptstyle\sqrt2}\,x+1} \dx + \frac14 \int \frac{\dx}{x^2+{\scriptstyle\sqrt2}\,x+1} \\
+        &\qquad - \frac{\scriptstyle\sqrt2\,}{8} \int \frac{2x-{\scriptstyle\sqrt2}}{x^2-{\scriptstyle\sqrt2}\,x+1} \dx + \frac14 \int \frac{\dx}{x^2-{\scriptstyle\sqrt2}\,x+1} \\
+        &= \frac{\scriptstyle\sqrt2\,}{8} \ln\paren[\bigg]{\frac{x^2+{\scriptstyle\sqrt2}\,x+1}{x^2-{\scriptstyle\sqrt2}\,x+1}} + \frac14 \int \frac{\dx}{(x+{\scriptstyle\sqrt2}/2)^2 + 1/2} \\
+        &\qquad + \frac14 \int \frac{\dx}{(x-{\scriptstyle\sqrt2}/2)^2 + 1/2} \\
+        &= \frac{\scriptstyle\sqrt2\,}{8} \ln\paren[\bigg]{\frac{x^2+{\scriptstyle\sqrt2}\,x+1}{x^2-{\scriptstyle\sqrt2}\,x+1}} + \frac{\scriptstyle\sqrt2\,}4 \int \frac{\diff({\scriptstyle\sqrt2}\,x+1)}{({\scriptstyle\sqrt2}\,x+1)^2 + 1} \\
+        &\qquad + \frac{\scriptstyle\sqrt2\,}4 \int \frac{\diff({\scriptstyle\sqrt2}\,x-1)}{({\scriptstyle\sqrt2}\,x-1)^2 + 1} \\
+        &= \frac{\scriptstyle\sqrt2\,}{8} \ln\paren[\bigg]{\frac{x^2+{\scriptstyle\sqrt2}\,x+1}{x^2-{\scriptstyle\sqrt2}\,x+1}} + \frac{\scriptstyle\sqrt2\,}4 \brkt*{\arctan({\scriptstyle\sqrt2}\,x+1) + \arctan({\scriptstyle\sqrt2}\,x-1)} + C \\
+        &= \frac{\scriptstyle\sqrt2\,}{8} \ln\paren[\bigg]{\frac{x^2+{\scriptstyle\sqrt2}\,x+1}{x^2-{\scriptstyle\sqrt2}\,x+1}} + \frac{\scriptstyle\sqrt2\,}4 \arctan\frac{{\scriptstyle\sqrt2}\,x}{1-x^2} + C.
+      \end{split}
+    \]
   \fi
 \end{enumerate}
 \fi
@@ -1047,10 +1047,10 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
   \begin{split}
     \int \frac{\dx}{\sqrt[3]{(x-1)(x+1)^2}}
     &= \int \sqrt[3]{\frac{x+1}{x-1}} \frac{\dx}{x+1}
-    = \int t \cdot \frac{t^3-1}{2t^3} \cdot \frac{-2(3t^2)}{(t^3-1)^2} \dt
-    = -3 \int \frac{\dt}{t^3-1} \\
+      = \int t \cdot \frac{t^3-1}{2t^3} \cdot \frac{-2(3t^2)}{(t^3-1)^2} \dt
+      = -3 \int \frac{\dt}{t^3-1} \\
     &= -3 \int \frac{\dt}{(t-1)(t^2+t+1)}
-    = - \int \paren[\Big]{\frac{1}{t-1} - \frac{t+2}{t^2+t+1}} \dt \\
+      = - \int \paren[\Big]{\frac{1}{t-1} - \frac{t+2}{t^2+t+1}} \dt \\
     &= \frac12 \int \frac{2t+1}{t^2+t+1} \dt + \frac32 \int \frac{\dt}{\paren[\big]{t+\frac12}^2+\frac34} - \ln\abs[\big]{t-1} \\
     &= \frac12 \ln(t^2+t+1) - \ln\abs[\big]{t-1} + 2 \int \frac{\dt}{\paren[\Big]{\frac{2t+1}{\scriptscriptstyle\sqrt3}}^2 + 1} \\
     &= \frac12 \ln(t^2+t+1) - \ln\abs[\big]{t-1} + \sqrt3 \arctan \frac{2t+1}{\scriptstyle\sqrt3} + C.
@@ -1063,168 +1063,168 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
 
 \begin{enumerate}
   \ifshowsol
-  \setlength{\parskip}{8pt plus 3pt minus 2pt}
-  \setlength{\itemsep}{7pt plus 2pt minus 2pt}
-  \setlength{\abovedisplayskip}{7pt plus 5pt minus 2pt}
-  \setlength{\belowdisplayskip}{8pt plus 4pt minus 3pt}
+    \setlength{\parskip}{8pt plus 3pt minus 2pt}
+    \setlength{\itemsep}{7pt plus 2pt minus 2pt}
+    \setlength{\abovedisplayskip}{7pt plus 5pt minus 2pt}
+    \setlength{\belowdisplayskip}{8pt plus 4pt minus 3pt}
   \fi
 \item \(\displaystyle \int \frac{\sqrt{x^2 - 2x + 1}}{x-1} \dx\).
 
   \ifshowsol
-  \vspace*{-1em}
-  \[
-    \int \frac{\sqrt{x^2 - 2x + 1}}{x-1} \dx
-    = \int \frac{\sqrt{(x-1)^2}}{x-1} \dx
-    = \int \frac{\abs{x-1}}{x-1} \dx
-    = \int \sgn(x-1) \dx
-    =
-    \begin{cases}
-      x + C_1, & x > 1, \\
-      -x + C_2, & x < 1.
-    \end{cases}
-  \]
+    \vspace*{-1em}
+    \[
+      \int \frac{\sqrt{x^2 - 2x + 1}}{x-1} \dx
+      = \int \frac{\sqrt{(x-1)^2}}{x-1} \dx
+      = \int \frac{\abs{x-1}}{x-1} \dx
+      = \int \sgn(x-1) \dx
+      =
+      \begin{cases}
+        x + C_1, & x > 1, \\
+        -x + C_2, & x < 1.
+      \end{cases}
+    \]
   \fi
 
 \item \(\displaystyle \int \sqrt{e^x+1} \dx\).
 
   \ifshowsol
-  用\(t = \sqrt{e^x + 1}\)做换元, 有
-  \[
-    \begin{split}
-      \int \sqrt{e^x+1} \dx
-      &= 2 \int \frac{t^2}{t^2-1} \dx
-      = 2 \int \paren[\Big]{1 - \frac{1}{1-t^2}} \dx
-      = 2t - \ln\abs[\bigg]{\frac{1+t}{1-t}} + C \\
-      &= 2 \sqrt{e^x + 1} - \ln\abs[\Bigg]{\frac{1+\sqrt{e^x + 1}}{1-\sqrt{e^x + 1}}} + C.
-    \end{split}
-  \]
+    用\(t = \sqrt{e^x + 1}\)做换元, 有
+    \[
+      \begin{split}
+        \int \sqrt{e^x+1} \dx
+        &= 2 \int \frac{t^2}{t^2-1} \dx
+          = 2 \int \paren[\Big]{1 - \frac{1}{1-t^2}} \dx
+          = 2t - \ln\abs[\bigg]{\frac{1+t}{1-t}} + C \\
+        &= 2 \sqrt{e^x + 1} - \ln\abs[\Bigg]{\frac{1+\sqrt{e^x + 1}}{1-\sqrt{e^x + 1}}} + C.
+      \end{split}
+    \]
   \fi
 
 \item \(\displaystyle \int \frac{\dx}{\sqrt[3]{(x-1)(x+1)^2}}\).
 
   \ifshowsol
-  这题就是~\ref{6.5}的\hyperlink{eg:rootI}{例3}
+    这题就是~\ref{6.5}的\hyperlink{eg:rootI}{例3}
   \fi
 
 \item \(\displaystyle \int \frac{\dx}{1 + \sin x}\).
 
   \ifshowsol
-  用\(t = \tan\frac{x}{2}\)做换元, 有
-  \[
-    \begin{split}
-      \int \frac{\dx}{1 + \sin x}
-      &= \int \frac{1}{\scriptstyle 1 + \tfrac{2t}{1+t^2}} \frac{2}{\scriptstyle 1+t^2} \dt
-      = 2 \int \frac{\dt}{t^2+2t+1}
-      = 2 \int \frac{\dt}{(t+1)^2} \\
-      &= - \frac{2}{t+1} + C
-      = - \frac{2}{1+\tan\frac{x}{2}} + C.
-    \end{split}
-  \]
+    用\(t = \tan\frac{x}{2}\)做换元, 有
+    \[
+      \begin{split}
+        \int \frac{\dx}{1 + \sin x}
+        &= \int \frac{1}{\scriptstyle 1 + \tfrac{2t}{1+t^2}} \frac{2}{\scriptstyle 1+t^2} \dt
+          = 2 \int \frac{\dt}{t^2+2t+1}
+          = 2 \int \frac{\dt}{(t+1)^2} \\
+        &= - \frac{2}{t+1} + C
+          = - \frac{2}{1+\tan\frac{x}{2}} + C.
+      \end{split}
+    \]
   \fi
 
 \item \(\displaystyle \int \frac{\dx}{1 - \cos x}\).
 
   \ifshowsol
-  同样用\(t = \tan\frac{x}{2}\)做换元, 有
-  \[
-    \begin{split}
-      \int \frac{dx}{1-\cos x}
-      = \int \frac{1}{\scriptstyle 1-\tfrac{1-t^2}{1+t^2}} \frac{2}{1+t^2} \dt
-      = \int \frac{dt}{t^2}
-      = - \frac1t + C
-      = - \cot\frac{x}{2} + C.
-    \end{split}
-  \]
+    同样用\(t = \tan\frac{x}{2}\)做换元, 有
+    \[
+      \begin{split}
+        \int \frac{dx}{1-\cos x}
+        = \int \frac{1}{\scriptstyle 1-\tfrac{1-t^2}{1+t^2}} \frac{2}{1+t^2} \dt
+        = \int \frac{dt}{t^2}
+        = - \frac1t + C
+        = - \cot\frac{x}{2} + C.
+      \end{split}
+    \]
   \fi
 
 \item \(\displaystyle \int \frac{1 + \sin x}{1 + \cos x} \dx\).
 
   \ifshowsol
-  同样用\(t = \tan\frac{x}{2}\)做换元, 有
-  \[
-    \begin{split}
-      \int \frac{1 + \sin x}{1 + \cos x} \dx
-      &= \int \tfrac{1 + \tfrac{2t}{1+t^2}}{1+\tfrac{1-t^2}{1+t^2}} \frac{2}{1+t^2} \dt
-      = \int \paren[\Big]{1 + \frac{2t}{1+t^2}} \dt \\
-      &= t + \ln\paren{1+t^2} + C
-      = \tan\frac{x}{2} + \ln\sec^2\frac{x}{2} + C \\
-      &= \tan\frac{x}{2} + \ln\frac{2}{1 + \cos x} + C
-      = \tan\frac{x}{2} - \ln\paren{1 + \cos x} + C.
-    \end{split}
-  \]
+    同样用\(t = \tan\frac{x}{2}\)做换元, 有
+    \[
+      \begin{split}
+        \int \frac{1 + \sin x}{1 + \cos x} \dx
+        &= \int \tfrac{1 + \tfrac{2t}{1+t^2}}{1+\tfrac{1-t^2}{1+t^2}} \frac{2}{1+t^2} \dt
+          = \int \paren[\Big]{1 + \frac{2t}{1+t^2}} \dt \\
+        &= t + \ln\paren{1+t^2} + C
+          = \tan\frac{x}{2} + \ln\sec^2\frac{x}{2} + C \\
+        &= \tan\frac{x}{2} + \ln\frac{2}{1 + \cos x} + C
+          = \tan\frac{x}{2} - \ln\paren{1 + \cos x} + C.
+      \end{split}
+    \]
   \fi
 
 \item \(\displaystyle \int \frac{\tan x}{a^2 \cos^2 x + b^2 \sin^2 x} \dx,\ (a \ne 0,\ b \ne 0)\).
 
   \ifshowsol
-  用\(u = \tan x\)做换元, 有
-  \[
-    \begin{split}
-      \int \frac{\tan x}{a^2 \cos^2 x + b^2 \sin^2 x} \dx
-      &= \int \frac{\tan x}{a^2 + b^2 \tan^2 x} \frac{1}{\cos^2 x} \dx
-      = \int \frac{u}{a^2 + b^2 u^2} \du \\
-      &= \frac1{2b^2} \ln\paren{a^2 + b^2 u^2} + C
-      = \frac1{2b^2} \ln\paren{a^2 + b^2 \tan^2 x} + C.
-    \end{split}
-  \]
+    用\(u = \tan x\)做换元, 有
+    \[
+      \begin{split}
+        \int \frac{\tan x}{a^2 \cos^2 x + b^2 \sin^2 x} \dx
+        &= \int \frac{\tan x}{a^2 + b^2 \tan^2 x} \frac{1}{\cos^2 x} \dx
+          = \int \frac{u}{a^2 + b^2 u^2} \du \\
+        &= \frac1{2b^2} \ln\paren{a^2 + b^2 u^2} + C
+          = \frac1{2b^2} \ln\paren{a^2 + b^2 \tan^2 x} + C.
+      \end{split}
+    \]
   \fi
 
 \item \(\displaystyle \int \frac{\sin 2x}{\cos^2 x + 2 \sin x} \dx\).
 
   \ifshowsol
-  用\(u = \sin x\)做换元, 有
-  \[
-    \int \frac{\sin 2x}{\cos^2 x + 2 \sin x} \dx
-    = \int \frac{2 \sin x \cos x}{1 - \sin^2 x + 2 \sin x} \dx
-    = \int \frac{2u}{1 - u^2 + 2u} \du.
-  \]
-  上面最右边的式子, 我们可以有两种方式处理．两种方式处理后得到的结果形式略有不同, 但是变形后其实是一样的．第一种就是继续部分分式分解, 有
-  \[
-    \begin{split}
-      \int \frac{2u}{1 - u^2 + 2u} \du
-      &= - \frac12 \int \paren[\bigg]{\frac{2 + \sqrt2}{u - 1 - \sqrt2} + \frac{2 - \sqrt2}{u - 1 + \sqrt2}} \du \\
-      &= - \frac{2+\sqrt2}{2} \ln\abs[\Big]{u - 1 - \sqrt2} - \frac{2-\sqrt2}{2} \ln\abs[\Big]{u - 1 + \sqrt2} + C \\
-      &= - \frac{2+\sqrt2}{2} \ln\abs[\Big]{\sin x - 1 - \sqrt2} - \frac{2-\sqrt2}{2} \ln\abs[\Big]{\sin x - 1 + \sqrt2} + C.
-    \end{split}
-  \]
-  第二种就是直接凑微分, 有
-  \[
-    \begin{split}
-      \int \frac{2u}{1 - u^2 + 2u} \du
-      &= - \int \paren[\bigg]{\frac{2u-2}{u^2 - 2u - 1} + \frac{2}{u^2 - 2u - 1}} \du \\
-      &= - \ln\abs[\Big]{u^2 - 2u - 1} - \frac{\sqrt2}{2} \int \paren[\bigg]{\frac{1}{u - 1 - \sqrt2} - \frac{1}{u - 1 + \sqrt2}} \du \\
-      &= - \ln\abs[\Big]{u^2 - 2u - 1} + \frac{\sqrt2}{2} \ln\abs[\Bigg]{\frac{u - 1 + \sqrt2}{u - 1 - \sqrt2}} + C \\
-      &= - \ln\abs[\Big]{\cos^2 x + 2 \sin x} + \frac{\sqrt2}{2} \ln\abs[\Bigg]{\frac{\sin x - 1 + \sqrt2}{\sin x - 1 - \sqrt2}} + C.
-    \end{split}
-  \]
+    用\(u = \sin x\)做换元, 有
+    \[
+      \int \frac{\sin 2x}{\cos^2 x + 2 \sin x} \dx
+      = \int \frac{2 \sin x \cos x}{1 - \sin^2 x + 2 \sin x} \dx
+      = \int \frac{2u}{1 - u^2 + 2u} \du.
+    \]
+    上面最右边的式子, 我们可以有两种方式处理．两种方式处理后得到的结果形式略有不同, 但是变形后其实是一样的．第一种就是继续部分分式分解, 有
+    \[
+      \begin{split}
+        \int \frac{2u}{1 - u^2 + 2u} \du
+        &= - \frac12 \int \paren[\bigg]{\frac{2 + \sqrt2}{u - 1 - \sqrt2} + \frac{2 - \sqrt2}{u - 1 + \sqrt2}} \du \\
+        &= - \frac{2+\sqrt2}{2} \ln\abs[\Big]{u - 1 - \sqrt2} - \frac{2-\sqrt2}{2} \ln\abs[\Big]{u - 1 + \sqrt2} + C \\
+        &= - \frac{2+\sqrt2}{2} \ln\abs[\Big]{\sin x - 1 - \sqrt2} - \frac{2-\sqrt2}{2} \ln\abs[\Big]{\sin x - 1 + \sqrt2} + C.
+      \end{split}
+    \]
+    第二种就是直接凑微分, 有
+    \[
+      \begin{split}
+        \int \frac{2u}{1 - u^2 + 2u} \du
+        &= - \int \paren[\bigg]{\frac{2u-2}{u^2 - 2u - 1} + \frac{2}{u^2 - 2u - 1}} \du \\
+        &= - \ln\abs[\Big]{u^2 - 2u - 1} - \frac{\sqrt2}{2} \int \paren[\bigg]{\frac{1}{u - 1 - \sqrt2} - \frac{1}{u - 1 + \sqrt2}} \du \\
+        &= - \ln\abs[\Big]{u^2 - 2u - 1} + \frac{\sqrt2}{2} \ln\abs[\Bigg]{\frac{u - 1 + \sqrt2}{u - 1 - \sqrt2}} + C \\
+        &= - \ln\abs[\Big]{\cos^2 x + 2 \sin x} + \frac{\sqrt2}{2} \ln\abs[\Bigg]{\frac{\sin x - 1 + \sqrt2}{\sin x - 1 - \sqrt2}} + C.
+      \end{split}
+    \]
   \fi
 
 \item \(\displaystyle \int \frac{\dx}{\sqrt x \paren{\sqrt x + \sqrt[3]x}}\).
 
   \ifshowsol
-  用\(t = \sqrt[6]x\)做换元, 有
-  \[
-    \int \frac{\dx}{\sqrt x \paren{\sqrt x + \sqrt[3]x}}
-    = \int \frac{6t^5}{t^3(t^3+t^2)} \dt
-    = 6 \int \frac{\dt}{t+1}
-    = 6 \ln(1+t) + C
-    = 6 \ln(1+\sqrt[6]x) + C.
-  \]
+    用\(t = \sqrt[6]x\)做换元, 有
+    \[
+      \int \frac{\dx}{\sqrt x \paren{\sqrt x + \sqrt[3]x}}
+      = \int \frac{6t^5}{t^3(t^3+t^2)} \dt
+      = 6 \int \frac{\dt}{t+1}
+      = 6 \ln(1+t) + C
+      = 6 \ln(1+\sqrt[6]x) + C.
+    \]
   \fi
 
 \item \(\displaystyle \int x \sqrt{x+2} \dx\).
 
   \ifshowsol
-  用\(t = \sqrt{x+2}\)做换元, 有
-  \[
-    \begin{split}
-      \int x \sqrt{x+2} \dx
-      &= \int \paren{t^2-2}t \cdot 2t \dt
-      = \int \paren{2t^4 - 4t^2} \dt \\
-      &= \frac25 t^5 - \frac43 t^3 + C
-      = \frac25 (x+2)^{5/2} - \frac43 (x+2)^{3/2} + C.
-    \end{split}
-  \]
+    用\(t = \sqrt{x+2}\)做换元, 有
+    \[
+      \begin{split}
+        \int x \sqrt{x+2} \dx
+        &= \int \paren{t^2-2}t \cdot 2t \dt
+          = \int \paren{2t^4 - 4t^2} \dt \\
+        &= \frac25 t^5 - \frac43 t^3 + C
+          = \frac25 (x+2)^{5/2} - \frac43 (x+2)^{3/2} + C.
+      \end{split}
+    \]
   \fi
 \end{enumerate}
 \fi
@@ -1232,4 +1232,5 @@ $x \in (a, b)$, 这就意味着 $G(x) - F(x) = C$, 所以$ G(x) = F(x) +C$, $x \
 % Local Variables:
 % TeX-engine: luatex
 % TeX-master: "微积分B"
+% LaTeX-indent-begin-exceptions-list: ("ifshowex")
 % End:

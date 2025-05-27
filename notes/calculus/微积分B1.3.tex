@@ -34,7 +34,7 @@
         &= \lim_{x\to x_0} \paren*{\,f(x_0 + x - x_0) - f(x_0) + f(x_0)} \\
         &= \lim_{\fwdf x \to 0} \paren*{\,f(x_0 + \fwdf x) - f(x_0) + f(x_0)} \\
         &= \lim_{\fwdf x \to 0} \paren*{\fwdf\,f(x_0) + f(x_0)} = f(x_0).
-        \qedhere
+          \qedhere
       \end{split}
     \end{equation*}
   \end{proof}
@@ -94,11 +94,11 @@
       &= \abs*{2 \sin\frac{x-x_0}{2} \cos\frac{x+x_0}{2}}
         = 2 \abs*{\sin\frac{x-x_0}{2}} \abs*{\cos\frac{x+x_0}{2}} \\
       &\le 2 \abs*{\sin\frac{x-x_0}{2}}
-      < 2 \abs*{\frac{x-x_0}{2}}
-      = \abs*{x-x_0}
+        < 2 \abs*{\frac{x-x_0}{2}}
+        = \abs*{x-x_0}
         < δ = ε.
         \rule[-2ex]{0ex}{0ex}
-      \qedhere
+        \qedhere
     \end{align*}
   \end{proof}
 \end{theorem}
@@ -211,25 +211,25 @@
 \item 函数在一点连续与单侧连续之间有什么关系？
 
   \ifshowsolp
-  参见定理~\ref{thm:contsided}．
+    参见定理~\ref{thm:contsided}．
   \fi
 
 \item 函数在一点连续能否推出函数在此点附近也连续？
 
   \ifshowsolp
-  不能．
+    不能．
   \fi
 
 \item 基本初等函数在其定义域内是连续的，这个结论是如何得到的？
 
   \ifshowsolp
-  其实这要把基本初等函数分成两类来看：一类是超越函数（transcedental functions）、另一类是代数函数（algebraic functions）．代数函数基本上可以由实数公理推出来．超越函数中的指数函数可以定义成
-  \begin{equation*}
-    \exp x \coloneq \lim_{n\to\infty} \paren*{1 + \frac xn}^n,
-  \end{equation*}
-  然后通过讨论这个数列的单调性和有界性论证它总是收敛的，并且研究出它的很多性质满足我们中学学过的指数运算法则．由这些结论，我们可以证明指数函数是连续的．再由此定义对数函数为指数函数的反函数，得到它的一系列性质．这样，对于超越的幂函数，例如\(x^π\)，就可以变形成\(\expb{π \ln x}\)，再由定理~\ref{thm:contcomp}和定理~\ref{thm:cont4ops}得出其连续性．
+    其实这要把基本初等函数分成两类来看：一类是超越函数（transcedental functions）、另一类是代数函数（algebraic functions）．代数函数基本上可以由实数公理推出来．超越函数中的指数函数可以定义成
+    \begin{equation*}
+      \exp x \coloneq \lim_{n\to\infty} \paren*{1 + \frac xn}^n,
+    \end{equation*}
+    然后通过讨论这个数列的单调性和有界性论证它总是收敛的，并且研究出它的很多性质满足我们中学学过的指数运算法则．由这些结论，我们可以证明指数函数是连续的．再由此定义对数函数为指数函数的反函数，得到它的一系列性质．这样，对于超越的幂函数，例如\(x^π\)，就可以变形成\(\expb{π \ln x}\)，再由定理~\ref{thm:contcomp}和定理~\ref{thm:cont4ops}得出其连续性．
 
-  对于超越函数中的三角函数，正弦函数的连续性已经由定理~\ref{thm:contsin}给出，余弦函数的连续性可由\(\cos x = \sinp{π/2-x}\)再加上定理~\ref{thm:contcomp}得出．剩下的三角函数，对正弦函数和余弦函数使用定理~\ref{thm:cont4ops}即可得到它们的连续性．
+    对于超越函数中的三角函数，正弦函数的连续性已经由定理~\ref{thm:contsin}给出，余弦函数的连续性可由\(\cos x = \sinp{π/2-x}\)再加上定理~\ref{thm:contcomp}得出．剩下的三角函数，对正弦函数和余弦函数使用定理~\ref{thm:cont4ops}即可得到它们的连续性．
   \fi
 \end{enumerate}
 
@@ -251,9 +251,9 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 可去间断点
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     跳跃间断点
   \item 第二类间断点
@@ -261,7 +261,7 @@
   \end{itemize}
 
   \ifshowsol
-  函数\(f\)在原点处的左右极限分别是\(-1\)和\(1\)．
+    函数\(f\)在原点处的左右极限分别是\(-1\)和\(1\)．
   \fi
 
 \item 令\(f(x) = 1\Big/\paren[\Big]{\expb[\Big]{\frac{x}{x-1}} - 1}\)，则\uline{\makebox[10em]{}}．
@@ -271,15 +271,15 @@
   \item 原点和点\(1\)都是第二类间断点
   \item 原点是第一类间断点，点\(1\)是第二类间断点
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     原点是第二类间断点，点\(1\)是第一类间断点
   \end{itemize}
 
   \ifshowsol
-  函数\(f\)在原点处的左右极限分别是\(+\infty\)和\(-\infty\)，在点\(1\)处的左右极限分别是\(-1\)和\(0\)．
+    函数\(f\)在原点处的左右极限分别是\(+\infty\)和\(-\infty\)，在点\(1\)处的左右极限分别是\(-1\)和\(0\)．
   \fi
 
 \item 求函数
@@ -289,7 +289,7 @@
   在\(\brkt{-π,π}\)上的第一类间断点．
 
   \ifshowsol
-  函数\(f\)在此区间上有\(4\)个间断点，分别是\(-π/2,\ 0,\ 1,\ π/2\)．它在这\(4\)个间断点处的左右极限分别是\(-\infty\)和\(+\infty\)、\(-e^{-1}\)和\(0\)、\(+\infty\)和\(-\infty\)、\(-\infty\)和\(+\infty\)．所以原点是函数\(f\)的跳跃间断点．
+    函数\(f\)在此区间上有\(4\)个间断点，分别是\(-π/2,\ 0,\ 1,\ π/2\)．它在这\(4\)个间断点处的左右极限分别是\(-\infty\)和\(+\infty\)、\(-e^{-1}\)和\(0\)、\(+\infty\)和\(-\infty\)、\(-\infty\)和\(+\infty\)．所以原点是函数\(f\)的跳跃间断点．
   \fi
 
 \item 求函数
@@ -299,7 +299,7 @@
   在\(\paren{0,2π}\)上的第二类间断点．
 
   \ifshowsol
-  函数\(f\)在此区间上有\(4\)个间断点，分别是\(π/4,\ 3π/4,\ 5π/4,\ 7π/4\)．它在这\(4\)个间断点处的左右极限分别是\(0\)和\(+\infty\)、\(1\)和\(1\)、\(0\)和\(+\infty\)、\(1\)和\(1\)．所以点\(π/4\)和\(5π/4\)是函数\(f\)的无穷间断点．
+    函数\(f\)在此区间上有\(4\)个间断点，分别是\(π/4,\ 3π/4,\ 5π/4,\ 7π/4\)．它在这\(4\)个间断点处的左右极限分别是\(0\)和\(+\infty\)、\(1\)和\(1\)、\(0\)和\(+\infty\)、\(1\)和\(1\)．所以点\(π/4\)和\(5π/4\)是函数\(f\)的无穷间断点．
   \fi
 
 \item 原点是函数\(f(x) = \cos^2 \frac1x\)的\uline{\makebox[6em]{}}．
@@ -309,9 +309,9 @@
   \item 跳跃间断点
   \item 无穷间断点
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     振荡间断点
   \end{itemize}
@@ -321,9 +321,9 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 原点是可去间断点
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     点\(1\)是可去间断点
   \item 点\(-1\)是可去间断点
@@ -331,17 +331,17 @@
   \end{itemize}
 
   \ifshowsol
-  实际上，有
-  \begin{equation*}
-    f(x) =
-    \begin{dcases}
-      1, & \abs{x} > 1, \\
-      0, & x = -1, \\
-      2, & x = 1, \\
-      \frac1x, & \abs{x} < 1 \tand x \ne 0.
-    \end{dcases}
-  \end{equation*}
-  所以点\(-1, 0, 1\)分别是函数\(f\)的跳跃间断点、第二类间断点、可去间断点．
+    实际上，有
+    \begin{equation*}
+      f(x) =
+      \begin{dcases}
+        1, & \abs{x} > 1, \\
+        0, & x = -1, \\
+        2, & x = 1, \\
+        \frac1x, & \abs{x} < 1 \tand x \ne 0.
+      \end{dcases}
+    \end{equation*}
+    所以点\(-1, 0, 1\)分别是函数\(f\)的跳跃间断点、第二类间断点、可去间断点．
   \fi
 
 \item 原点是函数\uline{\makebox[6em]{}}的可去间断点．
@@ -364,16 +364,16 @@
       \end{cases}
     \end{math}
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \(f(x) = \floor{\cos x}\)
   \item \(f(x) = \sgnp x\)
   \end{itemize}
 
   \ifshowsol
-  原点分别是选项~A、B中函数的第二类间断点、选项~C中函数的可去间断点、选项~D中的跳跃间断点．
+    原点分别是选项~A、B中函数的第二类间断点、选项~C中函数的可去间断点、选项~D中的跳跃间断点．
   \fi
 
 \item 下列说法中，错误的是\uline{\makebox[10em]{}}．
@@ -381,9 +381,9 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 如果函数\(f\)在点\(a\)处连续，那么函数\(\abs*{\,f\,}\)也在点\(a\)处连续
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     如果函数\(\abs*{\,f\,}\)在点\(a\)处连续，那么函数\(f\)也在点\(a\)处连续
   \item 如果函数\(f\)在点\(a\)处连续，那么函数\(f^3\negthickspace\)也在点\(a\)处连续
@@ -391,16 +391,16 @@
   \end{itemize}
 
   \ifshowsol
-  由于反三角不等式，选项~A成立；由于定理~\ref{thm:contcomp}，选项~C和~D成立．选项~B的一个反例是函数\(2\fn H - 1\)，其中\(H\)是单位阶跃函数（定义~\ref{defn:heaviside}）．
+    由于反三角不等式，选项~A成立；由于定理~\ref{thm:contcomp}，选项~C和~D成立．选项~B的一个反例是函数\(2\fn H - 1\)，其中\(H\)是单位阶跃函数（定义~\ref{defn:heaviside}）．
   \fi
 
 \item 函数\uline{\makebox[10em]{}}在原点处连续．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \begin{math}
       f(x) =
@@ -422,7 +422,7 @@
   \end{itemize}
 
   \ifshowsol
-  原点是选项~B、C、D中函数的跳跃间断点．选项~A中的函数在原点处的左右极限都是\(0\)且等于此处的函数值，因此连续．
+    原点是选项~B、C、D中函数的跳跃间断点．选项~A中的函数在原点处的左右极限都是\(0\)且等于此处的函数值，因此连续．
   \fi
 
 \item 若函数\(\,f\mkern2mu\)和\(\mkern2mu g\)在点\(x_0\)处均不连续，则\uline{\makebox[10em]{}}．
@@ -432,19 +432,19 @@
   \item 函数\(\,f/g\)在点\(x_0\)处不连续
   \item 函数\(\,fg\)在点\(x_0\)处不连续
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     函数\(\,f+g,\ f/g,\ fg\)都可能在点\(x_0\)处连续
   \end{itemize}
 
   \ifshowsol
-  令\(\,f(x) = \Fn H(x),\ g(x) = 1-\Fn H(x)\)，则\(\,f + g = 1,\ fg = 0\)，因此选项~A和~C不正确．令
-  \begin{equation*}
-    f(x) = g(x) = \frac{1}{x \Fn H(x) + \Fn H(-x)},
-  \end{equation*}
-  则\(\,f/g = 1\)，因此选项~B不正确．
+    令\(\,f(x) = \Fn H(x),\ g(x) = 1-\Fn H(x)\)，则\(\,f + g = 1,\ fg = 0\)，因此选项~A和~C不正确．令
+    \begin{equation*}
+      f(x) = g(x) = \frac{1}{x \Fn H(x) + \Fn H(-x)},
+    \end{equation*}
+    则\(\,f/g = 1\)，因此选项~B不正确．
   \fi
 \end{enumerate}
 \fi
@@ -488,27 +488,27 @@
 \item 在最值定理中，若将闭区间改成开区间，则结论不再成立．请举例说明．
 
   \ifshowsolp
-  其实对于定义在开区间\(\paren{0,1}\)上的恒等函数\(f(x) = x\)这样的简单函数，既取不到最小值，又取不到最大值．更不用说像定义在开区间上的\(\paren{-π/2,π/2}\)上的正切函数\(f(x) = \tan x\)和定义在开区间\(\paren{-∞,+∞}\)上的反正切函数\(f(x) = \arctan x\)了．
+    其实对于定义在开区间\(\paren{0,1}\)上的恒等函数\(f(x) = x\)这样的简单函数，既取不到最小值，又取不到最大值．更不用说像定义在开区间上的\(\paren{-π/2,π/2}\)上的正切函数\(f(x) = \tan x\)和定义在开区间\(\paren{-∞,+∞}\)上的反正切函数\(f(x) = \arctan x\)了．
   \fi
 
 \item 函数\(\,f(x) = x^{2m} + x^{2m-1} + \dots + x - 1\)和\(g(x) = x^{2m} + x^{2m-1} + \dots + x + 1\)在\(\R\)上是否存在零点？
 
   \ifshowsolp
-  此处假定\(m \ge 1\)．函数\(f\)在\(\R\)上显然是有零点的；因为\(f(0) = -1\)且\(f(1) = 2m-1 > 0\)，由定理~\ref{thm:bolzano}可知它在\(\paren{-1,1}\)上至少有一个零点．函数\(f\)在\(\R\)上不存在零点，原因如下．有
-  \begin{align*}
-    g(x)
-    &=
-      \begin{dcases}
-        1 + \sum_{k = 1}^{\smash{2m}} x^k, & x \ne 1, \\
-        2m+1, & x = 1,
-      \end{dcases} \\
-    &=
-      \begin{dcases}
-        \frac{1-x^{2m+1}\negthickspace}{1-x}, & x \ne 1, \\
-        2m+1, & x = 1.
-      \end{dcases}
-  \end{align*}
-  可见函数\(g\)在\(\R\)上都是正数，因此无零点．
+    此处假定\(m \ge 1\)．函数\(f\)在\(\R\)上显然是有零点的；因为\(f(0) = -1\)且\(f(1) = 2m-1 > 0\)，由定理~\ref{thm:bolzano}可知它在\(\paren{-1,1}\)上至少有一个零点．函数\(f\)在\(\R\)上不存在零点，原因如下．有
+    \begin{align*}
+      g(x)
+      &=
+        \begin{dcases}
+          1 + \sum_{k = 1}^{\smash{2m}} x^k, & x \ne 1, \\
+          2m+1, & x = 1,
+        \end{dcases} \\
+      &=
+        \begin{dcases}
+          \frac{1-x^{2m+1}\negthickspace}{1-x}, & x \ne 1, \\
+          2m+1, & x = 1.
+        \end{dcases}
+    \end{align*}
+    可见函数\(g\)在\(\R\)上都是正数，因此无零点．
   \fi
 \end{enumerate}
 
@@ -522,16 +522,16 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 若函数\(f \in C\brkt{a,b}\)且\(f(a)\,f(b) < 0\)，则存在唯一的\(ξ \in \paren{a,b}\)满足\(f(ξ) = 0\)
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     若函数\(f \in C\brkt{a,b}\)，则存在\(ξ \in \brkt{a,b}\)满足\(f(ξ) = \frac{f(a) + f(b)}{2}\)  \item 若函数\(f \in C\paren{a,b}\)且\(f(a)\,f(b) < 0\)，则存在唯一的\(ξ \in \paren{a,b}\)满足\(f(ξ) = 0\)
   \item 若\(f \in C\paren{a,b}\)，则存在\(ξ \in \paren{a,b}\)满足\(f(ξ) = \frac{f(a) + f(b)}{2}\)
   \end{itemize}
 
   \ifshowsol
-  令\(a = 0,\ b = 3π\)，余弦函数就是选项~A和~C的反例．令\(a = -1,\ b = 1\)，则函数\(f(x) = x^2\)显然是不满足选项~D的．对于选项~B，当\(f(a) \ne f(b)\)时，使用推论~\ref{cor:ivt}即可；当\(f(a) = f(b)\)时，取\(ξ = a\)或者\(ξ = b\)即可．
+    令\(a = 0,\ b = 3π\)，余弦函数就是选项~A和~C的反例．令\(a = -1,\ b = 1\)，则函数\(f(x) = x^2\)显然是不满足选项~D的．对于选项~B，当\(f(a) \ne f(b)\)时，使用推论~\ref{cor:ivt}即可；当\(f(a) = f(b)\)时，取\(ξ = a\)或者\(ξ = b\)即可．
   \fi
 
 \item 下列说法中，正确的是\uline{\makebox[10em]{}}．
@@ -541,15 +541,15 @@
   \item 若函数\(f \in C\paren{a,b}\)，则函数\(f\)在\(\paren{a,b}\)上一定没有最大值和最小值
   \item 若函数\(f \in C\brkt{a,b}\)，则函数\(f\)在\(\paren{a,b}\)上一定有最大值和最小值
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     若函数\(f \in C\brkt{a,b}\)，则函数\(f\)在\(\brkt{a,b}\)上一定有最大值和最小值
   \end{itemize}
 
   \ifshowsol
-  令\(a = 0,\ b = 2π\)，则函数\(f(x) = x\)在区间\(\paren{a,b}\)上没有最大值和最小值，但函数\(f(x) = \sin x\)在区间\(\paren{a,b}\)上有最大值和最小值．因此，选项~A、B、C都不正确．选项~D就是定理~\ref{thm:evt}．
+    令\(a = 0,\ b = 2π\)，则函数\(f(x) = x\)在区间\(\paren{a,b}\)上没有最大值和最小值，但函数\(f(x) = \sin x\)在区间\(\paren{a,b}\)上有最大值和最小值．因此，选项~A、B、C都不正确．选项~D就是定理~\ref{thm:evt}．
   \fi
 
 \item 设\(a_1,\ a_2,\ a_3\)均为正数且\(λ_1 < λ_2 < λ_3\)，则方程
@@ -563,15 +563,15 @@
   \item 在\(\paren{λ_1,λ_2}\)内有一个实根，在\(\paren{λ_2,λ_3}\)内无实根
   \item 在\(\paren{λ_1,λ_2}\)内无实根，在\(\paren{λ_2,λ_3}\)内又一个实根
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     在\(\paren{λ_1,λ_2}\)和\(\paren{λ_2,λ_3}\)内各有一个实根
   \end{itemize}
 
   \ifshowsol
-  应用定理~\ref{thm:bolzano}即可得知．
+    应用定理~\ref{thm:bolzano}即可得知．
   \fi
 
 \item 下列函数中，在区间\(\paren{0,1}\)上必有零点的是\uline{\makebox[10em]{}}．
@@ -581,15 +581,15 @@
   \item \(f \in C\paren{0,1}\)且\(\,f(1/2)\,f(1) < 0\)
   \item \(f \in C\paren{0,1}\)且\(\,f(0)\,f(1/2) < 0\)
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \(f \in C\paren{0,1}\)且\(\,f(1/4)\,f(1/2) < 0\)
   \end{itemize}
 
   \ifshowsol
-  选项~A的一个反例是函数\(f(x) = 1 - 2 \fn H(-x)\)．选项~B、C的一个共同反例是函数\(g(x) = \paren[\big]{1 - 2 \fn H(x-1)}\,f(x)\)．
+    选项~A的一个反例是函数\(f(x) = 1 - 2 \fn H(-x)\)．选项~B、C的一个共同反例是函数\(g(x) = \paren[\big]{1 - 2 \fn H(x-1)}\,f(x)\)．
   \fi
 
 \item 下列函数中，在其定义域上有最大值和最小值的是\uline{\makebox[10em]{}}．
@@ -604,9 +604,9 @@
       \end{cases}
     \end{math}
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \begin{math}
       f(x) = \ln(1 + \abs x),\ x \in \brkt{-1,1}
@@ -626,16 +626,16 @@
   \end{itemize}
 
   \ifshowsol
-  选项~A既没最大值也没最小值，选项~C和~D有最大值但没最小值．
+    选项~A既没最大值也没最小值，选项~C和~D有最大值但没最小值．
   \fi
 
 \item 下列函数中，在其定义域内有最大值的是\uline{\makebox[10em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \begin{math}
       f(x) = x/e^x,\ x \in \paren{0,+∞}
@@ -655,11 +655,11 @@
   \end{itemize}
 
   \ifshowsol
-  选项~C和~D既没最大值也没最小值，选项~D有最小值但没有最大值．下面来证明一下选项~A．
+    选项~C和~D既没最大值也没最小值，选项~D有最小值但没有最大值．下面来证明一下选项~A．
 
-  \begin{proof}
-    取一个正数\(x_0\)，自然有\(f(x_0) > 0\)．若\(x_0\)是最大值，我们就找到了．若不是，我们可以按照下面的方法来找最大值．因为函数\(f\)在正无穷处的极限是零，所以存在\(δ > 0\)使得当\(x > δ\)时都有\(f(x) < \,f(x_0)\)．显然最大值不可能在区间\(\paren{δ, +∞}\)上．根据定理~\ref{thm:cont4ops}可知，函数\(f\)在\(\R\)上是连续的，所以在\(\brkt{0,δ}\)上也是连续的．再使用定理~\ref{thm:evt}可知函数在此区间上有最大值．又因为~\(f(0) = 0\)，所以原点不可能是函数的最大值．因此，最大值只能在\(\paren{0,δ}\)上了，自然也在\(\paren{0,+∞}\)上．
-  \end{proof}
+    \begin{proof}
+      取一个正数\(x_0\)，自然有\(f(x_0) > 0\)．若\(x_0\)是最大值，我们就找到了．若不是，我们可以按照下面的方法来找最大值．因为函数\(f\)在正无穷处的极限是零，所以存在\(δ > 0\)使得当\(x > δ\)时都有\(f(x) < \,f(x_0)\)．显然最大值不可能在区间\(\paren{δ, +∞}\)上．根据定理~\ref{thm:cont4ops}可知，函数\(f\)在\(\R\)上是连续的，所以在\(\brkt{0,δ}\)上也是连续的．再使用定理~\ref{thm:evt}可知函数在此区间上有最大值．又因为~\(f(0) = 0\)，所以原点不可能是函数的最大值．因此，最大值只能在\(\paren{0,δ}\)上了，自然也在\(\paren{0,+∞}\)上．
+    \end{proof}
   \fi
 
 \item 下列函数中，在\(\brktparen{0,+∞}\)上有界的是\uline{\makebox[6em]{}}．
@@ -667,9 +667,9 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(f(x) = x^2 - 1\)
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \(f(x) = \frac{\ln(1+x)}{1+x}\)
   \item \(f(x) = x^2 \sin\frac1{1+x}\)
@@ -684,14 +684,14 @@
   \end{itemize}
 
   \ifshowsol
-  选项~B参照前一题．关于选项~C，有
-  \begin{align*}
-    f(x)
-    &= x^2 \sin\frac1{1+x} \\
-    &= x⋅\frac{\sinp[\big]{1/(1+x)}}{1/(1+x)} - \frac{\sinp[\big]{1/(1+x)}}{1/(1+x)} + \sin\frac1{1+x} \\
-    &\ge x \sin1 + \bigO(1)．
-  \end{align*}
-  可见选项~C中的函数\(f\)有下界但无上界（下界是零）．选项~D中的函数也是有下界但无上界（下界也是零）．
+    选项~B参照前一题．关于选项~C，有
+    \begin{align*}
+      f(x)
+      &= x^2 \sin\frac1{1+x} \\
+      &= x⋅\frac{\sinp[\big]{1/(1+x)}}{1/(1+x)} - \frac{\sinp[\big]{1/(1+x)}}{1/(1+x)} + \sin\frac1{1+x} \\
+      &\ge x \sin1 + \bigO(1)．
+    \end{align*}
+    可见选项~C中的函数\(f\)有下界但无上界（下界是零）．选项~D中的函数也是有下界但无上界（下界也是零）．
   \fi
 
 \item 下列函数中，在\(\R\)上有界的是\uline{\makebox[10em]{}}．
@@ -700,20 +700,20 @@
   \item \(f \in C\paren{-∞,+∞}\)且\(\smashoperator[l]{\lim\limits_{\,x\to+∞\!}}\,f(x) = 1\)
   \item \(f \in C\paren{-∞,+∞}\)且\(\smashoperator[l]{\lim\limits_{\,x\to-∞\!}}\,f(x) = 1\)
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \(f \in C\paren{-∞,+∞}\)且\(\smashoperator[l]{\lim\limits_{x\to∞}}\,f(x) = 1\)
   \item \(f \in C\paren{-∞,+∞}\)且\(\abs*{\,f(x)} \le \abs x / 2\)对于所有的\(x \in \R\)都成立
   \end{itemize}
 
   \ifshowsol
-  函数\(1 + e^{-x}\)是选项~A的反例，函数\(1+e^x\)是选项~B的反例，函数\(x/4\)是选项~D的反例．下面来证明一下选项~C．
+    函数\(1 + e^{-x}\)是选项~A的反例，函数\(1+e^x\)是选项~B的反例，函数\(x/4\)是选项~D的反例．下面来证明一下选项~C．
 
-  \begin{proof}
-    因为函数在无穷处的极限是\(1\)，所以对于正数\(ε\)存在\(δ > 0\)使得当\(\abs{x} > δ\)时都有\(\abs*{\,f(x)-1} < ε\)．因此函数在\(\paren{-∞,-δ} \cup \paren{δ,+∞}\)上有界．又因为函数在\(\brkt{-δ,δ}\)上连续，所以根据定理~\ref{thm:contclsintvbnd}它在此区间上也有界．综上所述，它在\(\R\)上有界．
-  \end{proof}
+    \begin{proof}
+      因为函数在无穷处的极限是\(1\)，所以对于正数\(ε\)存在\(δ > 0\)使得当\(\abs{x} > δ\)时都有\(\abs*{\,f(x)-1} < ε\)．因此函数在\(\paren{-∞,-δ} \cup \paren{δ,+∞}\)上有界．又因为函数在\(\brkt{-δ,δ}\)上连续，所以根据定理~\ref{thm:contclsintvbnd}它在此区间上也有界．综上所述，它在\(\R\)上有界．
+    \end{proof}
   \fi
 
 \item 下列形结论中，错误的是\uline{\makebox[10em]{}}．
@@ -721,9 +721,9 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 若函数\(f \in C\brkt{a,b}\)且\(f(a) < a,\ f(b) > b\)，则存在\(ξ \in \paren{a,b}\)满足\(f(ξ)=ξ\)
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     若函数\(f \in C\parenbrkt{-∞,a}\)且\(f(a) = 0, \lim\limits_{x\to-∞\!}\,f(x) = 0\)，则函数\(f\)在区间\(\parenbrkt{-∞,a}\)上有正的最大值
   \item 方程\(x^5 - 3x - 1 = 0\)至少有一个根介于\(1\)和\(2\)之间
@@ -731,11 +731,11 @@
   \end{itemize}
 
   \ifshowsol
-  选项~A可以参照定理~\ref{cor:fixedpoint}的证明．选项~C和~D都可以由定理~\ref{thm:bolzano}得到．关于选项~D，令
-  \begin{equation*}
-    f(x) = x - a - b \sin x,
-  \end{equation*}
-  则有\(f(0) = -a < 0,\ f(a+b) = b\paren[\big]{1 - \sinp{a+b}}\)．若\(\sinp{a+b} = 1\)，则\(f(a+b) = 0\)．若\(\sinp{a+b} \ne 1\)，则\(f(a+b) > 0\)．根据定理~\ref{thm:bolzano}，函数\(f\)在区间\(\paren{0,\ a+b}\)上有一个零点．选项~B的一个反例是\(f(x) = (x-a)e^x\)，此函数在区间\(\parenbrkt{-\infty,a}\)上有负的最小值和为零的最大值．
+    选项~A可以参照定理~\ref{cor:fixedpoint}的证明．选项~C和~D都可以由定理~\ref{thm:bolzano}得到．关于选项~D，令
+    \begin{equation*}
+      f(x) = x - a - b \sin x,
+    \end{equation*}
+    则有\(f(0) = -a < 0,\ f(a+b) = b\paren[\big]{1 - \sinp{a+b}}\)．若\(\sinp{a+b} = 1\)，则\(f(a+b) = 0\)．若\(\sinp{a+b} \ne 1\)，则\(f(a+b) > 0\)．根据定理~\ref{thm:bolzano}，函数\(f\)在区间\(\paren{0,\ a+b}\)上有一个零点．选项~B的一个反例是\(f(x) = (x-a)e^x\)，此函数在区间\(\parenbrkt{-\infty,a}\)上有负的最小值和为零的最大值．
   \fi
 \end{enumerate}
 \fi
@@ -913,13 +913,13 @@
 \item 函数在区间上的处处连续和一致连续有什么区别，有什么联系？
 
   \ifshowsolp
-  一致连续是比处处连续更强的条件，它需要的更多，给出的也更多．一致连续一定有处处连续，但处处连续未必一致连续，需要在加上一些条件才能得到一致连续．
+    一致连续是比处处连续更强的条件，它需要的更多，给出的也更多．一致连续一定有处处连续，但处处连续未必一致连续，需要在加上一些条件才能得到一致连续．
   \fi
 
 \item 在有界开区间或者无穷区间上的连续函数未必是一致连续的．请举例说明．
 
   \ifshowsolp
-  正切函数\(\tan x\)在有界开区间\(\paren{-\pi/2,\pi/2}\)上处处连续，但不是一致连续的．平方函数\(x^2\)在无穷区间\(\paren{-\infty,+\infty}\)上处处连续，但也不是一致连续的．
+    正切函数\(\tan x\)在有界开区间\(\paren{-\pi/2,\pi/2}\)上处处连续，但不是一致连续的．平方函数\(x^2\)在无穷区间\(\paren{-\infty,+\infty}\)上处处连续，但也不是一致连续的．
   \fi
 \end{enumerate}
 
@@ -957,15 +957,15 @@
     \end{math}，
     其中\(k\)是某个正数
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     对于无穷多个正数\(\varepsilon\)，存在\(\delta > 0\)使得：对于区间\(I\)上的任意两点\(x\)和\(y\)，当\(\abs*{x-y} < \delta\)时都有\(\abs*{\,f(x) - f(y)} < \varepsilon\)
   \end{itemize}
 
   \ifshowsol
-  正弦函数\(\sin x\)是选项~D的一个反例．
+    正弦函数\(\sin x\)是选项~D的一个反例．
   \fi
 
 \item 关于函数的一致连续性，下列说法中，错误的是\uline{\makebox[10em]{}}．
@@ -974,9 +974,9 @@
   \item 若函数\(f\)在\(\brkt{a,b}\)上连续，则函数\(f\)在\(\brkt{a,b}\)上一致连续
   \item 若函数\(f\)在\(\brkt{a,b}\)上连续，则函数\(f\)在\(\paren{a,b}\)上一致连续
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     若函数\(f\)在\(\paren{a,b}\)上连续，则函数\(f\)在\(\paren{a,b}\)上一致连续
   \item 若函数\(f\)在\(\brkt{a,b}\)上一致连续，则函数\(f\)在\(\brkt{a,b}\)上连续
@@ -1000,17 +1000,17 @@
       \paren[\big]{\abs{x-y} < \delta \tand \abs*{\,f(x) - f(y)} \ge \varepsilon_0}
     \end{math}
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     存在\(\varepsilon_0 > 0\)使得区间\(I\)上除了有限个\(x\)和\(y\)之外都满足\(\abs*{\,f(x) - f(y)} \ge \varepsilon_0\)
   \item 存在\(\varepsilon_0 > 0\)使得区间\(I\)上有无穷多个\(x\)和\(y\)满足\(\abs*{\,f(x) - f(y)} \ge \varepsilon_0\)
   \end{itemize}
 
   \ifshowsol
-  恒等函数\(x\)满足选项~A、B和~D，但却是一致连续的．
-  % TODO: report.  Option C is actually unsatisfiable
+    恒等函数\(x\)满足选项~A、B和~D，但却是一致连续的．
+    % TODO: report.  Option C is actually unsatisfiable
   \fi
 
 \item 下列函数中，在区间\(\paren{0,+\infty}\)上一致连续的是\uline{\makebox[6em]{}}．
@@ -1018,9 +1018,9 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(y = x^2\)
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \(y = \sqrt x\)
   \item \(y = 1/x\)
@@ -1028,16 +1028,16 @@
   \end{itemize}
 
   \ifshowsol
-  存在\(\varepsilon > 0\)使得对于任意的\(2\delta > 0\)都能找到\(x \in \paren{0,+\infty}\)满足\(\paren{x+\delta}^2 - x^2 = 2\delta x + \delta^2 > \varepsilon\)，只要取\(x = \varepsilon/\delta\)即可．因此，选项~A中的函数并不一致连续．选项~B见例~\ref{eg:unicontsqrt}．由定理~\ref{thm:unicontbndintvbnd}可知，选项~C和~D中函数并不一致连续．
+    存在\(\varepsilon > 0\)使得对于任意的\(2\delta > 0\)都能找到\(x \in \paren{0,+\infty}\)满足\(\paren{x+\delta}^2 - x^2 = 2\delta x + \delta^2 > \varepsilon\)，只要取\(x = \varepsilon/\delta\)即可．因此，选项~A中的函数并不一致连续．选项~B见例~\ref{eg:unicontsqrt}．由定理~\ref{thm:unicontbndintvbnd}可知，选项~C和~D中函数并不一致连续．
   \fi
 
 \item 下列函数中，在区间\(\paren{0,1}\)上一致连续的是\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \(y = e^{-x}\)
   \item \(y = \ln x\)
@@ -1046,7 +1046,7 @@
   \end{itemize}
 
   \ifshowsol
-  由定理~\ref{thm:unicontbothlim}可知，选项~A中的函数在此区间上是一致连续的．由定理~\ref{thm:unicontbndintvbnd}可知，选项~B和~D中的函数并不一致收敛．选项~C见例~\ref{eg:uniconttoposine}．
+    由定理~\ref{thm:unicontbothlim}可知，选项~A中的函数在此区间上是一致连续的．由定理~\ref{thm:unicontbndintvbnd}可知，选项~B和~D中的函数并不一致收敛．选项~C见例~\ref{eg:uniconttoposine}．
   \fi
 
 \item 函数\uline{\hspace{10em}}在区间\(\brkt{0,1}\)上不是一致连续的．
@@ -1077,9 +1077,9 @@
       \end{cases}
     \end{math}
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     \begin{math}
       f(x) =
@@ -1091,7 +1091,7 @@
   \end{itemize}
 
   \ifshowsol
-  由定理~\ref{thm:hc}可知，前三个选项中的函数是一致连续的．关于选项~D中的函数，令\(1/x = 2\,k\pi\)，当\(k\)足够大时，自然能使\(\abs{x-0}\)小于任意的\(\delta\)，然而\(\abs*{\,f(x) - f(0)} = 1\)．因此它不是一致连续的．实际上，如果修改定义，让此函数在原点处的值为零，同样可由定理~\ref{thm:hc}得到一致连续性．
+    由定理~\ref{thm:hc}可知，前三个选项中的函数是一致连续的．关于选项~D中的函数，令\(1/x = 2\,k\pi\)，当\(k\)足够大时，自然能使\(\abs{x-0}\)小于任意的\(\delta\)，然而\(\abs*{\,f(x) - f(0)} = 1\)．因此它不是一致连续的．实际上，如果修改定义，让此函数在原点处的值为零，同样可由定理~\ref{thm:hc}得到一致连续性．
   \fi
 
 \item 关于函数\(\lnp{1+x}\)的连续性，下列说法中，错误的是\uline{\hspace{10em}}．
@@ -1099,9 +1099,9 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 它在区间\(\paren{-1,+\infty}\)上处处连续
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     它在区间\(\paren{-1,+\infty}\)上一致连续
   \item 它在区间\(\paren{-1,+\infty}\)上没有最大值和最小值
@@ -1109,11 +1109,11 @@
   \end{itemize}
 
   \ifshowsol
-  取出子区间\(\paren{-1,0}\)，再由定理~\ref{thm:unicontbndintvbnd}可知，选项~B中的函数在此子区间上不是一致连续的，自然在原区间上也不是一致连续的．关于选项~D，对于任意的\(\varepsilon > 0\)，有
-  \begin{equation*}
-    \lnp{1+x+\fwdf x} - \lnp{1+x} = \lnp[\bigg]{1 + \frac{\fwdf x}{1+x}} \le \frac{\fwdf x}{1+x} \le \frac{\fwdf x}{2} \le \fwdf x,
-  \end{equation*}
-  取\(\delta = \varepsilon\)，则当\(0 \le \fwdf x < \delta\)时，自然有\(\,f(x+\fwdf x) - f(x) < \delta = \varepsilon\)．因此它在区间\(\brktparen{1,+\infty}\)上是一致连续的．
+    取出子区间\(\paren{-1,0}\)，再由定理~\ref{thm:unicontbndintvbnd}可知，选项~B中的函数在此子区间上不是一致连续的，自然在原区间上也不是一致连续的．关于选项~D，对于任意的\(\varepsilon > 0\)，有
+    \begin{equation*}
+      \lnp{1+x+\fwdf x} - \lnp{1+x} = \lnp[\bigg]{1 + \frac{\fwdf x}{1+x}} \le \frac{\fwdf x}{1+x} \le \frac{\fwdf x}{2} \le \fwdf x,
+    \end{equation*}
+    取\(\delta = \varepsilon\)，则当\(0 \le \fwdf x < \delta\)时，自然有\(\,f(x+\fwdf x) - f(x) < \delta = \varepsilon\)．因此它在区间\(\brktparen{1,+\infty}\)上是一致连续的．
   \fi
 
 \item 已知函数\(\,f\mkern2mu\)和\(\mkern2mu g\)在区间\(\brkt{a,b}\)上连续．下列说法中，错误的是\uline{\hspace{8em}}．
@@ -1123,18 +1123,18 @@
   \item 函数\(\minb{\,f, g}\)在区间\(\brkt{a,b}\)上一致连续
   \item 函数\(fg\)在区间\(\brkt{a,b}\)上一致连续
     \ifshowsol
-  \item[\faCircle]
+    \item[\faCircle]
     \else
-  \item
+    \item
     \fi
     函数\(\sgnp{\,fg}\)在区间\(\brkt{a,b}\)上一致连续
   \end{itemize}
 
   \ifshowsol
-  令\(f(x) = x,\ g(x) = x^2\)，则选项~D中的函数\(\sgnp[\big]{\,f(x)\,g(x)} = \sgnp{x^3} = \sgnp{x}\)在原点处间断，自然也就不是一致连续的．因为\(\brkt{a,b}\)是个闭区间，所以根据定理~\ref{thm:hc}，只要证明前三个选项中的函数是连续的，就能说明它们也是一致连续的．选项~C中的函数使用定理~\ref{thm:cont4ops}即可．前两个选项中的函数，利用练习~\ref{B1.1.1.E}题~\ref{B1.1.1.E9}中的公式，再加上定理~\ref{thm:cont4ops}，只需证明：若函数\(f\)连续，则函数\(\abs*{\,f\,}\)也连续．对于任意的\(\varepsilon > 0\)，因为函数\(f\)在点\(x_0\)处连续，所以存在\(\delta > 0\)使得当\(\abs{x-x_0} < \delta\)时就有
-  \begin{equation*}
-    \abs[\Big]{\abs*{\,f(x)} - \abs*{\,f(x_0)}} \le \abs*{\,f(x) - f(x_0)} < \varepsilon.
-  \end{equation*}
+    令\(f(x) = x,\ g(x) = x^2\)，则选项~D中的函数\(\sgnp[\big]{\,f(x)\,g(x)} = \sgnp{x^3} = \sgnp{x}\)在原点处间断，自然也就不是一致连续的．因为\(\brkt{a,b}\)是个闭区间，所以根据定理~\ref{thm:hc}，只要证明前三个选项中的函数是连续的，就能说明它们也是一致连续的．选项~C中的函数使用定理~\ref{thm:cont4ops}即可．前两个选项中的函数，利用练习~\ref{B1.1.1.E}题~\ref{B1.1.1.E9}中的公式，再加上定理~\ref{thm:cont4ops}，只需证明：若函数\(f\)连续，则函数\(\abs*{\,f\,}\)也连续．对于任意的\(\varepsilon > 0\)，因为函数\(f\)在点\(x_0\)处连续，所以存在\(\delta > 0\)使得当\(\abs{x-x_0} < \delta\)时就有
+    \begin{equation*}
+      \abs[\Big]{\abs*{\,f(x)} - \abs*{\,f(x_0)}} \le \abs*{\,f(x) - f(x_0)} < \varepsilon.
+    \end{equation*}
   \fi
 \end{enumerate}
 \fi
@@ -1142,4 +1142,5 @@
 % Local Variables:
 % TeX-engine: luatex
 % TeX-master: "微积分B"
+% LaTeX-indent-begin-exceptions-list: ("ifshowex")
 % End:
