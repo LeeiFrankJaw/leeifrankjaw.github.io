@@ -17,5 +17,6 @@ auto/
 figures/
 *.figlist
 *.makefile
-_region_.tex
+_region_.*
 *.ltjruby
+tmp-ly/

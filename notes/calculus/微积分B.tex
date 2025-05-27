@@ -17,6 +17,7 @@
 \renewcommand*{\enumparen}[1]{（\makebox[0.6em][c]{\normalfont#1}）}
 \DeclareEmphSequence{\bfseries}
 \renewcommand*{\tand}{\textop{且}}
+\renewcommand*{\qand}{\txt{和}}
 \renewcommand*{\tor}{\textop{或}}
 \renewcommand*{\otherwise}{\text{其他}}
 \renewcommand*{\iand}{\intertext{和}}
@@ -79,17 +80,19 @@
 \usepackage[math-style=TeX]{unicode-math}
 \setmathfont{TeX Gyre Pagella Math}
 
+\usepackage{gbt7714}
+
 \usepackage{microtype}
 
 \newif\ifshowsol
 \newif\ifshowex
 \newif\ifshowsolp
-\showsoltrue
+% \showsoltrue
 \showextrue
 \ifshowsol
-\showsolptrue
+  \showsolptrue
 \fi
-\showsolptrue
+% \showsolptrue
 
 \renewcommand*{\proofname}{证}
 \makeatletter
@@ -118,6 +121,7 @@
   \let\ge\geq}
 
 \begin{document}
+\nocite{*}
 \frontmatter
 \currentpdfbookmark{标题页}{title}
 \maketitle
@@ -126,7 +130,7 @@
 
 \chapter*{前言}
 
-这是我在首期“乘风计划”中《微积分B》课程中做的学习笔记．
+这是我在《微积分B》课程中做的学习笔记．
 
 \clearpage
 \thispagestyle{empty}
@@ -151,6 +155,11 @@
 
 \chapter{级数}
 
+
+\backmatter
+
+\bibliographystyle{gbt7714-numerical}
+\bibliography{微积分B-Refs}
 
 \end{document}
 

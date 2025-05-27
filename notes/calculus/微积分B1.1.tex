@@ -37,7 +37,7 @@
 \end{example*}
 
 \begin{definition*}
-  实数集\(A\)的最小上界称作上确界\footnote{上（下）确界的概念最早可以追溯到Roger Paman．}，记作\(\sup A\)；它的最大下界称作下确界，记作\(\inf A\)．
+  实数集\(A\)的最小上界称作上确界\footnote{上（下）确界的概念最早可以追溯到Roger Paman\cite{PamanBio}．}，记作\(\sup A\)；它的最大下界称作下确界，记作\(\inf A\)．
 \end{definition*}
 
 \begin{definition}
@@ -308,12 +308,12 @@
 
 \item 函数\(y = \abs x + \abs{x-1} - \abs{4-2x}\)的最大值和最小值分别是
   \ifshowsol
-  \uline{\makebox[3em]{\(-3\)}}和\uline{\makebox[3em]{\(3\)}}．
+    \uline{\makebox[3em]{\(3\)}}和\uline{\makebox[3em]{\(-3\)}}．
   \else
   \uline{\makebox[3em]{}}和\uline{\makebox[3em]{}}．
   \fi
 
-\item 设非负实数\(x, y\)满足方程\((1-x)\,y^2 = x^3\)．若\(x = \frac{t^2}{1+t^2}\)，则\(y\)能看作\(t\)的一个函数．用\(t\)表示\(y\)，有\(y =\)
+\item 设非负实数\(x, y\)满足方程\((1-x)\,y^2 = x^3\)且\(t > 0\)．若\(x = \frac{t^2}{1+t^2}\)，则\(y\)能看作\(t\)的一个函数．用\(t\)表示\(y\)，有\(y =\)
   \ifshowsol
   \uline{\makebox[6em]{\(t^3/\paren{1+t^2}\)}}．
   \else
@@ -393,7 +393,7 @@
 
 \item 函数\(y = \arcsin(2x+1)\)的定义域为
   \ifshowsol
-  \uline{\makebox[9em]{\(\brce{x \mid -1/2 \le x \le 0}\)}}．
+    \uline{\makebox[9em]{\(\brce{x \mid -1 \le x \le 0}\)}}．
   \else
   \uline{\makebox[9em]{}}．
   \fi
@@ -509,8 +509,8 @@
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
   \item 反正弦函数\(y = \arcsin x\)，定义域\(\brkt{-1, 1}\)，值域\(\brkt{-\frac\pi2, \frac\pi2}\);
   \item 反余弦函数\(y = \arccos x\)，定义域\(\brkt{-1, 1}\)，值域\(\brkt{0, \pi}\);
-  \item 反正切函数\(y = \arcsin x\)，定义域\(\brkt{-\infty, +\infty}\)，值域\(\brkt{-\frac\pi2, \frac\pi2}\);
-  \item 反余切函数\(y = \arccos x\)，定义域\(\brkt{-\infty, +\infty}\)，值域\(\brkt{0, \pi}\)．
+  \item 反正切函数\(y = \arctan x\)，定义域\(\brkt{-\infty, +\infty}\)，值域\(\brkt{-\frac\pi2, \frac\pi2}\);
+  \item 反余切函数\(y = \arccot x\)，定义域\(\brkt{-\infty, +\infty}\)，值域\(\brkt{0, \pi}\)．
   \end{enumerate}
   其中我们限制值域的范围叫做反三角函数的主值范围．
 \end{definition*}
@@ -607,10 +607,9 @@
 
 \item 已知\(f(\sin x) = 2 \ln \cos x + x\)，则\(f(x) =\)
   \ifshowsol
-  {\setlength{\ULdepth}{.88ex}%
-    \uline{\makebox[20em]{\(f(x) = \ln(1-x^2) + 2k\pi + \arcsin x,\ k \in \Z\)}}}．
+    \uline{\makebox[16em]{\(\ln(1-x^2) + 2k\pi + \arcsin x,\ k \in \Z\)}}．
   \else
-  \uline{\makebox[20em]{}}．
+    \uline{\makebox[16em]{}}．
   \fi
 
 \item 设
@@ -690,7 +689,7 @@
   证明\(f(x) = \dfrac1x\)在\(\paren{0,+\infty}\)上无界．
 
   \begin{proof}
-    对于任意的\(M > 0\)，取\(x_0 = \frac1{2M}\)，则有\(x \in \paren{0,+\infty}\)且\(f(x_0) = 2M > M\)．
+    对于任意的\(M > 0\)，取\(x_0 = \frac1{2M}\)，则有\(x_0 \in \paren{0,+\infty}\)且\(f(x_0) = 2M > M\)．
   \end{proof}
 \end{example*}
 
@@ -718,19 +717,24 @@
 \end{theorem*}
 
 \begin{example*}
-  设函数\(f\)是奇函数，函数\(g(x) = \ln\paren[\big]{\,f(x) + \sqrt{\,f^2(x)+1}}\)．试讨论函数\(g\)的奇偶性．
+  设函数\(f\)是奇函数，函数\(g(x) = \ln\paren[\big]{\,f(x) + \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}}}\)．试讨论函数\(g\)的奇偶性．
 
   \begin{remark}
     因为
     \[
       \begin{split}
         g(-x)
-        &= \ln\paren[\big]{\,f(-x) + \sqrt{\,f^2(-x)+1}} \\
-        &= \ln\paren[\big]{\sqrt{\paren[\big]{-f(x)}^2+1} - f(x)} \\
-        &= \ln\paren[\big]{\sqrt{\,f^2(x)+1} - f(x)} \\
-        &= \ln{\frac{\paren[\big]{\sqrt{\,f^2(x)+1} + f(x)}\paren[\big]{\sqrt{\,f^2(x)+1} - f(x)}}{\sqrt{\,f^2(x)+1} + f(x)}} \\
-        &= \ln \frac1{\sqrt{\,f^2(x)+1} + f(x)} \\
-        &= -\ln{\,f(-x) + \sqrt{\,f^2(-x)+1}} \\
+        &= \ln\paren[\big]{\,f(-x) + \sqrt{\,\smash{f^2(-x)+1}\rule[-.3ex]{0ex}{1.8ex}}} \\
+        &= \ln\paren[\big]{\sqrt{\smash{\paren{-f(x)}^2+1}\rule[-.3ex]{0ex}{1.8ex}} - f(x)} \\
+        &= \ln\paren[\big]{\sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} - f(x)} \\
+        &= \ln{\frac{
+          \paren[\big]{\sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} + f(x)}
+          \paren[\big]{\sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} - f(x)}
+          }{
+          \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} + f(x)}
+          } \\
+        &= \ln \frac1{\sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} + f(x)} \\
+        &= -\ln\paren[\big]{\,f(x) + \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}}} \\
         &= -g(x),
       \end{split}
     \]
@@ -826,31 +830,33 @@
   \]
 
   \begin{proof}
-    先证充分性．对于任意的\(x_1, x_2\)和满足\(\alpha+\beta=1\)的正数\(\alpha, \beta\)．三个点
-    \[
-      A\colon \paren[\big]{x_1, f(x_1)},\quad B\colon \paren[\big]{\alpha x_1 + \beta x_2, f(\alpha x_1 + \beta x_2)},\quad C\colon \paren[\big]{x_2, f(x_2)}
-    \]
-    必然不共线．因为当共线时，存在无数多组满足\(a+b+c=1\)的正数\(a, b, c\)使得
-    \[
-      f\,\paren[\big]{a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2} = a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2).
-    \]
-    那么就可以在这三个点围成的三角形里面找到一个点\(D\)使得它的横坐标是\(\alpha x_1 + \beta x_2\)（这样的点有无数个）．选择一组满足\(a+b+c=1\)的正数\(a, b, c\)使得\(a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2 = \alpha x_1 + \beta x_2 \)，也就是
-    \[
-      D\colon \paren[\big]{\alpha x_1 + \beta x_2, a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2)}.
-    \]
-    那么就有
-    \[
-      \begin{split}
-        f(\alpha x_1 + \beta x_2)
-        &= f\,\paren[\big]{a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2} \\
-        &< a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2) \\
-        &< \alpha\,f(x_1) + \beta\,f(x_2).
-      \end{split}
-    \]
-    这时可以判断点\(B\)位于线段\(\overline{AC}\)的下方，因为\(B\)的纵坐标小于\(D\)的纵坐标．因此，上面最后一个小于号成立．正数\(a, b, c\)可能的一组选择是
-    \[
-      a = \frac\alpha2,\ b = \frac12(\alpha x_1 + \beta x_2),\ c = \frac\beta2.
-    \]
+    先证充分性．最简单的方法就是将正数\(\alpha, \beta, \gamma\)中的一个置为零，然后再套用下凸的定义，即可得证．
+    % 对于任意的\(x_1, x_2\)和满足\(\alpha+\beta=1\)的正数\(\alpha, \beta\)．三个点
+    % \[
+    %   A\colon \paren[\big]{x_1, f(x_1)},\quad B\colon \paren[\big]{\alpha x_1 + \beta x_2, f(\alpha x_1 + \beta x_2)},\quad C\colon \paren[\big]{x_2, f(x_2)}
+    % \]
+    % 必然不共线．因为当共线时，存在无数多组满足\(a+b+c=1\)的正数\(a, b, c\)使得
+    % \[
+    %   f\,\paren[\big]{a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2} = a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2).
+    % \]
+    % 那么就可以在这三个点围成的三角形里面找到一个点\(D\)使得它的横坐标是\(\alpha x_1 + \beta x_2\)（这样的点有无数个）．选择一组满足\(a+b+c=1\)的正数\(a, b, c\)使得\(a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2 = \alpha x_1 + \beta x_2 \)，也就是
+    % \[
+    %   D\colon \paren[\big]{\alpha x_1 + \beta x_2, a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2)}.
+    % \]
+    % 那么就有
+    % \[
+    %   \begin{split}
+    %     f(\alpha x_1 + \beta x_2)
+    %     &= f\,\paren[\big]{a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2} \\
+    %     &< a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2) \\
+    %     &< \alpha\,f(x_1) + \beta\,f(x_2).
+    %   \end{split}
+    % \]
+    % 这时可以判断点\(B\)位于线段\(\overline{AC}\)的下方，因为\(B\)的纵坐标小于\(D\)的纵坐标．因此，上面最后一个小于号成立．正数\(a, b, c\)可能的一组选择是
+    % \[
+    %   a = \frac\alpha2,\ b = \frac12(\alpha x_1 + \beta x_2),\ c = \frac\beta2.
+    % \]
+    % The above paragraphs is correct but cumbersome.
 
     再证必要性．对于任意互异的\(x, y, z \in \paren{a,b}\)和满足\(\alpha+\beta+\gamma=1\)的正数\(\alpha, \beta, \gamma\)，都有
     \[
@@ -872,6 +878,9 @@
     %   f(a y + b z) < a\,f(y) + b\,f(z).
     % \]
   \end{proof}
+  \begin{remark}
+    例题中，满足\(\alpha, \beta, \gamma\)非负且\(\alpha + \beta + \gamma = 1\)的线性组合\(\alpha x + \beta y + \gamma z\)叫作凸组合\cite{ConvexCombWiki}．
+  \end{remark}
 \end{example*}
 
 \subpdfbookmark{思考}{B1.1.4.P}
@@ -1206,7 +1215,26 @@
   \end{itemize}
 
   \ifshowsol
-  选项~C和~D中的函数都是因为定义域的不同而导致函数不同的．
+    选项~A中的两个函数，值域不同、相位也不同．它们可以用绝对值函数和取整函数表示成
+    \begin{gather*}
+      \arcsin(\cos x) = \frac\pi2 - \abs*{x - 2\pi\floor[\bigg]{\frac{x}{2\pi} + \frac12}} \\
+      \siand
+      \arccos(\sin x) = \abs*{x - 2\pi \floor[\bigg]{\frac{x}{2\pi} + \frac14} - \frac\pi2}.
+    \end{gather*}
+    选项~B中的两个函数相同，都可以表示成
+    \begin{equation*}
+      \sin(\arccos x) = \cos(\arcsin x) = \sqrt{1-x^2}.
+    \end{equation*}
+    按照我们这里给出的反余切函数定义和主值范围\footnote{在Wolfram语言当中，反余切函数的定义和主值范围\cite{ArccotMathWorld}与此处不同．按照他们的定义，选项~C中的两个函数仍然不同，但只有定义域不同了．}，选项~C中的两个函数不同，并且有
+    \begin{equation*}
+      \arctan x =
+      \begin{cases}
+        \arccot \frac1x,       & x > 0, \\
+        0,                     & x = 0, \\
+        \arccot \frac1x - \pi, & x < 0.
+      \end{cases}
+    \end{equation*}
+    选项~D中，函数\(\sin(\arcsin x)\)的定义域是\(\brkt{-1,1}\)，函数\(\tan(\arctan x)\)的定义域是\(\R\)．
   \fi
 
 \item 函数\(y = \cos x\ (\pi \le x \le 2\pi)\)的反函数是\uline{\makebox[6em]{}}．
@@ -1222,6 +1250,15 @@
   \item \(y = \pi - \arccos x\)
   \end{itemize}
 
+  \ifshowsol
+    它的反函数是
+    \begin{equation*}
+      2\pi - \arccos x
+      = 2\pi - \paren[\bigg]{\frac\pi2 - \arcsin x}
+      = \frac32\pi + \arcsin x.
+    \end{equation*}
+  \fi
+
 \item 设\(f\)是在\(\R\)上的减函数．若\(a + b \le 0\)，则\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
@@ -1236,17 +1273,20 @@
   \end{itemize}
 
   \ifshowsol
-  选项~A和~C都可以通过举反例来证伪，比方说\(f(x) = \arccot x\)证伪了~A，\(f(x) = -\pi + \arccot x\)证伪了~C．对于~B和~D，可以根据\(a + b \le 0\)的性质来说明．两个数的和非正，这就说明至少其中有一个数非正．当另外一个数也是非正的时候，易证~D成立．当另外一个数是正数的时候，不失一般地，不妨假设\(a \le 0 < b\)，那么有\(a \le -b < 0 < b \le -a\)．所以有
-  \[
-    f(a) \ge f(-b) > f(b) \ge f(-a).
-  \]
-  因此~D成立．
+    选项~A和~C都可以通过举反例来证伪，比方说\(f(x) = \arccot x\)证伪了~A，\(f(x) = -\pi + \arccot x\)证伪了~C．
+
+    对于~B和~D，因为\(a \le -b\)且\(b \le -a\)，所以\(f(a) \ge f(-b)\)且\(f(b) \ge f(-a)\)，从而
+    \begin{equation*}
+      f(a) + f(b) \ge f(-a) + f(-b).
+    \end{equation*}
   \fi
 
 \item 曲线\(y = \frac{2^x-2^{-x}}{2^x+2^{-x}}\)与曲线\(y = f(x)\)的图像关于直线\(y = x\)对称．求\(f(x) =\)
   \ifshowsol
-  {\setlength{\ULdepth}{1.15ex}%
-    \uline{\makebox[6em]{\(\frac12 \log_2\frac{1+x}{1-x}\)}}}．
+    {\setlength{\ULdepth}{1.15ex}%
+      \uline{\makebox[6em]{\(\frac12 \log_2\frac{1+x}{1-x}\)}}}．
+
+    推导过程与\(\arctanh x\)类似．
   \else
   \uline{\makebox[6em]{}}．
   \fi
@@ -1456,4 +1496,5 @@
 % Local Variables:
 % TeX-engine: luatex
 % TeX-master: "微积分B"
+% LaTeX-indent-begin-exceptions-list: ("ifshowex")
 % End:
