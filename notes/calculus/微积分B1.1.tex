@@ -12,7 +12,7 @@
   实数集有界的充分必要条件是其既有上界又有下界．
 
   \begin{proof}
-    只证充分性．设\(M_1, M_2\)分别为实数集的上下界，取\(M = \maxb*{\abs{M_1}, \abs{M_2}}\)，则\(M\)就是该实数集的一个界．
+    只证充分性．设\(M_1, M_2\)分别为实数集的上下界，取\(M = \maxb*{\,\abs*{\,M_1}, \abs*{\,M_2}\,}\)，则\(M\)就是该实数集的一个界．
   \end{proof}
 \end{theorem*}
 
@@ -31,7 +31,7 @@
   \begin{proof}
     对于所有的\(M > 0\)，取\(n_0 = 2 \floor M + 1\)，那么就有
     \[
-      \abs[\Big]{n_0 \sin \frac{n_0\pi}2} = \abs[\Big]{(-1)^{\floor M} n_0} = n_0 = 2 \floor M + 1 > M. \qedhere
+      \abs*{\,n_0 \sin \frac{n_0\pi}2\,} = \abs*{(-1)^{\floor M} n_0\,} = n_0 = 2 \floor M + 1 > M. \qedhere
     \]
   \end{proof}
 \end{example*}
@@ -46,10 +46,10 @@
 \end{definition}
 
 \begin{example*}
-  证明\(\inf\Seq[\big]{\frac1n} = 0\)．
+  证明\(\infb[\big]{\frac1n} = 0\)．
 
   \begin{proof}
-    取\(x = 1/\paren[\big]{\floor{\frac1ε}+1}\)即可．
+    取\(x = 1/\paren[\big]{\floor[\big]{\frac1ε}+1}\)即可．
   \end{proof}
 \end{example*}
 
@@ -76,17 +76,17 @@
 \item 下列集合中，有最大值的集合是\uline{\makebox[4em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(\brce{x \mid x \in (0, 1), x \in \Q}\)
+  \item \(\brce{\,x \mid x \in (0, 1),\, x \in \Q\,}\)
   \item 自然数集
     \ifshowsol
-    \item[\faCircle] 有限个数构成的集合\(\brce{a_1, a_2, \dots, a_n}\)
+    \item[\faCircle] 有限个数构成的集合\(\Set{a_1, a_2, \dots, a_n}\)
     \else
-    \item 有限个数构成的集合\(\brce{a_1, a_2, \dots, a_n}\)
+    \item 有限个数构成的集合\(\Set{\,a_1,\, a_2,\, \dots,\, a_n\,}\)
     \fi
-  \item \(\brce[\big]{x \in \R \mid x^2 - 2x -3 < 0}\)
+  \item \(\Set[\big]{\,x \in \R \mid x^2 - 2x -3 < 0\,}\)
   \end{itemize}
 
-\item 集合\(\brce{x \in \R \mid -x^2 - x + 2 > 0}\)的上确界是
+\item 集合\(\Set{\,x \in \R \mid -x^2 - x + 2 > 0\,}\)的上确界是
   \ifshowsol
     \uline{\makebox[4em]{\(1\)}}
   \else
@@ -114,7 +114,7 @@
     \uline{\makebox[4em]{}}%
   \fi．
 
-\item 设集合\(A = \brce{x \in \R \mid x^2 < 2},\ B = \brce{x \in \Q \mid x^2 < 2}\)，则\uline{\makebox[4em]{}}．
+\item 设集合\(A = \Set{\,x \in \R \mid x^2 < 2\,},\ B = \Set{\,x \in \Q \mid x^2 < 2\,}\)，则\uline{\makebox[4em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(\sup A > \sqrt2 > \sup B\)
@@ -129,7 +129,7 @@
 
 \item 若\(A, B\)为\(\R\)中的非空有界集，记
   \begin{equation*}
-    M_1 = \inf\paren{A \cup B},\ M_2 = \min\brce{\inf A, \inf B},\ N_1 = \sup\paren{A \cup B},\ N_2 = \max\brce{\sup A, \sup B},
+    M_1 = \infp*{A \cup B},\ M_2 = \minb*{\,\inf A,\, \inf B\,},\ N_1 = \supp*{A \cup B},\ N_2 = \maxb*{\,\sup A,\, \sup B\,},
   \end{equation*}
   则\uline{\hspace{8em}}．
   \begin{itemize}
@@ -146,7 +146,7 @@
 
 \item 若\(A, B\)为\(\R\)中的两个不同非空有界集，且\(A \cap B\)非空，记
   \begin{equation*}
-    M_1 = \inf(A \cap B),\ M_2 = \max\brce{\inf A, \inf B},\ N_1 = \sup(A \cap B),\ N_2 = \min\brce{\sup A, \sup B},
+    M_1 = \infp{A \cap B},\ M_2 = \maxb{\,\inf A,\, \inf B\,},\ N_1 = \supp{A \cap B},\ N_2 = \minb{\,\sup A,\, \sup B\,},
   \end{equation*}
   则\uline{\hspace{8em}}．
   \begin{itemize}
@@ -161,20 +161,20 @@
   \item \(M_1 = M_2,\ N_1 = N_2\)
   \end{itemize}
 
-\item \label{B1.1.1.E9}若\(a, b \in \R\)，则\(\max\brce{a, b}\)和\(\min\brce{a, b}\)分别是\uline{\makebox[4em]{}}．
+\item \label{B1.1.1.E9}若\(a, b \in \R\)，则\(\maxb{\,a, b\,}\)和\(\minb{\,a, b\,}\)分别是\uline{\makebox[4em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
-    \item[\faCircle] \(\displaystyle \frac{a+b+\abs{a-b}}{2},\ \frac{a+b-\abs{a-b}}{2}\)
+    \item[\faCircle] \(\displaystyle \frac{a+b+\abs{\,a-b\,}}{2},\ \frac{a+b-\abs{\,a-b\,}}{2}\)
     \else
-    \item \(\displaystyle \frac{a+b+\abs{a-b}}{2},\ \frac{a+b-\abs{a-b}}{2}\)
+    \item \(\displaystyle \frac{a+b+\abs{\,a-b\,}}{2},\ \frac{a+b-\abs{\,a-b\,}}{2}\)
     \fi
-  \item \(\displaystyle \frac{a-b+\abs{a-b}}{2},\ \frac{a+b-\abs{a-b}}{2}\)
-  \item \(\displaystyle \frac{a+b-\abs{a-b}}{2},\ \frac{a-b+\abs{a-b}}{2}\)
-  \item \(\displaystyle \frac{a+b+\abs{a-b}}{2},\ \frac{a-b+\abs{a-b}}{2}\)
+  \item \(\displaystyle \frac{a-b+\abs{\,a-b\,}}{2},\ \frac{a+b-\abs{\,a-b\,}}{2}\)
+  \item \(\displaystyle \frac{a+b-\abs{\,a-b\,}}{2},\ \frac{a-b+\abs{\,a-b\,}}{2}\)
+  \item \(\displaystyle \frac{a+b+\abs{\,a-b\,}}{2},\ \frac{a-b+\abs{\,a-b\,}}{2}\)
   \end{itemize}
 
-\item 设\(A,\ B\)为\(\R^+\)中的非空有界集，定义数集\(P = \brce{x \mid x = a + b, a \in A, b \in B}, Q = \brce{x \mid x = a - b, a \in A, b \in B}\)，则下列四个等式
+\item 设\(A,\ B\)为\(\R^+\)中的非空有界集，定义数集\(P = \Set{\,x \mid x = a + b,\, a \in A,\, b \in B\,},\, Q = \Set{\,x \mid x = a - b,\, a \in A,\, b \in B\,}\)，则下列四个等式
   \begin{align*}
     \sup P &= \sup A + \sup B & \inf P &= \inf A + \inf B \\
     \sup Q &= \sup A - \sup B & \inf Q &= \inf A - \inf B
@@ -202,7 +202,7 @@
 函数的记号是欧拉的，现代定义最早是由狄利克雷提出的．
 
 \begin{definition*}
-  设函数\(f\)在\(D\)上有定义，称点集\(\Set[\big]{(x,y) \mid y = f(x),\ x \in D}\)为\(f\)的图形．
+  设函数\(f\)在\(D\)上有定义，称点集\(\Set{\,(x,y) \mid y = f(x),\, x \in D\,}\)为\(f\)的图形．
 \end{definition*}
 
 \begin{definition}[狄利克雷函数]
@@ -322,7 +322,7 @@
     \uline{\makebox[10em]{}}．
   \fi
 
-\item 函数\(y = \abs x + \abs{x-1} - \abs{4-2x}\)的最大值和最小值分别是
+\item 函数\(y = \abs{\,x\,} + \abs{\,x-1\,} - \abs{\,4-2x\,}\)的最大值和最小值分别是
   \ifshowsol
     \uline{\makebox[3em]{\(3\)}}和\uline{\makebox[3em]{\(-3\)}}．
   \else
@@ -402,14 +402,14 @@
 
 \item 函数\(\displaystyle y = \frac{\ln(1+3x)}{x^2-3x+2}\)的定义域为
   \ifshowsol
-    \uline{\makebox[13em]{\(\brce{x \mid x > -1/3, x \ne 1, x \ne 2}\)}}．
+    \uline{\makebox[13em]{\(\Set{\,x \mid x > -1/3,\, x \ne 1,\, x \ne 2\,}\)}}．
   \else
     \uline{\makebox[13em]{}}．
   \fi
 
 \item 函数\(y = \arcsin(2x+1)\)的定义域为
   \ifshowsol
-    \uline{\makebox[9em]{\(\brce{x \mid -1 \le x \le 0}\)}}．
+    \uline{\makebox[9em]{\(\Set{\,x \mid -1 \le x \le 0\,}\)}}．
   \else
     \uline{\makebox[9em]{}}．
   \fi
@@ -513,9 +513,9 @@
       2y &= e^x - e^{-x} && \reason{同乘以\(2\)} \\
       0 &= \paren{e^{x}}^2- 2y\,e^x - 1 && \reason{同乘以\(e^x\)并移项} \\
       e^x &= y + \sqrt{\smash{y^2} + 1} && \reason{关于\(e^x\)解方程} \\
-      x &= \ln\paren[\big]{y + \sqrt{\smash{y^2} + 1}}. && \reason{取对数}
+      x &= \lnp[\big]{y + \sqrt{\smash{y^2} + 1}}. && \reason{取对数}
     \end{align*}
-    所以反函数是\(y = \arcsinh x = \ln\paren[\big]{x + \sqrt{\smash{x^2} + 1}}\)．
+    所以反函数是\(y = \arcsinh x = \lnp[\big]{x + \sqrt{\smash{x^2} + 1}}\)．
   \end{remark}
 \end{example*}
 
@@ -614,7 +614,7 @@
     \[
       y =
       \begin{cases}
-        -\ln\paren{x-1}, & x \ge 2, \\
+        -\lnp{x-1}, & x \ge 2, \\
         1 - \frac12 x, & 0 < x < 2, \\
         1 + \sqrt{-x}, & x \le 0.
       \end{cases}
@@ -733,16 +733,16 @@
 \end{theorem*}
 
 \begin{example*}
-  设函数\(f\)是奇函数，函数\(g(x) = \ln\paren[\big]{\,f(x) + \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}}}\)．试讨论函数\(g\)的奇偶性．
+  设函数\(f\)是奇函数，函数\(g(x) = \lnp[\big]{\,f(x) + \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}}}\)．试讨论函数\(g\)的奇偶性．
 
   \begin{remark}
     因为
     \[
       \begin{split}
         g(-x)
-        &= \ln\paren[\big]{\,f(-x) + \sqrt{\,\smash{f^2(-x)+1}\rule[-.3ex]{0ex}{1.8ex}}} \\
-        &= \ln\paren[\big]{\sqrt{\smash{\paren{-f(x)}^2+1}\rule[-.3ex]{0ex}{1.8ex}} - f(x)} \\
-        &= \ln\paren[\big]{\sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} - f(x)} \\
+        &= \lnp[\big]{\,f(-x) + \sqrt{\,\smash{f^2(-x)+1}\rule[-.3ex]{0ex}{1.8ex}}} \\
+        &= \lnp[\big]{\sqrt{\smash{\paren{-f(x)}^2+1}\rule[-.3ex]{0ex}{1.8ex}} - f(x)} \\
+        &= \lnp[\big]{\sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} - f(x)} \\
         &= \ln{\frac{
           \paren[\big]{\sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} + f(x)}
           \paren[\big]{\sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} - f(x)}
@@ -750,7 +750,7 @@
           \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} + f(x)}
           } \\
         &= \ln \frac1{\sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}} + f(x)} \\
-        &= -\ln\paren[\big]{\,f(x) + \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}}} \\
+        &= -\lnp[\big]{\,f(x) + \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}}} \\
         &= -g(x),
       \end{split}
     \]
@@ -1027,7 +1027,7 @@
     \fi
   \end{itemize}
 
-\item 函数\(\,f\,\)和\(\mkern2mu g\mkern1mu\)是在\(\paren{a,b}\)上的单增函数．那么\(h_1(x) = \max\brce{\,f(x), g(x)},\ h_2(x) = -\min\brce{\,f(x), g(x)}\)分别为\uline{\makebox[6em]{}}．
+\item 函数\(\,f\,\)和\(\mkern2mu g\mkern1mu\)是在\(\paren{a,b}\)上的单增函数．那么\(h_1(x) = \maxb{\,f(x), g(x)},\ h_2(x) = -\minb{\,f(x), g(x)}\)分别为\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 单增函数，单增函数
@@ -1111,10 +1111,10 @@
   \[
     \addtolength{\jot}{.8ex}
     \begin{split}
-      \arccosh x &\coloneq \ln\paren[\big]{x + \sqrt{x^2-1}}
+      \arccosh x &\coloneq \lnp[\big]{x + \sqrt{x^2-1}}
       \quad\text{对于}\quad
       x \ge 1, \\
-      \arcsinh x &\coloneq \ln\paren[\big]{x + \sqrt{x^2+1}}
+      \arcsinh x &\coloneq \lnp[\big]{x + \sqrt{x^2+1}}
       \quad\text{对于}\quad
       x \in \R, \\
       \arctanh x
@@ -1124,7 +1124,7 @@
       x^2 < 1, \\
       \arccoth
       &\coloneq \frac12 \ln\frac{1+x}{x-1}
-      = \frac12 \brkt[\Big]{\ln\paren[\Big]{1+\frac1x} - \ln\paren[\Big]{1-\frac1x}}
+      = \frac12 \brkt[\Big]{\lnp[\Big]{1+\frac1x} - \lnp[\Big]{1-\frac1x}}
       \quad\text{对于}\quad
       x^2 > 1.
       \rule[-2.5ex]{0ex}{0ex}
@@ -1233,9 +1233,9 @@
   \ifshowsol
     选项~A中的两个函数，值域不同、相位也不同．它们可以用绝对值函数和取整函数表示成
     \begin{gather*}
-      \arcsin(\cos x) = \frac\pi2 - \abs*{x - 2\pi\floor[\bigg]{\frac{x}{2\pi} + \frac12}} \\
+      \arcsin(\cos x) = \frac\pi2 - \abs*{\,x - 2\pi\floor[\bigg]{\frac{x}{2\pi} + \frac12}\,} \\
       \siand
-      \arccos(\sin x) = \abs*{x - 2\pi \floor[\bigg]{\frac{x}{2\pi} + \frac14} - \frac\pi2}.
+      \arccos(\sin x) = \abs*{\,x - 2\pi \floor[\bigg]{\frac{x}{2\pi} + \frac14} - \frac\pi2\,}.
     \end{gather*}
     选项~B中的两个函数相同，都可以表示成
     \begin{equation*}
@@ -1321,7 +1321,7 @@
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(\sinh(x \pm y) = \sinh x \cosh y \pm \cosh x \sinh y\)
-  \item \(\arcsinh x = \ln\paren[\big]{x + \sqrt{1+x^2}}\)
+  \item \(\arcsinh x = \lnp[\big]{x + \sqrt{1+x^2}}\)
   \item \(\tanh x = \frac{e^x-e^{-x}}{e^x+e^{-x}}\)
     \ifshowsol
     \item[\faCircle]
