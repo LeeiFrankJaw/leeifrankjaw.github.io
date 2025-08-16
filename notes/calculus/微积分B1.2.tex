@@ -3,15 +3,18 @@
 \section{数列极限的概念与性质}
 
 \begin{definition*}
-  将一些数编好号后，按其编号从小到大排成一列，称为数列，记作\(a_1, a_2, \dots, a_n, \dots\)或\(\Seq{a_n}\)．
+  设\(D \subset \N\)且函数\( a\colon D \to \R\)．我们把\(a\)这样的函数叫作\kenten{整标函数}，简称\kenten{数列}．通常讨论的数列，其定义域就是\(\N\)．一般将\(a(1),\, a(2),\, \dots,\, a(n),\, \dots\)记作\(a_1,\, a_2,\, \dots,\, a_n,\, \dots\)，简记作\(\Seq{a_n}\)．
 \end{definition*}
 
 \begin{definition*}
-  从数列\(\Seq{a_n}\)中取出某些项后，按原来的顺序排成一个新的数列，称此数列为原数列\(\brce{a_n}\)的一个子列，记作\(\Seq{a_{n_k}}\)，其中\(n_k \ge k,\ n_{k+1} > n_k\)．
+  设\(\Seq{a_n}\)是数列，且整标函数\(n\colon \N \to \N\)单调递增．我们把复合函数\(a \circ n\)叫作原数列\(\Seq{a_n}\)的一个子数列，简称子列，记作\(\Seq{a_{n_k}}\)．
+  \begin{remark}
+    易知对于任意的自然数\(k\)都有\(n_k \ge k\)．
+  \end{remark}
 \end{definition*}
 
 \begin{definition*}
-  设\(\Seq{a_n}\)是一个数列，\(A\)是一个常数．对于任意的\(ε > 0\)都存在正整数\(N > 0\)使得当\(n > N\)时都有\(\abs*{a_n - A} < ε\)成立．这时，我们称\(A\)是数列\(\Seq{a_n}\)的极限，记作\(\displaystyle \lim_{n\to\infty} a_n = A\)．
+  设\(\Seq{a_n}\)是数列，\(A\)是常数．我们把\(A\)叫作数列\(\Seq{a_n}\)的极限，记作\(\displaystyle \lim_{n\to\infty} a_n = A\)，当且仅当：对于\kenten{任意的}\(ε > 0\)都\kenten{存在}正整数\(N\)使得\kenten{当}\(n > N\)\kenten{时}都有\(\abs*{\,a_n - A\,} < ε\)．
 
   \begin{remark}
     可以用形式化的符号来表示上述定义，即
@@ -20,7 +23,7 @@
       \paren[\big]{\forall ε > 0}
       \paren[\big]{\exists N > 0}
       \paren[\big]{\forall n > N}
-      \paren[\big]{\abs[\big]{a_n - A} < ε}.
+      \paren[\big]{\abs[\big]{\,a_n - A\,} < ε}.
     \]
     它的否定形式就是
     \[
@@ -28,7 +31,7 @@
       \paren[\big]{\exists ε > 0}
       \paren[\big]{\forall N > 0}
       \paren[\big]{\exists n > N}
-      \paren[\big]{\abs[\big]{a_n - A} \ge ε}.
+      \paren[\big]{\abs[\big]{\,a_n - A\,} \ge ε}.
     \]
   \end{remark}
 \end{definition*}
@@ -37,27 +40,37 @@
   \(\displaystyle \lim_{n\to\infty} \paren[\Big]{1+\frac1n} = 1\).
 
   \begin{proof}
-    取\(N = \ceil{\frac1ε}\)即可．
+    取\(N = \ceil{1/ε}\)即可\footnote{这里的符号\(\ceil\cdot\)是上取整的意思，即\(\ceil x \coloneq - \floor{-x}\)．}．
   \end{proof}
 \end{example*}
 
 \begin{example*}
-  \(\displaystyle \lim_{n\to\infty} q^n = 0\ (\abs{q} < 1)\).
+  \(\displaystyle \lim_{n\to\infty} q^n = 0\ (\,\abs{\,q\,} < 1)\).
 
   \begin{proof}
-    取\(N = \maxb*{1, \ceil*{\ln ε /\! \ln\abs q}}\)即可．
+    当\(q = 0\)时，取\(N = 1\)即可．当\(q \ne 0\)时，令\(x = 1/\abs[\big]{\,q\,} - 1\)．那么，对于任意的\(ε > 0\)，取\(N = \ceil[\big]{(1/ε-1)/x}\)，就能使得当\(n > N\)时都有
+    \begin{equation*}
+      \abs[\big]{\,q\,}^n
+      = \frac{1}{(1+x)^n}
+      < \frac{1}{1+nx}
+      < ε. \qedhere
+    \end{equation*}
   \end{proof}
+  \begin{remark}
+    此处使用了伯努利不等式．课堂上给出的证明，取\(N = \ceil[\big]{\,\ln ε /\! \ln\abs[\big]{\,q\,}\,}\)，但作为证明，其实这是有问题的．
+  \end{remark}
 \end{example*}
 
 \begin{example*}
   \(\displaystyle \lim_{n\to\infty} a^{1/n} = 1\ (a > 1)\).
 
-  \begin{proof}
-    取\(N = \ceil*{\ln a /\! \lnp{1+ε}}\)即可．
-  \end{proof}
+  % \begin{proof}
+  %   取\(N = \ceil*{\ln a /\! \lnp{1+ε}}\)即可．
+  % \end{proof}
+  % Same as the above.  As a proof, it is problematic.
 
   \begin{proof}
-    第二种方法就是把\(a^{1/n}\)分解成一个常数与一个无穷小量和的形式．因为\(a > 1\)，所以\(a^{1/n} > 1\)．令\(ε_n = a^{1/n} - 1\)，就有
+    把\(a^{1/n}\!\)分解成一个常数与一个无穷小量和的形式．因为\(a > 1\)，所以\(a^{1/n} > 1\)．令\(ε_n = a^{1/n} - 1\)，就有
     \begin{align*}
       a^{1/n}
       &= 1 + ε_n
@@ -72,16 +85,19 @@
     因此，
     \begin{equation*}
       \paren[\big]{\forall ε > 0}
-      \paren[\big]{\exists N = \ceil*{\frac aε} > 0}
+      \paren[\big]{\exists N = \ceil{a/ε} > 0}
       \paren[\big]{\forall n > N}
-      \paren[\big]{\abs[\big]{a^{1/n} - 1} = ε_n < \frac an < ε}.
+      \paren[\big]{\abs[\big]{\,a^{1/n} - 1\,} = ε_n < a/n < ε}.
       \qedhere
     \end{equation*}
   \end{proof}
+  \begin{remark}
+    也可以用伯努利不等式来替换上面用到的二项式定理．实际上，此例的结论对于\(a > 0\)的情况都成立．对于\(0 < a < 1\)的情况，取\(N = \ceil{(1/ε-1)/(1/a^{1/n}-1)}\)，再使用一次伯努利不等式即可．
+  \end{remark}
 \end{example*}
 
 \begin{example*}
-  若\(\displaystyle \lim_{n\to\infty} a_n = A\)，则\(\displaystyle \lim_{n\to\infty} \abs*{a_n} = \abs*{A}\)．
+  若\(\displaystyle \lim_{n\to\infty} a_n = A\)，则\(\displaystyle \lim_{n\to\infty} \abs*{\,a_n} = \abs*{\,A\,}\)．
 
   \begin{proof}
     因为\(\displaystyle \lim_{n\to\infty} a_n = A\)，所以
@@ -89,11 +105,11 @@
       \paren[\big]{\forall ε > 0}
       \paren[\big]{\exists N > 0}
       \paren[\big]{\forall n > N}
-      \paren[\big]{\abs[\big]{a_n - A} < ε}.
+      \paren[\big]{\abs[\big]{\,a_n - A\,} < ε}.
     \end{equation*}
     由反三角不等式
     \begin{equation*}
-      \abs*{\abs{a_n} - \abs A} \le \abs*{a_n - A}
+      \abs*{\,\abs{a_n} - \abs A\,} \le \abs*{\,a_n - A\,}
     \end{equation*}
     可知，取同样的\(N\)即可．
   \end{proof}
@@ -101,23 +117,23 @@
 
 \begin{example}
   \label{eg:limavg}
-  若\(\displaystyle \lim_{n\to\infty} a_n = A\)，则\(\displaystyle \lim_{n\to\infty} \frac{a_1 + a_2 + \dots + a_n}{n} = A\)．
+  若\(\displaystyle \lim_{n\to\infty} a_n = A\)，则\(\displaystyle \lim_{n\to\infty} \frac1n \sum_{k=1}^n a_k = A\)．
 
   \begin{proof}
     对于任意的\(ε > 0\)，因为\(\displaystyle \lim_{n\to\infty} a_n = A\)，所以存在正整数\(N_0\)使得当\(n > N_0\)时都有
     \begin{align*}
-      \abs[\bigg]{\frac{a_1 + a_2 + \dots + a_n}{n} - A}
-      &= \abs[\bigg]{\frac{a_1 + a_2 + \dots + a_n - nA}{n}} \\
-      &= \abs[\bigg]{\frac{(a_1-A) + (a_2-A) + \dots + (a_n-A)}{n}} \\
-      &\le \frac{\abs*{a_1-A} + \abs*{a_2-A} + \dots + \abs*{a_n-A}}{n} \\
-      &= \frac{\abs*{a_1-A} + \dots + \abs*{a_{N_0}-A}}{n}
-        + \frac{\abs*{a_{N_0+1}-A} + \dots + \abs*{a_n-A}}{n} \\
-      &< \frac{N_0 \maxb{a_1-A, \dots, a_{N_0}-A}}{n} + \frac{(n-N_0)ε}{n} \\
-      &< \frac{N_0 \maxb{a_1-A, \dots, a_{N_0}-A}}{n} + ε.
+      \abs[\bigg]{\,\frac1n \sum_{k=1}^n a_k - A\,}
+      &= \abs[\bigg]{\,\frac1n \sum_{k=1}^n (a_k - A)\,} \\
+      &\le \frac1n \sum_{k=1}^n \abs[\big]{\,a_k - A\,} \\
+      &= \frac1n \paren[\Bigg]{
+        \sum_{k=1}^{N_0} \abs[\big]{\,a_k - A\,}
+        \ + \ \smashoperator{\sum_{k={\scriptscriptstyle N_0}+1}^n} \abs[\big]{\,a_k - A\,}} \\
+      &< \frac1n \brkt[\big]{c + \paren[\big]{n-N_0}ε} \\
+      &< \frac{c}{n} + ε.
     \end{align*}
-    此时，取\(N = \maxb[\Big]{N_0, \ceil[\Big]{\frac{N_0 \maxb{a_1-A, \dots, a_{N_0}-A}}{ε}}}\)，当\(n > N\)时都有
+    其中，\(c\)是某个取决于\(N_0\)的常数．此时，取\(N = \maxb*{\,N_0, \ceil{c/ε}\,}\)，就有：当\(n > N\)时都有
     \begin{equation*}
-      \abs*{\frac{a_1 + a_2 + \dots + a_n}{n} - A}
+      \abs[\bigg]{\,\frac1n \sum_{k=1}^n a_k - A\,}
       < 2ε. \qedhere
     \end{equation*}
   \end{proof}
@@ -127,13 +143,15 @@
   若极限\(\displaystyle \lim_{n\to\infty} a_n\)存在，则其值唯一．
 
   \begin{proof}
-    假设\(A_1\)和\(A_2\)都是数列\(\Seq{a_n}\)的极限且\(A_1 \ne A_2\)．那么对于任意的\(ε > 0\)，就可以找到正整数\(N_1\)和\(N_2\)，当\(n > N_1\)时都有\(\abs*{a_n - A_1} < ε\)，当\(n > N_2\)时都有\(\abs*{a_n - A_2} < ε\)．这时，取\(N = \maxb{N_1, N_2}\)，当\(n > N\)时都有
-    \begin{gather*}
-      2\abs[\bigg]{a_n - \frac{A_1+A_2}{2}} = \abs[\big]{2a_n - (A_1+A_2)} \le \abs[\big]{a_n - A_1} + \abs[\big]{a_n - A_2} < 2ε, \\
-      \intertext{即}
-      \abs[\bigg]{a_n - \frac{A_1+A_2}{2}} < ε.
-    \end{gather*}
-    这就说明\(\frac{A_1+A_2}{2}\)也是数列\(a_n\)的一个极限．那么对于任意的\(0 < ε \le \frac{\abs*{A_1-A_2}}{2}\)，也能找到这样的正整数\(N\)使得当\(n > N\)时上述几个不等式都成立．但是这是不可能的，因为不论\(a_n\)多大，到\(A_1\)和\(A_2\)的距离，其中之一必然大于\(ε\)．因此，\(A_1 = A_2\)．
+    设\(A_1\)和\(A_2\)都是数列\(\Seq{a_n}\)的极限．假设\(A_1 \ne A_2\)，则对于任意的\(0 < ε \le \abs*{\,A_1-A_2\,}/2\)，就可以找到正整数\(N_1\)和\(N_2\)使得：当\(n > N_1\)时都有\(\abs*{\,a_n - A_1} < ε\)，当\(n > N_2\)时都有\(\abs*{\,a_n - A_2} < ε\)．此时，取\(N = \maxb*{\,N_1,\, N_2}\)．那么，当\(n > N\)时都有
+    \begin{equation*}
+      \abs*{\,A_1 - A_2\,}
+      = \abs*{(a_n - A_1) - (a_n - A_2)}
+      \le \abs*{\,a_n - A_1} + \abs*{\,a_n - A_2}
+      < 2ε
+      \le \abs*{\,A_1 - A_2\,}.
+    \end{equation*}
+    矛盾．因此，\(A_1 = A_2\)．
   \end{proof}
 \end{theorem*}
 
@@ -142,11 +160,11 @@
   若数列\(\Seq{a_n}\)收敛，则其有界．
 
   \begin{proof}
-    假设数列\(\Seq{a_n}\)收敛于\(A\)．任取一个\(ε > 0\)，则存在正整数\(N\)使得当\(n > N\)时都有\(\abs*{a_n - A} < ε\)，即
+    设数列\(\Seq{a_n}\)收敛于\(A\)．任取一个\(ε > 0\)，则存在正整数\(N\)使得当\(n > N\)时都有\(\abs*{\,a_n - A\,} < ε\)，即
     \begin{equation*}
-      A - ε < a_n < A + ε
+      A - ε < a_n < A + ε.
     \end{equation*}
-    此时，\(\maxb*{\abs{A+ε}, \abs{A-ε}, \abs{a_1}, \dots, \abs{a_N}}\)就是数列\(\Seq{a_n}\)的一个界．
+    易知\(\maxb{\,\abs{\,A+ε\,},\, \abs{\,A-ε\,},\, \abs{\,a_1},\, \dots,\, \abs{\,a_N}\,}\)就是数列\(\Seq{\,a_n}\)的一个界．
   \end{proof}
 \end{theorem}
 
@@ -154,13 +172,13 @@
   若\(\displaystyle \lim_{n\to\infty} a_n = A\)且\(A > 0\)，则存在正整数\(N\)使得当\(n > N\)时都有\(a_n > 0\)； 若\(a_n \ge 0\)且\(\displaystyle \lim_{n\to\infty} a_n\)存在，则\(\displaystyle \lim_{n\to\infty} a_n \ge 0\)．
 
   \begin{proof}
-    对前一个命题的证明：取\(ε = A\)时，能找到一个正整数\(N\)使得当\(n > N\)时都有\(\abs*{a_n - A} < A\)，即\(0 < a_n < 2\,A\)．对后一个命题的证明：假设\(\displaystyle \lim_{n\to\infty} a_n < 0\)，那么根据前一个命题，就存在正整数\(N\)使得当\(n > N\)时都有\(a_n < 0\)，这和\(a_n \ge 0\)是矛盾的，所以\(\displaystyle \lim_{n\to\infty} a_n \ge 0\)．
+    对前一个命题的证明：令\(ε = A\)，就能找到一个正整数\(N\)使得当\(n > N\)时都有\(\abs*{\,a_n - A\,} < A\)，即\(0 < a_n < 2\,A\)．对后一个命题的证明：假设\(\displaystyle \lim_{n\to\infty} a_n < 0\)，那么根据前一个命题，就存在正整数\(N\)使得当\(n > N\)时都有\(a_n < 0\)，这和\(a_n \ge 0\)是矛盾的，所以\(\displaystyle \lim_{n\to\infty} a_n \ge 0\)．
   \end{proof}
 \end{theorem*}
 
 \begin{theorem}[数列极限的四则运算]
   \label{thm:seq4ops}
-  设\(\displaystyle \lim_{n\to\infty} a_n = A\)和\(\displaystyle \lim_{n\to\infty} a_n = A\)，则
+  设\(\displaystyle \lim_{n\to\infty} a_n = A\)和\(\displaystyle \lim_{n\to\infty} b_n = B\)，则
   \begin{enumerate}
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
   \item \(\displaystyle \lim_{n\to\infty} \paren{a_n \pm b_n} = A \pm B\)；
@@ -169,58 +187,58 @@
   \end{enumerate}
 
   \begin{proof}
-    对加减法的证明：利用绝对值的三角不等式．对于任意的\(ε\)都能找到\(N_1\)和\(N_2\)使得当\(n > N_1\)时都有\(\abs*{a_n-A} < ε\)和当\(n > N_2\)时都有\(\abs*{b_n-B} < ε\)．取\(N = \maxb{N_1, N_2}\)，就有
+    对加减法的证明：利用绝对值的三角不等式．对于任意的\(ε\)都能找到\(N_1\)和\(N_2\)使得当\(n > N_1\)时都有\(\abs*{\,a_n-A\,} < ε\)和当\(n > N_2\)时都有\(\abs*{\,b_n-B\,} < ε\)．取\(N = \maxb*{\,N_1,\, N_2}\)，就有
     \begin{equation*}
       \abs*{\paren{a_n \pm b_n} - \paren{A \pm B}}
-      = \abs*{a_n - A \pm b_n \mp B}
+      = \abs*{\,a_n - A \pm b_n \mp B\,}
       = \abs*{\paren{a_n - A} \pm \paren{b_n - B}}
-      \le \abs*{a_n - A} + \abs*{b_n - B}
+      \le \abs*{\,a_n - A\,} + \abs*{\,b_n - B\,}
       < 2ε.
     \end{equation*}
-    对乘法的证明：由于定理~\ref{thm:cvgbnd}，可以找到数列\(b_n\)的一个界\(M > 0\)．对于任意的\(ε\)都能找到\(N_1\)和\(N_2\)使得当\(n > N_1\)时都有\(\abs*{a_n-A} < ε\)和当\(n > N_2\)时都有\(\abs*{b_n-B} < ε\)．取\(N = \maxb{N_1, N_2}\)，就有
+    对乘法的证明：由于定理~\ref{thm:cvgbnd}，可以找到数列\(\Seq{b_n}\)的一个界\(M > 0\)．对于任意的\(ε\)都能找到\(N_1\)和\(N_2\)使得：当\(n > N_1\)时都有\(\abs*{\,a_n-A\,} < ε\)，当\(n > N_2\)时都有\(\abs*{\,b_n-B\,} < ε\)．取\(N = \maxb*{\,N_1,\, N_2}\)，就有
     \begin{align*}
-      \abs*{a_n b_n - AB}
-      &= \abs*{a_n b_n - Ab_n + Ab_n - AB} \\
+      \abs*{\,a_n b_n - AB\,}
+      &= \abs*{\,a_n b_n - Ab_n + Ab_n - AB\,} \\
       &= \abs*{\paren{a_n - A}b_n + A\paren{b_n - B}} \\
-      &\le \abs*{a_n-A}\abs*{b_n} + \abs*{A}\abs*{b_n-B} \\
-      &\le M\abs*{a_n-A} + \abs*{A}\abs*{b_n-B} \\
-      &< \paren*{M + \abs*{A}}ε.
+      &\le \abs*{\,a_n-A\,}\abs*{\,b_n} + \abs*{\,A\,}\abs*{\,b_n-B\,} \\
+      &\le M\abs*{\,a_n-A\,} + \abs*{\,A\,}\abs*{\,b_n-B\,} \\
+      &< \paren*{M + \abs*{\,A\,}}ε.
     \end{align*}
-    对除法的证明：只需证明\(\lim\limits_{n\to\infty} \frac1{b_n} = \frac1B\)，再利用一次极限的乘法运算即可．对于任意的\(ε\)都能找到一个\(N_1\)使得当\(n > N_1\)时都有\(\abs*{b_n-B} < ε\)．又由于\(B \ne 0\)，可以找到一个正整数\(N_2\)使得\(\inf\limits_{\,\mathclap{n > N_2}}\Set*{\abs{b_n}} > 0\)．取\(N = \maxb{N_1, N_2}\)，就有
+    对除法的证明：只需证明\(\lim\limits_{n\to\infty} 1/{b_n} = 1/B\)，再利用一次极限的乘法运算即可．对于任意的\(ε\)都能找到一个\(N_1\)使得当\(n > N_1\)时都有\(\abs*{\,b_n-B\,} < ε\)．又由于\(B \ne 0\)，可以找到一个正整数\(N_2\)使得\(m = \inf\limits_{\,\mathclap{n > N_2}}\Set*{\,\abs*{\,b_n\,}\,} > 0\)．取\(N = \maxb*{\,N_1,\, N_2}\)，就有
     \begin{equation*}
-      \abs[\bigg]{\frac1{b_n} - \frac1B}
-      = \abs[\bigg]{\frac{B - b_n}{b_n B}}
-      \le \frac{\abs*{b_n - B}}{\abs*{B}
-        \cdot \inf\limits_{\,\mathclap{n > N_2}}\Set*{\abs{b_n}}}
-      < \frac{ε}{\abs*{B} \cdot \inf\limits_{\,\mathclap{n > N_2}}\Set*{\abs{b_n}}}.
+      \abs[\bigg]{\,\frac1{b_n} - \frac1B\,}
+      = \abs[\bigg]{\,\frac{B - b_n}{b_n B}\,}
+      \le \frac{\abs*{\,b_n - B\,}}{m \abs*{\,B\,}}
+      < \frac{ε}{m \abs*{\,B\,}}.
       \qedhere
     \end{equation*}
   \end{proof}
 \end{theorem}
 
 \begin{definition*}
-  对于任意的正数\(M\)都有正整数\(N\)使得当\(n > N\)时都有\(\abs*{a_n} > M\)．这时，我们称数列\(\Seq{a_n}\)为无穷大量，记作\(\lim\limits_{n\to\infty} a_n = \infty\)．
+  对于任意的正数\(M\)都有正整数\(N\)使得当\(n > N\)时都有\(\abs*{\,a_n} > M\)．这样的数列\(\Seq{\,a_n}\)叫作无穷大量，记作\(\lim\limits_{n\to\infty} a_n = \infty\)．
+  \begin{remark}
+    可以用形式化的符号来表示无穷大量的定义，即
+    \begin{alignat*}{2}
+      \lim_{n\to\infty} a_n &= \infty &{}\iff{}
+      &\paren[\big]{\forall M > 0}
+        \paren[\big]{\exists N > 0}
+        \paren[\big]{\forall n > N}
+        \paren[\big]{\abs*{\,a_n} > M}, \\
+      \lim_{n\to\infty} a_n &= +\infty &{}\iff{}
+      &\paren[\big]{\forall M > 0}
+        \paren[\big]{\exists N > 0}
+        \paren[\big]{\forall n > N}
+        \paren[\big]{a_n > M}, \\
+      \lim_{n\to\infty} a_n &= -\infty &{}\iff{}
+      &\paren[\big]{\forall M > 0}
+        \paren[\big]{\exists N > 0}
+        \paren[\big]{\forall n > N}
+        \paren[\big]{a_n < -M}.
+    \end{alignat*}
+    其中，\(+\infty\)叫作正无穷大量，\(-\infty\)叫作负无穷大量．
+  \end{remark}
 \end{definition*}
-
-可以用形式化的符号来表示无穷大量的定义，即
-\begin{alignat*}{2}
-  \lim_{n\to\infty} a_n &= \infty &{}\iff{}
-  &\paren[\big]{\forall M > 0}
-    \paren[\big]{\exists N > 0}
-    \paren[\big]{\forall n > N}
-    \paren[\big]{\abs[\big]{a_n} > M}, \\
-  \lim_{n\to\infty} a_n &= +\infty &{}\iff{}
-  &\paren[\big]{\forall M > 0}
-    \paren[\big]{\exists N > 0}
-    \paren[\big]{\forall n > N}
-    \paren[\big]{a_n > M}, \\
-  \lim_{n\to\infty} a_n &= -\infty &{}\iff{}
-  &\paren[\big]{\forall M > 0}
-    \paren[\big]{\exists N > 0}
-    \paren[\big]{\forall n > N}
-    \paren[\big]{-a_n > M}.
-\end{alignat*}
-其中，\(+\infty\)叫作正无穷大量，\(-\infty\)叫作负无穷大量．
 
 \begin{definition*}
   极限为\(0\)的数列叫作无穷小量．
@@ -232,9 +250,9 @@
   \begin{proof}
     设\(\lim\limits_{n\to\infty} a_n = 0\)且\(a_n \ne 0\)．对于任意的\(M > 0\)，取\(ε = 1/M > 0\)，能找到一个正整数\(N\)使得当\(n > N\)时都有
     \begin{equation*}
-      \abs*{a_n} < ε
-      \implies
-      \abs[\bigg]{\frac{1}{a_n}} = \frac{1}{\abs*{a_n}} > \frac1ε = M.
+      \abs*{\,a_n} < ε,
+      \txt{从而}
+      \abs[\bigg]{\,\frac{1}{\,a_n\!}\,} = \frac{1}{\abs*{\,a_n}} > \frac1ε = M.
       \qedhere
     \end{equation*}
   \end{proof}
@@ -242,10 +260,10 @@
 
 \begin{theorem}
   \label{thm:sequnbndsubinf}
-  无界数列存在为无穷大量的子列．
+  无界数列包含无穷大量子列．
 
   \begin{proof}
-    设数列\(\Seq{a_n}\)无界．证明分为两步，首先构造一个子列\(\Seq{a_{n_k}}\)，然后说明这个子列是无穷大量．子列的构造过程是递推的．因为数列无界，所以能找到一个\(n_1\)使得\(\abs[\big]{a_{n_1}} > 1\)．假设子列的前\(k\)项都已经构造好了．因为数列无界，所以能找到一个\(n_{k+1} > n_k\)使得\(\abs[\big]{a_{n_{k+1}}} > k+1\)．如果不是这样，\(\maxb*{\abs[\big]{a_1}, \abs[\big]{a_2}, \dots, \abs[\big]{a_{n_k}}, k+1}\)就是原数列的一个界，矛盾．子列构造完毕．下面证明这个子列是无穷大量．对于任意的\(M > 0\)都能找到一个\(K = \ceil{M}\)使得当\(k > K\)时都有\(\abs[\big]{a_{n_k}} > k > K \ge M\)．
+    设数列\(\Seq{\,a_n}\)无界．证明分为两步：首先构造子列\(\Seq{\,a_{n_k}}\)，然后指出此子列为无穷大量．子列的构造过程是递推的．因为数列无界，所以存在\(n_1\)使得\(\abs[\big]{\,a_{n_1}} > 1\)．假设子列前\(k\)项都已构造完毕．还是因为数列无界，所以存在\(n_{k+1} > n_k\)使得\(\abs[\big]{\,a_{n_{k+1}}} > k+1\)．若非如此，\(\maxb{\,\abs{\,a_1},\, \abs{\,a_2},\, \dots,\, \abs{\,a_{n_k}},\, k+1}\)就是原数列的界，矛盾．子列构造完毕．此子列为无穷大量，因为：对于任意的\(M > 0\)都能找到\(K = \ceil{M}\)使得当\(k > K\)时都有\(\abs[\big]{\,a_{n_k}} > k > K \ge M\)．
   \end{proof}
 \end{theorem}
 
@@ -278,19 +296,19 @@
     \paren[\big]{\forall ε > 0}
     \paren[\big]{\exists N \in \N^+}
     \paren[\big]{\forall n > N}
-    \paren[\big]{\abs[\big]{a_n - A} < \sqrt ε}
+    \paren[\big]{\abs[\big]{\,a_n - A\,} < \sqrt ε}
     \)
   \item \(
     \paren[\big]{\forall k \in \N}
     \paren[\big]{\exists N_k \in \Z^+}
     \paren[\big]{\forall n > N_k}
-    \paren[\big]{\abs[\big]{a_n - A} < 1/2^k}
+    \paren[\big]{\abs[\big]{\,a_n - A\,} < 1/2^k}
     \)
   \item \(
     \paren[\big]{\forall ε > 0}
     \paren[\big]{\exists N \in \N^+}
     \paren[\big]{\forall n > N}
-    \paren[\big]{\abs[\big]{a_n - A} < 2ε}
+    \paren[\big]{\abs[\big]{\,a_n - A\,} < 2ε}
     \)
     \ifshowsol
     \item[\faCircle]
@@ -301,7 +319,7 @@
     \paren[\big]{\forall ε > 0}
     \paren[\big]{\exists N \in \N^+}
     \paren[\big]{\forall n > N}
-    \paren[\big]{\abs[\big]{a_n - A} < ε/\!\sqrt n}
+    \paren[\big]{\abs[\big]{\,a_n - A\,} < ε/\!\sqrt n}
     \)
   \end{itemize}
 
@@ -309,7 +327,7 @@
     一个反例是\(\lim\limits_{n\to\infty}\paren*{1 + 1/\!\sqrt n} = 1\)，但是按照选项~D，它并不收敛．实际上，选项~D是数列收敛的充分不必要条件．
   \fi
 
-\item 下列说法中，与“数列\(\Seq{a_n}\)不收敛于\(A\)”等价的是\uline{\makebox[10em]{}}．
+\item 下列说法中，与“数列\(\Seq{\,a_n}\)不收敛于\(A\)”等价的是\uline{\makebox[10em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
@@ -317,38 +335,38 @@
     \else
     \item
     \fi
-    存在\(ε_0 > 0\)使得数列\(\Seq{a_n}\)中有无穷多项满足\(\abs*{a_n - A} \ge ε_0\)
+    存在\(ε_0 > 0\)使得数列\(\Seq{\,a_n}\)中有无穷多项满足\(\abs*{\,a_n - A\,} \ge ε_0\)
   \item \(
     \paren[\big]{\exists ε_0 > 0}
     \paren[\big]{\exists N \in \Z^+}
     \paren[\big]{\forall n > N}
-    \paren[\big]{\abs[\big]{a_n - A} \ge ε_0}
+    \paren[\big]{\abs[\big]{\,a_n - A\,} \ge ε_0}
     \)
   \item \(
     \paren[\big]{\forall ε > 0}
     \paren[\big]{\exists N}
     \paren[\big]{\forall n > N}
-    \paren[\big]{\abs[\big]{a_n - A} \ge ε_0}
+    \paren[\big]{\abs[\big]{\,a_n - A\,} \ge ε_0}
     \)
-  \item 数列\(\Seq{a_n}\)中，除有限项外，都满足\(\abs*{a_n - A} \ge ε_0\)，其中\(ε_0\)是某个正数
+  \item 数列\(\Seq{\,a_n}\)中，除有限项外，都满足\(\abs*{\,a_n - A\,} \ge ε_0\)，其中\(ε_0\)是某个正数
   \end{itemize}
 
   \ifshowsol
-    选项~B、C和~D都是题干的充分不必要条件．例如数列\(\Seq[\big]{A + \frac{1+(-1)^n}{2}}\)不收敛于\(A\)，但是不满足选项~B、C、D．实际上，选项~B和~D是等价的，然后选项~C是选项~B的充分不必要条件．
+    选项~B、C和~D都是题干的充分不必要条件．例如数列\(\Seq[\big]{\,A + \frac{1+(-1)^n}{2}\,}\)不收敛于\(A\)，但是不满足选项~B、C、D．实际上，选项~B和~D是等价的，然后选项~C是选项~B的充分不必要条件．
   \fi
 
 \item 下列说法中，正确的是\uline{\makebox[10em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item 数列\(\Seq{a_n}\)是否收敛与其前\(1000\)项有关
-  \item 数列\(\Seq{a_n}\)是否收敛与其所有项均有关
-  \item 数列\(\Seq{a_n}\)是否收敛仅与\(n\)充分大以后的某些项有关
+  \item 数列\(\Seq{\,a_n}\)是否收敛与其前\(1000\)项有关
+  \item 数列\(\Seq{\,a_n}\)是否收敛与其所有项均有关
+  \item 数列\(\Seq{\,a_n}\)是否收敛仅与\(n\)充分大以后的某些项有关
     \ifshowsol
     \item[\faCircle]
     \else
     \item
     \fi
-    数列\(\Seq{a_n}\)是否收敛仅与\(n\)充分大以后的所有项有关
+    数列\(\Seq{\,a_n}\)是否收敛仅与\(n\)充分大以后的所有项有关
   \end{itemize}
 
 \item 下列数列中，极限为\(0\)的是\uline{\makebox[6em]{}}．
@@ -375,8 +393,8 @@
     \item
     \fi
     \(a^{1/n}\ \paren{a > 1}\)
-  \item \(\paren[\big]{\sin n^2}\big/{n}\)
-  \item \(\paren[\big]{n \sqrt{n+1}}\big/\brkt[\big]{\sqrt n \paren{2n-1}}\)
+  \item \(\paren{\sin n^2}/{n}\)
+  \item \(\paren{n \sqrt{n+\smash{1}\mathstrut}}/\brkt{\sqrt n \paren{2n-1}}\)
   \end{itemize}
 
 \item 下列说法中，正确的是\uline{\makebox[10em]{}}．
@@ -417,6 +435,12 @@
     \else
     \item
     \fi
+    % https://mathworld.wolfram.com/KroneckersApproximationTheorem.html
+    % https://mathworld.wolfram.com/DirichletsApproximationTheorem.html
+    % https://en.wikipedia.org/wiki/Dirichlet%27s_approximation_theorem#Proof_by_the_pigeonhole_principle
+    % https://artofproblemsolving.com/wiki/index.php/Rational_approximation
+    % https://themathroom.quora.com/https-www-quora-com-Does-the-sequence-n-sin-n-have-a-convergent-subsequence-answer-Alon-Amit
+    % TODO: Raise the question on Math.SE.  If confirmed, report
     \(n \sinp{n^n\!/2}\)
   \item \(e^n\!/n!\)
   \end{itemize}
@@ -428,13 +452,13 @@
     \paren[\big]{\forall M > 0}
     \paren[\big]{\forall N > 0}
     \paren[\big]{\exists n > N}
-    \paren[\big]{\abs[\big]{a_n} > M}
+    \paren[\big]{\abs*{\,a_n} > M}
     \)
   \item \(
     \paren[\big]{\exists M > 0}
     \paren[\big]{\exists N > 0}
     \paren[\big]{\forall n > N}
-    \paren[\big]{\abs[\big]{a_n} > M}
+    \paren[\big]{\abs*{\,a_n} > M}
     \)
     \ifshowsol
     \item[\faCircle]
@@ -445,18 +469,18 @@
     \paren[\big]{\forall M > 0}
     \paren[\big]{\exists N > 0}
     \paren[\big]{\forall n > N}
-    \paren[\big]{\abs[\big]{a_n} > M}
+    \paren[\big]{\abs*{\,a_n} > M}
     \)
   \item \(
     \paren[\big]{\exists N > 0}
     \paren[\big]{\forall M > 0}
     \paren[\big]{\forall n > N}
-    \paren[\big]{\abs[\big]{a_n} > M}
+    \paren[\big]{\abs*{\,a_n} > M}
     \)
   \end{itemize}
 
   \ifshowsol
-    选项~A其实相当于是说数列\(\Seq{a_n}\)无界，选项~D是一个不可满足的命题．
+    选项~A其实相当于是说数列\(\Seq{\,a_n}\)无界，选项~D是一个不可满足的命题．
   \fi
 
 \item 下列说法中，正确的是\uline{\makebox[10em]{}}．
@@ -464,13 +488,13 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 一个数列如果不收敛，则它一定无界
   \item 若\(\lim\limits_{n\to\infty} a_n = A\)且\(A \ge 0\)，则存在正整数\(N\)使得当\(n > N\)时都有\(a_n \ge 0\)
-  \item 设有两个数列\(\Seq{a_n}\)和\(\Seq{b_n}\)，那么\(\lim\limits_{n\to\infty} \paren{a_n - b_n} = \lim\limits_{n\to\infty} a_n - \lim\limits_{n\to\infty} b_n\)
+  \item 设有两个数列\(\Seq{\,a_n}\)和\(\Seq{b_n}\)，那么\(\lim\limits_{n\to\infty} \paren{a_n - b_n} = \lim\limits_{n\to\infty} a_n - \lim\limits_{n\to\infty} b_n\)
     \ifshowsol
     \item[\faCircle]
     \else
     \item
     \fi
-    存在发散数列\(\Seq{a_n}\)使得\(\Seq{\abs{a_n}}\)收敛
+    存在发散数列\(\Seq{\,a_n}\)使得\(\Seq{\abs{\,a_n}}\)收敛
   \end{itemize}
 
   \ifshowsol
@@ -493,28 +517,36 @@
 
   \ifshowsol
     \begin{proof}
-      令\(A = \max_{1 \le k \le m} \Set{a_k}\)．若\(A = 0\)，则说明\(a_k = 0\)对于所有的\(1 \le k \le m\)，所求极限自然也就等于零．若\(A > 0\)，就有
+      令\(A = \max_{1 \le k \le m} \Set{\,a_k}\)．若\(A = 0\)，则说明\(a_k = 0\)对于所有的\(1 \le k \le m\)，所求极限自然也就等于零．若\(A > 0\)，就有
       \begin{align*}
-        \abs[\big]{\paren{a_1^n + a_2^n + \dots + a_m^n}^{1/n} - A}
-        &= A \abs[\bigg]{\brkt[\Big]{\paren[\Big]{\frac{a_1}{A}}^n + \paren[\Big]{\frac{a_1}{A}}^n + \dots + \paren[\Big]{\frac{a_1}{A}}^n}^{\frac1n} - 1} \\
+        \abs*{\,\paren{a_1^n + a_2^n + \dots + a_m^n}^{1/n} - A\,}
+        &= A \abs[\bigg]{\,\brkt[\Big]{\paren[\Big]{\frac{a_1}{A}}^n + \paren[\Big]{\frac{a_2}{A}}^n + \dots + \paren[\Big]{\frac{a_m}{A}}^n}^{\frac1n} - 1\,} \\
         &\le A \paren{m^{1/n} - 1}.
       \end{align*}
-      对于任意的\(ε > 0\)取\(N = \ceil*{\ln m/\!\lnp{1+ε/A}}\)就可使得当\(n > N\)时都有
-      \begin{align*}
-        \frac{\ln m}{\lnp{1+ε/A}}
-        &\le N < n
-        && \iff \\
-        \ln m
-        &< n \lnp{1+ε/A}
-        && \iff \\
-        m
-        &< \paren{1+ε/A}^n
-        && \iff \\
-        A \paren{m^{1/n} - 1}
-        &< ε.
-        &&\qedhere
-      \end{align*}
+      根据极限的四则运算，显然有\(\lim\limits_{n\to\infty} A \paren{m^{1/n} - 1} = 0\)．所以对于任意的\(ε > 0\)都存在正整数\(N\)使得当\(n > N\)时都有
+      \begin{equation*}
+        A \paren{m^{1/n} - 1} = \abs*{\,A \paren{m^{1/n} - 1}} < ε.
+        \qedhere
+      \end{equation*}
+      % 对于任意的\(ε > 0\)取\(N = \ceil*{\ln m/\!\lnp{1+ε/A}}\)就可使得当\(n > N\)时都有
+      % \begin{align*}
+      %   \frac{\ln m}{\lnp{1+ε/A}}
+      %   &\le N < n
+      %   && \iff \\
+      %   \ln m
+      %   &< n \lnp{1+ε/A}
+      %   && \iff \\
+      %   m
+      %   &< \paren{1+ε/A}^n
+      %   && \iff \\
+      %   A \paren{m^{1/n} - 1}
+      %   &< ε.
+      %   &&\qedhere
+      % \end{align*}
     \end{proof}
+    % \begin{remark}
+    %   上述证明中，最后一步也可以取\(N = \ceil{A(m-1)/ε}\)，然后使用一次伯努利不等式即可．
+    % \end{remark}
   \fi
 \end{enumerate}
 \fi
@@ -522,7 +554,7 @@
 \section{数列极限存在的充分条件}
 
 \begin{theorem*}[数列极限的夹逼定理]
-  若数列\(\Seq{a_n}, \Seq{b_n}, \Seq{c_n}\)满足：
+  若数列\(\Seq{\,a_n},\, \Seq{\,b_n},\, \Seq{\,c_n}\)满足：
   \begin{enumerate}[topsep=0ex,itemsep=0ex]
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
   \item 存在正整数\(N\)使得当\(n > N\)时都有\(a_n \le b_n \le c_n\)，
@@ -531,11 +563,11 @@
   则\(\lim\limits_{n\to\infty} b_n = A\)．
 
   \begin{proof}
-    对于任意的\(ε > 0\)都存在正整数\(N_1\)和\(N_2\)使得当\(n > N_1\)时都有\(\abs*{a_n - A} < ε\)和当\(n > N_2\)时都有\(\abs*{c_n - A} < ε\)．取\(N = \maxb{N_1, N_2}\)，当\(n > N\)时就有
+    对于任意的\(ε > 0\)都存在正整数\(N_1\)和\(N_2\)使得当\(n > N_1\)时都有\(\abs*{\,a_n - A\,} < ε\)和当\(n > N_2\)时都有\(\abs*{\,c_n - A\,} < ε\)．取\(N = \maxb*{\,N_1,\, N_2}\)，当\(n > N\)时就有
     \begin{equation*}
       A - ε < a_n \le b_n \le c_n < A + ε
       \iff
-      \abs*{b_n - A} < ε.
+      \abs*{\,b_n - A\,} < ε.
       \qedhere
     \end{equation*}
   \end{proof}
@@ -546,7 +578,7 @@
   求\(\displaystyle \lim_{n\to\infty} \frac{a^n}{n!}\)．\rule[-2ex]{0ex}{0ex}
 
   \begin{remark}
-    当\(a = 0\)时，极限显然是零．当\(a \ne 0\)时，我们构造数列\(a_n\)和\(c_n\)使得\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．令\(n_a = \ceil{\abs a},\ C_a = \frac{a^{n_a}}{n_a!}\)，构造数列
+    当\(a = 0\)时，极限显然是零．当\(a \ne 0\)时，我们构造数列\(a_n\)和\(c_n\)使得\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．令\(n_a = \ceil{\abs{\,a\,}},\ C_a = \frac{a^{n_a}}{n_a!}\)，构造数列
     \begin{equation*}
       d_n =
       \begin{cases}
@@ -554,7 +586,7 @@
         C_a \cdot \paren[\bigg]{\dfrac{a}{n_a + 1}}^{n-n_a}, & n > n_a,
       \end{cases}
     \end{equation*}
-    易知\(\lim\limits_{n\to\infty} d_n = 0\)．当\(a > 0\)时，只要构造数列\(a_n = 0\)和\(c_n = d_n\)即可．当\(a < 0\)时，只有构造数列
+    易知\(\lim\limits_{n\to\infty} d_n = 0\)．当\(a > 0\)时，只要构造数列\(a_n = 0\)和\(c_n = d_n\)即可．当\(a < 0\)时，只要构造数列
     \begin{equation*}
       a_n =
       \begin{cases}
@@ -570,7 +602,7 @@
     \end{equation*}
     就有\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．综上所述，\(\displaystyle \lim_{n\to\infty} \frac{a^n}{n!} = 0\)．\rule[-2ex]{0ex}{0ex}
 
-    上面是为了直接套用夹逼定理的形式，实际上一种常见的方法是：欲证\(\lim\limits_{n\to\infty} a_n = A\)，只需证明\(0 \le \abs*{a_n - A} \le b_n\)且\(\lim\limits_{n\to\infty} b_n = 0\)即可．
+    上面是为了直接套用夹逼定理的形式，实际上一种常见的方法是：欲证\(\lim\limits_{n\to\infty} a_n = A\)，只需证明\(0 \le \abs*{\,a_n - A\,} \le b_n\)且\(\lim\limits_{n\to\infty} b_n = 0\)即可．
   \end{remark}
 \end{example}
 
@@ -595,14 +627,14 @@
 \end{example*}
 
 \begin{theorem*}[单调有界收敛定理]
-  若数列\(\Seq{a_n}\)单调增加且有上界，则\(\Seq{a_n}\)收敛且\(\lim\limits_{n\to\infty} a_n = \sup\Set{a_n}\)； 若数列\(\Seq{a_n}\)单调减少且有下界，则\(\Seq{a_n}\)收敛且\(\lim\limits_{n\to\infty} a_n = \inf\Set{a_n}\)．
+  若数列\(\Seq{\,a_n}\)单调增加且有上界，则\(\Seq{\,a_n}\)收敛且\(\lim\limits_{n\to\infty} a_n = \supb{\,a_n}\)； 若数列\(\Seq{\,a_n}\)单调减少且有下界，则\(\Seq{\,a_n}\)收敛且\(\lim\limits_{n\to\infty} a_n = \infb{\,a_n}\)．
 
   \begin{proof}
-    只证单增的情况，单减的情况类似．因为数列有界，根据确界存在公理，数列有上确界\(M = \sup\Set{a_n}\)．那么对于任意的\(ε > 0\)都存在一个\(N\)使得\(a_N > M - ε\)．当\(n > N\)时，自然有
+    只证单增的情况，单减的情况类似．因为数列有界，根据确界存在公理，数列有上确界\(M = \supb{\,a_n}\)．那么对于任意的\(ε > 0\)都存在一个\(N\)使得\(a_N > M - ε\)．当\(n > N\)时，自然有
     \begin{gather*}
       M - ε < a_N \le a_n \le M < M + ε, \\
       \shortintertext{即}
-      \abs*{a_n - M} < ε.
+      \abs*{\,a_n - M\,} < ε.
       \qedhere
     \end{gather*}
   \end{proof}
@@ -640,7 +672,7 @@
 \end{theorem}
 
 \begin{example*}
-  令\(\displaystyle a_n = 1 + \frac12 + \dots + \frac1n - \ln n\)．证明数列\(\Seq{a_n}\)的极限存在．\rule{0ex}{3.5ex}
+  令\(\displaystyle a_n = 1 + \frac12 + \dots + \frac1n - \ln n\)．证明数列\(\Seq{\,a_n}\)的极限存在．\rule{0ex}{3.5ex}
 
   \begin{proof}
     当\(x > 0\)时，有
@@ -665,14 +697,14 @@
 \end{example*}
 
 \begin{example*}
-  证明极限\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac1k\)不存在．
+  证明极限\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac1{\,k\,}\)不存在．
 
   \begin{proof}
-    实际上，\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac1k = \infty\)．对于任意的\(M > 0\)都存在正整数\(N = \ceil[\big]{e^M-1}\)使得当\(n > N\)时都有
+    实际上，\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac1{\,k\,} = \infty\)．对于任意的\(M > 0\)都存在正整数\(N = \ceil[\big]{e^M-1}\)使得当\(n > N\)时都有
     \begin{equation*}
-      \abs[\Bigg]{\sum_{k=1}^n \frac1k}
-      = \sum_{k=1}^n \frac1k
-      > \sum_{k=1}^n \lnp[\bigg]{1+\frac1k}
+      \abs[\Bigg]{\,\sum_{k=1}^n \frac1{\,k\,}\,}
+      = \sum_{k=1}^n \frac1{\,k\,}
+      > \sum_{k=1}^n \lnp[\bigg]{1+\frac1{\,k\,}}
       = \lnp{n+1} > M.
       \qedhere
     \end{equation*}
@@ -680,30 +712,43 @@
 \end{example*}
 
 \begin{example*}
-  令\(\displaystyle a_n = \sum_{k=1}^n \frac1{k^p}\)．试讨论当\(p > 0\)时数列\(\Seq{a_n}\)的敛散性．
+  令\(\displaystyle a_n = \sum_{k=1}^n \frac1{\,k^p}\)．试讨论当\(p > 0\)时数列\(\Seq{\,a_n}\)的敛散性．
 
-  \begin{remark}
+  \begin{proof}
     当\(0 < p \le 1\)时，有\(k^p \le k\)．所以
     \begin{equation*}
-      a_n = \sum_{k=1}^n \frac1{k^p} \ge \sum_{k=1}^n \frac1{k}
-      > \sum_{k=1}^n \lnp[\bigg]{1+\frac1k} = \lnp{n+1}.
+      a_n = \sum_{k=1}^n \frac1{\,k^p} \ge \sum_{k=1}^n \frac1{\,k\,}
+      > \sum_{k=1}^n \lnp[\bigg]{1+\frac1{\,k\,}} = \lnp{n+1}.
     \end{equation*}
     对于任意的\(M > 0\)，取\(N = \ceil[\big]{e^M - 1}\)，那么当\(n > N\)时，自然有\(a_n > \lnp{n+1} > M\)．所以有
     \begin{equation*}
-      \lim_{n\to\infty} a_n = +\infty
+      \lim_{n\to\infty} a_n = +\infty.
     \end{equation*}
-    当\(0 < p \le 1\)时，由\(a_{n+1} - a_n = 1/(n+1)^p > 0\)可知数列单调增加，只需证明数列有上界即可．取\(\ell = \floor[\big]{\log_2 n} + 1\)，有
+    当\(p > 1\)时，由\(a_{n+1} - a_n = 1/(n+1)^p > 0\)可知数列单调增加，只需证明数列有上界即可．取\(\ell = \floor[\big]{\log_2 n} + 1\)，有
     \begin{equation*}
       a_n
-      = \sum_{k=1}^n \frac1{k^p}
-      \le \sum_{k=1}^{2^\ell-1} \frac1{k^p}
-      = \sum_{m=0}^{\ell-1} \sum_{j=2^m}^{2^{m+1}-1} \frac{1}{j^p}
+      = \sum_{k=1}^n \frac1{\,k^p}
+      \le \sum_{k=1}^{2^\ell-1} \frac1{\,k^p}
+      = \sum_{m=0}^{\ell-1} \sum_{\,j=2^m\!}^{2^{m+1}-1\!\!} \frac{1}{\,j^p}
       \le \sum_{m=0}^{\ell-1} \frac{2^m}{\paren{2^m}^p}
       = \sum_{m=0}^{\ell-1} \paren[\big]{2^{1-p}}^m
       = \frac{1-\paren{2^{1-p}}^\ell}{1-2^{1-p}}
       < \frac{1}{1-2^{1-p}}.
     \end{equation*}
-    由单调有界收敛定理可知，数列\(\Seq{a_N}\)收敛．
+    由单调有界收敛定理可知，数列\(\Seq{\,a_N}\)收敛．
+  \end{proof}
+  \begin{remark}
+    实际上，当\(0 < p \le 1\)时，也可以同样用处理\(p > 1\)时的思路．令\(\ell = \floor[\big]{\log_2 n}\)，则
+    \begin{equation*}
+      a_n
+      = \sum_{k=1}^n \frac1{\,k^p}
+      \ge \sum_{k=1}^n \frac1{\,k\,}
+      > \sum_{k=1}^{2^\ell-1} \frac1{\,k^p}
+      = \sum_{m=0}^{\ell-1} \sum_{\,j=2^m\!}^{2^{m+1}-1\!\!} \frac{1}{\,j\,}
+      \ge \sum_{m=0}^{\ell-1} \frac{\,2^m}{\,2^{m+1}}
+      = \frac{\ell}{\,2\,}
+      = \frac{\floor{\log_2 n}}{2}.
+    \end{equation*}
   \end{remark}
 \end{example*}
 
@@ -711,20 +756,20 @@
 \subsection*{思考}
 
 \begin{enumerate}
-\item 若单调递增的数列\(\Seq{a_n}\)没有上界，这个数列是不是无穷大量？能否给出严格证明？
+\item 若单调递增的数列\(\Seq{\,a_n}\)没有上界，这个数列是不是无穷大量？能否给出严格证明？
 
   \ifshowsolp
     是无穷大量，证明如下．
 
     \begin{proof}
-      因为数列\(\Seq{a_n}\)没有上界，所以对任意的\(M > 0\)都存在一个正整数\(N\)使得\(a_N > M\)．这时，对于所有的\(n > N\)，因为数列\(\Seq{a_n}\)单调递增，所以
+      因为数列\(\Seq{\,a_n}\)没有上界，所以对任意的\(M > 0\)都存在一个正整数\(N\)使得\(a_N > M\)．这时，对于所有的\(n > N\)，因为数列\(\Seq{\,a_n}\)单调递增，所以
       \begin{equation*}
         a_n \ge a_N > M. \qedhere
       \end{equation*}
     \end{proof}
   \fi
 
-\item 若数列\(\Seq{a_n}\)是正无穷大量，则\(\Seq{a_n}\)一定单调增加吗？
+\item 若数列\(\Seq{\,a_n}\)是正无穷大量，则\(\Seq{\,a_n}\)一定单调增加吗？
 
   \ifshowsolp
     未必．\(a_n = n + (-1)^n\)，易证\(\lim\limits_{n\to\infty} a_n = +\infty\)．此时，对于任意的正偶数\(k\)都有
@@ -805,7 +850,7 @@
     \else
     \item
     \fi
-    若对所有的\(p \in \N^+\)都有\(\lim\limits_{n\to\infty} \abs*{a_{n+p}-a_n} = 0\)，则数列\(\Seq{a_n}\)是柯西数列． % report
+    若对所有的\(p \in \N^+\)都有\(\lim\limits_{n\to\infty} \abs*{a_{n+p}-a_n} = 0\)，则数列\(\Seq{\,a_n}\)是柯西数列． % report
   \item 极限\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac{\sin k}{2^k}\)存在
   \item 若\(\displaystyle \lim_{n\to\infty} \abs[\bigg]{\frac{a_{n+1}}{a_n}} = q < 1\)，则\(\lim\limits_{n\to\infty} a_n = 0\)
   \end{itemize}
@@ -851,7 +896,7 @@
 
 \begin{theorem}
   \label{thm:seqcvgsubseq}
-  数列\(\Seq{a_n}\)收敛的充分必要条件是它的所有子列都收敛．
+  数列\(\Seq{\,a_n}\)收敛的充分必要条件是它的所有子列都收敛．
 
   \begin{remark}
     易证必要性；至于充分性，可以先证明所有子列都收敛于同一个数，然后通过反证法得到．
@@ -859,7 +904,7 @@
 \end{theorem}
 
 \begin{example*}
-  设\(a_1 = 2,\ a_{n+1} = 2 + {1}/{a_n}\)．试讨论数列\(\Seq{a_n}\)的敛散性. % https://mathworld.wolfram.com/ContinuedFraction.html
+  设\(a_1 = 2,\ a_{n+1} = 2 + {1}/{a_n}\)．试讨论数列\(\Seq{\,a_n}\)的敛散性. % https://mathworld.wolfram.com/ContinuedFraction.html
 
   \begin{remark}
     子列\(a_{2n}\)单调递减有下界，子列\(a_{2n-1}\)单调递增有上界．然后证明这两个子列的极限相等．这就说明原数列收敛．
@@ -889,7 +934,7 @@
 
 \begin{theorem}[Bolzano--Weierstrass定理]
   \label{thm:bw}
-  若数列\(\Seq{a_n}\)有界，则存在子列\(\Seq{a_{n_k}}\)收敛．
+  若数列\(\Seq{\,a_n}\)有界，则存在子列\(\Seq{a_{n_k}}\)收敛．
 
   % TODO: Complete the proof
   \begin{remark}
@@ -899,7 +944,7 @@
 
 \begin{example}
   \label{eg:seqbndcmnidx}
-  数列\(\Seq{a_n}\)和\(\Seq{b_n}\)都是有界的，可以找到一个共同的下标集\(\Set{n_k}\)使得子列\(\Seq{a_{n_k}}\)和\(\Seq{b_{n_k}}\)都收敛．
+  数列\(\Seq{\,a_n}\)和\(\Seq{b_n}\)都是有界的，可以找到一个共同的下标集\(\Set{n_k}\)使得子列\(\Seq{a_{n_k}}\)和\(\Seq{b_{n_k}}\)都收敛．
 
   \begin{proof}
     由上述定理可知，能找到一个下标集\(\Set{\bar n_k}\)使得子列\(\Seq{a_{\bar n_k}}\)收敛．再对有界子列\(\Seq{b_{\bar n_k}}\)使用一次这个定理，就能得到一个下标集\(\Set{n_k}\)使得子列\(\Seq{a_{n_k}}\)和\(\Seq{b_{n_k}}\)都收敛．
@@ -907,7 +952,7 @@
 \end{example}
 
 \begin{definition*}
-  对于任意的\(ε > 0\)都存在正整数\(N\)使得当\(m > N,\ n > N\)时都有\(\abs*{a_n - a_m} < ε\)．这时我们称数列\(\Seq{a_n}\)是一个柯西列（Cauchy sequence）．
+  对于任意的\(ε > 0\)都存在正整数\(N\)使得当\(m > N,\ n > N\)时都有\(\abs*{a_n - a_m} < ε\)．这时我们称数列\(\Seq{\,a_n}\)是一个柯西列（Cauchy sequence）．
 \end{definition*}
 
 \begin{definition*}[柯西列的定价定义]
@@ -939,7 +984,7 @@
   证明数列\(\Seq[\big]{\sum_{k=1}^n 1/k}\)不是柯西列．
 
   \begin{proof}
-    前面我们已经证明了这个数列单调递增且为无穷大量．将这个数列记为\(\Seq{a_n}\)．取\(ε = 1\)，对于任意的正整数\(N\)，先取\(n = N+1\)，因为数列\(\Seq{a_n}\)单调递增且是无穷大量，所以一定能找到一个正整数\(p\)使得\(a_{n+p} > 2\,a_n \)， 那么就有\(\abs[\big]{a_{n+p} - a_n} = a_{n+p} - a_n > a_n > 1\)．
+    前面我们已经证明了这个数列单调递增且为无穷大量．将这个数列记为\(\Seq{\,a_n}\)．取\(ε = 1\)，对于任意的正整数\(N\)，先取\(n = N+1\)，因为数列\(\Seq{\,a_n}\)单调递增且是无穷大量，所以一定能找到一个正整数\(p\)使得\(a_{n+p} > 2\,a_n \)， 那么就有\(\abs[\big]{a_{n+p} - a_n} = a_{n+p} - a_n > a_n > 1\)．
   \end{proof}
 \end{example*}
 
@@ -963,7 +1008,7 @@
 \end{theorem}
 
 \begin{example*}
-  设\(b_n = \sum_{k=1}^n \abs*{a_{k+1} - a_k} \le C\)．试证明数列\(\Seq{a_n}\)收敛．
+  设\(b_n = \sum_{k=1}^n \abs*{a_{k+1} - a_k} \le C\)．试证明数列\(\Seq{\,a_n}\)收敛．
 
   \begin{proof}
     数列\(\Seq{b_n}\)单调递增且有界，那么自然也就收敛，因而也是柯西列．所以对于任意的\(ε > 0\)都存在正整数\(N_0\)使得当\(n > N_0,\ p > 0\)时都有
@@ -975,7 +1020,7 @@
       &\ge \abs[\Bigg]{{}\smashoperator[r]{\sum_{k=n+1}^{n+p}} \paren*{a_{k+1} - a_k}\,}
         = \abs[\big]{a_{n+p+1} - a_{n+1}}.
     \end{align*}
-    取\(N = N_0 + 1\)，当\(n > N,\ p > 0\)时就有\(\abs[\big]{a_{n+p} - a_n} < ε\)．这就说明数列\(\Seq{a_n}\)是一个柯西列，自然也就收敛．
+    取\(N = N_0 + 1\)，当\(n > N,\ p > 0\)时就有\(\abs[\big]{a_{n+p} - a_n} < ε\)．这就说明数列\(\Seq{\,a_n}\)是一个柯西列，自然也就收敛．
   \end{proof}
 \end{example*}
 
@@ -1004,11 +1049,11 @@
 \subsection*{练习}
 
 \begin{enumerate}
-\item 若数列\(\Seq{a_n}\)满足条件\(\abs*{a_{n+1} - a_n} \le 1/2^n\)，则\uline{\makebox[6em]{}}．
+\item 若数列\(\Seq{\,a_n}\)满足条件\(\abs*{a_{n+1} - a_n} \le 1/2^n\)，则\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(\lim_{n\to\infty} a_n = 0\)
-  \item 数列\(\Seq{a_n}\)不一定收敛
+  \item 数列\(\Seq{\,a_n}\)不一定收敛
     \ifshowsol
     \item[\faCircle]
     \else
@@ -1081,15 +1126,15 @@
 \item 下列说法，错误的是\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item 数列\(\Seq{a_n}\)单调，则\(\lim_{n\to\infty} a_n = A\)的充要条件是存在子列\(\Seq{a_{n_k}}\)满足\(\lim_{n\to\infty} a_{n_k} = A\)
+  \item 数列\(\Seq{\,a_n}\)单调，则\(\lim_{n\to\infty} a_n = A\)的充要条件是存在子列\(\Seq{a_{n_k}}\)满足\(\lim_{n\to\infty} a_{n_k} = A\)
     \ifshowsol
     \item[\faCircle]
     \else
     \item
     \fi
-    若数列\(\Seq{a_n}\)不收敛，则必存在两个子列\(\Seq{a_{n_k}^{(1)}}\)和\(\Seq{a_{n_k}^{(2)}}\)分别收敛于两个不同的值
-  \item 若数列\(\Seq{a_n}\)无界但非无穷大量，则必存在一个无穷大量子列和一个收敛子列
-  \item 设\(S\)为非空有上界的实数集．若\(\sup S = A \notin S\)，则存在单调递增数列\(\Seq{a_n} \subset S\)使得\(\lim_{n\to\infty} a_n = A\)．
+    若数列\(\Seq{\,a_n}\)不收敛，则必存在两个子列\(\Seq{a_{n_k}^{(1)}}\)和\(\Seq{a_{n_k}^{(2)}}\)分别收敛于两个不同的值
+  \item 若数列\(\Seq{\,a_n}\)无界但非无穷大量，则必存在一个无穷大量子列和一个收敛子列
+  \item 设\(S\)为非空有上界的实数集．若\(\sup S = A \notin S\)，则存在单调递增数列\(\Seq{\,a_n} \subset S\)使得\(\lim_{n\to\infty} a_n = A\)．
   \end{itemize}
 \end{enumerate}
 \fi

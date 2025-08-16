@@ -102,13 +102,17 @@
 \DeclarePairedDelimiterXPP{\Covp}[1]{\Cov}{\lparen}{\rparen}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterXPP{\expb}[1]{\exp}{\lbrace}{\rbrace}{}{#1}
-\DeclarePairedDelimiterXPP{\maxb}[1]{\max\mathop{}}{\lbrace}{\rbrace}{}{#1}
-\DeclarePairedDelimiterXPP{\minb}[1]{\min\mathop{}}{\lbrace}{\rbrace}{}{#1}
 \DeclarePairedDelimiterXPP{\lnp}[1]{\ln}{\lparen}{\rparen}{}{#1}
 \DeclarePairedDelimiterXPP{\Set}[1]{\mathop{}}{\lbrace}{\rbrace}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \let\Seq\Set
+\DeclarePairedDelimiterXPP{\maxb}[1]{\max\mathop{}}{\lbrace}{\rbrace}{}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiterXPP{\minb}[1]{\min\mathop{}}{\lbrace}{\rbrace}{}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterXPP{\infb}[1]{\inf\mathop{}}{\lbrace}{\rbrace}{}{%
+  \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
+\DeclarePairedDelimiterXPP{\supb}[1]{\sup\mathop{}}{\lbrace}{\rbrace}{}{%
   \renewcommand{\mid}{\SetSymbol[\delimsize]}#1}
 \DeclarePairedDelimiterXPP{\abs}[1]{\mathop{}}{\lvert}{\rvert}{}{#1}
 \let\card\abs
