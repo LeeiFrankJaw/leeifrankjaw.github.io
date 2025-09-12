@@ -850,41 +850,43 @@
   \begin{proof}
     先证充分性．对于任意的\(x_1, x_2\)和满足\(\alpha+\beta=1\)的正数\(\alpha, \beta\)，分别取
     \[
-      a = \frac\alpha2,\ b = \frac12,\ c = \frac\beta2,
+      c_1 = \frac\alpha2,\ c_2 = \frac12,\ c_3 = \frac\beta2,
     \]
     易知有
-    \[
+    \begin{gather*}
       \begin{split}
         f(\alpha x_1 + \beta x_2)
-        &= f\,\paren[\big]{a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2} \\
-        &< a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2) \\
-        &< \alpha\,f(x_1) + \beta\,f(x_2).
+        &= f\,\paren[\big]{c_1 x_1 + c_2 \paren{\alpha x_1 + \beta x_2}  + c_3 x_2} \\
+        &< c_1\,f(x_1) + c_2\,f(\alpha x_1 + \beta x_2) + c_3\,f(x_2) \\
+        &= \frac α2\,f(x_1) + \frac12\,f(α x_1 + β x_2) + \frac β2\,f(x_2),
       \end{split}
-    \]
+      \shortintertext{从而}
+      f(α x_1 + β x_2) < α\,f(x_1) + β\,f(x_2).
+    \end{gather*}
     % 对于任意的\(x_1, x_2\)和满足\(\alpha+\beta=1\)的正数\(\alpha, \beta\)，三个点
     % \[
     %   A\colon \paren[\big]{x_1, f(x_1)},\quad B\colon \paren[\big]{\alpha x_1 + \beta x_2, f(\alpha x_1 + \beta x_2)},\quad C\colon \paren[\big]{x_2, f(x_2)}
     % \]
-    % 必然不共线．因为当共线时，存在无数多组满足\(a+b+c=1\)的正数\(a, b, c\)使得
+    % 必然不共线．因为当共线时，存在无数多组满足\(c_1+c_2+c_3=1\)的正数\(c_1, c_2, c_3\)使得
     % \[
-    %   f\,\paren[\big]{a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2} = a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2).
+    %   f\,\paren[\big]{c_1 x_1 + c_2\paren{\alpha x_1 + \beta x_2}  + c_3 x_2} = c_1\,f(x_1) + c_2\,f(\alpha x_1 + \beta x_2) + c_3\,f(x_2).
     % \]
-    % 那么就可以在这三个点围成的三角形里面找到一个点\(D\)使得它的横坐标是\(\alpha x_1 + \beta x_2\)（这样的点有无数个）．选择一组满足\(a+b+c=1\)的正数\(a, b, c\)使得\(a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2 = \alpha x_1 + \beta x_2 \)，也就是
+    % 那么就可以在这三个点围成的三角形里面找到一个点\(D\)使得它的横坐标是\(\alpha x_1 + \beta x_2\)（这样的点有无数个）．选择一组满足\(c_1+c_2+c_3=1\)的正数\(c_1, c_2, c_3\)使得\(c_1 x_1 + c_2\paren{\alpha x_1 + \beta x_2}  + c_3 x_2 = \alpha x_1 + \beta x_2 \)，也就是
     % \[
-    %   D\colon \paren[\big]{\alpha x_1 + \beta x_2, a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2)}.
+    %   D\colon \paren[\big]{\alpha x_1 + \beta x_2, c_1\,f(x_1) + c_2\,f(\alpha x_1 + \beta x_2) + c_3\,f(x_2)}.
     % \]
     % 那么就有
     % \[
     %   \begin{split}
     %     f(\alpha x_1 + \beta x_2)
-    %     &= f\,\paren[\big]{a x_1 + b\paren{\alpha x_1 + \beta x_2}  + c x_2} \\
-    %     &< a\,f(x_1) + b\,f(\alpha x_1 + \beta x_2) + c\,f(x_2) \\
+    %     &= f\,\paren[\big]{c_1 x_1 + c_2\paren{\alpha x_1 + \beta x_2}  + c_3 x_2} \\
+    %     &< c_1\,f(x_1) + c_2\,f(\alpha x_1 + \beta x_2) + c_3\,f(x_2) \\
     %     &< \alpha\,f(x_1) + \beta\,f(x_2).
     %   \end{split}
     % \]
-    % 这时可以判断点\(B\)位于线段\(\overline{AC}\)的下方，因为\(B\)的纵坐标小于\(D\)的纵坐标．因此，上面最后一个小于号成立．正数\(a, b, c\)可能的一组选择是
+    % 此时可以判断点\(B\)位于线段\(\overline{AC}\)的下方，因为\(B\)的纵坐标小于\(D\)的纵坐标．因此，上面最后一个小于号成立．正数\(c_1, c_2, c_3\)可能的一组选择是
     % \[
-    %   a = \frac\alpha2,\ b = \frac12,\ c = \frac\beta2.
+    %   c_1 = \frac\alpha2,\ c_2 = \frac12,\ c_3 = \frac\beta2.
     % \]
 
     再证必要性．对于任意互异的\(x, y, z \in \paren{a,b}\)和满足\(\alpha+\beta+\gamma=1\)的正数\(\alpha, \beta, \gamma\)，都有
@@ -988,7 +990,7 @@
   \item 周期函数
   \end{itemize}
 
-\item 设函数\(f, g\)都在\(\R\)上单调增加．下列函数中，在\(\R\)上单调增加的是\uline{\makebox[3em]{}}．
+\item 设函数\(f, g\)都在\(\R\)上单调递增．下列函数中，在\(\R\)上单调递增的是\uline{\makebox[3em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(f(x) \cdot g(x)\)
@@ -1053,7 +1055,7 @@
   \item 单减函数，单减函数
   \end{itemize}
 
-\item 设函数\(f\)的定义域是\(\paren{0,+\infty}\)．若\(f(x)/x\)单调减少且\(a > 0,\ b > 0\)，则\uline{\makebox[6em]{}}．
+\item 设函数\(f\)的定义域是\(\paren{0,+\infty}\)．若\(f(x)/x\)单调递减且\(a > 0,\ b > 0\)，则\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(f(a+b) < f(a)\)
