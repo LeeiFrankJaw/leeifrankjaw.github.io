@@ -14,7 +14,7 @@
 \end{definition*}
 
 \begin{definition*}
-  设\(\Seq{a_n}\)是数列，\(A\)是常数．我们把\(A\)叫作数列\(\Seq{a_n}\)的极限，记作\(\displaystyle \lim_{n\to\infty} a_n = A\)，当且仅当：对于\kenten{任意的}\(ε > 0\)都\kenten{存在}正整数\(N\)使得\kenten{当}\(n > N\)\kenten{时}都有\(\abs*{\,a_n - A\,} < ε\)．
+  设\(\Seq{a_n}\)是数列，\(A\)是常数．我们把\(A\)叫作数列\(\Seq{a_n}\)的极限，记作\(\lim\limits_{n\to\infty} a_n = A\)，当且仅当：对于\kenten{任意的}\(ε > 0\)都\kenten{存在}正整数\(N\)使得\kenten{当}\(n > N\)\kenten{时}都有\(\abs*{\,a_n - A\,} < ε\)．
 
   \begin{remark}
     可以用形式化的符号来表示上述定义，即
@@ -37,20 +37,21 @@
 \end{definition*}
 
 \begin{example*}
-  \(\displaystyle \lim_{n\to\infty} \paren[\Big]{1+\frac1n} = 1\).
+  \(\lim\limits_{n\to\infty} \paren*{1+\frac1n} = 1\)．
 
   \begin{proof}
     取\(N = \ceil{1/ε}\)即可\footnote{这里的符号\(\ceil\cdot\)是上取整的意思，即\(\ceil x \coloneq - \floor{-x}\)．}．
   \end{proof}
 \end{example*}
 
-\begin{example*}
-  \(\displaystyle \lim_{n\to\infty} q^n = 0\ (\,\abs{\,q\,} < 1)\).
+\begin{example}
+  \label{eg:limqn}
+  \(\lim\limits_{n\to\infty} q^n = 0\ (\abs{\,q\,} < 1)\)．
 
   \begin{proof}
     当\(q = 0\)时，取\(N = 1\)即可．当\(q \ne 0\)时，令\(x = 1/\abs[\big]{\,q\,} - 1\)．那么，对于任意的\(ε > 0\)，取\(N = \ceil[\big]{(1/ε-1)/x}\)，就能使得当\(n > N\)时都有
     \begin{equation*}
-      \abs[\big]{\,q\,}^n
+      \abs{\,q\,}^n
       = \frac{1}{(1+x)^n}
       < \frac{1}{1+nx}
       < ε. \qedhere
@@ -59,10 +60,10 @@
   \begin{remark}
     此处使用了伯努利不等式．课堂上给出的证明，取\(N = \ceil[\big]{\,\ln ε /\! \ln\abs[\big]{\,q\,}\,}\)，但作为证明，其实这是有问题的．
   \end{remark}
-\end{example*}
+\end{example}
 
 \begin{example*}
-  \(\displaystyle \lim_{n\to\infty} a^{1/n} = 1\ (a > 1)\).
+  \(\lim\limits_{n\to\infty} a^{1/n} = 1\ (a > 1)\)．
 
   % \begin{proof}
   %   取\(N = \ceil*{\ln a /\! \lnp{1+ε}}\)即可．
@@ -97,10 +98,10 @@
 \end{example*}
 
 \begin{example*}
-  若\(\displaystyle \lim_{n\to\infty} a_n = A\)，则\(\displaystyle \lim_{n\to\infty} \abs*{\,a_n} = \abs*{\,A\,}\)．
+  若\(\lim\limits_{n\to\infty} a_n = A\)，则\(\lim\limits_{n\to\infty} \abs*{\,a_n} = \abs*{\,A\,}\)．
 
   \begin{proof}
-    因为\(\displaystyle \lim_{n\to\infty} a_n = A\)，所以
+    因为\(\lim\limits_{n\to\infty} a_n = A\)，所以
     \begin{equation*}
       \paren[\big]{\forall ε > 0}
       \paren[\big]{\exists N > 0}
@@ -117,10 +118,10 @@
 
 \begin{example}
   \label{eg:limavg}
-  若\(\displaystyle \lim_{n\to\infty} a_n = A\)，则\(\displaystyle \lim_{n\to\infty} \frac1n \sum_{k=1}^n a_k = A\)．
+  若\(\lim\limits_{n\to\infty} a_n = A\)，则\(\lim\limits_{n\to\infty} \frac1n \sum\limits_{\mathclap{k=1}}^n a_k = A\)．
 
   \begin{proof}
-    对于任意的\(ε > 0\)，因为\(\displaystyle \lim_{n\to\infty} a_n = A\)，所以存在正整数\(N_0\)使得当\(n > N_0\)时都有
+    对于任意的\(ε > 0\)，因为\(\lim\limits_{n\to\infty} a_n = A\)，所以存在正整数\(N_0\)使得当\(n > N_0\)时都有
     \begin{align*}
       \abs[\bigg]{\,\frac1n \sum_{k=1}^n a_k - A\,}
       &= \abs[\bigg]{\,\frac1n \sum_{k=1}^n (a_k - A)\,} \\
@@ -139,8 +140,9 @@
   \end{proof}
 \end{example}
 
-\begin{theorem*}
-  若极限\(\displaystyle \lim_{n\to\infty} a_n\)存在，则其值唯一．
+\begin{theorem}
+  \label{thm:cvguniq}
+  若极限\(\lim\limits_{n\to\infty} a_n\)存在，则其值唯一．
 
   \begin{proof}
     设\(A_1\)和\(A_2\)都是数列\(\Seq{a_n}\)的极限．假设\(A_1 \ne A_2\)，则对于任意的\(0 < ε \le \abs*{\,A_1-A_2\,}/2\)，就可以找到正整数\(N_1\)和\(N_2\)使得：当\(n > N_1\)时都有\(\abs*{\,a_n - A_1} < ε\)，当\(n > N_2\)时都有\(\abs*{\,a_n - A_2} < ε\)．此时，取\(N = \maxb*{\,N_1,\, N_2}\)．那么，当\(n > N\)时都有
@@ -153,7 +155,7 @@
     \end{equation*}
     矛盾．因此，\(A_1 = A_2\)．
   \end{proof}
-\end{theorem*}
+\end{theorem}
 
 \begin{theorem}
   \label{thm:cvgbnd}
@@ -168,22 +170,23 @@
   \end{proof}
 \end{theorem}
 
-\begin{theorem*}[保号性]
-  若\(\displaystyle \lim_{n\to\infty} a_n = A\)且\(A > 0\)，则存在正整数\(N\)使得当\(n > N\)时都有\(a_n > 0\)； 若\(a_n \ge 0\)且\(\displaystyle \lim_{n\to\infty} a_n\)存在，则\(\displaystyle \lim_{n\to\infty} a_n \ge 0\)．
+\begin{theorem}[保号性]
+  \label{thm:cvgsgnprsv}
+  若\(\lim\limits_{n\to\infty} a_n = A\)且\(A > 0\)，则存在正整数\(N\)使得当\(n > N\)时都有\(a_n > 0\)； 若\(a_n \ge 0\)且\(\lim\limits_{n\to\infty} a_n\)存在，则\(\lim\limits_{n\to\infty} a_n \ge 0\)．
 
   \begin{proof}
-    对前一个命题的证明：令\(ε = A\)，就能找到一个正整数\(N\)使得当\(n > N\)时都有\(\abs*{\,a_n - A\,} < A\)，即\(0 < a_n < 2\,A\)．对后一个命题的证明：假设\(\displaystyle \lim_{n\to\infty} a_n < 0\)，那么根据前一个命题，就存在正整数\(N\)使得当\(n > N\)时都有\(a_n < 0\)，这和\(a_n \ge 0\)是矛盾的，所以\(\displaystyle \lim_{n\to\infty} a_n \ge 0\)．
+    对前一个命题的证明：令\(ε = A\)，就能找到一个正整数\(N\)使得当\(n > N\)时都有\(\abs*{\,a_n - A\,} < A\)，即\(0 < a_n < 2\,A\)．对后一个命题的证明：假设\(\lim\limits_{n\to\infty} a_n < 0\)，那么根据前一个命题，就存在正整数\(N\)使得当\(n > N\)时都有\(a_n < 0\)，这和\(a_n \ge 0\)是矛盾的，所以\(\lim\limits_{n\to\infty} a_n \ge 0\)．
   \end{proof}
-\end{theorem*}
+\end{theorem}
 
 \begin{theorem}[数列极限的四则运算]
   \label{thm:seq4ops}
-  设\(\displaystyle \lim_{n\to\infty} a_n = A\)和\(\displaystyle \lim_{n\to\infty} b_n = B\)，则
+  若\(\lim\limits_{n\to\infty} a_n = A\)和\(\lim\limits_{n\to\infty} b_n = B\)，则
   \begin{enumerate}
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
-  \item \(\displaystyle \lim_{n\to\infty} \paren{a_n \pm b_n} = A \pm B\)；
-  \item \(\displaystyle \lim_{n\to\infty} a_n b_n = AB\)；
-  \item \(\displaystyle \lim_{n\to\infty} \tfrac{a_n}{b_n} = \tfrac AB\ (B \ne 0)\)．
+  \item \(\lim\limits_{n\to\infty} \paren{a_n \pm b_n} = A \pm B\)，
+  \item \(\lim\limits_{n\to\infty} a_n b_n = AB\)，
+  \item \(\lim\limits_{n\to\infty} {a_n}/{b_n} = A/B\ (B \ne 0)\)．
   \end{enumerate}
 
   \begin{proof}
@@ -195,7 +198,7 @@
       \le \abs*{\,a_n - A\,} + \abs*{\,b_n - B\,}
       < 2ε.
     \end{equation*}
-    对乘法的证明：由于定理~\ref{thm:cvgbnd}，可以找到数列\(\Seq{b_n}\)的一个界\(M > 0\)．对于任意的\(ε\)都能找到\(N_1\)和\(N_2\)使得：当\(n > N_1\)时都有\(\abs*{\,a_n-A\,} < ε\)，当\(n > N_2\)时都有\(\abs*{\,b_n-B\,} < ε\)．取\(N = \maxb*{\,N_1,\, N_2}\)，就有
+    对乘法的证明：由于定理~\ref{thm:cvgbnd}，可以找到数列\(\Seq{\,b_n}\)的一个界\(M > 0\)．对于任意的\(ε\)都能找到\(N_1\)和\(N_2\)使得：当\(n > N_1\)时都有\(\abs*{\,a_n-A\,} < ε\)，当\(n > N_2\)时都有\(\abs*{\,b_n-B\,} < ε\)．取\(N = \maxb*{\,N_1,\, N_2}\)，就有
     \begin{align*}
       \abs*{\,a_n b_n - AB\,}
       &= \abs*{\,a_n b_n - Ab_n + Ab_n - AB\,} \\
@@ -488,13 +491,13 @@
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 一个数列如果不收敛，则它一定无界
   \item 若\(\lim\limits_{n\to\infty} a_n = A\)且\(A \ge 0\)，则存在正整数\(N\)使得当\(n > N\)时都有\(a_n \ge 0\)
-  \item 设有两个数列\(\Seq{\,a_n}\)和\(\Seq{b_n}\)，那么\(\lim\limits_{n\to\infty} \paren{a_n - b_n} = \lim\limits_{n\to\infty} a_n - \lim\limits_{n\to\infty} b_n\)
+  \item 设有两个数列\(\Seq{\,a_n}\)和\(\Seq{\,b_n}\)，那么\(\lim\limits_{n\to\infty} \paren{a_n - b_n} = \lim\limits_{n\to\infty} a_n - \lim\limits_{n\to\infty} b_n\)
     \ifshowsol
     \item[\faCircle]
     \else
     \item
     \fi
-    存在发散数列\(\Seq{\,a_n}\)使得\(\Seq{\abs{\,a_n}}\)收敛
+    存在发散数列\(\Seq{\,a_n}\)使得\(\Seq{\,\abs{\,a_n}\,}\)收敛
   \end{itemize}
 
   \ifshowsol
@@ -553,61 +556,74 @@
 
 \section{数列极限存在的充分条件}
 
-\begin{theorem*}[数列极限的夹逼定理]
+\begin{theorem}[数列极限的夹逼定理]
+  \label{thm:squeeze}
   若数列\(\Seq{\,a_n},\, \Seq{\,b_n},\, \Seq{\,c_n}\)满足：
   \begin{enumerate}[topsep=0ex,itemsep=0ex]
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
   \item 存在正整数\(N\)使得当\(n > N\)时都有\(a_n \le b_n \le c_n\)，
-  \item \(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = A\)；
+  \item \(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = A\)，
   \end{enumerate}
   则\(\lim\limits_{n\to\infty} b_n = A\)．
 
   \begin{proof}
-    对于任意的\(ε > 0\)都存在正整数\(N_1\)和\(N_2\)使得当\(n > N_1\)时都有\(\abs*{\,a_n - A\,} < ε\)和当\(n > N_2\)时都有\(\abs*{\,c_n - A\,} < ε\)．取\(N = \maxb*{\,N_1,\, N_2}\)，当\(n > N\)时就有
+    对于任意的\(ε > 0\)都存在正整数\(N_1\)和\(N_2\)使得：当\(n > N_1\)时都有\(\abs*{\,a_n - A\,} < ε\)，当\(n > N_2\)时都有\(\abs*{\,c_n - A\,} < ε\)．取\(N = \maxb*{\,N_1,\, N_2}\)．当\(n > N\)时就有
     \begin{equation*}
-      A - ε < a_n \le b_n \le c_n < A + ε
-      \iff
+      A - ε < a_n \le b_n \le c_n < A + ε,
+      \txt{即}
       \abs*{\,b_n - A\,} < ε.
       \qedhere
     \end{equation*}
   \end{proof}
-\end{theorem*}
+\end{theorem}
 
 \begin{example}
   \label{eg:factexp}
-  求\(\displaystyle \lim_{n\to\infty} \frac{a^n}{n!}\)．\rule[-2ex]{0ex}{0ex}
+  求\(\lim\limits_{n\to\infty} {a^n}\!/{n!}\)． % \rule[-2ex]{0ex}{0ex}
 
   \begin{remark}
-    当\(a = 0\)时，极限显然是零．当\(a \ne 0\)时，我们构造数列\(a_n\)和\(c_n\)使得\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．令\(n_a = \ceil{\abs{\,a\,}},\ C_a = \frac{a^{n_a}}{n_a!}\)，构造数列
+    当\(a = 0\)时，极限显然是零．当\(a \ne 0\)时，构造数列
     \begin{equation*}
-      d_n =
-      \begin{cases}
-        C_a, & n \le n_a, \\
-        C_a \cdot \paren[\bigg]{\dfrac{a}{n_a + 1}}^{n-n_a}, & n > n_a,
-      \end{cases}
-    \end{equation*}
-    易知\(\lim\limits_{n\to\infty} d_n = 0\)．当\(a > 0\)时，只要构造数列\(a_n = 0\)和\(c_n = d_n\)即可．当\(a < 0\)时，只要构造数列
-    \begin{equation*}
-      a_n =
-      \begin{cases}
-        0, & \text{\(n\)是偶数时}, \\
-        d_n, & \text{\(n\)是奇数时},
-      \end{cases}
-      \quad\text{和}\quad
       c_n =
       \begin{cases}
-        d_n, & \text{\(n\)是偶数时}, \\
-        0, & \text{\(n\)是奇数时},
+        C_a, & n \le n_a, \\
+        C_a \cdot \paren[\bigg]{\frac{a}{n_a + 1}}^{n-n_a}, & n > n_a,
       \end{cases}
     \end{equation*}
-    就有\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．综上所述，\(\displaystyle \lim_{n\to\infty} \frac{a^n}{n!} = 0\)．\rule[-2ex]{0ex}{0ex}
-
-    上面是为了直接套用夹逼定理的形式，实际上一种常见的方法是：欲证\(\lim\limits_{n\to\infty} a_n = A\)，只需证明\(0 \le \abs*{\,a_n - A\,} \le b_n\)且\(\lim\limits_{n\to\infty} b_n = 0\)即可．
+    其中\(n_a = \ceil{\abs{\,a\,}},\ C_a = a^{n_a}\!/n_a!\)．自然有\(0 \le \abs*{\,a^n\!/n!\,} \le c_n\)且\(\lim\limits_{n\to\infty} c_n = 0\)．根据夹逼定理，自然有\(\lim\limits_{n\to\infty} \abs{\,a^n/n!\,} = 0\)，从而\(\lim\limits_{n\to\infty} a^n/n! = 0\)．
   \end{remark}
+
+  % \begin{remark}
+  %   当\(a = 0\)时，极限显然是零．当\(a \ne 0\)时，我们构造数列\(a_n\)和\(c_n\)使得\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．令\(n_a = \ceil{\abs{\,a\,}},\ C_a = \frac{a^{n_a}}{n_a!}\)，构造数列
+  %   \begin{equation*}
+  %     d_n =
+  %     \begin{cases}
+  %       C_a, & n \le n_a, \\
+  %       C_a \cdot \paren[\bigg]{\frac{a}{n_a + 1}}^{n-n_a}, & n > n_a,
+  %     \end{cases}
+  %   \end{equation*}
+  %   易知\(\lim\limits_{n\to\infty} d_n = 0\)．当\(a > 0\)时，只要构造数列\(a_n = 0\)和\(c_n = d_n\)即可．当\(a < 0\)时，只要构造数列
+  %   \begin{equation*}
+  %     a_n =
+  %     \begin{cases}
+  %       0, & \text{\(n\)是偶数时}, \\
+  %       d_n, & \text{\(n\)是奇数时},
+  %     \end{cases}
+  %     \quad\text{和}\quad
+  %     c_n =
+  %     \begin{cases}
+  %       d_n, & \text{\(n\)是偶数时}, \\
+  %       0, & \text{\(n\)是奇数时},
+  %     \end{cases}
+  %   \end{equation*}
+  %   就有\(a_n \le a^n\!/n! \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = 0\)．综上所述，\(\lim\limits_{n\to\infty} \frac{a^n}{n!} = 0\)．\rule[-2ex]{0ex}{0ex}
+
+  %   上面是为了直接套用夹逼定理的形式，实际上一种常见的方法是：欲证\(\lim\limits_{n\to\infty} a_n = A\)，只需证明\(0 \le \abs*{\,a_n - A\,} \le b_n\)且\(\lim\limits_{n\to\infty} b_n = 0\)即可．
+  % \end{remark}
 \end{example}
 
 \begin{example*}
-  求\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac{k}{n^2+k}\)．
+  求\(\lim\limits_{n\to\infty} \sum\limits_{k=1}^n \! {k}/\paren{n^2+k}\)．
 
   \begin{remark}
     构造数列
@@ -622,30 +638,30 @@
       = \frac{1}{n^2} \cdot \frac{n(n+1)}{2}
       = \frac{1 + 1/n}{2},
     \end{equation*}
-    易知\(\displaystyle a_n \le \sum\limits_{k=1}^n \frac{k}{n^2+k} \le c_n\)且\(\displaystyle \lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = \frac12\)．\rule[-3ex]{0ex}{0ex}
+    易知\(a_n \le \sum\limits_{k=1}^n \frac{k}{n^2+k} \le c_n\)且\(\lim\limits_{n\to\infty} a_n = \lim\limits_{n\to\infty} c_n = \frac12\)．\rule[-3ex]{0ex}{0ex}
   \end{remark}
 \end{example*}
 
 \begin{theorem*}[单调有界收敛定理]
-  若数列\(\Seq{\,a_n}\)单调增加且有上界，则\(\Seq{\,a_n}\)收敛且\(\lim\limits_{n\to\infty} a_n = \supb{\,a_n}\)； 若数列\(\Seq{\,a_n}\)单调减少且有下界，则\(\Seq{\,a_n}\)收敛且\(\lim\limits_{n\to\infty} a_n = \infb{\,a_n}\)．
+  若数列\(\Seq{\,a_n}\)单调递增且有上界，则其收敛且\(\lim\limits_{n\to\infty} a_n = \supb{\,a_n}\)； 若数列\(\Seq{\,b_n}\)单调递减且有下界，则其收敛且\(\lim\limits_{n\to\infty} b_n = \infb{\,b_n}\)．
 
   \begin{proof}
-    只证单增的情况，单减的情况类似．因为数列有界，根据确界存在公理，数列有上确界\(M = \supb{\,a_n}\)．那么对于任意的\(ε > 0\)都存在一个\(N\)使得\(a_N > M - ε\)．当\(n > N\)时，自然有
-    \begin{gather*}
-      M - ε < a_N \le a_n \le M < M + ε, \\
-      \shortintertext{即}
+    只证单增的情况，单减的情况类似．因为数列有界，所以根据\kenten{确界存在公理}，有上确界\(M = \supb{\,a_n}\)．那么对于任意的\(ε > 0\)都存在正整数\(N\)使得\(a_N > M - ε\)．当\(n > N\)时，自然有
+    \begin{equation*}
+      M - ε < a_N < a_n \le M < M + ε,
+      \txt{即}
       \abs*{\,a_n - M\,} < ε.
       \qedhere
-    \end{gather*}
+    \end{equation*}
   \end{proof}
 \end{theorem*}
 
 \begin{theorem}
   \label{thm:seqe}
-  证明\(\displaystyle \lim_{n\to\infty} \paren[\bigg]{1 + \frac1n}^n\)存在．
+  极限\(\lim\limits_{n\to\infty} \paren[\big]{1 + \frac1n}^n\)存在．
 
   \begin{proof}
-    记\(a_n = \paren{1+1/n}^n\)．根据单调有界收敛定理，只需证明对于所有的正整数\(n\)都有\(a_n \le a_{n+1}\)且\(a_n < 3\)即可．根据二项式定理，有
+    记\(a_n = \paren{1+1/n}^n\)．根据单调有界收敛定理，只需证明对于所有正整数\(n\)都有\(a_n < a_{n+1}\)且\(a_n < 3\)即可．根据二项式定理，有
     \begin{align*}
       a_n
       &= \paren[\bigg]{1+\frac1n}^n
@@ -672,7 +688,7 @@
 \end{theorem}
 
 \begin{example*}
-  令\(\displaystyle a_n = 1 + \frac12 + \dots + \frac1n - \ln n\)．证明数列\(\Seq{\,a_n}\)的极限存在．\rule{0ex}{3.5ex}
+  令\(a_n = 1 + \frac12 + \dots + \frac1n - \ln n\)．证明数列\(\Seq{\,a_n}\)的极限存在．\rule{0ex}{3.5ex}
 
   \begin{proof}
     当\(x > 0\)时，有
@@ -694,16 +710,19 @@
       &= \lnp{n + 1} - \ln n > 0. \qedhere
     \end{align*}
   \end{proof}
+
+  \begin{remark}
+    此数列的极限叫作Euler-Mascheroni常数，一般记作\(γ\)．目前，尚不知道此数是否为无理数或者超越数．
+  \end{remark}
 \end{example*}
 
 \begin{example*}
-  证明极限\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac1{\,k\,}\)不存在．
+  证明极限\(\lim\limits_{n\to\infty} \sum\limits_{k=1}^n \! \frac1k\)不存在．
 
   \begin{proof}
-    实际上，\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac1{\,k\,} = \infty\)．对于任意的\(M > 0\)都存在正整数\(N = \ceil[\big]{e^M-1}\)使得当\(n > N\)时都有
+    实际上，\(\lim\limits_{n\to\infty} \sum\limits_{k=1}^n \! \frac1k = +∞\)．对于任意的\(M > 0\)都存在正整数\(N = \ceil[\big]{e^M-1}\)使得当\(n > N\)时都有
     \begin{equation*}
-      \abs[\Bigg]{\,\sum_{k=1}^n \frac1{\,k\,}\,}
-      = \sum_{k=1}^n \frac1{\,k\,}
+      \sum_{k=1}^n \frac1{\,k\,}
       > \sum_{k=1}^n \lnp[\bigg]{1+\frac1{\,k\,}}
       = \lnp{n+1} > M.
       \qedhere
@@ -712,7 +731,7 @@
 \end{example*}
 
 \begin{example*}
-  令\(\displaystyle a_n = \sum_{k=1}^n \frac1{\,k^p}\)．试讨论当\(p > 0\)时数列\(\Seq{\,a_n}\)的敛散性．
+  令\(a_n = \sum\limits_{k=1}^n 1/k^p\)．试讨论当\(p > 0\)时数列\(\Seq{\,a_n}\)的敛散性．
 
   \begin{proof}
     当\(0 < p \le 1\)时，有\(k^p \le k\)．所以
@@ -724,18 +743,18 @@
     \begin{equation*}
       \lim_{n\to\infty} a_n = +\infty.
     \end{equation*}
-    当\(p > 1\)时，由\(a_{n+1} - a_n = 1/(n+1)^p > 0\)可知数列单调增加，只需证明数列有上界即可．取\(\ell = \floor[\big]{\log_2 n} + 1\)，有
+    当\(p > 1\)时，由\(a_{n+1} - a_n = 1/(n+1)^p > 0\)可知，此数列单调递增，只需证明其有上界即可．令\(\ell = \floor[\big]{\log_2 n} + 1\)，有
     \begin{equation*}
       a_n
       = \sum_{k=1}^n \frac1{\,k^p}
       \le \sum_{k=1}^{2^\ell-1} \frac1{\,k^p}
-      = \sum_{m=0}^{\ell-1} \sum_{\,j=2^m\!}^{2^{m+1}-1\!\!} \frac{1}{\,j^p}
+      = \sum_{m=0}^{\ell-1} \! \sum_{\,j=2^m\!}^{\,2^{m+1}-1\!\!} \frac{1}{\,j^p}
       \le \sum_{m=0}^{\ell-1} \frac{2^m}{\paren{2^m}^p}
       = \sum_{m=0}^{\ell-1} \paren[\big]{2^{1-p}}^m
-      = \frac{1-\paren{2^{1-p}}^\ell}{1-2^{1-p}}
+      % = \frac{1-\paren{2^{1-p}}^\ell}{1-2^{1-p}}
       < \frac{1}{1-2^{1-p}}.
     \end{equation*}
-    由单调有界收敛定理可知，数列\(\Seq{\,a_N}\)收敛．
+    由单调有界收敛定理可知，数列\(\Seq{\,a_n}\)收敛．
   \end{proof}
   \begin{remark}
     实际上，当\(0 < p \le 1\)时，也可以同样用处理\(p > 1\)时的思路．令\(\ell = \floor[\big]{\log_2 n}\)，则
@@ -743,9 +762,9 @@
       a_n
       = \sum_{k=1}^n \frac1{\,k^p}
       \ge \sum_{k=1}^n \frac1{\,k\,}
-      > \sum_{k=1}^{2^\ell-1} \frac1{\,k^p}
-      = \sum_{m=0}^{\ell-1} \sum_{\,j=2^m\!}^{2^{m+1}-1\!\!} \frac{1}{\,j\,}
-      \ge \sum_{m=0}^{\ell-1} \frac{\,2^m}{\,2^{m+1}}
+      > \sum_{k=1}^{2^\ell-1} \frac1{\,k}
+      = \sum_{m=1}^{\ell} \! \sum_{\,\,j=2^{m-1}\!\!}^{2^m-1} \frac{1}{\,j\,}
+      \ge \sum_{m=1\,}^{\ell} \frac{2^{m-1}}{2^m}
       = \frac{\ell}{\,2\,}
       = \frac{\floor{\log_2 n}}{2}.
     \end{equation*}
@@ -762,14 +781,14 @@
     是无穷大量，证明如下．
 
     \begin{proof}
-      因为数列\(\Seq{\,a_n}\)没有上界，所以对任意的\(M > 0\)都存在一个正整数\(N\)使得\(a_N > M\)．这时，对于所有的\(n > N\)，因为数列\(\Seq{\,a_n}\)单调递增，所以
+      因为数列\(\Seq{\,a_n}\)没有上界，所以对任意的\(M > 0\)都存在一个正整数\(N\)使得\(a_N > M\)．此时，对于所有的\(n > N\)，因为数列\(\Seq{\,a_n}\)单调递增，所以
       \begin{equation*}
         a_n \ge a_N > M. \qedhere
       \end{equation*}
     \end{proof}
   \fi
 
-\item 若数列\(\Seq{\,a_n}\)是正无穷大量，则\(\Seq{\,a_n}\)一定单调增加吗？
+\item 若数列\(\Seq{\,a_n}\)是正无穷大量，则\(\Seq{\,a_n}\)一定单调递增吗？
 
   \ifshowsolp
     未必．\(a_n = n + (-1)^n\)，易证\(\lim\limits_{n\to\infty} a_n = +\infty\)．此时，对于任意的正偶数\(k\)都有
@@ -806,7 +825,7 @@
         n
         < \frac{n(n-1)}{2} ε^2
         < 1 + nε + \frac{n(n-1)}{2} ε^2 + \dots + ε^n
-        = (1+ε)^n \\
+        = (1+ε)^n, \\
         \shortintertext{即}
         n^{1/n} < 1 + ε.
         \qedhere
@@ -831,29 +850,69 @@
             \cdot \paren[\bigg]{\frac{\ceil{n/2}}{n}}^2,
             & \text{\(n\)是奇数时,}
           \end{dcases} \\
-        &> \frac{\floor{n/2}!}{2^{\floor{n/2}}}.
+        &> \paren[\bigg]{\frac{\floor{n/2}!}{2^{\floor{n/2}+1}}}^2.
       \end{align*}
       \endgroup
-      易知\(\displaystyle \lim_{n\to\infty} \frac{(n!)^2}{n^n} = +\infty\)．
+      易知\(\lim\limits_{n\to\infty} {(n!)^2}\!/{n^n} = +\infty\)．
     \end{proof}
 
     选项~A和~C可以直接套用夹逼定理．
   \fi
 
+  % report: Cauchy sequence appeared before its definition
 \item 以下说法中，错误的是\uline{\makebox[10em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \addtolength{\itemsep}{1ex}
-  \item 设\(x_1 > 0,\ y_1 > 0,\ x_{n+1} = \sqrt{x_n y_n}\,,\ y_{n+1} = (x_n+y_n)/2 \; (n \in \N^+)\)．那么数列\(\Seq{x_n}\)与\(\Seq{y_n}\)收敛于同一个实数
+  \item 设\(x_1 > 0,\ y_1 > 0,\ x_{n+1} = \sqrt{x_n \, \smash[b]{y_n} \mathstrut},\ y_{n+1} = (x_n+y_n)/2 \; (n \in \N^+)\)．那么数列\(\Seq{x_n}\)与\(\Seq{y_n}\)收敛于同一个实数
     \ifshowsol
     \item[\faCircle]
     \else
     \item
     \fi
-    若对所有的\(p \in \N^+\)都有\(\lim\limits_{n\to\infty} \abs*{a_{n+p}-a_n} = 0\)，则数列\(\Seq{\,a_n}\)是柯西数列． % report
-  \item 极限\(\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \frac{\sin k}{2^k}\)存在
-  \item 若\(\displaystyle \lim_{n\to\infty} \abs[\bigg]{\frac{a_{n+1}}{a_n}} = q < 1\)，则\(\lim\limits_{n\to\infty} a_n = 0\)
+    若对所有的\(p \in \N^+\)都有\(\lim\limits_{n\to\infty} \abs[\big]{\,a_{n+p}-a_n} = 0\)，则数列\(\Seq{\,a_n}\)是柯西列．
+  \item 极限\(\lim\limits_{n\to\infty} \smash{\sum\limits_{k=1}^n} \frac{\sin k}{2^k}\)存在
+  \item 若\(\lim\limits_{n\to\infty} \abs*{\,\frac{a_{n+1}}{a_n}\,} = q < 1\)，则\(\lim\limits_{n\to\infty} a_n = 0\)
   \end{itemize}
+
+  \ifshowsol
+    对选项~A的证明：
+    \begin{proof}
+      对于\(x_1 = y_1\)的情况，显然有\(\lim\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty} y_n = x_1\)．对于\(x_1 \ne y_1\)的情况，当\(n \ge 2\)时，有
+      \begin{equation*}
+        x_n < x_{n+1} < y_{n+1} < x_n.
+      \end{equation*}
+      从第2项开始，数列\(\Seq{\,x_n}\)单调递增有上界，数列\(\Seq{\,y_n}\)单调递减有下界．由单调有界收敛定理可知，它们都收敛．记数列\(\Seq{\,y_n}\)的极限为\(A\)．对于任意的\(ε>0\)都存在正整数\(N\)使得当\(n > N\)时都有
+      \begin{gather*}
+        x_n < A < \frac{x_n + y_n}{2}< y_n < A+ε,
+        \shortintertext{从而}
+        A-ε < A - (y_n-A) = 2\,A - y_n < x_n < A.
+        \qedhere
+      \end{gather*}
+    \end{proof}
+    选项~B的反例：令\(a_n = \ln n\)，则对于所有的\(p \in \N^+\)都有
+    \begin{equation*}
+      \lim_{n\to\infty} \abs*{\,\ln\paren*{n+p}- \ln n\,}
+      = \lim_{n\to\infty} \abs*{\,\ln\paren[\Big]{1+\frac pn}\,}
+      = 0.
+    \end{equation*}
+    但是显然数列\(\Seq{\,a_n}\)不是柯西列．
+
+    对选项~D的证明：
+    \begin{proof}
+      存在正整数\(N_1\)使得当\(n \ge N_1\)时都有
+      \begin{gather*}
+        \abs[\bigg]{\,\frac{a_{n+1}}{a_n}\,} < \frac{1+q}{2} = q + \frac{1-q}{2}, \\
+        \shortintertext{从而当\(n > N\)时有}
+        0 < \abs[\big]{\,a_n} < \abs[\big]{\,a_{N_1}} \, \paren[\bigg]{\frac{1+q}{2}}^{n-N_1}.
+      \end{gather*}
+      易知\(\lim\limits_{n\to\infty} \abs[\big]{\,a_{N_1}} \, \paren[\Big]{\frac{1+q}{2}}^{n-N_1} = 0\)，所以由夹逼定理可知\(\lim_{n\to\infty} \abs*{\,a_n} = 0\)，从而
+      \begin{equation*}
+        \lim_{n\to\infty} a_n = 0.
+        \qedhere
+      \end{equation*}
+    \end{proof}
+  \fi
 
 \item 下列说法中，错误的是\uline{\makebox[10em]{}}．
   \begin{itemize}
@@ -865,10 +924,43 @@
     \else
     \item
     \fi
-    若\(\displaystyle \lim_{n\to\infty} a_n = A,\ b_n = \frac{a_1 + a_2 + \dots + a_n}{n}\)，则数列\(\Seq{b_n}\)不一定收敛．
-  \item 若\(\lim\limits_{n\to\infty} a_n = a > 0,\ b_n = \sqrt[n]{a_1 a_2 \dotsm a_n}\)且所有的\(a_n \ne 0\)，则\(\lim\limits_{n\to\infty} b_n = a\)
-  \item 单调有界数列是柯西数列
+    若\(\lim\limits_{n\to\infty} a_n = A,\ b_n = \frac{a_1 + a_2 + \dots + a_n}{n}\)，则数列\(\Seq{\,b_n}\)不一定收敛．
+  \item 若\(\lim\limits_{n\to\infty} a_n = a > 0,\ b_n = \sqrt[n]{a_1 a_2 \dotsm a_n \mathstrut}\)有意义且\(a_n \ne 0\)，则\(\lim\limits_{n\to\infty} b_n = a\)
+  \item 单调有界数列是柯西列
   \end{itemize}
+
+  \ifshowsol
+    选项~B参见例~\ref{eg:limavg}．
+
+    对选项~C的证明：
+    \begin{proof}
+      对于任意的\(0 < ε < a\)，因为数列\(\Seq{a_n}\)收敛于\(a\)，所以存在正偶数\(N_1\)使得当\(n > N_1\)时都有
+      \begin{equation*}
+        \sqrt[n]{\,c\,\mathstrut} \cdot \sqrt[n]{(a-ε)^{n-N_1}}
+        < \sqrt[n]{\,a_1 a_2 \dotsm a_n \mathstrut}
+        = \sqrt[n]{\,c\,\mathstrut} \cdot \sqrt[n]{\,\smash{a_{N_1+1} \dotsm a_n} \mathstrut}
+        < \sqrt[n]{\,c\,\mathstrut} \cdot \sqrt[n]{(a+ε)^{n-N_1}},
+      \end{equation*}
+      其中\(c = a_1 a_2 \dotsm a_{N_1}\)．又因为
+      \begin{gather*}
+        \lim_{n\to\infty} \sqrt[n]{\,c\,\mathstrut} \cdot \sqrt[n]{(a-ε)^{n-N_1}} = \lim_{n\to\infty} (a-ε)^{1-N_1/n} = a-ε,\\
+        \lim_{n\to\infty} \sqrt[n]{\,c\,\mathstrut} \cdot \sqrt[n]{(a+ε)^{n-N_1}} = \lim_{n\to\infty} (a+ε)^{1-N_1/n} = a+ε,\\
+        \intertext{所以存在正整数\(N_2\)使得当\(n > N_2\)时都有}
+        a - 2ε
+        < \sqrt[n]{\,c\,\mathstrut} \cdot \sqrt[n]{(a-ε)^{n-N_1}}
+        < \sqrt[n]{\,c\,\mathstrut} \cdot \sqrt[n]{(a+ε)^{n-N_1}}
+        < a + 2ε.
+      \end{gather*}
+      此时，取\(N = \maxb*{\,N_1,\, N_2}\)，那么就有
+      \begin{equation*}
+        \abs*{\,\sqrt[n]{\,a_1 a_2 \dotsm a_n \mathstrut} - a\,} < 2ε.
+        \qedhere
+      \end{equation*}
+      \begin{remark}
+        其他的证明方法还有：\enumparen{1}利用AM-GM不等式和夹逼定理；\enumparen{2}取对数后利用例~\ref{eg:limavg}或者Stolz-Cesàro定理．
+      \end{remark}
+    \end{proof}
+  \fi
 
 \item 下列说法中，正确的是\uline{\makebox[10em]{}}．
   \begin{itemize}
@@ -880,11 +972,11 @@
     \fi
     单调递增数列要么收敛，要么是无穷大量
   \item 数列若不单调有界，则必不收敛
-  \item 存在不收敛的柯西数列
+  \item 存在不收敛的柯西列
   \item 收敛数列不一定有界
   \end{itemize}
 
-\item 已知\(\displaystyle \lim_{n\to\infty} a_n = 1,\ \lim_{n\to\infty} b_n = 2\)，求\(\displaystyle \lim_{n\to\infty} \frac{a_1 b_n + a_2 b_{n-1} + \dots + a_n b_1}{n}\)．
+\item 已知\(\lim\limits_{n\to\infty} a_n = 1,\ \lim\limits_{n\to\infty} b_n = 2\)，求\(\lim\limits_{n\to\infty} \frac{a_1 b_n + a_2 b_{n-1} + \dots + a_n b_1}{n}\)．
 
   \ifshowsol
     可以模仿例~\ref{eg:limavg}的思路来证明这个极限的值是\(2\)．
@@ -896,95 +988,200 @@
 
 \begin{theorem}
   \label{thm:seqcvgsubseq}
-  数列\(\Seq{\,a_n}\)收敛的充分必要条件是它的所有子列都收敛．
+  数列\(\Seq{\,a_n}\)的所有\kenten{真}子列都收敛是其自身收敛的充分必要条件．
 
   \begin{remark}
-    易证必要性；至于充分性，可以先证明所有子列都收敛于同一个数，然后通过反证法得到．
+    易证必要性；至于充分性，证明所有真子列都收敛于同一个数即可．
   \end{remark}
 \end{theorem}
 
 \begin{example*}
-  设\(a_1 = 2,\ a_{n+1} = 2 + {1}/{a_n}\)．试讨论数列\(\Seq{\,a_n}\)的敛散性. % https://mathworld.wolfram.com/ContinuedFraction.html
+  % https://mathworld.wolfram.com/ContinuedFraction.html
+  设\(a_1 = 2,\ a_{n+1} = 2 + {1}/{a_n}\)．试讨论数列\(\Seq{\,a_n}\)的敛散性．
 
   \begin{remark}
-    子列\(a_{2n}\)单调递减有下界，子列\(a_{2n-1}\)单调递增有上界．然后证明这两个子列的极限相等．这就说明原数列收敛．
+    数列\(\Seq{a_n}\)收敛于\(1+\sqrt2\)．证明思路：子列\(\Seq{\,a_{2n-1}}\)单调递增有上界，子列\(\Seq{\,a_{2n}}\)单调递减有下界．然后证明这两个子列的极限相等．这就说明原数列收敛．
   \end{remark}
+  \begin{proof}
+    因为\(2 < a_n < 3,\ 2 + 1/\paren[\big]{1+\sqrt2} = 1 + \sqrt2\)且
+    \begin{align*}
+      a_{n+2} - a_n
+      &= 2 + \frac{1}{2+1/a_n} - a_n \\
+      &= \frac{5a_n + 2}{2a_n + 1} - a_n \\
+      &= - \frac{2}{2a_n + 1}\paren[\big]{a_n^2 - 2a_n - 1} \\
+      &= - \frac{2}{2a_n + 1}\paren[\big]{a_n - 1 - \sqrt2}\paren[\big]{a_n - 1 + \sqrt2},
+    \end{align*}
+    所以当\(a_n > 1 + \sqrt2\)时有\(a_{n+2} < a_n,\ a_{n+1} < 1 + \sqrt2\)且当\(a_n < 1 + \sqrt2\)时有\(a_{n+2} > a_n,\ a_{n+1} > 1 + \sqrt2\)．又因为\(a_1 = 2\)，所以子列\(\Seq{\,a_{2n-1}}\)单调递增有上界、子列\(\Seq{\,a_{2n}}\)单调递减有下界．由单调有界收敛定理可知，它们都收敛．
+
+    记\(\lim\limits_{n\to\infty} a_{2n-1} = A,\ \lim\limits_{n\to\infty} a_{2n} = B\)．由极限的四则运算可知，有
+    \begin{gather*}
+      A = 2 + \frac1B \txt{和} B = 2 + \frac1A,
+      \shortintertext{从而}
+      (AB-1)(B-A) = 0.
+    \end{gather*}
+    这就说明了\(A = B\)．
+  \end{proof}
 \end{example*}
 
 \begin{definition*}
-  若闭区间\(\Seq{\brkt{a_n, b_n}}\)对于所有的\(n\)满足\(\brkt{a_{n+1}, b_{n+1}} ⊂ \brkt{a_n, a_n}\)且\(\lim\limits_{n\to\infty} (b_n - a_n) = 0\)，则称\(\Seq{\brkt{a_n, b_n}}\)是一个区间套．
+  闭区间序列\(\Seq{\,\brkt{\,a_n, b_n}\,}\)是区间套，当且仅当：\(\lim\limits_{n\to\infty} (b_n - a_n) = 0\)且对于所有的正整数\(n\)都有\(\brkt{\,a_{n+1}, b_{n+1}} ⊂ \brkt{\,a_n, b_n}\)．
 \end{definition*}
 
 \begin{theorem*}[区间套定理]
-  若\(\Seq{\brkt{a_n, b_n}}\)是一个区间套，则存在唯一的实数\(ξ\)使得\(ξ \in \brkt{a_n, b_n}\)对于所有的\(n\)都成立．
+  % report: 单调递增、单调递减的定义和这里子集的定义不一致
+  若\(\Seq{\,\brkt{\,a_n, b_n}\,}\)是区间套，则存在唯一实数\(ξ\)使得\(ξ \in \brkt{\,a_n, b_n}\)对于所有的正整数\(n\)都成立．
 
   \begin{remark}
-    可以考虑使用单调有界收敛定理来证明此定理．
+    可以使用单调有界收敛定理来证明此定理．
   \end{remark}
+  \begin{proof}
+    因为\(\Seq{\,\brkt{\,a_n, b_n}\,}\)是区间套，所以对所有的正整数\(n\)都有
+    \begin{equation*}
+      a_n \le a_{n+1} \le b_{n+1} \le b_n.
+    \end{equation*}
+    由单调有界收敛定理可知，数列\(\Seq{\,a_n}\)和\(\Seq{\,b_n}\)都收敛．记\(\lim\limits_{n\to\infty} a_n = A\)且\(\lim\limits_{n\to\infty} b_n = B\)．又因为
+    \begin{equation*}
+      \lim_{n\to\infty} (b_n - a_n) = B - A = 0,
+    \end{equation*}
+    所以\(A = B\)．% 实际上，有\(ξ = A = \supb{\,a_n} = B = \infb{\,b_n} \)．
+    记\(ξ = A\)．对于任意的非\(ξ\)的实数\(η\)，都存在正整数\(N\)使得当\(n > N\)时都有
+    \begin{equation*}
+      a_n \le ξ \le b_n < η
+      \txt{或者}
+      η < a_n \le ξ \le b_n.
+    \end{equation*}
+    这就说明了\(ξ\)是唯一的这样的实数．
+  \end{proof}
 \end{theorem*}
 
 \begin{example*}
   从区间套定理可以推出确界存在公理．
 
-  % TODO: Complete the proof
   \begin{remark}
-    可以通过二分法来构造区间套从而推出确界存在公理．这就说明确界存在公理、单调有界定理、区间套定理在逻辑上是等价的．
+    可以通过二分法来构造区间套，进而推出确界存在公理．这就说明确界存在公理、单调有界定理、区间套定理在逻辑上是等价的．
   \end{remark}
+  \begin{proof}
+    设\(A\)为非空实数集且有上界．因为\(A\)非空，所以存在元素\(a_0 \in A\)；又因为其上界，所以存在实数\(b_0\)为其有上界．构造数列\(\Seq{\,a_n}\)和\(\Seq{\,b_n}\)满足
+    \begin{equation*}
+      a_{n+1} =
+      \begin{cases*}
+        m_n, & \(m_n\)不是\(A\)的上界, \\
+        a_n, & \(m_n\)是\(A\)的上界
+      \end{cases*}
+      \txt{和}
+      b_{n+1} =
+      \begin{cases*}
+        b_n, & \(m_n\)不是\(A\)的上界, \\
+        m_n, & \(m_n\)是\(A\)的上界,
+      \end{cases*}
+    \end{equation*}
+    其中\(m_n = (a_n + b_n)/2\)．显然，序列\(\Seq{\,\brkt{\,a_n, b_n}\,}\)是区间套，因为
+    \begin{gather*}
+      a_n \le a_{n+1} \le b_{n+1} \le b_n
+      \txt{且}
+      \lim_{n\to\infty} (b_n - a_n) = \lim_{n\to\infty} \frac{b_0 - a_0}{2^n} = 0.
+    \end{gather*}
+    存在唯一实数\(ξ\)使得对于所有\(n\)都有\(ξ \in \brkt{\,a_n, b_n}\)．假设实数\(ξ\)不是集合\(A\)的上界．那么就存在\(b \in A\)满足\(ξ < b\)．取\(ε_1 = b - ξ\)，则存在正整数\(N_1\)使得当\(n > N_1\)时都有
+    \begin{equation*}
+      b_n < a_n + ε_1 \le ξ + ε_1 = b.
+    \end{equation*}
+    这是不可能的，因为我们的构造方法保证了每个\(b_n\)都是集合\(A\)的上界．这就说明了\(ξ\)是上界．对于任意的\(ε > 0\)都存在正整数\(N_2\)使得当\(n \ge N_2\)时都有
+    \begin{equation*}
+      ξ - ε \le b_n - ε < a_n.
+    \end{equation*}
+    因为我们的构造方法保证了对于每个\(a_n\)都存在\(x \in A\)满足\(a_n \le x\)，所以存在\(a \in A\)满足\(a_{N_2} \le a\)，从而
+    \begin{equation*}
+      ξ - ε < a_{N_2} \le a.
+    \end{equation*}
+    这就说明了\(ξ\)是上确界．
+
+    证明下确界的方法类似．
+  \end{proof}
 \end{example*}
 
 \begin{theorem}[Bolzano--Weierstrass定理]
   \label{thm:bw}
-  若数列\(\Seq{\,a_n}\)有界，则存在子列\(\Seq{a_{n_k}}\)收敛．
+  若数列\(\Seq{\,a_n}\)有界，则存在收敛子列\(\Seq{a_{n_k}}\)．
 
-  % TODO: Complete the proof
   \begin{remark}
-    还是可以通过二分法构造区间套来证明此定理的．
+    还是可以通过构造区间套来证明此定理的．
   \end{remark}
+  \begin{proof}
+    因为数列\(\Seq{\,a_n}\)有界，所以其既有上界又有下界．令\(b_1\)和\(c_1\)分别为其某个下界和上界．构造数列\(\Seq{\,b_n}\)和\(\Seq{\,c_n}\)满足
+    \begin{equation*}
+      b_{n+1} =
+      \begin{cases*}
+        m_n, & 集合\(\Set{\,a_n} \cap \brkt{\,m_n, c_n}\)无穷, \\
+        b_n, & 集合\(\Set{\,a_n} \cap \brkt{\,m_n, c_n}\)有穷
+      \end{cases*}
+      \txt{和}
+      c_{n+1} =
+      \begin{cases*}
+        c_n, & 集合\(\Set{\,a_n} \cap \brkt{\,m_n, c_n}\)无穷, \\
+        m_n, & 集合\(\Set{\,a_n} \cap \brkt{\,m_n, c_n}\)有穷,
+      \end{cases*}
+    \end{equation*}
+    其中\(m_n = (b_n + c_n)/2\)．易知序列\(\Seq{\,\brkt{\,b_n, c_n}\,}\)是区间套．令\(n_1 = 1\)．假设\(a_{n_k} \in \brkt{\,b_k, c_k\,}\)．我们的构造方式保证了存在\(n_{k+1}\)满足
+    \begin{equation*}
+      n_{k} < n_{k+1}
+      \txt{且}
+      a_{n_{k+1}} \in \brkt{\,b_{k+1}, c_{k+1}}.
+    \end{equation*}
+    这就说明了存在数列\(\Seq{\,n_k\,}\)使得对于所有\(k\)都有\(a_{n_k} \in \brkt{\,b_k, c_k\,}\)．又由区间套定理可知，存在\(ξ\)使得对于所有\(k\)都有\(ξ \in \brkt{\,b_k, c_k\,}\)．那么对于任意的\(ε > 0\)都存在正整数\(K\)使得当\(k > K\)时都有
+    \begin{gather*}
+      ξ - ε \le c_n - ε < b_k \le a_{n_k} \le c_k < b_k + ε \le ξ + ε,
+      \shortintertext{即}
+      \abs[\big]{\,a_{n_k} - ξ\,} < ε.
+      \qedhere
+    \end{gather*}
+  \end{proof}
 \end{theorem}
 
 \begin{example}
   \label{eg:seqbndcmnidx}
-  数列\(\Seq{\,a_n}\)和\(\Seq{b_n}\)都是有界的，可以找到一个共同的下标集\(\Set{n_k}\)使得子列\(\Seq{a_{n_k}}\)和\(\Seq{b_{n_k}}\)都收敛．
+  设数列\(\Seq{\,a_n}\)和\(\Seq{\,b_n}\)有界．存在共同的下标集\(\Set{\,n_k\,}\)使得子列\(\Seq{\,a_{n_k}}\)和\(\Seq{\,b_{n_k}}\)都收敛．
 
   \begin{proof}
-    由上述定理可知，能找到一个下标集\(\Set{\bar n_k}\)使得子列\(\Seq{a_{\bar n_k}}\)收敛．再对有界子列\(\Seq{b_{\bar n_k}}\)使用一次这个定理，就能得到一个下标集\(\Set{n_k}\)使得子列\(\Seq{a_{n_k}}\)和\(\Seq{b_{n_k}}\)都收敛．
+    由上述定理可知，存在下标集\(\Set{\,\bar n_k\,}\)使得子列\(\Seq{\,a_{\bar n_k}}\)收敛．再对有界子列\(\Seq{\,b_{\bar n_k}}\)使用一次此定理，从而存在下标集\(\Set{\,\tilde n_k\,}\)使得子列\(\Seq{\,a_{\bar n_{\tilde n_k}}}\)和\(\Seq{\,b_{\bar n_{\tilde n_k}}}\)都收敛．记\(n_k = \bar n_{\tilde n_k}\)即可．
   \end{proof}
 \end{example}
 
+% https://mathworld.wolfram.com/CauchySequence.html
+% https://en.wikipedia.org/wiki/Cauchy_sequence
 \begin{definition*}
-  对于任意的\(ε > 0\)都存在正整数\(N\)使得当\(m > N,\ n > N\)时都有\(\abs*{a_n - a_m} < ε\)．这时我们称数列\(\Seq{\,a_n}\)是一个柯西列（Cauchy sequence）．
+  数列\(\Seq{\,a_n}\)是柯西列（Cauchy sequence），当且仅当：对于任意的\(ε > 0\)都存在正整数\(N\)使得当\(m > N,\, n > N\)时都有\(\abs*{\,a_m - a_n} < ε\)．
 \end{definition*}
 
-\begin{definition*}[柯西列的定价定义]
+\begin{definition*}[柯西列的等价定义]
   \begin{math}
     \paren[\big]{\forall ε > 0}
     \paren[\big]{\exists N > 0}
     \paren[\big]{\forall n > N}
     \paren[\big]{\forall p > 0}
-    \paren[\big]{\abs[\big]{a_{n+p} - a_n} < ε}.
+    \paren[\big]{\abs[\big]{\,a_{n+p} - a_n} < ε}.
   \end{math}
 \end{definition*}
 
 \begin{example*}
-  证明数列\(\Seq{q^n}\)在\(\abs*{q} < 1\)条件下是柯西列．
+  证明数列\(\Seq{\,q^n}\)在\(\abs*{\,q\,} < 1\)条件下是柯西列．
 
   \begin{proof}
-    对于任意的\(ε > 0\)，取\(N = \maxb*{\ceil*{\ln ε /\!\ln\abs*q}, 1}\)，那么当\(n > N\)时，对于所有的正整数\(p\)都有
+    对于任意的\(ε > 0\)，存在正整数\(N\)使得：当\(n > N\)时，对于所有的正整数\(p\)都有
     \begin{equation*}
-      \abs*{q^{n+p} - q^n}
-      = \abs*q^n \abs*{q^p - 1}
-      < \abs*q^n
-      < ε.
-      \qedhere
+      \abs*{\,q^{n+p} - q^n}
+      = \abs*{\,q^n\,} \, \abs*{\,q^p - 1}
+      < 2\abs*{\,q^n\,}         % report
+      < 2ε.
     \end{equation*}
+    这样的\(N\)存在，是因为前面我们已经证明了\(\lim\limits_{n\to\infty} q^n = 0\)，见例~\ref{eg:limqn}．
   \end{proof}
 \end{example*}
 
 \begin{example*}
-  证明数列\(\Seq[\big]{\sum_{k=1}^n 1/k}\)不是柯西列．
+  证明数列\(\Seq[\big]{\,\sum\limits_{\mathclap{k=1}}^n \frac1k\,}\)不是柯西列．
 
   \begin{proof}
-    前面我们已经证明了这个数列单调递增且为无穷大量．将这个数列记为\(\Seq{\,a_n}\)．取\(ε = 1\)，对于任意的正整数\(N\)，先取\(n = N+1\)，因为数列\(\Seq{\,a_n}\)单调递增且是无穷大量，所以一定能找到一个正整数\(p\)使得\(a_{n+p} > 2\,a_n \)， 那么就有\(\abs[\big]{a_{n+p} - a_n} = a_{n+p} - a_n > a_n > 1\)．
+    前面我们已经证明了此数列单调递增且为无穷大量．将此数列记为\(\Seq{\,a_n}\)．先取某\(ε_0 > 0\)．对于任意正整数\(N\)，取某\(n_0 > N\)．因为数列\(\Seq{\,a_n}\)单调递增且为无穷大量，所以存在\(m_0 > N\)使得\(a_{m_0} > a_{n_0} + ε_0 > a_{n_0}\)．那么就有\(\abs[\big]{\,a_{m_0} - a_{n_0}} = a_{m_0} - a_{n_0} > ε_0\)．
   \end{proof}
 \end{example*}
 
@@ -994,35 +1191,41 @@
 % https://personal.math.ubc.ca/~cass/courses/m220-00/cauchy.pdf
 \begin{theorem}[柯西收敛准则]
   \label{thm:seqcvgcauchy}
-  数列收敛的充分必要条件是它为柯西列．
+  数列收敛的充分必要条件是其为柯西列．
 
   \begin{proof}
-    易证必要性，用一次三角不等式即可．下面证明一下充分性．易从柯西列的定义推出柯西列一定是有界列．根据定理~\ref{thm:bw}，有界列必有收敛子列， 将这个子列记为\(\Seq{a_{n_k}}\)，其极限记为\(A\)．那么对于任意的\(ε > 0\)，都存在一个正整数\(K\)使得当\(k > K\)时都有\(\abs[\big]{a_{n_k} - A} < ε\)，也存在一个正整数\(N_0\)使得当\(n > N_0,\ m > N_0\)时都有\(\abs*{a_n - a_m} < ε\)．取\(N = 1 + \maxb*{K, N_0}\)，当\(n > N\)时就有
+    易证必要性，使用三角不等式即可．下面证明充分性．易从柯西列的定义推出柯西列都有界．根据定理~\ref{thm:bw}，有界列必有收敛子列，将此子列记为\(\Seq{\,a_{n_k}}\)，其极限记为\(A\)．那么对于任意的\(ε > 0\)都存在正整数\(K\)使得当\(k > K\)时都有\(\abs[\big]{\,a_{n_k} - A\,} < ε\)．同时，也存在正整数\(N\)使得当\(m > N,\, n > N\)时都有\(\abs*{\,a_m - a_n} < ε\)．但当\(n > N\)时又有
     \begin{equation*}
-      \abs[\Big]{a_n - A}
-      \le \abs[\Big]{a_n - a_{n_N}} + \abs[\Big]{a_{n_N} - A}
-      < 2ε.
-      \qedhere
+      \abs[\big]{\,a_n - A\,}
+      \le \abs[\big]{\,a_n - a_{n_{k_0}}} + \abs[\big]{\,a_{n_{k_0}} - A\,}
+      < 2ε,
     \end{equation*}
+    其中\(n_{k_0}\)是满足\(k_0 > K\)且\(n_{k_0} > N\)的\kenten{某个数}．
   \end{proof}
+  \begin{remark}
+    当然，也可以直接构造区间套来证明．
+  \end{remark}
 \end{theorem}
 
-\begin{example*}
-  设\(b_n = \sum_{k=1}^n \abs*{a_{k+1} - a_k} \le C\)．试证明数列\(\Seq{\,a_n}\)收敛．
+\begin{example}
+  \label{eg:limsumabsdiff}
+  设\(b_n = \sum\limits_{k=1}^n \! \abs*{\,a_{k+1} - a_k\,} \le C\)．试证明数列\(\Seq{\,a_n}\)收敛．
 
   \begin{proof}
-    数列\(\Seq{b_n}\)单调递增且有界，那么自然也就收敛，因而也是柯西列．所以对于任意的\(ε > 0\)都存在正整数\(N_0\)使得当\(n > N_0,\ p > 0\)时都有
+    数列\(\Seq{\,b_n}\)单调递增且有界，从而收敛且为柯西列．那么对于任意的\(ε > 0\)都存在正整数\(N\)使得当\(m \ge N,\, n \ge N\)时都有
     \begin{align*}
       ε
-      &> \abs[\big]{b_{n+p} - b_{n}} \\
-      &= \abs[\Bigg]{\,\sum_{k=1}^{n+p} \abs*{a_{k+1} - a_k} - \sum_{k=1}^n \abs*{a_{k+1} - a_k}\,} \\
-      &= \abs[\Bigg]{{}\smashoperator[r]{\sum_{k=n+1}^{n+p}} \abs*{a_{k+1} - a_k}\,} = \smashoperator{\sum_{k=n+1}^{n+p}} \abs*{a_{k+1} - a_k} \\
-      &\ge \abs[\Bigg]{{}\smashoperator[r]{\sum_{k=n+1}^{n+p}} \paren*{a_{k+1} - a_k}\,}
-        = \abs[\big]{a_{n+p+1} - a_{n+1}}.
+      &> \abs[\big]{\,b_m - b_n} \\
+      &= \abs[\Bigg]{\ \sum_{k=1}^m \abs*{\,a_{k+1} - a_k\,} - \sum_{k=1}^n \abs*{\,a_{k+1} - a_k\,}\ } \\
+      &= \abs[\Bigg]{\ \smashoperator[r]{\sum_{k=s}^{t-1}} \abs*{\,a_{k+1} - a_k\,}\ }
+        = \smashoperator{\sum_{k=s}^{t-1}} \abs*{\,a_{k+1} - a_k\,} \\
+      &\ge \abs[\Bigg]{\ \smashoperator[r]{\sum_{k=s}^{t-1}} \paren*{\,a_{k+1} - a_k\,}\,}
+        = \abs[\big]{\,a_t - a_s} \\
+      &= \abs[\big]{\,a_{m+1} - a_{n+1}}\,,
     \end{align*}
-    取\(N = N_0 + 1\)，当\(n > N,\ p > 0\)时就有\(\abs[\big]{a_{n+p} - a_n} < ε\)．这就说明数列\(\Seq{\,a_n}\)是一个柯西列，自然也就收敛．
+    其中\(s = 1 + \minb{m,n},\, t = 1 + \maxb{m,n}\)．当\(m > N,\, n > N\)时就有\(\abs[\big]{\,a_m - a_n} < ε\)．这就说明了数列\(\Seq{\,a_n}\)是柯西列，从而收敛．
   \end{proof}
-\end{example*}
+\end{example}
 
 \subpdfbookmark{思考}{B1.2.3.P}
 \subsection*{思考}
@@ -1049,25 +1252,25 @@
 \subsection*{练习}
 
 \begin{enumerate}
-\item 若数列\(\Seq{\,a_n}\)满足条件\(\abs*{a_{n+1} - a_n} \le 1/2^n\)，则\uline{\makebox[6em]{}}．
+\item 若数列\(\Seq{\,a_n}\)满足条件\(\abs*{\,a_{n+1} - a_n} \le 1/2^n\)，则\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(\lim_{n\to\infty} a_n = 0\)
+  \item \(\lim\limits_{n\to\infty} a_n = 0\)
   \item 数列\(\Seq{\,a_n}\)不一定收敛
     \ifshowsol
     \item[\faCircle]
     \else
     \item
     \fi
-    \(\lim_{n\to\infty} a_n = A\)且\(\abs*{A - a_1} \le 1\)
-  \item \(\lim_{n\to\infty} a_n = A\)且\(\abs*{A - a_1} > 1\)
+    \(\lim\limits_{n\to\infty} a_n = A\)且\(\abs*{\,A - a_1\,} \le 1\)
+  \item \(\lim\limits_{n\to\infty} a_n = A\)且\(\abs*{\,A - a_1} > 1\)
   \end{itemize}
 
   \ifshowsol
-    选项~A可以有反例\(a_n = 1\)来说明．选项~B可以由三角不等式推出这个数列是柯西列，进而收敛．选项~C可以先推出\(\abs*{a_n - a_1} \le 1 - 1/2^{n-1}\)，然后用反证法说明\(\abs*{A - a_1} \ngtr 1\)．
+    选项~A：可以由反例\(a_n = 1\)来说明．选项~B：可以从三角不等式推出此数列为柯西列，从而收敛；也可以直接使用例~\ref{eg:limsumabsdiff}的结论．选项~C可以先推出\(\abs*{\,a_n - a_1} \le 1 - 1/2^{n-1}\)，再取极限即可．
   \fi
 
-\item 设\(\Seq*{\paren{a_n, b_n}}\)是一个开区间序列且满足：\enumparen{1}\(a_1 < a_2 < \dots < a_n < \dots < b_n < \dots < b_2 < b_1\) \enumparen{2}\(\lim_{n\to\infty} \paren{b_n - a_n} = 0\)．那么就有\uline{\makebox[10em]{}}．
+\item 设\(\Seq*{\paren{\,a_n, b_n}}\)是一个开区间序列且满足：\enumparen{1}\(a_1 < a_2 < \dots < a_n < \dots < b_n < \dots < b_2 < b_1\)；\enumparen{2}\(\lim\limits_{n\to\infty} \paren{\,b_n - a_n} = 0\)．那么就有\uline{\makebox[10em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
@@ -1075,10 +1278,10 @@
     \else
     \item
     \fi
-    存在唯一的实数\(ξ\)属于所有开区间\(\paren{a_n, b_n}\)且\(ξ = \lim_{n\to\infty} a_n\)
-  \item 存在唯一的实数\(ξ\)属于所有开区间\(\paren{a_n, b_n}\)且\(ξ \ne \lim_{n\to\infty} a_n\)
-  \item 至少存在两个不同的实数\(ξ\)和\(η\)属于所有开区间\(\paren{a_n, b_n}\)
-  \item 不存在实数\(ξ\)属于所有开区间\(\paren{a_n, b_n}\)
+    存在唯一的实数\(ξ\)属于所有开区间\(\paren{\,a_n, b_n}\)且\(ξ = \lim\limits_{n\to\infty} a_n\)
+  \item 存在唯一的实数\(ξ\)属于所有开区间\(\paren{\,a_n, b_n}\)且\(ξ \ne \lim\limits_{n\to\infty} a_n\)
+  \item 至少存在两个不同的实数\(ξ\)和\(η\)属于所有开区间\(\paren{\,a_n, b_n}\)
+  \item 不存在实数\(ξ\)属于所有开区间\(\paren{\,a_n, b_n}\)
   \end{itemize}
 
   \ifshowsol
@@ -1108,7 +1311,7 @@
   \item \(\Seq[\big]{1 + \frac12 + \dots + \frac1n}\)
   \item \(\Seq[\big]{1 + \frac1{2^2} + \dots + \frac1{n^2}}\)
   \item \(\Seq[\big]{\frac{n!}{n^n}}\)
-  \item \(\Seq[\big]{\sin\frac{n^n}{4}}\)
+  \item \(\Seq[\big]{\sin\frac{n^n}{4}}\) % report
   \end{enumerate}
 
 \item 关于区间\(\paren{0,1}\)中所有的有理点排成的点列\(\Seq[\big]{\frac12, \frac13, \frac23, \frac14, \frac34, \frac15, \frac25, \frac35, \frac45, \dots}\)，下列四个结论中，正确的有\uline{\makebox[6em]{%
@@ -1126,15 +1329,15 @@
 \item 下列说法，错误的是\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item 数列\(\Seq{\,a_n}\)单调，则\(\lim_{n\to\infty} a_n = A\)的充要条件是存在子列\(\Seq{a_{n_k}}\)满足\(\lim_{n\to\infty} a_{n_k} = A\)
+  \item 数列\(\Seq{\,a_n}\)单调，则\(\lim\limits_{n\to\infty} a_n = A\)的充要条件是存在子列\(\Seq{\,a_{n_k}}\)满足\(\lim\limits_{n\to\infty} a_{n_k} = A\)
     \ifshowsol
     \item[\faCircle]
     \else
     \item
     \fi
-    若数列\(\Seq{\,a_n}\)不收敛，则必存在两个子列\(\Seq{a_{n_k}^{(1)}}\)和\(\Seq{a_{n_k}^{(2)}}\)分别收敛于两个不同的值
+    若数列\(\Seq{\,a_n}\)不收敛，则必存在两个子列\(\Seq{\,a_{n_k}^{(1)}}\)和\(\Seq{\,a_{n_k}^{(2)}}\)分别收敛于两个不同的值
   \item 若数列\(\Seq{\,a_n}\)无界但非无穷大量，则必存在一个无穷大量子列和一个收敛子列
-  \item 设\(S\)为非空有上界的实数集．若\(\sup S = A \notin S\)，则存在单调递增数列\(\Seq{\,a_n} \subset S\)使得\(\lim_{n\to\infty} a_n = A\)．
+  \item 设\(S\)为非空有上界的实数集．若\(\sup S = A \notin S\)，则存在单调递增数列\(\Seq{\,a_n} \subset S\)使得\(\lim\limits_{n\to\infty} a_n = A\)．
   \end{itemize}
 \end{enumerate}
 \fi
@@ -1143,57 +1346,55 @@
 
 \begin{definition*}
   \label{defn:limfunc}
-  函数\(f\)在点\(x_0\)附近\footnote{在点\(x_0\)附近是指在这个点某个去心邻域上，也就是说在集合\(\paren{x_0 - δ, x_0 + δ} \setminus \Set{x_0}\)上，其中\(δ\)是某个正数．}有定义，\(A\)是某个常数．对于任意的\(ε > 0\)，存在\(δ > 0\)使得当\(0 < \abs*{x-x_0} < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)趋向于\(x_0\)时的极限，记作
+  设函数\(f\)在点\(x_0\)附近\footnote{在点\(x_0\)附近是指在此点的某个去心邻域上，也就是说在集合\(\paren{x_0 - δ, x_0 + δ} \setminus \Set{x_0}\)上，其中\(δ\)是某个正数．}有定义，\(A\)是某个常数．函数\(f\)在\(x\)趋向于\(x_0\)时的极限是\(A\)，记作
   \begin{equation*}
-    \setlength{\abovedisplayskip}{.5ex}
-    \lim_{x \to x_0}\,f(x) = A.
+    \lim_{\,x \to x_0\!} \,f(x) = A,
   \end{equation*}
+  当且仅当：对于任意的\(ε > 0\)，存在\(δ > 0\)使得当\(0 < \abs*{\,x-x_0} < δ\)时都有\(\abs*{\ f(x) - A\,} < ε\)．
 \end{definition*}
 
 \begin{example*}
-  证明\(\lim_{x\to1} x^2 = 1\)．
+  证明\(\lim\limits_{x\to1} x^2 = 1\)．
 
   \begin{proof}
-    对于任意的\(ε > 0\)，取\(δ = \minb[\big]{\frac12, \frac23ε}\)，当\(0 < \abs*{x - 1} < δ\)时就有
+    对于任意的\(ε > 0\)，取\(δ = \minb{\,1, ε/3\,}\)，当\(0 < \abs{\ x - 1\,} < δ\)时就有
     \begin{equation*}
-      \setlength{\abovedisplayskip}{.8ex}
-      \abs[\big]{\,f(x) - 1}
-      = \abs[\big]{x^2 - 1}
-      = \abs[\big]{x-1} \abs[\big]{x+1}
-      < δ \abs[\big]{x+1}
-      < \frac32 δ
+      \abs[\big]{\ f(x) - 1\,}
+      = \abs[\big]{\ x^2 - 1\,}
+      = \abs[\big]{\ x+1\,} \, \abs[\big]{\ x-1\,}
+      < \abs[\big]{\,x+1\,} \, δ
+      < 3δ
       \le ε.
-      \rule[-2ex]{0ex}{0ex}
       \qedhere
     \end{equation*}
   \end{proof}
 \end{example*}
 
 \begin{example*}
-  证明\(\lim_{x\to0} \cos x = 1\)．
+  证明\(\lim\limits_{x\to0} \cos x = 1\)．
 
   \begin{proof}
-    对于任意的\(ε > 0\)，若使\(\abs[\big]{\cos x - 1} < ε\)成立，只需使\(1 - ε < \cos x\)成立即可，也就是\(1 - \cos x < ε\)．考虑到
+    对于任意的\(ε > 0\)，若要\(\abs*{\,\cos x - 1\,} < ε\)成立，只需\(1 - ε < \cos x\)，即\(1 - \cos x < ε\)．因为
     \begin{equation*}
       1 - \cos x = 2 \sin^2 \frac{x}{2} \le \frac{x^2}{2},
     \end{equation*}
-    这时只需取\(δ = \sqrt{2ε}\)，就能使当\(0 < \abs{x} < δ\)时都有\(1 - \cos x < ε\)．
+    所以取\(δ = \sqrt{2ε}\)就能使得当\(0 < \abs{\,x\,} < δ\)时都有\(1 - \cos x < ε\)．
   \end{proof}
 \end{example*}
 
 \begin{definition*}[单侧极限]
-  对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(0 < x_0 - x < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)从左侧趋向于\(x_0\)的极限，简称左极限，记作
+  设函数\(f\)在点\(x_0\)左侧有定义，\(A\)是某个常数．函数\(f\)在\(x\)从左侧趋向于\(x_0\)时的极限是\(A\)，当且仅当：对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(0 < x_0 - x < δ\)时都有\(\abs*{\ f(x) - A\,} < ε\)．这样的极限叫作左侧极限，简称左极限，记作
   \begin{equation*}
-    \lim_{x \to x_0^-} f(x) = A,
+    \lim_{x \to x_0^-\!} \,f(x) = A,
     \quad
     f_-(x_0) = A
     \txt{或}
     f(x_0-0) = A.
   \end{equation*}
 
-  对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(0 < x - x_0 < δ\)时都有\(\abs*{\,f(x) - A} < ε\)．这时，我们称\(A\)是函数\(f\)在\(x\)从右侧趋向于\(x_0\)的极限，简称右极限，记作
+  设函数\(f\)在点\(x_0\)右侧有定义，\(A\)是某个常数．函数\(f\)在\(x\)从右侧趋向于\(x_0\)时的极限是\(A\)，当且仅当：对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(0 < x - x_0 < δ\)时都有\(\abs*{\ f(x) - A\,} < ε\)．这样的极限叫作右侧极限，简称右极限，记作
   \begin{equation*}
-    \lim_{x \to x_0^+} f(x) = A,
+    \lim_{x \to x_0^+\!} \,f(x) = A,
     \quad
     f_+(x_0) = A
     \txt{或}
@@ -1206,7 +1407,7 @@
   函数极限存在的充分必要条件是它的左极限和右极限都存在且相等．
 
   \begin{proof}
-    易证必要性．关于充分性，只需取\(δ = \minb{δ_1, δ_2}\)即可，其中\(δ_1\)和\(δ_2\)分别是左右极限所取的德尔塔．
+    易证必要性．关于充分性，只需取\(δ = \minb{\,δ_1, δ_2}\)即可，其中\(δ_1\)和\(δ_2\)分别是左右极限所取的德尔塔．
   \end{proof}
 \end{theorem}
 
@@ -1223,108 +1424,135 @@
 \end{example*}
 
 \begin{example*}
-  函数\(f(x) = \arctan\dfrac1x\)在\(x = 0\)处的极限不存在．\rule[-2ex]{0ex}{5.5ex}
+  函数\(f(x) = \arctan(1/x)\)在\(x = 0\)处的极限不存在． % \rule[-2ex]{0ex}{5.5ex}
 \end{example*}
 
 \begin{example*}
-  函数\(f(x) = \dfrac{x}{\abs x + 1}\)在无穷处的极限不存在．\rule[-2ex]{0ex}{0ex}
+  函数\(f(x) = {x}/\paren{\abs{\,x\,} + 1}\)在无穷处的极限不存在． % \rule[-2ex]{0ex}{0ex}
 \end{example*}
 
 \begin{theorem*}[唯一性]
   函数的极限若存在则唯一．
+
+  \begin{remark}
+    参考定理~\ref{thm:cvguniq}的证明即可．
+  \end{remark}
 \end{theorem*}
 
 \begin{theorem*}[有界性]
-  若函数\(f\)在\(x \to x_0\)时的极限存在，则其在\(x_0\)附近有界．
+  若函数\(f\)在\(x \to x_0\!\)时的极限存在，则其在\(x_0\)附近有界．
+
+  \begin{remark}
+    参考定理~\ref{thm:cvgbnd}的证明即可．
+  \end{remark}
 \end{theorem*}
 
 \begin{theorem}[保号性]
   \label{thm:limfuncsgnprsv}
-  若函数\(f\)在\(x \to x_0\)时收敛于某个非零数\(A\)，则其在\(x_0\)附近拥有与\(A\)相同的正负号．
+  若函数\(f\)在\(x \to x_0\!\)时收敛于某个非零数\(A\)，则其在\(x_0\)附近拥有与\(A\)相同的正负号．
+
+  \begin{remark}
+    参考定理~\ref{thm:cvgsgnprsv}的证明即可．
+  \end{remark}
 \end{theorem}
 
 % https://gallica.bnf.fr/ark:/12148/bpt6k3116z/f688.item
 % https://zbmath.org/46.0295.04
 \begin{theorem}
   \label{thm:limequiv}
-  函数\(f\)在\(x \to x_0\)时收敛于\(A\)的充分必要条件\footnote{这个条件又叫作极限的Heine定义．Sierpiński在1916年发现证明这两个定义等价，其实暗含了弱形式的选择公理．}是：对于任意的非\(x_0\)数列\(\Seq{x_n}\)，当它收敛于\(x_0\)时，就一定有数列\(\Seq{\,f(x_n)}\)收敛于\(A\)．
+  函数\(f\)在\(x \to x_0\!\)时收敛于\(A\)的充分必要条件\footnote{这个条件又叫作极限的Heine定义．Sierpiński在1916年发现证明这两个定义等价，其实暗含了弱形式的选择公理．}是：对于任意的非\(x_0\)数列\(\Seq{\,x_n}\)，当它收敛于\(x_0\)时，就一定有数列\(\Seq{\,f(x_n)}\)收敛于\(A\)．
 
   \begin{proof}
-    易证必要性．关于必要性，可以通过反证法证明．假设函数\(f\)在\(x \to x_0\)时不收敛于\(A\)，则能构造一个数列\(\Seq{x_n}\)使得它收敛于\(x_0\)但是数列\(\Seq{\,f(x_n)}\)不收敛于\(A\)．
+    易证必要性．关于必要性，可以通过反证法证明．假设函数\(f\)在\(x \to x_0\!\)时不收敛于\(A\)，则能构造一个数列\(\Seq{\,x_n}\)使得它收敛于\(x_0\)但是数列\(\Seq{\,f(x_n)}\)不收敛于\(A\)．
   \end{proof}
   \begin{remark}
-    实际上，对于单侧极限，也有类似的结论．只需把上面的非\(x_0\)数列\(\Seq{x_n}\)改成小于\(x_0\)的数列\(\Seq{x_n}\)（左侧极限）和大于\(x_0\)的数列\(\Seq{x_n}\)（右侧极限）即可．
+    实际上，对于单侧极限，也有类似的结论．只需把上面的“非\(x_0\)数列\(\Seq{\,x_n}\)”改成“小于\(x_0\)的数列\(\Seq{\,x_n}\)”（左侧极限）和“大于\(x_0\)的数列\(\Seq{\,x_n}\)”（右侧极限）即可．
   \end{remark}
 \end{theorem}
 
 \begin{example*}
-  函数\(f\)在\(\brktparen{a, +\infty}\)上有定义，在\(\brkt{a, A}\)上有界，其中\(A\)是任意一个大于等于\(a\)的数，并且在趋向于正无穷时极限存在．证明函数\(f\)在\(\brktparen{a, +\infty}\)上有界．
+  函数\(f\)在\(\brktparen{\,a, +\infty}\)上有定义，在\(\brkt{\,a, A\,}\)上有界，其中\(A\)是任意一个大于等于\(a\)的数，并且在趋向于正无穷时极限存在．证明函数\(f\)在\(\brktparen{\,a, +\infty}\)上有界．
 
   \begin{proof}
-    记\(B\)为函数在趋向正无穷时的极限．那么对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(x > δ\)时都有\(\abs*{\,f(x) - B} < ε\)，所以\(\abs[\big]{\,f(x)} < \abs[\big]{B} + ε\)．因此，函数\(f\)在\(\paren{δ, +\infty}\)上有界．又因为函数\(f\)在\(\brkt{a, δ}\)上也有界，所以它在\(\brktparen{a, +\infty}\)上有界．
+    记\(B\)为函数在趋向正无穷时的极限．那么对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(x > δ\)时都有\(\abs*{\ f(x) - B\,} < ε\)，所以\(\abs[\big]{\ f(x)} < \abs[\big]{\,B\,} + ε\)．因此，函数\(f\)在\(\paren{δ, +\infty}\)上有界．又因为函数\(f\)在\(\brkt{\,a, δ\,}\)上也有界，所以它在\(\brktparen{\,a, +\infty}\)上有界．
   \end{proof}
 \end{example*}
 
 \begin{example*}
-  试判断极限\(\lim_{x\to0} \cos\frac1x\)存在与否．
+  试判断极限\(\,\lim\limits_{x\to0} \cos(1/x)\)存在与否．
 
   \begin{remark}
-    不存在．下面给出两种证明．
+    不存在．下面给出两种证明．可以发现，对于这种否定性的命题，使用极限的Heine定义要方便得多．
   \end{remark}
 
   \begin{proof}
-    对于任意的\(A \in \R\)，都存在\(ε > 0\)使得当\(δ > 0\)时都能找到一个\(x\)满足\(0 < \abs{x} < δ\)且\(\abs[\big]{\cos\frac1x - A} \ge ε\)．当\(A \notin \brkt{-1, 1}\)时，只需取\(ε = \abs{A} - 1\)即可．当\(A \in \paren{-1, 1}\)时，取\(ε = \frac{1-\abs{A}}{2}\)和\(x = \frac{1}{2\pi\paren*{\ceil{1/2\piδ}+1}}\)即可．当\(A \in \Set{-1, 1}\)时，取\(ε = 1/2\)和\(x = \frac{1}{\pi/2 + 2\pi\ceil*{1/2\piδ}}\)即可．
+    对于任意的\(A \in \R\)，都存在\(ε_0 > 0\)使得当\(δ > 0\)时都能找到一个\(x_0\)满足\(0 < \abs{\,x_0\,} < δ\)且\(\abs[\big]{\,\cos(1/x_0) - A\,} \ge ε_0\)．当\(A \notin \brkt{-1, 1}\)时，只需取\(ε_0 = \abs{\,A\,} - 1\)即可．当\(A \in \paren{-1, 1}\)时，取\(ε_0 = \paren{1-\abs{\,A\,}}/{2}\)和\(x_0 = {1}/\brkt{2\pi\paren{\ceil{1/2\piδ}+1}}\)即可．当\(A \in \Set{-1, 1}\)时，取\(ε_0 = 1/2\)和\(x_0 = {1}/\paren{\pi/2 + 2\pi\ceil{1/2\piδ}}\)即可．
   \end{proof}
 
   \begin{proof}
-    令\(x_n = \frac1{2n\pi},\ \bar x_n = \frac1{\pi/2 + 2n\pi}\)．显然有非零数列\(\Seq{x_n}\)和数列\(\Seq{\bar x_n}\)都收敛于\(0\)，但数列\(\Seq{\,f(x_n)}\)和\(\Seq{\,f(\bar x_n)}\)收敛于不同的值．
+    令\(x_n = 1/\paren{2n\pi},\ \bar x_n = 1/\paren{\pi/2 + 2n\pi}\)．显然有非零数列\(\Seq{\,x_n}\)和数列\(\Seq{\,\bar x_n}\)都收敛于\(0\)，但数列\(\Seq{\,f(x_n)}\)和\(\Seq{\,f(\bar x_n)}\)收敛于不同的值．
   \end{proof}
 \end{example*}
 
+% Bartle & Sherbert, 4th ed. (128)
+% Baby Rudin, 3rd ed. (100)
+% Cooke's Solutions to Baby Rudin (57)
+% Dunham (149)
+% Abbott, 2nd ed. (114)
+% http://resolver.sub.uni-goettingen.de/purl?PPN575586591
+% https://mdz-nbn-resolving.de/details:bsb11309553
 \begin{example*}[Thomae函数]
-  设\(x_0\)是一个实数．试证明函数
+  设\(x_0\)是一个实数．试证明函数\footnote{此函数由Johannes Thomae于1875年在讨论可积性时提出．}
   \begin{equation*}
     f(x) =
     \begin{cases}
-      \frac1q, & \text{\(x = \frac pq\)，其中\(p \in \Z\)与\(q \in \N^+ \)互质，} \\
+      1/q, & \text{\(x = p/q\)，其中\(p \in \Z\)与\(q \in \N^+ \)互质，} \\
       1, & x = 0, \\
       0, & \otherwise
     \end{cases}
   \end{equation*}
-  在\(x \to x_0\)时收敛于\(0\)．
+  在\(x \to x_0\!\)时收敛于\(0\)．
 
   \begin{remark}
     下面给出两种证明．
   \end{remark}
 
   \begin{proof}
-    我们可以将此函数看成直尺上的刻度．可以先考察的此函数的一些性质，易知\(1\)和\(0\)分别是它的上下界，它是一个周期为\(1\)的函数．那么只需证明它在区间\(\paren{0,1}\)上的极限、在\(0\)处的右极限、在\(1\)处的左极限都是\(0\)即可．对于任意的\(ε > 0\)，大于\(ε\)的刻度精度集合\(Q_ε^* = \Set[\big]{\,1/q \mid q \in \N^+ \tand 1/q \ge ε\,}\)显然是有限的．又因为由刻度精度\(1/p\)派生出来的刻度集合\(P_{1/q} = \Set[\big]{\,p/q \mid p \in \N^+ \tand p < q\,}\)也是有限的，那么刻度集合
+    我们可以将此函数看成直尺上的刻度．可以先考察的此函数的一些性质，易知\(1\)和\(0\)分别是它的上下界，它是一个周期为\(1\)的函数．那么只需证明它在区间\(\paren{0,1}\)上的极限、在点\(0\)处的右极限、在点\(1\)处的左极限都是\(0\)即可．对于任意的\(ε > 0\)，大于\(ε\)的刻度精度集合
+    \begin{equation*}
+      Q_ε^* = \Set[\big]{\, 1/q \,\mid\, q \in \N^+ \tand 1/q \ge ε \,}
+    \end{equation*}
+    显然是有限的．又因为由刻度精度\(1/p\)派生出来的刻度集合
+    \begin{equation*}
+      P_{1/q} = \Set[\big]{\, p/q \,\mid\, p \in \N^+ \tand p < q \,}
+    \end{equation*}
+    也是有限的，那么刻度集合
     \begin{equation*}
       P_{Q_ε^*}
-      = {}\smashoperator{\bigcup_{1/q \in Q_ε^*}} P_{1/q}
-      = \Set[\big]{\,p/q \mid p,q \in \N^+,\ 1/q \ge ε,\  p < q\,}
+      = {}\smashoperator{\bigcup_{1/q \in Q_ε^*}} \, P_{1/q}
+      = \Set[\big]{\, p/q \,\mid\, p,q \in \N^+,\ 1/q \ge ε,\  p < q\,}
     \end{equation*}
-    也是有限的．当\(x_o \in \paren{0,1}\)时，令\(X = \paren[\big]{P_{Q_ε^*} \!\setminus \Set{x_0}} \cup \Set{0,1}\)，取
+    也是有限的．当\(x_0 \in \paren{0,1}\)时，令\(X = \paren[\big]{P_{Q_ε^*} \!\setminus \Set{x_0}} \cup \Set{0,1}\)，取
     \begin{equation*}
-      δ = \min\Set[\big]{\,\abs{x - x_0} \mid x \in X\,}
+      δ = \min\Set[\big]{\, \abs{\ x - x_0\,} \,\mid\, x \in X\,}
     \end{equation*}
-    即可使当\(0 < \abs*{x - x_0} < δ\)时都有\(f(x) < ε\)．同理，可证函数\(f\)在\(0\)处的右极限和在\(1\)处的左极限也是\(0\)，从而它在\(\R\)上的所有极限都是\(0\)．
+    即可使当\(0 < \abs{\ x - x_0\,} < δ\)时都有\(f(x) < ε\)．同理，可证函数\(f\)在点\(0\)处的右极限和在点\(1\)处的左极限也是\(0\)，从而它在\(\R\)上的所有极限都是\(0\)．
   \end{proof}
   % TODO: Tidy up the proof
   \begin{proof}
-    对于任意的收敛于\(x_0\)的非\(x_0\)数列\(\Seq{x_n}\)，它一定能分割成有理数和无理数两个部分，这两个部分不可能都是有限的，也就是说这两个部分当中，至少有一个部分是无限的．若无理数的那个部分是无限的，将这个部分构成的子列记为\(\Seq{x_{n_k}}\)．那么数列\(\Seq{\,f(x_{n_k})}\)自然收敛于\(0\)．若有理数的那个部分是无限的，将这个部分构成的子列记为\(\Seq{\bar x_{n_k}}\)．只要说明数列\(\Seq{\,f(\bar x_{n_k})}\)也收敛于\(0\)，就能说明数列\(\Seq{\,f(x_n)}\)也收敛于\(0\)，从而函数在\(x \to x_0\)时也收敛于\(0\)．
+    对于任意的收敛于\(x_0\)的非\(x_0\)数列\(\Seq{\,x_n}\)，它一定能分割成有理数和无理数两个部分，这两个部分不可能都是有限的，也就是说这两个部分当中，至少有一个部分是无限的．若无理数的那个部分是无限的，将这个部分构成的子列记为\(\Seq{\,x_{n_k}}\)．那么数列\(\Seq{\,f(x_{n_k})}\)自然收敛于\(0\)．若有理数的那个部分是无限的，将这个部分构成的子列记为\(\Seq{\,\bar x_{n_k}}\)．只要说明数列\(\Seq{\,f(\bar x_{n_k})}\)也收敛于\(0\)，就能说明数列\(\Seq{\,f(x_n)}\)也收敛于\(0\)，从而函数在\(x \to x_0\!\)时也收敛于\(0\)．
 
-    接下来，我们来证明数列\(\Seq{\,f(\bar x_{n_k})}\)确实收敛于\(0\)．只需证明，对于任意的\(ε > 0\)，只存在有限个项\(\bar x_{n_k}\)满足\(\,f(\bar x_{n_k}) \ge ε\)即可．因为取\(K = \max\Set[\big]{\,k \mid \,f(\bar x_{n_k}) \ge ε\,}\)，就能使得当\(k > K\)时都有\(f(\bar x_{n_k}) < ε\)．因为\(\bar x_{n_k}\)是有理数，必然能写成\(\bar x_{n_k} = p_k/q_k\)的形式．令
+    接下来，我们来证明数列\(\Seq{\,f(\bar x_{n_k})}\)确实收敛于\(0\)．只需证明，对于任意的\(ε > 0\)，只存在有限个项\(\bar x_{n_k}\)满足\(\,f(\bar x_{n_k}) \ge ε\)即可．因为取\(K = \max\Set[\big]{\, k \,\mid\, f(\bar x_{n_k}) \ge ε\,}\)，就能使得当\(k > K\)时都有\(f(\bar x_{n_k}) < ε\)．因为\(\bar x_{n_k}\)是有理数，必然能写成\(\bar x_{n_k} = p_k/q_k\)的最简分数形式．令
     \begin{equation*}
       P = \Set[\big]{\, p_k \mid \,f(p_k/q_k) \ge ε\,}, \quad
       Q = \Set[\big]{\, q_k \mid \,f(p_k/q_k) \ge ε\,}, \quad
       R = \Set[\big]{\, p_k/q_k \mid \,f(p_k/q_k) \ge ε\,}.
     \end{equation*}
-    易证\(\card*Q \in \N\)，从而\(\card*P \in \N\)，所以\(\card*R \in \N\)．若有无穷多项\(\bar x_{n_k}\)满足\(f(\bar x_{n_k}) \ge ε\)，则对于任意的正整数\(K\)都存在一个\(k > K\)满足
+    由于实数的阿基米德性质，易知有\(\card*{\,Q\,} \in \N\)和\(\card*{\,P\,} \in \N\)，从而\(\card*{\,R\,} \in \N\)．若有无穷多项\(\bar x_{n_k}\)满足\(f(\bar x_{n_k}) \ge ε\)，则对于任意的正整数\(K\)都存在一个\(k > K\)满足
     \begin{equation*}
-      \abs[\big]{\bar x_{n_k} - x_0} \ge \min\Set[\big]{\,\abs{r - x_0} \mid r \in R \,} > 0.
+      \abs[\big]{\ \bar x_{n_k} - x_0\,} \ge \min\Set[\big]{\,\abs{\ r - x_0\,} \,\mid\, r \in R \,} > 0.
     \end{equation*}
-    这与子列\(\Seq[\big]{\bar x_{n_k}}\)收敛于\(x_0\)是矛盾的．因此只存在有限个项\(\bar x_{n_k}\)满足\(f(\bar x_{n_k}) \ge ε\)．
+    这与子列\(\Seq{\,\bar x_{n_k}}\)收敛于\(x_0\)是矛盾的．因此只存在有限个项\(\bar x_{n_k}\)满足\(f(\bar x_{n_k}) \ge ε\)．
   \end{proof}
 \end{example*}
 
@@ -1339,8 +1567,8 @@
     \begin{equation*}
       \paren[\big]{\forall ε > 0}
       \paren[\big]{\exists N > 0}
-      \paren[\big]{\forall \abs{x} > N}
-      \paren[\big]{\abs[\big]{\,f(x) - A} < ε}.
+      \paren[\big]{\forall \abs{\,x\,} > N}
+      \paren[\big]{\abs[\big]{\ f(x) - A\,} < ε}.
     \end{equation*}
   \fi
 
@@ -1348,20 +1576,19 @@
 \item 思考函数极限与数列极限之间的关系，并尝试通过数列极限给出各种函数极限存在的柯西收敛原理．
 
   \ifshowsolp
-    设函数\(f\)在点\(a\)附近有定义，当
+    设函数\(f\)在点\(a\)附近有定义．我们称\(f\)在点\(a\)处柯西收敛，当且仅当：
     \begin{equation*}
       \paren[\big]{\forall ε > 0}
       \paren[\big]{\exists δ > 0}
       \paren[\big]{\forall \abs[\big]{x - a} < δ}
       \paren[\big]{\forall \abs[\big]{y - a} < δ}
-      \paren[\big]{\abs[\big]{\,f(x) - f(y)} < ε}
+      \paren[\big]{\abs[\big]{\,f(x) - f(y)} < ε}.
     \end{equation*}
-    时，我们称\(f\)在点\(a\)处柯西收敛．
 
     函数的柯西收敛原理无非是说：函数\(f\)在点\(a\)处极限存在的充分必要条件是它在点\(a\)处柯西收敛．
 
     \begin{proof}
-      易证必要性．下面来证一下充分性．对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(\abs{x - a} < δ,\ \abs{y - a} < δ\)时都有\(\abs*{\,f(x) - f(y)} < ε\)．这时，对于任何收敛于\(a\)的非\(a\)数列\(\Seq{x_n}\)，自然存在一个正整数\(N\)使得：当\(n\)和\(m\)大于\(N\)时，都有\(\abs*{x_n - a} < δ\)和\(\abs*{x_m - a} < δ\)．所以有\(\abs*{\,f(x_n) - f(x_m)} < ε\)．这就说明数列\(\Seq{\,f(x_n)}\)是柯西列，从而收敛．与不同的数列\(\Seq{x_n}\)所对应的数列\(\Seq{\,f(x_n)}\)必然收敛于同一个数．因为假设收敛于不同的两个数，将不同的两个数列可以合并成一个新的数列\(\Seq{\bar x_n}\)，从而推出\(\Seq{\,f(\bar x_n)}\)发散．这和前面的结论时矛盾的．因此，函数\(f\)在点\(a\)处的极限存在．
+      易证必要性．下面来证一下充分性．对于任意的\(ε > 0\)都存在\(δ > 0\)使得当\(\abs{\,x - a\,} < δ,\ \abs{\,y - a\,} < δ\)时都有\(\abs*{\ f(x) - f(y)\,} < ε\)．这时，对于任何收敛于\(a\)的非\(a\)数列\(\Seq{\,x_n}\)，自然存在一个正整数\(N\)使得：当\(m\)和\(n\)大于\(N\)时，都有\(\abs*{\,x_m - a\,} < δ\)和\(\abs*{\,x_n - a\,} < δ\)．所以有\(\abs*{\ f(x_m) - f(x_n)\,} < ε\)．这就说明数列\(\Seq{\,f(x_n)}\)是柯西列，从而收敛．与不同的数列\(\Seq{x_n}\)所对应的数列\(\Seq{\,f(x_n)}\)必然收敛于同一个数．因为假设收敛于不同的两个数，将不同的两个数列可以合并成一个新的数列\(\Seq{\bar x_n}\)，从而推出\(\Seq{\,f(\bar x_n)}\)发散．这和前面的结论时矛盾的．因此，函数\(f\)在点\(a\)处的极限存在．
     \end{proof}
   \fi
 \end{enumerate}
@@ -1371,7 +1598,7 @@
 \subsection*{练习}
 
 \begin{enumerate}
-\item 若\(\lim_{x\to0} \,f(x) = 1\)，则必定\uline{\makebox[6em]{}}．
+\item 若\(\lim\limits_{x\to0} \,f(x) = 1\)，则必定\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(f(0) = 1\)
@@ -1385,7 +1612,7 @@
   \item 函数\(f\)在原点附近不等于\(1\)
   \end{itemize}
 
-\item 函数\(f(x) = \abs x / x\)在原点处\uline{\makebox[6em]{}}．
+\item 函数\(f(x) = \abs{\,x\,} / x\)在原点处\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 极限存在且为\(1\)
@@ -1450,10 +1677,10 @@
       \fi}}．
   \begin{enumerate}
     \renewcommand{\labelenumii}{\enumparen{\arabic{enumii}}}
-  \item 若\(\lim_{x\to0} \,f(x^2) = A\)，则\(\lim_{x\to0} \,f(x) = A\)
-  \item 若\(\lim_{x\to0} \,f(x^3) = A\)，则\(\lim_{x\to0} \,f(x) = A\)
-  \item 若函数\(f\)是周期函数且\(\lim_{x\to0} \,f(x) = A\)，则\(f(x) \equiv A\)
-  \item 若函数\(f\)是周期函数且\(\lim_{x\to\infty} \,f(x) = A\)，则\(f(x) \equiv A\)
+  \item 若\(\lim\limits_{x\to0} \,f(x^2) = A\)，则\(\lim_{x\to0} \,f(x) = A\)
+  \item 若\(\lim\limits_{x\to0} \,f(x^3) = A\)，则\(\lim_{x\to0} \,f(x) = A\)
+  \item 若函数\(f\)是周期函数且\(\lim\limits_{x\to0} \,f(x) = A\)，则\(f(x) \equiv A\)
+  \item 若函数\(f\)是周期函数且\(\lim\limits_{x\to\infty} \,f(x) = A\)，则\(f(x) \equiv A\)
   \end{enumerate}
 
 \item 狄利克雷函数（定义~\ref{defn:dirichlet}）\uline{\makebox[6em]{}}．
@@ -1477,28 +1704,28 @@
     \begin{math}
       \paren[\big]{\exists ε > 0}
       \paren[\big]{\forall δ > 0}
-      \paren[\big]{\forall 0 < \abs{x} < δ}
-      \paren[\big]{\abs[\big]{\,f(x) - A} < ε}
+      \paren[\big]{\forall 0 < \abs{\,x\,} < δ}
+      \paren[\big]{\abs[\big]{\ f(x) - A\,} < ε}
       \implies
-      \lim_{x\to0} \,f(x) = A
+      \lim\limits_{x\to0} \,f(x) = A
     \end{math}
   \item
     \begin{math}
       \paren[\big]{\exists ε > 0}
       \paren[\big]{\exists δ > 0}
-      \paren[\big]{\forall 0 < \abs{x} < δ}
-      \paren[\big]{\abs[\big]{\,f(x) - A} < ε}
+      \paren[\big]{\forall 0 < \abs{\,x\,} < δ}
+      \paren[\big]{\abs[\big]{\ f(x) - A\,} < ε}
       \implies
-      \lim_{x\to0} \,f(x) = A
+      \lim\limits_{x\to0} \,f(x) = A
     \end{math}
   \item
     \begin{math}
-      \lim_{x\to0} \,f(x) = A
+      \lim\limits_{x\to0} \,f(x) = A
       \implies
       \paren[\big]{\forall ε > 0}
       \paren[\big]{\forall δ > 0}
-      \paren[\big]{\forall 0 < \abs{x} < δ}
-      \paren[\big]{\abs[\big]{\,f(x) - A} < ε}
+      \paren[\big]{\forall 0 < \abs{\,x\,} < δ}
+      \paren[\big]{\abs[\big]{\ f(x) - A\,} < ε}
     \end{math}
     \ifshowsol
     \item[\faCircle]
@@ -1508,10 +1735,10 @@
     \begin{math}
       \paren[\big]{\forall ε > 0}
       \paren[\big]{\forall δ > 0}
-      \paren[\big]{\forall 0 < \abs{x} < δ}
-      \paren[\big]{\abs[\big]{\,f(x) - A} < ε}
+      \paren[\big]{\forall 0 < \abs{\,x\,} < δ}
+      \paren[\big]{\abs[\big]{\ f(x) - A\,} < ε}
       \implies
-      \lim_{x\to0} \,f(x) = A
+      \lim\limits_{x\to0} \,f(x) = A
     \end{math}
   \end{itemize}
 \end{enumerate}
@@ -1522,12 +1749,12 @@
 % TODO: Expatiate on tending to infinity
 \begin{theorem}[函数极限的四则运算]
   \label{thm:limfunc4ops}
-  若\(\lim_{x \to x_0} \,f(x) = A,\ \lim_{x \to x_0} \,g(x) = B\)，则
+  若\(\!\lim\limits_{\,x \to x_0\!} \,f(x) = A, \lim\limits_{\,x \to x_0\!} g(x) = B\)，则
   \begin{enumerate}
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
-  \item \(\displaystyle \lim_{x \to x_0} \paren*{\,f(x) \pm g(x)} = A \pm B\)；
-  \item \(\displaystyle \lim_{x \to x_0} \,f(x)\,g(x) = AB\)；
-  \item \(\displaystyle \lim_{x \to x_0} \tfrac{f(x)}{g(x)} = \tfrac AB\ (B \ne 0)\)．
+  \item \(\lim\limits_{\,x \to x_0\!} \paren*{\,f(x) \pm g(x)} = A \pm B\)，
+  \item \(\lim\limits_{\,x \to x_0\!} \,f(x)\,g(x) = AB\)，
+  \item \(\lim\limits_{\,x \to x_0\!} {\,f(x)}/{g(x)} = A/B\ (B \ne 0)\)．
   \end{enumerate}
 
   \begin{proof}
@@ -1536,28 +1763,32 @@
 \end{theorem}
 
 \begin{example*}
-  求\(\!\lim\limits_{x\to+\infty} \dfrac{5a^x - 3b^x}{5a^x + 3b^x}\ (a > 0,\ b > 0)\)．\rule{0ex}{4ex}
+  求\(\!\lim\limits_{\,x\to+\infty\!} \! \paren{5a^x - 3b^x}/\paren{5a^x + 3b^x}\ (a > 0,\ b > 0)\)．\rule{0ex}{4ex}
 
   \begin{remark}
-    当\(a = b\)时，有\(\lim_{x\to+\infty} \frac{5a^x - 3b^x}{5a^x + 3b^x} = \lim_{x\to+\infty} \frac{5a^x - 3a^x}{5a^x + 3a^x} = \frac14\)．当\(a > b\)时，有
+    当\(a = b\)时，有
+    \begin{equation*}
+      \lim_{x\to+\infty} \! \frac{5a^x - 3b^x}{5a^x + 3b^x} = \lim_{x\to+\infty} \! \frac{5a^x - 3a^x}{5a^x + 3a^x} = \frac14.
+    \end{equation*}
+    当\(a > b\)时，有
     \begin{align*}
-      \lim_{x\to+\infty} \frac{5a^x - 3b^x}{5a^x + 3b^x}
-      &= \lim_{x\to+\infty} \frac{5 - 3(b^x\!/a^x)}{5 + 3(b^x\!/a^x)}
-        = \lim_{x\to+\infty} \frac{5 - 3(b/a)^x}{5 + 3(b/a)^x}
+      \lim_{x\to+\infty} \! \frac{5a^x - 3b^x}{5a^x + 3b^x}
+      &= \! \lim_{x\to+\infty} \! \frac{5 - 3(b^x\!/a^x)}{5 + 3(b^x\!/a^x)}
+        = \! \lim_{x\to+\infty} \! \frac{5 - 3(b/a)^x}{5 + 3(b/a)^x}
       && \reason{变形} \\
-      &= \frac{\lim_{x\to+\infty} \paren*{5 - 3(b/a)^x}}{\lim_{x\to+\infty} \paren*{5 + 3(b/a)^x}}
-      && \reason{除法规则} \\
-      &= \frac{\lim_{x\to+\infty} 5 - \lim_{x\to+\infty} 3(b/a)^x}{\lim_{x\to+\infty} 5 + \lim_{x\to+\infty} 3(b/a)^x}
-      && \reason{加减法规则} \\
-      &= \frac{5 - 3 \lim_{x\to+\infty} (b/a)^x}{5 + 3 \lim_{x\to+\infty} (b/a)^x}
-      && \reason{乘法规则} \\
+      &= \frac{\! \lim\limits_{x\to+\infty} \! \paren*{5 - 3(b/a)^x}}{\! \lim\limits_{x\to+\infty} \! \paren*{5 + 3(b/a)^x}}
+      && \reason{除法法则} \\
+      &= \frac{\! \lim\limits_{x\to+\infty} \! 5 - \, \lim\limits_{\mathclap{x\to+\infty}} \ 3(b/a)^x}{\! \lim\limits_{x\to+\infty} \! 5 + \, \lim\limits_{\mathclap{x\to+\infty}} \ 3(b/a)^x}
+      && \reason{加减法法则} \\
+      &= \frac{5 - 3 \lim\limits_{\mathclap{x\to+\infty}} \ (b/a)^x}{5 + 3 \lim\limits_{\mathclap{x\to+\infty}} \ (b/a)^x}
+      && \reason{乘法法则} \\
       &= 1.
     \end{align*}
-    同理可知，当\(a < b\)时，有\(\lim_{x\to+\infty} \frac{5a^x - 3b^x}{5a^x + 3b^x} = -1\)．所以,
+    同理可知，当\(a < b\)时，有\(\!\lim\limits_{x\to+\infty} \! \paren{5a^x - 3b^x}/\paren{5a^x + 3b^x} = -1\)．所以,
     \begin{equation*}
-      \lim_{x\to+\infty} \frac{5a^x - 3b^x}{5a^x + 3b^x} =
+      \lim_{x\to+\infty} \! \frac{5a^x - 3b^x}{5a^x + 3b^x} =
       \begin{cases}
-        \dfrac14, & a = b, \\
+        1/4, & a = b, \\
         1, & a > b, \\
         -1, & a < b.
       \end{cases}
@@ -1566,7 +1797,7 @@
 \end{example*}
 
 \begin{example*}
-  求\(\displaystyle \lim_{x\to2} \frac{x^2 + x - 6}{\sqrt{x\mathstrut} - \sqrt{4-x\mathstrut}}\)．
+  求\(\lim\limits_{x\to2} \, \paren[\big]{x^2 + x - 6}\big/\paren[\big]{\sqrt{x\mathstrut} - \sqrt{4-x\mathstrut}}\)．
 
   \begin{remark}
     分母有理化后，得到
@@ -1596,19 +1827,19 @@
 \end{theorem}
 
 \begin{example*}
-  令\(f(u) = \abs*{\sgn x}\,,\ g(x) = x \Fn D(x)\)．复合函数\(f \circ g\)在原点处的极限存在吗？
+  令\(f(u) = \abs{\,\sgn x\,}\,,\ g(x) = x \Fn D(x)\)．复合函数\(f \circ g\)在原点处的极限存在吗？
 
   \begin{remark}
     不存在．若“生吞活剥”地套用上述定理，就可能得出极限存在且为\(1\)的结论．实际上，
     \begin{equation*}
       (\,f \circ g)(x)
-      = \abs[\Big]{\sgn\paren[\big]{x \Fn D(x)}} =
+      = \abs[\Big]{\,\sgn\paren[\big]{x \Fn D(x)}} =
       \begin{cases}
         \Fn D(x), & x \ne 0, \\
         0, & x = 0.
       \end{cases}
     \end{equation*}
-    函数的极限在某点处的极限和它在这点的取值无关，狄利克雷函数在实轴上处处极限不存在，因此该复合函数在原点自然也不存在．误用上述定理的原因是：函数\(g\)在原点附近总是能取到\(0\)，由于无理数是稠密的．
+    函数的极限在某点处的极限和它在这点的取值无关，狄利克雷函数在实轴上处处极限不存在，因此该复合函数在原点自然也不存在．误用上述定理的原因是：由于无理数是稠密的，函数\(g\)在原点附近总是能取到\(0\)．
   \end{remark}
 \end{example*}
 
@@ -1619,12 +1850,12 @@
   \begin{proof}
     运用两次定理~\ref{thm:limfunccomp}和一次定理~\ref{thm:limfunc4ops}，有
     \begin{align*}
-      \lim_{x \to x_0\!} \,f(x)^{g(x)}
-      &= {}\smashoperator{\lim_{x \to x_0\!}} \expb[\Big]{\ln \,f(x)^{g(x)}}
-        = {}\smashoperator{\lim_{x \to x_0\!}} \expb[\Big]{g(x) \ln \,f(x)}
-        = \expb[\Big]{\lim_{x \to x_0\!} g(x) \ln \,f(x)} \\
-      &= \expb[\Big]{\lim_{x \to x_0\!} g(x) \smashoperator[r]{\lim_{x \to x_0\!}} \ln \,f(x)}
-        = \expb[\Big]{B \ln {}\smashoperator{\lim_{x \to x_0\!}} \,f(x)} \\
+      \lim_{\,x \to x_0\!} \,f(x)^{g(x)}
+      &= \smashoperator{\lim_{\,x \to x_0\!}} \expb[\Big]{\ln \,f(x)^{g(x)}}
+        = \smashoperator{\lim_{\,x \to x_0\!}} \expb[\Big]{g(x) \ln \,f(x)}
+        = \expb[\Big]{\lim_{\,x \to x_0\!} g(x) \ln \,f(x)} \\
+      &= \expb[\Big]{\lim_{\,x \to x_0\!} g(x) \smashoperator[r]{\lim_{\,x \to x_0\!}} \ln \,f(x)}
+        = \expb[\Big]{B \ln \smashoperator{\lim_{\,x \to x_0\!}} \,f(x)} \\
       &= \expb[\big]{B \ln A} = \expb[\big]{\ln A^B} = A^B.
     \end{align*}
     注意，在使用定理~\ref{thm:limfunccomp}的时候，用到了指数函数和对数函数都是连续函数（见\hyperref[ch:cont]{下章}）的事实．
@@ -1637,33 +1868,33 @@
   \begin{enumerate}[topsep=0ex,itemsep=0ex]
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
   \item 在点\(x_0\)附近有\(f \le g \le h\)，
-  \item \(\lim\limits_{x \to x_0} \,f(x) = \lim\limits_{x \to x_0} h(x) = A\)，
+  \item \(\lim\limits_{\,x \to x_0\!} \,f(x) = \lim\limits_{\,x \to x_0\!} h(x) = A\)，
   \end{enumerate}
-  则\(\lim\limits_{x \to x_0} g(x) = A\)．
+  则\(\!\lim\limits_{\,x \to x_0\!} g(x) = A\)．
 
   \begin{proof}
-    应用定理~\ref{thm:limequiv}即可得证．
+    应用定理~\ref{thm:squeeze}和定理~\ref{thm:limequiv}即可得证．
   \end{proof}
 \end{theorem}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} x \floor[\bigg]{\dfrac1x}\)．
+  求\(\lim\limits_{x\to0} x \, \floor{1/x}\)．
 
   \begin{remark}
     实际上，当\(x > -1\)时，有
     \begin{equation*}
       \Fn H(-x) + \frac{\floor{1/x}}{\floor{1/x}+1} \Fn H(x)
       \le
-      x \floor[\bigg]{\dfrac1x}
+      x \, \floor[\bigg]{\,\frac1x\,}
       \le
       \frac{\floor{1/x}}{\floor{1/x}+1} \Fn H(-x) + \Fn H(x),
     \end{equation*}
-    其中\(\Fn H\)为单位阶跃函数（定义~\ref{defn:heaviside}）．所以，\(\lim\limits_{x\to0} x \floor[\bigg]{\dfrac1x} = 1\)．
+    其中\(\Fn H\)为单位阶跃函数（定义~\ref{defn:heaviside}）．所以，\(\lim\limits_{x\to0} x \, \floor{1/x} = 1\)．
   \end{remark}
 \end{example*}
 
 \begin{theorem*}
-  \(\lim\limits_{x\to0} \dfrac{\sin x}{x} = 1\).
+  \(\lim\limits_{x\to0} \,\paren{\sin x}/{x} = 1\)．
 
   \begin{proof}
     根据三角函数在几何上的意义，当\(0 < x < \pi/2\)时，有
@@ -1676,9 +1907,9 @@
     \end{equation*}
     使用一次夹逼定理，得
     \begin{equation*}
-      \lim_{x\to0^+\negthickspace} \frac{\sin x}{x} = 1,
+      \lim_{x\to0^+\!} \! \frac{\sin x}{x} = 1,
     \end{equation*}
-    又因为这个函数是偶函数，所以\(\lim\limits_{x\to0} \dfrac{\sin x}{x} = 1\)．
+    又因为这个函数是偶函数，所以\(\lim\limits_{x\to0} \,\paren{\sin x}/{x} = 1\)．
   \end{proof}
 \end{theorem*}
 
@@ -1696,21 +1927,25 @@
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{\sin ax}{\sin bx}\ (b \ne 0)\)．
+  求\(\lim\limits_{x\to0} \,\paren{\sin ax}/\paren{\sin bx}\ (b \ne 0)\)．
 
   \begin{remark}
     当\(a \ne 0\)时，有
     \begin{equation*}
       \lim_{x\to0} \frac{\sin ax}{\sin bx}
-      = \lim_{x\to0} \frac{\sin ax}{ax} \frac{ax}{bx} \frac{bx}{\sin bx}
+      = \lim_{x\to0} \frac{\sin ax}{ax} \cdot \frac{ax}{bx} \cdot \frac{bx}{\sin bx}
       = \frac ab.
     \end{equation*}
-    当\(a = 0\)时，有\(\lim\limits_{x\to0} \dfrac{\sin ax}{\sin bx} = 0 = \dfrac ab\)．所以，无论\(a\)的取值，都有\(\lim\limits_{x\to0} \dfrac{\sin ax}{\sin bx} = \dfrac ab\)．
+    当\(a = 0\)时，有
+    \begin{equation*}
+      \lim\limits_{x\to0} \frac{\sin ax}{\sin bx} = 0 = \frac ab.
+    \end{equation*}
+    所以，无论\(a\)的取值，都有\(\lim\limits_{x\to0} \,\paren{\sin ax}/\paren{\sin bx} = a/b\)．
   \end{remark}
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to1} \dfrac{\sinp{1-x}}{\sqrt x - 1}\)．\rule{0ex}{3.5ex}
+  求\(\lim\limits_{x\to1} \,\paren[\big]{\sinp{1-x}}/\paren{\sqrt x - 1}\)． % \rule{0ex}{3.5ex}
 
   \begin{equation*}
     \lim_{x\to1} \frac{\sinp{1-x}}{\sqrt x - 1}
@@ -1720,18 +1955,18 @@
 \end{example*}
 
 \begin{example*}
-  求\(\;\smashoperator[l]{\lim\limits_{x\to\pi/2}} \dfrac{\cos x}{\pi/2 - x}\)．\rule{0ex}{3.5ex}
+  求\(\ \lim\limits_{\mathclap{x\to\pi/2}} \ \paren{\cos x}/\paren{\pi/2 - x}\)． % \rule{0ex}{3.5ex}
 
   \begin{equation*}
     \lim_{x\to\pi/2} \frac{\cos x}{\pi/2 - x}
-    = - \smashoperator{\lim_{x\to\pi/2}} \frac{\cosp{x-\pi/2+\pi/2}}{x - \pi/2}
-    = - \smashoperator{\lim_{x\to\pi/2}} \frac{-\sinp{x-\pi/2}}{x-\pi/2}
+    = \,\smashoperator{\lim_{x\to\pi/2}} \frac{\cosp{\pi/2 - x - \pi/2}}{\pi/2 - x}
+    = \,\smashoperator{\lim_{x\to\pi/2}} \frac{\sinp{\pi/2 - x}}{\pi/2 - x}
     = 1.
   \end{equation*}
 \end{example*}
 
 \begin{theorem*}
-  \(\!\lim\limits_{x\to\infty} \paren[\bigg]{1 + \dfrac1x}^x = e\).\rule{0ex}{3.5ex}
+  \(\lim\limits_{x\to\infty} \paren{1 + 1/x}^x = e\)． % \rule{0ex}{3.5ex}
 
   \begin{proof}
     应用定理~\ref{thm:seqe}和定理~\ref{thm:funcsqueeze}即可得证．
@@ -1739,7 +1974,7 @@
 \end{theorem*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{\ln(1+x)}{x} = 1\)．\rule{0ex}{3.5ex}
+  求\(\lim\limits_{x\to0} \,\paren[\big]{\ln(1+x)}/{x} = 1\)． % \rule{0ex}{3.5ex}
 
   \begin{remark}
     令\(t = 1/x\)，有
@@ -1754,7 +1989,7 @@
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{e^x-1}{x}\)．
+  求\(\lim\limits_{x\to0} \,\paren{e^x-1}/{x}\)．
 
   \begin{remark}
     令\(t = e^x - 1\)，有
@@ -1767,7 +2002,7 @@
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{a^x-1}{x}\ (a > 0)\)．
+  求\(\lim\limits_{x\to0} \,\paren{a^x-1}/{x}\ (a > 0)\)．
 
   \begin{remark}
     当\(a \ne 1\)时，有
@@ -1782,12 +2017,12 @@
       = \lim_{x\to0} \frac{0}{x}
       = 0 = \ln a.
     \end{equation*}
-    所以，\(\lim\limits_{x\to0} \dfrac{a^x-1}{x} = \ln a\)．
+    所以，\(\lim\limits_{x\to0} \,\paren{a^x-1}/{x} = \ln a\)．
   \end{remark}
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to\infty} \paren[\bigg]{\dfrac{x+5}{x+2}}^{\mathrlap{x+3}}\)．
+  求\(\lim\limits_{x\to\infty} \paren[\big]{\paren{x+5}/\paren{x+2}}^{x+3}\)．
 
   \begin{remark}
     稍作变形，有
@@ -1803,7 +2038,7 @@
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} (\cos x)^{1/\!\sin^2 x}\)．
+  求\(\lim\limits_{x\to0} \,(\cos x)^{1/\!\sin^2 x}\)．
 
   \begin{remark}
     稍作变形，有
@@ -1838,7 +2073,7 @@
 \begin{enumerate}
 \item 函数
   \begin{equation*}
-    f(x) = \frac{2+e^{1/x}}{1+e^{4/x}} + \frac{\sin x}{\abs x}
+    f(x) = \frac{2+e^{1/x}}{1+e^{4/x}} + \frac{\sin x}{\abs{\,x\,}}
   \end{equation*}
   在原点处\uline{\makebox[6em]{}}．
   \begin{itemize}
@@ -1868,51 +2103,51 @@
     所以函数\(f\)在原点处的极限是\(1\)．
   \fi
 
-\item 若\(\lim\limits_{x \to x_0} \,f(x)\)存在且\(\lim\limits_{x \to x_0} g(x)\)不存在，则\uline{\makebox[10em]{}}．
+\item 若\(\lim\limits_{\,x \to x_0\!} \,f(x)\)存在且\(\lim\limits_{\,x \to x_0\!} g(x)\)不存在，则\uline{\makebox[10em]{}}．
   \begin{itemize}[itemsep=1ex]
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(\lim\limits_{x \to x_0} \,f(x)\,g(x)\)和\(\lim\limits_{x \to x_0} \dfrac{g(x)}{f(x)}\)一定都不存在
-  \item \(\lim\limits_{x \to x_0} \,f(x)\,g(x)\)和\(\lim\limits_{x \to x_0} \dfrac{g(x)}{f(x)}\)一定都存在
-  \item 在\(\lim\limits_{x \to x_0} \,f(x)\,g(x)\)和\(\lim\limits_{x \to x_0} \dfrac{g(x)}{f(x)}\)中恰有一个存在
+  \item \(\lim\limits_{\,x \to x_0\!} \,f(x)\,g(x)\)和\(\lim\limits_{\,x \to x_0\!} {g(x)}/{\,f(x)}\)一定都不存在
+  \item \(\lim\limits_{\,x \to x_0\!} \,f(x)\,g(x)\)和\(\lim\limits_{\,x \to x_0\!} {g(x)}/{\,f(x)}\)一定都存在
+  \item 在\(\lim\limits_{\,x \to x_0\!} \,f(x)\,g(x)\)和\(\lim\limits_{\,x \to x_0\!} {g(x)}/{\,f(x)}\)中恰有一个存在
     \ifshowsol
     \item[\faCircle]
     \else
     \item
     \fi
-    \(\lim\limits_{x \to x_0} \paren*{\,f(x)+g(x)}\)和\(\lim\limits_{x \to x_0} \paren*{\,f(x)-g(x)}\)一定都不存在
+    \(\lim\limits_{\,x \to x_0\!} \paren*{\,f(x)+g(x)}\)和\(\lim\limits_{\,x \to x_0\!} \paren*{\,f(x)-g(x)}\)一定都不存在
   \end{itemize}
 
   \ifshowsol
-    令\(f(x) = x\)和\(g(x) = 1/x\)，可以证伪选项~A和~B．在此基础上，令\(g(x) = 1/x^2\)，可以证伪选项~C．实际上，在题干的条件下，\(\lim\limits_{x \to x_0} \paren*{\,f(x)+g(x)}\)、\(\lim\limits_{x \to x_0} \paren*{\,f(x)-g(x)}\)和\(\lim\limits_{x \to x_0} \dfrac{g(x)}{f(x)}\)一定都不存在．当\(\lim\limits_{x \to x_0} \,f(x) \ne 0\)时，\(\lim\limits_{x \to x_0} \,f(x)\,g(x)\)一定不存在．当\(\lim\limits_{x \to x_0} \,f(x) = 0\)时，\(\lim\limits_{x \to x_0} \,f(x)\,g(x)\)可能存在也可能不存在．
+    令\(f(x) = x\)和\(g(x) = 1/x\)，可以证伪选项~A和~B．在此基础上，令\(g(x) = 1/x^2\)，可以证伪选项~C．实际上，在题干的条件下，\(\!\lim\limits_{\,x \to x_0\!} \paren*{\,f(x)+g(x)}\)、\(\!\lim\limits_{\,x \to x_0\!} \paren*{\,f(x)-g(x)}\)和\(\!\lim\limits_{\,x \to x_0\!} {g(x)}/{\,f(x)}\)一定都不存在．当\(\!\lim\limits_{\,x \to x_0\!} \,f(x) \ne 0\)时，\(\!\lim\limits_{\,x \to x_0\!} \,f(x)\,g(x)\)一定不存在．当\(\!\lim\limits_{\,x \to x_0\!} \,f(x) = 0\)时，\(\!\lim\limits_{\,x \to x_0\!} \,f(x)\,g(x)\)可能存在也可能不存在．
   \fi
 
-\item 若\(\lim_{x\to\infty} \paren[\bigg]{\dfrac{x^2+1}{x+1} - ax -b} = 0\)，则\(a\)和\(b\)的值分别为\uline{\makebox[3em]{%
-      \ifshowsol
-        \(-1\)
-      \fi}}和\uline{\makebox[3em]{%
+\item 若\(\lim\limits_{x\to\infty} \paren[\big]{\paren{x^2+1}/\paren{x+1} - ax -b} = 0\)，则\(a\)和\(b\)的值分别为\uline{\makebox[3em]{%
       \ifshowsol
         \(1\)
+      \fi}}和\uline{\makebox[3em]{%
+      \ifshowsol
+        \(-1\)
       \fi}}．
 
-\item 求\(\lim\limits_{n\to\infty} \sin^2 \pi\sqrt{n^2+1}\)．
+\item 求\(\lim\limits_{n\to\infty} \sin^2 \paren[\big]{\pi\sqrt{n^2+1}}\)．
 
   \ifshowsol
     稍作变形，有
     \begin{align*}
       \lim_{n \to \infty} \sin^2 \pi\sqrt{n^2+1}
-      &= \lim_{n \to \infty} \sin^2 \brce[\big]{\paren[\big]{\sqrt{n^2+1} - \sqrt{n^2} + \sqrt{n^2}} \pi} \\
+      &= \lim_{n \to \infty} \sin^2 \brce[\big]{\paren[\big]{\sqrt{n^2+1} - n + n} \pi} \\
       &= \lim_{n \to \infty}
-        \bigl\lbrace
-        \sin\brkt[\big]{\paren[\big]{\sqrt{n^2+1} - \sqrt{n^2}}\pi}
-        \cos\pi\sqrt{n^2} \\
+        \Bigl\lbrace
+        \sin\brkt[\big]{\paren[\big]{\sqrt{n^2+1} - n}\pi}
+        \cos n\pi \\
       &\hphantom{= \lim_{n \to \infty} \lbrace} +
-        \cos\brkt[\big]{\paren[\big]{\sqrt{n^2+1} - \sqrt{n^2}}\pi}
-        \sin\pi\sqrt{n^2}
-        \bigr\rbrace^2 \\
+        \cos\brkt[\big]{\paren[\big]{\sqrt{n^2+1} - n}\pi}
+        \sin n\pi
+        \Bigr\rbrace^2 \\
       &= \lim_{n \to \infty}
-        \sin^2\brkt[\big]{\paren[\big]{\sqrt{n^2+1} - \sqrt{n^2}}\pi}
-        \cos^2\pi\sqrt{n^2} \\
-      &= \lim_{n \to \infty} \sin^2\brkt[\big]{\paren[\big]{\sqrt{n^2+1} - \sqrt{n^2}}\pi} \\
+        \sin^2\brkt[\big]{\paren[\big]{\sqrt{n^2+1} - n}\pi}
+        \cos^2 n\pi \\
+      &= \lim_{n \to \infty} \sin^2\brkt[\big]{π/\paren[\big]{\sqrt{n^2+1} + n}} \\
       &= 0.
     \end{align*}
   \fi
@@ -1925,7 +2160,21 @@
         \(1/2\)
       \fi}}．
 
-\item 求\(\lim\limits_{x\to0} \paren{2 \sin x + \cos x}^{1/x}\)．
+  \ifshowsol
+    令\(t = -x\)，有
+    \begin{equation*}
+      \begin{split}
+        \lim_{x\to-\infty} \paren[\big]{\sqrt{x^2 - x + 1} - ax - b}
+        &= \lim_{t\to+\infty} \paren[\big]{\sqrt{t^2 + t + 1} + at - b} \\
+        &= \lim_{t\to+\infty} \frac{t^2 + t + 1 - (at - b)^2}{\sqrt{t^2 + t + 1} - at + b} \\
+        &= \lim_{t\to+\infty} \frac{(1-a^2)t^2 + (1+2ab)t + 1 - b^2}{\sqrt{t^2 + t + 1} - at + b} \\
+        &= \lim_{t\to+\infty} \frac{(1-a^2)t + (1+2ab) + (1 - b^2)/t}{\sqrt{1 + 1/t + 1/t^2} - a + b/t}.
+      \end{split}
+    \end{equation*}
+    此时，若\(1 - a^2 \ne 0\)，则其发散．矛盾，所以有\(a^2 = 1\)．若\(a = 1\)且\(1 + 2ab \ne 0\)，则其亦发散．矛盾．若\(a = 1\)且\(1 + 2ab = 0\)，则其亦发散．矛盾，所以有\(a = -1\)．此时，其收敛于\((1 - 2b)/2\)，从而\(b = 1/2\)．
+  \fi
+
+\item 求\(\lim\limits_{x\to0} \,\paren{2 \sin x + \cos x}^{1/x}\)．
 
   \ifshowsol
     稍作变形，有
@@ -1965,13 +2214,13 @@
   \end{itemize}
 
   \ifshowsol
-    若令\(t_n = 1/n\pi\)，则\(\lim\limits_{n\to\infty} \,f\,\paren*{g(t_n)} = 0\)．若令\(t_n = 1/(n\pi+1)\)，则\(\lim\limits_{n\to\infty} \,f\,\paren*{g(t_n)} = 1\)．根据定理~\ref{thm:limequiv}，所以\(\lim\limits_{t\to0} \,f\,\paren*{g(t)}\)不存在．
+    若令\(t_n = 1/(nπ)\)，则\(\lim\limits_{n\to\infty} \,f\,\paren*{g(t_n)} = 0\)．若令\(t_n = 1/(n\pi+1)\)，则\(\lim\limits_{n\to\infty} \,f\,\paren*{g(t_n)} = 1\)．根据定理~\ref{thm:limequiv}，所以\(\lim\limits_{t\to0} \,f\,\paren*{g(t)}\)不存在．
   \fi
 
 \item 求\(\!\lim\limits_{\,x\to0^+\!} \paren{\cos\sqrt x}^{\pi/x}\)．
 
   \ifshowsol
-    略作变形，有
+    稍作变形，有
     \begin{equation*}
       \begin{split}
         \lim_{\,x\to0^+\!} \paren{\cos\sqrt x}^{\pi/x}
@@ -1982,10 +2231,10 @@
           \frac{\cos\sqrt x - 1}{x}} \\
         &= e^{-\pi/2}.
       \end{split}
-    \end{equation*}j
+    \end{equation*}
   \fi
 
-\item 求\(\lim\limits_{x\to1} \dfrac{\sinp{x-1}}{\sqrt x - 1}\)．
+\item 求\(\lim\limits_{x\to1} \,\paren[\big]{\sinp{x-1}}/\paren{\sqrt x - 1}\)．
   \ifshowsol
     \begin{equation*}
       \lim_{x\to1} \frac{\sinp{x-1}}{\sqrt x - 1}
@@ -1999,11 +2248,11 @@
 \section{无穷小量及其（阶的）比较}
 
 \begin{definition*}
-  若\(\!\lim\limits_{\,x \to x_0\!} \,f(x) = 0\)，则称函数\(f\)在\(x \to x_0\)时是一个无穷小量，记作\(f(x) = \littleo(1)\ (x \to x_0)\)．
+  若\(\!\lim\limits_{\,x \to x_0\!} \,f(x) = 0\)，则称函数\(f\)在\(x \to x_0\)时是无穷小量，记作\(f(x) = \littleo(1)\ (x \to x_0)\)．
 \end{definition*}
 
 \begin{definition*}
-  对于任意的\(M > 0\)都存在\(δ > 0\)使得当\(0 < \abs*{x - x_0} < δ\)时都有\(\abs*{\,f(x)} > M\)．这时，我们称函数\(f\)在\(x \to x_0\)时是一个无穷大量，记作\(\!\lim\limits_{\,x \to x_0\!} \,f(x) = \infty\)．
+  函数\(f\)在\(x \to x_0\)时是无穷大量，记作\(\!\lim\limits_{\,x \to x_0\!} \,f(x) = \infty\)，当且仅当：对于任意的\(M > 0\)都存在\(δ > 0\)使得当\(0 < \abs*{\,x - x_0\,} < δ\)时都有\(\abs*{\ f(x)\,} > M\)．
 \end{definition*}
 
 \begin{theorem*}
@@ -2019,40 +2268,46 @@
 \end{theorem*}
 
 \begin{theorem*}
-  函数\(f\)极限是\(A\)，当且仅当它可以写成\(A\)与一个无穷小量之和的形式．
+  函数\(f\)极限是\(A\)，当且仅当它可以写成\(A\)与某个无穷小量之和的形式．
 \end{theorem*}
 
 % https://portal.tpu.ru/SHARED/k/KONVAL/Textbooks/Tab1/Konev-Limits_of_Sequences_and_Functions_Textbook.pdf
 \begin{definition*}
-  在同一个极限过程中，函数\(\,f\mkern2mu\)和\(\mkern1mu g\)都是无穷小量．
+  设在同一个极限过程中，函数\(\,f\mkern2mu\)和\(\mkern1mu g\)都是无穷小量．
   \begin{enumerate}[topsep=3pt,itemsep=0ex]
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
-  \item 若\(f/g\)收敛于某个非零常数，则称\(\,f\mkern2mu\)和\(\mkern2mu g\)是\emph{同阶无穷小量}；特别地，若此常数是\(1\)，则称\(\,f\,\)和\(g\)是\emph{等价无穷小量}，记作\(f \sim g\)；
-  \item 若\(\,f/g\)也是无穷小量，则称\(\,f\mkern1mu\)是\(\mkern1mu g\)的\emph{高阶无穷小量}\footnote{关于小o和大O关系，最常见的定义，除了还要求\(g\)是一个正函数之外，其实并不关心\(\mkern2mu f\mkern2mu\)和\(\mkern2mu g\)是否收敛或者为无穷大量，只要它们的商满足条件即可．若\(\mkern2mu f\mkern1mu\)是\(g\)的高阶无穷小量，则一定满足\(\,f = \littleo(\abs{g})\)；反之不然\,．这里的小o和大O记号，其实表达的是一个函数的集合，更严谨的用法应该是\(\,f \in \littleop g\)和\(\,f \in \bigOp g\)．}，称\(\mkern2mu g\)是\(\,f\mkern2mu\)的\emph{低阶无穷小量}，记作\(f= \littleo(g)\)；特别地，若\(\,f/g^n\)收敛于某个非零常数，则称\(\,f\mkern2mu\)是\(\mkern2mu g\)的\(n\)阶无穷小量．
+  \item 函数\(\,f\mkern2mu\)和\(\mkern1mu g\)是\kenten{同阶无穷小量}，当且仅当：\(\,f/g\)收敛于某个非零常数；特别地，函数\(\,f\mkern2mu\)和\(\mkern1mu g\)是\mbox{\kenten{等价无穷小量}}，记作\(\,f \sim g\)，当且仅当：\(\,f/g\)收敛于\(1\)；
+  \item 函数\(\,f\mkern2mu\)是函数\(\mkern1mu g\)的\kenten{高阶无穷小量}，函数\(\mkern2mu g\)是函数\(\,f\mkern2mu\)的\kenten{低阶无穷小量}，当且仅当：\(\,f/g\)是无穷小量；特别地，函数\(\,f\mkern2mu\)是函数\(\mkern2mu g\)的\(n\)阶无穷小量，当且仅当：\(\,f/g^n\)收敛于某个非零常数．
   \end{enumerate}
 
+  % https://mathworld.wolfram.com/Little-ONotation.html
   \begin{remark}
-    我们简称函数\(x-x_0\)在点\(x_0\)处和函数\(1/x\)在无穷处的\(k\)阶无穷小量为\(k\)阶无穷小量．也就是说，函数\(f\)在点\(x_0\)处是\(k\)阶无穷小量，当且仅当\(0 < \abs[\Big]{\lim\limits_{\,x \to x_0\!} \frac{f(x)}{(x-x_0)^k}} < +\infty\)；函数\(f\)在无穷处是\(k\)阶无穷小量，当且仅当\(0 < \abs[\Big]{\lim\limits_{x\to\infty} x^k\,f(x)} < +\infty\)．
+    我们经常用小\(o\)关系\footnote{关于小o和大O关系，最常见的定义，除了还要求\(g\)是一个正函数之外，其实并不关心\(\mkern2mu f\mkern2mu\)和\(\mkern2mu g\)是否收敛或者为无穷大量，只要它们的商满足条件即可．若\(\mkern2mu f\mkern1mu\)是\(g\)的高阶无穷小量，则一定满足\(\,f = \littleo(\abs{\,g\,})\)；反之不然\,．这里的小o和大O记号，其实表达的是一个函数的集合，更严谨的用法应该是\(\,f \in \littleop g\)和\(\,f \in \bigOp g\)．}的记号把“函数\(f\)是函数\(g\)的高阶无穷小量”记作\(f= \littleo(g)\)．
+  \end{remark}
+
+  \begin{remark}
+    我们简称函数\(x-x_0\)在点\(x_0\)处和函数\(1/x\)在无穷处的\(k\)阶无穷小量为\(k\)阶无穷小量．也就是说，函数\(f\)在点\(x_0\)处是\(k\)阶无穷小量，当且仅当\(0 < \abs[\big]{\,\lim\limits_{x \to x_0\!} {\,f(x)}/{(x-x_0)^k}\,} < +\infty\)；函数\(f\)在无穷处是\(k\)阶无穷小量，当且仅当\(0 < \abs[\big]{\,\lim\limits_{x\to\infty\!} x^k\,f(x)\,} < +\infty\)．
   \end{remark}
 \end{definition*}
 
+% https://mathworld.wolfram.com/Big-ONotation.html
 \begin{definition*}
-  在同一个极限过程中，函数\(\,f\mkern2mu\)和\(\mkern2mu g\)都是无穷小量．若\(\,f/g\)有界，则称\(\,f\mkern2mu\)和\(\mkern2mu g\)有大O关系\footnote{同上．}，记作\(\,f = \bigO(g)\)．
+  在同一个极限过程中，函数\(\,f\mkern2mu\)和\(\mkern1mu g\)都是无穷小量．若\(\,f/g\)有界，则称\(\,f\mkern2mu\)和\(\mkern1mu g\)有大O关系\footnote{同上．}，记作\(\,f = \bigO(g)\)．
 \end{definition*}
 
 \begin{example*}
-  证明\(\sqrt[\leftroot{-2}\uproot{2}k]{1+x} - 1 \sim \dfrac xk\ (x \to 0)\)．
+  证明\(\sqrt[\leftroot{-2}\uproot{2}k]{1+x} - 1 \sim x/k\ (x \to 0)\)．
 
   \begin{proof}
     利用公式\(a^n-b^n = (a-b)(a^{n-1} + a^{n-2}b + \dots + b^{n-1})\)，稍作变形，有
     \begin{align*}
       \lim_{x\to0} \frac{\sqrt[\leftroot{-2}\uproot{2}k]{1+x} - 1}{x/k}
       &= \lim_{x\to0} \frac{k(1+x-1)}{
-        x \sum_{j=0}^{k-1} (1+x)^{(k-1-j)/k}}
+        x \sum\limits_{j=0}^{\mathclap{k-1}} (1+x)^{j/k}}
       && \reason{分子分母同乘以\(\Sigma\)} \\
-      &= k\big/\!\lim_{x\to0} \sum_{j=0}^{k-1} (1+x)^{(k-1-j)/k}
+      &= k\bigg/\!\lim_{x\to0} \sum_{j=0}^{k-1} (1+x)^{j/k}
       && \reason{除法法则} \\
-      &= k\bigg/\!\sum_{j=0}^{k-1} \lim_{x\to0} (1+x)^{(k-1-j)/k}
+      &= k\bigg/\!\sum_{j=0}^{k-1} \lim_{x\to0} (1+x)^{j/k}
       && \reason{加法法则} \\
       &= k/k = 1.
       && \reason{复合法则}
@@ -2075,7 +2330,7 @@
 \end{theorem*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{\tan x - \sin x}{x^3}\)．\rule[-2ex]{0ex}{0ex}
+  求\(\lim\limits_{x\to0} \,\paren{\tan x - \sin x}/{x^3}\)． % \rule[-2ex]{0ex}{0ex}
 
   \begin{remark}
     稍作变形，有
@@ -2088,7 +2343,7 @@
 \end{example*}
 
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{e^{1-\cos x}-1}{x^2}\)．\rule[-2ex]{0ex}{3.5ex}
+  求\(\lim\limits_{x\to0} \,\paren{e^{1-\cos x}-1}/{x^2}\)． % \rule[-2ex]{0ex}{3.5ex}
 
   \begin{remark}
     使用等价无穷小量替换和复合法则，有
@@ -2100,8 +2355,9 @@
   \end{remark}
 \end{example*}
 
+% report
 \begin{example*}
-  求\(\lim\limits_{x\to0} \dfrac{\ln(1+ax^m)}{1-\cos(1-\cos x)}\ (a \ne 0, m > 0)\)．\rule[-2ex]{0ex}{3.5ex}
+  求\(\lim\limits_{x\to0} \,\paren[\big]{\ln(1+ax^m)}/\paren[\big]{1-\cos(1-\cos x)}\ (a \ne 0, m \ge 1)\)． % \rule[-2ex]{0ex}{3.5ex}
 
   \begin{remark}
     使用等价无穷小量替换和复合法则，有
@@ -2113,7 +2369,7 @@
       \begin{cases}
         0, & m > 4, \\
         8\,a, & m = 4, \\
-        \infty, & 0 < m < 4.
+        \infty, & 1 \le m < 4.
       \end{cases}
     \end{equation*}
   \end{remark}
@@ -2156,15 +2412,15 @@
   \end{itemize}
 
   \ifshowsol
-    令\(f(x) = \sin x,\ g(x) = \frac1x\)，则在原点处\(\,f\mkern2mu\)和\(\mkern1mu g\)分别是无穷小量和无穷大量．但是\(\,f \cdot g\)即不是无穷小量，也不是无穷大量．所以选项~B和~D都错了．设\(\,f\mkern2mu\)和\(\mkern2mu g\)在点\(a\)处分别是无穷小量和无穷大量．对于任意的\(M > 0\)都存在一个去心邻域使得当\(x\)在此邻域上时都有
+    令\(f(x) = \sin x,\ g(x) = 1/x\)，则在原点处\(\,f\mkern2mu\)和\(\mkern1mu g\)分别是无穷小量和无穷大量．但是\(\,f \cdot g\)即不是无穷小量，也不是无穷大量．所以选项~B和~D都错了．设\(\,f\mkern2mu\)和\(\mkern2mu g\)在点\(a\)处分别是无穷小量和无穷大量．对于任意的\(M > 0\)都存在一个去心邻域使得当\(x\)在此邻域上时都有
     \begin{gather*}
-      \abs*{\,f(x)} < M
+      \abs*{\ f(x)\,} < M
       \txt{且}
-      2\,M < \abs*{g(x)} \\
+      2\,M < \abs*{\,g(x)\,} \\
       \shortintertext{即}
-      \abs*{\,f(x) \pm g(x)}
-      \ge \abs[\Big]{\abs*{g(x)} - \abs*{\,f(x)}}
-      \ge \abs*{g(x)} - \abs*{\,f(x)}
+      \abs*{\ f(x) \pm g(x)\,}
+      \ge \abs[\Big]{\,\abs*{\,g(x)\,} - \abs*{\ f(x)\,}\,}
+      \ge \abs*{\,g(x)\,} - \abs*{\ f(x)\,}
       > M.
     \end{gather*}
     所以选项~A对了而选项~C错了．
@@ -2174,14 +2430,14 @@
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item \(\sin(\tan x^2)\)
-  \item \(x \cos\frac1x\)
+  \item \(x \cos(1/x)\)
     \ifshowsol
     \item[\faCircle]
     \else
     \item
     \fi
     \(\sin\paren{\cos x}\)
-  \item \(\lnp{\sin x + 1}\)
+  \item \(\lnp{1 + \sin x}\)
   \end{itemize}
 
 \item 当\(x \to 0^+\)时，下列函数中不是无穷大量的是\uline{\makebox[6em]{}}．
@@ -2195,7 +2451,7 @@
     \item
     \fi
     \(x \ln x\)
-  \item \(\dfrac{\ln x}{x}\)\rule{0ex}{3.5ex}
+  \item \(\paren{\ln x}/{x}\)   % \rule{0ex}{3.5ex}
   \end{itemize}
 
   \ifshowsol
@@ -2249,13 +2505,13 @@
     关于\(e^n = \littleop{n!}\)，参见例~\ref{eg:factexp}．下面证明一下，对于给定的数\(a > 1\)和正整数\(k\)，都有\(n^k = \littleop{a^n}\)．
 
     \begin{proof}
-      令\(α = a - 1\)，则
+      令\(α = a - 1, c = α^{k+1}\!/(k+1)!\)，则
       \begin{gather*}
         a^n = (1+α)^n = \sum_{j=0}^n \binom nj α^j > \binom{n}{k+1} α^{k+1}
-        = α^{k+1} n^{k+1} + \bigOp{n^k}, \\
+        = c n^{k+1} + \bigOp{n^k}, \\
         \shortintertext{所以有}
-        0 < \frac{n^k}{a^n} < \frac{n^k}{α^{k+1} n^{k+1} + \bigOp{n^k}}
-        = \frac{1}{α^{k+1} n + \bigOp{1}}.
+        0 < \frac{n^k}{a^n} < \frac{n^k}{c n^{k+1} + \bigOp{n^k}}
+        = \frac{1}{cn + \bigOp{1}}.
         \qedhere
       \end{gather*}
     \end{proof}
@@ -2270,7 +2526,7 @@
     \else
     \item
     \fi
-    \(\ln \dfrac{1+x}{1-\sqrt x}\)\rule[-2ex]{0ex}{5ex}
+    \(\ln\brkt{\paren{1+x}/\paren{1-\sqrt x}}\) % \rule[-2ex]{0ex}{5ex}
   \item \(\sqrt{1 + \sqrt x} - 1\)
   \item \(1 - \cos\sqrt x\)
   \end{itemize}
@@ -2279,7 +2535,7 @@
     实际上，有
     \begin{equation*}
       1 - e^{\sqrt x} \sim -\sqrt x, \quad
-      \ln \dfrac{1+x}{1-\sqrt x} \sim \sqrt x, \quad
+      \ln \frac{1+x}{1-\sqrt x} \sim \sqrt x, \quad
       \sqrt{1 + \sqrt x} - 1 \sim \frac{\sqrt x}{2}, \quad
       1 - \cos\sqrt x \sim \frac x2.
     \end{equation*}
@@ -2288,7 +2544,7 @@
 \item 当\(x \to 0\)时，有\(\paren{1-ax^2}^{1/4} - 1 \sim x \sin x\)．求\(a\)的值．
 
   \ifshowsol
-    因为\(x \sin x \sim x^2\)和\(\paren{1-ax^2}^{1/4} - 1 \sim -ax^2/4\)，所以有\(a = 4\)．
+    因为\(x \sin x \sim x^2\)和\(\paren{1-ax^2}^{1/4} - 1 \sim -ax^2\!/4\)，所以有\(a = -4\)．
   \fi
 \end{enumerate}
 \fi
