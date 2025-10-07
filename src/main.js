@@ -202,6 +202,12 @@ var LISTING = [
         "contents": [
             {
                 "type": "file",
+                "name": "giuliani/",
+                "title": "Mauro Giuliani",
+                "author_date": "2025-10-07T13:26:00+08:00"
+            },
+            {
+                "type": "file",
                 "name": "anon/",
                 "title": "Anonymous",
                 "author_date": "2024-02-12T23:54:00+08:00"
@@ -240,7 +246,7 @@ var LISTING = [
                 "type": "file",
                 "name": "calculus/",
                 "title": "Collective notes and solutions for calculus",
-                "author_date": "2021-03-03T02:23:00+08:00"
+                "author_date": "2025-10-07T12:59:05+08:00"
             },
             {
                 "type": "file",

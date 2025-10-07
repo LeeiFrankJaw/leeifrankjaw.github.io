@@ -7,7 +7,16 @@ from subprocess import PIPE, run
 
 import lxml.html
 
-ignored_dirs = ['lib', 'src', 'img', 'styles', 'auto', 'figures', 'ltximg']
+ignored_dirs = [
+    'lib',
+    'src',
+    'img',
+    'styles',
+    'auto',
+    'figures',
+    'ltximg',
+    'tmp-ly',
+]
 
 
 def is_ignored(dirname):
