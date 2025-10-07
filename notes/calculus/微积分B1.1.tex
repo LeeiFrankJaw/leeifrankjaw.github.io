@@ -12,7 +12,7 @@
   实数集有界的充分必要条件是其既有上界又有下界．
 
   \begin{proof}
-    只证充分性．设\(M_1, M_2\)分别为实数集的上下界，取\(M = \maxb*{\,\abs*{\,M_1}, \abs*{\,M_2}\,}\)，则\(M\)就是该实数集的一个界．
+    只证充分性．设\(M_1, M_2\)分别为实数集的上下界，取\(M = \maxb*{\,\abs*{\,M_1\,},\, \abs*{\,M_2\,}\,}\)，则\(M\)就是该实数集的一个界．
   \end{proof}
 \end{theorem*}
 
@@ -79,10 +79,11 @@
   \item \(\brce{\,x \mid x \in (0, 1),\, x \in \Q\,}\)
   \item 自然数集
     \ifshowsol
-    \item[\faCircle] 有限个数构成的集合\(\Set{a_1, a_2, \dots, a_n}\)
+    \item[\faCircle]
     \else
-    \item 有限个数构成的集合\(\Set{\,a_1,\, a_2,\, \dots,\, a_n\,}\)
+    \item
     \fi
+    有限个数构成的集合\(\Set{\,a_1,\, a_2,\, \dots,\, a_n\,}\)
   \item \(\Set[\big]{\,x \in \R \mid x^2 - 2x -3 < 0\,}\)
   \end{itemize}
 
@@ -202,7 +203,7 @@
 函数的记号是欧拉的，现代定义最早是由狄利克雷提出的．
 
 \begin{definition*}
-  设函数\(f\)在\(D\)上有定义，称点集\(\Set{\,(x,y) \mid y = f(x),\, x \in D\,}\)为\(f\)的图形．
+  设函数\(\,f\mkern2mu\)在\(D\)上有定义，称点集\(\Set{\,(x,y) \,\mid\, y = f(x),\, x \in D\,}\)为\(\,f\mkern2mu\)的图形．
 \end{definition*}
 
 \begin{definition}[狄利克雷函数]
@@ -344,7 +345,7 @@
       \,f(x+1), & x < 4.
     \end{cases}
   \]
-  求\(f(\log_2 3) =\)
+  求\(\,f(\log_2 3) =\)
   \ifshowsol
     \uline{\makebox[4em]{\(1/{24}\)}}．
   \else
@@ -393,7 +394,7 @@
       x^{1/2}, & x > 0.
     \end{cases}
   \]
-  不等式\(f(x) > 1\)的解集是
+  不等式\(\,f(x) > 1\)的解集是
   \ifshowsol
     \uline{\makebox[10em]{\(\paren{-\infty, -1} \cup \paren{1, +\infty}\)}}．
   \else
@@ -430,14 +431,14 @@
 \item 下列各组函数中，两个函数相等的一组是\uline{\makebox[4em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(f(x) = \sqrt{x^2},\ g(x) = x\)
+  \item \(\,f(x) = \sqrt{x^2},\ g(x) = x\)
     \ifshowsol
-    \item[\faCircle] \(f(x) = 3\ln x,\ g(x) = \ln x^3\)
+    \item[\faCircle] \(\,f(x) = 3\ln x,\ g(x) = \ln x^3\)
     \else
-    \item \(f(x) = 3\ln x,\ g(x) = \ln x^3\)
+    \item \(\,f(x) = 3\ln x,\ g(x) = \ln x^3\)
     \fi
-  \item \(f(x) = \tan x,\ g(x) = \frac1{\cot x}\)
-  \item \(f(x) = x - 3,\ g(x) = \frac{x^2-2x-3}{x+1}\)
+  \item \(\,f(x) = \tan x,\ g(x) = \frac1{\cot x}\)
+  \item \(\,f(x) = x - 3,\ g(x) = \frac{x^2-2x-3}{x+1}\)
   \end{itemize}
 \end{enumerate}
 \fi
@@ -446,22 +447,22 @@
 
 \begin{definition}
   \label{defn:func4ops}
-  设函数\(f\)和\(g\)的定义域分别为\(D_1\)和\(D_2\)，且\(D = D_1 \cap D_2\)非空．函数的四则运算为
+  设函数\(\,f\mkern2mu\)和\(\mkern1mu g\)的定义域分别为\(D_1\)和\(D_2\)，且\(D = D_1 \cap D_2\)非空．函数的四则运算为
   \begin{enumerate}
     \renewcommand{\labelenumi}{\enumparen{\arabic{enumi}}}
-  \item \(f \pm g\colon x \mapsto f(x) \pm g(x),\ x \in D\);\hfill（加减法）
-  \item \(fg\colon x \mapsto f(x) \, g(x),\ x \in D\);\hfill（乘法）
-  \item \(f/g\colon x \mapsto f(x) / g(x),\ x \in D \tand g(x) \ne 0\)．\hfill（除法）
+  \item \(\,f \pm g\colon x \mapsto f(x) \pm g(x),\ x \in D\);\hfill（加减法）
+  \item \(\,fg\colon x \mapsto f(x) \, g(x),\ x \in D\);\hfill（乘法）
+  \item \(\,f/g\colon x \mapsto f(x) / g(x),\ x \in D \tand g(x) \ne 0\)．\hfill（除法）
   \end{enumerate}
 \end{definition}
 
 \begin{example*}
-  设\(f(x) = x + \sqrt x,\ g(x) = x - \sqrt x\)．
+  设\(\,f(x) = x + \sqrt x,\ g(x) = x - \sqrt x\)．
   经过函数的加法运算，有\((\,f+g)(x) = 2x,\ x \in \brktparen{0, +\infty}\)．
 \end{example*}
 
 \begin{definition*}
-  设\(g\colon D_g \to Z_g,\ f\colon D_f \to Z_f\)且\(Z_g \subset D_f\)，那么对于任意的\(x \in D_g\)，函数值\(\,f\paren{g(x)}\)都是有意义的．函数\(f\)和\(g\)的复合函数为
+  设\(g\colon D_g \to Z_g,\ f\colon D_f \to Z_f\)且\(Z_g \subset D_f\)，那么对于任意的\(x \in D_g\)，函数值\(\,f\paren{g(x)}\)都是有意义的．函数\(\,f\mkern2mu\)和\(\mkern1mu g\)的复合函数为
   \[
     \begin{split}
       f \circ g\colon & D_g \to Z_f \\
@@ -491,11 +492,11 @@
 
 \begin{definition}
   \label{defn:funcinv}
-  设函数\(f\colon D \to Z_f\)和二元关系\(g \subset Z_f \times D\)．若对任意的\(y \in Z_f\)都能通过\(g\)找到唯一的二元组\((y,x) \in g\)使得\(y = f(x)\)，则称\(g\)是\(f\)的反函数，记作\(f^{-1}\)．
+  设函数\(\,f\colon D \to Z_f\)和二元关系\(g \subset Z_f \times D\)．若对任意的\(y \in Z_f\)都能通过\(\mkern1mu g\)找到唯一的二元组\((y,x) \in g\)使得\(y = f(x)\)，则称\(\mkern1mu g\)是\(\,f\mkern2mu\)的反函数，记作\(\,f^{-1}\)．
 \end{definition}
 
 \begin{remark}
-  易知\(f(\,f^{-1}(x)) = f^{-1}(\,f(x)) = x\)．
+  易知\(\,f(\,f^{-1}(x)) = f^{-1}(\,f(x)) = x\)．
 \end{remark}
 
 \begin{theorem*}
@@ -507,7 +508,7 @@
 \end{theorem*}
 
 \begin{example*}
-  求\(y = \sinh x = \frac12 (e^x - e^{-x})\)的反函数．
+  求\(y = \sinh x = (e^x - e^{-x})/2\)的反函数．
 
   \begin{remark}
     通过变形将\(x\)用\(y\)表出，有
@@ -538,7 +539,7 @@
 \subsection*{思考}
 
 \begin{enumerate}
-\item 复合函数\(f \circ g\)与\(g \circ f\)是否相等？
+\item 复合函数\(\,f \circ g\)与\(g \circ f\)是否相等？
 
   \ifshowsolp
     不一定相等．
@@ -547,7 +548,7 @@
 \item 什么样的函数存在反函数？如何确定反函数的定义域和值域？
 
   \ifshowsolp
-    一一对应的函数一定存在反函数．如果不是一一对应，那么至少也应该是单射的．这时，\(\ran f\)就是\(f^{-1}\)的定义域，\(f\)的定义域就是反函数的值域．如果连单射都不是，我们就要向反三角函数那样找到一个主分支，来构造反函数．
+    一一对应的函数一定存在反函数．如果不是一一对应，那么至少也应该是单射的．这时，\(\ran f\)就是\(\,f^{-1}\)的定义域，\(\,f\mkern2mu\)的定义域就是反函数的值域．如果连单射都不是，我们就要向反三角函数那样找到一个主分支，来构造反函数．
   \fi
 \end{enumerate}
 
@@ -564,14 +565,14 @@
       \log_3(x^2-1), & x \ge 2,
     \end{cases}
   \]
-  则\(f(\,f(2)) =\)
+  则\(\,f(\,f(2)) =\)
   \ifshowsol
     \uline{\makebox[3em]{\(2\)}}．
   \else
     \uline{\makebox[3em]{}}．
   \fi
 
-\item 设\(f(x) = \cos x,\ f(\varphi(x)) = 1 - x^2\)，则\(\varphi(x)\)的定义域是
+\item 设\(\,f(x) = \cos x,\ f(\varphi(x)) = 1 - x^2\)，则\(\varphi(x)\)的定义域是
   \ifshowsol
     {\setlength{\ULdepth}{.8ex}%
       \uline{\makebox[6em]{\(\brkt[\big]{-\sqrt2, \sqrt2}\)}}}．
@@ -584,13 +585,13 @@
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
-    \item[\faCircle] \(f(u) = \sqrt{u^2 + 1},\ g(x) = e^x\)
+    \item[\faCircle] \(\,f(u) = \sqrt{u^2 + 1},\ g(x) = e^x\)
     \else
-    \item \(f(u) = \sqrt{u^2 + 1},\ g(x) = e^x\)
+    \item \(\,f(u) = \sqrt{u^2 + 1},\ g(x) = e^x\)
     \fi
-  \item \(f(u) = \arccos(1+2u),\ g(x) = 1 + x^2\)
-  \item \(f(u) = \sqrt{u+1},\ g(x) = \sin x - 3\)
-  \item \(f(u) = \ln^2 u,\ g(x) = \arcsin x\)
+  \item \(\,f(u) = \arccos(1+2u),\ g(x) = 1 + x^2\)
+  \item \(\,f(u) = \sqrt{u+1},\ g(x) = \sin x - 3\)
+  \item \(\,f(u) = \ln^2 u,\ g(x) = \arcsin x\)
   \end{itemize}
 
 \item 函数\(y = e^{3x-1},\ x \in \brktparen{0, +\infty}\)的反函数为
@@ -624,7 +625,7 @@
     \]
   \fi
 
-\item 已知\(f(\sin x) = 2 \ln \cos x + x\)，则\(f(x) =\)
+\item 已知\(\,f(\sin x) = 2 \ln \cos x + x\)，则\(\,f(x) =\)
   \ifshowsol
     \uline{\makebox[16em]{\(\ln(1-x^2) + 2k\pi + \arcsin x,\ k \in \Z\)}}．
   \else
@@ -645,18 +646,18 @@
       \log_2(1+x), & x > 1,
     \end{cases}
   \]
-  则\(f(g(0))\)和\(f(g(1))\)的值分别是
+  则\(\,f(g(0))\)和\(\,f(g(1))\)的值分别是
   \ifshowsol
     \uline{\makebox[3em]{\(0\)}}和\uline{\makebox[3em]{\(-3\)}}．
   \else
     \uline{\makebox[3em]{}}和\uline{\makebox[3em]{}}．
   \fi
 
-\item 已知\(f(x-1) = \ln \dfrac{x^2+1}{x^2-3}\)．若\(f(g(x)) = x^2\)，则\(g(x)\)的定义域为
+\item 已知\(\,f(x-1) = \ln \dfrac{x^2+1}{x^2-3}\)．若\(\,f(g(x)) = x^2\)，则\(g(x)\)的定义域为
   \ifshowsol
     \uline{\makebox[10em]{\(\paren{-\infty, 0} \cup \paren{0, +\infty}\)}}．
 
-    实际上，\(g\)是可以求出来的，就是
+    实际上，\(\mkern1mu g\)是可以求出来的，就是
     \[
       g(x) = \pm \sqrt{\frac{3e^{x^2}+1}{e^{x^2}-1}} - 1.
     \]
@@ -664,7 +665,7 @@
     \uline{\makebox[10em]{}}．
   \fi
 
-\item 已知\(f(x) = x^5 - a\)且\(f(-1) = 0\)．求\(f^{-1}(1) =\)
+\item 已知\(\,f(x) = x^5 - a\)且\(\,f(-1) = 0\)．求\(\,f^{-1}(1) =\)
   \ifshowsol
     \uline{\makebox[3em]{\(0\)}}．
   \else
@@ -678,7 +679,7 @@
     \uline{\makebox[3em]{}}．
   \fi
 
-\item 设函数\(f(x) = \log_a(x+b)\ (a > 0, a \ne 1)\)的图像经过点\(\paren{2,1}\)且其反函数的图像经过点\(\paren{2,8}\)．那么\(a + b =\)
+\item 设函数\(\,f(x) = \log_a(x+b)\ (a > 0, a \ne 1)\)的图像经过点\(\paren{2,1}\)且其反函数的图像经过点\(\paren{2,8}\)．那么\(a + b =\)
   \ifshowsol
     \uline{\makebox[3em]{\(4\)}}．
 
@@ -687,10 +688,10 @@
     \uline{\makebox[3em]{}}．
   \fi
 
-\item 设函数\(f(x) = \dfrac{2x+3}{x-1}\)且函数\(y = h(x)\)的图像与\(y = f^{-1}(x+1)\)的图像关于直线\(y = x\)对称．求\(h(3)\)的值．
+\item 设函数\(\,f(x) = \dfrac{2x+3}{x-1}\)且函数\(y = h(x)\)的图像与\(y = f^{-1}(x+1)\)的图像关于直线\(y = x\)对称．求\(h(3)\)的值．
 
   \ifshowsol
-    这题相当于是求\(3 = f^{-1}(x+1)\)时\(x\)的值．有\(f(3) = f(\,f^{-1}(x+1)) = x+1 = \dfrac92\)，所以\(h(3) = \dfrac72\)．
+    这题相当于是求\(3 = f^{-1}(x+1)\)时\(x\)的值．有\(\,f(3) = f(\,f^{-1}(x+1)) = x+1 = \dfrac92\)，所以\(h(3) = \dfrac72\)．
 
     实际上，\(h(x) = 1 + \dfrac{5}{x-1}\)．
   \fi
@@ -701,19 +702,19 @@
 \section{函数的初等性质\label{sec:funcprops}}
 
 \begin{definition*}
-  设函数\(f\colon D \to Z_f\)\,．若\(\ran f \subset Z_f\)是有界集，则称\(f\)是有界函数，\(\ran f\)的界就是\(f\)在\(D\)上的界．
+  设函数\(\,f\colon D \to Z_f\)\,．若\(\ran f \subset Z_f\)是有界集，则称\(\,f\mkern2mu\)是有界函数，\(\ran f\)的界就是\(\,f\mkern2mu\)在\(D\)上的界．
 \end{definition*}
 
 \begin{example*}
-  证明\(f(x) = \dfrac1x\)在\(\paren{0,+\infty}\)上无界．
+  证明\(\,f(x) = \dfrac1x\)在\(\paren{0,+\infty}\)上无界．
 
   \begin{proof}
-    对于任意的\(M > 0\)，取\(x_0 = \frac1{2M}\)，则有\(x_0 \in \paren{0,+\infty}\)且\(f(x_0) = 2M > M\)．
+    对于任意的\(M > 0\)，取\(x_0 = \frac1{2M}\)，则有\(x_0 \in \paren{0,+\infty}\)且\(\,f(x_0) = 2M > M\)．
   \end{proof}
 \end{example*}
 
 \begin{definition*}
-  设函数\(f\)的定义域关于原点对称．对于定义域上的任意\(x\)，函数\(f\)都满足\(f(-x) = -f(x)\)，这样的函数\(f\)叫作奇函数．对于定义域上的任意\(x\)，函数\(f\)都满足\(f(-x) = f(x)\)，这样的函数\(f\)叫作偶函数．
+  设函数\(\,f\mkern2mu\)的定义域关于原点对称．对于定义域上的任意\(x\)，函数\(\,f\mkern2mu\)都满足\(\,f(-x) = -f(x)\)，这样的函数\(\,f\mkern2mu\)叫作奇函数．对于定义域上的任意\(x\)，函数\(\,f\mkern2mu\)都满足\(\,f(-x) = f(x)\)，这样的函数\(\,f\mkern2mu\)叫作偶函数．
 \end{definition*}
 
 \hypertarget{T:evenodd}{}
@@ -721,11 +722,11 @@
   若某函数的定义域关于原点对称，则此函数可以唯一地分解成奇函数与偶函数之和．
 
   \begin{proof}
-    设函数\(f\)的定义域关于原点对称．易证\(\dfrac{f(x)+f(-x)}{2}\)是偶函数、\(\dfrac{f(x)-f(-x)}{2}\)是奇函数且
+    设函数\(\,f\mkern2mu\)的定义域关于原点对称．易证\(\dfrac{f(x)+f(-x)}{2}\)是偶函数、\(\dfrac{f(x)-f(-x)}{2}\)是奇函数且
     \[
       \frac{f(x)+f(-x)}{2} + \frac{f(x)-f(-x)}{2} = f(x).
     \]
-    这就证明了分解的存在性．此外，设偶函数\(s\)和奇函数\(t\)且\(f = s + t\)．那么
+    这就证明了分解的存在性．此外，设偶函数\(s\)和奇函数\(t\)且\(\,f = s + t\)．那么
     \[
       f(x) + f(-x) = 2\fn s(x),
       \qquad
@@ -736,7 +737,7 @@
 \end{theorem*}
 
 \begin{example*}
-  设函数\(f\)是奇函数，函数\(g(x) = \lnp[\big]{\,f(x) + \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}}}\)．试讨论函数\(g\)的奇偶性．
+  设函数\(\,f\mkern2mu\)是奇函数，函数\(g(x) = \lnp[\big]{\,f(x) + \sqrt{\,\smash{f^2(x)+1}\rule[-.3ex]{0ex}{1.8ex}}}\)．试讨论函数\(\mkern1mu g\)的奇偶性．
 
   \begin{remark}
     因为
@@ -757,14 +758,14 @@
         &= -g(x),
       \end{split}
     \]
-    所以\(g\)是奇函数．
+    所以\(\mkern1mu g\)是奇函数．
 
-    事实上，本例中的\(g\)和\(f\)的关系，可以用\(g(x) = \arcsinh f(x)\)来表示．那么自然有\(g(-x) = \arcsinh f(-x) = \arcsinh\paren[\big]{-f(x)} = - \arcsinh f(x) = -g(x)\)．
+    事实上，本例中的\(\mkern1mu g\)和\(\,f\mkern2mu\)的关系，可以用\(g(x) = \arcsinh f(x)\)来表示．那么自然有\(g(-x) = \arcsinh f(-x) = \arcsinh\paren[\big]{-f(x)} = - \arcsinh f(x) = -g(x)\)．
   \end{remark}
 \end{example*}
 
 \begin{definition*}
-  设\(\,f\)是定义在\(\R\)上的函数．若存在正数\(T\)使得\(f(x+T) = f(x)\)恒成立，则称\(f\)为周期函数．
+  设\(\,f\)是定义在\(\R\)上的函数．若存在正数\(T\)使得\(\,f(x+T) = f(x)\)恒成立，则称\(\,f\mkern2mu\)为周期函数．
 
   \begin{remark}
     函数的周期通常是指最小正周期，若存在的话．并不是每个周期函数都有最小正周期，例如常函数和狄利克雷函数．
@@ -772,16 +773,16 @@
 \end{definition*}
 
 \begin{example*}
-  设函数\(f\)的周期是\(2\)且\(g(x) = f\,\paren[\Big]{\dfrac{x+1}{2}}\)．函数\(g\)是不是周期函数？若是，求其周期．
+  设函数\(\,f\mkern2mu\)的周期是\(2\)且\(g(x) = f\,\paren[\Big]{\dfrac{x+1}{2}}\)．函数\(\mkern1mu g\)是不是周期函数？若是，求其周期．
 
   \begin{remark}
-    函数\(g\)的周期是\(4\)．
+    函数\(\mkern1mu g\)的周期是\(4\)．
   \end{remark}
 \end{example*}
 
 \begin{definition}
   \label{defn:funcmono}
-  对于任意的\(x_1 < x_2 \in D\)都有\(\,f(x_1) < f(x_2)\)成立，则称函数\(f\)（严格）单调递增，简称单增．对于任意的\(x_1 < x_2 \in D\)都有\(\,f(x_1) > f(x_2)\)成立，则称函数\(f\)（严格）单调递减，简称单减．
+  对于任意的\(x_1 < x_2 \in D\)都有\(\,f(x_1) < f(x_2)\)成立，则称函数\(\,f\mkern2mu\)（严格）单调递增，简称单增．对于任意的\(x_1 < x_2 \in D\)都有\(\,f(x_1) > f(x_2)\)成立，则称函数\(\,f\mkern2mu\)（严格）单调递减，简称单减．
 \end{definition}
 
 \begin{theorem*}
@@ -796,7 +797,7 @@
 \end{theorem*}
 
 \begin{example*}
-  证明\(f(x) = x^3\)是单调递增函数．
+  证明\(\,f(x) = x^3\)是单调递增函数．
 
   \begin{proof}
     对于任意的\(x_1, x_2 \in D\)，当\(x_1 \ne x_2\)时，都有
@@ -808,23 +809,23 @@
         &> 0.
       \end{split}
     \]
-    所以\(f\)是单增函数．
+    所以\(\,f\mkern2mu\)是单增函数．
   \end{proof}
 \end{example*}
 
 \begin{definition*}
-  设函数\(f\)在区间\(\paren{a,b}\)上有定义．函数\(f\)在区间\(\paren{a,b}\)上是下凸的，当且仅当：对于任意的\(x_1, x_2 \in \paren{a,b}\)和\(\alpha \in \paren{0,1}\)，当\(x_1 \ne x_2\)时都有
+  设函数\(\,f\mkern2mu\)在区间\(\paren{a,b}\)上有定义．函数\(\,f\mkern2mu\)在区间\(\paren{a,b}\)上是下凸的，当且仅当：对于任意的\(x_1, x_2 \in \paren{a,b}\)和\(\alpha \in \paren{0,1}\)，当\(x_1 \ne x_2\)时都有
   \[
     f\,\paren[\big]{\alpha x_1 + (1-\alpha) x_2} < \alpha\,f(x_1) + (1-\alpha)\,f(x_2).
   \]
-  函数\(f\)在区间\(\paren{a,b}\)上是上凸的，当且仅当：对于任意的\(x_1, x_2 \in \paren{a,b}\)和\(\alpha \in \paren{0,1}\)，当\(x_1 \ne x_2\)时都有
+  函数\(\,f\mkern2mu\)在区间\(\paren{a,b}\)上是上凸的，当且仅当：对于任意的\(x_1, x_2 \in \paren{a,b}\)和\(\alpha \in \paren{0,1}\)，当\(x_1 \ne x_2\)时都有
   \[
     f\,\paren[\big]{\alpha x_1 + (1-\alpha) x_2} > \alpha\,f(x_1) + (1-\alpha)\,f(x_2).
   \]
 \end{definition*}
 
 \begin{example*}
-  证明函数\(f(x) = x^2\)在\(\R\)上是下凸的．
+  证明函数\(\,f(x) = x^2\)在\(\R\)上是下凸的．
 
   \begin{proof}
     对于任意的\(x_1, x_2 \in \R\)和\(\alpha \in \paren{0,1}\)，当\(x_1 \ne x_2\)时都有
@@ -842,7 +843,7 @@
 \end{example*}
 
 \begin{example*}
-  证明函数\(f\)在区间\(\paren{a,b}\)上下凸的充分必要条件是：对于任意互异的\(x, y, z \in \paren{a,b}\)和\kenten{正数}\(\alpha, \beta, \gamma\)，当\(\alpha+\beta+\gamma=1\)时都有
+  证明函数\(\,f\mkern2mu\)在区间\(\paren{a,b}\)上下凸的充分必要条件是：对于任意互异的\(x, y, z \in \paren{a,b}\)和\kenten{正数}\(\alpha, \beta, \gamma\)，当\(\alpha+\beta+\gamma=1\)时都有
   \[
     f\paren{\alpha x + \beta y + \gamma z} < \alpha\,f(x) + \beta\,f(y) + \gamma\,f(z).
   \]
@@ -918,7 +919,7 @@
 \subsection*{思考}
 
 \begin{enumerate}
-\item 将任意一个定义在实数域上的函数\(f(x)\)分解成一个奇函数和一个偶函数之和．
+\item 将任意一个定义在实数域上的函数\(\,f(x)\)分解成一个奇函数和一个偶函数之和．
 
   \ifshowsolp
     参见奇偶性定义后面的\hyperlink{T:evenodd}{定理}．
@@ -939,17 +940,17 @@
 \item 下列函数中，在定义域上无界的是\uline{\makebox[4em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(f(x) = \dfrac1x \sin x\)
+  \item \(\,f(x) = \dfrac1x \sin x\)
     \ifshowsol
-    \item[\faCircle] \(f(x) = x^2 \sin \dfrac1x\)
+    \item[\faCircle] \(\,f(x) = x^2 \sin \dfrac1x\)
     \else
-    \item \(f(x) = x^2 \sin \dfrac1x\)
+    \item \(\,f(x) = x^2 \sin \dfrac1x\)
     \fi
-  \item \(f(x) = \dfrac{\ln x}{1 + \ln^2 x}\)
-  \item \(f(x) = \dfrac1{e^x + e^{-x}}\)
+  \item \(\,f(x) = \dfrac{\ln x}{1 + \ln^2 x}\)
+  \item \(\,f(x) = \dfrac1{e^x + e^{-x}}\)
   \end{itemize}
 
-\item 函数\(f(x) = x e^{\sin x} \tan x\)在其定义域上是\uline{\makebox[3em]{}}．
+\item 函数\(\,f(x) = x e^{\sin x} \tan x\)在其定义域上是\uline{\makebox[3em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 偶函数
@@ -962,7 +963,7 @@
   \item 单调函数
   \end{itemize}
 
-\item 函数\(f\)的周期为\(T\)．那么函数\(h(x) = f(x+a)\)和\(g(x) = f(ax)\ (a > 0）\)的周期分别为
+\item 函数\(\,f\mkern2mu\)的周期为\(T\)．那么函数\(h(x) = f(x+a)\)和\(g(x) = f(ax)\ (a > 0）\)的周期分别为
   \ifshowsol
     \uline{\makebox[3em]{\(T\)}}和\uline{\makebox[3em]{\(T/a\)}}．
   \else
@@ -977,7 +978,7 @@
       \sin x + x^2, & 0 \le x \le \pi.
     \end{cases}
   \]
-  那么\(f\)是一个\uline{\makebox[4em]{}}．
+  那么\(\,f\mkern2mu\)是一个\uline{\makebox[4em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
     \ifshowsol
@@ -990,33 +991,33 @@
   \item 周期函数
   \end{itemize}
 
-\item 设函数\(f, g\)都在\(\R\)上单调递增．下列函数中，在\(\R\)上单调递增的是\uline{\makebox[3em]{}}．
+\item 设函数\(\,f, g\)都在\(\R\)上单调递增．下列函数中，在\(\R\)上单调递增的是\uline{\makebox[3em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(f(x) \cdot g(x)\)
+  \item \(\,f(x) \cdot g(x)\)
     \ifshowsol
-    \item[\faCircle] \(f(\,g(x))\)
+    \item[\faCircle] \(\,f(\,g(x))\)
     \else
-    \item \(f(\,g(x))\)
+    \item \(\,f(\,g(x))\)
     \fi
-  \item \(f(-g(x))\)
-  \item \(f(\,g(-x))\)
+  \item \(\,f(-g(x))\)
+  \item \(\,f(\,g(-x))\)
   \end{itemize}
 
-\item 在\(\R\)上，\(f\)为奇函数，\(g\)为偶函数，则下列函数为奇函数的是\uline{\makebox[3em]{}}．
+\item 在\(\R\)上，\(\,f\mkern2mu\)为奇函数，\(\mkern1mu g\)为偶函数，则下列函数为奇函数的是\uline{\makebox[3em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(f(\,g(x))\)
+  \item \(\,f(\,g(x))\)
   \item \(g(f(x))\)
     \ifshowsol
-    \item[\faCircle] \(f(\,f(x))\)
+    \item[\faCircle] \(\,f(\,f(x))\)
     \else
-    \item \(f(\,f(x))\)
+    \item \(\,f(\,f(x))\)
     \fi
   \item \(g(\,g(x))\)
   \end{itemize}
 
-\item 用\(y = \floor x\)表示取整函数．设\(f(x) = \cos\paren{\frac\pi2 \floor x}\)．那么\(f\)是\uline{\makebox[4em]{}}．
+\item 用\(y = \floor x\)表示取整函数．设\(\,f(x) = \cos\paren{\frac\pi2 \floor x}\)．那么\(\,f\mkern2mu\)是\uline{\makebox[4em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
   \item 无界的奇函数
@@ -1032,13 +1033,13 @@
 \item 下列函数中，哪一个是无界函数？
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(f(x) = \frac{x^2 + \sqrt{1+x^2}}{2 + x^2},\ x \in \R\)
-  \item \(f(x) = \sgn x \cdot \sin \frac1x,\ x \ne 0\)
-  \item \(f(x) = \frac{\floor x}{x},\ x > 0\)
+  \item \(\,f(x) = \frac{x^2 + \sqrt{1+x^2}}{2 + x^2},\ x \in \R\)
+  \item \(\,f(x) = \sgn x \cdot \sin \frac1x,\ x \ne 0\)
+  \item \(\,f(x) = \frac{\floor x}{x},\ x > 0\)
     \ifshowsol
-    \item[\faCircle] \(f(x) = \frac{x}{\ln x},\ x \in \paren{0,+\infty}\)
+    \item[\faCircle] \(\,f(x) = \frac{x}{\ln x},\ x \in \paren{0,+\infty}\)
     \else
-    \item \(f(x) = \frac{x}{\ln x},\ x \in \paren{0,+\infty}\)
+    \item \(\,f(x) = \frac{x}{\ln x},\ x \in \paren{0,+\infty}\)
     \fi
   \end{itemize}
 
@@ -1055,22 +1056,22 @@
   \item 单减函数，单减函数
   \end{itemize}
 
-\item 设函数\(f\)的定义域是\(\paren{0,+\infty}\)．若\(f(x)/x\)单调递减且\(a > 0,\ b > 0\)，则\uline{\makebox[6em]{}}．
+\item 设函数\(\,f\mkern2mu\)的定义域是\(\paren{0,+\infty}\)．若\(\,f(x)/x\)单调递减且\(a > 0,\ b > 0\)，则\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(f(a+b) < f(a)\)
+  \item \(\,f(a+b) < f(a)\)
     \ifshowsol
-    \item[\faCircle] \(f(a+b) \le f(a) + f(b)\)
+    \item[\faCircle] \(\,f(a+b) \le f(a) + f(b)\)
     \else
-    \item \(f(a+b) \le f(a) + f(b)\)
+    \item \(\,f(a+b) \le f(a) + f(b)\)
     \fi
-  \item \(f(a+b) \le a + b\)
-  \item \(f(a+b) > f(a) + f(b)\)
+  \item \(\,f(a+b) \le a + b\)
+  \item \(\,f(a+b) > f(a) + f(b)\)
   \end{itemize}
 
   \ifshowsol
     \begin{proof}
-      不失一般地，假设\(a \le b\)．那么就有\(f(b)/\,b \le \,f(a)/\,a\)，从而
+      不失一般地，假设\(a \le b\)．那么就有\(\,f(b)/\,b \le \,f(a)/\,a\)，从而
       \begin{equation*}
         f(a+b)
         < \frac{a+b}{b} \,f(b) \\
@@ -1304,29 +1305,29 @@
     \end{equation*}
   \fi
 
-\item 设\(f\)是在\(\R\)上的减函数．若\(a + b \le 0\)，则\uline{\makebox[6em]{}}．
+\item 设\(\,f\mkern2mu\)是在\(\R\)上的减函数．若\(a + b \le 0\)，则\uline{\makebox[6em]{}}．
   \begin{itemize}
     \renewcommand{\labelitemi}{\faCircleThin}
-  \item \(f(a) + f(b) \le -\paren[\big]{\,f(a) + f(b)}\)
-  \item \(f(a) + f(b) \le f(-a) + f(-b)\)
-  \item \(f(a) + f(b) \ge -\paren[\big]{\,f(a) + f(b)}\)
+  \item \(\,f(a) + f(b) \le -\paren[\big]{\,f(a) + f(b)}\)
+  \item \(\,f(a) + f(b) \le f(-a) + f(-b)\)
+  \item \(\,f(a) + f(b) \ge -\paren[\big]{\,f(a) + f(b)}\)
     \ifshowsol
-    \item[\faCircle] \(f(a) + f(b) \ge f(-a) + f(-b)\)
+    \item[\faCircle] \(\,f(a) + f(b) \ge f(-a) + f(-b)\)
     \else
-    \item \(f(a) + f(b) \ge f(-a) + f(-b)\)
+    \item \(\,f(a) + f(b) \ge f(-a) + f(-b)\)
     \fi
   \end{itemize}
 
   \ifshowsol
-    选项~A和~C都可以通过举反例来证伪，比方说\(f(x) = \arccot x\)证伪了~A，\(f(x) = -\pi + \arccot x\)证伪了~C．
+    选项~A和~C都可以通过举反例来证伪，比方说\(\,f(x) = \arccot x\)证伪了~A，\(\,f(x) = -\pi + \arccot x\)证伪了~C．
 
-    对于~B和~D，因为\(a \le -b\)且\(b \le -a\)，所以\(f(a) \ge f(-b)\)且\(f(b) \ge f(-a)\)，从而
+    对于~B和~D，因为\(a \le -b\)且\(b \le -a\)，所以\(\,f(a) \ge f(-b)\)且\(\,f(b) \ge f(-a)\)，从而
     \begin{equation*}
       f(a) + f(b) \ge f(-a) + f(-b).
     \end{equation*}
   \fi
 
-\item 曲线\(y = \frac{2^x-2^{-x}}{2^x+2^{-x}}\)与曲线\(y = f(x)\)的图像关于直线\(y = x\)对称．求\(f(x) =\)
+\item 曲线\(y = \frac{2^x-2^{-x}}{2^x+2^{-x}}\)与曲线\(y = f(x)\)的图像关于直线\(y = x\)对称．求\(\,f(x) =\)
   \ifshowsol
     {\setlength{\ULdepth}{1.15ex}%
       \uline{\makebox[6em]{\(\frac12 \log_2\frac{1+x}{1-x}\)}}}．
@@ -1344,7 +1345,7 @@
       \,f(x-1) - f(x-2), & x > 0.
     \end{cases}
   \]
-  求\(f(3) =\)\uline{\makebox[3em]{\ifshowsol\(-2\)\fi}}．
+  求\(\,f(3) =\)\uline{\makebox[3em]{\ifshowsol\(-2\)\fi}}．
 
 \item 下列恒等式中，不正确的是\uline{\makebox[6em]{}}．
   \begin{itemize}

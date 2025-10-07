@@ -1,5 +1,5 @@
 \documentclass[a4paper,punct=CCT]{ctexbook}
-% \includeonly{微积分B1.5}
+% \includeonly{微积分B1.4}
 
 \input{preamble-all}
 
@@ -18,24 +18,25 @@
 \DeclareEmphSequence{\bfseries}
 \renewcommand*{\tand}{\textop{且}}
 \renewcommand*{\qand}{\txt{和}}
+\newcommand*{\qandv}{\txt{且}}
 \renewcommand*{\tor}{\textop{或}}
 \renewcommand*{\otherwise}{\text{其他}}
 \renewcommand*{\iand}{\intertext{和}}
 \renewcommand*{\siand}{\shortintertext{和}}
 % \newcommand*{\f}{\ensuremath{\mkern2mu f \mskip 2mu minus 2mu}}
 \makeatletter
-\newtheoremstyle{plain}{3pt}{3pt}{\itshape}{}{\bfseries}{}{.5em}{%
+\newtheoremstyle{plain}{10pt}{10pt}{\itshape}{}{\bfseries}{}{.5em}{%
   \thmname{#1}\thmnumber{\@ifnotempty{#1}{ }\@upn{#2}}%
   \thmnote{ {\the\thm@notefont（#3）}}%
   % \@ifnotempty{#3}{\thm@headsep=.75ex}
 }
-\newtheoremstyle{definition}{3pt}{3pt}{}{}{\bfseries}{}{.5em}{%
+\newtheoremstyle{definition}{10pt}{10pt}{}{}{\bfseries}{}{.5em}{%
   \thmname{#1}\thmnumber{\@ifnotempty{#1}{ }\@upn{#2}}%
   \thmnote{ {\the\thm@notefont（#3）}}%
   % \@ifnotempty{#3}{\thm@headsep=.75ex}
 }
 \newtheoremstyle{remark}{3pt}{3pt}{}{}{\bfseries}{\ignorespaces}{\z@}{%
-  \noindent\@ifnotempty{#3}{\thmname{#3}\hskip.5em}\ignorespaces}
+  \@ifempty{#3}{\thmname{#1}}{\thmname{#3}}\hskip.5em\ignorespaces}
 \makeatother
 \newtheorem{theorem}{定理}
 \newtheorem*{theorem*}{定理}
@@ -49,7 +50,7 @@
 \newtheorem{example}{例}
 \newtheorem*{example*}{例}
 \theoremstyle{remark}
-\newtheorem*{remark}{评论}
+\newtheorem*{remark}{评述}
 
 \usepackage{cancel}
 \usepackage{systeme}
@@ -57,6 +58,8 @@
 \usepackage[normalem]{ulem}
 % \usepackage[perpage]{footmisc}
 \usepackage{enumitem}
+% \setlist{listparindent=\parindent}
+\setlist{itemsep=7pt plus 2pt minus 1pt}
 
 \usepackage{tikz}
 \usetikzlibrary{positioning,shapes,automata,external,colorbrewer}
@@ -83,13 +86,14 @@
 \ltjsetruby{intergap=-1.5}
 
 \usepackage{gbt7714}
+\citestyle{numbers}
 
 \usepackage{microtype}
 
 \newif\ifshowsol
 \newif\ifshowex
 \newif\ifshowsolp
-% \showsoltrue
+\showsoltrue
 \showextrue
 \ifshowsol
   \showsolptrue
@@ -102,6 +106,7 @@
   \pushQED{\qed}%
   \normalfont \topsep6\p@\@plus6\p@\relax
   \trivlist
+  \listparindent=\parindent
   % \item[]\ignorespaces
   \item[\hskip\labelsep
     \bfseries

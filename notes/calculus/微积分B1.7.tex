@@ -130,9 +130,9 @@
       \int_a^b f \dx \le \int_a^b g \dx.
     \]
 
-  \item 函数\(f \in R[a,b]\), 则\(\abs{\,f} \in R[a,b]\)且
+  \item 函数\(f \in R[a,b]\), 则\(\abs{\, f\,} \in R[a,b]\)且
     \[
-      \abs[\Big]{\int_a^b f \dx} \le \int_a^b \abs{\,f} \dx.
+      \abs[\Big]{\int_a^b f \dx} \le \int_a^b \abs*{\mkern6mu f\ } \dx.
     \]
 
   \item 函数\(f \in R[a,b]\), 若\(\forall x \in [a,b]\)都有\(m \le f < M\), 则
@@ -231,7 +231,7 @@
   则下列说法正确的是哪个？
   \begin{enumerate}
   \item \(\displaystyle \lim_{x\to0} g(x) = 1\).
-  \item \(g(x)\)在\(\brktparen{0,+\infty}\)上单调增加.
+  \item \(g(x)\)在\(\brktparen{0,+\infty}\)上单调递增.
   \item \(\displaystyle \lim_{x\to\infty} g(x) = +\infty\).
   \item \(\displaystyle \lim_{x\to0^+} g'(x)\)不存在.
   \end{enumerate}
@@ -242,7 +242,7 @@
       g'(x) = \frac{x\,f(x) \int_0^x f(t) \dt - f(x) \int_0^x t\,f(t) \dt}{\paren[\big]{\int_0^x f(t) \dt}^2}
       = f(x) \frac{\int_0^x (x-t)\,f(t) \dt}{\paren[\big]{\int_0^x f(t) \dt}^2}.
     \]
-    对于所有的\(t \in (0, x)\), 都有\(x - t > 0\)和\(f(t) > 0\), 所以\(\int_0^x (x-t)\,f(t) \dt > 0\)．这就是说在\((0,+\infty)\)上\(g'(x) > 0\), 所以\(g(x)\)在\(\brktparen{0,+\infty}\)上单调增加.
+    对于所有的\(t \in (0, x)\), 都有\(x - t > 0\)和\(f(t) > 0\), 所以\(\int_0^x (x-t)\,f(t) \dt > 0\)．这就是说在\((0,+\infty)\)上\(g'(x) > 0\), 所以\(g(x)\)在\(\brktparen{0,+\infty}\)上单调递增.
   \fi
 
 \item 已知\(F(x) = \int_a^x f(t) \dt \; (a \le x \le b)\), 则下列结论正确的是哪个？
