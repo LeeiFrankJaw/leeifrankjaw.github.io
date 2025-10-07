@@ -1,0 +1,14 @@
+#+STARTUP: inlineimages showall
+
+#+TITLE: Mauro Giuliani
+#+AUTHOR: Leei Jaw
+#+DATE: <2025-10-07 Tue 13:26>
+#+HTML_HEAD: <link type="text/css" href="../../styles/syntax-highlight.css" rel="stylesheet"/>
+#+HTML_HEAD: <link type="text/css" href="../../styles/layout.css" rel="stylesheet"/>
+#+HTML_HEAD: <script type="text/javascript" src="../../src/post.js"></script>
+#+OPTIONS: ':t
+#+HTML: <input id="disqus-identifier" value="LFJ110"></input>
+
+* Work in Progress
+
+ * [[file:giuliani-op-1.pdf][Giuliani, op. 1 in Italian]]
